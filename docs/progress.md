@@ -570,6 +570,20 @@ companion with its tools), still holding each reply for the dose check. The web 
 tap (iOS Safari). Verified with stand-ins: 95 API tests and the voice browser e2e. Not yet verified against the real
 API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
 
+## Guy's five points on the companion and CareLink (11 Nov 2026, evening)
+
+- Voice greeting repeated: echo of the phone's speaker into its microphone (no echo cancellation in react-native-audio-api on
+  iOS). The server now sends the model silence while the phone plays a reply, never re-sends audio, and splits replies
+  only on pauses over 1.2 s. App loggers (`steady.*`) now print at INFO.
+- Companion sees the data: `ai/context.py` adds onboarding facts (age, height, weight, treatment, pump, sensor) and a data
+  snapshot to the text and live prompts.
+- CareLink meals and insulin: MEAL and completed INSULIN markers import as records. Notifications are not imported: CareLink
+  sends only fault codes and resource keys, no text.
+- Prompt: mentor role per Guy; timing and correct-use reminders without amounts allowed; doses still never (safety check
+  only blocks sentences with an amount).
+- Latest reading card above the talk button (Guy's request; G-30).
+- ML: the brief's separate model-evaluation track (section 10) was not started; a separate thread now runs it.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API

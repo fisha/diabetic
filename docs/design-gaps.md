@@ -426,3 +426,7 @@ phone app (WebView, needs the development build) and hands back the address Care
 `scripts/carelink_browser_sign_in.py` does the same in a browser window. After that the server keeps the connection by
 refreshing its token; if CareLink ends it, the screen asks to sign in on the page again.
 
+### G-30 · Latest reading above the companion's talk button (**requested by Guy, 11 Nov 2026**, implemented)
+
+Not in the boards. The Overview's latest-reading card (value, unit, time, age, source such as CareLink) is shown above
+the talk button in voice mode, only when a reading exists.
