@@ -2363,6 +2363,20 @@
       "translation"
     ]
   },
+  "ntf.check_in": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen notification body; generic on purpose"
+  },
+  "ntf.reminder": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen notification body; generic on purpose (no health details)"
+  },
   "onb.a_apple": {
     "board": "Onboarding",
     "review": [
@@ -4529,6 +4543,20 @@
     "review": [
       "translation"
     ]
+  },
+  "rtn.src_conv": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ],
+    "note": "Board memory source line"
+  },
+  "rtn.src_you": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ],
+    "note": "Board memory source line"
   },
   "rtn.st_dismissed": {
     "board": "Routine",

@@ -28,3 +28,7 @@ export type SendOut = S['SendOut'];
 export type MessageOut = S['MessageOut'];
 export type ThreadOut = S['ThreadOut'];
 export type ConversationOut = S['ConversationOut'];
+export type FollowUpIn = S['FollowUpIn'];
+export type FollowUpOut = S['FollowUpOut'];
+export type MemoryOut = S['MemoryOut'];
+export type SettingsOut = S['SettingsOut'];
