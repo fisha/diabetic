@@ -5148,6 +5148,30 @@
       "translation"
     ]
   },
+  "set.cl_note_active": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_note_code": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_notes": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_notes_src": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cl_offline": {
     "board": "SET-05",
     "review": [

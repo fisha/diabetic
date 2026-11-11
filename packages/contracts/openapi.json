@@ -146,6 +146,50 @@
         "title": "CareLinkIn",
         "type": "object"
       },
+      "CareLinkNotification": {
+        "properties": {
+          "active": {
+            "title": "Active",
+            "type": "boolean"
+          },
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "alert",
+              "message"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text"
+          }
+        },
+        "required": [
+          "at",
+          "kind",
+          "code",
+          "active"
+        ],
+        "title": "CareLinkNotification",
+        "type": "object"
+      },
       "CareLinkOut": {
         "properties": {
           "added": {
@@ -209,6 +253,13 @@
               }
             ],
             "title": "Last Sync At"
+          },
+          "notifications": {
+            "items": {
+              "$ref": "#/components/schemas/CareLinkNotification"
+            },
+            "title": "Notifications",
+            "type": "array"
           },
           "region": {
             "anyOf": [

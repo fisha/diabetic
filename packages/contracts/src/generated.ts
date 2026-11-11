@@ -1008,6 +1008,25 @@ export interface components {
             /** Username */
             username: string;
         };
+        /** CareLinkNotification */
+        CareLinkNotification: {
+            /** Active */
+            active: boolean;
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /** Code */
+            code: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "alert" | "message";
+            /** Text */
+            text?: string | null;
+        };
         /** CareLinkOut */
         CareLinkOut: {
             /** Added */
@@ -1024,6 +1043,8 @@ export interface components {
             last_reading_at?: string | null;
             /** Last Sync At */
             last_sync_at?: string | null;
+            /** Notifications */
+            notifications?: components["schemas"]["CareLinkNotification"][];
             /** Region */
             region?: string | null;
             /** Status */

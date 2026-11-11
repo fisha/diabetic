@@ -577,8 +577,8 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   only on pauses over 1.2 s. App loggers (`steady.*`) now print at INFO.
 - Companion sees the data: `ai/context.py` adds onboarding facts (age, height, weight, treatment, pump, sensor) and a data
   snapshot to the text and live prompts.
-- CareLink meals and insulin: MEAL and completed INSULIN markers import as records. Notifications are not imported: CareLink
-  sends only fault codes and resource keys, no text.
+- CareLink meals and insulin: MEAL and completed INSULIN markers import as records. Pump alerts and messages: fault ids
+  mapped to English texts from paul1956/CareLink (MIT), shown on the CareLink screen and to the companion (G-31).
 - Prompt: mentor role per Guy; timing and correct-use reminders without amounts allowed; doses still never (safety check
   only blocks sentences with an amount).
 - Latest reading card above the talk button (Guy's request; G-30).

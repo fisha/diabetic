@@ -433,3 +433,9 @@ unofficial connection, including the encrypted saved password path, on 11 Nov 20
 
 Not in the boards. The Overview's latest-reading card (value, unit, time, age, source such as CareLink) is shown above
 the talk button in voice mode, only when a reading exists.
+
+### G-31 · Pump alerts and messages on the CareLink screen (**Guy's request, 11 Nov 2026**, implemented, review pending)
+
+Not in the boards. CareLink sends only fault ids; texts come from paul1956/CareLink's MIT-licensed English table and
+include the pump's own clinical wording (alerts, limits). Shown as the pump's words with the code and a note that they are
+unreviewed. Needs the clinical review (G-05) and translations before a release.
