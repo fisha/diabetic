@@ -828,6 +828,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/voice/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Preview
+         * @description One fixed sample sentence in a chosen voice and language, with the companion's name. Not a speech service.
+         */
+        get: operations["preview_voice_preview_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/voice/transcribe": {
         parameters: {
             query?: never;
@@ -1840,6 +1860,16 @@ export interface components {
         VoiceStatusOut: {
             /** Available */
             available: boolean;
+            /**
+             * Live
+             * @default false
+             */
+            live: boolean;
+            /**
+             * Voices
+             * @default []
+             */
+            voices: string[];
         };
     };
     responses: never;
@@ -3757,6 +3787,46 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description voice_unconfigured */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    preview_voice_preview_get: {
+        parameters: {
+            query: {
+                v: string;
+                lang?: string;
+                name?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "audio/mpeg": unknown;
+                };
             };
             /** @description Validation Error */
             422: {

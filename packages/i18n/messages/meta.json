@@ -3261,6 +3261,18 @@
       "translation"
     ]
   },
+  "onb.na_me": {
+    "board": "ONB-17",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.na_me_ph": {
+    "board": "ONB-17",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.na_s": {
     "board": "Onboarding",
     "review": [
@@ -3967,6 +3979,12 @@
       "translation"
     ]
   },
+  "onb.vo_fail": {
+    "board": "ONB-17",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.vo_lang": {
     "board": "Onboarding",
     "review": [
@@ -3975,6 +3993,12 @@
   },
   "onb.vo_lang_b": {
     "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.vo_play": {
+    "board": "ONB-17",
     "review": [
       "translation"
     ]

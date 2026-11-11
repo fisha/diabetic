@@ -42,13 +42,13 @@ const server = http.createServer((req, res) => {
 
     ok('voice ready', await page.getByText('Tap to talk', { exact: true }).first().isVisible());
     await shot('v01-idle');
-    await page.getByRole('button', { name: 'Talk', exact: true }).click(); await page.waitForTimeout(1500);
-    ok('listening state', await page.getByText('Listening', { exact: true }).first().isVisible());
-    ok('finish control', await page.getByRole('button', { name: 'Finish', exact: true }).isVisible());
-    await shot('v02-listening');
-    await page.getByRole('button', { name: 'Finish', exact: true }).click(); await page.waitForTimeout(3000);
-
-    // The stand-in hears "My reading is 142": the check card opens, marked as heard by voice.
+    // Live voice: the companion opens, then listens; the reply audio plays only after the server checked its words.
+    await page.getByRole('button', { name: 'Talk', exact: true }).click();
+    await page.getByText('Good evening! How was your day?').first().waitFor({ timeout: 5000 }).catch(() => {});
+    ok('companion greets first', await page.getByText('Good evening! How was your day?').first().isVisible());
+    await shot('v02-greeting');
+    // The stand-in hears "My reading is 142" after a second of the fake microphone: the check card opens.
+    await page.getByText('Check what I heard').first().waitFor({ timeout: 8000 });
     ok('check card opens', await page.getByText('Check what I heard').first().isVisible());
     ok('heard text shown', await page.getByText('“My reading is 142”').first().isVisible());
     await shot('v03-card');
@@ -59,8 +59,12 @@ const server = http.createServer((req, res) => {
     const range = `since=${encodeURIComponent(new Date(Date.now() - 86400000).toISOString())}&until=${encodeURIComponent(new Date(Date.now() + 3600000).toISOString())}`;
     const g = (await api(`/glucose?${range}`, { token: tv.access_token })).json;
     ok('reading saved once', g.length === 1 && g[0].value === 142, JSON.stringify(g.map((x) => [x.value, x.source])));
-    ok('back to voice, idle or speaking', await page.getByText('Tap to talk', { exact: true }).first().isVisible() || await page.getByText('Speaking', { exact: true }).first().isVisible());
-    await shot('v04-after-save');
+    const texts = (await api('/conversation/messages', { token: tv.access_token })).json.messages.map((m) => m.text);
+    ok('spoken turns stored in order', JSON.stringify(texts) === JSON.stringify(['Good evening! How was your day?', 'My reading is 142', 'Thanks, check the card.']), JSON.stringify(texts));
+    ok('still listening', await page.getByText('Listening', { exact: true }).first().isVisible());
+    await shot('v04-listening');
+    await page.getByRole('button', { name: 'Finish', exact: true }).click(); await page.waitForTimeout(1000);
+    ok('finish ends the conversation', await page.getByText('Tap to talk', { exact: true }).first().isVisible());
 
     // Mute: talking is off until unmuted.
     await page.getByRole('button', { name: 'Mute', exact: true }).click(); await page.waitForTimeout(500);

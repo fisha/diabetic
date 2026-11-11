@@ -2397,6 +2397,19 @@
           "available": {
             "title": "Available",
             "type": "boolean"
+          },
+          "live": {
+            "default": false,
+            "title": "Live",
+            "type": "boolean"
+          },
+          "voices": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Voices",
+            "type": "array"
           }
         },
         "required": [
@@ -5191,6 +5204,76 @@
           }
         ],
         "summary": "Speech",
+        "tags": [
+          "voice"
+        ]
+      }
+    },
+    "/voice/preview": {
+      "get": {
+        "description": "One fixed sample sentence in a chosen voice and language, with the companion's name. Not a speech service.",
+        "operationId": "preview_voice_preview_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "v",
+            "required": true,
+            "schema": {
+              "pattern": "^[a-z]{2,12}$",
+              "title": "V",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "lang",
+            "required": false,
+            "schema": {
+              "default": "en",
+              "pattern": "^(en|he|ar|ru)$",
+              "title": "Lang",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "schema": {
+              "default": "Noa",
+              "maxLength": 40,
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "audio/mpeg": {}
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "503": {
+            "description": "voice_unconfigured"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Preview",
         "tags": [
           "voice"
         ]

@@ -351,11 +351,23 @@ night values checked for contrast.
   readings in 14 days; a first impression when seen on 2) are product rules, not clinical thresholds. Wording needs
   clinical review.
 
-### G-26 · One voice for every companion (blocked)
+### G-26 · Voices and live conversation (**decided by Guy, 11 Nov 2026**, implemented)
 
-The boards give each companion its own voice. The speech provider has a fixed voice list and no voice was chosen per
-companion, so every companion speaks with one voice (`STEADY_OPENAI_TTS_VOICE`). Needs a choice per companion and
-language once voices are heard in Hebrew, Arabic and Russian.
+Guy asked for the voice conversation to run on OpenAI's live model, in the voice and with the name the person chose,
+knowing the person's name, greeting by time of day and asking questions. Done as follows:
+- **Voice choice** (ONB-17 and SET-06): the provider's own voices (Marin, Cedar, Alloy, Ash, Ballad, Coral, Echo,
+  Sage, Shimmer, Verse), the ones both the speech and live models offer, with "Play a sample" (a fixed sentence with
+  the companion's name). This replaces G-10's placeholder catalog. Default Marin.
+- **What the companion calls you** (ONB-18 and SET-06): a new optional field, not on the boards.
+- **Greeting and initiative**: the prompt greets by the person's local part of day (morning 05-12, afternoon 12-17,
+  evening 17-21, night) and asks one short open question at a time, never about doses.
+- **Live conversation** (gpt-realtime) in the web build: Talk opens a conversation the companion starts, the person
+  talks freely and can interrupt (Stop), Finish ends it. Every reply is held on the server until its words pass the
+  dose check, so a reply starts about one reply-length later than raw live audio would. Turns are stored in the
+  thread like text. Phones keep one spoken turn at a time, in the chosen voice, until a native audio streaming module
+  is added in a dev build.
+- Echo: in a browser the phone's own echo cancellation keeps the companion from hearing itself; on a loudspeaker it
+  can still cut itself off. To check on Guy's phone.
 
 ### G-27 · Export and photo keeping details (proposed, implemented)
 
