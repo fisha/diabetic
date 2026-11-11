@@ -984,6 +984,12 @@ export interface components {
             high_mgdl: number;
             /** Low Mgdl */
             low_mgdl: number;
+            /**
+             * Source
+             * @default profile
+             * @enum {string}
+             */
+            source: "profile" | "pump";
         };
         /** Body_transcribe_voice_transcribe_post */
         Body_transcribe_voice_transcribe_post: {

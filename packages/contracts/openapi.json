@@ -77,6 +77,15 @@
           "low_mgdl": {
             "title": "Low Mgdl",
             "type": "number"
+          },
+          "source": {
+            "default": "profile",
+            "enum": [
+              "profile",
+              "pump"
+            ],
+            "title": "Source",
+            "type": "string"
           }
         },
         "required": [

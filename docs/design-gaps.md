@@ -439,3 +439,8 @@ the talk button in voice mode, only when a reading exists.
 Not in the boards. CareLink sends only fault ids; texts come from paul1956/CareLink's MIT-licensed English table and
 include the pump's own clinical wording (alerts, limits). Shown as the pump's words with the code and a note that they are
 unreviewed. Needs the clinical review (G-05) and translations before a release.
+
+### G-32 · Insights range from the pump's alert limits (**recommended to Guy, 11 Nov 2026; decision card open**, implemented)
+
+With no target range typed, insights, time in range and the Overview legend use the low and high alert limits set on the
+pump (CareLink `limits`, latest entry), labelled as such. A typed target always wins. Reverted if Guy picks "profile only".

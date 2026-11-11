@@ -1336,6 +1336,12 @@
       "translation"
     ]
   },
+  "ins.basis_pump": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.body_above": {
     "board": "Overview",
     "review": [
@@ -4340,6 +4346,12 @@
   },
   "ovr.prev": {
     "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.range_pump": {
+    "board": "OVR-01",
     "review": [
       "translation"
     ]
