@@ -1223,7 +1223,9 @@ export interface components {
              * Origin
              * @enum {string}
              */
-            origin: "user" | "conversation";
+            origin: "user" | "conversation" | "app";
+            /** Reason */
+            reason?: string | null;
             /**
              * Repeat
              * @enum {string}
@@ -1243,6 +1245,8 @@ export interface components {
             status: "scheduled" | "snoozed" | "rescheduled" | "sent" | "opened" | "completed" | "withdrawn" | "notAnswered" | "dismissed";
             /** Title */
             title: string;
+            /** Topic */
+            topic?: string | null;
         };
         /** FoodItem */
         FoodItem: {

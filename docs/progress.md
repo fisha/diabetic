@@ -596,6 +596,15 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
 - Overview week / 2 weeks / month: CareLink's API returns only the last 24 hours, so history builds up from the day of
   connection; days under 70% sensor coverage show no split by design.
 
+## Spec audit gaps, follow-ups (11 Nov 2026)
+
+- Failed push: tried again after 5 and 15 minutes, then left unsent (never shown as sent).
+- Check-ins wait for the end of the person's quiet hours (onboarding `checkIns.quietFrom/quietTo`); reminders keep their time.
+- Frequency (`onlyWhenIStart` 0, `fewTimesADay` 3, `moreAtFirst` 5 in the first 3 days) caps check-ins the app starts on
+  its own (`followups.proactive_allowed`, used by data-driven suggestions, origin `app`).
+- A check-in with a `topic` (glucose, meal, insulin, activity) is withdrawn when such a record arrives before it is due.
+- Daily repeats keep the local clock across DST. Each follow-up can carry a `reason`, shown in the Journal as "Why".
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API

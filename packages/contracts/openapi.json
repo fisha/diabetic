@@ -676,10 +676,22 @@
           "origin": {
             "enum": [
               "user",
-              "conversation"
+              "conversation",
+              "app"
             ],
             "title": "Origin",
             "type": "string"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
           },
           "repeat": {
             "enum": [
@@ -724,6 +736,17 @@
           "title": {
             "title": "Title",
             "type": "string"
+          },
+          "topic": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Topic"
           }
         },
         "required": [

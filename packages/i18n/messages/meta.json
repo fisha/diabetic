@@ -4827,6 +4827,12 @@
       "translation"
     ]
   },
+  "rtn.src_app": {
+    "board": "JRN-04",
+    "review": [
+      "translation"
+    ]
+  },
   "rtn.src_conv": {
     "board": "Routine",
     "review": [
@@ -4988,6 +4994,12 @@
   },
   "rtn.upcoming": {
     "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.why": {
+    "board": "JRN-04",
     "review": [
       "translation"
     ]
