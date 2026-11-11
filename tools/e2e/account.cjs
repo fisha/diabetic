@@ -43,6 +43,17 @@ const server = http.createServer((req, res) => {
     await page.getByLabel('Password', { exact: true }).fill('correct horse battery');
     await page.getByText('Sign in', { exact: true }).last().click(); await page.waitForTimeout(2500);
 
+    // The web preview keeps no session: a reload goes to Welcome instead of showing screens that can't save.
+    await page.reload(); await page.waitForTimeout(2500);
+    ok('reload signed out goes to welcome', page.url().endsWith('/welcome'), page.url());
+    await page.goto(`${base}/companion`); await page.waitForTimeout(2500);
+    ok('deep link signed out goes to welcome', page.url().endsWith('/welcome'), page.url());
+    await page.goto(`${base}/sign-in`); await page.waitForTimeout(1500);
+    await page.getByLabel('Email', { exact: true }).fill('p@example.com');
+    await page.getByLabel('Password', { exact: true }).fill('correct horse battery');
+    await page.getByText('Sign in', { exact: true }).last().click(); await page.waitForTimeout(2500);
+    ok('signed in again', page.url().endsWith('/companion'), page.url());
+
     // A settings change reaches the server profile.
     await toProfile(); await row('Privacy and data');
     await page.getByRole('switch', { name: 'Help improve models' }).click(); await page.waitForTimeout(2500);
