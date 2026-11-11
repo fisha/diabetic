@@ -1328,6 +1328,26 @@
         "title": "MealItemData",
         "type": "object"
       },
+      "MembershipOut": {
+        "properties": {
+          "access": {
+            "const": "full",
+            "title": "Access",
+            "type": "string"
+          },
+          "billing": {
+            "const": "unconfigured",
+            "title": "Billing",
+            "type": "string"
+          }
+        },
+        "required": [
+          "billing",
+          "access"
+        ],
+        "title": "MembershipOut",
+        "type": "object"
+      },
       "MemoryOut": {
         "properties": {
           "created_at": {
@@ -4384,6 +4404,32 @@
         "summary": "Analyze",
         "tags": [
           "meal"
+        ]
+      }
+    },
+    "/membership": {
+      "get": {
+        "operationId": "membership_membership_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MembershipOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Membership",
+        "tags": [
+          "membership"
         ]
       }
     },

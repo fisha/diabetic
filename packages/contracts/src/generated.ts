@@ -625,6 +625,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/membership": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Membership */
+        get: operations["membership_membership_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/memories": {
         parameters: {
             query?: never;
@@ -1362,6 +1379,19 @@ export interface components {
              * @default false
              */
             weighed: boolean;
+        };
+        /** MembershipOut */
+        MembershipOut: {
+            /**
+             * Access
+             * @constant
+             */
+            access: "full";
+            /**
+             * Billing
+             * @constant
+             */
+            billing: "unconfigured";
         };
         /** MemoryOut */
         MemoryOut: {
@@ -3201,6 +3231,26 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    membership_membership_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MembershipOut"];
+                };
             };
         };
     };

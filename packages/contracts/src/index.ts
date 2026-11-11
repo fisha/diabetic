@@ -32,6 +32,7 @@ export type TranscriptOut = S['TranscriptOut'];
 export type HealthSampleIn = S['HealthSampleIn'];
 export type HealthImportOut = S['HealthImportOut'];
 export type HealthRemovedOut = S['HealthRemovedOut'];
+export type MembershipOut = S['MembershipOut'];
 export type VoiceStatusOut = S['VoiceStatusOut'];
 export type InsightsOut = S['InsightsOut'];
 export type InsightOut = S['InsightOut'];
