@@ -182,7 +182,7 @@ ONB-17 and SET-06 show "Voice A, B, C". The brief says not to invent voices or l
 - Board 14 ids are canonical. `docs/design-inventory.md` maps both.
 - Test ids use the canonical ids.
 
-### G-12 · The web dashboard has no sign-in screen (decision needed)
+### G-12 · The web dashboard has no sign-in screen (**decision taken, 11 Nov 2026**, under Guy's "build everything, ask at the end")
 
 **Conflict**
 - The website nav has "Sign in", and the dashboard shows "Signed in as …".
@@ -190,6 +190,11 @@ ONB-17 and SET-06 show "Voice A, B, C". The brief says not to invent voices or l
 
 **Proposal**
 - Reuse the mobile AUTH-02..05 layouts in a centred 440 px card on the web. These are the same fields and copy.
+
+**Implemented**
+- A centred sign-in card with the mobile fields and copy. The session is kept in memory only, so a reload or a new
+  tab signs out. Nothing about the session is stored in the browser. Recovery keeps its G-04 state (no email
+  provider). To revisit: a secure HTTP-only cookie once the API is hosted.
 
 ### G-13 · Theme setting: "System" option missing (proposed)
 
@@ -315,7 +320,62 @@ night values checked for contrast.
   revision; the original stays in the history. The reason chips are not sent: the API has no reason field yet.
 - The onboarding draft is kept per device, not per account: another account signing in on the same phone would see
   it. Proposal: clear the draft on sign-out once the profile is saved, or key it by account.
-- Delete and "hide from summaries" in the entry detail still show the G-04 note (no delete API in Stage 3).
+- ~~Delete and "hide from summaries" in the entry detail still show the G-04 note.~~ Both work since the records
+  slice (soft delete, hide).
+
+### G-23 · Conversation and follow-up states the boards don't show (proposed, implemented)
+
+- Notes (symptoms and free text) appear under the Journal's "Companion" filter, next to check-ins, because the boards
+  have no Notes filter. Proposal: keep, or add a Notes chip.
+- Check-in suggestions from the companion and the answer chips on a follow-up notification are not drawn; they use the
+  existing chip and card components.
+- The text shown when a reply is withheld because it read as a dose recommendation is placeholder copy and needs
+  **clinical review** (G-05). Nothing about doses is ever shown.
+
+### G-24 · Meal analysis (proposed, implemented)
+
+- Provider: OpenAI vision through the server, instead of LogMeal or Passio. One provider for the companion, voice and
+  photos, and no second contract. Food search uses USDA FoodData Central.
+- The board's analysis step 3 is merged into step 2: progress shows only what really happened (upload, then
+  analysis), never a timer.
+- A meal in the journal is titled by its carbs ("Meal ≈ 45 g carbs"), with the foods in the detail, because
+  the board's titles ("Lunch") are sample text with no source in the record.
+- A food of your own can be added only when search has no matches. Proposal: also offer it under the results.
+- Dictation on the description screen is wired to the voice transcription service (Dictate, then Finish).
+
+### G-25 · Insights without a target range (proposed, implemented)
+
+- Insights need the person's own target range from onboarding. Without one, Overview and Insights show
+  `ins.no_band` ("set your range") instead of patterns.
+- The counting rules (a pattern is recurring when seen on at least 3 days and on at least half of the days with
+  readings in 14 days; a first impression when seen on 2) are product rules, not clinical thresholds. Wording needs
+  clinical review.
+
+### G-26 · One voice for every companion (blocked)
+
+The boards give each companion its own voice. The speech provider has a fixed voice list and no voice was chosen per
+companion, so every companion speaks with one voice (`STEADY_OPENAI_TTS_VOICE`). Needs a choice per companion and
+language once voices are heard in Hebrew, Arabic and Russian.
+
+### G-27 · Export and photo keeping details (proposed, implemented)
+
+- PDF column headings are partly English (for example `value_mgdl`), so other apps and clinicians read the same names
+  as the CSV. Proposal: translated headings in the PDF only.
+- "Notify me when ready" sends no push yet (no push credentials); the export screen shows the file when it is ready.
+- "Delete after analysis" deletes the photo as soon as the meal is saved; "Keep 90 days" is enforced by the worker.
+
+### G-28 · Apple Health and Health Connect screen (proposed, implemented)
+
+The device detail board shows a vendor sign-in. The health store connection uses the same screen with its own words:
+- Connect, then "Before you connect" (what is read, from when, and that nothing is written), then the system
+  permission sheet, then Connected with the last sync and how many readings it added.
+- Refused permission shows "Not connected" with "Open {store} settings". Apple Health never says whether reading was
+  refused, so after a sync with no readings the iPhone screen adds a note on where to check.
+- A web browser or a phone without the store shows "Not available" with "Log a reading".
+- Disconnect asks the board's keep / remove question. Disconnecting stops reading; the system permission stays until
+  the person removes it in the store. Readings removed this way don't come back when connecting again.
+- Readings are labelled with the store ("Apple Health", "Health Connect") in the journal, overview and dashboard. A
+  source that writes every few minutes is treated as a sensor; other readings as a meter.
 
 ## C. Native adaptation (proposed)
 

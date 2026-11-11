@@ -2,31 +2,34 @@
 
 Status values: **unconfigured**, **implemented-unverified**, **verified-test**, **verified-device**.
 
-Visual implementation is tracked separately in `docs/design-inventory.md`.
+- **verified-test**: run end to end in the container, with the real API and database, and with test stand-ins only
+  for outside providers (OpenAI, USDA, Expo push) inside `tests/`.
+- Nothing is **verified-device** yet: no native build has run on a phone, and nothing has run on Guy's Mac.
 
-| Integration | Status | Candidate / note | Blocker |
+Visual implementation is tracked separately in `docs/design-inventory.md`. Updated 11 Nov 2026.
+
+| Integration | Status | What exists | Blocker for the next status |
 |---|---|---|---|
-| Authentication | unconfigured | provider not chosen. The account screens validate locally and show "Not available in this build"; nothing is sent (`features/auth/auth.ts`). | decision |
-| Backend API (FastAPI) | unconfigured | Stage 3 | |
-| PostgreSQL + migrations | unconfigured | Stage 3 | hosting / data residency decision |
-| Offline queue (SQLite, encrypted) | unconfigured | Stage 3 | |
-| Records API (readings, insulin, activity, notes, reminders, meals) | unconfigured | Stage 3. Save meal also shows the unavailable banner. The log sheets validate locally and show "Not available in this build" on Save (`features/records/records.ts`). | backend |
-| Protected on-device store (onboarding draft) | implemented-unverified | XChaCha20-Poly1305 file + key in expo-secure-store. The sealing code is verified-test (round trip, tamper, wrong key); Keychain/Keystore not yet run on a device. | EAS build |
-| Apple HealthKit (read-only) | unconfigured | @kingstinct/react-native-healthkit 16.2.0 (candidate) | signing team and test iPhone; G-01 UI placement |
-| Android Health Connect | unconfigured | react-native-health-connect 4.1.3 / expo-health-connect 0.1.1 (candidates) | Android test device |
-| MiniMed / CareLink | unconfigured | no official access verified; no scraping | partnership investigation |
-| Guardian 4 and other CGMs | unconfigured | only via HealthKit / Health Connect where a source writes there | |
-| LLM (text companion, tools) | unconfigured | OpenAI chosen by Guy (11 Nov 2026), key to be placed in `services/api/.env` in Stage 5. The Companion composer reports "not sent" (`features/companion/conversation.ts`). | decision |
-| Voice (speech in/out, barge-in) | unconfigured | provider not chosen; multilingual quality not verified. The orb shows the G-04 state. | decision |
-| Food photo analysis | unconfigured | LogMeal (initial), Passio (comparison); neither selected. "Use this photo" and "Find foods" show "Not available in this build" and send nothing (`features/meal/services.ts`). | API access, plan, cost approval |
-| Nutrition search | unconfigured | same provider decision. The search sheet says it is not connected; the user can add their own food with typed carbs. | |
-| Camera and photo library | implemented-unverified | expo-camera 58 (capture, flash, permission) and expo-image-picker 58. Photos stay in memory; nothing is stored or sent. | EAS build |
-| Push notifications / follow-ups | unconfigured | expo-notifications + durable jobs (procrastinate candidate). The permission request in ONB-19 is implemented-unverified; no push token or scheduling yet. | Apple/Google push credentials |
-| Billing | unconfigured | Store and provider not chosen; prices and trial open. The Membership screen shows "not set up yet" and every billing action says nothing was charged (`features/membership/`). | decision |
-| Export / account deletion jobs | unconfigured | Stage 5/6 | retention policy |
-| App preferences (non-health) | implemented-unverified | Appearance, text size, motion, captions, haptics, voice speed, notification kinds, photo retention and memory are saved with the generic preference store (`features/settings/SettingsProvider.tsx`). Health answers stay in the protected draft. | |
-| Website and dashboard (Next.js) | implemented-unverified | `apps/web`, built and checked in the container; not deployed anywhere. | hosting decision |
-| Transactional email | unconfigured | Needed for password reset; no provider. The recover screen stays in its G-04 state. | provider decision |
-| Web dashboard auth | unconfigured | same identity as mobile | G-12 |
-| Accounts and database (Stage 3) | implemented-unverified on the Mac | FastAPI + PostgreSQL 16 (`services/api`). Verified in the container: 21 API tests, 16-step browser e2e against the real API. Not yet run on Guy's Mac or a device. | Docker Desktop and uv on the Mac |
-| Glucose records and offline queue | implemented-unverified on device | Server records with revisions and idempotency; app queue in the protected store. Verified in the web preview e2e; native restart survival not yet observed. | native build |
+| Accounts (email and password) | verified-test | FastAPI auth with argon2id, rotating refresh tokens, sign-out revokes the family. App and dashboard sign in against it. | Run on the Mac; password reset needs an email provider |
+| Backend API and PostgreSQL | verified-test | `services/api`, 86 tests. Alembic migrations. Runs locally only (decision of 11 Nov 2026). | Docker Desktop and uv on the Mac; hosting is not decided |
+| Offline record queue | verified-test | Records wait in the protected store and are sent with idempotency keys. Web preview e2e. | Native restart survival on a device |
+| Protected on-device store | implemented-unverified | XChaCha20-Poly1305 file, key in expo-secure-store. Sealing code verified-test; Keychain / Keystore not run on a device. | Dev build on a phone |
+| Records (glucose, insulin, activity, notes, meals) | verified-test | Revisions, corrections, soft delete, hide from summaries. Journal and Overview read them. | Device run |
+| Profile sync | verified-test | Onboarding answers saved to the server and loaded after sign-in on another phone. | Device run |
+| Companion conversation (LLM) | implemented-unverified | OpenAI behind a provider interface (`steady_api/ai/provider.py`), tools that propose records for confirmation, dose safety check. Verified with a rule-based stand-in in tests and e2e only. | Guy's OpenAI key in `services/api/.env`; then a real conversation check in all four languages |
+| Voice (speech to text, text to speech) | implemented-unverified | OpenAI transcription and speech; the app records a turn, sends it, plays the stored reply. Stand-in in tests and e2e. One voice for every companion (G-26). | OpenAI key; microphone on a device |
+| Meal photo analysis | implemented-unverified | OpenAI vision adapter chosen instead of LogMeal or Passio (one provider, no extra contract). Stand-in in tests and e2e. | OpenAI key; quality check on real meals |
+| Food search (nutrition database) | implemented-unverified | USDA FoodData Central. Stand-in in tests and e2e. | Free USDA key in `.env` |
+| Follow-ups and reminders | verified-test (local) | Durable worker in the API; the phone schedules local notifications for upcoming follow-ups. | Device run |
+| Push notifications | implemented-unverified | Expo push adapter on the server; the app registers its token per account and removes it on sign-out. A token exists only with an EAS project id (`EAS_PROJECT_ID`). | Expo account, `eas init`, a dev build, Apple push key |
+| Apple Health (read only) | implemented-unverified | `@kingstinct/react-native-healthkit` 16.2: permission for blood glucose, read the last 30 days then new readings each time the app opens, send to `POST /glucose/import`. The iOS bundle builds. | Apple developer account, a dev build, a test iPhone |
+| Android Health Connect (read only) | implemented-unverified | `react-native-health-connect` 4.1.3 with its config plugin, `READ_BLOOD_GLUCOSE`, minSdk 26. The Android bundle builds. | A dev build and an Android phone with Health Connect |
+| CareLink / MiniMed, Dexcom and other vendor clouds | unconfigured | No official access; no scraping. Only through Apple Health / Health Connect where the vendor app writes there. | Partnership or official API |
+| Insights and summaries | verified-test | Day-part patterns from the person's own readings and target range (product rules, not clinical rules). | Clinical review of wording |
+| Data export | verified-test | PDF (Hebrew and Arabic shaped, right to left) and CSV zip, kept 7 days, downloaded in the app and the dashboard. | "Ready" push needs push |
+| Account deletion | verified-test | Deletes every record, photo and export; the app clears its local data. | Backup retention policy text |
+| Billing and membership | unconfigured | Membership screens show "not set up yet"; `GET /membership` says the same. Nothing is charged. | Billing provider and store decision (G-19) |
+| Website and web dashboard | verified-test | `apps/web`: signed-in dashboard with overview, timeline, insights, settings and export; English and Hebrew right to left checked. Not deployed. | Hosting decision; G-12 (session kept in memory only) |
+| Transactional email | unconfigured | Needed for password reset. The recover screen keeps its G-04 state. | Email provider |
+| App preferences (non-health) | implemented-unverified | Appearance, text size, motion, captions, haptics, voice speed, notification kinds. | Device run |
+| Native builds (EAS) | unconfigured | `eas.json` has development, simulator, preview and production profiles. `expo export` for iOS and Android passes. | Guy's Expo account (`eas login`), Apple and Google developer accounts |

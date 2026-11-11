@@ -2,9 +2,11 @@
 
 ## Current stage
 
-**Stage 3: first real end-to-end data flow.** Guy said to continue on 11 Nov 2026 ("תמשיך עם פיתוח האפליקציה");
-the backend runs locally on the Mac (FastAPI and PostgreSQL in Docker). Steps 3.1 to 3.8 are done and verified in
-the container; they still need a run on Guy's Mac and on a device. Stage 2 is closed except the HealthKit spike.
+**Stages 3 to 6 built; waiting on Guy's accounts, keys and devices.** On 11 Nov 2026 Guy asked to build the whole app
+without stopping and to ask for everything needed at the end ("תפתח את כל האפליקציה בלי לעצור… ובסוף… תבקש ממני את
+כל מה שאתה צריך ממני"). Every slice below is built and verified in the container. None of it has run on Guy's Mac
+or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
+verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
 ## Stage 1 record
 
@@ -55,6 +57,36 @@ the container; they still need a run on Guy's Mac and on a device. Stage 2 is cl
 | 7 | Stage 3 accounts and database | **Local only on the Mac**: FastAPI and Postgres in Docker, no cloud provider for now (decision card, 11 Nov 2026). |
 
 Still open (non-blocking for 2.1–2.4): G-08 translations, G-12 web sign-in, G-13 System theme option, G-05 clinical copy, G-06 thresholds, G-10 voice catalog.
+
+## Stages 4 to 6 record (11 Nov 2026)
+
+Decisions taken without asking, as Guy instructed, and recorded in `docs/design-gaps.md` (G-12, G-23 to G-28):
+OpenAI vision for meal photos, USDA FoodData Central for food search, one voice for every companion, the web
+dashboard session kept in memory only, and the health store screen built on the device detail board.
+
+| Slice | What works | Verified |
+|---|---|---|
+| Records | Insulin, activity, notes and meals saved with revisions; journal delete, hide and corrections | API tests, `records.cjs` (16 steps) |
+| Conversation | Text companion through the server (OpenAI behind a provider interface), proposed records confirmed by the person, dose safety check | API tests, `conversation.cjs` with a rule-based stand-in |
+| Follow-ups and memory | Durable worker, routine screen, memories, local notifications; push token per account | API tests, `followups.cjs` |
+| Meals | Photo upload and analysis with real progress, description parsing, dictation, USDA search, photo keeping | API tests, `meal.cjs` |
+| Voice | Recorded turn, transcription, spoken reply, orb states, mute and stop | API tests, `voice.cjs` with a fake microphone |
+| Insights | Day-part patterns from the person's readings and range, summary, feedback; profile synced with the server | API tests, unit tests, `insights.cjs` |
+| Account | PDF and CSV export, account deletion, privacy choices saved to the server | API tests, `account.cjs` |
+| Web dashboard | Sign-in, overview, timeline, insights, settings, export, in English and Hebrew right to left | `web.cjs` |
+| Apple Health / Health Connect | Read-only blood glucose: permission, 30 days back, new readings when the app opens, keep or remove on disconnect | API tests, unit tests for sensor detection, iOS and Android bundles build; the web shows "Not available" (`account.cjs`) |
+| Membership | "Not set up yet" from `GET /membership`; nothing charged | API test |
+
+**Checks run on 11 Nov 2026 (container):** `pnpm check` passes (typecheck, lint, 37 mobile unit tests and the
+package tests). `uv run pytest`: 86 pass. `expo export` for iOS, Android and web passes. Every browser e2e flow
+passes: stage3, records, conversation, followups, meal, voice, insights, account, web.
+
+**Known limits:**
+- The database pool (5 plus 10 overflow) times out under about 300 simultaneous requests. Fine for one person on a
+  Mac; size it when hosting is decided.
+- Health readings removed on disconnect don't return when connecting again (their store ids are kept).
+- Native code (HealthKit, Health Connect, Keychain, notifications, microphone, camera) has not run on a device:
+  that needs an EAS dev build.
 
 ## Stage 3 record
 
@@ -531,7 +563,8 @@ switching works in code; it has not been seen on a device.
 
 ## Next action
 
-Guy, on the Mac: install Docker Desktop and uv, then follow `services/api/README.md` to start the database and the
-API, and run the app with `EXPO_PUBLIC_API_URL=http://localhost:8000`. Then Stage 4 (HealthKit / Health Connect)
-needs his approval, an Apple signing team and a test iPhone; Stage 5 starts with the text companion, for which Guy
-will put an OpenAI key in `services/api/.env`.
+Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API
+(`services/api/README.md`); put the OpenAI and USDA keys in `services/api/.env`; create an Expo account and run
+`eas login` and `eas init`; an Apple developer account and a test iPhone (and an Android phone for Health Connect)
+for a dev build. Then: run every flow on the phone, clinical and translation reviews, and the open decisions
+(billing, email provider, hosting, G-06, G-16, G-19).

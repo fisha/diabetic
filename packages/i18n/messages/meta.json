@@ -2156,6 +2156,12 @@
       "translation"
     ]
   },
+  "meal.dict_fail": {
+    "board": "MEAL-10",
+    "review": [
+      "translation"
+    ]
+  },
   "meal.dictate": {
     "board": "Meal",
     "review": [

@@ -352,6 +352,7 @@
   "meal.desc_note": "I’ll turn this into a list of foods with amounts. You check and correct it before anything is saved.",
   "meal.desc_short": "Describe instead",
   "meal.desc_t": "Describe your meal",
+  "meal.dict_fail": "Dictation didn’t work. Try again, or type instead.",
   "meal.dictate": "Dictate",
   "meal.down_b": "Your photo is kept with this meal. You can enter the foods yourself now, or try the analysis again.",
   "meal.down_t": "Photo analysis isn’t available right now",

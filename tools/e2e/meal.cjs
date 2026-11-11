@@ -19,9 +19,10 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { 'content-type': types[path.extname(p)] || 'application/octet-stream' }); fs.createReadStream(p).pipe(res);
 }).listen(8090, async () => {
   const base = 'http://localhost:8090';
-  const browser = await chromium.launch();
+  // A fake microphone and an automatic permission grant stand in for the person dictating.
+  const browser = await chromium.launch({ args: ['--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream'] });
   const errors = [];
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, permissions: ['microphone'] });
   const page = await ctx.newPage(); global.lastPage = page;
   page.on('pageerror', (e) => errors.push(e.message));
   const shot = (n) => page.screenshot({ path: path.join(out, `${n}.png`) });
@@ -54,6 +55,12 @@ const server = http.createServer((req, res) => {
     // Description: two foods.
     await meal();
     await page.getByText('Describe it by voice or text', { exact: true }).last().click(); await page.waitForTimeout(1000);
+    // Dictation adds the transcribed words to what was typed (the test transcriber hears "My reading is 142").
+    await page.locator('textarea').first().fill('banana');
+    await page.getByText('Dictate', { exact: true }).last().click(); await page.waitForTimeout(1500);
+    ok('dictation listening', await page.getByText('Finish', { exact: true }).last().isVisible());
+    await page.getByText('Finish', { exact: true }).last().click(); await page.waitForTimeout(3000);
+    ok('dictation added words', (await page.locator('textarea').first().inputValue()) === 'banana My reading is 142', await page.locator('textarea').first().inputValue());
     await page.locator('textarea').first().fill('banana and toast');
     await page.getByText('Find foods', { exact: true }).last().click(); await page.waitForTimeout(2500);
     ok('description parsed', await page.getByText('Banana').first().isVisible() && await page.getByText('Toast').first().isVisible());
