@@ -29,6 +29,45 @@
         "title": "ActivityData",
         "type": "object"
       },
+      "AuthorizeIn": {
+        "additionalProperties": false,
+        "properties": {
+          "region": {
+            "default": "eu",
+            "enum": [
+              "eu",
+              "us"
+            ],
+            "title": "Region",
+            "type": "string"
+          }
+        },
+        "title": "AuthorizeIn",
+        "type": "object"
+      },
+      "AuthorizeOut": {
+        "properties": {
+          "redirect_uri": {
+            "title": "Redirect Uri",
+            "type": "string"
+          },
+          "ticket": {
+            "title": "Ticket",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "url",
+          "redirect_uri",
+          "ticket"
+        ],
+        "title": "AuthorizeOut",
+        "type": "object"
+      },
       "BandOut": {
         "properties": {
           "high_mgdl": {
@@ -445,6 +484,28 @@
           "verdict"
         ],
         "title": "FeedbackIn",
+        "type": "object"
+      },
+      "FinishIn": {
+        "additionalProperties": false,
+        "properties": {
+          "redirect": {
+            "maxLength": 4000,
+            "minLength": 4,
+            "title": "Redirect",
+            "type": "string"
+          },
+          "ticket": {
+            "maxLength": 4000,
+            "title": "Ticket",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ticket",
+          "redirect"
+        ],
+        "title": "FinishIn",
         "type": "object"
       },
       "FollowUpIn": {
@@ -3161,6 +3222,109 @@
           }
         ],
         "summary": "Connect",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/carelink/authorize": {
+      "post": {
+        "description": "Starts a sign-in on CareLink's own page, for when CareLink asks for more than the password (G-29).",
+        "operationId": "authorize_devices_carelink_authorize_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthorizeIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizeOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "502": {
+            "description": "failed"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Authorize",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/carelink/authorize/finish": {
+      "post": {
+        "description": "Finishes a sign-in made on CareLink's page with the address CareLink returned, and fetches the readings.",
+        "operationId": "finish_devices_carelink_authorize_finish_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinishIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareLinkOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "description": "invalid_ticket or no_code"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "502": {
+            "description": "failed"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Finish",
         "tags": [
           "devices"
         ]

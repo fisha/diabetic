@@ -49,3 +49,4 @@ export type PhotoOut = S['PhotoOut'];
 export type CareLinkIn = S['CareLinkIn'];
 export type CareLinkOut = S['CareLinkOut'];
 export type CareLinkRemovedOut = S['RemovedOut'];
+export type CareLinkAuthorizeOut = S['AuthorizeOut'];

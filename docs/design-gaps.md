@@ -420,6 +420,9 @@ devices are chosen. Medtronic has no public API, so the connection is unofficial
 in) and says so on the screen. New row on SET-04 "MiniMed · CareLink" and a screen on the SET-05 pattern: username,
 password, region (outside the US / US), Connect; when connected, the last reading, the pump model, Sync now and
 Disconnect (keep or remove imported readings). Not on the boards. Readings are labelled "CareLink" like Apple Health ones.
-Open: the EU sign-in page carries a captcha; if CareLink demands it, a sign-in Guy completes on CareLink's own page is
-needed (decision asked in the build thread).
+The EU sign-in page carries a captcha. Guy chose (11 Nov 2026) to also have a sign-in on CareLink's own page, where he
+answers the captcha himself (nothing tries to answer or avoid it): "Sign in on CareLink's page" opens the page in the
+phone app (WebView, needs the development build) and hands back the address CareLink returns; on the Mac,
+`scripts/carelink_browser_sign_in.py` does the same in a browser window. After that the server keeps the connection by
+refreshing its token; if CareLink ends it, the screen asks to sign in on the page again.
 

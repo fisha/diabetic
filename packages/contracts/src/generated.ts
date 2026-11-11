@@ -195,6 +195,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/devices/carelink/authorize": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Authorize
+         * @description Starts a sign-in on CareLink's own page, for when CareLink asks for more than the password (G-29).
+         */
+        post: operations["authorize_devices_carelink_authorize_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/carelink/authorize/finish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Finish
+         * @description Finishes a sign-in made on CareLink's page with the address CareLink returned, and fetches the readings.
+         */
+        post: operations["finish_devices_carelink_authorize_finish_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/devices/carelink/sync": {
         parameters: {
             query?: never;
@@ -920,6 +960,24 @@ export interface components {
             /** Type */
             type: string;
         };
+        /** AuthorizeIn */
+        AuthorizeIn: {
+            /**
+             * Region
+             * @default eu
+             * @enum {string}
+             */
+            region: "eu" | "us";
+        };
+        /** AuthorizeOut */
+        AuthorizeOut: {
+            /** Redirect Uri */
+            redirect_uri: string;
+            /** Ticket */
+            ticket: string;
+            /** Url */
+            url: string;
+        };
         /** BandOut */
         BandOut: {
             /** High Mgdl */
@@ -1072,6 +1130,13 @@ export interface components {
              * @enum {string}
              */
             verdict: "useful" | "wrong_data" | "known" | "not_relevant" | "other" | "mute";
+        };
+        /** FinishIn */
+        FinishIn: {
+            /** Redirect */
+            redirect: string;
+            /** Ticket */
+            ticket: string;
         };
         /** FollowUpIn */
         FollowUpIn: {
@@ -2411,6 +2476,93 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
                 };
+            };
+        };
+    };
+    authorize_devices_carelink_authorize_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AuthorizeIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuthorizeOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    finish_devices_carelink_authorize_finish_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FinishIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CareLinkOut"];
+                };
+            };
+            /** @description invalid_ticket or no_code */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
