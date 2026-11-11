@@ -95,6 +95,6 @@ Needed: about 30 weighed meals with photos (food/README.md says how), and trial 
 ## Runs
 
 None yet. The OpenAI key exists only in `services/api/.env` on Guy's Mac, and MedGemma needs a gated download.
-The harness itself is verified: 20 tests pass (scripted completions, no model), and a full run through the OpenAI
+The harness itself is verified: 23 tests pass (scripted completions, no model), and a full run through the OpenAI
 client path in both native and prompted tool modes was exercised against a local stub server and discarded (not a
 result).

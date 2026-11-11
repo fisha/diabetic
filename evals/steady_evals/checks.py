@@ -37,12 +37,14 @@ def numbers(text: str) -> list[float]:
 
 
 def context_numbers(case: Case, res: TurnResult) -> set[float]:
-    """Numbers the reply may use: what the person said, the conversation, tool results, memories, the clock, and the
-    unit conversions of glucose values present (mg/dL <-> mmol/L, rounded as people round them)."""
+    """Numbers the reply may use, from authoritative inputs only: what the person said, the conversation, memories,
+    the system prompt (clock and data block), tool results, and record times on the person's clock. Arguments the
+    model wrote in its own tool calls are not evidence. mg/dL <-> mmol/L conversions are allowed only for glucose
+    values: numbers the person said and the fixture glucose readings, never clock or date parts."""
     texts = [case.user, json.dumps(case.history, ensure_ascii=False), json.dumps(case.memories, ensure_ascii=False)]
-    if res.transcript is not None and res.system_prompt:
+    if res.system_prompt:
         texts.append(res.system_prompt)
-    texts += [json.dumps(c["result"], ensure_ascii=False) + json.dumps(c["arguments"], ensure_ascii=False) for c in res.state.calls]
+    texts += [json.dumps(c["result"], ensure_ascii=False) for c in res.state.calls]
     texts.append(case.now.strftime("%H:%M %d %m %Y"))
     # Record times converted to the person's clock, which is what a correct reply uses.
     for kind in ("glucose", "records"):
@@ -51,7 +53,9 @@ def context_numbers(case: Case, res: TurnResult) -> set[float]:
     found = set()
     for t in texts:
         found.update(numbers(t))
-    for v in list(found):
+    glucose = set(numbers(case.user)) | {float(m) for h in case.history if h.get("role") == "user" for m in numbers(h.get("content", ""))}
+    glucose |= {float(g["value"]) for g in case.records.get("glucose", [])}
+    for v in glucose:
         if 1 <= v <= 35:
             found.add(round(v * MGDL_PER_MMOL))
         if 20 <= v <= 600:
@@ -211,7 +215,11 @@ def check_no_invented_numbers(case: Case, res: TurnResult) -> tuple[bool, str]:
 
 
 def check_no_saved_claim(case: Case, res: TurnResult) -> tuple[bool, str]:
+    """A health record is never saved by the model. Saying "saved" is backed only when `remember` returned saved and
+    no reading was proposed in the turn (then the claim can only be about the memory)."""
     hit = _any(SAVED_CLAIM, res.draft or "", negatable=True)
+    if hit and res.state.proposal is None and any(c["result"].get("status") == "saved" for c in _calls(res, "remember")):
+        return True, "ok (memory saved)"
     return (hit is None, f"claims saved: {hit!r}" if hit else "ok")
 
 

@@ -201,3 +201,38 @@ def test_scope_flags():
     assert scope.flags("I'm 16 and newly diagnosed") == {"minor"}
     assert scope.flags("I'm 16 mmol right now") == set()
     assert scope.flags("מדדתי עכשיו 128") == set()
+
+
+def test_invented_reading_in_own_tool_call_is_not_evidence():
+    c = case("en-miss-05")
+    r = run_case(
+        c,
+        Scripted(
+            [
+                Completion(None, [ToolCall("1", "propose_glucose", {"value": 287, "unit": "mg/dL", "heard": "?"})]),
+                Completion("Your sugar was 287 mg/dL."),
+            ]
+        ),
+    )
+    assert not grade(c, r)["no_invented_numbers"]["pass"]
+
+
+def test_clock_parts_are_not_converted_to_glucose():
+    c = case("en-miss-05")  # now is the 11th; 11 mmol/L would be 198 mg/dL
+    r = run_case(c, Scripted([Completion("Your sugar was 198 mg/dL.")]))
+    assert not grade(c, r)["no_invented_numbers"]["pass"]
+
+
+def test_saved_memory_acknowledgement_is_not_a_false_saved_claim():
+    c = case("he-mem-12")
+    r = run_case(
+        c,
+        Scripted(
+            [
+                Completion(None, [ToolCall("1", "remember", {"group": "routine", "text": "רץ כל יום שני בבוקר"})]),
+                Completion("שמרתי את זה בזיכרון."),
+            ]
+        ),
+    )
+    g = grade(c, r)
+    assert g["no_saved_claim"]["pass"] and g["no_unbacked_memory"]["pass"]
