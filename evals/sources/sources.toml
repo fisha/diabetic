@@ -1,0 +1,145 @@
+# Curated authoritative sources for the companion evaluation track (handoff brief section 10).
+#
+# What this list is for: reviewers write and check clinical evaluation cases against these sources, and any future
+# retrieval experiment may only draw from entries with use = "retrieval-candidate" AND rights_status = "cleared".
+# Nothing here is shown to users, and no entry is cleared yet.
+#
+# Fields
+#   population   who the content is written for. The companion's scope is adult + t1d; entries that are only
+#                pediatric, t2d or gestational are kept as "out-of-scope" so a reviewer can see why they are excluded.
+#   checked      what was confirmed and when. "bibliographic 2026-11-11" means title, publisher, date and URL were seen
+#                on the publisher or an index page on that day. It does NOT mean the content was read or reviewed.
+#   rights_status  "unverified" until someone reads the publisher's licence terms for our use; then "cleared" or
+#                "cite-only" (may be cited and linked, not reproduced or used for retrieval).
+#   attribution  how to credit the source if it is ever quoted.
+
+[[source]]
+id = "ada-soc-2026"
+title = "Standards of Care in Diabetes—2026"
+publisher = "American Diabetes Association (Diabetes Care, Vol. 49, Supplement 1)"
+published = "2025-12 (released December 2025 for 2026)"
+url = "https://diabetesjournals.org/care/issue/49/Supplement_1"
+population = ["adult", "pediatric", "t1d", "t2d", "gestational"]
+topics = ["glycemic goals", "diabetes technology", "hypoglycemia", "nutrition", "self-management education"]
+languages = ["en"]
+use = "reviewer-reference"
+note = "Mixed populations: only sections or recommendations marked for adults with type 1 apply. Updated yearly; pin the year."
+rights_status = "unverified"
+rights_note = "ADA copyright. Free to read online; reuse beyond citation is expected to need ADA permission. To verify."
+attribution = "American Diabetes Association Professional Practice Committee. Standards of Care in Diabetes—2026. Diabetes Care 2026;49(Suppl 1)."
+checked = "bibliographic 2026-11-11 (ADA press release, December 2025)"
+
+[[source]]
+id = "ada-easd-t1d-adults-2021"
+title = "The management of type 1 diabetes in adults. A consensus report by the ADA and the EASD"
+publisher = "Diabetes Care 2021;44(11):2589–2625 and Diabetologia 2021;64:2609–2652"
+published = "2021-09/10"
+url = "https://pmc.ncbi.nlm.nih.gov/articles/PMC8481000/"
+identifiers = { pmid = "34590174" }
+population = ["adult", "t1d"]
+topics = ["glucose monitoring", "insulin therapy concepts", "hypoglycemia", "psychosocial care", "education", "technology"]
+languages = ["en"]
+use = "reviewer-reference"
+note = "The closest match to the product's scope (adults with type 1). An updated consensus may exist; check before relying on it."
+rights_status = "unverified"
+rights_note = "Published in two journals; the licence of each version (ADA copyright vs. Springer open access) must be read before any reuse."
+attribution = "Holt RIG, DeVries JH, Hess-Fischl A, et al. The management of type 1 diabetes in adults. Diabetes Care 2021;44:2589–2625."
+checked = "bibliographic 2026-11-11 (PubMed/PMC index)"
+
+[[source]]
+id = "nice-ng17"
+title = "Type 1 diabetes in adults: diagnosis and management (NG17)"
+publisher = "National Institute for Health and Care Excellence (NICE), UK"
+published = "2015-08, with later updates (last update date to confirm on the NICE page)"
+url = "https://www.nice.org.uk/guidance/ng17"
+population = ["adult", "t1d"]
+topics = ["education", "blood glucose and CGM", "insulin therapy concepts", "hypoglycemia awareness", "sick-day context"]
+languages = ["en"]
+use = "reviewer-reference"
+note = "Also has an information-for-the-public version, useful for plain-language review of companion wording."
+rights_status = "unverified"
+rights_note = "NICE content reuse has separate terms inside and outside the UK. To verify for our use."
+attribution = "National Institute for Health and Care Excellence. Type 1 diabetes in adults: diagnosis and management (NG17)."
+checked = "bibliographic 2026-11-11 (nice.org.uk)"
+
+[[source]]
+id = "tir-consensus-2019"
+title = "Clinical Targets for Continuous Glucose Monitoring Data Interpretation: Recommendations From the International Consensus on Time in Range"
+publisher = "Diabetes Care 2019;42(8):1593–1603"
+published = "2019-06"
+url = "https://diabetesjournals.org/care/article/42/8/1593/36184"
+population = ["adult", "pediatric", "t1d", "t2d"]
+topics = ["CGM metrics", "time in range", "minimum data sufficiency for CGM summaries"]
+languages = ["en"]
+use = "reviewer-reference"
+note = "Relevant to G-06 (thresholds) and to the brief's rule that sparse readings must not become continuous metrics. Any number taken from it needs professional review before it reaches the app."
+rights_status = "unverified"
+rights_note = "ADA copyright. To verify."
+attribution = "Battelino T, Danne T, Bergenstal RM, et al. Diabetes Care 2019;42:1593–1603."
+checked = "not yet: citation from memory, confirm before use"
+
+[[source]]
+id = "ispad-2022"
+title = "ISPAD Clinical Practice Consensus Guidelines 2022"
+publisher = "International Society for Pediatric and Adolescent Diabetes (Pediatric Diabetes)"
+published = "2022"
+url = "https://www.ispad.org/page/ISPADGuidelines2022"
+population = ["pediatric", "t1d"]
+topics = ["pediatric diabetes"]
+languages = ["en"]
+use = "out-of-scope"
+note = "Listed so reviewers can see it is excluded: pediatric and caregiver workflows need a separate specification (brief section 4)."
+rights_status = "unverified"
+rights_note = "Not needed while out of scope."
+attribution = "ISPAD Clinical Practice Consensus Guidelines 2022."
+checked = "not yet: citation from memory, confirm before use"
+
+[[source]]
+id = "device-manuals"
+title = "User guides of the sensors and pumps the app connects to (Medtronic MiniMed / CareLink, Dexcom, FreeStyle Libre)"
+publisher = "Device manufacturers"
+published = "per device and software version; to collect"
+url = ""
+population = ["adult", "t1d"]
+topics = ["what a device reports", "units", "sensor warm-up and gaps", "data sync delays"]
+languages = ["en", "he", "ar", "ru"]
+use = "reviewer-reference"
+note = "Needed for device-question cases (what a gap in CareLink data means, sync delays). Collect the exact versions for the devices Guy and early users have."
+rights_status = "unverified"
+rights_note = "Manufacturer copyright; expect cite-only."
+attribution = "Per manual."
+checked = "not collected"
+
+[[source]]
+id = "language-gap"
+title = "Authoritative patient-facing sources in Hebrew, Arabic and Russian"
+publisher = "to identify (for example national health ministry or national diabetes association material)"
+published = ""
+url = ""
+population = ["adult", "t1d"]
+topics = ["plain-language wording", "local foods and units"]
+languages = ["he", "ar", "ru"]
+use = "reviewer-reference"
+note = "Every source above is English. Reviewers of the he/ar/ru cases need local material; none is listed yet rather than guessing."
+rights_status = "unverified"
+rights_note = ""
+attribution = ""
+checked = "open"
+
+# Model documentation (for the model comparison, not clinical content)
+
+[[source]]
+id = "medgemma-model-card"
+title = "MedGemma model card"
+publisher = "Google Health AI Developer Foundations"
+published = "MedGemma 1 (2025); MedGemma 1.5 announced since; check the current card before each run"
+url = "https://developers.google.com/health-ai-developer-foundations/medgemma/model-card"
+population = []
+topics = ["intended use", "limitations", "licence (Health AI Developer Foundations terms)"]
+languages = ["en"]
+use = "model-documentation"
+note = "The card states the model is a starting point for developers and not for direct clinical use without validation. Text variant: google/medgemma-27b-text-it on Hugging Face (gated: terms must be accepted by an account)."
+rights_status = "unverified"
+rights_note = "HAI-DEF terms must be accepted by Guy's account before download; read them for any production use."
+attribution = "Google. MedGemma."
+checked = "bibliographic 2026-11-11 (developers.google.com, huggingface.co)"

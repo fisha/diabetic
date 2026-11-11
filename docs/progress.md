@@ -584,6 +584,26 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
 - Latest reading card above the talk button (Guy's request; G-30).
 - ML: the brief's separate model-evaluation track (section 10) was not started; a separate thread now runs it.
 
+## Companion evaluation track (started 11 Nov 2026)
+
+The separate model-experiment track from brief section 10 had not been started; Guy asked about the missing "ML
+layer" on 11 Nov 2026. It now lives in `evals/` (main repository), outside the app and the API, and never changes
+production behaviour. See `evals/README.md` and `evals/FINDINGS.md`.
+
+- 60 held-out and 8 dev cases in English, Hebrew, Arabic and Russian, run through the production prompt, data block
+  and tools (fixture records only), with deterministic checks for tools, numbers, dose and judgement limits, unbacked
+  claims and language.
+- A candidate structured scope check (`evals/steady_evals/scope.py`): dose requests, someone else's readings, minors,
+  other diabetes types, acute symptoms.
+- Curated sources with dates, population tags, rights status and attribution (`evals/sources/sources.toml`); none
+  cleared for reuse yet.
+- Meal-photo carbohydrate error against weighed meals (`evals/steady_evals/food.py`); LogMeal and Passio adapters wait
+  for their documentation and trial keys.
+- Verified: 20 harness tests (scripted, no model) and the full run path against a local stub server. **No real model
+  has been run yet**: the OpenAI key is only on the Mac, MedGemma needs a gated download, and there are no weighed
+  meals yet.
+- Findings F-1 to F-7 (code-verified) were handed to the build work as proposals.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API
