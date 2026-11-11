@@ -307,6 +307,7 @@
   "meal.check_t": "Check the foods",
   "meal.close": "Close and return to conversation",
   "meal.correct": "Correct this meal",
+  "meal.desc_fail": "I couldn’t turn this into foods just now. Your text is still here; try again or enter the foods yourself.",
   "meal.desc_instead": "Describe the meal instead",
   "meal.desc_it": "Describe it instead",
   "meal.desc_note": "I’ll turn this into a list of foods with amounts. You check and correct it before anything is saved.",

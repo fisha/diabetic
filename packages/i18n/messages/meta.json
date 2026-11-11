@@ -1885,6 +1885,12 @@
       "translation"
     ]
   },
+  "meal.desc_fail": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
   "meal.desc_instead": {
     "board": "Meal",
     "review": [

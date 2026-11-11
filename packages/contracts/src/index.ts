@@ -32,3 +32,7 @@ export type FollowUpIn = S['FollowUpIn'];
 export type FollowUpOut = S['FollowUpOut'];
 export type MemoryOut = S['MemoryOut'];
 export type SettingsOut = S['SettingsOut'];
+export type FoodItem = S['FoodItem'];
+export type FoodResult = S['FoodResult'];
+export type FoodMatch = S['FoodMatch'];
+export type PhotoOut = S['PhotoOut'];
