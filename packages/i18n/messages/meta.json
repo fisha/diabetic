@@ -2265,6 +2265,34 @@
       "translation"
     ]
   },
+  "onb.a_e_failed": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "G-22: server error."
+  },
+  "onb.a_e_invalid": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "G-22: sign-in refused. Says nothing about whether the email exists."
+  },
+  "onb.a_e_offline": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "G-22: no answer from the server (network, or the Mac running the API is off)."
+  },
+  "onb.a_e_taken": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "G-22: sign-up with an email that has an account."
+  },
   "onb.a_email": {
     "board": "Onboarding",
     "review": [

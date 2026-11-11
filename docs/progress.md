@@ -2,9 +2,9 @@
 
 ## Current stage
 
-**Stage 2: native foundation and complete design implementation.** Guy approved it on 11 Nov 2026 ("אפשר
-להתחיל לפתח"). Steps 2.1 to 2.10 are done. The HealthKit spike (2.S) waits for
-Guy's signing team and test iPhone. Stage 3 is next and needs Guy's approval of its plan.
+**Stage 3: first real end-to-end data flow.** Guy said to continue on 11 Nov 2026 ("תמשיך עם פיתוח האפליקציה");
+the backend runs locally on the Mac (FastAPI and PostgreSQL in Docker). Steps 3.1 to 3.8 are done and verified in
+the container; they still need a run on Guy's Mac and on a device. Stage 2 is closed except the HealthKit spike.
 
 ## Stage 1 record
 
@@ -51,9 +51,64 @@ Guy's signing team and test iPhone. Stage 3 is next and needs Guy's approval of 
 | 5 | Native builds | **EAS Build** with an Expo account owned by Guy. Guy must sign in (`eas login`) and connect Apple / Google credentials himself; Claude never handles those passwords. Simulator builds do not need an Apple account; device builds and the HealthKit entitlement do. |
 | 6 | Git | 11 Nov 2026: main repository `fisha/diabetic` with `fisha/diabetic-app` (`apps/mobile`), `fisha/diabetic-web` (`apps/web`) and `fisha/diabetic-api` (`services/api`) as submodules, SSH remotes. Shared packages and docs stay in the main repository. |
 
+| 8 | AI provider | Guy will provide an OpenAI API key for the companion conversation (Stage 5). It goes only into `services/api/.env` on the Mac, never into the app, the repository or chat. |
 | 7 | Stage 3 accounts and database | **Local only on the Mac**: FastAPI and Postgres in Docker, no cloud provider for now (decision card, 11 Nov 2026). |
 
 Still open (non-blocking for 2.1–2.4): G-08 translations, G-12 web sign-in, G-13 System theme option, G-05 clinical copy, G-06 thresholds, G-10 voice catalog.
+
+## Stage 3 record
+
+### 3.1 to 3.8 First real end-to-end data flow (done, verified in the container)
+
+API (`services/api`, repository `fisha/diabetic-api`):
+
+- FastAPI 0.162.4, SQLAlchemy 2.1.8, Alembic 1.20.1, psycopg 3.3.8, Python ≥3.12 with uv. PostgreSQL 16 through
+  `docker-compose.yml` (bound to 127.0.0.1), plus a `steady_test` database; tests refuse any other database.
+- Accounts: email and password (argon2id, at least 10 characters as on the design), 15-minute access JWT, rotating
+  refresh tokens stored as SHA-256 hashes. Reusing a rotated refresh token revokes its whole family. Wrong password
+  and unknown email answer the same way.
+- Profile: `PUT /profile` stores the onboarding answers (validated, unknown keys refused) with locale, diabetes type
+  and glucose unit as columns. Needs service consent and the adult age check. Consent changes are append-only.
+- Glucose: `measured_at`, `entered_at`, `received_at`, source (manual / voice), method (meter / sensor), the value
+  and unit as entered plus mg/dL (factor 18.016), revision number and a revision table, idempotency key unique per
+  account. A retry returns the stored record (200); the same key with different content is 409. Another account's
+  record is 404. Range check 20–600 mg/dL mirrors the app's unreviewed config (G-06); readings more than 10 minutes
+  in the future are refused; times without an offset are refused.
+- 21 pytest tests, ruff clean.
+
+Shared: `packages/contracts` holds the OpenAPI schema and TypeScript types generated from it
+(`pnpm --filter @steady/contracts generate`).
+
+App (`apps/mobile`, repository `fisha/diabetic-app`):
+
+- `src/api/client.ts` (base URL from `EXPO_PUBLIC_API_URL`; without it every screen keeps its G-04 state),
+  `src/api/session.ts` (refresh token in the protected store, access token in memory, one refresh at a time, a
+  refused refresh opens AUTH-05 with the email filled in).
+- Sign-up opens setup at consent; sign-in opens Companion, or Resume when no profile is saved. New G-22 messages for
+  wrong credentials, email taken, offline and server error, in 4 languages (translation review pending).
+- "Meet your companion" (ONB-21) saves the profile, then opens Companion.
+- Glucose sheet: the reading is written to the offline queue (protected store) first, then sent with its key.
+  "Saved to your journal" only after the server confirms; "Waiting to sync" while it can't be reached; the queue
+  retries every 30 s, on app foreground and on sign-in, with the same key. Refused readings are kept as "failed".
+  Queue items belong to the account that made them.
+- Journal: today and yesterday from the server, plus queued readings with "Pending sync" / failed badges. Entry
+  detail with correction history; correction (JRN-06) saves a new revision.
+- Overview: the latest reading and the day's meter readings from the server. Time in range, summaries and insights
+  stay empty (they need sensor data and Stage 5).
+- Fixed: a successful save no longer triggers the sheet's "Discard this entry?" check.
+
+Verification on 11 Nov 2026 (container, PostgreSQL 16.15, Python 3.13, Chromium):
+
+- `pnpm check` passes (52 tests), API `pytest` 21 passed, `expo export` for iOS, Android and web succeeds.
+- `tools/e2e/stage3.cjs` against the real API and database: 16 of 16 checks passed. Sign-up opens setup; duplicate
+  email and wrong password show their messages; sign-in opens Companion; a reading is saved, appears in Journal and
+  Overview; a correction makes revision 2 with the original in the history; with the API blocked the reading shows
+  "Waiting to sync" and "Pending sync", then syncs once (the server holds exactly 2 readings); a second account gets
+  404 for the first account's record and sees an empty journal.
+
+Not verified yet: a native build on a device or Simulator (survival across an app restart uses the protected store,
+which only the native build has; the web preview keeps the session in memory and signs out on reload), and the
+whole onboarding walked through the screens to the profile save (the e2e run saved the profile through the API).
 
 ## Stage 2 record
 
@@ -476,6 +531,7 @@ switching works in code; it has not been seen on a device.
 
 ## Next action
 
-Stage 3 (accounts, local backend on the Mac with FastAPI and Postgres in Docker): Claude writes the plan for
-Guy's approval before building. The HealthKit spike waits for a signing team and a test iPhone. Guy: run
-`pnpm install`, then `pnpm web` for the site.
+Guy, on the Mac: install Docker Desktop and uv, then follow `services/api/README.md` to start the database and the
+API, and run the app with `EXPO_PUBLIC_API_URL=http://localhost:8000`. Then Stage 4 (HealthKit / Health Connect)
+needs his approval, an Apple signing team and a test iPhone; Stage 5 starts with the text companion, for which Guy
+will put an OpenAI key in `services/api/.env`.

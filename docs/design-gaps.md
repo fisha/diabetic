@@ -304,6 +304,19 @@ The boards draw "Delete account permanently", "Delete entry" and "Remove all" wi
 tokens (`dangerBg` / `dangerText`). Proposal: keep the soft style, or add `danger` and `dangerDisabled` tokens with
 night values checked for contrast.
 
+### G-22 · Stage 3 states the boards don't show (proposed, implemented)
+
+- Account errors on AUTH-02/03/05: wrong email or password (one message, so it doesn't reveal whether the email
+  exists), email already registered, no connection, server error. Shown as an error banner above the fields
+  (`onb.a_e_*`, 4 languages, translation review pending).
+- A failed journal reload keeps the entries already shown and says nothing; a first load that fails shows the empty
+  journal. Proposal: a small "Couldn't refresh" note, to design.
+- JRN-06 correction edits glucose in mg/dL only (as the board), so a reading entered in mmol/L becomes mg/dL in its new
+  revision; the original stays in the history. The reason chips are not sent: the API has no reason field yet.
+- The onboarding draft is kept per device, not per account: another account signing in on the same phone would see
+  it. Proposal: clear the draft on sign-out once the profile is saved, or key it by account.
+- Delete and "hide from summaries" in the entry detail still show the G-04 note (no delete API in Stage 3).
+
 ## C. Native adaptation (proposed)
 
 | Topic | Design (web prototype) | Native implementation |

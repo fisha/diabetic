@@ -149,3 +149,26 @@ screenshots come from the iOS Simulator and an Android emulator on the Mac.
 - The offline queue is held in SQLite, encrypted with a key stored in secure-store. A queued record shows "Pending
   sync" until the server confirms it.
 - Server-side ownership checks run on every query. A separate test database is used for tests.
+
+## 6. Stage 3 plan: first real end-to-end data flow
+
+Guy approved continuing on 11 Nov 2026 ("תמשיך עם פיתוח האפליקציה"). Backend decision: local on the Mac only,
+FastAPI and PostgreSQL in Docker, no cloud provider for now. Scope and acceptance come from brief §11 Stage 3.
+
+| Step | What | Done when |
+|---|---|---|
+| 3.1 | API foundation in `services/api`: uv project, FastAPI, SQLAlchemy 2, Alembic, psycopg 3, settings from env, `docker-compose.yml` with PostgreSQL 16, separate test database | `/health` checks the database; `pytest` runs against the test database |
+| 3.2 | Accounts: email and password (argon2id), short access token plus rotating refresh token stored hashed and revocable; sign-up, sign-in, refresh, sign-out, me | Tests cover wrong password, reused refresh token, expired token |
+| 3.3 | Minimum profile: the onboarding answers are saved to the server when onboarding finishes, with consent records | Profile survives sign-out and sign-in |
+| 3.4 | Glucose records: `measured_at`, `entered_at`, `received_at`, source, original value and unit, revision history, idempotency key; create, list by range, edit (new revision); ownership on every query | Retry with the same key does not duplicate; another account gets 404 |
+| 3.5 | Typed contracts: OpenAPI schema → TypeScript types in `packages/contracts` | App and web compile against the generated types |
+| 3.6 | App wiring: API base URL from `EXPO_PUBLIC_API_URL`, tokens in secure-store, sign-up / sign-in / session-expired screens, glucose sheet saves to the server, Journal and Overview read from it, editing | Entered reading appears after app restart |
+| 3.7 | Offline queue in the protected store: "Pending sync" and "Failed" states, retry with the same idempotency key | Offline entry syncs once when back online; failure never shows as saved |
+| 3.8 | Verification: API tests, app tests, and an end-to-end run (API + PostgreSQL + app web export in Playwright) | Brief acceptance: survives restart, isolated between accounts, no duplicates, failure not shown as success |
+
+Not in Stage 3: password reset email (no email provider; the recover screen stays honest), the web dashboard
+sign-in (G-12), HealthKit (Stage 4), the AI companion (Stage 5; Guy will provide an OpenAI key, which stays in the
+API's local `.env` on the Mac and never in the repository or the app).
+
+Guy's part: install Docker Desktop on the Mac, then `docker compose up -d` in `services/api` and run the API.
+A phone on the same Wi-Fi reaches the Mac by its LAN address; the iOS Simulator uses `localhost`.
