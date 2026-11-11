@@ -406,6 +406,33 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/glucose/import": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Import Health
+         * @description Readings read from Apple Health or Health Connect, in batches. Each sample is stored once (its store id is the
+         *     idempotency key), labelled with the store as its source, and never overwrites what the person entered or corrected.
+         *     Values outside the entry limits (G-06) are skipped, not changed.
+         */
+        post: operations["import_health_glucose_import_post"];
+        /**
+         * Remove Imported
+         * @description Disconnecting with "Remove imported readings" (SET-05): every reading that came from the phone's health store is
+         *     soft deleted. Readings the person entered themselves are not touched.
+         */
+        delete: operations["remove_imported_glucose_import_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/glucose/{record_id}": {
         parameters: {
             query?: never;
@@ -1170,6 +1197,52 @@ export interface components {
         HTTPValidationError: {
             /** Detail */
             detail?: components["schemas"]["ValidationError"][];
+        };
+        /** HealthImportIn */
+        HealthImportIn: {
+            /** Items */
+            items: components["schemas"]["HealthSampleIn"][];
+            /**
+             * Store
+             * @enum {string}
+             */
+            store: "apple_health" | "health_connect";
+        };
+        /** HealthImportOut */
+        HealthImportOut: {
+            /** Added */
+            added: number;
+            /** Received */
+            received: number;
+            /** Skipped */
+            skipped: number;
+        };
+        /** HealthRemovedOut */
+        HealthRemovedOut: {
+            /** Removed */
+            removed: number;
+        };
+        /** HealthSampleIn */
+        HealthSampleIn: {
+            /**
+             * Measured At
+             * Format: date-time
+             */
+            measured_at: string;
+            /**
+             * Method
+             * @enum {string}
+             */
+            method: "meter" | "sensor";
+            /** Sample Id */
+            sample_id: string;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "mg/dL" | "mmol/L";
+            /** Value */
+            value: number;
         };
         /** HideIn */
         HideIn: {
@@ -2628,6 +2701,59 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    import_health_glucose_import_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["HealthImportIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HealthImportOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    remove_imported_glucose_import_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HealthRemovedOut"];
                 };
             };
         };

@@ -52,6 +52,16 @@ const server = http.createServer((req, res) => {
     ok('photo choice saved to server', (await api('/settings', { token: tp.access_token })).json.photo_retention === 'afterAnalysis');
     await shot('p01-privacy');
 
+    // The phone's health store: a web browser has none, so the screen says so and offers no connect button.
+    const back = async () => { await page.getByLabel('Back', { exact: true }).last().click(); await page.waitForTimeout(1200); };
+    await back(); await row('Devices');
+    ok('health row not connected', await page.getByText('Not connected', { exact: true }).first().isVisible());
+    await row('Apple Health');
+    ok('health store unavailable on web', await page.getByText(/Apple Health isn’t available on this phone/).first().isVisible());
+    ok('no connect button', (await page.getByText('Connect Apple Health', { exact: true }).count()) === 0);
+    await shot('p01b-health');
+    await back(); await back(); await row('Privacy and data');
+
     // Export: created on the server, then downloaded.
     await row('Export your data');
     await page.getByText('Create export', { exact: true }).last().click(); await page.waitForTimeout(4000);

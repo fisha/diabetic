@@ -5480,6 +5480,12 @@
       "translation"
     ]
   },
+  "set.ds_unavail": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
   "set.ds_unsupported": {
     "board": "Settings",
     "review": [
@@ -5735,6 +5741,24 @@
       "translation"
     ]
   },
+  "set.hb1": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hb2": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hb3": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
   "set.hc": {
     "board": "Settings",
     "review": [
@@ -5743,6 +5767,102 @@
   },
   "set.hc_b": {
     "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_allow": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_connected": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_connecting": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_denied": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_explain": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_fail_read": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_fail_send": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_fail_t": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_ios_note": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_rm_fail": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_settings": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_signin": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_synced": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_syncing": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_unavail": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hd_update": {
+    "board": "SET-05",
     "review": [
       "translation"
     ]
