@@ -1391,6 +1391,60 @@
       "translation"
     ]
   },
+  "ins.p_basis": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.p_rise_b": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.p_rise_t": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.p_sub": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.p_timing_b": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.p_timing_t": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.slot_breakfast": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.slot_dinner": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.slot_lunch": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.sub": {
     "board": "Overview",
     "review": [

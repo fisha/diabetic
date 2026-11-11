@@ -449,3 +449,13 @@ pump (CareLink `limits`, latest entry), labelled as such. A typed target always 
 
 Replaces the board's small dot and "Companion" label: a 46 px orb with the companion's gradient and the idle breathing
 motion (still with reduced motion). The tab keeps its accessible name.
+
+### G-34 · Routine and meal patterns from the person's data (**Guy's "brain" request, 11 Nov 2026**, implemented)
+
+`services/api/steady_api/routine.py`. Product rules, not clinical ones: last 14 days; a usual meal time needs meals in
+that slot (breakfast 04-11, lunch 11-16, dinner 16-23) on 3+ days; a meal's insulin is the nearest non-automatic bolus
+from 60 min before to 30 min after; the two-hour change uses the sensor reading nearest the meal (within 15 min) and
+nearest two hours later (within 20 min); a pattern needs 3+ meals (timing: 3+ in each group, "before" = 10+ min early).
+Shown as insight cards on the Overview (no range needed), given to the companion, and used for app check-ins: one per
+meal slot per day when the usual time passed by 1-3 h with no meal logged, within the person's frequency choice and
+quiet hours, withdrawn if a meal is logged first. Correlation only; worded as such. Needs the clinical review (G-05).

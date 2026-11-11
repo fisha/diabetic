@@ -1504,6 +1504,12 @@ export interface components {
             band: components["schemas"]["BandOut"] | null;
             /** Insights */
             insights: components["schemas"]["InsightOut"][];
+            /**
+             * Meal Patterns
+             * @default []
+             */
+            meal_patterns: components["schemas"]["MealPatternOut"][];
+            routine?: components["schemas"]["RoutineOut"] | null;
             /** Window Days */
             window_days: number;
         };
@@ -1573,6 +1579,36 @@ export interface components {
              * @default false
              */
             weighed: boolean;
+        };
+        /** MealPatternOut */
+        MealPatternOut: {
+            /**
+             * After Meals
+             * @default 0
+             */
+            after_meals: number;
+            /** After Mgdl */
+            after_mgdl?: number | null;
+            /**
+             * Before Meals
+             * @default 0
+             */
+            before_meals: number;
+            /** Before Mgdl */
+            before_mgdl?: number | null;
+            /** Key */
+            key: string;
+            /** Meals */
+            meals: number;
+            /** Record Ids */
+            record_ids: string[];
+            /** Rise Mgdl */
+            rise_mgdl?: number | null;
+            /**
+             * Slot
+             * @enum {string}
+             */
+            slot: "breakfast" | "lunch" | "dinner";
         };
         /** MembershipOut */
         MembershipOut: {
@@ -1925,6 +1961,17 @@ export interface components {
              * Format: date-time
              */
             due_at: string;
+        };
+        /** RoutineOut */
+        RoutineOut: {
+            /** Lead Meals */
+            lead_meals: number;
+            /** Lead Minutes */
+            lead_minutes: number | null;
+            /** Meal Times */
+            meal_times: {
+                [key: string]: string;
+            };
         };
         /** SendIn */
         SendIn: {

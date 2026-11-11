@@ -1429,6 +1429,24 @@
             "title": "Insights",
             "type": "array"
           },
+          "meal_patterns": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/MealPatternOut"
+            },
+            "title": "Meal Patterns",
+            "type": "array"
+          },
+          "routine": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RoutineOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "window_days": {
             "title": "Window Days",
             "type": "integer"
@@ -1612,6 +1630,85 @@
           "prov"
         ],
         "title": "MealItemData",
+        "type": "object"
+      },
+      "MealPatternOut": {
+        "properties": {
+          "after_meals": {
+            "default": 0,
+            "title": "After Meals",
+            "type": "integer"
+          },
+          "after_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Mgdl"
+          },
+          "before_meals": {
+            "default": 0,
+            "title": "Before Meals",
+            "type": "integer"
+          },
+          "before_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before Mgdl"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "meals": {
+            "title": "Meals",
+            "type": "integer"
+          },
+          "record_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Record Ids",
+            "type": "array"
+          },
+          "rise_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rise Mgdl"
+          },
+          "slot": {
+            "enum": [
+              "breakfast",
+              "lunch",
+              "dinner"
+            ],
+            "title": "Slot",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "slot",
+          "meals",
+          "record_ids"
+        ],
+        "title": "MealPatternOut",
         "type": "object"
       },
       "MembershipOut": {
@@ -2390,6 +2487,39 @@
           "due_at"
         ],
         "title": "RescheduleIn",
+        "type": "object"
+      },
+      "RoutineOut": {
+        "properties": {
+          "lead_meals": {
+            "title": "Lead Meals",
+            "type": "integer"
+          },
+          "lead_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lead Minutes"
+          },
+          "meal_times": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Meal Times",
+            "type": "object"
+          }
+        },
+        "required": [
+          "meal_times",
+          "lead_minutes",
+          "lead_meals"
+        ],
+        "title": "RoutineOut",
         "type": "object"
       },
       "SendIn": {
