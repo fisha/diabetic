@@ -431,8 +431,8 @@ unofficial connection, including the encrypted saved password path, on 11 Nov 20
 
 ### G-30 · Latest reading above the companion's talk button (**requested by Guy, 11 Nov 2026**, implemented)
 
-Not in the boards. The Overview's latest-reading card (value, unit, time, age, source such as CareLink) is shown above
-the talk button in voice mode, only when a reading exists.
+Not in the boards. A small centred pill fixed under the header (value and unit; time, source and age), only when a reading
+exists; one line while a conversation is going or in text mode (Guy's follow-up, 11 Nov 2026).
 
 ### G-31 · Pump alerts and messages on the CareLink screen (**Guy's request, 11 Nov 2026**, implemented, review pending)
 
@@ -444,3 +444,8 @@ unreviewed. Needs the clinical review (G-05) and translations before a release.
 
 With no target range typed, insights, time in range and the Overview legend use the low and high alert limits set on the
 pump (CareLink `limits`, latest entry), labelled as such. A typed target always wins. Reverted if Guy picks "profile only".
+
+### G-33 · Companion tab shows the breathing orb without a label (**requested by Guy, 11 Nov 2026**, implemented)
+
+Replaces the board's small dot and "Companion" label: a 46 px orb with the companion's gradient and the idle breathing
+motion (still with reduced motion). The tab keeps its accessible name.

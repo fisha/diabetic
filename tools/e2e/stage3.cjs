@@ -36,7 +36,7 @@ const server = http.createServer((req, res) => {
     await page.waitForTimeout(2000);
   };
   // On the web the session lives in memory, so navigate inside the app (tab bar, Companion chips), never reload.
-  const tab = async (page, name) => { await page.getByText(name, { exact: true }).last().click(); await page.waitForTimeout(2000); };
+  const tab = async (page, name) => { await page.getByRole('tab', { name, exact: true }).click(); await page.waitForTimeout(2000); };
   const logGlucose = async (page, v) => {
     await tab(page, 'Companion');
     await page.getByText('Glucose', { exact: true }).first().click(); await page.waitForTimeout(1500);
@@ -89,12 +89,12 @@ const server = http.createServer((req, res) => {
 
     // 3. Correction: a new revision, with the original kept.
     await tab(page, 'Journal');
-    await page.getByText('124 mg/dL').first().click(); await page.waitForTimeout(800);
+    await page.getByText('124 mg/dL').last().click(); await page.waitForTimeout(800);
     await page.getByText('Edit', { exact: true }).first().click(); await page.waitForTimeout(800);
     await page.getByLabel('Reading, mg/dL', { exact: true }).fill('130');
     await page.getByText('Save correction', { exact: true }).click(); await page.waitForTimeout(2000);
     ok('journal shows the correction', await page.getByText('130 mg/dL').first().isVisible());
-    await page.getByText('130 mg/dL').first().click(); await page.waitForTimeout(1500);
+    await page.getByText('130 mg/dL').last().click(); await page.waitForTimeout(1500);
     ok('correction history', await page.getByText('Correction history').isVisible() && await page.getByText('124 mg/dL').first().isVisible());
     await shot(page, '07-detail-history');
     await page.getByLabel('Back to journal').first().click(); await page.waitForTimeout(500);

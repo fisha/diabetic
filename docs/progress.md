@@ -584,6 +584,18 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
 - Latest reading card above the talk button (Guy's request; G-30).
 - ML: the brief's separate model-evaluation track (section 10) was not started; a separate thread now runs it.
 
+## Guy's follow-ups the same evening (11 Nov 2026)
+
+- Voice speed: replies were held until the whole answer was spoken; now each sentence is sent once its audio is in, into
+  the same reply message. Log lines with timestamps: "live turn latency" and "live delegation answered in".
+- Dose check widened (eval F-1): numbers in words, treatment changes without a number. recent_records in local time (F-4).
+- Reading pill (G-30 revised), companion tab orb (G-33), insights range from pump limits (G-32, card open), CareLink pump
+  alerts (G-31).
+- The mobile typecheck had been failing since the CareLink page commit (one `string | undefined`); `pnpm -s check` hid the
+  exit code. Fixed; always check the exit code.
+- Overview week / 2 weeks / month: CareLink's API returns only the last 24 hours, so history builds up from the day of
+  connection; days under 70% sensor coverage show no split by design.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API
