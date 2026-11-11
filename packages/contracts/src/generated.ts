@@ -4,6 +4,26 @@
  */
 
 export interface paths {
+    "/account": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Delete Account
+         * @description Deletes the account and everything in it: rows go with the user (ON DELETE CASCADE), files with its folder.
+         */
+        delete: operations["delete_account_account_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/me": {
         parameters: {
             query?: never;
@@ -166,6 +186,57 @@ export interface paths {
         post?: never;
         /** Delete Push Token */
         delete: operations["delete_push_token_devices_push_token_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/exports": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create Export */
+        post: operations["create_export_exports_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/exports/{export_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Export */
+        get: operations["get_export_exports__export_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/exports/{export_id}/file": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Export File */
+        get: operations["export_file_exports__export_id__file_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -793,6 +864,64 @@ export interface components {
             started_at: string;
             /** Title */
             title: string;
+        };
+        /** DeleteIn */
+        DeleteIn: {
+            /**
+             * Confirm
+             * @constant
+             */
+            confirm: "DELETE";
+        };
+        /** ExportIn */
+        ExportIn: {
+            /**
+             * Format
+             * @enum {string}
+             */
+            format: "pdf" | "csv";
+            /** Include */
+            include: ("g" | "m" | "i" | "a" | "n" | "c")[];
+            /** Labels */
+            labels?: {
+                [key: string]: string;
+            };
+            /**
+             * Range
+             * @enum {string}
+             */
+            range: "30" | "90" | "all";
+        };
+        /** ExportOut */
+        ExportOut: {
+            /**
+             * Expires At
+             * Format: date-time
+             */
+            expires_at: string;
+            /** Filename */
+            filename: string | null;
+            /** Format */
+            format: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Since */
+            since: string | null;
+            /** Size */
+            size: number | null;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "running" | "ready" | "failed";
+            /**
+             * Until
+             * Format: date-time
+             */
+            until: string;
         };
         /** FeedbackIn */
         FeedbackIn: {
@@ -1522,6 +1651,11 @@ export interface components {
         SettingsOut: {
             /** Memory Enabled */
             memory_enabled: boolean;
+            /**
+             * Photo Retention
+             * @enum {string}
+             */
+            photo_retention: "afterAnalysis" | "days90" | "untilDeleted";
             /** Timezone */
             timezone: string;
         };
@@ -1529,6 +1663,8 @@ export interface components {
         SettingsPatch: {
             /** Memory Enabled */
             memory_enabled?: boolean | null;
+            /** Photo Retention */
+            photo_retention?: ("afterAnalysis" | "days90" | "untilDeleted") | null;
             /** Timezone */
             timezone?: string | null;
         };
@@ -1611,6 +1747,37 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    delete_account_account_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DeleteIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     me_auth_me_get: {
         parameters: {
             query?: never;
@@ -1974,6 +2141,102 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_export_exports_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ExportIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExportOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_export_exports__export_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                export_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExportOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    export_file_exports__export_id__file_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                export_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/pdf": unknown;
+                    "application/zip": unknown;
+                };
             };
             /** @description Validation Error */
             422: {

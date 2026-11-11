@@ -1204,6 +1204,132 @@
       "translation"
     ]
   },
+  "exp.col_carbs_g": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_from": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_hidden": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_insulin": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_items": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_method": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_minutes": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_revision": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_source": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_symptoms": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_text": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_time": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_type": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_unit": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_units": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.col_value": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.created": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.failed": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.file": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.offline": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "exp.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.basis": {
     "board": "Overview",
     "review": [
@@ -5138,6 +5264,12 @@
     "note": "Needs legal review (retention period)."
   },
   "set.del_export": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.del_fail": {
     "board": "Settings",
     "review": [
       "translation"

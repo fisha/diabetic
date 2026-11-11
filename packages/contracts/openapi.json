@@ -136,6 +136,153 @@
         "title": "ConversationOut",
         "type": "object"
       },
+      "DeleteIn": {
+        "additionalProperties": false,
+        "properties": {
+          "confirm": {
+            "const": "DELETE",
+            "title": "Confirm",
+            "type": "string"
+          }
+        },
+        "required": [
+          "confirm"
+        ],
+        "title": "DeleteIn",
+        "type": "object"
+      },
+      "ExportIn": {
+        "additionalProperties": false,
+        "properties": {
+          "format": {
+            "enum": [
+              "pdf",
+              "csv"
+            ],
+            "title": "Format",
+            "type": "string"
+          },
+          "include": {
+            "items": {
+              "enum": [
+                "g",
+                "m",
+                "i",
+                "a",
+                "n",
+                "c"
+              ],
+              "type": "string"
+            },
+            "maxItems": 6,
+            "minItems": 1,
+            "title": "Include",
+            "type": "array"
+          },
+          "labels": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "maxProperties": 40,
+            "title": "Labels",
+            "type": "object"
+          },
+          "range": {
+            "enum": [
+              "30",
+              "90",
+              "all"
+            ],
+            "title": "Range",
+            "type": "string"
+          }
+        },
+        "required": [
+          "range",
+          "format",
+          "include"
+        ],
+        "title": "ExportIn",
+        "type": "object"
+      },
+      "ExportOut": {
+        "properties": {
+          "expires_at": {
+            "format": "date-time",
+            "title": "Expires At",
+            "type": "string"
+          },
+          "filename": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filename"
+          },
+          "format": {
+            "title": "Format",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "since": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Since"
+          },
+          "size": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Size"
+          },
+          "status": {
+            "enum": [
+              "running",
+              "ready",
+              "failed"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "until": {
+            "format": "date-time",
+            "title": "Until",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "format",
+          "since",
+          "until",
+          "filename",
+          "size",
+          "expires_at"
+        ],
+        "title": "ExportOut",
+        "type": "object"
+      },
       "FeedbackIn": {
         "additionalProperties": false,
         "properties": {
@@ -1877,6 +2024,15 @@
             "title": "Memory Enabled",
             "type": "boolean"
           },
+          "photo_retention": {
+            "enum": [
+              "afterAnalysis",
+              "days90",
+              "untilDeleted"
+            ],
+            "title": "Photo Retention",
+            "type": "string"
+          },
           "timezone": {
             "title": "Timezone",
             "type": "string"
@@ -1884,7 +2040,8 @@
         },
         "required": [
           "timezone",
-          "memory_enabled"
+          "memory_enabled",
+          "photo_retention"
         ],
         "title": "SettingsOut",
         "type": "object"
@@ -1902,6 +2059,22 @@
               }
             ],
             "title": "Memory Enabled"
+          },
+          "photo_retention": {
+            "anyOf": [
+              {
+                "enum": [
+                  "afterAnalysis",
+                  "days90",
+                  "untilDeleted"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Photo Retention"
           },
           "timezone": {
             "anyOf": [
@@ -2116,6 +2289,46 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/account": {
+      "delete": {
+        "description": "Deletes the account and everything in it: rows go with the user (ON DELETE CASCADE), files with its folder.",
+        "operationId": "delete_account_account_delete",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete Account",
+        "tags": [
+          "account"
+        ]
+      }
+    },
     "/auth/me": {
       "get": {
         "operationId": "me_auth_me_get",
@@ -2603,6 +2816,145 @@
         "summary": "Put Push Token",
         "tags": [
           "settings"
+        ]
+      }
+    },
+    "/exports": {
+      "post": {
+        "operationId": "create_export_exports_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExportIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExportOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Export",
+        "tags": [
+          "account"
+        ]
+      }
+    },
+    "/exports/{export_id}": {
+      "get": {
+        "operationId": "get_export_exports__export_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "export_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Export Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExportOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Export",
+        "tags": [
+          "account"
+        ]
+      }
+    },
+    "/exports/{export_id}/file": {
+      "get": {
+        "operationId": "export_file_exports__export_id__file_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "export_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Export Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/pdf": {},
+              "application/zip": {}
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Export File",
+        "tags": [
+          "account"
         ]
       }
     },
