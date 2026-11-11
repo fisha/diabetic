@@ -504,3 +504,14 @@ amount. Meal patterns now say the middle value before and two hours after ("befo
 230"). Estimated A1c: the published GMI formula (3.31 + 0.02392 x mean mg/dL) over the longest of 90/30/14 days with
 70 % of sensor readings, labelled an estimate. All of it goes to the companion as [good]/[watch] lines with the mentor
 instruction to praise first and coach one thing. Needs the clinical review (G-05).
+
+### G-39 · All Apple Health / Health Connect types (**Guy's request, 11 Nov 2026 night**, implemented-unverified)
+
+Besides glucose the phone reads heart rate, resting heart rate, heart rate variability, steps, active energy, walking
+distance, weight, dietary carbohydrates, insulin delivery (Apple Health only; basal or bolus), oxygen saturation,
+sleep stages and workouts, each with its own permission, and sends them to `POST /health-data/samples` in windowed
+batches (deletions follow as for glucose). Kept in `health_samples` with the store's ids, units and source app;
+removed with "Remove imported readings". The companion gets the last day's steps, active energy, workouts, latest
+heart rate, resting heart rate, sleep and weight, and the heart rate at each insulin record today (Guy's example).
+"Before you connect" gains one line on what else is read. Not yet shown on its own screen and not yet used by the
+routines; that needs data from a phone first. iOS and Android bundles build; nothing ran on a device.

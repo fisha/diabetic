@@ -588,6 +588,24 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/health-data/samples": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Samples */
+        get: operations["list_samples_health_data_samples_get"];
+        put?: never;
+        /** Import Samples */
+        post: operations["import_samples_health_data_samples_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/insights": {
         parameters: {
             query?: never;
@@ -1499,6 +1517,62 @@ export interface components {
             /** Detail */
             detail?: components["schemas"]["ValidationError"][];
         };
+        /** HealthExtraBatch */
+        HealthExtraBatch: {
+            /** Items */
+            items: components["schemas"]["HealthExtraIn"][];
+            /**
+             * Store
+             * @enum {string}
+             */
+            store: "apple_health" | "health_connect";
+            /** Window From */
+            window_from?: string | null;
+            /** Window To */
+            window_to?: string | null;
+        };
+        /** HealthExtraIn */
+        HealthExtraIn: {
+            /** Data */
+            data?: {
+                [key: string]: string | number | boolean;
+            } | null;
+            /**
+             * End
+             * Format: date-time
+             */
+            end: string;
+            /**
+             * Origin
+             * @default
+             */
+            origin: string;
+            /** Sample Id */
+            sample_id: string;
+            /**
+             * Start
+             * Format: date-time
+             */
+            start: string;
+            /**
+             * Type
+             * @enum {string}
+             */
+            type: "heart_rate" | "resting_heart_rate" | "hrv" | "steps" | "active_energy" | "distance" | "weight" | "carbs" | "insulin" | "spo2" | "sleep" | "workout";
+            /** Unit */
+            unit?: string | null;
+            /** Value */
+            value?: number | null;
+        };
+        /** HealthExtraOut */
+        HealthExtraOut: {
+            /** Added */
+            added: number;
+            /** Received */
+            received: number;
+            /** Removed */
+            removed: number;
+        };
         /** HealthImportIn */
         HealthImportIn: {
             /** Items */
@@ -1553,6 +1627,33 @@ export interface components {
             unit: "mg/dL" | "mmol/L";
             /** Value */
             value: number;
+        };
+        /** HealthSampleOut */
+        HealthSampleOut: {
+            /** Data */
+            data: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * End At
+             * Format: date-time
+             */
+            end_at: string;
+            /** Origin */
+            origin: string | null;
+            /**
+             * Start At
+             * Format: date-time
+             */
+            start_at: string;
+            /** Store */
+            store: string;
+            /** Type */
+            type: string;
+            /** Unit */
+            unit: string | null;
+            /** Value */
+            value: number | null;
         };
         /** HideIn */
         HideIn: {
@@ -3568,6 +3669,72 @@ export interface operations {
                     "application/json": {
                         [key: string]: string;
                     };
+                };
+            };
+        };
+    };
+    list_samples_health_data_samples_get: {
+        parameters: {
+            query: {
+                since: string;
+                until: string;
+                type?: ("heart_rate" | "resting_heart_rate" | "hrv" | "steps" | "active_energy" | "distance" | "weight" | "carbs" | "insulin" | "spo2" | "sleep" | "workout") | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HealthSampleOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    import_samples_health_data_samples_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["HealthExtraBatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HealthExtraOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

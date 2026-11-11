@@ -6392,6 +6392,13 @@
       "translation"
     ]
   },
+  "set.hb4": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "Health store 'Before you connect' (G-39): what else is read and why."
+  },
   "set.hc": {
     "board": "Settings",
     "review": [

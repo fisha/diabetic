@@ -657,6 +657,10 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
 - The companion gets all findings and the A1c estimate. Tests: `test_findings.py`, `test_carelink.py`; web e2e
   `tools/e2e/findings.cjs` (screens r01-r03).
 
+- All health store types (G-39): `health_samples` table, `POST/GET /health-data/samples`, iOS and Android readers,
+  windowed sync, companion context (activity, heart rate incl. at insulin, sleep, weight). API tests
+  `test_health_data.py` and the snapshot test; app unit test; iOS and Android bundles export. Device run pending.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API

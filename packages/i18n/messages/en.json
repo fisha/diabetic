@@ -1038,6 +1038,7 @@
   "set.hb1": "Readings from the last 30 days are added to your journal, labelled “{name}”.",
   "set.hb2": "After that, new readings are added each time you open the app.",
   "set.hb3": "Readings you entered yourself are never changed.",
+  "set.hb4": "If you allow them, heart rate, steps, workouts, sleep, weight, carbohydrates and insulin are read too, to find what helps your glucose. Each one can be allowed or not.",
   "set.hc": "Increase contrast",
   "set.hc_b": "Not available yet: the high-contrast colours aren’t designed.",
   "set.hd_allow": "Continue",
