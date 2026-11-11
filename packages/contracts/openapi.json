@@ -1208,6 +1208,30 @@
             ],
             "title": "Store",
             "type": "string"
+          },
+          "window_from": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Window From"
+          },
+          "window_to": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Window To"
           }
         },
         "required": [
@@ -1225,6 +1249,11 @@
           },
           "received": {
             "title": "Received",
+            "type": "integer"
+          },
+          "removed": {
+            "default": 0,
+            "title": "Removed",
             "type": "integer"
           },
           "skipped": {

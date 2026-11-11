@@ -459,3 +459,13 @@ nearest two hours later (within 20 min); a pattern needs 3+ meals (timing: 3+ in
 Shown as insight cards on the Overview (no range needed), given to the companion, and used for app check-ins: one per
 meal slot per day when the usual time passed by 1-3 h with no meal logged, within the person's frequency choice and
 quiet hours, withdrawn if a meal is logged first. Correlation only; worded as such. Needs the clinical review (G-05).
+
+### G-35 · Health store deletions and the "not updated" state (proposed, implemented)
+
+Brief section 8 asks for imported-record corrections and deletions and an honest stale state. Each sync sends its
+readings in batches, each with the stretch of time it covers; the stretches run without a gap over the whole read
+(the last day again, or 30 days on the first sync). A reading from that store inside a stretch that the phone no
+longer has was deleted in the health app (an edit there is a delete plus a new sample), so it is removed here too and
+the screen says how many. Readings the person corrected in Steady are kept. An empty read never removes anything,
+because Apple Health returns nothing when reading is refused. The screen shows the newest reading's time apart from
+the last sync time, and "Not updated since …" when the last successful sync is more than a day old (a product rule).

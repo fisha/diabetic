@@ -1418,6 +1418,10 @@ export interface components {
              * @enum {string}
              */
             store: "apple_health" | "health_connect";
+            /** Window From */
+            window_from?: string | null;
+            /** Window To */
+            window_to?: string | null;
         };
         /** HealthImportOut */
         HealthImportOut: {
@@ -1425,6 +1429,11 @@ export interface components {
             added: number;
             /** Received */
             received: number;
+            /**
+             * Removed
+             * @default 0
+             */
+            removed: number;
             /** Skipped */
             skipped: number;
         };

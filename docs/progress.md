@@ -616,6 +616,15 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   the app should do for "other" / "not sure" is a decision for Guy.
 - Cross-source sensor dedupe (CareLink vs health store), 3 min and 1 mg/dL. Journal "merge duplicate" still unavailable.
 
+## Spec audit gaps, health store (11 Nov 2026)
+
+- Deletions and corrections in Apple Health / Health Connect reach the account (G-35): sync batches carry the time
+  window they cover, the server removes readings from that store missing in the window, keeps ones the person
+  corrected, and never removes on an empty read. API test `test_window_removes_readings_deleted_in_the_store`, app
+  test for the batch windows.
+- The health device screen shows the newest reading time apart from the last sync, how many were removed, and a
+  "Not updated since" banner after a day without a successful sync. Typechecked only; the screen needs an iPhone.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API

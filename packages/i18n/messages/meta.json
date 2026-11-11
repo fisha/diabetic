@@ -6089,6 +6089,20 @@
       "translation"
     ]
   },
+  "set.hd_newest": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "Device detail, health store: when the newest reading was measured, apart from the last sync (G-35)."
+  },
+  "set.hd_removed": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "After a sync that removed readings deleted in the health app (G-35). Readings the person corrected in Steady are kept."
+  },
   "set.hd_rm_fail": {
     "board": "SET-05",
     "review": [
@@ -6106,6 +6120,20 @@
     "review": [
       "translation"
     ]
+  },
+  "set.hd_stale_b": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "Body of the stale banner (G-35). Must match the existing Sync now button label."
+  },
+  "set.hd_stale_t": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "Banner when the last successful sync is more than a day old (G-35)."
   },
   "set.hd_synced": {
     "board": "SET-05",
