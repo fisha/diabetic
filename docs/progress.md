@@ -49,7 +49,7 @@ Guy's signing team and test iPhone. Stage 3 is next and needs Guy's approval of 
 | 3 | G-03 / G-04 Empty and unavailable states | Approved: proposals in design-gaps |
 | 4 | G-07 Treatment defaults | Approved: no defaults; ratios and target band shown only after the user enters them |
 | 5 | Native builds | **EAS Build** with an Expo account owned by Guy. Guy must sign in (`eas login`) and connect Apple / Google credentials himself; Claude never handles those passwords. Simulator builds do not need an Apple account; device builds and the HealthKit entitlement do. |
-| 6 | Git | Guy will initialise git later. Until then there is no version control, so do not delete or overwrite files without care. |
+| 6 | Git | 11 Nov 2026: main repository `fisha/diabetic` with `fisha/diabetic-app` (`apps/mobile`), `fisha/diabetic-web` (`apps/web`) and `fisha/diabetic-api` (`services/api`) as submodules, SSH remotes. Shared packages and docs stay in the main repository. |
 
 | 7 | Stage 3 accounts and database | **Local only on the Mac**: FastAPI and Postgres in Docker, no cloud provider for now (decision card, 11 Nov 2026). |
 
