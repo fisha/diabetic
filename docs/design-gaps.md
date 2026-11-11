@@ -515,3 +515,14 @@ removed with "Remove imported readings". The companion gets the last day's steps
 heart rate, resting heart rate, sleep and weight, and the heart rate at each insulin record today (Guy's example).
 "Before you connect" gains one line on what else is read. Not yet shown on its own screen and not yet used by the
 routines; that needs data from a phone first. iOS and Android bundles build; nothing ran on a device.
+
+### G-40 · Lock-screen widget: this hour of the day (**Guy's request, 11 Nov 2026 night**, implemented-unverified)
+
+Not in the design; Guy asked for it. An iOS WidgetKit target (`apps/mobile/targets/widget`, through
+`@bacons/apple-targets`) for the lock screen (rectangular and inline) and the home screen (small). For each local hour
+the app writes one line into the shared App Group, from `GET /insights/hours` (the last 14 days at that hour, each
+day by its middle value): "Often above your range around now: 3 of 4 days", "Usually in your range…", "Often below…",
+or "Not enough readings at this hour yet" (fewer than 3 days). Words only, no glucose values, because the lock screen
+is visible to others (brief section 9). The widget moves to the next hour's line by itself; the lines are refreshed
+when the app is opened. It needs a new development build (native code) and the App Group capability, which EAS adds.
+Android has no widget yet.

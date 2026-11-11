@@ -643,6 +643,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/insights/hours": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * By Hour
+         * @description Each hour of the day over the last 14 days (for the lock-screen widget, G-40): how many days had readings then and
+         *     how many of those days were above, below or in the person's own range, by that day's middle value in the hour.
+         */
+        get: operations["by_hour_insights_hours_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/insights/{key}/feedback": {
         parameters: {
             query?: never;
@@ -1659,6 +1680,29 @@ export interface components {
         HideIn: {
             /** Hidden */
             hidden: boolean;
+        };
+        /** HourOut */
+        HourOut: {
+            /** Above */
+            above: number;
+            /** Below */
+            below: number;
+            /** Days */
+            days: number;
+            /** Hour */
+            hour: number;
+            /** Inside */
+            inside: number;
+            /** Middle Mgdl */
+            middle_mgdl: number | null;
+        };
+        /** HoursOut */
+        HoursOut: {
+            band: components["schemas"]["BandOut"] | null;
+            /** Hours */
+            hours: components["schemas"]["HourOut"][];
+            /** Window Days */
+            window_days: number;
         };
         /** InsightDayOut */
         InsightDayOut: {
@@ -3786,6 +3830,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["FamiliarizationOut"];
+                };
+            };
+        };
+    };
+    by_hour_insights_hours_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HoursOut"];
                 };
             };
         };

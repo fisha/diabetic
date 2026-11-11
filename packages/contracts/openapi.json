@@ -1827,6 +1827,83 @@
         "title": "HideIn",
         "type": "object"
       },
+      "HourOut": {
+        "properties": {
+          "above": {
+            "title": "Above",
+            "type": "integer"
+          },
+          "below": {
+            "title": "Below",
+            "type": "integer"
+          },
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "hour": {
+            "title": "Hour",
+            "type": "integer"
+          },
+          "inside": {
+            "title": "Inside",
+            "type": "integer"
+          },
+          "middle_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Middle Mgdl"
+          }
+        },
+        "required": [
+          "hour",
+          "days",
+          "middle_mgdl",
+          "above",
+          "below",
+          "inside"
+        ],
+        "title": "HourOut",
+        "type": "object"
+      },
+      "HoursOut": {
+        "properties": {
+          "band": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/BandOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "hours": {
+            "items": {
+              "$ref": "#/components/schemas/HourOut"
+            },
+            "title": "Hours",
+            "type": "array"
+          },
+          "window_days": {
+            "title": "Window Days",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "band",
+          "window_days",
+          "hours"
+        ],
+        "title": "HoursOut",
+        "type": "object"
+      },
       "InsightDayOut": {
         "properties": {
           "day": {
@@ -5566,6 +5643,33 @@
           }
         ],
         "summary": "Get Familiarization",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/hours": {
+      "get": {
+        "description": "Each hour of the day over the last 14 days (for the lock-screen widget, G-40): how many days had readings then and\nhow many of those days were above, below or in the person's own range, by that day's middle value in the hour.",
+        "operationId": "by_hour_insights_hours_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HoursOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "By Hour",
         "tags": [
           "insights"
         ]

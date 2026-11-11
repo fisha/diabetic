@@ -8223,6 +8223,62 @@
       "translation"
     ]
   },
+  "wdg.above": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.below": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.empty": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.few": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.inside": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.mixed": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.noband": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.title": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
   "web.a1": {
     "board": "Website",
     "review": [

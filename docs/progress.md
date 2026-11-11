@@ -661,6 +661,10 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   windowed sync, companion context (activity, heart rate incl. at insulin, sleep, weight). API tests
   `test_health_data.py` and the snapshot test; app unit test; iOS and Android bundles export. Device run pending.
 
+- Lock-screen widget (G-40): `GET /insights/hours`, `features/widget` (texts per hour, App Group storage, refresh on
+  opening), Swift target `targets/widget`. `expo prebuild` creates the widget target with the App Group entitlement;
+  not built in Xcode or run on a phone (needs a new dev build). Tests: `test_hours_for_the_widget`, app unit test.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API
