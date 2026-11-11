@@ -4688,6 +4688,20 @@
       "translation"
     ]
   },
+  "rtn.fd_day": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 day card label."
+  },
+  "rtn.fd_entries": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 day card: entries logged that day (sensor streams not counted)."
+  },
   "rtn.fd_extend": {
     "board": "Routine",
     "review": [
@@ -4730,6 +4744,20 @@
       "translation"
     ]
   },
+  "rtn.fd_today": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 day card for today."
+  },
+  "rtn.fd_tomorrow": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 day card for tomorrow."
+  },
   "rtn.fd_well": {
     "board": "Routine",
     "review": [
@@ -4771,6 +4799,34 @@
     "review": [
       "translation"
     ]
+  },
+  "rtn.l_basis": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 basis of a learned item: days with that meal of days with any record."
+  },
+  "rtn.l_breakfast": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 learned item from the person's meal records (G-36)."
+  },
+  "rtn.l_dinner": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 learned item (G-36)."
+  },
+  "rtn.l_lunch": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 learned item (G-36)."
   },
   "rtn.learned": {
     "board": "Routine",
@@ -5033,6 +5089,48 @@
     "review": [
       "translation"
     ]
+  },
+  "rtn.u_breakfast": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 still unknown item (G-36)."
+  },
+  "rtn.u_dinner": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 still unknown item (G-36)."
+  },
+  "rtn.u_glucose": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 still unknown item (G-36)."
+  },
+  "rtn.u_insulin": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 still unknown item (G-36). Missing records do not mean insulin was not taken."
+  },
+  "rtn.u_lunch": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 still unknown item (G-36)."
+  },
+  "rtn.u_meals": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 still unknown item (G-36)."
   },
   "rtn.unavail_pause": {
     "board": "Routine",

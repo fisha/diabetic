@@ -31,6 +31,7 @@ export type ConversationOut = S['ConversationOut'];
 export type TranscriptOut = S['TranscriptOut'];
 export type HealthSampleIn = S['HealthSampleIn'];
 export type HealthImportIn = S['HealthImportIn'];
+export type FamiliarizationOut = S['FamiliarizationOut'];
 export type HealthImportOut = S['HealthImportOut'];
 export type HealthRemovedOut = S['HealthRemovedOut'];
 export type MembershipOut = S['MembershipOut'];

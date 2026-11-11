@@ -469,3 +469,14 @@ longer has was deleted in the health app (an edit there is a delete plus a new s
 the screen says how many. Readings the person corrected in Steady are kept. An empty read never removes anything,
 because Apple Health returns nothing when reading is refused. The screen shows the newest reading's time apart from
 the last sync time, and "Not updated since …" when the last successful sync is more than a day old (a product rule).
+
+### G-36 · First days from the person's records (proposed, implemented)
+
+RTN-01 now reads `GET /insights/familiarization` (`routine.familiarization`). Product rules: the first three local
+days from account creation are "getting to know your routine"; a day card counts entries (records and readings, sensor
+streams not counted); a meal time seen on 2 days is a first impression and on 3+ days fairly consistent, with "N of M
+days" (M = days with any record). "Still unknown" lists the meal times not seen yet and whether there are no readings,
+meals or insulin records (missing insulin records never mean insulin was not taken). The companion gets the same day,
+first impressions and unknowns, and is told to ask about one missing thing at a time and to call anything a first
+impression. Suggested check-in toggles and the first-days summary (RTN-02) stay empty: the app's meal check-ins come
+from the routine (G-34) instead, and the summary needs its own decision.

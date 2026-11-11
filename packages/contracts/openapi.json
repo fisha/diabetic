@@ -524,6 +524,73 @@
         "title": "ExportOut",
         "type": "object"
       },
+      "FamDayOut": {
+        "properties": {
+          "date": {
+            "title": "Date",
+            "type": "string"
+          },
+          "entries": {
+            "title": "Entries",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "date",
+          "entries"
+        ],
+        "title": "FamDayOut",
+        "type": "object"
+      },
+      "FamiliarizationOut": {
+        "properties": {
+          "day": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Day"
+          },
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/FamDayOut"
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "learned": {
+            "items": {
+              "$ref": "#/components/schemas/LearnedOut"
+            },
+            "title": "Learned",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          },
+          "unknown": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Unknown",
+            "type": "array"
+          }
+        },
+        "required": [
+          "day",
+          "total",
+          "days",
+          "learned",
+          "unknown"
+        ],
+        "title": "FamiliarizationOut",
+        "type": "object"
+      },
       "FeedbackIn": {
         "additionalProperties": false,
         "properties": {
@@ -1522,6 +1589,49 @@
           "units"
         ],
         "title": "InsulinData",
+        "type": "object"
+      },
+      "LearnedOut": {
+        "properties": {
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "firm": {
+            "title": "Firm",
+            "type": "boolean"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "of_days": {
+            "title": "Of Days",
+            "type": "integer"
+          },
+          "slot": {
+            "enum": [
+              "breakfast",
+              "lunch",
+              "dinner"
+            ],
+            "title": "Slot",
+            "type": "string"
+          },
+          "time": {
+            "title": "Time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "slot",
+          "time",
+          "days",
+          "of_days",
+          "firm"
+        ],
+        "title": "LearnedOut",
         "type": "object"
       },
       "Me": {
@@ -4827,6 +4937,33 @@
           }
         ],
         "summary": "List Insights",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/familiarization": {
+      "get": {
+        "description": "The first days (RTN-01): which day, entries per day, first impressions of the routine, and what is not known yet.",
+        "operationId": "get_familiarization_insights_familiarization_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FamiliarizationOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Familiarization",
         "tags": [
           "insights"
         ]

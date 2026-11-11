@@ -625,6 +625,14 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
 - The health device screen shows the newest reading time apart from the last sync, how many were removed, and a
   "Not updated since" banner after a day without a successful sync. Typechecked only; the screen needs an iPhone.
 
+## Spec audit gaps, first days (11 Nov 2026)
+
+- Familiarization (brief section 6, RTN-01, G-36): `GET /insights/familiarization` gives the day of about three,
+  entries per day, first impressions of meal times and what is still unknown; the Routine tab shows them and the
+  companion's instructions carry them. API test `test_familiarization_first_days`; web e2e `followups.cjs` checks the
+  card (screenshot f04-first-days). The e2e's journal step now uses the reminder due in minutes, because one due "in 2
+  hours" lands on tomorrow's journal page late in the evening.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API

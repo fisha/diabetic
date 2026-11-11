@@ -605,6 +605,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/insights/familiarization": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Familiarization
+         * @description The first days (RTN-01): which day, entries per day, first impressions of the routine, and what is not known yet.
+         */
+        get: operations["get_familiarization_insights_familiarization_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/insights/{key}/feedback": {
         parameters: {
             query?: never;
@@ -1150,6 +1170,26 @@ export interface components {
              */
             until: string;
         };
+        /** FamDayOut */
+        FamDayOut: {
+            /** Date */
+            date: string;
+            /** Entries */
+            entries: number;
+        };
+        /** FamiliarizationOut */
+        FamiliarizationOut: {
+            /** Day */
+            day: number | null;
+            /** Days */
+            days: components["schemas"]["FamDayOut"][];
+            /** Learned */
+            learned: components["schemas"]["LearnedOut"][];
+            /** Total */
+            total: number;
+            /** Unknown */
+            unknown: string[];
+        };
         /** FeedbackIn */
         FeedbackIn: {
             /**
@@ -1533,6 +1573,24 @@ export interface components {
             reason: string | null;
             /** Units */
             units: number;
+        };
+        /** LearnedOut */
+        LearnedOut: {
+            /** Days */
+            days: number;
+            /** Firm */
+            firm: boolean;
+            /** Key */
+            key: string;
+            /** Of Days */
+            of_days: number;
+            /**
+             * Slot
+             * @enum {string}
+             */
+            slot: "breakfast" | "lunch" | "dinner";
+            /** Time */
+            time: string;
         };
         /** Me */
         Me: {
@@ -3475,6 +3533,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_familiarization_insights_familiarization_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FamiliarizationOut"];
                 };
             };
         };
