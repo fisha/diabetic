@@ -426,6 +426,9 @@ phone app (WebView, needs the development build) and hands back the address Care
 `scripts/carelink_browser_sign_in.py` does the same in a browser window. After that the server keeps the connection by
 refreshing its token; if CareLink ends it, the screen asks to sign in on the page again.
 
+Deviation from the brief (section 8, device-account passwords and unofficial connectors): Guy explicitly accepted the
+unofficial connection, including the encrypted saved password path, on 11 Nov 2026 ("מקובל עליי").
+
 ### G-30 · Latest reading above the companion's talk button (**requested by Guy, 11 Nov 2026**, implemented)
 
 Not in the boards. The Overview's latest-reading card (value, unit, time, age, source such as CareLink) is shown above
