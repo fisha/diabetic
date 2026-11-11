@@ -599,10 +599,11 @@ production behaviour. See `evals/README.md` and `evals/FINDINGS.md`.
   cleared for reuse yet.
 - Meal-photo carbohydrate error against weighed meals (`evals/steady_evals/food.py`); LogMeal and Passio adapters wait
   for their documentation and trial keys.
-- Verified: 23 harness tests (scripted, no model) and the full run path against a local stub server. **No real model
-  has been run yet**: the OpenAI key is only on the Mac, MedGemma needs a gated download, and there are no weighed
-  meals yet.
-- Findings F-1 to F-7 (code-verified) were handed to the build work as proposals.
+- First real runs (11 Nov 2026, on the Mac, Guy approved): gpt-5-mini 148/180, gpt-5 49/60 after regrading; see
+  `evals/reports/report-2026-11-11.md`. 25 harness tests pass.
+- MedGemma: Guy decided on 11 Nov 2026 to continue without it for now. LogMeal/Passio: not needed (Guy); the meal
+  evaluation covers the production OpenAI adapter and waits for about 30 weighed meals from Guy.
+- Findings F-1 to F-7 and the run results were handed to the build work as proposals.
 
 ## Next action
 

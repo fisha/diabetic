@@ -94,7 +94,7 @@ Needed: about 30 weighed meals with photos (food/README.md says how), and trial 
 
 ## Runs
 
-None yet. The OpenAI key exists only in `services/api/.env` on Guy's Mac, and MedGemma needs a gated download.
-The harness itself is verified: 23 tests pass (scripted completions, no model), and a full run through the OpenAI
-client path in both native and prompted tool modes was exercised against a local stub server and discarded (not a
-result).
+First real runs on 11 Nov 2026 (gpt-5-mini x3, gpt-5 x1) on Guy's Mac: see `reports/report-2026-11-11.md`.
+They confirm F-2 (gpt-5-mini proposed someone else's reading in 12 of 12 turns) and add: bolus timing in minutes from
+both models (F-6), hypo rule numbers in acute cases, unit-mismatch proposals by gpt-5-mini, and early "saved" claims.
+MedGemma is deferred (Guy, 11 Nov 2026). The harness has 25 tests.
