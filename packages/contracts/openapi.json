@@ -1891,6 +1891,15 @@
             "title": "Id",
             "type": "string"
           },
+          "kind": {
+            "default": "fact",
+            "enum": [
+              "fact",
+              "impression"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
           "source": {
             "enum": [
               "conversation",

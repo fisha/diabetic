@@ -633,6 +633,12 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   card (screenshot f04-first-days). The e2e's journal step now uses the reminder due in minutes, because one due "in 2
   hours" lands on tomorrow's journal page late in the evening.
 
+## Spec audit gaps, structured memory (11 Nov 2026)
+
+- Memories have a kind, fact or impression (G-37, migration `c3d4e5f6a7b8`; the Mac needs `uv run alembic upgrade
+  head`). API test `test_impression_is_kept_apart_from_facts_until_the_person_confirms`; web e2e `followups.cjs`
+  checks the "not confirmed" line (screenshot f03-memory).
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API

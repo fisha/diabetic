@@ -4950,6 +4950,13 @@
     ],
     "note": "Board memory source line"
   },
+  "rtn.src_guess": {
+    "board": "RTN-06",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-06 memory source line for the companion's own unconfirmed impression (a hypothesis, G-37). Editing makes it the person's fact."
+  },
   "rtn.src_you": {
     "board": "Routine",
     "review": [

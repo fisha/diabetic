@@ -811,6 +811,7 @@
   "rtn.snooze": "Snooze",
   "rtn.src_app": "Suggested by the app from your data",
   "rtn.src_conv": "From conversation · {date}",
+  "rtn.src_guess": "{name}’s impression, not confirmed · {date}. Edit it if it’s wrong.",
   "rtn.src_you": "Edited by you · {date}",
   "rtn.st_dismissed": "Dismissed",
   "rtn.st_done": "Completed",

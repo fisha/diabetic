@@ -60,6 +60,10 @@ const server = http.createServer((req, res) => {
     ok('conversation follow-up on server', fus.some((f) => f.origin === 'conversation' && f.title === 'to take a walk'));
     const mems = (await api('/memories', { token: te.access_token })).json;
     ok('memory on server', mems.length === 1 && mems[0].text === 'I prefer short replies');
+    // An impression the companion saved is kept apart from what the person said (G-37).
+    await say('remember it seems I skip breakfast');
+    const imp = (await api('/memories', { token: te.access_token })).json;
+    ok('impression on server', imp.length === 2 && imp[1].kind === 'impression');
 
     // Journal shows the reminder with its lifecycle (the one due in minutes: "in 2 hours" can fall on tomorrow's page).
     await tab('Journal');
@@ -79,6 +83,7 @@ const server = http.createServer((req, res) => {
     await page.getByText('Memory', { exact: true }).first().click(); await page.waitForTimeout(1500);
     await shot('f03-memory');
     ok('memory listed', await page.getByText('I prefer short replies').last().isVisible());
+    ok('impression marked', await page.getByText('impression, not confirmed', { exact: false }).last().isVisible());
     await page.getByText('Remove all memories', { exact: true }).click(); await page.waitForTimeout(1500);
     ok('memories removed', (await api('/memories', { token: te.access_token })).json.length === 0);
 

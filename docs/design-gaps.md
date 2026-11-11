@@ -480,3 +480,12 @@ meals or insulin records (missing insulin records never mean insulin was not tak
 first impressions and unknowns, and is told to ask about one missing thing at a time and to call anything a first
 impression. Suggested check-in toggles and the first-days summary (RTN-02) stay empty: the app's meal check-ins come
 from the routine (G-34) instead, and the summary needs its own decision.
+
+### G-37 · Facts and impressions in memory (proposed, implemented)
+
+Brief section 6 asks to store facts, hypotheses, preferences, treatment settings and pending tasks apart. Preferences,
+routine and health facts are memory groups; treatment settings are the profile; pending tasks are follow-ups. A
+hypothesis is a memory with kind "impression": the companion saved its own impression (`remember` with
+`stated=false`). Routine > Memory shows it as "{name}'s impression, not confirmed" with the same Edit and Remove;
+editing it makes it the person's fact. The companion gets impressions in their own list, told not to treat them as
+facts and to check one with the person when it fits. Migration `c3d4e5f6a7b8`.

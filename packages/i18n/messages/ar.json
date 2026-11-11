@@ -811,6 +811,7 @@
   "rtn.snooze": "غفوة",
   "rtn.src_app": "اقتراح من التطبيق بناءً على بياناتك",
   "rtn.src_conv": "من المحادثة · {date}",
+  "rtn.src_guess": "انطباع {name}، غير مؤكد · {date}. عدّله إن كان خطأ.",
   "rtn.src_you": "عدّلته أنت · {date}",
   "rtn.st_dismissed": "تم تجاهله",
   "rtn.st_done": "اكتمل",

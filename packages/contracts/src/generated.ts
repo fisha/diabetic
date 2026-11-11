@@ -1708,6 +1708,12 @@ export interface components {
              */
             id: string;
             /**
+             * Kind
+             * @default fact
+             * @enum {string}
+             */
+            kind: "fact" | "impression";
+            /**
              * Source
              * @enum {string}
              */

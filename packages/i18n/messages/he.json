@@ -811,6 +811,7 @@
   "rtn.snooze": "נודניק",
   "rtn.src_app": "הצעה של האפליקציה מתוך הנתונים שלך",
   "rtn.src_conv": "מהשיחה · {date}",
+  "rtn.src_guess": "התרשמות של {name}, לא אושרה · {date}. אפשר לערוך אם זה לא נכון.",
   "rtn.src_you": "נערך על ידך · {date}",
   "rtn.st_dismissed": "בוטל",
   "rtn.st_done": "הושלם",
