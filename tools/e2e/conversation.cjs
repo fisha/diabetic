@@ -38,7 +38,7 @@ const server = http.createServer((req, res) => {
     await page.getByLabel('Email', { exact: true }).fill('d@example.com');
     await page.getByLabel('Password', { exact: true }).fill('correct horse battery');
     await page.getByText('Sign in', { exact: true }).last().click(); await page.waitForTimeout(2000);
-    await page.getByText('Continue in text', { exact: true }).first().click();
+    await page.getByLabel('Switch to text', { exact: true }).first().click();
     await page.waitForTimeout(800);
 
     await say('Had a quiet morning');

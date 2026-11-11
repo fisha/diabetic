@@ -29,6 +29,20 @@
         "title": "ActivityData",
         "type": "object"
       },
+      "Body_transcribe_voice_transcribe_post": {
+        "properties": {
+          "file": {
+            "contentMediaType": "application/octet-stream",
+            "title": "File",
+            "type": "string"
+          }
+        },
+        "required": [
+          "file"
+        ],
+        "title": "Body_transcribe_voice_transcribe_post",
+        "type": "object"
+      },
       "Body_upload_meal_photos_post": {
         "properties": {
           "file": {
@@ -1854,6 +1868,19 @@
         "title": "Tokens",
         "type": "object"
       },
+      "TranscriptOut": {
+        "properties": {
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "title": "TranscriptOut",
+        "type": "object"
+      },
       "ValidationError": {
         "properties": {
           "ctx": {
@@ -1892,6 +1919,19 @@
           "type"
         ],
         "title": "ValidationError",
+        "type": "object"
+      },
+      "VoiceStatusOut": {
+        "properties": {
+          "available": {
+            "title": "Available",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "available"
+        ],
+        "title": "VoiceStatusOut",
         "type": "object"
       }
     },
@@ -4222,6 +4262,136 @@
         "summary": "Patch Settings",
         "tags": [
           "settings"
+        ]
+      }
+    },
+    "/voice": {
+      "get": {
+        "description": "Whether a voice provider is configured, so the app can show the unavailable state before anyone talks.",
+        "operationId": "status_voice_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VoiceStatusOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Status",
+        "tags": [
+          "voice"
+        ]
+      }
+    },
+    "/voice/messages/{message_id}/speech": {
+      "get": {
+        "description": "A stored companion reply, spoken. A withheld reply has no text and is not spoken.",
+        "operationId": "speech_voice_messages__message_id__speech_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "message_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Message Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "audio/mpeg": {}
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "503": {
+            "description": "voice_unconfigured"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Speech",
+        "tags": [
+          "voice"
+        ]
+      }
+    },
+    "/voice/transcribe": {
+      "post": {
+        "operationId": "transcribe_voice_transcribe_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_transcribe_voice_transcribe_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TranscriptOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "502": {
+            "description": "transcription_failed"
+          },
+          "503": {
+            "description": "voice_unconfigured"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Transcribe",
+        "tags": [
+          "voice"
         ]
       }
     }

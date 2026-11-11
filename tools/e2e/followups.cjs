@@ -52,7 +52,7 @@ const server = http.createServer((req, res) => {
     ok('reminder on server', fus.length === 1 && fus[0].title === 'Check glucose after lunch' && fus[0].status === 'scheduled');
 
     // Conversation schedules a follow-up and saves a memory through tools.
-    await page.getByText('Continue in text', { exact: true }).first().click(); await page.waitForTimeout(600);
+    await page.getByLabel('Switch to text', { exact: true }).first().click(); await page.waitForTimeout(600);
     await say('remind me to take a walk');
     ok('model confirms from tool result', await page.getByText('Okay, I scheduled it.').first().isVisible());
     await say('remember I prefer short replies');

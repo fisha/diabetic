@@ -639,6 +639,63 @@ export interface paths {
         patch: operations["patch_settings_settings_patch"];
         trace?: never;
     };
+    "/voice": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Status
+         * @description Whether a voice provider is configured, so the app can show the unavailable state before anyone talks.
+         */
+        get: operations["status_voice_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/voice/messages/{message_id}/speech": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Speech
+         * @description A stored companion reply, spoken. A withheld reply has no text and is not spoken.
+         */
+        get: operations["speech_voice_messages__message_id__speech_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/voice/transcribe": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Transcribe */
+        post: operations["transcribe_voice_transcribe_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -651,6 +708,11 @@ export interface components {
             minutes: number;
             /** Type */
             type: string;
+        };
+        /** Body_transcribe_voice_transcribe_post */
+        Body_transcribe_voice_transcribe_post: {
+            /** File */
+            file: string;
         };
         /** Body_upload_meal_photos_post */
         Body_upload_meal_photos_post: {
@@ -1421,6 +1483,11 @@ export interface components {
              */
             token_type: "bearer";
         };
+        /** TranscriptOut */
+        TranscriptOut: {
+            /** Text */
+            text: string;
+        };
         /** ValidationError */
         ValidationError: {
             /** Context */
@@ -1433,6 +1500,11 @@ export interface components {
             msg: string;
             /** Error Type */
             type: string;
+        };
+        /** VoiceStatusOut */
+        VoiceStatusOut: {
+            /** Available */
+            available: boolean;
         };
     };
     responses: never;
@@ -3037,6 +3109,118 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
                 };
+            };
+        };
+    };
+    status_voice_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VoiceStatusOut"];
+                };
+            };
+        };
+    };
+    speech_voice_messages__message_id__speech_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                message_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "audio/mpeg": unknown;
+                };
+            };
+            /** @description not_found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description voice_unconfigured */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    transcribe_voice_transcribe_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["Body_transcribe_voice_transcribe_post"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TranscriptOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description transcription_failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description voice_unconfigured */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
