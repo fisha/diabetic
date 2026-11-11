@@ -118,11 +118,32 @@ export interface paths {
         get: operations["get_record_glucose__record_id__get"];
         put?: never;
         post?: never;
-        delete?: never;
+        /**
+         * Delete
+         * @description Soft delete: gone from the journal and summaries; kept until account deletion.
+         */
+        delete: operations["delete_glucose__record_id__delete"];
         options?: never;
         head?: never;
         /** Edit */
         patch: operations["edit_glucose__record_id__patch"];
+        trace?: never;
+    };
+    "/glucose/{record_id}/hide": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Hide */
+        post: operations["hide_glucose__record_id__hide_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/glucose/{record_id}/revisions": {
@@ -177,10 +198,93 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/records": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Records */
+        get: operations["list_records_records_get"];
+        put?: never;
+        /** Create */
+        post: operations["create_records_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/records/{record_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Record */
+        get: operations["get_record_records__record_id__get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete
+         * @description Soft delete: gone from the journal and summaries; the row and its revisions stay until account deletion.
+         */
+        delete: operations["delete_records__record_id__delete"];
+        options?: never;
+        head?: never;
+        /** Edit */
+        patch: operations["edit_records__record_id__patch"];
+        trace?: never;
+    };
+    "/records/{record_id}/hide": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Hide */
+        post: operations["hide_records__record_id__hide_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/records/{record_id}/revisions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Revisions */
+        get: operations["revisions_records__record_id__revisions_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** ActivityData */
+        ActivityData: {
+            /** Intensity */
+            intensity: string;
+            /** Minutes */
+            minutes: number;
+            /** Type */
+            type: string;
+        };
         /** ConsentIn */
         ConsentIn: {
             /**
@@ -232,6 +336,8 @@ export interface components {
              * Format: date-time
              */
             entered_at: string;
+            /** Hidden */
+            hidden: boolean;
             /**
              * Id
              * Format: uuid
@@ -310,6 +416,23 @@ export interface components {
             /** Detail */
             detail?: components["schemas"]["ValidationError"][];
         };
+        /** HideIn */
+        HideIn: {
+            /** Hidden */
+            hidden: boolean;
+        };
+        /** InsulinData */
+        InsulinData: {
+            /** Insulin */
+            insulin: string;
+            /**
+             * Reason
+             * @default null
+             */
+            reason: string | null;
+            /** Units */
+            units: number;
+        };
         /** Me */
         Me: {
             /** Email */
@@ -321,6 +444,59 @@ export interface components {
              * Format: uuid
              */
             id: string;
+        };
+        /** MealData */
+        MealData: {
+            /** Any Unknown */
+            any_unknown: boolean;
+            /**
+             * Ate
+             * @enum {string}
+             */
+            ate: "all" | "most" | "half" | "little";
+            /** Carbs Total G */
+            carbs_total_g: number;
+            /** Items */
+            items: components["schemas"]["MealItemData"][];
+            /**
+             * Photo Id
+             * @default null
+             */
+            photo_id: string | null;
+        };
+        /** MealItemData */
+        MealItemData: {
+            /**
+             * Carbs G
+             * @default null
+             */
+            carbs_g: number | null;
+            /** Name */
+            name: string;
+            /**
+             * Prov
+             * @enum {string}
+             */
+            prov: "est" | "user" | "wt" | "q" | "man";
+            /** Qty */
+            qty: number;
+            /** Unit */
+            unit: string;
+            /**
+             * Weighed
+             * @default false
+             */
+            weighed: boolean;
+        };
+        /** NoteData */
+        NoteData: {
+            /** Symptoms */
+            symptoms?: string[];
+            /**
+             * Text
+             * @default
+             */
+            text: string;
         };
         /**
          * OnboardingAnswers
@@ -430,6 +606,103 @@ export interface components {
              * Format: date-time
              */
             updated_at: string;
+        };
+        /** RecordIn */
+        RecordIn: {
+            /** Data */
+            data: {
+                [key: string]: unknown;
+            };
+            /**
+             * Entered At
+             * Format: date-time
+             */
+            entered_at: string;
+            /** Idempotency Key */
+            idempotency_key: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "insulin" | "activity" | "note" | "meal";
+            /**
+             * Occurred At
+             * Format: date-time
+             */
+            occurred_at: string;
+            /**
+             * Source
+             * @enum {string}
+             */
+            source: "manual" | "voice" | "photo-estimate";
+        };
+        /** RecordOut */
+        RecordOut: {
+            /** Data */
+            data: {
+                [key: string]: unknown;
+            };
+            /**
+             * Entered At
+             * Format: date-time
+             */
+            entered_at: string;
+            /** Hidden */
+            hidden: boolean;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Idempotency Key */
+            idempotency_key: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "insulin" | "activity" | "note" | "meal";
+            /**
+             * Occurred At
+             * Format: date-time
+             */
+            occurred_at: string;
+            /**
+             * Received At
+             * Format: date-time
+             */
+            received_at: string;
+            /** Revision */
+            revision: number;
+            /** Source */
+            source: string;
+        };
+        /** RecordPatch */
+        RecordPatch: {
+            /** Data */
+            data?: {
+                [key: string]: unknown;
+            } | null;
+            /** Occurred At */
+            occurred_at?: string | null;
+        };
+        /** RecordRevisionOut */
+        RecordRevisionOut: {
+            /** Data */
+            data: {
+                [key: string]: unknown;
+            };
+            /**
+             * Occurred At
+             * Format: date-time
+             */
+            occurred_at: string;
+            /**
+             * Replaced At
+             * Format: date-time
+             */
+            replaced_at: string;
+            /** Revision */
+            revision: number;
         };
         /** RefreshIn */
         RefreshIn: {
@@ -778,6 +1051,35 @@ export interface operations {
             };
         };
     };
+    delete_glucose__record_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     edit_glucose__record_id__patch: {
         parameters: {
             query?: never;
@@ -790,6 +1092,41 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["GlucosePatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GlucoseOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    hide_glucose__record_id__hide_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["HideIn"];
             };
         };
         responses: {
@@ -921,6 +1258,250 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    list_records_records_get: {
+        parameters: {
+            query: {
+                since: string;
+                until: string;
+                kind?: ("insulin" | "activity" | "note" | "meal") | null;
+                include_hidden?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecordOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_records_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RecordIn"];
+            };
+        };
+        responses: {
+            /** @description already saved (retry) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecordOut"];
+                };
+            };
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecordOut"];
+                };
+            };
+            /** @description idempotency_conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_record_records__record_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecordOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_records__record_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    edit_records__record_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RecordPatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecordOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    hide_records__record_id__hide_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["HideIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecordOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    revisions_records__record_id__revisions_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecordRevisionOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
             };
         };
     };

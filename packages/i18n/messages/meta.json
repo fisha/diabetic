@@ -1177,6 +1177,12 @@
       "translation"
     ]
   },
+  "jrn.act_title": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
   "jrn.b_device": {
     "board": "Journal",
     "review": [
@@ -1268,6 +1274,13 @@
       "translation"
     ]
   },
+  "jrn.deleted": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Board toast after delete"
+  },
   "jrn.device_note": {
     "board": "Journal",
     "review": [
@@ -1287,6 +1300,18 @@
     ]
   },
   "jrn.dup_t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.duration": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.eaten": {
     "board": "Journal",
     "review": [
       "translation"
@@ -1382,6 +1407,32 @@
       "translation"
     ]
   },
+  "jrn.ins_detail": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.ins_src": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.ins_title": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal title of an insulin record, board 'Fiasp, 4 units'"
+  },
+  "jrn.ins_title_n": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Insulin record without a named insulin"
+  },
   "jrn.k_act": {
     "board": "Journal",
     "review": [
@@ -1436,6 +1487,32 @@
       "translation"
     ]
   },
+  "jrn.meal_src_photo": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.meal_src_you": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.meal_title": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Board uses the meal name ('Lunch'); records carry no meal name yet"
+  },
+  "jrn.note_title": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Symptoms or note record; board has no journal example (G-23)"
+  },
   "jrn.orig_kept": {
     "board": "Journal",
     "review": [
@@ -1485,6 +1562,12 @@
     ]
   },
   "jrn.save_fix": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.src": {
     "board": "Journal",
     "review": [
       "translation"
@@ -1575,6 +1658,12 @@
       "translation"
     ],
     "note": "G-04 state for edit, delete, merge and hide."
+  },
+  "jrn.unhide": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
   },
   "jrn.why": {
     "board": "Journal",
