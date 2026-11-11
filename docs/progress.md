@@ -639,6 +639,12 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   head`). API test `test_impression_is_kept_apart_from_facts_until_the_person_confirms`; web e2e `followups.cjs`
   checks the "not confirmed" line (screenshot f03-memory).
 
+## Release readiness (11 Nov 2026)
+
+- `docs/release-readiness.md`: verdict (not ready for release; fit for Guy's own development use), coverage matrix
+  over brief sections 7 to 10 with evidence and open items, build/run, environment variables, migrations.
+- `services/api/.env.example` now lists every setting, including `STEADY_SEALING_KEY` and why to set it once.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API
