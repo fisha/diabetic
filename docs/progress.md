@@ -605,6 +605,17 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
 - A check-in with a `topic` (glucose, meal, insulin, activity) is withdrawn when such a record arrives before it is due.
 - Daily repeats keep the local clock across DST. Each follow-up can carry a `reason`, shown in the Journal as "Why".
 
+## Spec audit gaps, privacy and safety (11 Nov 2026)
+
+- Meal photos and exports are Fernet-encrypted on disk (`sealing.seal_file`); older plain files still read.
+  Database rows are not encrypted per field: at rest they rely on disk encryption of the host (FileVault on the Mac).
+  Field-level or managed-database encryption is a hosting decision for Guy's batch.
+- Logs: the engine hides SQL parameters; `tests/test_logs.py` checks every log call only names kinds, types or timings.
+- Push lock-screen text in the person's language (still generic).
+- propose_glucose refuses a reading about someone else (eval F-2); the prompt uses the stored diabetes type (F-3); what
+  the app should do for "other" / "not sure" is a decision for Guy.
+- Cross-source sensor dedupe (CareLink vs health store), 3 min and 1 mg/dL. Journal "merge duplicate" still unavailable.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API
