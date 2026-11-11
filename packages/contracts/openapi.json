@@ -29,6 +29,24 @@
         "title": "ActivityData",
         "type": "object"
       },
+      "BandOut": {
+        "properties": {
+          "high_mgdl": {
+            "title": "High Mgdl",
+            "type": "number"
+          },
+          "low_mgdl": {
+            "title": "Low Mgdl",
+            "type": "number"
+          }
+        },
+        "required": [
+          "low_mgdl",
+          "high_mgdl"
+        ],
+        "title": "BandOut",
+        "type": "object"
+      },
       "Body_transcribe_voice_transcribe_post": {
         "properties": {
           "file": {
@@ -116,6 +134,28 @@
           "preview"
         ],
         "title": "ConversationOut",
+        "type": "object"
+      },
+      "FeedbackIn": {
+        "additionalProperties": false,
+        "properties": {
+          "verdict": {
+            "enum": [
+              "useful",
+              "wrong_data",
+              "known",
+              "not_relevant",
+              "other",
+              "mute"
+            ],
+            "title": "Verdict",
+            "type": "string"
+          }
+        },
+        "required": [
+          "verdict"
+        ],
+        "title": "FeedbackIn",
         "type": "object"
       },
       "FollowUpIn": {
@@ -729,6 +769,134 @@
           "hidden"
         ],
         "title": "HideIn",
+        "type": "object"
+      },
+      "InsightDayOut": {
+        "properties": {
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "middle_mgdl": {
+            "title": "Middle Mgdl",
+            "type": "number"
+          },
+          "reading_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Reading Ids",
+            "type": "array"
+          },
+          "readings": {
+            "title": "Readings",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "day",
+          "middle_mgdl",
+          "readings",
+          "reading_ids"
+        ],
+        "title": "InsightDayOut",
+        "type": "object"
+      },
+      "InsightOut": {
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/InsightDayOut"
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "days_without": {
+            "title": "Days Without",
+            "type": "integer"
+          },
+          "direction": {
+            "enum": [
+              "above",
+              "below"
+            ],
+            "title": "Direction",
+            "type": "string"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "recurring",
+              "first"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "part": {
+            "enum": [
+              "night",
+              "morning",
+              "afternoon",
+              "evening"
+            ],
+            "title": "Part",
+            "type": "string"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "key",
+          "kind",
+          "direction",
+          "part",
+          "count",
+          "total",
+          "days",
+          "days_without"
+        ],
+        "title": "InsightOut",
+        "type": "object"
+      },
+      "InsightsOut": {
+        "properties": {
+          "band": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/BandOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "insights": {
+            "items": {
+              "$ref": "#/components/schemas/InsightOut"
+            },
+            "title": "Insights",
+            "type": "array"
+          },
+          "window_days": {
+            "title": "Window Days",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "band",
+          "window_days",
+          "insights"
+        ],
+        "title": "InsightsOut",
         "type": "object"
       },
       "InsulinData": {
@@ -3325,6 +3493,111 @@
         "summary": "Health",
         "tags": [
           "health"
+        ]
+      }
+    },
+    "/insights": {
+      "get": {
+        "operationId": "list_insights_insights_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "until",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Until"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InsightsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Insights",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/{key}/feedback": {
+      "post": {
+        "operationId": "feedback_insights__key__feedback_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "schema": {
+              "title": "Key",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Feedback",
+        "tags": [
+          "insights"
         ]
       }
     },

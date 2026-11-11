@@ -1204,6 +1204,115 @@
       "translation"
     ]
   },
+  "ins.basis": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.body_above": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.body_below": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.excluded": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.fb_fail": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.fb_muted": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.fb_thanks": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.no_band": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "G-07: shown instead of insights while no target range is set. The example only shows the format."
+  },
+  "ins.obs": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.sub": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.t_above_afternoon": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.t_above_evening": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.t_above_morning": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.t_above_night": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.t_below_afternoon": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.t_below_evening": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.t_below_morning": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.t_below_night": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
   "jrn.act_title": {
     "board": "Journal",
     "review": [
@@ -6425,6 +6534,36 @@
   },
   "sub.until": {
     "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sum.body": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "sum.l_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "sum.w_days": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "sum.w_in": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "sum.w_none": {
+    "board": "Overview",
     "review": [
       "translation"
     ]

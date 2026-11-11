@@ -408,6 +408,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/insights": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Insights */
+        get: operations["list_insights_insights_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/{key}/feedback": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Feedback */
+        post: operations["feedback_insights__key__feedback_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/meal/foods": {
         parameters: {
             query?: never;
@@ -709,6 +743,13 @@ export interface components {
             /** Type */
             type: string;
         };
+        /** BandOut */
+        BandOut: {
+            /** High Mgdl */
+            high_mgdl: number;
+            /** Low Mgdl */
+            low_mgdl: number;
+        };
         /** Body_transcribe_voice_transcribe_post */
         Body_transcribe_voice_transcribe_post: {
             /** File */
@@ -752,6 +793,14 @@ export interface components {
             started_at: string;
             /** Title */
             title: string;
+        };
+        /** FeedbackIn */
+        FeedbackIn: {
+            /**
+             * Verdict
+             * @enum {string}
+             */
+            verdict: "useful" | "wrong_data" | "known" | "not_relevant" | "other" | "mute";
         };
         /** FollowUpIn */
         FollowUpIn: {
@@ -997,6 +1046,53 @@ export interface components {
         HideIn: {
             /** Hidden */
             hidden: boolean;
+        };
+        /** InsightDayOut */
+        InsightDayOut: {
+            /** Day */
+            day: string;
+            /** Middle Mgdl */
+            middle_mgdl: number;
+            /** Reading Ids */
+            reading_ids: string[];
+            /** Readings */
+            readings: number;
+        };
+        /** InsightOut */
+        InsightOut: {
+            /** Count */
+            count: number;
+            /** Days */
+            days: components["schemas"]["InsightDayOut"][];
+            /** Days Without */
+            days_without: number;
+            /**
+             * Direction
+             * @enum {string}
+             */
+            direction: "above" | "below";
+            /** Key */
+            key: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "recurring" | "first";
+            /**
+             * Part
+             * @enum {string}
+             */
+            part: "night" | "morning" | "afternoon" | "evening";
+            /** Total */
+            total: number;
+        };
+        /** InsightsOut */
+        InsightsOut: {
+            band: components["schemas"]["BandOut"] | null;
+            /** Insights */
+            insights: components["schemas"]["InsightOut"][];
+            /** Window Days */
+            window_days: number;
         };
         /** InsulinData */
         InsulinData: {
@@ -2452,6 +2548,70 @@ export interface operations {
                     "application/json": {
                         [key: string]: string;
                     };
+                };
+            };
+        };
+    };
+    list_insights_insights_get: {
+        parameters: {
+            query?: {
+                until?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InsightsOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    feedback_insights__key__feedback_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FeedbackIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

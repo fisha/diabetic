@@ -56,14 +56,14 @@ const server = http.createServer((req, res) => {
     await page.getByText('Save note', { exact: true }).last().click(); await page.waitForTimeout(1500);
     ok('note saved toast', await page.getByText('Saved to your journal').first().isVisible());
 
-    // Meal entered by hand: a custom food with typed carbs.
+    // Meal entered by hand: a food found in the food database.
     await chip('Meal');
     await page.getByText('Search foods and enter amounts', { exact: true }).first().click(); await page.waitForTimeout(1200);
     await page.getByText('Add a food', { exact: true }).first().click(); await page.waitForTimeout(800);
     await page.getByPlaceholder('Search foods').first().fill('Pita');
     await page.waitForTimeout(500);
-    await page.getByText('Add “Pita”', { exact: true }).click(); await page.waitForTimeout(800);
-    await page.getByLabel('Carbs in grams for Pita').fill('33');
+    // The test server's food database finds "Pita, raw" (20 g carbs per 100 g); a typical serving is 100 g.
+    await page.getByText('Pita, raw', { exact: true }).click(); await page.waitForTimeout(800);
     await shot('r02-meal-review');
     await page.getByText('Save meal', { exact: true }).last().click(); await page.waitForTimeout(2000);
     ok('meal saved screen', await page.getByText('Meal saved').first().isVisible());
@@ -72,7 +72,7 @@ const server = http.createServer((req, res) => {
     const listed = (await api(`/records?${range}`, { token: tc.access_token })).json;
     ok('server has 4 records', listed.length === 4, JSON.stringify(listed.map((r) => r.kind)));
     const meal = listed.find((r) => r.kind === 'meal');
-    ok('meal carbs stored', meal && meal.data.carbs_total_g === 33 && meal.data.items[0].prov === 'man', JSON.stringify(meal && meal.data));
+    ok('meal carbs stored', meal && meal.data.carbs_total_g === 20 && meal.data.items[0].name === 'Pita, raw', JSON.stringify(meal && meal.data));
 
     // Journal shows every kind (navigate inside the app: the web session lives in memory).
     await page.getByText('View in journal', { exact: true }).first().click(); await page.waitForTimeout(2000);
@@ -81,7 +81,7 @@ const server = http.createServer((req, res) => {
     ok('journal insulin', await page.getByText('Insulin, 4 units').first().isVisible());
     ok('journal activity', await page.getByText('Walk, 30 min').first().isVisible());
     ok('journal note', await page.getByText('Tired').first().isVisible());
-    ok('journal meal', await page.getByText('Meal ≈ 33 g carbs').first().isVisible());
+    ok('journal meal', await page.getByText('Meal ≈ 20 g carbs').first().isVisible());
 
     // Delete the activity.
     await page.getByText('Walk, 30 min').first().click(); await page.waitForTimeout(800);
@@ -103,14 +103,14 @@ const server = http.createServer((req, res) => {
     ok('note is today', (await page.getByText('Thu 1 Jan').count()) === 0);
 
     // A journal meal opens in the meal editor; saving changes it (a revision), never adds a second meal.
-    await page.getByText('Meal ≈ 33 g carbs').first().click(); await page.waitForTimeout(800);
+    await page.getByText('Meal ≈ 20 g carbs').first().click(); await page.waitForTimeout(800);
     await page.getByText('Edit', { exact: true }).first().click(); await page.waitForTimeout(800);
     await page.getByText('Open meal editor', { exact: true }).click(); await page.waitForTimeout(2500);
     await page.getByText('Half', { exact: true }).first().click(); await page.waitForTimeout(300);
     await shot('r07-meal-edit');
     await page.getByText('Save correction', { exact: true }).last().click(); await page.waitForTimeout(2000);
     const meals = (await api(`/records?${range}&kind=meal`, { token: tc.access_token })).json;
-    ok('meal corrected in place', meals.length === 1 && meals[0].revision === 2 && meals[0].data.carbs_total_g === 17, JSON.stringify(meals.map((m) => [m.revision, m.data.carbs_total_g])));
+    ok('meal corrected in place', meals.length === 1 && meals[0].revision === 2 && meals[0].data.carbs_total_g === 10, JSON.stringify(meals.map((m) => [m.revision, m.data.carbs_total_g])));
   } catch (e) {
     results.push('ERROR ' + e.message.split('\n')[0]); await global.lastPage.screenshot({ path: path.join(out, 'zz-fail.png') }); console.log('fail url', global.lastPage.url());
   }
