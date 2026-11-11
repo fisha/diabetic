@@ -38,7 +38,6 @@ const server = http.createServer((req, res) => {
     await row('Devices');
     ok('carelink row', await page.getByText('MiniMed · CareLink', { exact: true }).first().isVisible());
     await row('MiniMed · CareLink');
-    ok('unofficial note', await page.getByText(/this one is unofficial/).first().isVisible());
     await page.getByLabel('CareLink username', { exact: true }).fill('guy_cl');
     await page.getByLabel('CareLink password', { exact: true }).fill('wrong');
     await page.getByText('Connect', { exact: true }).last().click(); await page.waitForTimeout(2500);

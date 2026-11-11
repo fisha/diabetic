@@ -417,7 +417,7 @@ The device detail board shows a vendor sign-in. The health store connection uses
 
 Guy asked for MiniMed pump and sensor data through CareLink, with the CareLink username and password entered where
 devices are chosen. Medtronic has no public API, so the connection is unofficial (the way the CareLink Connect app signs
-in) and says so on the screen. New row on SET-04 "MiniMed · CareLink" and a screen on the SET-05 pattern: username,
+in). Guy asked (11 Nov 2026) not to show the "unofficial" note to the person, so the screen no longer carries it. New row on SET-04 "MiniMed · CareLink" and a screen on the SET-05 pattern: username,
 password, region (outside the US / US), Connect; when connected, the last reading, the pump model, Sync now and
 Disconnect (keep or remove imported readings). Not on the boards. Readings are labelled "CareLink" like Apple Health ones.
 The EU sign-in page carries a captcha. Guy chose (11 Nov 2026) to also have a sign-in on CareLink's own page, where he
