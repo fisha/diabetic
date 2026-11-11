@@ -54,6 +54,42 @@
         "title": "ConsentIn",
         "type": "object"
       },
+      "ConversationOut": {
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "last_message_at": {
+            "format": "date-time",
+            "title": "Last Message At",
+            "type": "string"
+          },
+          "preview": {
+            "title": "Preview",
+            "type": "string"
+          },
+          "started_at": {
+            "format": "date-time",
+            "title": "Started At",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "started_at",
+          "last_message_at",
+          "title",
+          "preview"
+        ],
+        "title": "ConversationOut",
+        "type": "object"
+      },
       "GlucoseIn": {
         "additionalProperties": false,
         "properties": {
@@ -502,6 +538,101 @@
         "title": "MealItemData",
         "type": "object"
       },
+      "MessageOut": {
+        "properties": {
+          "client_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Client Id"
+          },
+          "conversation_id": {
+            "format": "uuid",
+            "title": "Conversation Id",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "flags": {
+            "additionalProperties": true,
+            "title": "Flags",
+            "type": "object"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "proposal": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Proposal"
+          },
+          "proposal_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Proposal Status"
+          },
+          "role": {
+            "enum": [
+              "user",
+              "assistant"
+            ],
+            "title": "Role",
+            "type": "string"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text"
+          },
+          "via": {
+            "title": "Via",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "conversation_id",
+          "role",
+          "text",
+          "via",
+          "client_id",
+          "proposal",
+          "proposal_status",
+          "flags",
+          "created_at"
+        ],
+        "title": "MessageOut",
+        "type": "object"
+      },
       "NoteData": {
         "additionalProperties": false,
         "properties": {
@@ -794,6 +925,25 @@
         "title": "ProfileOut",
         "type": "object"
       },
+      "ProposalIn": {
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "enum": [
+              "saved",
+              "pending",
+              "dismissed"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "title": "ProposalIn",
+        "type": "object"
+      },
       "RecordIn": {
         "additionalProperties": false,
         "properties": {
@@ -996,6 +1146,61 @@
         "title": "RefreshIn",
         "type": "object"
       },
+      "SendIn": {
+        "additionalProperties": false,
+        "properties": {
+          "client_id": {
+            "maxLength": 64,
+            "minLength": 8,
+            "pattern": "^[A-Za-z0-9_-]+$",
+            "title": "Client Id",
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          },
+          "via": {
+            "default": "text",
+            "enum": [
+              "text",
+              "voice"
+            ],
+            "title": "Via",
+            "type": "string"
+          }
+        },
+        "required": [
+          "client_id",
+          "text"
+        ],
+        "title": "SendIn",
+        "type": "object"
+      },
+      "SendOut": {
+        "properties": {
+          "conversation_id": {
+            "format": "uuid",
+            "title": "Conversation Id",
+            "type": "string"
+          },
+          "message": {
+            "$ref": "#/components/schemas/MessageOut"
+          },
+          "reply": {
+            "$ref": "#/components/schemas/MessageOut"
+          }
+        },
+        "required": [
+          "conversation_id",
+          "message",
+          "reply"
+        ],
+        "title": "SendOut",
+        "type": "object"
+      },
       "SignIn": {
         "additionalProperties": false,
         "properties": {
@@ -1037,6 +1242,35 @@
           "password"
         ],
         "title": "SignUp",
+        "type": "object"
+      },
+      "ThreadOut": {
+        "properties": {
+          "conversation_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conversation Id"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/MessageOut"
+            },
+            "title": "Messages",
+            "type": "array"
+          }
+        },
+        "required": [
+          "conversation_id",
+          "messages"
+        ],
+        "title": "ThreadOut",
         "type": "object"
       },
       "Tokens": {
@@ -1311,6 +1545,226 @@
         "summary": "Sign Up",
         "tags": [
           "auth"
+        ]
+      }
+    },
+    "/conversation/messages": {
+      "get": {
+        "description": "A conversation's messages, oldest first. Without an id: the current one, or none after a quiet gap.",
+        "operationId": "thread_conversation_messages_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "conversation_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Conversation Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThreadOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Thread",
+        "tags": [
+          "conversation"
+        ]
+      },
+      "post": {
+        "operationId": "send_conversation_messages_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "502": {
+            "description": "llm_failed"
+          },
+          "503": {
+            "description": "llm_unconfigured"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Send",
+        "tags": [
+          "conversation"
+        ]
+      }
+    },
+    "/conversation/messages/{message_id}/proposal": {
+      "post": {
+        "description": "What the person did with a proposal card: saved (or waiting to sync) through the records API, or dismissed.",
+        "operationId": "resolve_proposal_conversation_messages__message_id__proposal_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "message_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Message Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProposalIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Resolve Proposal",
+        "tags": [
+          "conversation"
+        ]
+      }
+    },
+    "/conversations": {
+      "get": {
+        "description": "Past conversations for the history sheet. Title and preview are the conversation's own words, not a summary.",
+        "operationId": "conversations_conversations_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 30,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ConversationOut"
+                  },
+                  "title": "Response Conversations Conversations Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Conversations",
+        "tags": [
+          "conversation"
         ]
       }
     },

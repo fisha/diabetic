@@ -89,6 +89,67 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversation/messages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Thread
+         * @description A conversation's messages, oldest first. Without an id: the current one, or none after a quiet gap.
+         */
+        get: operations["thread_conversation_messages_get"];
+        put?: never;
+        /** Send */
+        post: operations["send_conversation_messages_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/conversation/messages/{message_id}/proposal": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Resolve Proposal
+         * @description What the person did with a proposal card: saved (or waiting to sync) through the records API, or dismissed.
+         */
+        post: operations["resolve_proposal_conversation_messages__message_id__proposal_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/conversations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Conversations
+         * @description Past conversations for the history sheet. Title and preview are the conversation's own words, not a summary.
+         */
+        get: operations["conversations_conversations_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/glucose": {
         parameters: {
             query?: never;
@@ -297,6 +358,28 @@ export interface components {
             /** Training */
             training: boolean;
         };
+        /** ConversationOut */
+        ConversationOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Last Message At
+             * Format: date-time
+             */
+            last_message_at: string;
+            /** Preview */
+            preview: string;
+            /**
+             * Started At
+             * Format: date-time
+             */
+            started_at: string;
+            /** Title */
+            title: string;
+        };
         /** GlucoseIn */
         GlucoseIn: {
             /**
@@ -488,6 +571,45 @@ export interface components {
              */
             weighed: boolean;
         };
+        /** MessageOut */
+        MessageOut: {
+            /** Client Id */
+            client_id: string | null;
+            /**
+             * Conversation Id
+             * Format: uuid
+             */
+            conversation_id: string;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Flags */
+            flags: {
+                [key: string]: unknown;
+            };
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Proposal */
+            proposal: {
+                [key: string]: unknown;
+            } | null;
+            /** Proposal Status */
+            proposal_status: string | null;
+            /**
+             * Role
+             * @enum {string}
+             */
+            role: "user" | "assistant";
+            /** Text */
+            text: string | null;
+            /** Via */
+            via: string;
+        };
         /** NoteData */
         NoteData: {
             /** Symptoms */
@@ -607,6 +729,14 @@ export interface components {
              */
             updated_at: string;
         };
+        /** ProposalIn */
+        ProposalIn: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "saved" | "pending" | "dismissed";
+        };
         /** RecordIn */
         RecordIn: {
             /** Data */
@@ -709,6 +839,29 @@ export interface components {
             /** Refresh Token */
             refresh_token: string;
         };
+        /** SendIn */
+        SendIn: {
+            /** Client Id */
+            client_id: string;
+            /** Text */
+            text: string;
+            /**
+             * Via
+             * @default text
+             * @enum {string}
+             */
+            via: "text" | "voice";
+        };
+        /** SendOut */
+        SendOut: {
+            /**
+             * Conversation Id
+             * Format: uuid
+             */
+            conversation_id: string;
+            message: components["schemas"]["MessageOut"];
+            reply: components["schemas"]["MessageOut"];
+        };
         /** SignIn */
         SignIn: {
             /**
@@ -728,6 +881,13 @@ export interface components {
             email: string;
             /** Password */
             password: string;
+        };
+        /** ThreadOut */
+        ThreadOut: {
+            /** Conversation Id */
+            conversation_id: string | null;
+            /** Messages */
+            messages: components["schemas"]["MessageOut"][];
         };
         /** Tokens */
         Tokens: {
@@ -925,6 +1085,150 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    thread_conversation_messages_get: {
+        parameters: {
+            query?: {
+                conversation_id?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ThreadOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    send_conversation_messages_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SendIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SendOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description llm_failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description llm_unconfigured */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    resolve_proposal_conversation_messages__message_id__proposal_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                message_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProposalIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MessageOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    conversations_conversations_get: {
+        parameters: {
+            query?: {
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConversationOut"][];
+                };
             };
             /** @description Validation Error */
             422: {

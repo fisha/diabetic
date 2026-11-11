@@ -658,6 +658,14 @@
       "translation"
     ]
   },
+  "com.no_dose": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Shown instead of a model reply that read as a dose instruction (server safety check)"
+  },
   "com.no_save": {
     "board": "Companion",
     "review": [
@@ -859,6 +867,19 @@
     ],
     "note": "ICU MessageFormat. Arabic has 6 plural forms"
   },
+  "com.rec_saved": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Badge on a record row in the conversation (board: first word of 'Saved to your journal')"
+  },
+  "com.reply_fail": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
   "com.resumed": {
     "board": "Companion",
     "review": [
@@ -890,6 +911,12 @@
     ]
   },
   "com.send": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.send_fail": {
     "board": "Companion",
     "review": [
       "translation"
