@@ -412,3 +412,14 @@ The device detail board shows a vendor sign-in. The health store connection uses
 - Illustrations for empty states: the design uses text and icons only, so none are needed.
 - The orb animation exists only as CSS keyframes (breathe 6 s, listen 1.6 s, speak 0.9 s). It will be reproduced
   with Reanimated, and no Lottie file is needed.
+
+### G-29 · CareLink connection (**decided by Guy, 11 Nov 2026**, implemented)
+
+Guy asked for MiniMed pump and sensor data through CareLink, with the CareLink username and password entered where
+devices are chosen. Medtronic has no public API, so the connection is unofficial (the way the CareLink Connect app signs
+in) and says so on the screen. New row on SET-04 "MiniMed · CareLink" and a screen on the SET-05 pattern: username,
+password, region (outside the US / US), Connect; when connected, the last reading, the pump model, Sync now and
+Disconnect (keep or remove imported readings). Not on the boards. Readings are labelled "CareLink" like Apple Health ones.
+Open: the EU sign-in page carries a captcha; if CareLink demands it, a sign-in Guy completes on CareLink's own page is
+needed (decision asked in the build thread).
+

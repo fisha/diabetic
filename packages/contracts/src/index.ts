@@ -46,3 +46,6 @@ export type FoodItem = S['FoodItem'];
 export type FoodResult = S['FoodResult'];
 export type FoodMatch = S['FoodMatch'];
 export type PhotoOut = S['PhotoOut'];
+export type CareLinkIn = S['CareLinkIn'];
+export type CareLinkOut = S['CareLinkOut'];
+export type CareLinkRemovedOut = S['RemovedOut'];

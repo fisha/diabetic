@@ -5088,6 +5088,126 @@
       "translation"
     ]
   },
+  "set.cl_added": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_again": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_connect": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_connecting": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_device": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_eu": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_failed": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_last": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_none_yet": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_note": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_offline": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_on": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_pw": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_region": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sub": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_title": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_us": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_user": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_verify": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_wrong": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
   "set.comp_note": {
     "board": "Settings",
     "review": [

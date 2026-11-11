@@ -170,6 +170,48 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/devices/carelink": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Status */
+        get: operations["status_devices_carelink_get"];
+        /**
+         * Connect
+         * @description Signs in to CareLink now. Only a sign-in that worked is kept; a refused one is answered and forgotten.
+         */
+        put: operations["connect_devices_carelink_put"];
+        post?: never;
+        /**
+         * Disconnect
+         * @description Forgets the CareLink sign-in. With remove_readings, the readings that came from CareLink are deleted too.
+         */
+        delete: operations["disconnect_devices_carelink_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/carelink/sync": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Sync Now */
+        post: operations["sync_now_devices_carelink_sync_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/devices/push-token": {
         parameters: {
             query?: never;
@@ -894,6 +936,42 @@ export interface components {
         Body_upload_meal_photos_post: {
             /** File */
             file: string;
+        };
+        /** CareLinkIn */
+        CareLinkIn: {
+            /** Password */
+            password: string;
+            /**
+             * Region
+             * @default eu
+             * @enum {string}
+             */
+            region: "eu" | "us";
+            /** Username */
+            username: string;
+        };
+        /** CareLinkOut */
+        CareLinkOut: {
+            /** Added */
+            added?: number | null;
+            /** Connected */
+            connected: boolean;
+            /** Detail */
+            detail?: string | null;
+            /** Device */
+            device?: {
+                [key: string]: unknown;
+            } | null;
+            /** Last Reading At */
+            last_reading_at?: string | null;
+            /** Last Sync At */
+            last_sync_at?: string | null;
+            /** Region */
+            region?: string | null;
+            /** Status */
+            status?: ("connected" | "wrong_credentials" | "needs_verification" | "failed") | null;
+            /** Username */
+            username?: string | null;
         };
         /** ConsentIn */
         ConsentIn: {
@@ -1739,6 +1817,11 @@ export interface components {
             /** Refresh Token */
             refresh_token: string;
         };
+        /** RemovedOut */
+        RemovedOut: {
+            /** Removed */
+            removed: number;
+        };
         /** RescheduleIn */
         RescheduleIn: {
             /**
@@ -2222,6 +2305,131 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    status_devices_carelink_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CareLinkOut"];
+                };
+            };
+        };
+    };
+    connect_devices_carelink_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CareLinkIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CareLinkOut"];
+                };
+            };
+            /** @description wrong_credentials */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description needs_verification */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    disconnect_devices_carelink_delete: {
+        parameters: {
+            query?: {
+                remove_readings?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RemovedOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    sync_now_devices_carelink_sync_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CareLinkOut"];
                 };
             };
         };
