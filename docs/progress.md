@@ -561,6 +561,15 @@ Not run: no native build, simulator or device run yet. That needs EAS (Guy's `ea
 **Visual status:** nothing comparable to the design yet (only the token layer). **Functional status:** theme
 switching works in code; it has not been seen on a device.
 
+## Live voice fix (11 Nov 2026)
+
+Guy's first real live conversation got no answer. The relay used the older Realtime API (`gpt-realtime`); Guy's
+reference project (mixmaster-pro, Maya) uses GPT-Live (`gpt-live-1`). The relay now speaks GPT-Live's server WebSocket
+(`session.start`, `session.input_audio.append`, transcript and audio deltas, client delegation answered by the text
+companion with its tools), still holding each reply for the dose check. The web client now starts its audio inside the
+tap (iOS Safari). Verified with stand-ins: 95 API tests and the voice browser e2e. Not yet verified against the real
+API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API

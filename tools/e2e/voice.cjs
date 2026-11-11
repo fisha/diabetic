@@ -60,7 +60,7 @@ const server = http.createServer((req, res) => {
     const g = (await api(`/glucose?${range}`, { token: tv.access_token })).json;
     ok('reading saved once', g.length === 1 && g[0].value === 142, JSON.stringify(g.map((x) => [x.value, x.source])));
     const texts = (await api('/conversation/messages', { token: tv.access_token })).json.messages.map((m) => m.text);
-    ok('spoken turns stored in order', JSON.stringify(texts) === JSON.stringify(['Good evening! How was your day?', 'My reading is 142', 'Thanks, check the card.']), JSON.stringify(texts));
+    ok('spoken turns stored in order', JSON.stringify(texts) === JSON.stringify(['Good evening! How was your day?', 'My reading is 142', 'Thanks. Please check it below.']), JSON.stringify(texts));
     ok('still listening', await page.getByText('Listening', { exact: true }).first().isVisible());
     await shot('v04-listening');
     await page.getByRole('button', { name: 'Finish', exact: true }).click(); await page.waitForTimeout(1000);

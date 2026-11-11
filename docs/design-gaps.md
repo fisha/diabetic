@@ -361,7 +361,8 @@ knowing the person's name, greeting by time of day and asking questions. Done as
 - **What the companion calls you** (ONB-18 and SET-06): a new optional field, not on the boards.
 - **Greeting and initiative**: the prompt greets by the person's local part of day (morning 05-12, afternoon 12-17,
   evening 17-21, night) and asks one short open question at a time, never about doses.
-- **Live conversation** (gpt-realtime) in the web build: Talk opens a conversation the companion starts, the person
+- **Live conversation** (OpenAI GPT-Live, `gpt-live-1`, as in mixmaster-pro's Maya; moved from gpt-realtime after the
+  first real try got no answer) in the web build: Talk opens a conversation the companion starts, the person
   talks freely and can interrupt (Stop), Finish ends it. Every reply is held on the server until its words pass the
   dose check, so a reply starts about one reply-length later than raw live audio would. Turns are stored in the
   thread like text. Phones keep one spoken turn at a time, in the chosen voice, until a native audio streaming module
