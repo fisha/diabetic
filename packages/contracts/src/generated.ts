@@ -971,6 +971,17 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** A1cOut */
+        A1cOut: {
+            /** Coverage */
+            coverage: number;
+            /** Days */
+            days: number;
+            /** Gmi Percent */
+            gmi_percent: number;
+            /** Mean Mgdl */
+            mean_mgdl: number;
+        };
         /** ActivityData */
         ActivityData: {
             /** Intensity */
@@ -1197,6 +1208,45 @@ export interface components {
              * @enum {string}
              */
             verdict: "useful" | "wrong_data" | "known" | "not_relevant" | "other" | "mute";
+        };
+        /** FindingOut */
+        FindingOut: {
+            /**
+             * Advice
+             * @default []
+             */
+            advice: ("carbs" | "team" | "timing")[];
+            /** Count */
+            count: number;
+            /** End Mgdl */
+            end_mgdl?: number | null;
+            /** Key */
+            key: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good";
+            /** Label */
+            label?: string | null;
+            /** Of */
+            of: number;
+            /** Other Mgdl */
+            other_mgdl?: number | null;
+            /** Part */
+            part?: ("night" | "morning" | "afternoon" | "evening") | null;
+            /**
+             * Record Ids
+             * @default []
+             */
+            record_ids: string[];
+            /** Start Mgdl */
+            start_mgdl?: number | null;
+            /**
+             * Tone
+             * @enum {string}
+             */
+            tone: "watch" | "good" | "info";
         };
         /** FinishIn */
         FinishIn: {
@@ -1550,7 +1600,13 @@ export interface components {
         };
         /** InsightsOut */
         InsightsOut: {
+            a1c?: components["schemas"]["A1cOut"] | null;
             band: components["schemas"]["BandOut"] | null;
+            /**
+             * Findings
+             * @default []
+             */
+            findings: components["schemas"]["FindingOut"][];
             /** Insights */
             insights: components["schemas"]["InsightOut"][];
             /**
@@ -1663,6 +1719,8 @@ export interface components {
             before_meals: number;
             /** Before Mgdl */
             before_mgdl?: number | null;
+            /** End Mgdl */
+            end_mgdl?: number | null;
             /** Key */
             key: string;
             /** Meals */
@@ -1676,6 +1734,8 @@ export interface components {
              * @enum {string}
              */
             slot: "breakfast" | "lunch" | "dinner";
+            /** Start Mgdl */
+            start_mgdl?: number | null;
         };
         /** MembershipOut */
         MembershipOut: {

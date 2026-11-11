@@ -489,3 +489,18 @@ hypothesis is a memory with kind "impression": the companion saved its own impre
 `stated=false`). Routine > Memory shows it as "{name}'s impression, not confirmed" with the same Edit and Remove;
 editing it makes it the person's fact. The companion gets impressions in their own list, told not to treat them as
 facts and to check one with the person when it fits. Migration `c3d4e5f6a7b8`.
+
+### G-38 · Routines, the meal before/after wording and the estimated A1c (**Guy's request, 11 Nov 2026 night**, implemented)
+
+Guy: "insights are the key"; find routines and say what to do. `services/api/steady_api/findings.py`, product rules:
+14 days; a routine needs 3+ meals or days. Foods: by item name, with a reading at the meal (within 15 min) and two
+hours later (within 20 min); "usually above your range" when at least half end above the person's own range high,
+"usually in range" when more than half end in it. Late meals: 21:00 to 03:00 on 3+ days; mornings (05:00-08:00) after
+them against other mornings. Pump: CareLink alerts kept in `device_events` (suspend on/before low 803/809/811; high
+alerts 816/817/823/3.330/3.335; leaving automatic mode 819-841) on 3+ days, at the time of day they gather. Good: insulin
+at least 10 minutes before eating on more than half the meals with insulin; a time of day in range on more than half of
+its days. Advice is fixed text: check the carb count, and talk with the care team about the insulin for it; never an
+amount. Meal patterns now say the middle value before and two hours after ("before lunch around 160, two hours later
+230"). Estimated A1c: the published GMI formula (3.31 + 0.02392 x mean mg/dL) over the longest of 90/30/14 days with
+70 % of sensor readings, labelled an estimate. All of it goes to the companion as [good]/[watch] lines with the mentor
+instruction to praise first and coach one thing. Needs the clinical review (G-05).

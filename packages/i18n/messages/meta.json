@@ -1330,6 +1330,54 @@
       "translation"
     ]
   },
+  "ins.a1c_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.a1c_basis": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.a1c_sub": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.a1c_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.adv_carbs": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.adv_team": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
   "ins.basis": {
     "board": "Overview",
     "review": [
@@ -1359,6 +1407,174 @@
     "review": [
       "translation"
     ]
+  },
+  "ins.f_auto_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_auto_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_basis": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_good_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_good_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_info_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_watch_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_watch_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_high_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_high_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_late_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_late_b2": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_late_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_range_good_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_range_good_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_sub": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_suspend_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_suspend_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_timing_good_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_timing_good_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
   "ins.fb_fail": {
     "board": "Overview",
@@ -1402,6 +1618,14 @@
     "review": [
       "translation"
     ]
+  },
+  "ins.p_rise_b2": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
   "ins.p_rise_t": {
     "board": "INS-01",
@@ -1498,6 +1722,46 @@
     "review": [
       "translation"
     ]
+  },
+  "ins.when_afternoon": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.when_any": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.when_evening": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.when_morning": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.when_night": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
   "jrn.act_title": {
     "board": "Journal",

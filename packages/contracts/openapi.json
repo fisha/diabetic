@@ -1,6 +1,34 @@
 {
   "components": {
     "schemas": {
+      "A1cOut": {
+        "properties": {
+          "coverage": {
+            "title": "Coverage",
+            "type": "number"
+          },
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "gmi_percent": {
+            "title": "Gmi Percent",
+            "type": "number"
+          },
+          "mean_mgdl": {
+            "title": "Mean Mgdl",
+            "type": "number"
+          }
+        },
+        "required": [
+          "gmi_percent",
+          "mean_mgdl",
+          "days",
+          "coverage"
+        ],
+        "title": "A1cOut",
+        "type": "object"
+      },
       "ActivityData": {
         "additionalProperties": false,
         "properties": {
@@ -611,6 +639,135 @@
           "verdict"
         ],
         "title": "FeedbackIn",
+        "type": "object"
+      },
+      "FindingOut": {
+        "properties": {
+          "advice": {
+            "default": [],
+            "items": {
+              "enum": [
+                "carbs",
+                "team",
+                "timing"
+              ],
+              "type": "string"
+            },
+            "title": "Advice",
+            "type": "array"
+          },
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "end_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Mgdl"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "food",
+              "late_meal",
+              "suspend",
+              "high_alert",
+              "auto_exit",
+              "timing_good",
+              "range_good"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "of": {
+            "title": "Of",
+            "type": "integer"
+          },
+          "other_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Other Mgdl"
+          },
+          "part": {
+            "anyOf": [
+              {
+                "enum": [
+                  "night",
+                  "morning",
+                  "afternoon",
+                  "evening"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Part"
+          },
+          "record_ids": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Record Ids",
+            "type": "array"
+          },
+          "start_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Mgdl"
+          },
+          "tone": {
+            "enum": [
+              "watch",
+              "good",
+              "info"
+            ],
+            "title": "Tone",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "kind",
+          "tone",
+          "count",
+          "of"
+        ],
+        "title": "FindingOut",
         "type": "object"
       },
       "FinishIn": {
@@ -1508,6 +1665,16 @@
       },
       "InsightsOut": {
         "properties": {
+          "a1c": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/A1cOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "band": {
             "anyOf": [
               {
@@ -1517,6 +1684,14 @@
                 "type": "null"
               }
             ]
+          },
+          "findings": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/FindingOut"
+            },
+            "title": "Findings",
+            "type": "array"
           },
           "insights": {
             "items": {
@@ -1805,6 +1980,17 @@
             ],
             "title": "Before Mgdl"
           },
+          "end_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Mgdl"
+          },
           "key": {
             "title": "Key",
             "type": "string"
@@ -1839,6 +2025,17 @@
             ],
             "title": "Slot",
             "type": "string"
+          },
+          "start_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Mgdl"
           }
         },
         "required": [

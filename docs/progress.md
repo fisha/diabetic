@@ -645,6 +645,18 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   over brief sections 7 to 10 with evidence and open items, build/run, environment variables, migrations.
 - `services/api/.env.example` now lists every setting, including `STEADY_SEALING_KEY` and why to set it once.
 
+## Guy's "insights are the key" request (11 Nov 2026, night)
+
+- Routines from all sources (G-38): foods usually followed by high glucose or by glucose in range, late meals and
+  the morning after, pump suspends / high alerts / leaving automatic mode by time of day, insulin before eating and
+  times of day in range; each with fixed advice (carb count, care team). Meal patterns say before and after values.
+- Estimated A1c (GMI) when 14+ days of sensor data cover 70 %.
+- CareLink alerts are now kept in `device_events` at every import (CareLink shows only the last day); readings, meals
+  and boluses were already kept, so the history grows past CareLink's window. Migration `97f70b09db11` also adds
+  `health_samples` for the coming Apple Health types.
+- The companion gets all findings and the A1c estimate. Tests: `test_findings.py`, `test_carelink.py`; web e2e
+  `tools/e2e/findings.cjs` (screens r01-r03).
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API
