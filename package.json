@@ -1,0 +1,20 @@
+{
+  "name": "steady-monorepo",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "mobile": "pnpm --filter @steady/mobile start",
+    "web": "pnpm --filter @steady/web dev",
+    "lint": "pnpm -r --if-present lint",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "pnpm -r --if-present test",
+    "guard": "node scripts/check-runtime-imports.mjs",
+    "check": "pnpm guard && pnpm typecheck && pnpm lint && pnpm test"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5"
+  }
+}

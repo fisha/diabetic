@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Steady website</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Rubik:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:var(--bg)}
+a{color:var(--act)}a:hover{color:var(--acd)}
+.w{font-family:-apple-system,'SF Pro Text','Inter','Rubik','IBM Plex Sans Arabic',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.5}
+.w *{box-sizing:border-box}
+.w:lang(ar){font-family:'IBM Plex Sans Arabic',-apple-system,'SF Pro Text','Inter',sans-serif}
+.w:lang(he){font-family:'Rubik',-apple-system,'SF Pro Text','Inter',sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.nav{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:20px 0}
+.nav a.l{color:var(--ink2);text-decoration:none;font-weight:500;min-height:44px;display:inline-flex;align-items:center}
+.nav a.l:hover{color:var(--act)}
+.w a:focus-visible,.w button:focus-visible{outline:3px solid var(--ac);outline-offset:3px;border-radius:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:16px;border:0;font:inherit;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none}
+.btn-p{background:var(--ac);color:var(--onac)}.btn-p:hover{color:var(--onac);background:var(--acd)}
+.btn-o{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}.btn-o:hover{color:var(--ink);border-color:var(--ter)}
+.btn-dark{background:var(--inv);color:var(--onac)}.btn-dark:hover{color:var(--onac)}
+.eyebrow{font-size:.8125rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--act);margin:0}
+.h1{font-size:clamp(2.25rem,5vw,4rem);line-height:1.04;letter-spacing:-.03em;font-weight:650;margin:0}
+.h2{font-size:clamp(1.75rem,3.2vw,2.5rem);line-height:1.12;letter-spacing:-.02em;font-weight:650;margin:0}
+.lead{font-size:1.1875rem;color:var(--ink2);margin:0;max-width:38em}
+.card{background:var(--card);border-radius:24px;box-shadow:0 1px 2px rgba(0,0,0,0),0 8px 24px rgba(0,0,0,0);padding:28px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.sec{padding:72px 0}
+.num{font-variant-numeric:tabular-nums}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:8px 0}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.phone{width:290px;height:590px;border-radius:44px;background:var(--bg);border:10px solid var(--ink);box-shadow:0 40px 80px rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:center;padding:56px 18px 18px;gap:14px;position:relative}
+.orb{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 36% 30%,var(--soft2) 0%,var(--ac) 46%,var(--acd) 100%);box-shadow:0 22px 44px rgba(30,111,104,.26);margin-top:30px}
+.seg{display:inline-flex;background:var(--fill);border-radius:14px;padding:4px;gap:4px}
+.seg button{min-height:44px;padding:0 18px;border:0;border-radius:11px;background:transparent;font:inherit;font-weight:600;color:var(--ink2);cursor:pointer}
+.seg button.on{background:var(--card);color:var(--act);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.faq{border-bottom:1px solid var(--hair)}
+.faq button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px;border:0;background:transparent;font:inherit;font-size:1.0625rem;font-weight:600;color:var(--ink);cursor:pointer;text-align:start}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;font-weight:700;padding:4px 10px;border-radius:9px}
+.langb{min-height:44px;padding:0 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-weight:600;cursor:pointer;color:var(--ink)}
+.langb.on{border-color:var(--ac);background:var(--soft);color:var(--act)}
+.foot{background:var(--inv);color:var(--line);padding:48px 0}
+.foot a{color:var(--onac)}
+
+/* theme B */
+:root{--fill:#E6E6EB;--hair:#E5E5EA;--line:#D1D1D6;--ink:#1D1D1F;--ink2:#3A3A3C;--sec:#6E6E73;--ter:#8E8E93;--inv:#1D1D1F;--onac:#FFFFFF;--ac:#0B7A75;--act:#0A6560;--acd:#085E5A;--soft:#E4F2F1;--soft2:#BFE3DF;--bar:rgba(255,255,255,.88);--bg:#FFFFFF;--card:#F5F5F7;--xE3ECF5:#E3ECF5;--x234E74:#234E74;--xF3E8D5:#F3E8D5;--x6B4A12:#6B4A12;--xF3F0FA:#F3F0FA;--xECE7F5:#ECE7F5;--x4B3A78:#4B3A78}:root:has([data-theme="night"]),[data-theme="night"]{--fill:#2C2C2E;--hair:#38383A;--line:#48484A;--ink:#F5F5F7;--ink2:#D1D1D6;--sec:#A1A1A6;--ter:#7C7C80;--inv:#3A3A3C;--onac:#FFFFFF;--ac:#14958D;--act:#6FD6CD;--acd:#0E7C75;--soft:#10302E;--soft2:#1D5753;--bar:rgba(22,22,24,.88);--bg:#000000;--card:#1C1C1E;--xE3ECF5:#25323F;--x234E74:#9DBEDB;--xF3E8D5:#4B3E28;--x6B4A12:#E7CC9F;--xF3F0FA:#261F36;--xECE7F5:#2D253B;--x4B3A78:#AB9FCB;color-scheme:dark}[data-theme="night"] .sheet,[data-theme="night"] .dlgc{--bg:#1C1C1E;--card:#2C2C2E;--fill:#3A3A3C;--hair:#48484A}[fill="#1E6F68"]{fill:var(--ac)}[fill="#D6ECE8"]{fill:var(--soft)}.sw i{background:#fff!important}.tabbar{background:var(--bar);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+</style>
+</helmet>
+<div data-theme="{{theme}}" class="w" dir="{{dir}}" lang="{{lang}}" style="width: 100%">
+  <div class="wrap">
+    <nav class="nav" aria-label="Site">
+      <a href="Website.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 700; font-size: 1.375rem; margin-inline-end: auto"><svg width="32" height="32" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#D6ECE8"></circle><circle cx="20" cy="20" r="11" fill="#1E6F68"></circle></svg>Steady</a>
+      <a class="l" href="#how">{{t.n1}}</a><a class="l" href="#can">{{t.n2}}</a><a class="l" href="#plan">{{t.n3}}</a><a class="l" href="#privacy">{{t.n4}}</a><a class="l" href="#help">{{t.n5}}</a>
+      <a class="btn btn-o" href="WebDashboard.dc.html">{{t.signin}}</a>
+    </nav>
+  </div>
+
+  <header class="wrap" style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center; padding-top: 40px; padding-bottom: 40px">
+    <div style="flex: 1 1 460px; display: flex; flex-direction: column; gap: 22px">
+      <p class="eyebrow">{{t.eye}}</p>
+      <h1 class="h1">{{t.h}}</h1>
+      <p class="lead">{{t.sub}}</p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap"><a class="btn btn-dark" href="Onboarding.dc.html">{{t.ios}}</a><a class="btn btn-dark" href="Onboarding.dc.html">{{t.android}}</a></div>
+      <p style="margin: 0; font-size: .9375rem; color: var(--ink2)">{{t.trial}}</p>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap" role="group" aria-label="Language"><sc-for list="{{langs}}" as="l" hint-placeholder-count="4"><button class="{{l.cls}}" lang="{{l.code}}" aria-pressed="{{l.on}}" onClick="{{l.pick}}">{{l.name}}</button></sc-for></div>
+    </div>
+    <div style="flex: 1 1 320px; display: flex; justify-content: center">
+      <div class="phone" role="img" aria-label="The Steady app home screen with the companion orb">
+        <div style="align-self: stretch; background: var(--card); border-radius: 16px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 2px rgba(0,0,0,.06)"><span><span style="font-size: .6875rem; color: var(--sec); display: block">Latest · 4 min ago</span><b class="num" style="font-size: 1.25rem">142</b> <span style="font-size: .75rem">mg/dL</span></span><span class="tag" style="background: var(--xE3ECF5); color: var(--x234E74); font-size: .6875rem">In range</span></div>
+        <div class="orb"></div>
+        <b style="font-size: 1.125rem">Tap to talk</b>
+        <div style="background: var(--fill); border-radius: 14px; padding: 10px 12px; font-size: .8125rem">“We noticed a similar rise around lunch on several recorded days. Have you eaten yet?”</div>
+        <span class="tag" style="background: var(--xF3E8D5); color: var(--x6B4A12); font-size: .6875rem">Demo data</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="sec" id="how" style="background: var(--card)">
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 32px">
+      <div><p class="eyebrow">How it works</p><h2 class="h2" style="margin-top: 8px">Talk, log, and look back, without the busywork</h2></div>
+      <div class="grid">
+        <div class="card" style="background: var(--bg); box-shadow: none"><span class="num" style="font-weight: 700; color: var(--act)">01</span><h3 style="margin: 8px 0 6px; font-size: 1.25rem">Tell it, or snap it</h3><p style="margin: 0; color: var(--ink2)">Say “124 after lunch”, type it, or photograph your plate. You check every number and unit before anything is saved.</p></div>
+        <div class="card" style="background: var(--bg); box-shadow: none"><span class="num" style="font-weight: 700; color: var(--act)">02</span><h3 style="margin: 8px 0 6px; font-size: 1.25rem">It follows up</h3><p style="margin: 0; color: var(--ink2)">Short check-ins at times you choose, with quiet hours. If you already logged it, the question is withdrawn.</p></div>
+        <div class="card" style="background: var(--bg); box-shadow: none"><span class="num" style="font-weight: 700; color: var(--act)">03</span><h3 style="margin: 8px 0 6px; font-size: 1.25rem">Patterns, with receipts</h3><p style="margin: 0; color: var(--ink2)">Observations always show the records behind them, and say plainly when they’re only a first impression.</p></div>
+      </div>
+      <p style="margin: 0; color: var(--ink2)">The first few days are about learning your routine. Understanding how your body responds takes much longer, and Steady says so.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="can">
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 28px">
+      <div><p class="eyebrow">Capabilities and limits</p><h2 class="h2" style="margin-top: 8px">Clear about what it is, and what it isn’t</h2></div>
+      <div class="grid">
+        <div class="card"><h3 style="margin: 0 0 10px; font-size: 1.25rem">Steady can</h3>
+          <sc-for list="{{can}}" as="x" hint-placeholder-count="5"><div class="chk"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ac); flex: none"><path d="M5 12l5 5 9-10"></path></svg><span>{{x}}</span></div></sc-for>
+        </div>
+        <div class="card"><h3 style="margin: 0 0 10px; font-size: 1.25rem">Steady can’t</h3>
+          <sc-for list="{{cant}}" as="x" hint-placeholder-count="5"><div class="chk"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--sec); flex: none"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>{{x}}</span></div></sc-for>
+        </div>
+      </div>
+      <div class="card" style="display: flex; gap: 16px; align-items: flex-start; background: var(--xF3F0FA); box-shadow: none"><span class="tag" style="background: var(--xECE7F5); color: var(--x4B3A78)">Planned</span><p style="margin: 0">Device connections (for example Guardian 4 sensor data) and sharing with your care team are being designed. They are not available today, and Steady works fully with readings you enter yourself.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="plan" style="background: var(--card)">
+    <div class="wrap" style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+      <div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 14px"><p class="eyebrow">Membership</p><h2 class="h2">One plan. Everything included.</h2><p class="lead">Start with a free {{trialDays}}-day trial. No tiers, no credits, and never a sales message inside a health conversation.</p></div>
+      <div class="card" style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 16px">
+        <div class="seg" role="radiogroup" aria-label="Billing period"><sc-for list="{{plans}}" as="pl" hint-placeholder-count="2"><button class="{{pl.cls}}" role="radio" aria-checked="{{pl.on}}" onClick="{{pl.pick}}">{{pl.label}}</button></sc-for></div>
+        <div style="display: flex; align-items: baseline; gap: 10px"><span class="num" style="font-size: 2.5rem; font-weight: 700">{{price}}</span><span style="color: var(--ink2)">{{per}}</span></div>
+        <span class="tag" style="background: var(--xF3E8D5); color: var(--x6B4A12); align-self: flex-start">Placeholder pricing, not final</span>
+        <p style="margin: 0; color: var(--ink2)">{{planNote}}</p>
+        <a class="btn btn-p" href="Onboarding.dc.html">Start free trial</a>
+        <span style="font-size: .875rem; color: var(--sec)">On mobile, billing is handled by the App Store or Google Play. On the web, by our payment provider.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="privacy">
+    <div class="wrap grid" style="align-items: start">
+      <div style="display: flex; flex-direction: column; gap: 12px"><p class="eyebrow">Privacy</p><h2 class="h2">Your records stay yours</h2></div>
+      <div class="card"><h3 style="margin: 0 0 6px; font-size: 1.125rem">Separate choices</h3><p style="margin: 0; color: var(--ink2)">Using your data to run the service and using it to improve models are separate consents. The second is off unless you turn it on.</p></div>
+      <div class="card"><h3 style="margin: 0 0 6px; font-size: 1.125rem">See and remove memories</h3><p style="margin: 0; color: var(--ink2)">Everything the companion remembers is listed with its source. Edit or remove any of it, or all of it.</p></div>
+      <div class="card"><h3 style="margin: 0 0 6px; font-size: 1.125rem">Export or delete anytime</h3><p style="margin: 0; color: var(--ink2)">Download a PDF or CSV export, or delete your account and data from the app or the web.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="help" style="background: var(--card)">
+    <div class="wrap" style="display: flex; flex-wrap: wrap; gap: 40px">
+      <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px"><p class="eyebrow">Support</p><h2 class="h2">Questions</h2><p style="margin: 0; color: var(--ink2)">Write to support@[domain] or use Help in the app. In an emergency, call your local emergency number.</p><a class="btn btn-o" href="WebDashboard.dc.html" style="align-self: flex-start">Go to your dashboard</a></div>
+      <div style="flex: 2 1 480px">
+        <sc-for list="{{faq}}" as="q" hint-placeholder-count="4"><div class="faq"><button aria-expanded="{{q.open}}" onClick="{{q.toggle}}"><span>{{q.q}}</span><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><path d="{{q.icon}}"></path></svg></button><sc-if value="{{q.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0 0 18px; color: var(--ink2)">{{q.a}}</p></sc-if></div></sc-for>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between">
+      <div style="max-width: 560px; display: flex; flex-direction: column; gap: 8px"><b style="color: var(--onac); font-size: 1.125rem">Steady</b><span style="font-size: .9375rem">Steady is an AI companion for people living with type 1 diabetes. It is not a medical device, does not recommend insulin doses, and does not replace device alarms, emergency services or your care team.</span></div>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start"><a href="#privacy">Privacy</a><a href="#plan">Terms</a><a href="#help">Support</a><a href="WebDashboard.dc.html">Sign in</a></div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["day","night"],"default":"day","section":"Appearance"},"trialDays":{"editor":"enum","options":["7","14"],"default":"14","section":"Prototype"},"$preview":{"width":1440,"height":3200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const p = this.props || {};
+    const v = (k, d) => (s[k] === undefined ? d : s[k]);
+    const set = (o) => this.setState(o);
+    const lang = v('lang', 'en');
+    const T = {
+      en: { n1: 'How it works', n2: 'What it can do', n3: 'Membership', n4: 'Privacy', n5: 'Support', signin: 'Sign in', eye: 'For adults living with type 1 diabetes', h: 'Less to carry, every day.', sub: 'Steady is a calm AI companion you can talk to. It logs what you tell it, follows up when you ask, and helps you notice patterns without judgment.', ios: 'Download for iPhone', android: 'Get it on Android', trial: 'Free trial, then one simple membership. Works without a connected device.' },
+      he: { n1: 'איך זה עובד', n2: 'מה הוא יודע', n3: 'מנוי', n4: 'פרטיות', n5: 'תמיכה', signin: 'כניסה', eye: 'למבוגרים שחיים עם סוכרת סוג 1', h: 'פחות לסחוב, בכל יום.', sub: 'Steady הוא מלווה AI רגוע שאפשר לדבר איתו. הוא מתעד מה שמספרים לו, חוזר אליכם כשביקשתם, ועוזר לזהות דפוסים בלי שיפוטיות.', ios: 'הורדה ל־iPhone', android: 'הורדה לאנדרואיד', trial: 'תקופת ניסיון חינם, ואז מנוי אחד פשוט. עובד גם בלי מכשיר מחובר.' },
+      ar: { n1: 'كيف يعمل', n2: 'ما الذي يقدمه', n3: 'العضوية', n4: 'الخصوصية', n5: 'الدعم', signin: 'تسجيل الدخول', eye: 'للبالغين المتعايشين مع السكري من النوع الأول', h: 'عبء أقل، كل يوم.', sub: 'Steady رفيق هادئ بالذكاء الاصطناعي يمكنك التحدث إليه. يسجّل ما تخبره به، ويتابع معك عندما تطلب، ويساعدك على ملاحظة الأنماط دون أحكام.', ios: 'تنزيل لـ iPhone', android: 'تنزيل لأندرويد', trial: 'تجربة مجانية، ثم عضوية واحدة بسيطة. يعمل دون جهاز متصل.' },
+      ru: { n1: 'Как это работает', n2: 'Возможности', n3: 'Подписка', n4: 'Конфиденциальность', n5: 'Поддержка', signin: 'Войти', eye: 'Для взрослых с диабетом 1 типа', h: 'Меньше груза каждый день.', sub: 'Steady — спокойный ИИ-помощник, с которым можно говорить. Он записывает то, что вы рассказываете, напоминает, когда вы просите, и помогает замечать закономерности без осуждения.', ios: 'Скачать для iPhone', android: 'Скачать для Android', trial: 'Бесплатный пробный период, затем одна простая подписка. Работает без подключённых устройств.' }
+    };
+    const t = T[lang];
+    const plan = v('plan', 'annual');
+    const fo = v('faq', -1);
+    const FAQ = [['Do I need a sensor or pump?', 'No. Everything works with readings you enter by voice, text or form. Device connections are planned and will be optional.'], ['Will it tell me how much insulin to take?', 'No. Steady records insulin you report taking. It doesn’t calculate, suggest or adjust doses.'], ['Which languages does it speak?', 'The app is available in English, Hebrew, Arabic and Russian. Conversation language can be set separately; available voices depend on our speech provider.'], ['Is it for children?', 'Not yet. Steady is designed for adults. A family version with guardian permissions is being designed.']];
+    return {
+      t: t, lang: lang, dir: lang === 'he' || lang === 'ar' ? 'rtl' : 'ltr',
+      langs: [['en', 'English'], ['he', 'עברית'], ['ar', 'العربية'], ['ru', 'Русский']].map((l) => ({ code: l[0], name: l[1], on: lang === l[0], cls: 'langb' + (lang === l[0] ? ' on' : ''), pick: () => set({ lang: l[0] }) })),
+      can: ['Log glucose, meals, insulin you took and activity, by voice or text', 'Estimate carbs from a meal photo, as an estimate you can correct', 'Remember your routine and preferences, which you can review', 'Follow up on what you agreed, at times you choose', 'Show observations together with the records behind them'],
+      cant: ['Recommend, calculate or adjust insulin doses', 'Prescribe or change treatment', 'Replace your device alarms or monitor you continuously', 'Act as a nurse, doctor or emergency service', 'Guarantee a notification was seen'],
+      trialDays: p.trialDays || '14',
+      plans: [['monthly', 'Monthly'], ['annual', 'Annual']].map((x) => ({ label: x[1], on: plan === x[0], cls: plan === x[0] ? 'on' : '', pick: () => set({ plan: x[0] }) })),
+      price: plan === 'annual' ? '[PRICE_ANNUAL]' : '[PRICE_MONTHLY]', per: plan === 'annual' ? 'per year' : 'per month',
+      planNote: plan === 'annual' ? 'Billed once a year. [SAVING]% less than paying monthly for 12 months.' : 'Billed monthly. Cancel anytime.',
+      faq: FAQ.map((q, i) => ({ q: q[0], a: q[1], open: fo === i, icon: fo === i ? 'M6 15l6-6 6 6' : 'M6 9l6 6 6-6', toggle: () => set({ faq: fo === i ? -1 : i }) }))
+    };
+  }
+}
+
+;(function(){var rv=Component.prototype.renderVals;Component.prototype.renderVals=function(){var v=rv.call(this)||{};var s=this.state&&this.state.themeOverride;var p=(this.props&&this.props.theme)||'day';v.theme=s||p;var n=v.theme==='night';var self=this;v.setThemeDay=function(){self.setState({themeOverride:'day'})};v.setThemeNight=function(){self.setState({themeOverride:'night'})};v.thDayCls='chip'+(n?'':' on');v.thNightCls='chip'+(n?' on':'');return v;};})();
+</script>
+</body>
+</html>

@@ -1,0 +1,7042 @@
+{
+  "cmp.badge.confirmed": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.badge.edited": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.badge.estimate": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.badge.notSynced": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.badge.pending": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.badge.unsure": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Impersonal form in Hebrew and Arabic to avoid gendered wording"
+  },
+  "cmp.badge.weighed": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.clinicalReview": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "G-05 label on unreviewed clinical copy in development builds"
+  },
+  "cmp.field.notSet": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.field.unknown": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.graph.empty": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview chartEmpty state"
+  },
+  "cmp.graph.noData": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.graph.summary": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.graph.title": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.loading": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.reading.ago": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Age part of com.reading.age, shown under the large value"
+  },
+  "cmp.reading.none": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.required": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.rtl.action": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.rtl.body": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.rtl.title": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Native adaptation RTL: direction changes need a reload"
+  },
+  "cmp.step": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.stepper.dec": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.stepper.inc": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.timeline.notYet": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.tir.label": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.tir.notEnough": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.unavailable": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "G-04 neutral copy for services that are not configured"
+  },
+  "com.a_cycle": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.a_gym": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.a_h": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.a_l": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.a_m": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.a_other": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.a_run": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.a_swim": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.a_walk": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.above": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ac_dur": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ac_int": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ac_save": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ac_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ac_type": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ac_when": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ai_label": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ans_not": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ans_snooze": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ans_yes": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.below": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.cancel": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.card.confirm": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.change": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.close": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.confirm": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.cont_text": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.daily": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.disc_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.disc_q": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.discard": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.done": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.edit": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.end": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ex_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ex_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.fail": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.finish": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.g_err_empty": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.g_err_range": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.g_low_b": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-05: same content as com.low.*; shown only in development builds until clinically reviewed"
+  },
+  "com.g_low_t": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-05: same content as com.low.*; shown only in development builds until clinically reviewed"
+  },
+  "com.g_meter": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.g_save": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.g_sensor": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.g_src": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.g_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.g_time": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.g_unit": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.g_val": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.heard": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.hist_empty": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "G-03 approved empty state for COM-11"
+  },
+  "com.history": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_basal": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_corr": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_err": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_for": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_ins": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_meal": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_note": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_ns": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_range": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_save": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_u": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.in_units": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.insulin.note": {
+    "board": "Localization",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "com.just_now": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.keep": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.latest": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.low": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-05: same content as com.low.*; shown only in development builds until clinically reviewed"
+  },
+  "com.low.body": {
+    "board": "Localization",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Placeholder until clinically approved low guidance exists"
+  },
+  "com.low.title": {
+    "board": "Localization",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "com.mic_den_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.mic_den_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.mic_on": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.min": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.min_ago": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.mute": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.no_save": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.no_sym": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.no_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.no_txt": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.notif_from": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Arguments replace the sample values drawn in the design."
+  },
+  "com.now": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.off_saved": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.offline": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.once": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.open_set": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.orb.listening": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ],
+    "note": "Status under orb, must stay short"
+  },
+  "com.pending": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.qa_a": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.qa_g": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.qa_i": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.qa_m": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.qa_more": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.qa_n": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.qa_r": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ql_photo": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ql_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.r1h": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.r2h": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.r30": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.rc": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.re_done": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.re_note": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.re_rep": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.re_save": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.re_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.re_what": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.re_when": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.reading.age": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ],
+    "note": "ICU MessageFormat. Arabic has 6 plural forms"
+  },
+  "com.resumed": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.retry": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.retry_hint": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.saved": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.saving": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.send": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.src_meter": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_idle": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_idle_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_int": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_int_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_listen": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_listen_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_muted": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_muted_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_proc": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_proc_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_recon": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_recon_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_speak": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_speak_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_unav": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.st_unav_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.stale_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Arguments replace the sample values drawn in the design."
+  },
+  "com.stop": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.sy1": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.sy2": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.sy3": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.sy4": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.sy5": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.sy6": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.tab_c": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.tab_j": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.tab_o": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.tab_p": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.talk": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.text": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.to_text": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.today": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.type_ph": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Arguments replace the sample values drawn in the design."
+  },
+  "com.unavail_remind": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "G-04, reminder sheet"
+  },
+  "com.unavail_save": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "G-04, log sheets"
+  },
+  "com.unavail_text": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "G-04, text conversation"
+  },
+  "com.unavail_voice": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "G-04: shown under the orb instead of the outage text while voice is not configured."
+  },
+  "com.unmute": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.unwell_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.use_text": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.via_voice": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.voice": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.yday": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.you": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.yours": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.b_device": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "{name} is the device name from the data source."
+  },
+  "jrn.b_dup": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.b_hidden": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.b_obs": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.b_rep": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.b_sug": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.b_voice": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.b_you": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.back": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.cancel_edit": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.del_b": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.del_no": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.del_t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.del_yes": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.delete": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.device_note": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.dup_keep": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.dup_merge": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.dup_t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.edit": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.edit_t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.empty": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.empty_f": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.export_web": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.f_act": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.f_all": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.f_comp": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.f_glu": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.f_ins": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.f_meal": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.f_rem": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.filter": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.hide": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.hist": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.k_act": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.k_comp": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.k_gap": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.k_glu": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.k_ins": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.k_meal": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.k_rem": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.meal_edit": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.meal_edit_note": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.orig_kept": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pending": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.r_other": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.r_time": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.r_typo": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.r_unit": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.rem_change": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.retry": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.save_fix": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.st_completed": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.st_declined": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.st_opened": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.st_scheduled": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.st_sent": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.state.acknowledged": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ],
+    "note": "Must not imply the action was done"
+  },
+  "jrn.state.device": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.state.reported": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.state.suggested": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sync_fail": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.time": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.title": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.today_d": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.unavail_edit": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "G-04 state for edit, delete, merge and hide."
+  },
+  "jrn.why": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.yday_d": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.a1": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.a2": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.a3": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.a_note": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Shown only while real analysis runs (never with a timer)."
+  },
+  "meal.add": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.add_custom": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.amount_of": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.analyzing": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.ate_all": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.ate_half": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.ate_little": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.ate_most": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.ate_q": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.back": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.back_conv": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.blurry": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.cam_off_b": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.cam_off_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.camera": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.cancel": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.cancel_manual": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.carb_est": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.carb_unknown": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.carbs_for": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.change_food": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.change_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.check_photo": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.check_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.close": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.correct": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.desc_instead": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.desc_it": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.desc_note": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.desc_short": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.desc_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.dictate": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.down_b": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.down_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.eaten_at": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.editing": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.enter_manual": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.enter_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.est_note": {
+    "board": "Meal",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "meal.est_portion": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.find": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.flash_off": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.flash_on": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.found": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.frame": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.g_carbs": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.how": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.howMuch": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.how_b": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.less": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.m_desc": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.m_lib": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.m_manual": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.m_photo": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.meal": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.more": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.noFood": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.no_data": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.no_data_b": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.no_items": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.no_match": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.nofood_b": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.nofood_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.p_est": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.p_man": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.p_q": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.p_user": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.p_wt": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.photo_a11y": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.photo_note": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.recent": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.remove": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.replace": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.retake": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.retake_photo": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.save": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.save_fix": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.saved_h": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.saved_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.search": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.serving": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.shoot": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.title": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.total.estimate": {
+    "board": "Localization",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "meal.total_est": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.total_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.total_unknown": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.total_wt": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.try_again": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.u_bowl": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.u_cup": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.u_g": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.u_half": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.u_piece": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.u_slice": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.u_tbsp": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.unavail_desc": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.unavail_photo": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "G-04 state after Use this photo."
+  },
+  "meal.unavail_save": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.unavail_search": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.use_photo": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.view_jrn": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.weighed": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "RU uses a (а) gender form; review."
+  },
+  "meal.what": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.what_ph": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_apple": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_create": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_email": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_err": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_forgot": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_google": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_have": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_new": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_or": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_pw": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_pwh": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_signin": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_signin_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.av_1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.av_2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.av_3": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.av_4": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.av_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.av_orb": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.av_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.b_ago": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.b_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.b_h": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.b_old": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.b_on": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.b_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.b_today": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.b_w": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.back": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.c1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.c1b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.c2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.c2b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.c_agree": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.c_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.c_err": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.c_priv": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.c_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.common.dontKnow": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ],
+    "note": "Hebrew uses an impersonal form to avoid gendered verbs"
+  },
+  "onb.consent.service": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ],
+    "note": "Legal review"
+  },
+  "onb.consent.training": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ],
+    "note": "Legal review"
+  },
+  "onb.cont": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.d_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.d_d": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.d_err": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.d_m": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.d_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.d_y": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.dx_1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.dx_2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.dx_3": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.dx_4": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.dx_5": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.dx_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.dx_date": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.dx_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fa_1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fa_2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fa_3": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fa_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fa_go": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fa_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.future": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.g_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.g_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.hi_aw": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.hi_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.hi_med": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.hi_medp": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.hi_sev": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.hi_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_add": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_cf": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_from": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_g": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_idk_on": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_note": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_rm": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_s1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_s2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_s3": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_src": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_tg": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_upd": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.idk": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.in_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.in_l": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.in_r": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.in_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.later": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.mi_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.mi_fix": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.mi_g": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.mi_n": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.mi_nd": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.mi_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.na_l": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.na_s": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.na_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_allow": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_f": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_f1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_f2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_f3": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_off": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_on": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_q": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_set": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_to": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.no_why": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.of": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.other": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.perU": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.pref": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.pu_inj": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.pu_n": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.pu_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.r_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.r_done": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.r_send": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.r_sent_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.r_sent_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.r_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ratio.helper": {
+    "board": "Localization",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "onb.res_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.res_go": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.res_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ro_c1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ro_c2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ro_c3": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ro_c4": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ro_can": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ro_cant": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ro_em": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ro_n1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ro_n2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ro_n3": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ro_ok": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ro_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_br": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_ct": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_di": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_e1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_e2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_e3": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_e4": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_ev": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_ex": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_lu": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_m": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_md": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_meals": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_sl": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_body": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_comp": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_dob": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_done": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_dx": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_entered": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_hist": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_icr": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_ins": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_lang": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_notif": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_ns": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_pump": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_rt": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_sen": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_tx": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_type": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_units": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_unknown": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.se_none": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.se_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.skip": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.some": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.st_c": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.st_cb": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.st_e": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.st_eb": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.st_l": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.st_w": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.st_wb": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.stepOf": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.tx_i": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.tx_ns": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.tx_p": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.tx_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ty_1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ty_note": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ty_ns": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ty_o": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ty_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.u_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.u_mgx": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.u_mmx": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.u_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.unavail_auth": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "G-04, account screens"
+  },
+  "onb.unavail_profile": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "G-04, end of onboarding"
+  },
+  "onb.unavail_profile_web": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "G-04, web preview has no protected storage"
+  },
+  "onb.v1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.v1b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.v2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.v2b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.v3": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.v3b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.vo_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.vo_lang": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.vo_lang_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.vo_prev": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.vo_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.vo_unavail": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "G-10 voice catalog placeholder"
+  },
+  "onb.w_ai": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.w_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.w_have": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.w_lang": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.w_start": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.w_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.welcome.title": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.x_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.x_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.yes": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.age_min": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.back": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.basis": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.coverage": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.day_empty": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.day_na": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.day_split": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.export": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.graph.axis": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ],
+    "note": "Shown in RTL locales only"
+  },
+  "ovr.hit": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.ins_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.ins_src": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.ins_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.insight": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.insight.disclaimer": {
+    "board": "Localization",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "ovr.insight.recurring": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ],
+    "note": "Arguments replace the sample values drawn in the design."
+  },
+  "ovr.left_hide": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.left_out": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.lg_above": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.lg_below": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.lg_in": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.lg_meter": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.lg_na": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.lg_nodata": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.lg_range": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.lg_sensor": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.looks": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.manual_note": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.mute": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.next": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.no_tir": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.none_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.none_cta": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.none_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.not_cause": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "ovr.not_right": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.open_jrn": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.p_2w": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.p_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.p_month": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.p_week": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.period": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.prev": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.reading.stale": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ],
+    "note": "Plural rules as com.reading.age Arguments replace the sample values drawn in the design."
+  },
+  "ovr.ro_gap": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.ro_later": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.ro_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.ro_val": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.src_both": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.src_est": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.src_meter": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.src_sensor": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.src_you": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.st_act": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.st_ins": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.st_meals": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.st_readings": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.stale": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "ovr.sum_read": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.sum_today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.sum_week": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.tag_first": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.tag_learn": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.tag_rec": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.talk": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.tap": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.tap_day": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Coverage threshold comes from clinical config (G-06)."
+  },
+  "ovr.tir_sensor": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.tir_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.title": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.today_d": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.unavail_fb": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "G-04 state for insight feedback."
+  },
+  "ovr.useful": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.useful_q": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.w1": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.w2": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "HE uses a slash form for gender; review."
+  },
+  "ovr.w3": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.w4": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.why": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.wins": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.answer": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.back": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.day": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ],
+    "note": "Hebrew verb follows companion persona gender Arguments replace the sample values drawn in the design."
+  },
+  "rtn.dismiss": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.earlier": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fam_day": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fam_note": {
+    "board": "Routine",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "rtn.fam_tag": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_extend": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_head": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_imp": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_no": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_note": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_ovr": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_title": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_well": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_yes": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.firm": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.first": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.g_health": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.g_pref": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.g_routine": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.learned": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.learned_none": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.mem_b": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.mem_clear": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.mem_edit": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.mem_none": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.mem_on": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.next": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.none_up": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.often": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.pause": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.quiet": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.quietHours": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.quiet_from": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.quiet_note": {
+    "board": "Routine",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "rtn.quiet_to": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.resched": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.snooze": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.st_dismissed": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.st_done": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.st_noans": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.st_opened": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.st_resched": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.st_sched": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.st_sent": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.st_snoozed": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.st_withdrawn": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.status_words": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ],
+    "note": "Status names must match rtn.st_* exactly."
+  },
+  "rtn.suggested": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.suggested_b": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.sum_head": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.sum_open": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.sum_sub": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.sum_tag": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.t_checkins": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.t_memory": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.t_routine": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.time_of": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.title": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.to": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.unavail_pause": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.unknown": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.upcoming": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.a11y": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.a11y_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.acct_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.acct_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.add": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.app_lang": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.appear_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.appearance": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.before": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.before1": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.before2": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.before3": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cap": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cap_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.care": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.care_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cf_add": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cf_unknown": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.comp_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.comp_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.companion": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.contact": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.conv_lang": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_again": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_cancel": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_check": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_connect": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_disc": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_log": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_notnow": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_reconnect": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_renew": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_signin": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_stay": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_sync": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_tell": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.da_trouble": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.day": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dd_connected": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dd_connecting": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dd_disc": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dd_disconnected": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dd_down": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dd_expired": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dd_explain": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dd_none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dd_reconnect": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dd_stale": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dd_unsupported": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.del_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.del_done": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.del_done_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Needs legal review (retention period)."
+  },
+  "set.del_export": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.del_go": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.del_keep": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.del_running": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.del_store": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.del_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.del_type": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "DELETE stays in Latin letters in every language; the check compares to DELETE."
+  },
+  "set.delete": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.delete.title": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dev_health_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dev_names": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dev_plan": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dev_planned_cap": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dev_pump": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dev_sensor": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.devices": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.devices.planned": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.devices_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dig": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dig_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.disc_keep": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.disc_keep_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.disc_q": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.disc_rm": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.disc_rm_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_connected": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_connecting": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_disc": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_disconnected": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_down": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_expired": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_explain": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_reconnect": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_stale": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_unsupported": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.edit": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.emergency": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "set.ex_30": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_90": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_a": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_all": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_another": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_avail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_c": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_create": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_csv": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_csv_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_format": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_g": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_i": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_include": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_leave": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_m": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_n": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_pdf": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_pdf_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_period": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_ready": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_running": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_share": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.export": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.fa1": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "set.fa2": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "set.fa3": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.fa4": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.fq1": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.fq2": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.fq3": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.fq4": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.g_acct": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.g_app": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.g_comp": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.g_health": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hap": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hap_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hc": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.hc_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.help": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.icr": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.icr_val": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.insulin": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.lang_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.lang_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.language": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.look": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.membership": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.minor_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.motion_r": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.motion_s": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.n1": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.n1_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.n2": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.n2_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.n3": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.n3_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.n4": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.n4_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.n5": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.n5_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.night": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.not_conn": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.notif": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.notif_note": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "set.ok": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.open_settings": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.perm": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.perm_allow": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.perm_ask": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.perm_na": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.perm_off": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.perm_on": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ph_0": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ph_90": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ph_all": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.photos": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.photos_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.planned": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.policy": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.prev_text": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.preview": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.privacy": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.profile": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.pv_service": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.pv_service_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.pv_thanks": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Policy wording needs legal review."
+  },
+  "set.pv_train": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.pv_train_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.quiet": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.report": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.rm": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.rm_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.routine": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.save": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.saved_local": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.sign_out": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.so_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.so_unavail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.sp_f": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.sp_n": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.sp_s": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.speed": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.src_setup": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.src_you": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.text_size": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.train_off": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.train_on": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.treatment": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.treatment_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ts_def": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ts_l": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ts_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ts_xl": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ts_xxl": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tx_age": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tx_confirmed": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tx_current": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tx_edit": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tx_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.unavail_delete": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.unavail_export": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.unavail_health": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.unavail_policy": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.unavail_support": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.unavail_vendor": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.unknown": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.updated": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.version": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.voice": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.annual": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.annual_b": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ],
+    "note": "Design shows a [SAVING]% comparison; add it only once real prices exist."
+  },
+  "sub.b_cancelled": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.b_ended": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.b_ending": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.b_expired": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.b_member": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.b_ns": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.b_pay": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.b_trial": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.billed": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.billing": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.cancel": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.choose": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.h_cancelled": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.h_ended": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.h_ending": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.h_expired": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.h_member": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.h_ns": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.h_pay": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.h_trial": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.i1": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.i2": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.i3": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.i4": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.i5": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.join": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.kept": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.manage": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.meter": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.monthly": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.monthly_b": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.paused": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.paused1": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.paused2": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.paused3": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.pay_fix": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.placeholder": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.plan": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.plan_b": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.plan_t": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.renews": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.restore": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.s_cancelled": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.s_ended": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.s_expired": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.s_member": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.s_ns": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.s_pay": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.s_trial": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.still": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.still1": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.still2": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.still3": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.terms": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ],
+    "note": "Needs legal review."
+  },
+  "sub.terms_trial": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.title": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.trial.ended": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.trial.offer": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ],
+    "note": "Price from store, never hard-coded"
+  },
+  "sub.unavail": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.until": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ]
+  },
+  "sys.disclaimer": {
+    "board": "Localization",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Regulatory wording depends on classification"
+  },
+  "sys.offline": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "sys.saveFailed": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.all": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.care": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.care_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.create": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.csv": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.edits_note": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.empty_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.empty_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.export": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.f_comp": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.f_glu": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.f_ins": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.f_meal": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.f_rem": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.filters": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.format": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.ins_empty": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.ins_note": {
+    "board": "WebDashboard",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "wd.insights": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.lang": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.lang_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.mem_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.membership": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.nav": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.not_signed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.overview": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.p14": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.p30": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.p90": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.pdf": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.period": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.planned": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.r30": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.r90": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.rall": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.row_note": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.settings": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.signin_unavail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.timeline": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.tl_empty": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.train": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.train_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.unavail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.unavail_export": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.a1": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.a2": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "web.a3": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.a4": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.android": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.annual": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.billing": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.billing_note": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.can1": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.can2": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.can3": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.can4": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.can5": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.can_eye": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.can_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.can_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.cant1": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "web.cant2": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "web.cant3": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "web.cant4": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "web.cant5": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.cant_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.disclaimer": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Regulatory wording is open."
+  },
+  "web.eye": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.help_b": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Design also offers support@[domain]; add when the domain exists."
+  },
+  "web.help_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.home": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.how_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.how_note": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "web.ios": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.lang": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.monthly": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.n1": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.n2": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.n3": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.n4": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.n5": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.nav": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.note_annual": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Design adds \"[SAVING]% less than paying monthly\"; add only with real prices."
+  },
+  "web.note_monthly": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.per_month": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.per_year": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.ph_alt": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.ph_demo": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.ph_inrange": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.ph_latest": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.ph_quote": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.ph_tap": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.placeholder": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.plan_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.plan_lead": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.plan_trial": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.planned": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.planned_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.prices_open": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.privacy": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.pv1_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.pv1_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.pv2_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.pv2_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.pv3_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.pv3_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.pv_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.q1": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.q2": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.q3": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.q4": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.s1_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.s1_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.s2_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.s2_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.s3_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.s3_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.signin": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.skip": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.start_trial": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.stores_soon": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.sub": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.terms": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.to_dashboard": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.trial": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  }
+}

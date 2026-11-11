@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Overview and insights</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:var(--fill)}
+a{color:var(--act)}a:hover{color:var(--acd)}
+.ph{position:relative;width:390px;height:844px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:-apple-system,'SF Pro Text','Inter',system-ui,sans-serif;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:1.4}
+.ph *{box-sizing:border-box}
+.ph button:focus-visible,.ph a:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.hdr{display:flex;align-items:center;gap:8px;padding:54px 16px 4px}
+.h1{font-size:1.75em;font-weight:650;margin:0;flex:1;letter-spacing:-.01em}
+.ib{width:48px;height:48px;border-radius:24px;border:0;background:var(--card);box-shadow:0 1px 2px rgba(0,0,0,0);display:flex;align-items:center;justify-content:center;color:var(--ink);cursor:pointer;flex:none;text-decoration:none}
+.ib.plain{background:transparent;box-shadow:none}
+.scroll{flex:1;overflow-y:auto;padding:8px 16px 20px;display:flex;flex-direction:column;gap:14px;min-height:0}
+.card{background:var(--card);border-radius:22px;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 16px rgba(0,0,0,0);padding:16px}
+.lbl{font-size:.9375em;font-weight:600;color:var(--ink2);margin:0}
+.small{font-size:.875em;color:var(--sec);line-height:1.45}
+.xs{font-size:.75em;color:var(--sec)}
+.gv{font-size:2.5em;font-weight:700;letter-spacing:-.02em;line-height:1}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:.8125em;font-weight:700;padding:4px 9px;border-radius:9px}
+.t-in{background:var(--xE3ECF5);color:var(--x234E74)}.t-hi{background:var(--xEFE6F6);color:var(--x5A2F84)}.t-lo{background:var(--xFBE7DE);color:var(--x9A340C)}
+.t-demo{background:var(--xF3E8D5);color:var(--x6B4A12)}.t-stale{background:var(--fill);color:var(--ink2)}
+.t-tent{background:var(--fill);color:var(--ink2);border:1.5px dashed var(--ter)}.t-rec{background:var(--soft);color:var(--act)}.t-good{background:var(--soft);color:var(--act)}
+.seg{display:flex;background:var(--fill);border-radius:14px;padding:3px;gap:3px}
+.seg button{flex:1;min-height:44px;border:0;border-radius:11px;background:transparent;font:inherit;font-size:.875em;font-weight:600;color:var(--ink2);cursor:pointer}
+.seg button.on{background:var(--card);color:var(--act);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.chart{position:relative;height:214px;margin-top:6px}
+.hit{position:absolute;top:0;bottom:24px;border:0;background:transparent;cursor:pointer;padding:0}
+.hit:hover,.hit.on{background:rgba(30,111,104,.08)}
+.mk{position:absolute;width:12px;height:12px;transform:translate(-6px,-6px) rotate(45deg);background:var(--inv);border:2px solid var(--card);box-shadow:0 0 0 1px var(--ink)}
+.ev{position:absolute;bottom:0;transform:translateX(-12px);width:24px;height:24px;border-radius:8px;background:var(--fill);color:var(--ink2);display:flex;align-items:center;justify-content:center}
+.yl{position:absolute;right:0;font-size:.6875em;color:var(--sec);transform:translateY(-50%);background:var(--card);padding:0 2px}
+.xl{position:absolute;bottom:-18px;font-size:.6875em;color:var(--sec);transform:translateX(-50%)}
+.readout{display:flex;align-items:center;gap:10px;background:var(--fill);border-radius:14px;padding:10px 12px;font-size:.9375em;min-height:48px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.75em;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.bars{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;height:170px;align-items:end}
+.bar{display:flex;flex-direction:column;border-radius:8px;overflow:hidden;height:150px;border:0;padding:0;cursor:pointer;background:var(--fill);width:100%}
+.b-hi{background:#B597D3}.b-in{background:#7FA6C9}.b-lo{background:#E39A72}
+.b-na{background:repeating-linear-gradient(45deg,var(--fill),var(--fill) 5px,var(--bg) 5px,var(--bg) 10px);height:100%}
+.tir{display:flex;height:16px;border-radius:8px;overflow:hidden}
+.ins{display:flex;flex-direction:column;gap:8px;text-align:start;border:0;font:inherit;color:inherit;cursor:pointer;width:100%}
+.row{display:flex;align-items:center;gap:10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 18px;border-radius:16px;border:0;font:inherit;font-size:1em;font-weight:600;cursor:pointer;text-decoration:none;width:100%}
+.btn-p{background:var(--ac);color:var(--onac)}.btn-p:hover{color:var(--onac)}
+.btn-s{background:var(--soft);color:var(--act)}
+.btn-o{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+.chip{min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-size:.9375em;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.chip.on{border-color:var(--ac);background:var(--soft);color:var(--act)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.obs{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--fill);text-decoration:none;color:inherit}
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--fill);border-radius:16px;padding:12px 14px;font-size:.9375em;line-height:1.45;color:var(--ink2)}
+.tabbar{display:flex;border-top:1px solid var(--hair);background:var(--card);padding:4px 8px 30px;flex:none}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:52px;justify-content:center;font-size:.75em;font-weight:600;color:var(--sec);text-decoration:none}
+.tab.on{color:var(--act)}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.num{font-variant-numeric:tabular-nums}
+.scrim{position:absolute;inset:0;background:rgba(20,26,24,.36);display:flex;align-items:flex-end;z-index:20;animation:fade .2s ease-out}
+.sheet{width:100%;background:var(--bg);border-radius:28px 28px 0 0;padding:8px 20px 34px;animation:up .34s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;gap:12px}
+.grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:92px;border-radius:20px;background:var(--card);font-size:.9375em;font-weight:600;color:var(--ink);text-decoration:none;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 12px rgba(0,0,0,0);text-align:center;padding:8px}
+.tile:hover{color:var(--ink)}
+.expand{overflow:hidden;animation:grow .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+@keyframes fade{from{opacity:0}}
+@keyframes grow{from{opacity:0;transform:translateY(-6px)}}
+.rm *{animation:none !important;transition:none !important}
+@media (prefers-reduced-motion: reduce){.ph *{animation:none !important;transition:none !important}}
+
+/* theme B */
+:root{--fill:#E6E6EB;--hair:#E5E5EA;--line:#D1D1D6;--ink:#1D1D1F;--ink2:#3A3A3C;--sec:#6E6E73;--ter:#8E8E93;--inv:#1D1D1F;--onac:#FFFFFF;--ac:#0B7A75;--act:#0A6560;--acd:#085E5A;--soft:#E4F2F1;--soft2:#BFE3DF;--bar:rgba(255,255,255,.88);--bg:#FFFFFF;--card:#F5F5F7;--xE8F0F6:#E8F0F6;--xE3ECF5:#E3ECF5;--x234E74:#234E74;--xEFE6F6:#EFE6F6;--x5A2F84:#5A2F84;--xFBE7DE:#FBE7DE;--x9A340C:#9A340C;--xF3E8D5:#F3E8D5;--x6B4A12:#6B4A12}:root:has([data-theme="night"]),[data-theme="night"]{--fill:#2C2C2E;--hair:#38383A;--line:#48484A;--ink:#F5F5F7;--ink2:#D1D1D6;--sec:#A1A1A6;--ter:#7C7C80;--inv:#3A3A3C;--onac:#FFFFFF;--ac:#14958D;--act:#6FD6CD;--acd:#0E7C75;--soft:#10302E;--soft2:#1D5753;--bar:rgba(22,22,24,.88);--bg:#000000;--card:#1C1C1E;--xE8F0F6:#24313B;--xE3ECF5:#25323F;--x234E74:#9DBEDB;--xEFE6F6:#32243D;--x5A2F84:#B596D2;--xFBE7DE:#472A1C;--x9A340C:#E5A48A;--xF3E8D5:#4B3E28;--x6B4A12:#E7CC9F;color-scheme:dark}[data-theme="night"] .sheet,[data-theme="night"] .dlgc{--bg:#1C1C1E;--card:#2C2C2E;--fill:#3A3A3C;--hair:#48484A}[fill="#E8F0F6"]{fill:var(--xE8F0F6)}[fill="#1C2321"]{fill:var(--ink)}[fill="#8A847A"]{fill:var(--ter)}[fill="#EDE7DD"]{fill:var(--fill)}[stroke="#1C2321"]{stroke:var(--ink)}[stroke="#1E6F68"]{stroke:var(--ac)}[stroke="#8A847A"]{stroke:var(--ter)}.sw i{background:#fff!important}.tabbar{background:var(--bar);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+</style>
+</helmet>
+<div data-theme="{{theme}}" class="ph {{rmCls}}" style="font-size: {{fs}}px">
+
+<!-- OVR-01 Overview -->
+<sc-if value="{{is.main}}" hint-placeholder-val="{{ true }}">
+  <div class="hdr"><h1 class="h1">Overview</h1><button class="ib" aria-label="Quick log" onClick="{{openQuick}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></div>
+  <div class="scroll">
+    <div class="row" style="gap: 8px"><span class="tag t-demo">Demo data</span><span class="xs">Simulated values for design review</span></div>
+
+    <!-- Latest reading -->
+    <sc-if value="{{hasLatest}}" hint-placeholder-val="{{ true }}">
+      <div class="card" style="display: flex; flex-direction: column; gap: 8px" aria-label="{{latestAria}}">
+        <div class="row" style="justify-content: space-between"><span class="lbl">Latest reading</span><span class="{{freshCls}}">{{freshLabel}}</span></div>
+        <div class="row" style="align-items: baseline; gap: 8px; flex-wrap: wrap"><span class="gv num">{{latestVal}}</span><span class="lbl" style="color: var(--ink2)">{{unit}}</span><span class="{{latestTagCls}}"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="{{latestTagPath}}" fill="currentColor"></path></svg>{{latestTag}}</span></div>
+        <span class="small">{{latestMeta}}</span>
+        <sc-if value="{{isStale}}" hint-placeholder-val="{{ false }}"><div class="note" style="padding: 10px 12px">No new sensor data for 47 minutes. The app may be out of date; your device and its alarms are the source of truth.</div></sc-if>
+      </div>
+    </sc-if>
+    <sc-if value="{{isNew}}" hint-placeholder-val="{{ false }}">
+      <div class="card" style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
+        <span class="lbl">No readings yet</span>
+        <span class="small">Log a reading by voice, text or with the + button. You don’t need a connected device.</span>
+        <a class="btn btn-s" href="Companion.dc.html">Log a glucose reading</a>
+      </div>
+    </sc-if>
+
+    <!-- Period selection -->
+    <div class="seg" role="tablist" aria-label="Period"><sc-for list="{{periods}}" as="pd" hint-placeholder-count="4"><button class="{{pd.cls}}" role="tab" aria-selected="{{pd.on}}" onClick="{{pd.pick}}">{{pd.label}}</button></sc-for></div>
+    <div class="row" style="justify-content: space-between"><button class="ib plain" aria-label="Previous period" onClick="{{prev}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span class="lbl">{{rangeLabel}}</span><button class="ib plain" aria-label="Next period" onClick="{{nextP}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+
+    <!-- OVR-02 Day graph -->
+    <sc-if value="{{isDay}}" hint-placeholder-val="{{ true }}">
+      <div class="card" style="padding: 14px 12px 22px">
+        <div class="row" style="justify-content: space-between; padding: 0 4px"><span class="lbl">Glucose, {{unit}}</span><span class="xs">Time runs left to right →</span></div>
+        <sc-if value="{{showChart}}" hint-placeholder-val="{{ true }}">
+          <div class="chart" role="img" aria-label="{{chartAria}}">
+            <svg width="326" height="190" viewBox="0 0 326 190" aria-hidden="true" style="position: absolute; left: 0; top: 0; overflow: visible">
+              <rect x="0" y="{{band.y}}" width="326" height="{{band.h}}" fill="#E8F0F6"></rect>
+              <line x1="0" x2="326" y1="{{band.y}}" y2="{{band.y}}" stroke="#9FB9D1" stroke-dasharray="4 4"></line>
+              <line x1="0" x2="326" y1="{{band.y2}}" y2="{{band.y2}}" stroke="#E0A88A" stroke-dasharray="4 4"></line>
+              <rect x="{{gap.x}}" y="0" width="{{gap.w}}" height="190" fill="#EDE7DD" opacity="{{gap.op}}"></rect>
+              <line x1="{{nowX}}" x2="{{nowX}}" y1="0" y2="190" stroke="#1C2321" stroke-width="1" stroke-dasharray="2 3"></line>
+              <path d="{{cgmPath}}" fill="none" stroke="#1E6F68" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></path>
+              <path d="{{stalePath}}" fill="none" stroke="#8A847A" stroke-width="2" stroke-dasharray="3 4"></path>
+            </svg>
+            <sc-if value="{{gap.show}}" hint-placeholder-val="{{ true }}"><span class="xs" style="position: absolute; top: 6px; left: {{gap.lx}}px; background: var(--fill); padding: 1px 4px; border-radius: 4px; font-weight: 600; color: var(--ink2)">No data</span></sc-if>
+            <sc-for list="{{yLabels}}" as="yl" hint-placeholder-count="3"><span class="yl num" style="top: {{yl.y}}px">{{yl.label}}</span></sc-for>
+            <sc-for list="{{meter}}" as="mp" hint-placeholder-count="3"><span class="mk" style="left: {{mp.x}}px; top: {{mp.y}}px" title="{{mp.title}}"></span></sc-for>
+            <sc-for list="{{events}}" as="ev" hint-placeholder-count="3"><span class="ev" style="left: {{ev.x}}px" title="{{ev.title}}"><sc-if value="{{ev.meal}}" hint-placeholder-val="{{ true }}"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h16a8 8 0 0 1-16 0z"></path></svg></sc-if><sc-if value="{{ev.ins}}" hint-placeholder-val="{{ false }}"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6M17 7l-9 9-4 1 1-4 9-9"></path></svg></sc-if><sc-if value="{{ev.act}}" hint-placeholder-val="{{ false }}"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="13" cy="4.5" r="1.8"></circle><path d="M9 21l3-7-3-3 3-4 3 3"></path></svg></sc-if></span></sc-for>
+            <sc-for list="{{xLabels}}" as="xl" hint-placeholder-count="5"><span class="xl num" style="left: {{xl.x}}px">{{xl.label}}</span></sc-for>
+            <sc-for list="{{hits}}" as="h" hint-placeholder-count="12"><button class="{{h.cls}}" style="left: {{h.x}}px; width: {{h.w}}px" aria-label="{{h.aria}}" onClick="{{h.pick}}"></button></sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{chartEmpty}}" hint-placeholder-val="{{ false }}"><div class="note" style="margin-top: 10px">Nothing to show for this day yet. Readings you log appear here as individual points.</div></sc-if>
+        <div class="readout" aria-live="polite" style="margin-top: 26px"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><path d="M12 3v18M3 12h18"></path></svg><span>{{readout}}</span></div>
+        <div class="legend" style="margin-top: 10px">
+          <sc-if value="{{hasCgm}}" hint-placeholder-val="{{ true }}"><span><svg width="18" height="6" aria-hidden="true"><path d="M0 3h18" stroke="#1E6F68" stroke-width="3"></path></svg>Sensor, every 5 min</span></sc-if>
+          <span><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="2" width="8" height="8" transform="rotate(45 6 6)" fill="#1C2321"></rect></svg>Meter reading</span>
+          <span><svg width="16" height="10" aria-hidden="true"><rect width="16" height="10" fill="#E8F0F6" stroke="#9FB9D1" stroke-dasharray="3 2"></rect></svg>Your range 70–180 mg/dL</span>
+          <span><svg width="16" height="10" aria-hidden="true"><rect width="16" height="10" fill="#EDE7DD"></rect></svg>No data</span>
+        </div>
+        <sc-if value="{{manualOnly}}" hint-placeholder-val="{{ false }}"><div class="note" style="margin-top: 10px">Meter readings are shown as separate points. They aren’t joined by a line because we don’t know what happened between them.</div></sc-if>
+      </div>
+    </sc-if>
+
+    <!-- OVR-02b Week / 2 weeks / Month -->
+    <sc-if value="{{isMulti}}" hint-placeholder-val="{{ false }}">
+      <div class="card">
+        <div class="row" style="justify-content: space-between"><span class="lbl">Time in range by day</span><span class="xs">Sensor days only</span></div>
+        <div class="bars" style="margin-top: 12px">
+          <sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+            <div style="display: flex; flex-direction: column; gap: 6px; align-items: center">
+              <button class="bar" aria-label="{{d.aria}}" onClick="{{d.pick}}">
+                <sc-if value="{{d.na}}" hint-placeholder-val="{{ false }}"><span class="b-na"></span></sc-if>
+                <sc-if value="{{d.ok}}" hint-placeholder-val="{{ true }}"><span class="b-hi" style="height: {{d.hi}}%"></span><span class="b-in" style="height: {{d.in}}%"></span><span class="b-lo" style="height: {{d.lo}}%"></span></sc-if>
+              </button>
+              <span class="xs num">{{d.label}}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div class="legend" style="margin-top: 12px"><span><svg width="12" height="12" aria-hidden="true"><rect width="12" height="12" rx="3" fill="#B597D3"></rect></svg>Above</span><span><svg width="12" height="12" aria-hidden="true"><rect width="12" height="12" rx="3" fill="#7FA6C9"></rect></svg>In range</span><span><svg width="12" height="12" aria-hidden="true"><rect width="12" height="12" rx="3" fill="#E39A72"></rect></svg>Below</span><span><svg width="12" height="12" aria-hidden="true"><rect width="12" height="12" rx="3" fill="#EDE7DD"></rect></svg>Not enough data</span></div>
+        <div class="readout" style="margin-top: 12px" aria-live="polite"><span>{{dayReadout}}</span></div>
+      </div>
+    </sc-if>
+
+    <!-- Summary -->
+    <div class="card" style="display: flex; flex-direction: column; gap: 10px">
+      <div class="row" style="justify-content: space-between"><span class="lbl">{{sumTitle}}</span><button class="chip" onClick="{{openSummary}}">Read summary</button></div>
+      <sc-if value="{{hasTir}}" hint-placeholder-val="{{ true }}">
+        <div class="tir" role="img" aria-label="Below range 3 percent, in range 71 percent, above range 26 percent"><span style="width: 3%; background: #E39A72"></span><span style="width: 71%; background: #7FA6C9"></span><span style="width: 26%; background: #B597D3"></span></div>
+        <div class="row small" style="justify-content: space-between"><span>▼ Below 3%</span><span>■ In range 71%</span><span>▲ Above 26%</span></div>
+        <span class="xs">Based on {{coverage}} of sensor data. Meals 2 · Insulin records 3 · Activity 1</span>
+      </sc-if>
+      <sc-if value="{{noTir}}" hint-placeholder-val="{{ false }}"><span class="small">Time in range needs continuous sensor data. With meter readings we show each reading and how many you logged: 3 today.</span></sc-if>
+    </div>
+
+    <!-- OVR-03 Insights -->
+    <div class="row" style="justify-content: space-between; margin-top: 4px"><span class="lbl" style="font-size: 1.125em">Insights</span><span class="xs">From your records</span></div>
+    <sc-if value="{{isNew}}" hint-placeholder-val="{{ false }}"><div class="note">Not enough records yet. Observations appear after several days of logging, and they’ll be labelled as first impressions until they repeat.</div></sc-if>
+    <sc-for list="{{insights}}" as="i" hint-placeholder-count="3">
+      <button class="card ins" onClick="{{i.open}}">
+        <span class="{{i.tagCls}}">{{i.tag}}</span>
+        <span style="font-weight: 650; font-size: 1.0625em">{{i.title}}</span>
+        <span class="small">{{i.sub}}</span>
+      </button>
+    </sc-for>
+  </div>
+</sc-if>
+
+<!-- OVR-04 Insight detail -->
+<sc-if value="{{is.insight}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><button class="ib plain" aria-label="Back to overview" onClick="{{back}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span style="flex: 1; font-weight: 650; text-align: center">Insight</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+    <span class="{{cur.tagCls}}" style="align-self: flex-start">{{cur.tag}}</span>
+    <h2 style="margin: 0; font-size: 1.5em; line-height: 1.2; font-weight: 650">{{cur.title}}</h2>
+    <p style="margin: 0; font-size: 1.0625em; line-height: 1.5; color: var(--ink2)">{{cur.body}}</p>
+    <div class="card">
+      <span class="lbl">What this is based on</span>
+      <span class="xs" style="display: block; margin-top: 2px">{{cur.basis}}</span>
+      <div style="margin-top: 6px">
+        <sc-for list="{{cur.obs}}" as="o" hint-placeholder-count="4">
+          <a class="obs" href="Journal.dc.html"><span class="num" style="font-weight: 600; min-width: 64px">{{o.d}}</span><span style="flex: 1" class="small">{{o.t}}</span><span class="{{o.cls}}">{{o.v}}</span></a>
+        </sc-for>
+      </div>
+      <button class="chip" style="margin-top: 10px" onClick="{{toggleMore}}" aria-expanded="{{more}}">{{moreLabel}}</button>
+      <sc-if value="{{more}}" hint-placeholder-val="{{ false }}"><div class="expand small" style="margin-top: 10px">{{cur.excluded}}</div></sc-if>
+    </div>
+    <div class="note"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7.5h.01"></path></svg><span>This is a pattern in your records, not a cause, and not a treatment recommendation. If it matters to you, it may be worth raising with your care team.</span></div>
+    <a class="btn btn-s" href="Companion.dc.html">Talk it through with Noa</a>
+    <div class="card" style="display: flex; flex-direction: column; gap: 10px">
+      <span class="lbl">Was this useful?</span>
+      <sc-if value="{{fbNone}}" hint-placeholder-val="{{ true }}"><div class="row"><button class="btn btn-o" onClick="{{fbYes}}">Useful</button><button class="btn btn-o" onClick="{{fbNo}}">Not quite right</button></div></sc-if>
+      <sc-if value="{{fbAskWhy}}" hint-placeholder-val="{{ false }}"><span class="small">What’s off? This helps me weigh it.</span><div class="chips"><sc-for list="{{whyOpts}}" as="w" hint-placeholder-count="4"><button class="chip" onClick="{{w.pick}}">{{w.label}}</button></sc-for></div></sc-if>
+      <sc-if value="{{fbDone}}" hint-placeholder-val="{{ false }}"><span class="small" role="status">{{fbMsg}}</span></sc-if>
+      <button class="chip" style="align-self: flex-start" onClick="{{mute}}">{{muteLabel}}</button>
+    </div>
+  </div>
+</sc-if>
+
+<!-- OVR-05/06 Daily & weekly summary -->
+<sc-if value="{{is.summary}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><button class="ib plain" aria-label="Back to overview" onClick="{{back}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span style="flex: 1; font-weight: 650; text-align: center">{{sumTitle}}</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+    <span class="tag t-demo" style="align-self: flex-start">Demo data</span>
+    <h2 style="margin: 0; font-size: 1.5em; font-weight: 650; line-height: 1.2">{{sumHead}}</h2>
+    <p style="margin: 0; font-size: 1.0625em; line-height: 1.55; color: var(--ink2)">{{sumBody}}</p>
+    <div class="card" style="display: flex; flex-direction: column; gap: 12px">
+      <span class="lbl">What went well</span>
+      <sc-for list="{{wins}}" as="w" hint-placeholder-count="2"><div class="row" style="align-items: flex-start"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ac); flex: none"><path d="M5 12l5 5 9-10"></path></svg><span>{{w}}</span></div></sc-for>
+    </div>
+    <div class="card" style="display: flex; flex-direction: column; gap: 12px">
+      <span class="lbl">Worth a look</span>
+      <sc-for list="{{looks}}" as="w" hint-placeholder-count="2"><div class="row" style="align-items: flex-start"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ink2); flex: none"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg><span>{{w}}</span></div></sc-for>
+    </div>
+    <div class="card" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+      <sc-for list="{{stats}}" as="st" hint-placeholder-count="4"><div style="display: flex; flex-direction: column; gap: 2px"><span class="xs">{{st.k}}</span><span class="num" style="font-weight: 700; font-size: 1.25em">{{st.v}}</span><span class="xs">{{st.src}}</span></div></sc-for>
+    </div>
+    <div class="row"><a class="btn btn-o" href="Journal.dc.html">Open journal</a><a class="btn btn-o" href="Settings.dc.html">Export</a></div>
+  </div>
+</sc-if>
+
+<nav class="tabbar" aria-label="Main">
+  <a class="tab" href="Companion.dc.html"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="#8A847A"></circle></svg>Companion</a>
+  <a class="tab on" href="Overview.dc.html" aria-current="page"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-6 4 3 6-8 3 4"></path></svg>Overview</a>
+  <a class="tab" href="Journal.dc.html"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16H6z"></path><path d="M9 9h6M9 13h6"></path></svg>Journal</a>
+  <a class="tab" href="Settings.dc.html"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg>Profile</a>
+</nav>
+
+<sc-if value="{{quick}}" hint-placeholder-val="{{ false }}">
+  <div class="scrim" onClick="{{closeQuick}}">
+    <div class="sheet" role="dialog" aria-modal="true" aria-label="Quick log" onClick="{{stopProp}}">
+      <div class="grab" aria-hidden="true"></div>
+      <div class="row" style="justify-content: space-between"><span class="lbl" style="font-size: 1.25em">What would you like to log?</span><button class="ib plain" aria-label="Close" onClick="{{closeQuick}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+      <div class="grid3">
+        <a class="tile" href="Companion.dc.html">Glucose</a><a class="tile" href="Meal.dc.html">Meal photo</a><a class="tile" href="Meal.dc.html">Meal</a>
+        <a class="tile" href="Companion.dc.html">Insulin taken</a><a class="tile" href="Companion.dc.html">Activity</a><a class="tile" href="Companion.dc.html">Note</a>
+      </div>
+      <span class="xs">Each opens its card over the current conversation, so you return to the same context.</span>
+    </div>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["day","night"],"default":"day","section":"Appearance"},"scenario":{"editor":"enum","options":["sensorConnected","manualOnly","staleData","newUser"],"default":"sensorConnected","section":"Prototype"},"units":{"editor":"enum","options":["mg/dL","mmol/L"],"default":"mg/dL","section":"Locale"},"textSize":{"editor":"enum","options":["100%","130%","160%"],"default":"100%","section":"Accessibility"},"reducedMotion":{"editor":"boolean","default":false,"section":"Accessibility"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const p = this.props || {};
+    const sc = p.scenario || 'sensorConnected';
+    const v = (k, d) => (s[k] === undefined ? d : s[k]);
+    const set = (o) => this.setState(o);
+    const fs = ({ '100%': 16, '130%': 20, '160%': 24 })[p.textSize] || 16;
+    const mm = p.units === 'mmol/L';
+    const unit = mm ? 'mmol/L' : 'mg/dL';
+    const f = (mg) => (mm ? (Math.round((mg / 18.016) * 10) / 10).toFixed(1) : String(Math.round(mg)));
+    const view = v('view', 'main');
+    const period = v('period', 'day');
+    const isNew = sc === 'newUser';
+    const hasCgm = sc === 'sensorConnected' || sc === 'staleData';
+    const manualOnly = sc === 'manualOnly';
+    const stale = sc === 'staleData';
+
+    const W = 326, H = 190, yMin = 40, yMax = 300;
+    const X = (min) => Math.round(((min / 1440) * W) * 10) / 10;
+    const Y = (mg) => Math.round((H - ((mg - yMin) / (yMax - yMin)) * H) * 10) / 10;
+    const bump = (m, st, amp, w) => (m > st ? amp * Math.exp(-Math.pow(m - st - w, 2) / (2 * Math.pow(w * 0.7, 2))) : 0);
+    const val = (m) => 122 + 14 * Math.sin(m / 95) - bump(m, 260, 34, 60) + bump(m, 470, 82, 62) + bump(m, 640, 18, 40) + 4 * Math.sin(m / 13);
+    const end = stale ? 738 : 781;
+    const gapS = 130, gapE = 220;
+    let d = ''; let pen = false; const cg = [];
+    for (let m = 0; m <= end; m += 5) {
+      if (m >= gapS && m <= gapE) { pen = false; continue; }
+      const g = val(m); cg.push([m, g]);
+      d += (pen ? 'L' : 'M') + X(m) + ' ' + Y(g) + ' '; pen = true;
+    }
+    const nowX = X(785);
+    const stalePath = stale ? 'M' + X(end) + ' ' + Y(val(end)) + ' L' + nowX + ' ' + Y(val(end)) : 'M0 0';
+    const meterPts = manualOnly ? [[440, 128], [640, 171], [785, 124]] : [[440, 131], [710, 150]];
+    const meter = isNew ? [] : meterPts.map((q) => ({ x: X(q[0]), y: Y(q[1]), title: 'Meter ' + f(q[1]) + ' ' + unit }));
+    const hhmm = (m) => String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+    const events = isNew ? [] : [{ m: 460, k: 'ins', t: 'Insulin you reported: Fiasp 4 u at 07:40' }, { m: 470, k: 'meal', t: 'Breakfast ≈ 40 g carbs, estimate' }, { m: 1080 > 785 ? 600 : 600, k: 'act', t: 'Walk 25 min at 10:00' }].map((e) => ({ x: X(e.m), title: e.t, meal: e.k === 'meal', ins: e.k === 'ins', act: e.k === 'act' }));
+    const sel = v('selH', null);
+    const hits = [];
+    for (let h = 0; h < 24; h += 2) {
+      const m = h * 60 + 60;
+      let aria;
+      if (m > 785) aria = hhmm(h * 60) + ' to ' + hhmm(h * 60 + 120) + ', later today, no data yet';
+      else if (m >= gapS && m <= gapE) aria = hhmm(h * 60) + ', no sensor data';
+      else aria = hhmm(h * 60) + ' to ' + hhmm(h * 60 + 120);
+      hits.push({ x: X(h * 60), w: X(120), cls: 'hit' + (sel === h ? ' on' : ''), aria: aria, pick: () => set({ selH: h }) });
+    }
+    let readout = 'Tap the graph to see values at a time.';
+    if (sel !== null) {
+      const m = sel * 60 + 60;
+      if (m > 785) readout = hhmm(sel * 60) + '–' + hhmm(sel * 60 + 120) + ': later today, no data yet.';
+      else if (manualOnly) { const near = meterPts.filter((q) => Math.abs(q[0] - m) <= 60); readout = near.length ? hhmm(near[0][0]) + ' · ' + f(near[0][1]) + ' ' + unit + ' · Meter, entered by you' : hhmm(sel * 60) + '–' + hhmm(sel * 60 + 120) + ': no reading logged.'; }
+      else if (m >= gapS && m <= gapE) readout = '02:10–03:40 · No sensor data (signal lost). Nothing was estimated for this gap.';
+      else if (m > end) readout = hhmm(end) + ' was the last sensor value. Newer data hasn’t arrived.';
+      else readout = hhmm(m) + ' · ' + f(val(m)) + ' ' + unit + ' · Guardian 4 sensor';
+    }
+    const yLabels = [70, 180, 250].map((g) => ({ y: Y(g), label: f(g) }));
+    const xLabels = [0, 6, 12, 18, 24].map((h) => ({ x: X(h * 60), label: String(h).padStart(2, '0') }));
+
+    const PER = [['day', 'Day'], ['week', 'Week'], ['2w', '2 weeks'], ['month', 'Month']];
+    const rangeL = { day: 'Today, Tue 10 Nov', week: '4–10 Nov', '2w': '28 Oct – 10 Nov', month: '11 Oct – 10 Nov' };
+    const off = v('off', 0);
+    const DAYS = [['Wed', 4, 74, 22], ['Thu', null], ['Fri', 2, 70, 28], ['Sat', 6, 66, 28], ['Sun', 1, 78, 21], ['Mon', 3, 69, 28], ['Tue', 3, 71, 26]];
+    const dsel = v('dsel', null);
+    const days = DAYS.map((x, i) => ({ label: x[0], na: x[1] === null, ok: x[1] !== null, lo: x[1], in: x[2], hi: x[3], aria: x[1] === null ? x[0] + ': not enough sensor data (38% coverage)' : x[0] + ': below ' + x[1] + '%, in range ' + x[2] + '%, above ' + x[3] + '%', pick: () => set({ dsel: i }) }));
+    const dayReadout = dsel === null ? 'Tap a day for details. Days with under 70% sensor coverage are marked “not enough data”.' : days[dsel].aria;
+
+    const latestMg = manualOnly ? 124 : 142;
+    const latestTag = latestMg < 70 ? ['Below range', 'tag t-lo', 'M1 2h8L5 9z'] : latestMg > 180 ? ['Above range', 'tag t-hi', 'M5 1l4 7H1z'] : ['In range', 'tag t-in', 'M1 4h8v2H1z'];
+    const latestMeta = manualOnly ? '13:05 · Meter, entered by you · no sensor connected' : stale ? '12:18 · Guardian 4 sensor · last synced 12:20' : '13:01 · Guardian 4 sensor · trend steady · synced 13:03';
+    const freshLabel = stale ? '47 min old' : manualOnly ? 'Just now' : '4 min ago';
+
+    const INS = [
+      { id: 'lunch', tag: 'Recurring observation', tagCls: 'tag t-rec', title: 'A similar rise after lunch on 6 of 9 recorded days', sub: 'Usually 1–2 hours after meals logged between 12:30 and 13:30.', body: 'On 6 of the 9 days with lunch and sensor data, glucose rose above your range within two hours of lunch. On the other 3 days it stayed in range. Those days tended to have smaller carb estimates.', basis: '9 days with a logged lunch and at least 80% sensor coverage, 25 Oct – 9 Nov.', obs: [['9 Nov', 'Lunch 13:10 · ≈ 62 g est.', 'Peak 214', 'tag t-hi'], ['7 Nov', 'Lunch 12:45 · ≈ 58 g est.', 'Peak 206', 'tag t-hi'], ['6 Nov', 'Lunch 13:20 · ≈ 35 g est.', 'Peak 168', 'tag t-in'], ['4 Nov', 'Lunch 13:00 · ≈ 70 g est.', 'Peak 221', 'tag t-hi']], excluded: 'Not included: 2 days without sensor data around lunch (5 Nov, 1 Nov) and 1 day where lunch time wasn’t logged.' },
+      { id: 'walk', tag: 'First impression · good habit', tagCls: 'tag t-tent', title: 'Evenings with a walk were followed by steadier nights', sub: 'Seen on 2 days so far. Needs more days before it means much.', body: 'On the 2 evenings you logged a walk, overnight readings stayed in range more of the time than on other nights. Two days is not enough to call this a pattern; I’ll keep an eye on it.', basis: '2 days with a logged evening walk out of 6 nights with sensor data.', obs: [['8 Nov', 'Walk 35 min · 18:20', 'Night in range 96%', 'tag t-in'], ['5 Nov', 'Walk 25 min · 19:00', 'Night in range 91%', 'tag t-in']], excluded: 'Not included: nights with gaps longer than 1 hour.' },
+      { id: 'learn', tag: 'Still learning', tagCls: 'tag t-tent', title: 'Few readings after 21:00 so far', sub: 'I can’t say much about late evenings yet.', body: 'Most of your logged evenings stop around 21:00. That’s fine. If late evenings matter to you, a check-in then could help me understand them. You can turn this off.', basis: 'Logs from the first 3 days.', obs: [['9 Nov', 'Last entry 20:40', '—', 'tag t-stale'], ['8 Nov', 'Last entry 21:05', '—', 'tag t-stale']], excluded: 'No data excluded.' }
+    ];
+    const curIdx = v('ins', 0);
+    const c0 = INS[curIdx];
+    const cur = Object.assign({}, c0, { obs: c0.obs.map((o) => ({ d: o[0], t: o[1], v: o[2].replace(/\d{3}/, (n) => f(+n)), cls: o[3] })) });
+    const fb = v('fb', {})[c0.id] || 'none';
+    const muted = (v('muted', {})[c0.id]) || false;
+    const daily = period === 'day';
+    return {
+      fs: fs, rmCls: p.reducedMotion ? 'rm' : '', unit: unit,
+      is: { main: view === 'main', insight: view === 'insight', summary: view === 'summary' },
+      back: () => set({ view: 'main', more: false }),
+      hasLatest: !isNew, isNew: isNew, isStale: stale,
+      latestVal: f(latestMg), latestTag: latestTag[0], latestTagCls: latestTag[1], latestTagPath: latestTag[2], latestMeta: latestMeta,
+      latestAria: 'Latest reading ' + f(latestMg) + ' ' + unit + ', ' + latestTag[0] + ', ' + latestMeta + ', ' + freshLabel + ', demo data',
+      freshLabel: freshLabel, freshCls: stale ? 'tag t-stale' : 'tag t-in',
+      periods: PER.map((x) => ({ label: x[1], on: period === x[0], cls: period === x[0] ? 'on' : '', pick: () => set({ period: x[0], selH: null, dsel: null, off: 0 }) })),
+      rangeLabel: off === 0 ? rangeL[period] : (period === 'day' ? 'Mon 9 Nov' : 'Earlier period'), prev: () => set({ off: off - 1 }), nextP: () => set({ off: Math.min(0, off + 1) }),
+      isDay: period === 'day', isMulti: period !== 'day',
+      showChart: !isNew, chartEmpty: isNew, hasCgm: hasCgm, manualOnly: manualOnly,
+      band: { y: Y(180), h: Y(70) - Y(180), y2: Y(70) }, gap: { x: X(gapS), w: X(gapE) - X(gapS), op: hasCgm ? 1 : 0, show: hasCgm, lx: X(gapS) - 6 },
+      cgmPath: hasCgm ? d : 'M0 0', stalePath: stalePath, nowX: nowX,
+      chartAria: hasCgm ? 'Glucose today from 00:00 to now. Mostly within range, with a rise after breakfast to about ' + f(205) + ' ' + unit + ', and no sensor data from 02:10 to 03:40.' : 'Three meter readings today, shown as separate points.',
+      yLabels: yLabels, xLabels: xLabels, meter: meter, events: events, hits: hits, readout: readout,
+      days: days, dayReadout: dayReadout,
+      hasTir: hasCgm, noTir: !hasCgm && !isNew, coverage: stale ? '12 h of 13 h (92%)' : '12.5 h of 13 h (96%)',
+      sumTitle: daily ? 'Today so far' : 'This week', openSummary: () => set({ view: 'summary' }),
+      sumHead: daily ? 'A steady morning with one rise after breakfast' : 'A week with more meals logged than last week',
+      sumBody: daily ? 'Readings stayed in your range for most of the morning. There was a rise after breakfast that came back into range by 10:30. The sensor had a gap overnight, so I can’t say what happened between 02:10 and 03:40.' : 'You logged 17 meals and 21 insulin records over 7 days. Lunch rises showed up again on 4 days. Thursday had too little sensor data to include.',
+      wins: daily ? ['You logged breakfast and the insulin you took, which makes the morning easy to follow.', 'A 25-minute walk at 10:00 was recorded.'] : ['Meals were logged on 6 of 7 days.', 'Evening walks on 2 days, both followed by steady nights.'],
+      looks: daily ? ['Lunch is next. On recent days, readings rose after lunch. Want a check-in at 15:00?'] : ['Lunch rises on 4 days. This might be worth discussing with your care team.', 'Thursday: sensor coverage 38%.'],
+      stats: [{ k: 'Readings', v: daily ? '150' : '1,690', src: 'Sensor + meter' }, { k: 'Meals logged', v: daily ? '1' : '17', src: 'Estimates' }, { k: 'Insulin records', v: daily ? '2' : '21', src: 'Reported by you' }, { k: 'Activity', v: daily ? '25 min' : '2 h 40 min', src: 'Reported by you' }],
+      insights: isNew ? [] : INS.map((x, i) => ({ tag: x.tag, tagCls: x.tagCls, title: x.title, sub: x.sub, open: () => set({ view: 'insight', ins: i, more: false }) })),
+      cur: cur, more: v('more', false), toggleMore: () => set({ more: !v('more', false) }), moreLabel: v('more', false) ? 'Hide what was left out' : 'What was left out',
+      fbNone: fb === 'none', fbAskWhy: fb === 'why', fbDone: fb === 'yes' || fb === 'done',
+      fbMsg: fb === 'yes' ? 'Thanks. I’ll keep showing observations like this.' : 'Thanks. I’ll weigh this less and won’t repeat it the same way.',
+      fbYes: () => set({ fb: Object.assign({}, v('fb', {}), { [c0.id]: 'yes' }) }), fbNo: () => set({ fb: Object.assign({}, v('fb', {}), { [c0.id]: 'why' }) }),
+      whyOpts: ['The data is wrong', 'I already know this', 'Not relevant to me', 'Something else'].map((w) => ({ label: w, pick: () => set({ fb: Object.assign({}, v('fb', {}), { [c0.id]: 'done' }) }) })),
+      muteLabel: muted ? 'Insights like this are hidden · Undo' : 'Don’t show insights like this', mute: () => set({ muted: Object.assign({}, v('muted', {}), { [c0.id]: !muted }) }),
+      quick: v('quick', false), openQuick: () => set({ quick: true }), closeQuick: () => set({ quick: false }), stopProp: (e) => { if (e && e.stopPropagation) e.stopPropagation(); }
+    };
+  }
+}
+
+;(function(){var rv=Component.prototype.renderVals;Component.prototype.renderVals=function(){var v=rv.call(this)||{};var s=this.state&&this.state.themeOverride;var p=(this.props&&this.props.theme)||'day';v.theme=s||p;var n=v.theme==='night';var self=this;v.setThemeDay=function(){self.setState({themeOverride:'day'})};v.setThemeNight=function(){self.setState({themeOverride:'night'})};v.thDayCls='chip'+(n?'':' on');v.thNightCls='chip'+(n?' on':'');return v;};})();
+</script>
+</body>
+</html>

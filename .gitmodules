@@ -1,0 +1,9 @@
+[submodule "apps/mobile"]
+	path = apps/mobile
+	url = git@github.com:fisha/diabetic-app.git
+[submodule "apps/web"]
+	path = apps/web
+	url = git@github.com:fisha/diabetic-web.git
+[submodule "services/api"]
+	path = services/api
+	url = git@github.com:fisha/diabetic-api.git

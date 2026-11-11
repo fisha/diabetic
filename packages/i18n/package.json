@@ -1,0 +1,24 @@
+{
+  "name": "@steady/i18n",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Message catalog (ICU, en/he/ar/ru) and locale helpers shared by the app and the website.",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./catalog": "./src/catalog.ts"
+  },
+  "scripts": {
+    "import-design": "node scripts/import-design.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/*.test.ts"
+  },
+  "dependencies": {
+    "intl-messageformat": "12.1.5"
+  },
+  "devDependencies": {
+    "@formatjs/icu-messageformat-parser": "3.5.23"
+  }
+}

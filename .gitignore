@@ -1,0 +1,21 @@
+node_modules/
+.expo/
+dist/
+web-build/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+expo-env.d.ts
+.env
+.env*.local
+.DS_Store
+# generated native folders (Continuous Native Generation)
+apps/mobile/ios/
+apps/mobile/android/
+# Python
+__pycache__/
+.venv/
+
+# Next.js generates this file
+next-env.d.ts

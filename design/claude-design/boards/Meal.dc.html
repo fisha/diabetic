@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Meal photo and carb estimate</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:var(--fill)}
+a{color:var(--act)}a:hover{color:var(--acd)}
+.ph{position:relative;width:390px;height:844px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:-apple-system,'SF Pro Text','Inter',system-ui,sans-serif;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:1.4}
+.ph *{box-sizing:border-box}
+.ph button:focus-visible,.ph a:focus-visible,.ph input:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.hdr{display:flex;align-items:center;gap:8px;padding:54px 12px 6px}
+.hdr.dark{background:#141A18;color:var(--onac)}
+.ib{width:48px;height:48px;border-radius:24px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;color:inherit;cursor:pointer;flex:none;text-decoration:none}
+.ttl{flex:1;text-align:center;font-weight:650;font-size:1.0625em}
+.scroll{flex:1;overflow-y:auto;padding:12px 20px 20px;display:flex;flex-direction:column;gap:16px;min-height:0}
+.foot{padding:12px 20px 34px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--fill);background:var(--bg)}
+.h1{font-size:1.625em;line-height:1.2;font-weight:650;margin:0;letter-spacing:-.01em}
+.lead{font-size:1.0625em;line-height:1.5;color:var(--ink2);margin:0}
+.lbl{font-size:.9375em;font-weight:600;color:var(--ink2);margin:0}
+.small{font-size:.875em;color:var(--sec);line-height:1.45}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 20px;border-radius:18px;border:0;font:inherit;font-size:1.0625em;font-weight:600;cursor:pointer;text-decoration:none;width:100%;text-align:center;transition:transform .12s cubic-bezier(.2,.8,.2,1)}
+.btn:active{transform:scale(.97)}
+.btn-p{background:var(--ac);color:var(--onac)}.btn-p:hover{color:var(--onac)}
+.btn-s{background:var(--soft);color:var(--act)}
+.btn-o{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+.btn-g{background:transparent;color:var(--act);min-height:48px}
+.btn-w{background:rgba(255,255,255,.14);color:var(--onac)}
+.card{background:var(--card);border-radius:20px;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 16px rgba(0,0,0,0);padding:14px}
+.meth{display:flex;align-items:center;gap:14px;width:100%;min-height:72px;padding:12px 16px;border-radius:20px;border:0;background:var(--card);box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 16px rgba(0,0,0,0);font:inherit;font-size:1.0625em;font-weight:600;color:var(--ink);cursor:pointer;text-align:start;text-decoration:none}
+.mi{width:48px;height:48px;border-radius:16px;background:var(--soft);color:var(--act);display:flex;align-items:center;justify-content:center;flex:none}
+.vf{flex:1;background:#141A18;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.corner{position:absolute;width:36px;height:36px;border-color:var(--bar);border-style:solid;border-width:0}
+.camfoot{background:#141A18;padding:18px 28px 40px;display:flex;align-items:center;justify-content:space-between}
+.shutter{width:80px;height:80px;border-radius:40px;border:4px solid var(--card);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.shutter span{width:62px;height:62px;border-radius:31px;background:var(--card);display:block;transition:transform .12s}
+.shutter:active span{transform:scale(.9)}
+.thumb{width:52px;height:52px;border-radius:12px;background:var(--ink2);border:2px solid var(--card);cursor:pointer;overflow:hidden;padding:0}
+.photo{border-radius:24px;overflow:hidden;background:var(--hair);position:relative;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
+.blur svg{filter:blur(5px)}
+.stp{display:flex;align-items:center;gap:12px;font-size:1em}
+.dot{width:28px;height:28px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.d-done{background:var(--ac);color:var(--onac)}
+.d-act{border:3px solid var(--soft);border-top-color:var(--ac);animation:spin .9s linear infinite}
+.d-wait{border:2px solid var(--line)}
+.item{background:var(--card);border-radius:20px;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 16px rgba(0,0,0,0);padding:14px;display:flex;flex-direction:column;gap:10px}
+.iname{font-weight:650;font-size:1.0625em;flex:1}
+.carb{font-weight:700;font-size:1.0625em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.prov{display:inline-flex;align-items:center;gap:5px;font-size:.75em;font-weight:700;padding:3px 8px;border-radius:8px;white-space:nowrap}
+.p-est{background:var(--xF3E8D5);color:var(--x6B4A12)}
+.p-user{background:var(--soft);color:var(--act)}
+.p-wt{background:var(--xE3ECF5);color:var(--x234E74)}
+.p-q{background:var(--xECE7F5);color:var(--x4B3A78)}
+.qty{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.stepb{width:48px;height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-size:1.375em;font-weight:600;color:var(--ink);cursor:pointer}
+.qv{min-width:48px;text-align:center;font-weight:700;font-size:1.25em;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-size:.9375em;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.chip.on{border-color:var(--ac);background:var(--soft);color:var(--act)}
+.lnk{border:0;background:transparent;font:inherit;font-size:.9375em;font-weight:600;color:var(--act);cursor:pointer;min-height:44px;padding:0 6px}
+.q{background:var(--xF6F2FB);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.total{background:var(--inv);color:var(--onac);border-radius:22px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.total .big{font-size:2em;font-weight:700;font-variant-numeric:tabular-nums}
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--fill);border-radius:16px;padding:12px 14px;font-size:.9375em;line-height:1.45;color:var(--ink2)}
+.inp{min-height:52px;border-radius:16px;border:1.5px solid var(--line);background:var(--card);padding:0 14px;font:inherit;font-size:1.0625em;width:100%;color:var(--ink)}
+.res{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:8px 4px;border:0;border-bottom:1px solid var(--fill);background:transparent;font:inherit;text-align:start;cursor:pointer;color:var(--ink)}
+.scrim{position:absolute;inset:0;background:rgba(20,26,24,.36);display:flex;align-items:flex-end;z-index:20;animation:fade .2s ease-out}
+.sheet{width:100%;background:var(--bg);border-radius:28px 28px 0 0;padding:8px 20px 34px;max-height:86%;overflow-y:auto;animation:up .34s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;gap:12px}
+.grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto}
+.ok{width:72px;height:72px;border-radius:36px;background:var(--soft);color:var(--ac);display:flex;align-items:center;justify-content:center;align-self:center;animation:pop .36s cubic-bezier(.2,.8,.2,1)}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.num{font-variant-numeric:tabular-nums}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+@keyframes scan{0%{transform:translateY(-90px)}100%{transform:translateY(90px)}}
+.scanl{position:absolute;left:10%;right:10%;height:2px;background:rgba(30,111,104,.8);box-shadow:0 0 12px rgba(30,111,104,.9);animation:scan 1.6s ease-in-out infinite alternate}
+.rm *{animation:none !important;transition:none !important}
+@media (prefers-reduced-motion: reduce){.ph *{animation:none !important;transition:none !important}}
+
+/* theme B */
+:root{--fill:#E6E6EB;--hair:#E5E5EA;--line:#D1D1D6;--ink:#1D1D1F;--ink2:#3A3A3C;--sec:#6E6E73;--ter:#8E8E93;--inv:#1D1D1F;--onac:#FFFFFF;--ac:#0B7A75;--act:#0A6560;--acd:#085E5A;--soft:#E4F2F1;--soft2:#BFE3DF;--bar:rgba(255,255,255,.88);--bg:#FFFFFF;--card:#F5F5F7;--xF3E8D5:#F3E8D5;--x6B4A12:#6B4A12;--xE3ECF5:#E3ECF5;--x234E74:#234E74;--xECE7F5:#ECE7F5;--x4B3A78:#4B3A78;--xF6F2FB:#F6F2FB;--x6B3A2A:#6B3A2A}:root:has([data-theme="night"]),[data-theme="night"]{--fill:#2C2C2E;--hair:#38383A;--line:#48484A;--ink:#F5F5F7;--ink2:#D1D1D6;--sec:#A1A1A6;--ter:#7C7C80;--inv:#3A3A3C;--onac:#FFFFFF;--ac:#14958D;--act:#6FD6CD;--acd:#0E7C75;--soft:#10302E;--soft2:#1D5753;--bar:rgba(22,22,24,.88);--bg:#000000;--card:#1C1C1E;--xF3E8D5:#4B3E28;--x6B4A12:#E7CC9F;--xE3ECF5:#25323F;--x234E74:#9DBEDB;--xECE7F5:#2D253B;--x4B3A78:#AB9FCB;--xF6F2FB:#271D35;--x6B3A2A:#D5B0A4;color-scheme:dark}[data-theme="night"] .sheet,[data-theme="night"] .dlgc{--bg:#1C1C1E;--card:#2C2C2E;--fill:#3A3A3C;--hair:#48484A}[fill="#D9CFC0"]{fill:var(--line)}[fill="#EDE9E2"]{fill:var(--fill)}[fill="#F0EBDD"]{fill:var(--fill)}[fill="#F4EFE7"]{fill:var(--fill)}[fill="#F7F4EF"]{fill:var(--bg)}[fill="#FFFDF7"]{fill:var(--bg)}[stroke="#3A4441"]{stroke:var(--ink2)}[stroke="#6B625A"]{stroke:var(--sec)}[stroke="#A9A296"]{stroke:var(--ter)}.sw i{background:#fff!important}.tabbar{background:var(--bar);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+</style>
+</helmet>
+<div data-theme="{{theme}}" class="ph {{rmCls}}" style="font-size: {{fs}}px">
+
+<!-- MEAL-01 Choose method -->
+<sc-if value="{{is.start}}" hint-placeholder-val="{{ true }}">
+  <div class="hdr"><a class="ib" href="Companion.dc.html" aria-label="Close and return to conversation"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></a><span class="ttl">Log a meal</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+    <h1 class="h1">How would you like to log it?</h1>
+    <p class="lead">A photo is quickest. You can always correct what I find.</p>
+    <button class="meth" onClick="{{openCamera}}"><span class="mi"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v12H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></span>Take a photo</button>
+    <button class="meth" onClick="{{fromLibrary}}"><span class="mi"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="9" cy="10" r="2"></circle><path d="M21 16l-5-5-9 9"></path></svg></span>Choose from photos</button>
+    <button class="meth" onClick="{{toDescribe}}"><span class="mi"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></span>Describe it by voice or text</button>
+    <button class="meth" onClick="{{toManual}}"><span class="mi"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg></span>Search foods and enter amounts</button>
+    <p class="lbl">Recent meals</p>
+    <div class="card" style="padding: 4px 14px">
+      <button class="res" onClick="{{useRecent}}"><span style="flex: 1; display: flex; flex-direction: column"><span style="font-weight: 600">Oatmeal with banana</span><span class="small">Yesterday 07:40 · ≈ 52 g carbs, estimate</span></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></button>
+      <button class="res" onClick="{{useRecent}}" style="border-bottom: 0"><span style="flex: 1; display: flex; flex-direction: column"><span style="font-weight: 600">Shakshuka with pita</span><span class="small">Nov 8, 13:10 · ≈ 41 g carbs, estimate</span></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></button>
+    </div>
+  </div>
+</sc-if>
+
+<!-- MEAL-01b Camera permission denied -->
+<sc-if value="{{is.camDenied}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><button class="ib" aria-label="Back" onClick="{{toStart}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span class="ttl">Camera</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+    <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true" style="align-self: center; margin-top: 20px"><circle cx="48" cy="48" r="46" fill="#F4EFE7"></circle><path d="M26 36h9l5-7h16l5 7h9v32H26z" fill="none" stroke="#3A4441" stroke-width="3" stroke-linejoin="round"></path><path d="M22 24l52 52" stroke="#3A4441" stroke-width="3" stroke-linecap="round"></path></svg>
+    <h1 class="h1">Camera access is off</h1>
+    <p class="lead">To photograph meals, allow camera access in system Settings. You can still choose a photo or describe your meal.</p>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{toDescribe}}">Describe the meal instead</button><button class="btn btn-o" onClick="{{fromLibrary}}">Choose from photos</button><button class="btn btn-g" onClick="{{noop}}">Open Settings</button></div>
+</sc-if>
+
+<!-- MEAL-02 Camera -->
+<sc-if value="{{is.camera}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr dark"><button class="ib" aria-label="Cancel" onClick="{{toStart}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button><span class="ttl">Fit the whole plate in the frame</span><button class="ib" aria-label="Flash off"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"></path></svg></button></div>
+  <div class="vf">
+    <svg width="300" height="300" viewBox="0 0 300 300" aria-hidden="true" style="opacity: .92"><rect width="300" height="300" fill="#2A2F2C"></rect><circle cx="150" cy="150" r="128" fill="#EDE9E2"></circle><circle cx="150" cy="150" r="104" fill="#F7F4EF"></circle><ellipse cx="112" cy="128" rx="46" ry="34" fill="#FFFDF7"></ellipse><g fill="#F0EBDD"><circle cx="96" cy="120" r="4"></circle><circle cx="110" cy="132" r="4"></circle><circle cx="124" cy="118" r="4"></circle><circle cx="118" cy="142" r="4"></circle><circle cx="100" cy="140" r="4"></circle></g><path d="M150 178c18-22 60-18 66 4 4 16-18 26-40 22s-32-14-26-26z" fill="#C88B4E"></path><path d="M162 184c14-10 36-8 44 2" stroke="#9C6532" stroke-width="3" fill="none"></path><g fill="#5E9B4C"><ellipse cx="190" cy="112" rx="18" ry="11" transform="rotate(-25 190 112)"></ellipse><ellipse cx="206" cy="130" rx="16" ry="10" transform="rotate(20 206 130)"></ellipse><ellipse cx="176" cy="128" rx="14" ry="9" transform="rotate(60 176 128)"></ellipse></g><circle cx="196" cy="122" r="6" fill="#D9473B"></circle><path d="M78 186a40 40 0 0 1 64 22H74a40 40 0 0 1 4-22z" fill="#E4C48E"></path></svg>
+    <span class="corner" style="top: 40px; left: 30px; border-top-width: 3px; border-left-width: 3px; border-top-left-radius: 14px"></span>
+    <span class="corner" style="top: 40px; right: 30px; border-top-width: 3px; border-right-width: 3px; border-top-right-radius: 14px"></span>
+    <span class="corner" style="bottom: 40px; left: 30px; border-bottom-width: 3px; border-left-width: 3px; border-bottom-left-radius: 14px"></span>
+    <span class="corner" style="bottom: 40px; right: 30px; border-bottom-width: 3px; border-right-width: 3px; border-bottom-right-radius: 14px"></span>
+  </div>
+  <div class="camfoot">
+    <button class="thumb" aria-label="Choose from photos" onClick="{{fromLibrary}}"></button>
+    <button class="shutter" aria-label="Take photo" onClick="{{shoot}}"><span></span></button>
+    <button class="ib" aria-label="Describe instead" onClick="{{toDescribe}}" style="color: var(--onac)"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"></path></svg></button>
+  </div>
+</sc-if>
+
+<!-- MEAL-03 Preview -->
+<sc-if value="{{is.preview}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><button class="ib" aria-label="Back" onClick="{{openCamera}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span class="ttl">Check your photo</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+    <div class="{{photoCls}}" role="img" aria-label="Your meal photo">
+      <svg width="100%" height="100%" viewBox="0 0 300 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="225" fill="#D9CFC0"></rect><circle cx="150" cy="112" r="100" fill="#EDE9E2"></circle><circle cx="150" cy="112" r="82" fill="#F7F4EF"></circle><ellipse cx="120" cy="96" rx="36" ry="27" fill="#FFFDF7"></ellipse><path d="M150 134c14-17 47-14 52 3 3 12-14 20-31 17s-25-11-21-20z" fill="#C88B4E"></path><g fill="#5E9B4C"><ellipse cx="186" cy="86" rx="14" ry="9" transform="rotate(-25 186 86)"></ellipse><ellipse cx="198" cy="100" rx="12" ry="8" transform="rotate(20 198 100)"></ellipse></g><circle cx="190" cy="94" r="5" fill="#D9473B"></circle><path d="M92 140a31 31 0 0 1 50 17H88a31 31 0 0 1 4-17z" fill="#E4C48E"></path></svg>
+    </div>
+    <sc-if value="{{isBlurry}}" hint-placeholder-val="{{ false }}"><div class="note" role="alert"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg><span>This photo looks blurry or dark, so foods may be missed. Retake it in better light, or use it anyway.</span></div></sc-if>
+    <p class="small" style="margin: 0">Photos are sent for analysis and stored with this meal. You can delete them later from the journal.</p>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{analyze}}">Use this photo</button><div style="display: flex; gap: 10px"><button class="btn btn-o" onClick="{{openCamera}}">Retake</button><button class="btn btn-o" onClick="{{fromLibrary}}">Replace</button></div></div>
+</sc-if>
+
+<!-- MEAL-04 Analyzing -->
+<sc-if value="{{is.analyzing}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><span style="width: 48px"></span><span class="ttl">Looking at your meal</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+    <div class="photo" aria-hidden="true">
+      <svg width="100%" height="100%" viewBox="0 0 300 225" preserveAspectRatio="xMidYMid slice"><rect width="300" height="225" fill="#D9CFC0"></rect><circle cx="150" cy="112" r="100" fill="#EDE9E2"></circle><circle cx="150" cy="112" r="82" fill="#F7F4EF"></circle><ellipse cx="120" cy="96" rx="36" ry="27" fill="#FFFDF7"></ellipse><path d="M150 134c14-17 47-14 52 3 3 12-14 20-31 17s-25-11-21-20z" fill="#C88B4E"></path><g fill="#5E9B4C"><ellipse cx="186" cy="86" rx="14" ry="9"></ellipse></g><path d="M92 140a31 31 0 0 1 50 17H88a31 31 0 0 1 4-17z" fill="#E4C48E"></path></svg>
+      <span class="scanl"></span>
+    </div>
+    <div class="card" style="display: flex; flex-direction: column; gap: 14px" role="status" aria-live="polite">
+      <sc-for list="{{steps}}" as="st" hint-placeholder-count="3"><div class="stp"><span class="{{st.cls}}"><sc-if value="{{st.done}}" hint-placeholder-val="{{ false }}"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></span><span>{{st.label}}</span></div></sc-for>
+    </div>
+    <p class="small" style="text-align: center; margin: 0">This usually takes a few seconds. Motion is optional; progress is always written out.</p>
+  </div>
+  <div class="foot"><button class="btn btn-o" onClick="{{toManual}}">Cancel and enter manually</button></div>
+</sc-if>
+
+<!-- MEAL-04b No food / service down -->
+<sc-if value="{{is.noFood}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><button class="ib" aria-label="Back" onClick="{{toStart}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span class="ttl">Meal</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+    <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true" style="align-self: center; margin-top: 20px"><circle cx="48" cy="48" r="46" fill="#F4EFE7"></circle><circle cx="48" cy="48" r="26" fill="#fff" stroke="#A9A296" stroke-width="3"></circle><path d="M40 44h.01M56 44h.01M40 58c5-3 11-3 16 0" stroke="#6B625A" stroke-width="3" stroke-linecap="round" fill="none"></path></svg>
+    <h1 class="h1">I couldn’t find food in this photo</h1>
+    <p class="lead">Try a photo from above with the whole plate in view, or tell me what you ate.</p>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{openCamera}}">Retake photo</button><button class="btn btn-o" onClick="{{toDescribe}}">Describe it instead</button></div>
+</sc-if>
+<sc-if value="{{is.down}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><button class="ib" aria-label="Back" onClick="{{toStart}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span class="ttl">Meal</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+    <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true" style="align-self: center; margin-top: 20px"><circle cx="48" cy="48" r="46" fill="#F4EFE7"></circle><path d="M30 58a12 12 0 0 1 2-24 16 16 0 0 1 30-2 11 11 0 0 1 4 22" fill="none" stroke="#3A4441" stroke-width="3" stroke-linecap="round"></path><path d="M36 70l24-24" stroke="#3A4441" stroke-width="3" stroke-linecap="round"></path></svg>
+    <h1 class="h1">Photo analysis isn’t available right now</h1>
+    <p class="lead">Your photo is kept with this meal. You can enter the foods yourself now, or try the analysis again.</p>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{toManual}}">Enter foods manually</button><button class="btn btn-o" onClick="{{retryAnalysis}}">Try again</button></div>
+</sc-if>
+
+<!-- MEAL-10 Describe -->
+<sc-if value="{{is.describe}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><button class="ib" aria-label="Back" onClick="{{toStart}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span class="ttl">Describe your meal</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+    <label class="lbl" for="desc">What did you eat?</label>
+    <textarea id="desc" class="inp" rows="4" style="padding-top: 14px; min-height: 120px; resize: none" placeholder="For example: two slices of toast with butter and a banana" value="{{descText}}" onChange="{{onDesc}}"></textarea>
+    <button class="btn btn-s" onClick="{{dictate}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg>{{dictLabel}}</button>
+    <div class="note">I’ll turn this into a list of foods with amounts. You check and correct it before anything is saved.</div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{parseDesc}}">Find foods</button></div>
+</sc-if>
+
+<!-- MEAL-05 Review items / MEAL-11 manual -->
+<sc-if value="{{is.review}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><button class="ib" aria-label="Back" onClick="{{toStart}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span class="ttl">{{reviewTitle}}</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+    <sc-if value="{{edited}}" hint-placeholder-val="{{ false }}"><div class="note" style="background: var(--xE3ECF5); color: var(--x234E74)">Editing a saved meal. The original stays in its correction history.</div></sc-if>
+    <sc-if value="{{showFound}}" hint-placeholder-val="{{ true }}"><p class="lead" style="font-size: 1em">I found {{itemCount}} items. Check each one; tap a name to change it.</p></sc-if>
+    <sc-if value="{{noItems}}" hint-placeholder-val="{{ false }}"><div class="note">No foods yet. Add what you ate below.</div></sc-if>
+    <sc-for list="{{items}}" as="it" hint-placeholder-count="4">
+      <div class="item">
+        <div style="display: flex; align-items: flex-start; gap: 10px">
+          <button class="lnk" style="padding: 0; text-align: start; flex: 1; min-height: 44px" onClick="{{it.change}}" aria-label="{{it.changeAria}}"><span class="iname">{{it.name}}</span></button>
+          <span class="carb" aria-label="{{it.carbAria}}">{{it.carbText}}</span>
+        </div>
+        <div class="chips" style="gap: 6px"><span class="{{it.provCls}}">{{it.prov}}</span><sc-if value="{{it.demo}}" hint-placeholder-val="{{ true }}"><span class="prov p-est" style="background: var(--fill); color: var(--ink2)">Demo value</span></sc-if></div>
+        <sc-if value="{{it.hasQ}}" hint-placeholder-val="{{ false }}">
+          <div class="q"><span class="lbl">{{it.q}}</span><div class="chips"><sc-for list="{{it.qopts}}" as="qo" hint-placeholder-count="3"><button class="{{qo.cls}}" aria-pressed="{{qo.on}}" onClick="{{qo.pick}}">{{qo.label}}</button></sc-for></div></div>
+        </sc-if>
+        <sc-if value="{{it.noData}}" hint-placeholder-val="{{ false }}">
+          <div class="q"><span class="lbl">No nutrition data for this food.</span><span class="small">Enter carbs if you know them, or leave it out of the total.</span><div class="row" style="display: flex; gap: 8px; align-items: center"><input class="inp" inputmode="decimal" placeholder="g carbs" aria-label="Carbs in grams for {{it.name}}" value="{{it.manualCarb}}" onChange="{{it.onManual}}" style="flex: 1"><span class="lbl">g</span></div></div>
+        </sc-if>
+        <sc-if value="{{it.hasQty}}" hint-placeholder-val="{{ true }}">
+          <div class="qty" role="group" aria-label="Amount of {{it.name}}">
+            <button class="stepb" aria-label="Less" onClick="{{it.dec}}">−</button><span class="qv" aria-live="polite">{{it.qtyText}}</span><button class="stepb" aria-label="More" onClick="{{it.inc}}">+</button>
+            <div class="chips" style="gap: 6px"><sc-for list="{{it.unitOpts}}" as="u" hint-placeholder-count="3"><button class="{{u.cls}}" aria-pressed="{{u.on}}" onClick="{{u.pick}}">{{u.label}}</button></sc-for></div>
+          </div>
+          <sc-if value="{{it.isGrams}}" hint-placeholder-val="{{ false }}"><button class="{{it.wCls}}" aria-pressed="{{it.weighed}}" onClick="{{it.toggleW}}" style="align-self: flex-start">I weighed it</button></sc-if>
+        </sc-if>
+        <div style="display: flex; justify-content: flex-end"><button class="lnk" onClick="{{it.remove}}" style="color: var(--x6B3A2A)">Remove</button></div>
+      </div>
+    </sc-for>
+    <button class="btn btn-s" onClick="{{openAdd}}"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Add a food</button>
+    <p class="lbl" id="ateL">How much did you eat?</p>
+    <div class="chips" role="radiogroup" aria-labelledby="ateL"><sc-for list="{{ateOpts}}" as="a" hint-placeholder-count="5"><button class="{{a.cls}}" role="radio" aria-checked="{{a.on}}" onClick="{{a.pick}}">{{a.label}}</button></sc-for></div>
+    <div class="total" aria-live="polite">
+      <span style="font-size: .875em; opacity: .85">Estimated carbs for what you ate</span>
+      <span class="big">≈ {{totalCarb}} g</span>
+      <span style="font-size: .8125em; opacity: .85">{{totalNote}}</span>
+    </div>
+    <div class="note"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7.5h.01"></path></svg><span>Carbs from photos and descriptions are estimates. Confirming amounts makes them closer, not exact. Steady doesn’t turn estimates into insulin doses.</span></div>
+    <div class="row" style="display: flex; justify-content: space-between; align-items: center"><span class="lbl">Eaten at</span><input class="inp" type="time" value="13:05" aria-label="Eaten at" style="width: 140px"></div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{saveMeal}}">{{saveLabel}}</button></div>
+</sc-if>
+
+<!-- MEAL-08 Saved -->
+<sc-if value="{{is.saved}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><span style="width: 48px"></span><span class="ttl">Meal saved</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+    <span class="ok" role="status"><svg class="ic" width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>
+    <h1 class="h1" style="text-align: center">Saved to your journal</h1>
+    <div class="card" style="display: flex; flex-direction: column; gap: 8px">
+      <div style="display: flex; justify-content: space-between"><span class="lbl">Lunch · 13:05</span><span class="carb">≈ {{totalCarb}} g</span></div>
+      <span class="small">{{savedItems}}</span>
+      <span class="prov p-est" style="align-self: flex-start">Estimate · {{ateLabel}}</span>
+    </div>
+    <div class="note">Noa: “Thanks. I’ll ask how you’re doing around 15:00, as you asked. You can change that.”</div>
+  </div>
+  <div class="foot"><a class="btn btn-p" href="Companion.dc.html">Back to conversation</a><button class="btn btn-o" onClick="{{editSaved}}">Correct this meal</button><a class="btn btn-g" href="Journal.dc.html">View in journal</a></div>
+</sc-if>
+
+<!-- MEAL-06/07 Change or add food sheet -->
+<sc-if value="{{searchOpen}}" hint-placeholder-val="{{ false }}">
+  <div class="scrim" onClick="{{closeSearch}}">
+    <div class="sheet" role="dialog" aria-modal="true" aria-label="{{searchTitle}}" onClick="{{stopProp}}">
+      <div class="grab" aria-hidden="true"></div>
+      <div style="display: flex; align-items: center; justify-content: space-between"><span class="lbl" style="font-size: 1.25em">{{searchTitle}}</span><button class="ib" aria-label="Close" onClick="{{closeSearch}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+      <label for="sq" style="position: absolute; width: 1px; height: 1px; overflow: hidden">Search foods</label>
+      <input id="sq" class="inp" type="search" placeholder="Search foods" value="{{sq}}" onChange="{{onSq}}" autofocus>
+      <div>
+        <sc-for list="{{results}}" as="r" hint-placeholder-count="5"><button class="res" onClick="{{r.pick}}"><span style="flex: 1; display: flex; flex-direction: column"><span style="font-weight: 600">{{r.name}}</span><span class="small">{{r.sub}}</span></span></button></sc-for>
+        <sc-if value="{{noResults}}" hint-placeholder-val="{{ false }}"><div class="note">No match. Add “{{sq}}” as your own food and enter carbs if you know them.</div><button class="btn btn-s" onClick="{{addCustom}}">Add “{{sq}}”</button></sc-if>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["day","night"],"default":"day","section":"Appearance"},"scenario":{"editor":"enum","options":["multipleFoods","mixedDish","lowConfidence","missingNutrition","noFoodFound","blurryPhoto","serviceDown","cameraDenied"],"default":"multipleFoods","section":"Prototype"},"textSize":{"editor":"enum","options":["100%","130%","160%"],"default":"100%","section":"Accessibility"},"reducedMotion":{"editor":"boolean","default":false,"section":"Accessibility"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  foods() {
+    return {
+      rice: { name: 'White rice, cooked', units: { cup: 45, tbsp: 2.8, g: 0.28 }, unit: 'cup', qty: 1, step: { cup: 0.25, tbsp: 1, g: 10 } },
+      pita: { name: 'Pita bread', units: { piece: 33, half: 16.5, g: 0.55 }, unit: 'piece', qty: 1, step: { piece: 0.5, half: 1, g: 10 } },
+      salad: { name: 'Mixed salad with tomato', units: { cup: 4, bowl: 8, g: 0.04 }, unit: 'cup', qty: 1, step: { cup: 0.5, bowl: 0.5, g: 20 } },
+      chicken: { name: 'Grilled chicken', units: { piece: 0, g: 0 }, unit: 'piece', qty: 1, step: { piece: 1, g: 20 } },
+      lasagna: { name: 'Lasagna (mixed dish)', units: { piece: 38, cup: 30, g: 0.17 }, unit: 'piece', qty: 1, step: { piece: 0.5, cup: 0.5, g: 20 }, q: 'Was there a cream (béchamel) sauce?', qopts: ['Yes', 'No', 'Not sure'] },
+      bread: { name: 'Garlic bread', units: { slice: 12, g: 0.42 }, unit: 'slice', qty: 2, step: { slice: 1, g: 10 } },
+      dip: { name: 'Possibly hummus or tahini', units: { tbsp: 2.2, g: 0.14 }, unit: 'tbsp', qty: 3, step: { tbsp: 1, g: 10 }, q: 'Which is it?', qopts: ['Hummus', 'Tahini', 'Something else'], low: true },
+      kubbeh: { name: 'Homemade kubbeh soup', units: { bowl: null }, unit: 'bowl', qty: 1, step: { bowl: 0.5 }, noData: true },
+      toast: { name: 'Toast, white bread', units: { slice: 14, g: 0.49 }, unit: 'slice', qty: 2, step: { slice: 1, g: 10 } },
+      butter: { name: 'Butter', units: { tbsp: 0, g: 0 }, unit: 'tbsp', qty: 1, step: { tbsp: 0.5, g: 5 } },
+      banana: { name: 'Banana', units: { piece: 27, half: 13.5, g: 0.23 }, unit: 'piece', qty: 1, step: { piece: 0.5, half: 1, g: 10 } },
+      oat: { name: 'Oatmeal, cooked', units: { cup: 27, g: 0.12 }, unit: 'cup', qty: 1, step: { cup: 0.25, g: 20 } },
+      apple: { name: 'Apple', units: { piece: 25, g: 0.14 }, unit: 'piece', qty: 1, step: { piece: 0.5, g: 10 } },
+      yogurt: { name: 'Plain yogurt', units: { cup: 12, g: 0.05 }, unit: 'cup', qty: 1, step: { cup: 0.5, g: 20 } },
+      pasta: { name: 'Pasta, cooked', units: { cup: 43, g: 0.31 }, unit: 'cup', qty: 1, step: { cup: 0.25, g: 10 } },
+      falafel: { name: 'Falafel', units: { piece: 5, g: 0.32 }, unit: 'piece', qty: 4, step: { piece: 1, g: 10 } }
+    };
+  }
+  later(ms, fn) { this._tms = this._tms || []; this._tms.push(setTimeout(fn, ms)); }
+  clear() { (this._tms || []).forEach((x) => clearTimeout(x)); this._tms = []; }
+  componentWillUnmount() { this.clear(); }
+  renderVals() {
+    if (!this._F) this._F = this.foods();
+    const F = this._F;
+    const s = this.state || {};
+    const p = this.props || {};
+    const sc = p.scenario || 'multipleFoods';
+    const v = (k, d) => (s[k] === undefined ? d : s[k]);
+    const set = (o) => this.setState(o);
+    const fs = ({ '100%': 16, '130%': 20, '160%': 24 })[p.textSize] || 16;
+    const view = v('view', 'start');
+    const mk = (key) => { const f = F[key]; return { key: key, name: f.name, unit: f.unit, qty: f.qty, prov: f.low ? 'q' : 'est', qa: null, manualCarb: '', weighed: false }; };
+    const sets = { multipleFoods: ['rice', 'chicken', 'salad', 'pita'], blurryPhoto: ['rice', 'chicken', 'pita'], mixedDish: ['lasagna', 'bread', 'salad'], lowConfidence: ['falafel', 'dip', 'pita', 'salad'], missingNutrition: ['kubbeh', 'pita'] };
+    const items = v('items', null);
+    const startItems = (keys) => keys.map(mk);
+    const analyze = () => {
+      this.clear();
+      set({ view: 'analyzing', aStep: 0 });
+      if (sc === 'noFoodFound') { this.later(1800, () => this.setState({ view: 'noFood' })); return; }
+      if (sc === 'serviceDown' && !s.retried) { this.later(2200, () => this.setState({ view: 'down' })); return; }
+      this.later(800, () => this.setState({ aStep: 1 }));
+      this.later(1700, () => this.setState({ aStep: 2 }));
+      this.later(2600, () => this.setState({ view: 'review', source: 'photo', items: startItems(sets[sc] || sets.multipleFoods), ate: 'all', edited: false }));
+    };
+    const aStep = v('aStep', 0);
+    const steps = ['Uploading photo', 'Finding foods on the plate', 'Looking up nutrition'].map((l, i) => ({ label: l, done: i < aStep, cls: 'dot ' + (i < aStep ? 'd-done' : i === aStep ? 'd-act' : 'd-wait') }));
+    const ate = v('ate', 'all');
+    const ATE = [['all', 'All of it', 1], ['most', 'Most (¾)', 0.75], ['half', 'Half', 0.5], ['little', 'A little (¼)', 0.25]];
+    const ateF = (ATE.find((a) => a[0] === ate) || ATE[0])[2];
+    const ateLabel = (ATE.find((a) => a[0] === ate) || ATE[0])[1].toLowerCase();
+    const list = items || [];
+    const upd = (i, patch) => { const a = list.slice(); a[i] = Object.assign({}, a[i], patch); set({ items: a }); };
+    const fmtQ = (q) => (Math.round(q * 100) / 100).toString().replace(/\.25$/, '¼').replace(/^0¼$/, '¼').replace(/\.5$/, '½').replace(/^0½$/, '½').replace(/\.75$/, '¾').replace(/^0¾$/, '¾');
+    let total = 0; let anyUnknown = false; let anyEst = false;
+    const itemViews = list.map((it, i) => {
+      const f = F[it.key] || { units: { g: null }, step: { g: 10 } };
+      let carb = null;
+      if (f.noData || (it.custom && true)) { carb = it.manualCarb !== '' && !isNaN(parseFloat(it.manualCarb)) ? parseFloat(it.manualCarb) : null; }
+      else { const per = f.units[it.unit]; carb = per === null || per === undefined ? null : per * it.qty; }
+      if (carb === null) anyUnknown = true; else total += carb;
+      if (it.prov !== 'wt') anyEst = true;
+      const provMap = { est: ['Estimated amount and carbs', 'prov p-est'], user: ['Amount confirmed by you · carbs estimated', 'prov p-user'], wt: ['Weighed by you · carbs estimated', 'prov p-wt'], q: ['Unsure match · please check', 'prov p-q'], man: ['Entered by you', 'prov p-user'] };
+      const pv = provMap[it.custom || f.noData ? (it.manualCarb ? 'man' : 'est') : it.prov] || provMap.est;
+      const unitOpts = Object.keys(f.units || {}).map((u) => ({ label: u === 'half' ? '½ piece' : u, on: it.unit === u, cls: 'chip' + (it.unit === u ? ' on' : ''), pick: () => { const base = F[it.key]; const conv = { cup: 1, tbsp: 1, g: 100, piece: 1, half: 1, bowl: 1, slice: 1 }; upd(i, { unit: u, qty: u === 'g' ? (conv.g) : (base && base.qty) || 1, prov: it.prov === 'q' ? 'q' : 'user', weighed: false }); } }));
+      const st = (f.step && f.step[it.unit]) || 1;
+      const qopts = (f.q && f.qopts ? f.qopts : []).map((o) => ({ label: o, on: it.qa === o, cls: 'chip' + (it.qa === o ? ' on' : ''), pick: () => { const patch = { qa: o }; if (it.key === 'dip') { patch.name = o === 'Hummus' ? 'Hummus' : o === 'Tahini' ? 'Tahini' : 'Dip (unknown)'; patch.prov = 'user'; } upd(i, patch); } }));
+      return {
+        name: it.name, carbText: carb === null ? '— g' : '≈ ' + Math.round(carb * ateF) + ' g', carbAria: carb === null ? 'Carbs unknown' : 'About ' + Math.round(carb * ateF) + ' grams of carbs, estimate',
+        prov: pv[0], provCls: pv[1], demo: !it.custom,
+        hasQ: !!(f.q) && !it.qa, q: f.q || '', qopts: qopts,
+        noData: !!(f.noData || it.custom), manualCarb: it.manualCarb || '', onManual: (e) => upd(i, { manualCarb: e.target.value }),
+        hasQty: !(f.noData || it.custom), qtyText: fmtQ(it.qty), unitOpts: unitOpts,
+        inc: () => upd(i, { qty: Math.round((it.qty + st) * 100) / 100, prov: it.prov === 'q' ? 'q' : (it.weighed ? 'wt' : 'user') }),
+        dec: () => upd(i, { qty: Math.max(st, Math.round((it.qty - st) * 100) / 100), prov: it.prov === 'q' ? 'q' : (it.weighed ? 'wt' : 'user') }),
+        isGrams: it.unit === 'g', weighed: !!it.weighed, wCls: 'chip' + (it.weighed ? ' on' : ''), toggleW: () => upd(i, { weighed: !it.weighed, prov: !it.weighed ? 'wt' : 'user' }),
+        remove: () => { const a = list.slice(); a.splice(i, 1); set({ items: a }); },
+        change: () => set({ search: 'change', sIdx: i, sq: '' }), changeAria: 'Change food: ' + it.name
+      };
+    });
+    const sq = v('sq', '');
+    const keys = Object.keys(F).filter((k) => !F[k].noData && !F[k].low);
+    const results = keys.filter((k) => F[k].name.toLowerCase().indexOf(sq.toLowerCase()) >= 0).slice(0, 6).map((k) => ({ name: F[k].name, sub: 'Typical serving: ' + F[k].qty + ' ' + F[k].unit, pick: () => { const it = mk(k); it.prov = 'user'; const a = list.slice(); if (s.search === 'change') a[s.sIdx] = it; else a.push(it); set({ items: a, search: null, sq: '' }); } }));
+    const totalNote = anyUnknown ? 'Some foods have no carb value and aren’t included.' : (anyEst ? 'Estimate, not a measurement · scaled to ' + ateLabel : 'Based on weights you entered · still an estimate');
+    const srcTitle = { photo: 'Check the foods', text: 'Check the foods', manual: 'Enter foods', recent: 'Check the foods' };
+    return {
+      fs: fs, rmCls: p.reducedMotion ? 'rm' : '',
+      is: { start: view === 'start', camDenied: view === 'camDenied', camera: view === 'camera', preview: view === 'preview', analyzing: view === 'analyzing', noFood: view === 'noFood', down: view === 'down', describe: view === 'describe', review: view === 'review', saved: view === 'saved' },
+      openCamera: () => { this.clear(); set({ view: sc === 'cameraDenied' ? 'camDenied' : 'camera' }); },
+      fromLibrary: () => set({ view: 'preview', fromLib: true }), shoot: () => set({ view: 'preview' }),
+      toStart: () => { this.clear(); set({ view: 'start' }); }, toDescribe: () => { this.clear(); set({ view: 'describe' }); },
+      toManual: () => { this.clear(); set({ view: 'review', source: 'manual', items: [], ate: 'all', edited: false }); },
+      useRecent: () => set({ view: 'review', source: 'recent', items: startItems(['oat', 'banana']), ate: 'all', edited: false }),
+      photoCls: 'photo' + (sc === 'blurryPhoto' ? ' blur' : ''), isBlurry: sc === 'blurryPhoto',
+      analyze: analyze, retryAnalysis: () => { set({ retried: true }); this.later(10, () => { this.setState({ view: 'analyzing', aStep: 0 }); this.later(800, () => this.setState({ aStep: 1 })); this.later(1700, () => this.setState({ aStep: 2 })); this.later(2600, () => this.setState({ view: 'review', source: 'photo', items: startItems(sets.multipleFoods), ate: 'all' })); }); },
+      steps: steps,
+      descText: v('desc', ''), onDesc: (e) => set({ desc: e.target.value }),dictLabel: v('dict', false) ? 'Listening… tap to stop' : 'Dictate', dictate: () => { if (v('dict', false)) { set({ dict: false, desc: 'Two slices of toast with butter and a banana' }); } else set({ dict: true }); },
+      parseDesc: () => set({ view: 'review', source: 'text', items: startItems(['toast', 'butter', 'banana']), ate: 'all', edited: false }),
+      reviewTitle: srcTitle[v('source', 'photo')] || 'Check the foods', edited: v('edited', false),
+      showFound: list.length > 0 && v('source', 'photo') !== 'manual', noItems: list.length === 0, itemCount: String(list.length), items: itemViews,
+      openAdd: () => set({ search: 'add', sq: '' }),
+      ateOpts: ATE.map((a) => ({ label: a[1], on: ate === a[0], cls: 'chip' + (ate === a[0] ? ' on' : ''), pick: () => set({ ate: a[0] }) })),
+      totalCarb: String(Math.round(total * ateF)), totalNote: totalNote, ateLabel: ateLabel,
+      saveLabel: v('edited', false) ? 'Save correction' : 'Save meal', saveMeal: () => set({ view: 'saved' }),
+      savedItems: list.map((x) => x.name).join(', '), editSaved: () => set({ view: 'review', edited: true }),
+      searchOpen: !!v('search', null), searchTitle: v('search', null) === 'change' ? 'Change food' : 'Add a food', closeSearch: () => set({ search: null }), stopProp: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
+      sq: sq, onSq: (e) => set({ sq: e.target.value }), results: results, noResults: sq.length > 1 && results.length === 0,
+      addCustom: () => { const a = list.slice(); a.push({ key: 'custom', name: sq, unit: 'g', qty: 100, prov: 'man', custom: true, manualCarb: '' }); set({ items: a, search: null, sq: '' }); },
+      noop: () => {}
+    };
+  }
+}
+
+;(function(){var rv=Component.prototype.renderVals;Component.prototype.renderVals=function(){var v=rv.call(this)||{};var s=this.state&&this.state.themeOverride;var p=(this.props&&this.props.theme)||'day';v.theme=s||p;var n=v.theme==='night';var self=this;v.setThemeDay=function(){self.setState({themeOverride:'day'})};v.setThemeNight=function(){self.setState({themeOverride:'night'})};v.thDayCls='chip'+(n?'':' on');v.thNightCls='chip'+(n?' on':'');return v;};})();
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+Onboarding|onb-welcome-en-day|{"theme": "day"}|{"step": "welcome"}
+Onboarding|onb-welcome-he-day|{"theme": "day", "lang": "he"}|{"step": "welcome"}
+Onboarding|onb-welcome-en-night|{"theme": "night"}|{"step": "welcome"}
+Onboarding|onb-welcome-he-night|{"theme": "night", "lang": "he"}|{"step": "welcome"}
+Onboarding|onb-consent-en-day|{"theme": "day"}|{"step": "consent"}
+Onboarding|onb-type-en-day|{"theme": "day"}|{"step": "type"}
+Onboarding|onb-type-he-day|{"theme": "day", "lang": "he"}|{"step": "type"}
+Onboarding|onb-units-en-day|{"theme": "day"}|{"step": "units"}
+Onboarding|onb-icr-en-day|{"theme": "day"}|{"step": "icr"}
+Onboarding|onb-sensor-en-day|{"theme": "day"}|{"step": "sensor"}
+Onboarding|onb-avatar-en-day|{"theme": "day"}|{"step": "avatar"}
+Onboarding|onb-notif-en-day|{"theme": "day"}|{"step": "notif"}
+Onboarding|onb-review-en-day|{"theme": "day"}|{"step": "review"}
+Companion|com-voice-en-day|{"theme": "day"}|{}
+Companion|com-voice-he-day|{"theme": "day", "lang": "he"}|{}
+Companion|com-voice-en-night|{"theme": "night"}|{}
+Companion|com-voice-he-night|{"theme": "night", "lang": "he"}|{}
+Meal|meal-start-en-day|{"theme": "day"}|{"view": "start"}
+Meal|meal-review-en-day|{"theme": "day"}|{"view": "review"}
+Meal|meal-review-he-day|{"theme": "day"}|{"view": "review"}
+Meal|meal-saved-en-day|{"theme": "day"}|{"view": "saved"}
+Overview|ovr-main-en-day|{"theme": "day"}|{"view": "main"}
+Overview|ovr-main-he-day|{"theme": "day"}|{"view": "main"}
+Overview|ovr-main-en-night|{"theme": "night"}|{"view": "main"}
+Overview|ovr-main-he-night|{"theme": "night"}|{"view": "main"}
+Overview|ovr-insight-en-day|{"theme": "day"}|{"view": "insight"}
+Journal|jrn-list-en-day|{"theme": "day"}|{"view": "list"}
+Routine|rtn-routine-en-day|{"theme": "day"}|{}
+Routine|rtn-routine-en-night|{"theme": "night"}|{}
+Routine|rtn-checkins-en-day|{"theme": "day"}|{"tab": "checkins"}
+Routine|rtn-memory-en-day|{"theme": "day"}|{"tab": "memory"}
+Settings|set-hub-en-day|{"theme": "day"}|{"view": "hub"}
+Settings|set-hub-he-day|{"theme": "day"}|{"view": "hub"}
+Settings|set-hub-en-night|{"theme": "night"}|{"view": "hub"}
+Settings|set-hub-he-night|{"theme": "night"}|{"view": "hub"}
+Settings|set-profile-en-day|{"theme": "day"}|{"view": "profile"}
+Settings|set-treatment-en-day|{"theme": "day"}|{"view": "treatment"}
+Settings|set-devices-en-day|{"theme": "day"}|{"view": "devices"}
+Settings|set-companion-en-day|{"theme": "day"}|{"view": "companion"}
+Settings|set-language-en-day|{"theme": "day"}|{"view": "language"}
+Settings|set-a11y-en-day|{"theme": "day"}|{"view": "a11y"}
+Settings|set-notif-en-day|{"theme": "day"}|{"view": "notif"}
+Settings|set-privacy-en-day|{"theme": "day"}|{"view": "privacy"}
+Settings|set-help-en-day|{"theme": "day"}|{"view": "help"}
+Settings|set-export-en-day|{"theme": "day"}|{"view": "export"}
+Settings|set-delete-en-day|{"theme": "day"}|{"view": "delete"}
+Subscription|sub-trial-en-day|{"scenario": "trialActive", "theme": "day"}|{}
+Subscription|sub-member-en-day|{"scenario": "member", "theme": "day"}|{}
+Subscription|sub-member-en-night|{"scenario": "member", "theme": "night"}|{}

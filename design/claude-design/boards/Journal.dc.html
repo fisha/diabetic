@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Journal and traceability</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:var(--fill)}
+a{color:var(--act)}a:hover{color:var(--acd)}
+.ph{position:relative;width:390px;height:844px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:-apple-system,'SF Pro Text','Inter',system-ui,sans-serif;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:1.4}
+.ph *{box-sizing:border-box}
+.ph button:focus-visible,.ph a:focus-visible,.ph input:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.hdr{display:flex;align-items:center;gap:8px;padding:54px 16px 4px}
+.h1{font-size:1.75em;font-weight:650;margin:0;flex:1;letter-spacing:-.01em}
+.ib{width:48px;height:48px;border-radius:24px;border:0;background:var(--card);box-shadow:0 1px 2px rgba(0,0,0,0);display:flex;align-items:center;justify-content:center;color:var(--ink);cursor:pointer;flex:none;text-decoration:none}
+.ib.plain{background:transparent;box-shadow:none}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:6px 16px 8px;scrollbar-width:none;flex:none}
+.chip{min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-size:.9375em;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap;flex:none}
+.chip.on{border-color:var(--ac);background:var(--ac);color:var(--onac)}
+.scroll{flex:1;overflow-y:auto;padding:4px 16px 20px;display:flex;flex-direction:column;gap:8px;min-height:0}
+.day{font-size:.8125em;font-weight:700;color:var(--sec);text-transform:uppercase;letter-spacing:.05em;margin:10px 4px 2px}
+.ent{display:flex;gap:12px;align-items:flex-start;background:var(--card);border-radius:18px;padding:12px;border:0;font:inherit;color:inherit;text-align:start;cursor:pointer;width:100%;box-shadow:0 1px 2px rgba(0,0,0,0)}
+.ent.gap{background:repeating-linear-gradient(45deg,var(--fill),var(--fill) 6px,var(--bg) 6px,var(--bg) 12px);box-shadow:none;cursor:default}
+.tm{min-width:44px;font-variant-numeric:tabular-nums;font-weight:600;font-size:.875em;color:var(--ink2);padding-top:2px}
+.eic{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.k-glu{background:var(--xE3ECF5);color:var(--x234E74)}.k-meal{background:var(--xF7EADB);color:var(--x7A4A12)}.k-ins{background:var(--xECE7F5);color:var(--x4B3A78)}.k-act{background:var(--soft);color:var(--act)}.k-comp{background:var(--ac);color:var(--onac)}.k-rem{background:var(--fill);color:var(--ink2)}.k-gap{background:var(--fill);color:var(--ink2)}
+.et{font-weight:650;font-size:1em}
+.ed{font-size:.875em;color:var(--ink2);margin-top:1px}
+.bdg{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.b{display:inline-flex;align-items:center;gap:4px;font-size:.6875em;font-weight:700;padding:3px 7px;border-radius:7px;letter-spacing:.01em}
+.b-dev{background:var(--xE3ECF5);color:var(--x234E74)}.b-you{background:var(--soft);color:var(--act)}.b-est{background:var(--xF3E8D5);color:var(--x6B4A12)}.b-obs{background:var(--xECE7F5);color:var(--x4B3A78)}.b-sug{background:var(--card);color:var(--act);border:1.5px solid var(--ac)}.b-st{background:var(--fill);color:var(--ink2)}.b-warn{background:var(--xFBE7DE);color:var(--x8A2E0C)}.b-ed{background:var(--card);color:var(--ink2);border:1px solid var(--line)}.b-demo{background:var(--xF3E8D5);color:var(--x6B4A12)}
+.banner{margin:0 16px 4px;display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:16px;font-size:.875em;background:var(--fill);color:var(--ink2)}
+.banner.bad{background:var(--xFBE7DE);color:var(--x7A2A0C)}
+.card{background:var(--card);border-radius:20px;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 16px rgba(0,0,0,0);padding:16px}
+.lbl{font-size:.9375em;font-weight:600;color:var(--ink2);margin:0}
+.small{font-size:.875em;color:var(--sec);line-height:1.45}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--fill);font-size:.9375em}
+.kv span:first-child{color:var(--sec)}
+.kv span:last-child{font-weight:600;text-align:end}
+.life{display:flex;flex-direction:column;gap:0}
+.ls{display:flex;gap:12px;align-items:flex-start;min-height:52px}
+.lsd{width:24px;display:flex;flex-direction:column;align-items:center;flex:none}
+.lsd i{width:14px;height:14px;border-radius:7px;display:block;margin-top:3px}
+.lsd b{width:2px;flex:1;background:var(--hair);min-height:30px;display:block}
+.on-d{background:var(--ac)}.off-d{background:var(--card);border:2px solid var(--line)}.na-d{background:var(--fill)}
+.hist{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--fill);font-size:.9375em}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 18px;border-radius:16px;border:0;font:inherit;font-size:1em;font-weight:600;cursor:pointer;text-decoration:none;width:100%}
+.btn-p{background:var(--ac);color:var(--onac)}.btn-p:hover{color:var(--onac)}
+.btn-s{background:var(--soft);color:var(--act)}
+.btn-o{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+.btn-d{background:var(--xFBE7DE);color:var(--x8A2E0C)}
+.row{display:flex;align-items:center;gap:10px}
+.inp{min-height:52px;border-radius:16px;border:1.5px solid var(--line);background:var(--card);padding:0 14px;font:inherit;font-size:1.125em;width:100%;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.ch{min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-size:.9375em;font-weight:600;color:var(--ink);cursor:pointer}
+.ch.on{border-color:var(--ac);background:var(--soft);color:var(--act)}
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--fill);border-radius:16px;padding:12px 14px;font-size:.9375em;line-height:1.45;color:var(--ink2)}
+.dlg{position:absolute;inset:0;background:rgba(20,26,24,.42);display:flex;align-items:center;justify-content:center;padding:24px;z-index:30;animation:fade .2s}
+.dlgc{background:var(--bg);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:12px;width:100%;animation:pop .24s cubic-bezier(.2,.8,.2,1)}
+.toast{position:absolute;left:16px;right:16px;bottom:100px;background:var(--inv);color:var(--onac);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;font-size:.9375em;z-index:25;animation:up2 .3s cubic-bezier(.2,.8,.2,1)}
+.toast button{background:transparent;border:0;color:var(--soft2);font:inherit;font-weight:700;cursor:pointer;min-height:44px}
+.tabbar{display:flex;border-top:1px solid var(--hair);background:var(--card);padding:4px 8px 30px;flex:none}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:52px;justify-content:center;font-size:.75em;font-weight:600;color:var(--sec);text-decoration:none}
+.tab.on{color:var(--act)}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{opacity:0;transform:scale(.94)}}
+@keyframes up2{from{opacity:0;transform:translateY(12px)}}
+.rm *{animation:none !important;transition:none !important}
+@media (prefers-reduced-motion: reduce){.ph *{animation:none !important;transition:none !important}}
+
+/* theme B */
+:root{--fill:#E6E6EB;--hair:#E5E5EA;--line:#D1D1D6;--ink:#1D1D1F;--ink2:#3A3A3C;--sec:#6E6E73;--ter:#8E8E93;--inv:#1D1D1F;--onac:#FFFFFF;--ac:#0B7A75;--act:#0A6560;--acd:#085E5A;--soft:#E4F2F1;--soft2:#BFE3DF;--bar:rgba(255,255,255,.88);--bg:#FFFFFF;--card:#F5F5F7;--xE3ECF5:#E3ECF5;--x234E74:#234E74;--xF7EADB:#F7EADB;--x7A4A12:#7A4A12;--xECE7F5:#ECE7F5;--x4B3A78:#4B3A78;--xF3E8D5:#F3E8D5;--x6B4A12:#6B4A12;--xFBE7DE:#FBE7DE;--x8A2E0C:#8A2E0C;--x7A2A0C:#7A2A0C}:root:has([data-theme="night"]),[data-theme="night"]{--fill:#2C2C2E;--hair:#38383A;--line:#48484A;--ink:#F5F5F7;--ink2:#D1D1D6;--sec:#A1A1A6;--ter:#7C7C80;--inv:#3A3A3C;--onac:#FFFFFF;--ac:#14958D;--act:#6FD6CD;--acd:#0E7C75;--soft:#10302E;--soft2:#1D5753;--bar:rgba(22,22,24,.88);--bg:#000000;--card:#1C1C1E;--xE3ECF5:#25323F;--x234E74:#9DBEDB;--xF7EADB:#473622;--x7A4A12:#E7C297;--xECE7F5:#2D253B;--x4B3A78:#AB9FCB;--xF3E8D5:#4B3E28;--x6B4A12:#E7CC9F;--xFBE7DE:#472A1C;--x8A2E0C:#E7A992;--x7A2A0C:#E8AF99;color-scheme:dark}[data-theme="night"] .sheet,[data-theme="night"] .dlgc{--bg:#1C1C1E;--card:#2C2C2E;--fill:#3A3A3C;--hair:#48484A}[fill="#8A847A"]{fill:var(--ter)}.sw i{background:#fff!important}.tabbar{background:var(--bar);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+</style>
+</helmet>
+<div data-theme="{{theme}}" class="ph {{rmCls}}" style="font-size: {{fs}}px">
+
+<!-- JRN-01 Timeline -->
+<sc-if value="{{is.list}}" hint-placeholder-val="{{ true }}">
+  <div class="hdr"><h1 class="h1">Journal</h1><a class="ib" href="WebDashboard.dc.html" aria-label="Export and longer history on the web"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg></a><a class="ib" href="Companion.dc.html" aria-label="Quick log"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></a></div>
+  <div class="filters" role="tablist" aria-label="Filter entries"><sc-for list="{{filters}}" as="f" hint-placeholder-count="7"><button class="{{f.cls}}" role="tab" aria-selected="{{f.on}}" onClick="{{f.pick}}">{{f.label}}</button></sc-for></div>
+  <sc-if value="{{pending}}" hint-placeholder-val="{{ false }}"><div class="banner" role="status"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"></path></svg><span>2 entries are saved on this phone and waiting to sync. They’ll upload when you’re online.</span></div></sc-if>
+  <sc-if value="{{syncFail}}" hint-placeholder-val="{{ false }}"><div class="banner bad" role="alert"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg><span style="flex: 1">1 entry couldn’t sync. It’s safe on this phone.</span><button class="ch" style="min-height: 36px" onClick="{{retrySync}}">{{retryLabel}}</button></div></sc-if>
+  <div class="scroll">
+    <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}"><div class="note" style="margin-top: 20px">{{emptyText}}</div></sc-if>
+    <sc-for list="{{groups}}" as="g" hint-placeholder-count="2">
+      <div class="day">{{g.day}}</div>
+      <sc-for list="{{g.items}}" as="e" hint-placeholder-count="5">
+        <button class="{{e.cls}}" onClick="{{e.open}}" aria-label="{{e.aria}}">
+          <span class="tm">{{e.time}}</span>
+          <span class="{{e.icCls}}" aria-hidden="true">
+            <sc-if value="{{e.k_glu}}" hint-placeholder-val="{{ true }}"><svg class="ic" width="18" height="18" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"></path></svg></sc-if>
+            <sc-if value="{{e.k_meal}}" hint-placeholder-val="{{ false }}"><svg class="ic" width="18" height="18" viewBox="0 0 24 24"><path d="M4 11h16a8 8 0 0 1-16 0z"></path></svg></sc-if>
+            <sc-if value="{{e.k_ins}}" hint-placeholder-val="{{ false }}"><svg class="ic" width="18" height="18" viewBox="0 0 24 24"><path d="M14 4l6 6M17 7l-9 9-4 1 1-4 9-9"></path></svg></sc-if>
+            <sc-if value="{{e.k_act}}" hint-placeholder-val="{{ false }}"><svg class="ic" width="18" height="18" viewBox="0 0 24 24"><circle cx="13" cy="4.5" r="1.8"></circle><path d="M9 21l3-7-3-3 3-4 3 3 3 1"></path></svg></sc-if>
+            <sc-if value="{{e.k_comp}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="#fff"></circle></svg></sc-if>
+            <sc-if value="{{e.k_rem}}" hint-placeholder-val="{{ false }}"><svg class="ic" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"></circle><path d="M12 10v3l2 2"></path></svg></sc-if>
+            <sc-if value="{{e.k_gap}}" hint-placeholder-val="{{ false }}"><svg class="ic" width="18" height="18" viewBox="0 0 24 24"><path d="M4 12h4M16 12h4M10 9l4 6"></path></svg></sc-if>
+          </span>
+          <span style="flex: 1; min-width: 0">
+            <span class="et">{{e.title}}</span>
+            <div class="ed">{{e.detail}}</div>
+            <div class="bdg"><sc-for list="{{e.badges}}" as="b" hint-placeholder-count="2"><span class="{{b.cls}}">{{b.label}}</span></sc-for></div>
+          </span>
+        </button>
+      </sc-for>
+    </sc-for>
+  </div>
+</sc-if>
+
+<!-- JRN-02 Entry detail -->
+<sc-if value="{{is.detail}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><button class="ib plain" aria-label="Back to journal" onClick="{{toList}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span style="flex: 1; text-align: center; font-weight: 650">{{cur.kindLabel}}</span><span style="width: 48px"></span></div>
+  <div class="scroll" style="gap: 14px">
+    <div class="card" style="display: flex; flex-direction: column; gap: 6px">
+      <span style="font-size: 1.5em; font-weight: 700">{{cur.title}}</span>
+      <span class="small">{{cur.detail}}</span>
+      <div class="bdg"><sc-for list="{{cur.badges}}" as="b" hint-placeholder-count="2"><span class="{{b.cls}}">{{b.label}}</span></sc-for></div>
+    </div>
+    <div class="card" style="padding: 4px 16px">
+      <sc-for list="{{cur.kv}}" as="k" hint-placeholder-count="4"><div class="kv"><span>{{k.k}}</span><span>{{k.v}}</span></div></sc-for>
+    </div>
+
+    <sc-if value="{{cur.hasLife}}" hint-placeholder-val="{{ false }}">
+      <div class="card">
+        <p class="lbl">{{cur.lifeTitle}}</p>
+        <p class="small" style="margin: 2px 0 10px">{{cur.lifeNote}}</p>
+        <div class="life">
+          <sc-for list="{{cur.life}}" as="l" hint-placeholder-count="4">
+            <div class="ls"><span class="lsd"><i class="{{l.dot}}"></i><b></b></span><span style="flex: 1; padding-bottom: 10px"><span style="font-weight: 600">{{l.label}}</span><div class="small">{{l.when}}</div></span></div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{cur.dup}}" hint-placeholder-val="{{ false }}">
+      <div class="card" style="display: flex; flex-direction: column; gap: 10px">
+        <p class="lbl">Possible duplicate</p>
+        <p class="small" style="margin: 0">You also logged “Lunch” by voice at 13:07. Are these the same meal?</p>
+        <sc-if value="{{dupOpen}}" hint-placeholder-val="{{ true }}"><div class="row"><button class="btn btn-s" onClick="{{dupMerge}}">Same meal, keep photo version</button></div><button class="btn btn-o" onClick="{{dupKeep}}">They’re different, keep both</button></sc-if>
+        <sc-if value="{{dupDone}}" hint-placeholder-val="{{ false }}"><span class="small" role="status">{{dupMsg}}</span></sc-if>
+      </div>
+    </sc-if>
+    <sc-if value="{{cur.conflict}}" hint-placeholder-val="{{ false }}"><div class="note">Your meter (124) and the sensor (141) differ at about the same time. Both are kept as recorded; sensors often lag behind finger-stick readings.</div></sc-if>
+
+    <sc-if value="{{cur.hasHist}}" hint-placeholder-val="{{ false }}">
+      <div class="card">
+        <p class="lbl">Correction history</p>
+        <sc-for list="{{cur.hist}}" as="h" hint-placeholder-count="2"><div class="hist"><span style="font-variant-numeric: tabular-nums; font-weight: 600; min-width: 48px">{{h.t}}</span><span style="flex: 1">{{h.d}}</span></div></sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{cur.editable}}" hint-placeholder-val="{{ true }}">
+      <div class="row"><button class="btn btn-s" onClick="{{toEdit}}">Edit</button><button class="btn btn-o" onClick="{{askDelete}}">Delete</button></div>
+    </sc-if>
+    <sc-if value="{{cur.reminder}}" hint-placeholder-val="{{ false }}">
+      <a class="btn btn-s" href="Routine.dc.html">Change, snooze or cancel</a>
+    </sc-if>
+    <sc-if value="{{cur.device}}" hint-placeholder-val="{{ false }}"><div class="note">Device readings can’t be edited here. You can hide one from summaries if you believe it’s wrong; the original stays in history.</div><button class="btn btn-o" onClick="{{hideDevice}}">{{hideLabel}}</button></sc-if>
+  </div>
+  <sc-if value="{{delDlg}}" hint-placeholder-val="{{ false }}">
+    <div class="dlg"><div class="dlgc" role="alertdialog" aria-modal="true" aria-labelledby="delt"><span id="delt" style="font-size: 1.25em; font-weight: 650">Delete this entry?</span><span class="small" style="font-size: 1em">It will be removed from your journal and summaries. A note that it was deleted stays in your correction history.</span><button class="btn btn-d" onClick="{{doDelete}}">Delete entry</button><button class="btn btn-o" onClick="{{cancelDelete}}">Keep it</button></div></div>
+  </sc-if>
+</sc-if>
+
+<!-- JRN-03 Edit -->
+<sc-if value="{{is.edit}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><button class="ib plain" aria-label="Cancel editing" onClick="{{cancelEdit}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button><span style="flex: 1; text-align: center; font-weight: 650">Edit {{cur.kindLabelLower}}</span><span style="width: 48px"></span></div>
+  <div class="scroll" style="gap: 14px">
+    <sc-if value="{{editGlu}}" hint-placeholder-val="{{ true }}">
+      <label class="lbl" for="ev">Reading</label>
+      <div class="row"><input id="ev" class="inp" inputmode="decimal" value="{{eVal}}" onChange="{{onEVal}}" style="font-size: 1.75em; font-weight: 700"><span class="lbl">mg/dL</span></div>
+    </sc-if>
+    <sc-if value="{{editMeal}}" hint-placeholder-val="{{ false }}"><div class="note">Meals are corrected in the meal editor, where you can change foods and amounts.</div><a class="btn btn-s" href="Meal.dc.html">Open meal editor</a></sc-if>
+    <label class="lbl" for="et">Time</label>
+    <input id="et" class="inp" type="time" value="{{eTime}}" onChange="{{onETime}}">
+    <span class="lbl">Why are you changing it? (optional)</span>
+    <div class="chips"><sc-for list="{{reasons}}" as="r" hint-placeholder-count="4"><button class="{{r.cls}}" aria-pressed="{{r.on}}" onClick="{{r.pick}}">{{r.label}}</button></sc-for></div>
+    <div class="note">Your original entry is kept in the correction history.</div>
+  </div>
+  <div style="padding: 12px 16px 34px; display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--fill)"><button class="btn btn-p" onClick="{{saveEdit}}">Save correction</button><button class="btn btn-o" onClick="{{cancelEdit}}">Cancel</button></div>
+</sc-if>
+
+<sc-if value="{{toast}}" hint-placeholder-val="{{ false }}"><div class="toast" role="status"><span style="flex: 1">{{toastText}}</span><sc-if value="{{canUndo}}" hint-placeholder-val="{{ false }}"><button onClick="{{undo}}">Undo</button></sc-if></div></sc-if>
+
+<nav class="tabbar" aria-label="Main">
+  <a class="tab" href="Companion.dc.html"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="#8A847A"></circle></svg>Companion</a>
+  <a class="tab" href="Overview.dc.html"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-6 4 3 6-8 3 4"></path></svg>Overview</a>
+  <a class="tab on" href="Journal.dc.html" aria-current="page"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16H6z"></path><path d="M9 9h6M9 13h6"></path></svg>Journal</a>
+  <a class="tab" href="Settings.dc.html"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg>Profile</a>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["day","night"],"default":"day","section":"Appearance"},"scenario":{"editor":"enum","options":["normal","offlinePending","syncFailed","empty"],"default":"normal","section":"Prototype"},"textSize":{"editor":"enum","options":["100%","130%","160%"],"default":"100%","section":"Accessibility"},"reducedMotion":{"editor":"boolean","default":false,"section":"Accessibility"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  data() {
+    const B = { dev: ['Device · Guardian 4', 'b b-dev'], you: ['Entered by you', 'b b-you'], voice: ['Entered by voice, confirmed', 'b b-you'], est: ['Estimate', 'b b-est'], obs: ['Companion observation', 'b b-obs'], sug: ['Suggestion', 'b b-sug'], ed: ['Edited', 'b b-ed'], rep: ['Reported by you', 'b b-you'], pend: ['Waiting to sync', 'b b-st'], fail: ['Not synced', 'b b-warn'], dup: ['Possible duplicate', 'b b-warn'], demo: ['Demo', 'b b-demo'] };
+    const L = (label, dot, when) => ({ label: label, dot: dot, when: when });
+    return { B: B, items: [
+      { id: 'r1', day: 0, time: '13:12', k: 'rem', f: 'rem', title: 'Check glucose after lunch', detail: 'Reminder for 15:00 today', badges: [['Scheduled', 'b b-st']], kv: [['Created', '13:12 by you, from the conversation'], ['Due', '15:00 today'], ['Delivery', 'Notification']], life: [L('Scheduled', 'on-d', '13:12'), L('Sent', 'off-d', 'Not yet'), L('Opened', 'off-d', 'Not yet'), L('Completed', 'off-d', 'Only when you log or reply')], lifeTitle: 'Reminder status', lifeNote: 'Sent doesn’t mean seen. It counts as completed only when you reply or log.', reminder: true },
+      { id: 'g1', day: 0, time: '13:06', k: 'glu', f: 'glu', title: '141 mg/dL', detail: 'Sensor reading', badges: ['dev', 'demo'], kv: [['Source', 'Guardian 4 via sync'], ['Measured', '13:06'], ['Received', '13:08'], ['Unit', 'mg/dL']], device: true, conflict: true },
+      { id: 'g2', day: 0, time: '13:05', k: 'glu', f: 'glu', title: '124 mg/dL', detail: 'Finger-stick meter', badges: ['voice', 'ed'], kv: [['Source', 'Meter, said by voice'], ['Heard', '“one forty… one twenty-four”'], ['Confirmed', '13:05 by you'], ['Unit', 'mg/dL']], hist: [['13:05', 'Heard 140, you corrected it to 124 before saving'], ['13:05', 'Saved as 124 mg/dL']], editable: true, conflict: true, pend: true },
+      { id: 'm1', day: 0, time: '13:05', k: 'meal', f: 'meal', title: 'Lunch ≈ 62 g carbs', detail: 'Rice, chicken, salad, pita · from photo', badges: ['est', 'dup'], kv: [['Source', 'Photo analysis, amounts confirmed by you'], ['Eaten', 'All of it'], ['Logged', '13:12']], editable: true, dup: true, pend: true },
+      { id: 'c1', day: 0, time: '12:30', k: 'rem', f: 'comp', title: 'Check-in: “Have you eaten lunch yet?”', detail: 'You replied “Not yet” at 12:58', badges: [['Answered', 'b b-st']], kv: [['Type', 'Check-in you agreed to on day 1'], ['Sent', '12:30'], ['Opened', '12:58 (you tapped it)']], life: [L('Scheduled', 'on-d', 'Daily at 12:30'), L('Sent', 'on-d', '12:30'), L('Opened', 'on-d', '12:58'), L('Completed', 'on-d', '12:58 · you replied')], lifeTitle: 'Check-in status', lifeNote: 'Completed because you replied, not because it was opened.' },
+      { id: 'a1', day: 0, time: '10:00', k: 'act', f: 'act', title: 'Walk, 25 min', detail: 'Moderate', badges: ['you'], kv: [['Source', 'Entered by you'], ['Started', '10:00'], ['Duration', '25 min']], editable: true },
+      { id: 's1', day: 0, time: '09:10', k: 'comp', f: 'comp', title: 'Suggested a check-in after lunch', detail: 'Based on lunch rises on 6 of 9 days', badges: ['sug'], kv: [['From', 'Noa, AI companion'], ['Why', 'Recurring observation: lunch rises']], life: [L('Companion suggested', 'on-d', '09:10'), L('You acknowledged', 'on-d', '09:11 · “Sure”'), L('You reported doing it', 'off-d', 'Not yet'), L('Device recorded', 'na-d', 'Not applicable')], lifeTitle: 'What happened with this suggestion', lifeNote: 'Each step is recorded separately. Opening a message is never counted as doing it.' },
+      { id: 'b1', day: 0, time: '07:45', k: 'meal', f: 'meal', title: 'Breakfast ≈ 40 g carbs', detail: 'Toast (2 slices), banana · described by voice', badges: ['est', 'ed'], kv: [['Source', 'Voice description, amounts confirmed by you'], ['Logged', '07:52']], hist: [['07:52', 'Created: toast (3 slices), banana ≈ 55 g estimate'], ['08:10', 'You changed toast to 2 slices: ≈ 40 g estimate']], editable: true },
+      { id: 'i1', day: 0, time: '07:40', k: 'ins', f: 'ins', title: 'Fiasp, 4 units', detail: 'Insulin you reported taking · meal', badges: ['rep'], kv: [['Source', 'Reported by you (not a recommendation)'], ['Taken', '07:40'], ['Logged', '07:41']], editable: true },
+      { id: 'g3', day: 0, time: '07:20', k: 'glu', f: 'glu', title: '131 mg/dL', detail: 'Finger-stick meter', badges: ['you'], kv: [['Source', 'Entered by you'], ['Measured', '07:20']], editable: true },
+      { id: 'gap', day: 0, time: '02:10', k: 'gap', f: 'glu', title: 'No sensor data, 02:10–03:40', detail: 'Signal lost. Nothing estimated for this gap.', badges: [], gap: true },
+      { id: 'r2', day: 1, time: '21:00', k: 'rem', f: 'rem', title: 'Evening check-in', detail: 'No reply', badges: [['Not answered', 'b b-st']], kv: [['Sent', '21:00'], ['Opened', 'Unknown']], life: [L('Scheduled', 'on-d', 'Daily at 21:00'), L('Sent', 'on-d', '21:00'), L('Opened', 'off-d', 'Not confirmed'), L('Completed', 'off-d', 'No reply')], lifeTitle: 'Check-in status', lifeNote: 'A sent notification isn’t proof you saw it. I’ll ask gently next time instead.', reminder: true },
+      { id: 'o1', day: 1, time: '20:40', k: 'comp', f: 'comp', title: 'Noted: evening walks, steadier nights', detail: 'First impression from 2 days', badges: ['obs'], kv: [['From', 'Noa, AI companion'], ['Strength', 'First impression, 2 days']], },
+      { id: 'a2', day: 1, time: '18:20', k: 'act', f: 'act', title: 'Walk, 35 min', detail: 'Moderate', badges: ['you'], kv: [['Source', 'Entered by you']], editable: true },
+      { id: 's2', day: 1, time: '17:30', k: 'comp', f: 'comp', title: 'Suggested logging dinner with a photo', detail: 'You said “not today”', badges: ['sug'], kv: [['From', 'Noa, AI companion']], life: [L('Companion suggested', 'on-d', '17:30'), L('You declined', 'on-d', '17:31'), L('You reported doing it', 'na-d', 'Not applicable'), L('Device recorded', 'na-d', 'Not applicable')], lifeTitle: 'What happened with this suggestion', lifeNote: 'Declining is fine and doesn’t count against anything.' }
+    ] };
+  }
+  renderVals() {
+    if (!this._D) this._D = this.data();
+    const D = this._D;
+    const s = this.state || {};
+    const p = this.props || {};
+    const sc = p.scenario || 'normal';
+    const v = (k, d) => (s[k] === undefined ? d : s[k]);
+    const set = (o) => this.setState(o);
+    const fs = ({ '100%': 16, '130%': 20, '160%': 24 })[p.textSize] || 16;
+    const view = v('view', 'list');
+    const filt = v('filt', 'all');
+    const deleted = v('deleted', []);
+    const edits = v('edits', {});
+    const hidden = v('hidden', []);
+    const badge = (b) => (Array.isArray(b) ? { label: b[0], cls: b[1] } : { label: D.B[b][0], cls: D.B[b][1] });
+    const all = sc === 'empty' ? [] : D.items.filter((x) => deleted.indexOf(x.id) < 0).map((x) => {
+      const e = edits[x.id];
+      const o = Object.assign({}, x);
+      if (e) { o.title = e.title || o.title; o.time = e.time || o.time; o.badges = o.badges.indexOf('ed') >= 0 ? o.badges : o.badges.concat(['ed']); o.hist = (o.hist || []).concat(e.hist); }
+      if (sc === 'offlinePending' && x.pend) o.badges = o.badges.concat(['pend']);
+      if (sc === 'syncFailed' && x.id === 'm1' && !v('synced', false)) o.badges = o.badges.concat(['fail']);
+      if (hidden.indexOf(x.id) >= 0) o.badges = o.badges.concat([['Hidden from summaries', 'b b-st']]);
+      return o;
+    });
+    const FL = [['all', 'All'], ['glu', 'Glucose'], ['meal', 'Meals'], ['ins', 'Insulin'], ['act', 'Activity'], ['comp', 'Companion'], ['rem', 'Reminders']];
+    const shown = all.filter((x) => filt === 'all' || x.f === filt);
+    const kindLabel = { glu: 'Glucose', meal: 'Meal', ins: 'Insulin record', act: 'Activity', comp: 'Companion', rem: 'Reminder', gap: 'Data gap' };
+    const groups = [0, 1].map((d) => ({ day: d === 0 ? 'Today, Tue 10 Nov' : 'Yesterday, Mon 9 Nov', items: shown.filter((x) => x.day === d).map((x) => ({
+      time: x.time, title: x.title, detail: x.detail, cls: 'ent' + (x.gap ? ' gap' : ''), icCls: 'eic k-' + x.k,
+      k_glu: x.k === 'glu', k_meal: x.k === 'meal', k_ins: x.k === 'ins', k_act: x.k === 'act', k_comp: x.k === 'comp', k_rem: x.k === 'rem', k_gap: x.k === 'gap',
+      badges: x.badges.map(badge), aria: x.time + ', ' + kindLabel[x.k] + ': ' + x.title + '. ' + x.detail + '. ' + x.badges.map((b) => badge(b).label).join(', '),
+      open: () => { if (!x.gap) set({ view: 'detail', cur: x.id, dup: null }); }
+    })) })).filter((g) => g.items.length);
+    const curX = all.find((x) => x.id === v('cur', 'g2')) || all[0] || D.items[0];
+    const cur = {
+      title: curX.title, detail: curX.detail, kindLabel: kindLabel[curX.k], kindLabelLower: (kindLabel[curX.k] || '').toLowerCase(),
+      badges: curX.badges.map(badge), kv: (curX.kv || []).map((k) => ({ k: k[0], v: k[1] })).concat([{ k: 'Time', v: curX.time }]),
+      hasLife: !!curX.life, life: curX.life || [], lifeTitle: curX.lifeTitle || '', lifeNote: curX.lifeNote || '',
+      hasHist: !!(curX.hist && curX.hist.length), hist: (curX.hist || []).map((h) => ({ t: h[0], d: h[1] })),
+      editable: !!curX.editable, reminder: !!curX.reminder, device: !!curX.device, dup: !!curX.dup, conflict: !!curX.conflict
+    };
+    const reason = v('reason', '');
+    const dupState = v('dup', null);
+    const showToast = (text, undo) => { clearTimeout(this._tt); set(Object.assign({ toast: text, undoFn: undo || null }, {})); this._tt = setTimeout(() => this.setState({ toast: null }), 4000); };
+    return {
+      fs: fs, rmCls: p.reducedMotion ? 'rm' : '',
+      is: { list: view === 'list', detail: view === 'detail', edit: view === 'edit' },
+      filters: FL.map((f) => ({ label: f[1], on: filt === f[0], cls: 'chip' + (filt === f[0] ? ' on' : ''), pick: () => set({ filt: f[0] }) })),
+      pending: sc === 'offlinePending', syncFail: sc === 'syncFailed' && !v('synced', false), retrySync: () => { set({ retrying: true }); setTimeout(() => this.setState({ synced: true, retrying: false }), 900); }, retryLabel: v('retrying', false) ? 'Retrying…' : 'Retry',
+      empty: shown.length === 0, emptyText: sc === 'empty' ? 'Your journal is empty. Anything you log by voice, text, photo or the + button appears here in time order, with where it came from.' : 'Nothing of this type in the last two days.',
+      groups: groups,
+      toList: () => set({ view: 'list', delDlg: false }), cur: cur,
+      toEdit: () => { if (curX.f === 'meal') { set({ view: 'edit', eVal: '', eTime: curX.time, reason: '' }); return; } set({ view: 'edit', eVal: (curX.title.match(/\d+/) || [''])[0], eTime: curX.time, reason: '' }); },
+      editGlu: curX.k === 'glu', editMeal: curX.k === 'meal',
+      eVal: v('eVal', ''), onEVal: (e) => set({ eVal: e.target.value }), eTime: v('eTime', ''), onETime: (e) => set({ eTime: e.target.value }),
+      reasons: ['Typo', 'Wrong unit', 'Wrong time', 'Other'].map((r) => ({ label: r, on: reason === r, cls: 'ch' + (reason === r ? ' on' : ''), pick: () => set({ reason: r }) })),
+      saveEdit: () => { const prev = edits[curX.id] || {}; const nt = curX.k === 'glu' && v('eVal', '') ? v('eVal', '') + ' mg/dL' : curX.title; const h = [['now', 'You changed ' + (curX.k === 'glu' ? 'the value from ' + curX.title + ' to ' + nt : 'the time') + (v('eTime', curX.time) !== curX.time ? ', time ' + curX.time + ' → ' + v('eTime', '') : '') + (reason ? ' (' + reason.toLowerCase() + ')' : '')]]; set({ view: 'detail', edits: Object.assign({}, edits, { [curX.id]: { title: nt, time: v('eTime', curX.time), hist: (prev.hist || []).concat(h) } }) }); showToast('Correction saved. Original kept in history.'); },
+      cancelEdit: () => set({ view: 'detail' }),
+      askDelete: () => set({ delDlg: true }), cancelDelete: () => set({ delDlg: false }), delDlg: v('delDlg', false),
+      doDelete: () => { const id = curX.id; set({ delDlg: false, view: 'list', deleted: deleted.concat([id]) }); showToast('Entry deleted.', id); },
+      toast: !!v('toast', null), toastText: v('toast', ''), canUndo: !!v('undoFn', null), undo: () => { const id = v('undoFn', null); set({ deleted: deleted.filter((d) => d !== id), toast: null, undoFn: null }); },
+      dupOpen: !dupState, dupDone: !!dupState, dupMsg: dupState === 'merge' ? 'Merged. The voice entry was removed and noted in history.' : 'Kept both. I won’t ask about these again.',
+      dupMerge: () => set({ dup: 'merge' }), dupKeep: () => set({ dup: 'keep' }),
+      hideDevice: () => set({ hidden: hidden.indexOf(curX.id) >= 0 ? hidden.filter((h) => h !== curX.id) : hidden.concat([curX.id]) }), hideLabel: hidden.indexOf(curX.id) >= 0 ? 'Show in summaries again' : 'Hide from summaries'
+    };
+  }
+}
+
+;(function(){var rv=Component.prototype.renderVals;Component.prototype.renderVals=function(){var v=rv.call(this)||{};var s=this.state&&this.state.themeOverride;var p=(this.props&&this.props.theme)||'day';v.theme=s||p;var n=v.theme==='night';var self=this;v.setThemeDay=function(){self.setState({themeOverride:'day'})};v.setThemeNight=function(){self.setState({themeOverride:'night'})};v.thDayCls='chip'+(n?'':' on');v.thNightCls='chip'+(n?' on':'');return v;};})();
+</script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Membership and billing</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:var(--fill)}
+a{color:var(--act)}a:hover{color:var(--acd)}
+.ph{position:relative;width:390px;height:844px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:-apple-system,'SF Pro Text','Inter',system-ui,sans-serif;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:1.4}
+.ph *{box-sizing:border-box}
+.ph button:focus-visible,.ph a:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.hdr{display:flex;align-items:center;gap:8px;padding:54px 12px 4px}
+.ttl{flex:1;font-weight:650;font-size:1.0625em;text-align:center}
+.ib{width:48px;height:48px;border-radius:24px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;color:inherit;cursor:pointer;flex:none;text-decoration:none}
+.scroll{flex:1;overflow-y:auto;padding:10px 18px 24px;display:flex;flex-direction:column;gap:14px;min-height:0}
+.card{background:var(--card);border-radius:22px;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 16px rgba(0,0,0,0);padding:18px}
+.h2{font-size:1.5em;font-weight:650;margin:0;line-height:1.2;letter-spacing:-.01em}
+.lbl{font-size:.9375em;font-weight:600;color:var(--ink2);margin:0}
+.small{font-size:.875em;color:var(--sec);line-height:1.45}
+.xs{font-size:.75em;color:var(--sec)}
+.row{display:flex;align-items:center;gap:10px}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:.75em;font-weight:700;padding:4px 9px;border-radius:8px;white-space:nowrap}
+.t-ok{background:var(--soft);color:var(--act)}.t-st{background:var(--fill);color:var(--ink2)}.t-warn{background:var(--xFBE7DE);color:var(--x8A2E0C)}.t-ph{background:var(--xF3E8D5);color:var(--x6B4A12)}
+.meter{height:8px;border-radius:4px;background:var(--fill);overflow:hidden}
+.meter i{display:block;height:8px;border-radius:4px;background:var(--ac)}
+.plan{display:flex;align-items:center;gap:12px;width:100%;min-height:76px;padding:12px 16px;border-radius:18px;border:1.5px solid var(--hair);background:var(--card);font:inherit;color:var(--ink);cursor:pointer;text-align:start}
+.plan.on{border-color:var(--ac);background:var(--soft);box-shadow:inset 0 0 0 1px var(--ac)}
+.rad{width:22px;height:22px;border-radius:11px;border:2px solid var(--ter);flex:none}
+.plan.on .rad{border-color:var(--ac);background:var(--ac);box-shadow:inset 0 0 0 4px var(--card)}
+.price{font-weight:700;font-size:1.125em;font-variant-numeric:tabular-nums}
+.inc{display:flex;gap:10px;align-items:flex-start;font-size:.9375em}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 18px;border-radius:18px;border:0;font:inherit;font-size:1.0625em;font-weight:600;cursor:pointer;text-decoration:none;width:100%}
+.btn-p{background:var(--ac);color:var(--onac)}.btn-p:hover{color:var(--onac)}
+.btn-s{background:var(--soft);color:var(--act)}
+.btn-o{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+.btn-g{background:transparent;color:var(--act);min-height:48px}
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--fill);border-radius:16px;padding:12px 14px;font-size:.9375em;line-height:1.45;color:var(--ink2)}
+.note.warn{background:var(--xFBEFE9);color:var(--x5A2410)}
+.scrim{position:absolute;inset:0;background:rgba(20,26,24,.42);display:flex;align-items:flex-end;z-index:20;animation:fade .2s}
+.sys{width:100%;background:#F2F2F7;border-radius:22px 22px 0 0;padding:14px 18px 34px;font-family:system-ui,sans-serif;color:#111;display:flex;flex-direction:column;gap:12px;animation:up .32s cubic-bezier(.2,.8,.2,1)}
+.sysb{min-height:50px;border-radius:12px;border:0;background:#0A64D8;color:var(--onac);font:inherit;font-size:17px;font-weight:600;cursor:pointer}
+.spin{width:22px;height:22px;border-radius:11px;border:3px solid var(--soft);border-top-color:var(--ac);animation:spin .9s linear infinite;display:inline-block}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+@keyframes fade{from{opacity:0}}
+.rm *{animation:none !important;transition:none !important}
+@media (prefers-reduced-motion: reduce){.ph *{animation:none !important;transition:none !important}}
+
+/* theme B */
+:root{--fill:#E6E6EB;--hair:#E5E5EA;--line:#D1D1D6;--ink:#1D1D1F;--ink2:#3A3A3C;--sec:#6E6E73;--ter:#8E8E93;--inv:#1D1D1F;--onac:#FFFFFF;--ac:#0B7A75;--act:#0A6560;--acd:#085E5A;--soft:#E4F2F1;--soft2:#BFE3DF;--bar:rgba(255,255,255,.88);--bg:#FFFFFF;--card:#F5F5F7;--xFBE7DE:#FBE7DE;--x8A2E0C:#8A2E0C;--xF3E8D5:#F3E8D5;--x6B4A12:#6B4A12;--xFBEFE9:#FBEFE9;--x5A2410:#5A2410}:root:has([data-theme="night"]),[data-theme="night"]{--fill:#2C2C2E;--hair:#38383A;--line:#48484A;--ink:#F5F5F7;--ink2:#D1D1D6;--sec:#A1A1A6;--ter:#7C7C80;--inv:#3A3A3C;--onac:#FFFFFF;--ac:#14958D;--act:#6FD6CD;--acd:#0E7C75;--soft:#10302E;--soft2:#1D5753;--bar:rgba(22,22,24,.88);--bg:#000000;--card:#1C1C1E;--xFBE7DE:#472A1C;--x8A2E0C:#E7A992;--xF3E8D5:#4B3E28;--x6B4A12:#E7CC9F;--xFBEFE9:#3E271C;--x5A2410:#E9B9A8;color-scheme:dark}[data-theme="night"] .sheet,[data-theme="night"] .dlgc{--bg:#1C1C1E;--card:#2C2C2E;--fill:#3A3A3C;--hair:#48484A}.sw i{background:#fff!important}.tabbar{background:var(--bar);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}.plan{flex-wrap:wrap}.plan>span:nth-child(2){min-width:62%}.plan .price{margin-inline-start:34px}
+</style>
+</helmet>
+<div data-theme="{{theme}}" class="ph {{rmCls}}" style="font-size: {{fs}}px">
+  <div class="hdr"><a class="ib" href="Settings.dc.html" aria-label="Back to profile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a><span class="ttl">Membership</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+
+    <!-- Status card -->
+    <div class="card" style="display: flex; flex-direction: column; gap: 10px">
+      <span class="{{st.tagCls}}" style="align-self: flex-start">{{st.tag}}</span>
+      <span class="h2">{{st.head}}</span>
+      <span class="small" style="font-size: 1em">{{st.body}}</span>
+      <sc-if value="{{st.meter}}" hint-placeholder-val="{{ true }}"><div class="meter" role="img" aria-label="{{st.meterAria}}"><i style="width: {{st.pct}}%"></i></div></sc-if>
+    </div>
+
+    <sc-if value="{{st.payFail}}" hint-placeholder-val="{{ false }}"><div class="note warn" role="alert"><span>{{payFailText}}</span></div><button class="btn btn-p" onClick="{{manage}}">{{manageLabel}}</button></sc-if>
+
+    <sc-if value="{{st.limited}}" hint-placeholder-val="{{ false }}">
+      <div class="card" style="display: flex; flex-direction: column; gap: 10px">
+        <p class="lbl">Still available without a membership</p>
+        <sc-for list="{{still}}" as="x" hint-placeholder-count="4"><div class="inc"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ac); flex: none"><path d="M5 12l5 5 9-10"></path></svg><span>{{x}}</span></div></sc-for>
+        <p class="lbl" style="margin-top: 6px">Paused until you join</p>
+        <sc-for list="{{paused}}" as="x" hint-placeholder-count="3"><div class="inc"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter); flex: none"><circle cx="12" cy="12" r="8"></circle><path d="M10 9v6M14 9v6"></path></svg><span>{{x}}</span></div></sc-for>
+        <span class="xs">Nothing you recorded is deleted when access ends.</span>
+      </div>
+    </sc-if>
+
+    <!-- Plan selection -->
+    <sc-if value="{{showPlans}}" hint-placeholder-val="{{ true }}">
+      <div class="card" style="display: flex; flex-direction: column; gap: 12px">
+        <div class="row" style="justify-content: space-between"><p class="lbl" style="font-size: 1.0625em">Steady membership</p><span class="tag t-ph">Placeholder prices</span></div>
+        <p class="small" style="margin: 0">One plan with everything included. Choose how you’d like to pay.</p>
+        <div role="radiogroup" aria-label="Billing" style="display: flex; flex-direction: column; gap: 10px">
+          <sc-for list="{{plans}}" as="pl" hint-placeholder-count="2">
+            <button class="{{pl.cls}}" role="radio" aria-checked="{{pl.on}}" onClick="{{pl.pick}}"><span class="rad"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 650">{{pl.name}}</span><span class="xs">{{pl.sub}}</span></span><span class="price">{{pl.price}}</span></button>
+          </sc-for>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <sc-for list="{{included}}" as="x" hint-placeholder-count="5"><div class="inc"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ac); flex: none"><path d="M5 12l5 5 9-10"></path></svg><span>{{x}}</span></div></sc-for>
+        </div>
+        <span class="xs">{{terms}}</span>
+      </div>
+      <button class="btn btn-p" onClick="{{buy}}">{{buyLabel}}</button>
+    </sc-if>
+
+    <sc-if value="{{isMember}}" hint-placeholder-val="{{ false }}">
+      <div class="card" style="padding: 4px 18px">
+        <div class="row" style="justify-content: space-between; min-height: 52px; border-bottom: 1px solid var(--fill)"><span class="small">Plan</span><span style="font-weight: 600">{{memberPlan}}</span></div>
+        <div class="row" style="justify-content: space-between; min-height: 52px; border-bottom: 1px solid var(--fill)"><span class="small">{{renewLabel}}</span><span style="font-weight: 600">{{renewDate}}</span></div>
+        <div class="row" style="justify-content: space-between; min-height: 52px"><span class="small">Billed through</span><span style="font-weight: 600">{{platformName}}</span></div>
+      </div>
+      <button class="btn btn-o" onClick="{{manage}}">{{manageLabel}}</button>
+      <sc-if value="{{canCancel}}" hint-placeholder-val="{{ true }}"><button class="btn btn-g" onClick="{{cancel}}">Cancel membership</button></sc-if>
+    </sc-if>
+
+    <sc-if value="{{manageNote}}" hint-placeholder-val="{{ false }}"><div class="note" role="status">{{manageText}}</div></sc-if>
+    <sc-if value="{{cancelInfo}}" hint-placeholder-val="{{ false }}"><div class="note" role="status">Cancellation happens in {{platformName}}. You keep full access until 9 Dec 2026, and nothing is deleted. After that, the limited features above apply.</div></sc-if>
+
+    <button class="btn btn-g" onClick="{{restore}}">{{restoreLabel}}</button>
+    <div class="row" style="justify-content: center; gap: 18px"><a href="Website.dc.html" class="xs" style="color: var(--act); font-weight: 600; min-height: 44px; display: flex; align-items: center">Terms</a><a href="Website.dc.html" class="xs" style="color: var(--act); font-weight: 600; min-height: 44px; display: flex; align-items: center">Privacy</a></div>
+  </div>
+
+  <!-- Platform purchase sheet (native StoreKit / Play Billing, mocked) -->
+  <sc-if value="{{sheet}}" hint-placeholder-val="{{ false }}">
+    <div class="scrim">
+      <div class="sys" role="dialog" aria-modal="true" aria-label="Confirm purchase">
+        <div class="row" style="justify-content: space-between"><b style="font-size: 17px">{{platformSheetTitle}}</b><button class="ib" aria-label="Cancel purchase" onClick="{{closeSheet}}" style="color: #0A64D8; width: auto; padding: 0 6px; font: inherit; font-size: 17px">Cancel</button></div>
+        <span style="font-size: 13px; color: #555">Mock of the platform’s own purchase sheet. Steady never sees card details.</span>
+        <div style="background: var(--card); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 4px"><b>Steady membership, {{selPlanName}}</b><span style="font-size: 14px">{{selPrice}}</span><span style="font-size: 13px; color: #555">{{sheetTrial}}</span></div>
+        <sc-if value="{{buying}}" hint-placeholder-val="{{ false }}"><div class="row" role="status"><span class="spin"></span><span>Processing…</span></div></sc-if>
+        <sc-if value="{{notBuying}}" hint-placeholder-val="{{ true }}"><button class="sysb" onClick="{{confirmBuy}}">Confirm</button><button class="sysb" style="background: var(--card); color: #B5371A" onClick="{{failBuy}}">Simulate: payment declined</button></sc-if>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["day","night"],"default":"day","section":"Appearance"},"scenario":{"editor":"enum","options":["trialActive","trialEnding","trialExpired","paymentFailed","member","cancelled","subscriptionExpired"],"default":"trialActive","section":"Prototype"},"trialDays":{"editor":"enum","options":["7","14"],"default":"14","section":"Prototype"},"platform":{"editor":"enum","options":["iOS","Android","Web"],"default":"iOS","section":"Prototype"},"textSize":{"editor":"enum","options":["100%","130%","160%"],"default":"100%","section":"Accessibility"},"reducedMotion":{"editor":"boolean","default":false,"section":"Accessibility"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const p = this.props || {};
+    const v = (k, d) => (s[k] === undefined ? d : s[k]);
+    const set = (o) => this.setState(o);
+    const fs = ({ '100%': 16, '130%': 20, '160%': 24 })[p.textSize] || 16;
+    const days = +(p.trialDays || 14);
+    const scen = v('scen', p.scenario || 'trialActive');
+    const plat = p.platform || 'iOS';
+    const platformName = plat === 'iOS' ? 'the App Store' : plat === 'Android' ? 'Google Play' : 'your web account (billing portal)';
+    const left = scen === 'trialEnding' ? 2 : days === 7 ? 4 : 9;
+    const used = days - left;
+    const plan = v('plan', 'annual');
+    const S = {
+      trialActive: ['Free trial', 'tag t-ok', left + ' of ' + days + ' days left', 'Your trial ends on ' + (days === 7 ? '14' : '19') + ' Nov. Choose a plan anytime; you won’t be charged until the trial ends.', true],
+      trialEnding: ['Free trial', 'tag t-warn', 'Your trial ends in 2 days', 'On 12 Nov, companion conversations and photo analysis pause unless you join. Your records stay.', true],
+      trialExpired: ['Trial ended', 'tag t-st', 'Your free trial has ended', 'Thanks for trying Steady. Here’s what you can still use, and what’s paused.', false],
+      paymentFailed: ['Payment issue', 'tag t-warn', 'We couldn’t renew your membership', 'Your access continues for now while ' + platformName + ' retries the payment.', false],
+      member: ['Member', 'tag t-ok', 'You’re a member', 'Everything is included. Thanks for supporting Steady.', false],
+      cancelled: ['Cancelled', 'tag t-st', 'Membership cancelled', 'You have full access until 9 Dec 2026. You can rejoin anytime.', false],
+      subscriptionExpired: ['Expired', 'tag t-st', 'Your membership has ended', 'Your records are safe. Join again to continue conversations and photo analysis.', false]
+    };
+    const st = S[scen];
+    const isMember = scen === 'member' || scen === 'cancelled' || scen === 'paymentFailed';
+    const showPlans = !isMember;
+    return {
+      fs: fs, rmCls: p.reducedMotion ? 'rm' : '',
+      st: { tag: st[0], tagCls: st[1], head: st[2], body: st[3], meter: st[4], pct: Math.round((used / days) * 100), meterAria: used + ' of ' + days + ' trial days used', payFail: scen === 'paymentFailed', limited: scen === 'trialExpired' || scen === 'subscriptionExpired' },
+      payFailText: plat === 'Web' ? 'Update your card in the billing portal to keep your membership.' : 'Update your payment method in ' + platformName + '. Steady can’t see or change your card.',
+      still: ['Your journal, Overview and all past records', 'Logging glucose, meals, insulin and notes by text or form', 'Export and account settings, including deletion'],
+      paused: ['Voice and text conversations with the companion', 'Meal photo analysis', 'New insights, check-ins and summaries'],
+      showPlans: showPlans, isMember: isMember,
+      plans: [['monthly', 'Monthly', 'Billed every month', '[PRICE_MONTHLY]/mo'], ['annual', 'Annual', 'Billed once a year · [SAVING]% less than 12 monthly payments', '[PRICE_ANNUAL]/yr']].map((x) => ({ name: x[1], sub: x[2], price: x[3], on: plan === x[0], cls: 'plan' + (plan === x[0] ? ' on' : ''), pick: () => set({ plan: x[0] }) })),
+      included: ['Voice and text companion with memory', 'Meal photo carb estimates', 'Insights with the records behind them', 'Check-ins and reminders', 'Web dashboard and exports'],
+      terms: (scen === 'trialActive' || scen === 'trialEnding' ? 'If you choose a plan now, billing starts when your ' + days + '-day trial ends. ' : '') + 'Renews automatically until cancelled in ' + platformName + '. Prices include applicable taxes where required.',
+      buyLabel: scen === 'trialActive' || scen === 'trialEnding' ? 'Choose plan' : 'Join Steady',
+      buy: () => set({ sheet: true, buying: false }),
+      sheet: v('sheet', false), closeSheet: () => set({ sheet: false }), buying: v('buying', false), notBuying: !v('buying', false),
+      platformSheetTitle: plat === 'iOS' ? 'App Store' : plat === 'Android' ? 'Google Play' : 'Secure checkout',
+      selPlanName: plan === 'annual' ? 'annual' : 'monthly', selPrice: plan === 'annual' ? '[PRICE_ANNUAL] per year' : '[PRICE_MONTHLY] per month',
+      sheetTrial: scen === 'trialActive' || scen === 'trialEnding' ? 'Starts after your free trial · cancel anytime' : 'Starts today · cancel anytime',
+      confirmBuy: () => { set({ buying: true }); setTimeout(() => this.setState({ sheet: false, buying: false, scen: 'member', manageNote: false }), 1300); },
+      failBuy: () => { set({ buying: true }); setTimeout(() => this.setState({ sheet: false, buying: false, scen: 'paymentFailed' }), 1100); },
+      memberPlan: plan === 'annual' ? 'Annual' : 'Monthly', renewLabel: scen === 'cancelled' ? 'Access until' : 'Renews', renewDate: scen === 'cancelled' ? '9 Dec 2026' : (plan === 'annual' ? '19 Nov 2027' : '19 Dec 2026'), platformName: platformName,
+      canCancel: scen === 'member',
+      manageLabel: plat === 'Web' ? 'Open billing portal' : 'Manage in ' + (plat === 'iOS' ? 'App Store' : 'Google Play'),
+      manage: () => set({ manageNote: true }), manageNote: v('manageNote', false), manageText: plat === 'Web' ? 'Opens the billing portal in a new tab.' : 'Opens ' + platformName + ' subscription settings. Changes there appear here within a few minutes.',
+      cancel: () => set({ cancelInfo: true }), cancelInfo: v('cancelInfo', false),
+      restore: () => { set({ restoring: true }); setTimeout(() => this.setState({ restoring: false, restored: true }), 1200); },
+      restoreLabel: v('restoring', false) ? 'Checking purchases…' : v('restored', false) ? 'No previous purchase found for this account' : 'Restore purchases'
+    };
+  }
+}
+
+;(function(){var rv=Component.prototype.renderVals;Component.prototype.renderVals=function(){var v=rv.call(this)||{};var s=this.state&&this.state.themeOverride;var p=(this.props&&this.props.theme)||'day';v.theme=s||p;var n=v.theme==='night';var self=this;v.setThemeDay=function(){self.setState({themeOverride:'day'})};v.setThemeNight=function(){self.setState({themeOverride:'night'})};v.thDayCls='chip'+(n?'':' on');v.thNightCls='chip'+(n?' on':'');return v;};})();
+</script>
+</body>
+</html>

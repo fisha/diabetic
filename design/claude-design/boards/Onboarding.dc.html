@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Account and onboarding</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Rubik:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:var(--fill)}
+a{color:var(--act)}a:hover{color:var(--acd)}
+.ph{position:relative;width:390px;height:844px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:-apple-system,'SF Pro Text','Inter','Rubik','IBM Plex Sans Arabic',system-ui,sans-serif;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:1.4}
+.ph *{box-sizing:border-box}
+.ph:lang(ar){font-family:'IBM Plex Sans Arabic',-apple-system,'SF Pro Text','Inter',system-ui,sans-serif}
+.ph:lang(he){font-family:'Rubik',-apple-system,'SF Pro Text','Inter',system-ui,sans-serif}
+.top{display:flex;align-items:center;gap:10px;padding:54px 12px 6px}
+.ib{width:48px;height:48px;border-radius:24px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;color:var(--ink);cursor:pointer;flex:none}
+.ib:active{background:var(--fill)}
+.ib:focus-visible,.btn:focus-visible,.opt:focus-visible,.chip:focus-visible,.dev:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.prog{flex:1;height:6px;border-radius:3px;background:var(--fill);overflow:hidden}
+.bar{height:6px;border-radius:3px;background:var(--ac);transition:width .32s cubic-bezier(.2,.8,.2,1)}
+.skip{min-height:48px;min-width:56px;padding:0 10px;border:0;background:transparent;font:inherit;font-size:.9375em;font-weight:600;color:var(--act);cursor:pointer;flex:none}
+.skipsp{width:56px;flex:none}
+.scroll{flex:1;overflow-y:auto;padding:14px 22px 20px;display:flex;flex-direction:column;gap:18px;animation:in .28s cubic-bezier(.2,.8,.2,1)}
+.scroll.pad{padding-top:64px}
+.foot{padding:12px 22px 34px;display:flex;flex-direction:column;gap:10px;background:var(--bg);border-top:1px solid var(--fill)}
+.h1{font-size:1.75em;line-height:1.18;font-weight:650;letter-spacing:-.01em;margin:0}
+.lead{font-size:1.0625em;line-height:1.5;color:var(--ink2);margin:0}
+.lbl{font-size:.9375em;font-weight:600;color:var(--ink2);margin:0}
+.small{font-size:.875em;line-height:1.45;color:var(--sec)}
+.card{background:var(--card);border-radius:20px;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 16px rgba(0,0,0,0);padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 22px;border-radius:18px;border:0;font:inherit;font-size:1.0625em;font-weight:600;cursor:pointer;text-decoration:none;width:100%;text-align:center;transition:transform .12s cubic-bezier(.2,.8,.2,1)}
+.btn:active{transform:scale(.97)}
+.btn-p{background:var(--ac);color:var(--onac)}
+.btn-p:hover{color:var(--onac)}
+.btn-s{background:var(--soft);color:var(--act)}
+.btn-o{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+.btn-g{background:transparent;color:var(--act);min-height:48px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;min-height:60px;padding:12px 16px;border-radius:18px;border:1.5px solid var(--hair);background:var(--card);font:inherit;font-size:1.0625em;color:var(--ink);cursor:pointer;text-align:start}
+.opt.on{border-color:var(--ac);background:var(--soft);box-shadow:inset 0 0 0 1px var(--ac)}
+.rad{width:22px;height:22px;border-radius:11px;border:2px solid var(--ter);flex:none;display:flex;align-items:center;justify-content:center}
+.opt.on .rad{border-color:var(--ac);background:var(--ac);box-shadow:inset 0 0 0 4px var(--card)}
+.box{width:22px;height:22px;border-radius:7px;border:2px solid var(--ter);flex:none;display:flex;align-items:center;justify-content:center;color:var(--onac)}
+.opt.on .box{background:var(--ac);border-color:var(--ac)}
+.ot{display:flex;flex-direction:column;gap:2px;flex:1}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:48px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-size:.9375em;font-weight:500;color:var(--ink);display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.chip.on{border-color:var(--ac);background:var(--soft);color:var(--act);font-weight:600}
+.fld{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}
+.inp{min-height:56px;border-radius:16px;border:1.5px solid var(--line);background:var(--card);padding:0 16px;font:inherit;font-size:1.125em;width:100%;color:var(--ink)}
+.inp:focus{outline:3px solid var(--soft2);border-color:var(--ac)}
+.inp.bad{border-color:var(--xB03A0F)}
+.err{display:flex;gap:8px;align-items:flex-start;color:var(--x9A2E0C);font-size:.9375em;font-weight:500}
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--fill);border-radius:16px;padding:12px 14px;font-size:.9375em;line-height:1.45;color:var(--ink2)}
+.dev{display:flex;align-items:center;gap:14px;width:100%;padding:12px 14px;border-radius:20px;border:1.5px solid var(--hair);background:var(--card);cursor:pointer;font:inherit;text-align:start;color:var(--ink)}
+.dev.on{border-color:var(--ac);background:var(--soft);box-shadow:inset 0 0 0 1px var(--ac)}
+.dimg{width:64px;height:64px;border-radius:16px;background:var(--fill);display:flex;align-items:center;justify-content:center;flex:none}
+.model{font-size:.8125em;font-weight:600;color:var(--sec);letter-spacing:.02em}
+.av{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 6px;border-radius:20px;border:1.5px solid var(--hair);background:var(--card);cursor:pointer;font:inherit;font-size:.9375em;font-weight:600;color:var(--ink)}
+.av.on{border-color:var(--ac);background:var(--soft);box-shadow:inset 0 0 0 1px var(--ac)}
+.row{display:flex;align-items:center;gap:12px}
+.rv{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:10px 4px;border:0;border-bottom:1px solid var(--fill);background:transparent;font:inherit;text-align:start;cursor:pointer;color:var(--ink)}
+.rv .k{flex:1;font-size:.9375em;color:var(--sec)}
+.rv .v{font-size:1em;font-weight:600;text-align:end;max-width:58%}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:.8125em;font-weight:600;padding:4px 9px;border-radius:8px}
+.num{unicode-bidi:isolate;direction:ltr;font-variant-numeric:tabular-nums}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+[dir=rtl] .flip{transform:scaleX(-1)}
+.scrim{position:absolute;inset:0;background:rgba(20,26,24,.42);display:flex;align-items:center;justify-content:center;padding:40px;animation:fade .2s ease-out}
+.sys{background:#F2F2F2;border-radius:16px;width:100%;overflow:hidden;text-align:center;color:#111;font-family:system-ui,sans-serif;animation:pop .24s cubic-bezier(.2,.8,.2,1)}
+.sys button{display:block;width:100%;min-height:48px;border:0;border-top:1px solid #D0D0D0;background:transparent;font:inherit;font-size:17px;color:#0A64D8;cursor:pointer}
+.lang{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:60px;padding:0 18px;border-radius:18px;border:1.5px solid var(--hair);background:var(--card);font:inherit;font-size:1.125em;font-weight:500;color:var(--ink);cursor:pointer}
+.lang.on{border-color:var(--ac);background:var(--soft);box-shadow:inset 0 0 0 1px var(--ac)}
+.lang .tag{font-size:.75em;color:var(--sec);font-weight:600}
+.play{width:48px;height:48px;border-radius:24px;border:0;background:var(--soft);color:var(--act);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.wave{display:flex;gap:3px;align-items:center;height:20px}
+.wave i{display:block;width:3px;border-radius:2px;background:var(--ac);animation:wv .9s ease-in-out infinite}
+.wave i:nth-child(2){animation-delay:.15s}.wave i:nth-child(3){animation-delay:.3s}.wave i:nth-child(4){animation-delay:.45s}
+@keyframes wv{0%,100%{height:5px}50%{height:18px}}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{opacity:0;transform:scale(.94)}}
+.rm *{animation:none !important;transition:none !important}
+@media (prefers-reduced-motion: reduce){.ph *{animation:none !important;transition:none !important}}
+
+/* theme B */
+:root{--fill:#E6E6EB;--hair:#E5E5EA;--line:#D1D1D6;--ink:#1D1D1F;--ink2:#3A3A3C;--sec:#6E6E73;--ter:#8E8E93;--inv:#1D1D1F;--onac:#FFFFFF;--ac:#0B7A75;--act:#0A6560;--acd:#085E5A;--soft:#E4F2F1;--soft2:#BFE3DF;--bar:rgba(255,255,255,.88);--bg:#FFFFFF;--card:#F5F5F7;--xF2DDC8:#F2DDC8;--xD9E0EE:#D9E0EE;--xF3D9CF:#F3D9CF;--xB03A0F:#B03A0F;--x9A2E0C:#9A2E0C;--xECE7F5:#ECE7F5;--x4B3A78:#4B3A78;--xFBEFE9:#FBEFE9;--xFBE9E4:#FBE9E4;--x8A2A12:#8A2A12;--xF3E8D5:#F3E8D5;--x6B4A12:#6B4A12}:root:has([data-theme="night"]),[data-theme="night"]{--fill:#2C2C2E;--hair:#38383A;--line:#48484A;--ink:#F5F5F7;--ink2:#D1D1D6;--sec:#A1A1A6;--ter:#7C7C80;--inv:#3A3A3C;--onac:#FFFFFF;--ac:#14958D;--act:#6FD6CD;--acd:#0E7C75;--soft:#10302E;--soft2:#1D5753;--bar:rgba(22,22,24,.88);--bg:#000000;--card:#1C1C1E;--xF2DDC8:#55402A;--xD9E0EE:#2E3646;--xF3D9CF:#503328;--xB03A0F:#E39A7F;--x9A2E0C:#E5A08A;--xECE7F5:#2D253B;--x4B3A78:#AB9FCB;--xFBEFE9:#3E271C;--xFBE9E4:#42241C;--x8A2A12:#E6A08F;--xF3E8D5:#4B3E28;--x6B4A12:#E7CC9F;color-scheme:dark}[data-theme="night"] .sheet,[data-theme="night"] .dlgc{--bg:#1C1C1E;--card:#2C2C2E;--fill:#3A3A3C;--hair:#48484A}[fill="#D9E0EE"]{fill:var(--xD9E0EE)}[fill="#F2DDC8"]{fill:var(--xF2DDC8)}[fill="#F3D9CF"]{fill:var(--xF3D9CF)}[fill="#1E6F68"]{fill:var(--ac)}[fill="#3A4441"]{fill:var(--ink2)}[fill="#9FD3C9"]{fill:var(--soft2)}[fill="#C9C3BB"]{fill:var(--line)}[fill="#CBE5DF"]{fill:var(--soft)}[fill="#CFE6E1"]{fill:var(--soft)}[fill="#E3EFEC"]{fill:var(--soft)}[fill="#F4EFE7"]{fill:var(--fill)}[stroke="#1E6F68"]{stroke:var(--ac)}[stroke="#3A4441"]{stroke:var(--ink2)}[stroke="#A9A296"]{stroke:var(--ter)}[stroke="#D6D0C6"]{stroke:var(--line)}.sw i{background:#fff!important}.tabbar{background:var(--bar);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+</style>
+</helmet>
+<div data-theme="{{theme}}" class="ph {{rmCls}}" dir="{{dir}}" lang="{{lang}}" style="font-size: {{fs}}px">
+
+<sc-if value="{{showHead}}" hint-placeholder-val="{{ false }}">
+  <div class="top">
+    <button class="ib" aria-label="{{t.back}}" onClick="{{back}}"><svg class="ic flip" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+    <div class="prog" role="progressbar" aria-label="{{progLabel}}" aria-valuemin="1" aria-valuemax="{{pMax}}" aria-valuenow="{{pIdx}}"><div class="bar" style="width: {{pPct}}%"></div></div>
+    <sc-if value="{{canSkip}}" hint-placeholder-val="{{ false }}"><button class="skip" onClick="{{skip}}">{{t.skip}}</button></sc-if>
+    <sc-if value="{{noSkip}}" hint-placeholder-val="{{ true }}"><span class="skipsp"></span></sc-if>
+  </div>
+</sc-if>
+
+<!-- ONB-01 Welcome + language -->
+<sc-if value="{{is.welcome}}" hint-placeholder-val="{{ true }}">
+  <div class="scroll pad">
+    <svg width="120" height="120" viewBox="0 0 120 120" aria-hidden="true" style="align-self: center"><circle cx="60" cy="60" r="56" fill="#E3EFEC"></circle><circle cx="60" cy="60" r="40" fill="#CBE5DF"></circle><circle cx="60" cy="60" r="26" fill="#1E6F68"></circle><circle cx="52" cy="52" r="7" fill="#9FD3C9"></circle><path d="M24 92c10 8 22 12 36 12s26-4 36-12" fill="none" stroke="#E9A66B" stroke-width="3" stroke-linecap="round"></path></svg>
+    <h1 class="h1" style="text-align: center">{{t.w_t}}</h1>
+    <p class="lead" style="text-align: center">{{t.w_b}}</p>
+    <p class="small" style="text-align: center; margin: 0">{{t.w_ai}}</p>
+    <p class="lbl" id="langlbl">{{t.w_lang}}</p>
+    <div role="radiogroup" aria-labelledby="langlbl" style="display: flex; flex-direction: column; gap: 8px">
+      <sc-for list="{{langs}}" as="it" hint-placeholder-count="4">
+        <button class="{{it.cls}}" role="radio" aria-checked="{{it.on}}" lang="{{it.code}}" dir="{{it.dir}}" onClick="{{it.pick}}"><span>{{it.name}}</span><span class="tag">{{it.dirLabel}}</span></button>
+      </sc-for>
+    </div>
+  </div>
+  <div class="foot">
+    <button class="btn btn-p" onClick="{{toAccount}}">{{t.w_start}}</button>
+    <button class="btn btn-g" onClick="{{toSignin}}">{{t.w_have}}</button>
+  </div>
+</sc-if>
+
+<!-- AUTH-01..06 Account -->
+<sc-if value="{{is.account}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <sc-if value="{{acc.signup}}" hint-placeholder-val="{{ true }}">
+      <h1 class="h1">{{t.a_t}}</h1>
+      <p class="lead">{{t.a_b}}</p>
+      <button class="btn btn-o" onClick="{{social}}"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#111" d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9s-1.9-.8-3.1-.8C6.8 7.3 5.3 8.2 4.5 9.7c-1.7 2.9-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.1.8c1.3 0 2.1-1.2 2.9-2.4.9-1.3 1.3-2.6 1.3-2.7 0 0-2.7-1-2.7-4.1zM14.1 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"></path></svg>{{t.a_apple}}</button>
+      <button class="btn btn-o" onClick="{{social}}"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"></path><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"></path><path fill="#FBBC05" d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1a10 10 0 0 0 0 9.2L6.4 14z"></path><path fill="#EA4335" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4.1 5.6-4.1z"></path></svg>{{t.a_google}}</button>
+      <div class="row small" style="justify-content: center">{{t.a_or}}</div>
+      <div class="fld"><label class="lbl" for="em">{{t.a_email}}</label><input id="em" class="{{emailCls}}" type="email" inputmode="email" autocomplete="email" value="{{f.email}}" onChange="{{h.email}}" placeholder="name@example.com" dir="ltr"></div>
+      <sc-if value="{{errEmail}}" hint-placeholder-val="{{ false }}"><div class="err" role="alert"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>{{t.a_err}}</div></sc-if>
+      <div class="fld"><label class="lbl" for="pw">{{t.a_pw}}</label><input id="pw" class="inp" type="password" autocomplete="new-password" value="{{f.pw}}" onChange="{{h.pw}}" dir="ltr"><span class="small">{{t.a_pwh}}</span></div>
+      <button class="btn btn-g" onClick="{{toSignin}}">{{t.a_have}}</button>
+    </sc-if>
+    <sc-if value="{{acc.signin}}" hint-placeholder-val="{{ false }}">
+      <h1 class="h1">{{t.a_signin_t}}</h1>
+      <div class="fld"><label class="lbl" for="em2">{{t.a_email}}</label><input id="em2" class="{{emailCls}}" type="email" inputmode="email" autocomplete="email" value="{{f.email}}" onChange="{{h.email}}" placeholder="name@example.com" dir="ltr"></div>
+      <sc-if value="{{errEmail}}" hint-placeholder-val="{{ false }}"><div class="err" role="alert"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>{{t.a_err}}</div></sc-if>
+      <div class="fld"><label class="lbl" for="pw2">{{t.a_pw}}</label><input id="pw2" class="inp" type="password" autocomplete="current-password" value="{{f.pw}}" onChange="{{h.pw}}" dir="ltr"></div>
+      <button class="btn btn-g" onClick="{{toRecover}}">{{t.a_forgot}}</button>
+      <button class="btn btn-g" onClick="{{toSignup}}">{{t.a_new}}</button>
+    </sc-if>
+    <sc-if value="{{acc.recover}}" hint-placeholder-val="{{ false }}">
+      <h1 class="h1">{{t.r_t}}</h1>
+      <p class="lead">{{t.r_b}}</p>
+      <div class="fld"><label class="lbl" for="em3">{{t.a_email}}</label><input id="em3" class="{{emailCls}}" type="email" inputmode="email" value="{{f.email}}" onChange="{{h.email}}" placeholder="name@example.com" dir="ltr"></div>
+      <sc-if value="{{errEmail}}" hint-placeholder-val="{{ false }}"><div class="err" role="alert">{{t.a_err}}</div></sc-if>
+    </sc-if>
+    <sc-if value="{{acc.sent}}" hint-placeholder-val="{{ false }}">
+      <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true" style="align-self: center; margin-top: 30px"><circle cx="48" cy="48" r="46" fill="#E3EFEC"></circle><rect x="22" y="30" width="52" height="36" rx="8" fill="#fff" stroke="#1E6F68" stroke-width="3"></rect><path d="M24 34l24 17 24-17" fill="none" stroke="#1E6F68" stroke-width="3" stroke-linejoin="round"></path></svg>
+      <h1 class="h1" style="text-align: center">{{t.r_sent_t}}</h1>
+      <p class="lead" style="text-align: center">{{t.r_sent_b}}</p>
+      <p class="small num" style="text-align: center; margin: 0">{{f.email}}</p>
+    </sc-if>
+    <sc-if value="{{acc.expired}}" hint-placeholder-val="{{ false }}">
+      <div class="note"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span>{{t.x_b}}</span></div>
+      <h1 class="h1">{{t.x_t}}</h1>
+      <div class="fld"><label class="lbl" for="em4">{{t.a_email}}</label><input id="em4" class="inp" type="email" value="dana.k@example.com" dir="ltr" readonly></div>
+      <div class="fld"><label class="lbl" for="pw4">{{t.a_pw}}</label><input id="pw4" class="inp" type="password" autocomplete="current-password" dir="ltr"></div>
+    </sc-if>
+    <sc-if value="{{acc.resume}}" hint-placeholder-val="{{ false }}">
+      <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true" style="align-self: center; margin-top: 30px"><circle cx="48" cy="48" r="46" fill="#E3EFEC"></circle><circle cx="48" cy="48" r="26" fill="none" stroke="#D6D0C6" stroke-width="6"></circle><path d="M48 22a26 26 0 0 1 22 40" fill="none" stroke="#1E6F68" stroke-width="6" stroke-linecap="round"></path></svg>
+      <h1 class="h1" style="text-align: center">{{t.res_t}}</h1>
+      <p class="lead" style="text-align: center">{{t.res_b}}</p>
+    </sc-if>
+  </div>
+  <div class="foot">
+    <sc-if value="{{acc.signup}}" hint-placeholder-val="{{ true }}"><button class="btn btn-p" onClick="{{create}}">{{t.a_create}}</button></sc-if>
+    <sc-if value="{{acc.signin}}" hint-placeholder-val="{{ false }}"><button class="btn btn-p" onClick="{{signin}}">{{t.a_signin}}</button></sc-if>
+    <sc-if value="{{acc.recover}}" hint-placeholder-val="{{ false }}"><button class="btn btn-p" onClick="{{sendReset}}">{{t.r_send}}</button></sc-if>
+    <sc-if value="{{acc.sent}}" hint-placeholder-val="{{ false }}"><button class="btn btn-s" onClick="{{toSignin}}">{{t.r_done}}</button></sc-if>
+    <sc-if value="{{acc.expired}}" hint-placeholder-val="{{ false }}"><a class="btn btn-p" href="Companion.dc.html">{{t.a_signin}}</a><button class="btn btn-g" onClick="{{toRecover}}">{{t.a_forgot}}</button></sc-if>
+    <sc-if value="{{acc.resume}}" hint-placeholder-val="{{ false }}"><button class="btn btn-p" onClick="{{resume}}">{{t.res_go}}</button></sc-if>
+  </div>
+</sc-if>
+
+<!-- ONB-02 Consent -->
+<sc-if value="{{is.consent}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.c_t}}</h1>
+    <p class="lead">{{t.c_b}}</p>
+    <button class="{{c1Cls}}" role="checkbox" aria-checked="{{f.c1}}" onClick="{{tC1}}"><span class="box"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span class="ot"><span style="font-weight: 600">{{t.c1}}</span><span class="small">{{t.c1b}}</span></span></button>
+    <button class="{{c2Cls}}" role="checkbox" aria-checked="{{f.c2}}" onClick="{{tC2}}"><span class="box"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span class="ot"><span style="font-weight: 600">{{t.c2}}</span><span class="small">{{t.c2b}}</span></span></button>
+    <sc-if value="{{errConsent}}" hint-placeholder-val="{{ false }}"><div class="err" role="alert"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>{{t.c_err}}</div></sc-if>
+    <a href="Website.dc.html" style="font-weight: 600; min-height: 48px; display: flex; align-items: center">{{t.c_priv}}</a>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.c_agree}}</button></div>
+</sc-if>
+
+<!-- ONB-03 Role -->
+<sc-if value="{{is.role}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.ro_t}}</h1>
+    <div class="card" style="display: flex; flex-direction: column; gap: 12px">
+      <p class="lbl" style="color: var(--act)">{{t.ro_can}}</p>
+      <sc-for list="{{roCan}}" as="it" hint-placeholder-count="4"><div class="row" style="align-items: flex-start"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ac); flex: none"><path d="M5 12l5 5 9-10"></path></svg><span>{{it}}</span></div></sc-for>
+    </div>
+    <div class="card" style="display: flex; flex-direction: column; gap: 12px">
+      <p class="lbl">{{t.ro_cant}}</p>
+      <sc-for list="{{roCant}}" as="it" hint-placeholder-count="3"><div class="row" style="align-items: flex-start"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--sec); flex: none"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>{{it}}</span></div></sc-for>
+    </div>
+    <div class="note"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg><span>{{t.ro_em}}</span></div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.ro_ok}}</button></div>
+</sc-if>
+
+<!-- ONB-04 Diabetes type -->
+<sc-if value="{{is.type}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.ty_t}}</h1>
+    <div role="radiogroup" style="display: flex; flex-direction: column; gap: 10px">
+      <sc-for list="{{o.type}}" as="it" hint-placeholder-count="3"><button class="{{it.cls}}" role="radio" aria-checked="{{it.on}}" onClick="{{it.pick}}"><span class="rad"></span><span class="ot">{{it.label}}</span></button></sc-for>
+    </div>
+    <sc-if value="{{typeNote}}" hint-placeholder-val="{{ false }}"><div class="note">{{t.ty_note}}</div></sc-if>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-05 Date of birth -->
+<sc-if value="{{is.dob}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.d_t}}</h1>
+    <p class="lead">{{t.d_b}}</p>
+    <div class="row" dir="{{dateDir}}" style="gap: 10px; align-items: flex-start">
+      <div class="fld"><label class="lbl" for="dd">{{t.d_d}}</label><input id="dd" class="{{dobCls}}" inputmode="numeric" maxlength="2" placeholder="DD" value="{{f.dd}}" onChange="{{h.dd}}" dir="ltr"></div>
+      <div class="fld"><label class="lbl" for="mm">{{t.d_m}}</label><input id="mm" class="{{dobCls}}" inputmode="numeric" maxlength="2" placeholder="MM" value="{{f.mm}}" onChange="{{h.mm}}" dir="ltr"></div>
+      <div class="fld" style="flex: 1.5"><label class="lbl" for="yy">{{t.d_y}}</label><input id="yy" class="{{dobCls}}" inputmode="numeric" maxlength="4" placeholder="YYYY" value="{{f.yy}}" onChange="{{h.yy}}" dir="ltr"></div>
+    </div>
+    <sc-if value="{{errDob}}" hint-placeholder-val="{{ false }}"><div class="err" role="alert"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>{{t.d_err}}</div></sc-if>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-05b Minor -->
+<sc-if value="{{is.minor}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true" style="align-self: center"><circle cx="48" cy="48" r="46" fill="#F4EFE7"></circle><circle cx="38" cy="40" r="10" fill="#E9A66B"></circle><circle cx="60" cy="46" r="7" fill="#1E6F68"></circle><path d="M20 76c3-12 10-18 18-18s15 6 18 18zM46 78c2-9 8-14 14-14s12 5 14 14z" fill="#CBE5DF"></path></svg>
+    <h1 class="h1">{{t.mi_t}}</h1>
+    <p class="lead">{{t.mi_b}}</p>
+    <sc-if value="{{guardian}}" hint-placeholder-val="{{ false }}">
+      <div class="card" style="display: flex; flex-direction: column; gap: 10px">
+        <span class="pill" style="background: var(--xECE7F5); color: var(--x4B3A78); align-self: flex-start">{{t.future}}</span>
+        <p class="lbl">{{t.g_t}}</p>
+        <p class="small" style="margin: 0">{{t.g_b}}</p>
+      </div>
+    </sc-if>
+  </div>
+  <div class="foot">
+    <sc-if value="{{noGuardian}}" hint-placeholder-val="{{ true }}"><button class="btn btn-p" onClick="{{showGuardian}}">{{t.mi_g}}</button></sc-if>
+    <sc-if value="{{guardian}}" hint-placeholder-val="{{ false }}"><button class="btn btn-p" onClick="{{notifyFamily}}">{{notifyLabel}}</button></sc-if>
+    <button class="btn btn-g" onClick="{{fixDob}}">{{t.mi_fix}}</button>
+  </div>
+</sc-if>
+
+<!-- ONB-06 Diagnosis -->
+<sc-if value="{{is.dx}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.dx_t}}</h1>
+    <p class="lead">{{t.dx_b}}</p>
+    <div role="radiogroup" style="display: flex; flex-direction: column; gap: 10px">
+      <sc-for list="{{o.dx}}" as="it" hint-placeholder-count="6"><button class="{{it.cls}}" role="radio" aria-checked="{{it.on}}" onClick="{{it.pick}}"><span class="rad"></span><span class="ot">{{it.label}}</span></button></sc-for>
+    </div>
+    <sc-if value="{{dxDate}}" hint-placeholder-val="{{ false }}"><div class="fld"><label class="lbl" for="dxd">{{t.dx_date}}</label><input id="dxd" class="inp" type="date" dir="ltr"></div></sc-if>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-07 Units -->
+<sc-if value="{{is.units}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.u_t}}</h1>
+    <p class="lead">{{t.u_b}}</p>
+    <div role="radiogroup" style="display: flex; flex-direction: column; gap: 10px">
+      <sc-for list="{{o.units}}" as="it" hint-placeholder-count="2"><button class="{{it.cls}}" role="radio" aria-checked="{{it.on}}" onClick="{{it.pick}}"><span class="rad"></span><span class="ot"><span class="num" style="font-weight: 600; font-size: 1.125em">{{it.label}}</span><span class="small">{{it.sub}}</span></span></button></sc-for>
+    </div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-08 Body -->
+<sc-if value="{{is.body}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.b_t}}</h1>
+    <p class="lead">{{t.b_b}}</p>
+    <div class="fld"><label class="lbl" for="ht">{{t.b_h}}</label>
+      <div class="row"><input id="ht" class="inp" inputmode="decimal" value="{{f.ht}}" onChange="{{h.ht}}" dir="ltr" style="flex: 1"><div class="chips" style="flex-wrap: nowrap"><sc-for list="{{o.hu}}" as="it" hint-placeholder-count="2"><button class="{{it.cls}}" aria-pressed="{{it.on}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div></div>
+    </div>
+    <div class="fld"><label class="lbl" for="wt">{{t.b_w}}</label>
+      <div class="row"><input id="wt" class="inp" inputmode="decimal" value="{{f.wt}}" onChange="{{h.wt}}" dir="ltr" style="flex: 1"><div class="chips" style="flex-wrap: nowrap"><sc-for list="{{o.wu}}" as="it" hint-placeholder-count="2"><button class="{{it.cls}}" aria-pressed="{{it.on}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div></div>
+    </div>
+    <p class="lbl">{{t.b_on}}</p>
+    <div class="chips"><sc-for list="{{o.bon}}" as="it" hint-placeholder-count="3"><button class="{{it.cls}}" aria-pressed="{{it.on}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-09 Treatment -->
+<sc-if value="{{is.tx}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.tx_t}}</h1>
+    <div role="radiogroup" style="display: flex; flex-direction: column; gap: 10px">
+      <sc-for list="{{o.tx}}" as="it" hint-placeholder-count="3"><button class="{{it.cls}}" role="radio" aria-checked="{{it.on}}" onClick="{{it.pick}}"><span class="rad"></span><span class="ot">{{it.label}}</span></button></sc-for>
+    </div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-10 Insulin -->
+<sc-if value="{{is.insulin}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.in_t}}</h1>
+    <p class="lead">{{t.in_b}}</p>
+    <p class="lbl">{{t.in_r}}</p>
+    <div class="chips" dir="ltr" style="justify-content: {{chipJustify}}"><sc-for list="{{o.rapid}}" as="it" hint-placeholder-count="6"><button class="{{it.cls}}" aria-pressed="{{it.on}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div>
+    <sc-if value="{{showBasal}}" hint-placeholder-val="{{ true }}">
+      <p class="lbl">{{t.in_l}}</p>
+      <div class="chips" dir="ltr" style="justify-content: {{chipJustify}}"><sc-for list="{{o.basal}}" as="it" hint-placeholder-count="5"><button class="{{it.cls}}" aria-pressed="{{it.on}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div>
+    </sc-if>
+    <div class="chips"><sc-for list="{{o.insx}}" as="it" hint-placeholder-count="2"><button class="{{it.cls}}" aria-pressed="{{it.on}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-11 Pump / ONB-12 Sensor -->
+<sc-if value="{{is.devstep}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{devTitle}}</h1>
+    <div class="note"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7.5h.01"></path></svg><span>{{t.pu_n}}</span></div>
+    <div role="radiogroup" style="display: flex; flex-direction: column; gap: 10px">
+      <sc-for list="{{devList}}" as="it" hint-placeholder-count="5">
+        <button class="{{it.cls}}" role="radio" aria-checked="{{it.on}}" onClick="{{it.pick}}">
+          <span class="dimg">
+            <sc-if value="{{it.k_pump}}" hint-placeholder-val="{{ false }}"><svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="6" width="30" height="36" rx="8" fill="#fff" stroke="#3A4441" stroke-width="2"></rect><rect x="14" y="11" width="20" height="13" rx="3" fill="#CBE5DF"></rect><circle cx="24" cy="33" r="4.5" fill="none" stroke="#3A4441" stroke-width="2"></circle><path d="M39 16h3v8h-3" fill="none" stroke="#3A4441" stroke-width="2"></path></svg></sc-if>
+            <sc-if value="{{it.k_patch}}" hint-placeholder-val="{{ false }}"><svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="13" width="34" height="22" rx="11" fill="#fff" stroke="#3A4441" stroke-width="2"></rect><circle cx="16" cy="24" r="3" fill="#CBE5DF" stroke="#3A4441" stroke-width="1.5"></circle><path d="M24 20h10M24 28h7" stroke="#A9A296" stroke-width="2" stroke-linecap="round"></path></svg></sc-if>
+            <sc-if value="{{it.k_sensor}}" hint-placeholder-val="{{ false }}"><svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16" fill="#fff" stroke="#3A4441" stroke-width="2"></circle><circle cx="24" cy="24" r="8" fill="#CBE5DF" stroke="#3A4441" stroke-width="1.5"></circle><circle cx="24" cy="24" r="2" fill="#3A4441"></circle></svg></sc-if>
+            <sc-if value="{{it.k_shell}}" hint-placeholder-val="{{ false }}"><svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 30c0-9 6-16 14-16s14 7 14 16z" fill="#fff" stroke="#3A4441" stroke-width="2"></path><path d="M8 30h32" stroke="#3A4441" stroke-width="2" stroke-linecap="round"></path><rect x="20" y="20" width="8" height="5" rx="2" fill="#CBE5DF"></rect></svg></sc-if>
+            <sc-if value="{{it.k_pen}}" hint-placeholder-val="{{ false }}"><svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="20" width="28" height="8" rx="4" fill="#fff" stroke="#3A4441" stroke-width="2"></rect><path d="M36 24h6" stroke="#3A4441" stroke-width="2" stroke-linecap="round"></path><rect x="12" y="22" width="9" height="4" rx="1" fill="#CBE5DF"></rect></svg></sc-if>
+            <sc-if value="{{it.k_none}}" hint-placeholder-val="{{ false }}"><svg class="ic" width="32" height="32" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--sec)"><circle cx="12" cy="12" r="8"></circle><path d="M6.5 6.5l11 11"></path></svg></sc-if>
+            <sc-if value="{{it.k_q}}" hint-placeholder-val="{{ false }}"><svg class="ic" width="32" height="32" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--sec)"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17h.01"></path></svg></sc-if>
+          </span>
+          <span class="ot"><span style="font-weight: 600; font-size: 1.0625em" dir="auto">{{it.label}}</span><span class="model" dir="auto">{{it.sub}}</span></span>
+          <span class="rad"></span>
+        </button>
+      </sc-for>
+    </div>
+    <sc-if value="{{devOther}}" hint-placeholder-val="{{ false }}"><div class="fld"><label class="lbl" for="dvo">{{t.other}}</label><input id="dvo" class="inp" placeholder="" dir="auto"></div></sc-if>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-13 Ratios -->
+<sc-if value="{{is.icr}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.ic_t}}</h1>
+    <p class="lead">{{t.ic_b}}</p>
+    <button class="{{idkCls}}" role="checkbox" aria-checked="{{f.icrIdk}}" onClick="{{tIdk}}"><span class="box"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span class="ot">{{t.idk}}</span></button>
+    <sc-if value="{{icrShow}}" hint-placeholder-val="{{ true }}">
+      <div class="card" style="display: flex; flex-direction: column; gap: 12px">
+        <sc-for list="{{icrRows}}" as="r" hint-placeholder-count="2">
+          <div class="row" style="align-items: flex-end; gap: 8px">
+            <div class="fld" style="flex: 0 0 34%"><label class="lbl" for="{{r.idf}}">{{t.ic_from}}</label><input id="{{r.idf}}" class="inp" type="time" value="{{r.from}}" onChange="{{r.onFrom}}" dir="ltr"></div>
+            <div class="fld"><label class="lbl" for="{{r.idg}}">{{t.ic_g}}</label><input id="{{r.idg}}" class="inp" inputmode="decimal" placeholder="—" value="{{r.g}}" onChange="{{r.onG}}" dir="ltr"></div>
+            <button class="ib" aria-label="{{r.rmLabel}}" onClick="{{r.rm}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+          </div>
+        </sc-for>
+        <button class="btn btn-s" onClick="{{addRow}}"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{t.ic_add}}</button>
+      </div>
+      <div class="row" style="gap: 10px; align-items: flex-end">
+        <div class="fld"><label class="lbl" for="cf">{{t.ic_cf}}</label><input id="cf" class="inp" inputmode="decimal" placeholder="—" dir="ltr"><span class="small num">{{cfUnit}}</span></div>
+        <div class="fld"><label class="lbl" for="tg">{{t.ic_tg}}</label><input id="tg" class="inp" placeholder="—" dir="ltr"><span class="small num">{{unitLabel}}</span></div>
+      </div>
+      <p class="lbl">{{t.ic_src}}</p>
+      <div class="chips"><sc-for list="{{o.src}}" as="it" hint-placeholder-count="3"><button class="{{it.cls}}" aria-pressed="{{it.on}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div>
+      <div class="fld"><label class="lbl" for="upd">{{t.ic_upd}}</label><input id="upd" class="inp" type="date" dir="ltr"></div>
+    </sc-if>
+    <sc-if value="{{f.icrIdk}}" hint-placeholder-val="{{ false }}"><div class="note">{{t.ic_idk_on}}</div></sc-if>
+    <div class="note" style="background: var(--xFBEFE9)"><span class="pill" style="background: var(--xFBE9E4); color: var(--x8A2A12); flex: none">⚑</span><span>{{t.ic_note}}</span></div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button><button class="btn btn-g" onClick="{{skip}}">{{t.later}}</button></div>
+</sc-if>
+
+<!-- ONB-14 History -->
+<sc-if value="{{is.hist}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.hi_t}}</h1>
+    <p class="lead">{{t.hi_b}}</p>
+    <p class="lbl">{{t.hi_sev}}</p>
+    <div class="chips"><sc-for list="{{o.sev}}" as="it" hint-placeholder-count="3"><button class="{{it.cls}}" aria-pressed="{{it.on}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div>
+    <p class="lbl">{{t.hi_aw}}</p>
+    <div class="chips"><sc-for list="{{o.aw}}" as="it" hint-placeholder-count="4"><button class="{{it.cls}}" aria-pressed="{{it.on}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div>
+    <div class="fld"><label class="lbl" for="med">{{t.hi_med}}</label><textarea id="med" class="inp" rows="3" placeholder="{{t.hi_medp}}" dir="auto" style="padding-top: 14px; min-height: 96px; resize: none"></textarea></div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-15 Routine -->
+<sc-if value="{{is.routine}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.rt_t}}</h1>
+    <p class="lead">{{t.rt_b}}</p>
+    <p class="lbl">{{t.rt_meals}}</p>
+    <div class="row" style="gap: 8px">
+      <div class="fld"><label class="small" for="m1">{{t.rt_br}}</label><input id="m1" class="inp" type="time" value="07:30" dir="ltr"></div>
+      <div class="fld"><label class="small" for="m2">{{t.rt_lu}}</label><input id="m2" class="inp" type="time" value="13:00" dir="ltr"></div>
+      <div class="fld"><label class="small" for="m3">{{t.rt_di}}</label><input id="m3" class="inp" type="time" value="19:30" dir="ltr"></div>
+    </div>
+    <p class="lbl">{{t.rt_ex}}</p>
+    <div class="chips"><sc-for list="{{o.ex}}" as="it" hint-placeholder-count="4"><button class="{{it.cls}}" aria-pressed="{{it.on}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div>
+    <p class="lbl">{{t.rt_sl}}</p>
+    <div class="row" style="gap: 8px"><input class="inp" type="time" value="23:00" aria-label="{{t.rt_sl}}" dir="ltr"><span class="small">{{t.no_to}}</span><input class="inp" type="time" value="06:45" aria-label="{{t.rt_sl}}" dir="ltr"></div>
+    <p class="lbl">{{t.rt_ct}}</p>
+    <div class="chips"><sc-for list="{{o.ct}}" as="it" hint-placeholder-count="3"><button class="{{it.cls}}" aria-pressed="{{it.on}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-16 Avatar -->
+<sc-if value="{{is.avatar}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.av_t}}</h1>
+    <p class="lead">{{t.av_b}}</p>
+    <div role="radiogroup" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+      <sc-for list="{{avatars}}" as="it" hint-placeholder-count="5">
+        <button class="{{it.cls}}" role="radio" aria-checked="{{it.on}}" aria-label="{{it.label}}" onClick="{{it.pick}}">
+          <sc-if value="{{it.a1}}" hint-placeholder-val="{{ false }}"><svg width="76" height="76" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="40" fill="#CFE6E1"></circle><path d="M12 80c2-15 13-23 28-23s26 8 28 23z" fill="#1E6F68"></path><rect x="35" y="47" width="10" height="11" rx="4" fill="#B98263"></rect><ellipse cx="40" cy="35" rx="13" ry="15" fill="#C98E6B"></ellipse><path d="M27 33c0-10 6-15 13-15s14 5 13 15c-3-5-8-7-13-7s-10 2-13 7z" fill="#2A2421"></path></svg></sc-if>
+          <sc-if value="{{it.a2}}" hint-placeholder-val="{{ false }}"><svg width="76" height="76" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="40" fill="#F2DDC8"></circle><path d="M12 80c2-15 13-23 28-23s26 8 28 23z" fill="#8A6A5A"></path><path d="M24 36c0-12 7-19 16-19s16 7 16 19v16H24z" fill="#C9C3BB"></path><rect x="35" y="47" width="10" height="11" rx="4" fill="#DDB08F"></rect><ellipse cx="40" cy="36" rx="12.5" ry="14.5" fill="#F0C9A8"></ellipse><path d="M27 32c2-8 7-11 13-11s11 3 13 11c-5-3-9-4-13-4s-9 1-13 4z" fill="#C9C3BB"></path></svg></sc-if>
+          <sc-if value="{{it.a3}}" hint-placeholder-val="{{ false }}"><svg width="76" height="76" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="40" fill="#D9E0EE"></circle><path d="M12 80c2-15 13-23 28-23s26 8 28 23z" fill="#3D5A80"></path><rect x="35" y="47" width="10" height="11" rx="4" fill="#7A4C33"></rect><ellipse cx="40" cy="36" rx="13" ry="15" fill="#8D5A3E"></ellipse><circle cx="30" cy="24" r="6" fill="#1F1A18"></circle><circle cx="38" cy="20" r="6.5" fill="#1F1A18"></circle><circle cx="47" cy="21" r="6" fill="#1F1A18"></circle><circle cx="53" cy="27" r="5" fill="#1F1A18"></circle><path d="M30 37h8M42 37h8M38 37h4" stroke="#1F1A18" stroke-width="1.6" fill="none"></path><rect x="29" y="34" width="10" height="7" rx="3" fill="none" stroke="#1F1A18" stroke-width="1.6"></rect><rect x="41" y="34" width="10" height="7" rx="3" fill="none" stroke="#1F1A18" stroke-width="1.6"></rect></svg></sc-if>
+          <sc-if value="{{it.a4}}" hint-placeholder-val="{{ false }}"><svg width="76" height="76" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="40" fill="#F3D9CF"></circle><path d="M12 80c2-15 13-23 28-23s26 8 28 23z" fill="#B4643C"></path><circle cx="40" cy="15" r="7" fill="#8C3B22"></circle><rect x="35" y="47" width="10" height="11" rx="4" fill="#D19E7A"></rect><ellipse cx="40" cy="36" rx="12.5" ry="14.5" fill="#E3B48F"></ellipse><path d="M27 34c0-9 6-14 13-14s13 5 13 14c-4-6-8-8-13-8s-9 2-13 8z" fill="#8C3B22"></path></svg></sc-if>
+          <sc-if value="{{it.a5}}" hint-placeholder-val="{{ false }}"><svg width="76" height="76" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="40" fill="#E3EFEC"></circle><circle cx="40" cy="40" r="22" fill="#1E6F68"></circle><circle cx="33" cy="33" r="6" fill="#9FD3C9"></circle></svg></sc-if>
+          <span>{{it.label}}</span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-17 Voice and language -->
+<sc-if value="{{is.voice}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.vo_t}}</h1>
+    <p class="lead">{{t.vo_b}}</p>
+    <p class="lbl">{{t.vo_lang}}</p>
+    <p class="small" style="margin: -12px 0 0">{{t.vo_lang_b}}</p>
+    <div class="chips"><sc-for list="{{convLangs}}" as="it" hint-placeholder-count="4"><button class="{{it.cls}}" aria-pressed="{{it.on}}" lang="{{it.code}}" onClick="{{it.pick}}">{{it.name}}</button></sc-for></div>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <sc-for list="{{voices}}" as="it" hint-placeholder-count="3">
+        <div class="{{it.cls}}" style="cursor: default">
+          <button class="play" aria-label="{{it.playLabel}}" onClick="{{it.play}}">
+            <sc-if value="{{it.playing}}" hint-placeholder-val="{{ false }}"><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span></sc-if>
+            <sc-if value="{{it.idle}}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path class="flip" d="M8 5v14l11-7z" fill="currentColor"></path></svg></sc-if>
+          </button>
+          <button class="ot" style="border: 0; background: transparent; font: inherit; text-align: start; cursor: pointer; color: inherit; min-height: 48px; padding: 0" onClick="{{it.pick}}" aria-pressed="{{it.on}}"><span style="font-weight: 600">{{it.label}}</span><span class="small">{{it.sub}}</span></button>
+          <span class="rad"></span>
+        </div>
+      </sc-for>
+    </div>
+    <span class="pill" style="background: var(--xF3E8D5); color: var(--x6B4A12); align-self: flex-start">{{t.vo_ph}}</span>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-18 Name and style -->
+<sc-if value="{{is.name}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.na_t}}</h1>
+    <div class="fld"><label class="lbl" for="cn">{{t.na_l}}</label><input id="cn" class="inp" value="{{f.cname}}" onChange="{{h.cname}}" dir="auto"></div>
+    <p class="small" style="margin: -8px 0 0">{{t.na_s}}</p>
+    <div class="chips"><sc-for list="{{nameSugg}}" as="it" hint-placeholder-count="4"><button class="{{it.cls}}" aria-pressed="{{it.on}}" onClick="{{it.pick}}">{{it.label}}</button></sc-for></div>
+    <p class="lbl">{{t.st_l}}</p>
+    <div role="radiogroup" style="display: flex; flex-direction: column; gap: 10px">
+      <sc-for list="{{o.style}}" as="it" hint-placeholder-count="3"><button class="{{it.cls}}" role="radio" aria-checked="{{it.on}}" onClick="{{it.pick}}"><span class="rad"></span><span class="ot"><span style="font-weight: 600">{{it.label}}</span><span class="small">{{it.sub}}</span></span></button></sc-for>
+    </div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></div>
+</sc-if>
+
+<!-- ONB-19 Check-ins, quiet hours, notification permission -->
+<sc-if value="{{is.notif}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.no_t}}</h1>
+    <p class="lead">{{t.no_b}}</p>
+    <p class="lbl">{{t.no_f}}</p>
+    <div role="radiogroup" style="display: flex; flex-direction: column; gap: 10px">
+      <sc-for list="{{o.freq}}" as="it" hint-placeholder-count="3"><button class="{{it.cls}}" role="radio" aria-checked="{{it.on}}" onClick="{{it.pick}}"><span class="rad"></span><span class="ot">{{it.label}}</span></button></sc-for>
+    </div>
+    <p class="lbl">{{t.no_q}}</p>
+    <div class="row" style="gap: 8px"><input class="inp" type="time" value="22:30" aria-label="{{t.no_q}}" dir="ltr"><span class="small">{{t.no_to}}</span><input class="inp" type="time" value="07:00" aria-label="{{t.no_q}}" dir="ltr"></div>
+    <sc-if value="{{permAsk}}" hint-placeholder-val="{{ true }}"><div class="note">{{t.no_why}}</div></sc-if>
+    <sc-if value="{{permOn}}" hint-placeholder-val="{{ false }}"><div class="note" style="background: var(--soft)" role="status"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; color: var(--ac)"><path d="M5 12l5 5 9-10"></path></svg><span>{{t.no_on}}</span></div></sc-if>
+    <sc-if value="{{permOff}}" hint-placeholder-val="{{ false }}"><div class="note" role="status"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0M3 3l18 18"></path></svg><span>{{t.no_off}}</span></div></sc-if>
+  </div>
+  <div class="foot">
+    <sc-if value="{{permAsk}}" hint-placeholder-val="{{ true }}"><button class="btn btn-p" onClick="{{askPerm}}">{{t.no_allow}}</button><button class="btn btn-g" onClick="{{next}}">{{t.later}}</button></sc-if>
+    <sc-if value="{{permOff}}" hint-placeholder-val="{{ false }}"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button><button class="btn btn-g" onClick="{{noop}}">{{t.no_set}}</button></sc-if>
+    <sc-if value="{{permOn}}" hint-placeholder-val="{{ false }}"><button class="btn btn-p" onClick="{{next}}">{{t.cont}}</button></sc-if>
+  </div>
+  <sc-if value="{{sysDlg}}" hint-placeholder-val="{{ false }}">
+    <div class="scrim" role="dialog" aria-modal="true" aria-label="{{t.sys_t}}">
+      <div class="sys" dir="{{dir}}">
+        <div style="padding: 18px 16px 14px"><div style="font-weight: 600; font-size: 17px">{{t.sys_t}}</div><div style="font-size: 13px; margin-top: 6px; color: #333">{{t.sys_b}}</div></div>
+        <button onClick="{{permDeny}}">{{t.sys_no}}</button>
+        <button onClick="{{permAllow}}" style="font-weight: 600">{{t.sys_yes}}</button>
+      </div>
+    </div>
+  </sc-if>
+</sc-if>
+
+<!-- ONB-20 Review -->
+<sc-if value="{{is.review}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <h1 class="h1">{{t.rv_t}}</h1>
+    <p class="lead">{{t.rv_b}}</p>
+    <div class="card" style="padding: 4px 14px">
+      <sc-for list="{{reviewRows}}" as="r" hint-placeholder-count="12">
+        <button class="rv" onClick="{{r.go}}"><span class="k">{{r.k}}</span><span class="v" dir="auto">{{r.v}}</span><svg class="ic flip" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter); flex: none"><path d="M9 6l6 6-6 6"></path></svg></button>
+      </sc-for>
+    </div>
+  </div>
+  <div class="foot"><button class="btn btn-p" onClick="{{next}}">{{t.rv_done}}</button></div>
+</sc-if>
+
+<!-- ONB-21 Familiarization intro -->
+<sc-if value="{{is.fam}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <svg width="132" height="100" viewBox="0 0 132 100" aria-hidden="true" style="align-self: center"><rect x="6" y="26" width="36" height="58" rx="12" fill="#E3EFEC"></rect><rect x="48" y="16" width="36" height="68" rx="12" fill="#CBE5DF"></rect><rect x="90" y="6" width="36" height="78" rx="12" fill="#1E6F68"></rect><circle cx="24" cy="44" r="5" fill="#1E6F68"></circle><circle cx="66" cy="36" r="5" fill="#1E6F68"></circle><circle cx="108" cy="26" r="5" fill="#fff"></circle></svg>
+    <h1 class="h1">{{t.fa_t}}</h1>
+    <p class="lead">{{t.fa_b}}</p>
+    <div class="card" style="display: flex; flex-direction: column; gap: 14px">
+      <sc-for list="{{famItems}}" as="it" hint-placeholder-count="3"><div class="row" style="align-items: flex-start"><span class="num" style="width: 28px; height: 28px; border-radius: 14px; background: var(--soft); color: var(--act); font-weight: 700; display: flex; align-items: center; justify-content: center; flex: none">{{it.n}}</span><span>{{it.label}}</span></div></sc-for>
+    </div>
+  </div>
+  <div class="foot"><a class="btn btn-p" href="Companion.dc.html">{{t.fa_go}}</a></div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["day","night"],"default":"day","section":"Appearance"},"lang":{"editor":"enum","options":["en","he","ar","ru"],"default":"en","section":"Locale"},"textSize":{"editor":"enum","options":["100%","130%","160%"],"default":"100%","section":"Accessibility"},"reducedMotion":{"editor":"boolean","default":false,"section":"Accessibility"},"scenario":{"editor":"enum","options":["start","sessionExpired","returningIncomplete","minor","review"],"default":"start","section":"Prototype"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  strings() {
+    return {
+      en: {
+        back:'Back', cont:'Continue', skip:'Skip', idk:"I don't know", later:'Complete later', stepOf:'Step', of:'of',
+        w_t:'A calm companion for life with type 1', w_b:'Log by voice, text or photo. Notice patterns without judgment. Keep the details so you don’t have to.', w_ai:'Your companion is an AI assistant, not a nurse or doctor.', w_lang:'Language', w_start:'Get started', w_have:'I already have an account',
+        a_t:'Create your account', a_b:'Setup saves as you go. Stop anytime and continue later.', a_apple:'Continue with Apple', a_google:'Continue with Google', a_or:'or', a_email:'Email', a_pw:'Password', a_pwh:'At least 10 characters', a_create:'Create account', a_signin_t:'Welcome back', a_signin:'Sign in', a_forgot:'Forgot password?', a_new:'New here? Create an account', a_have:'Have an account? Sign in', a_err:'Enter an email address like name@example.com',
+        r_t:'Reset your password', r_b:'Enter your email and we’ll send a reset link.', r_send:'Send reset link', r_sent_t:'Check your email', r_sent_b:'If an account exists for this address, a link is on its way. It can take a few minutes.', r_done:'Back to sign in',
+        x_t:'Please sign in again', x_b:'For your privacy, your session ended. Everything you saved is safe.', res_t:'Pick up where you left off', res_b:'Account and profile are done. Treatment and companion setup are next.', res_go:'Resume setup',
+        c_t:'Your data, your choices', c_b:'You can change these anytime in Privacy settings.', c1:'Use my information to provide the service', c1b:'Required. Stores your records so your companion can respond and remember context.', c2:'Use my data to help improve models', c2b:'Optional and off by default. Saying no doesn’t change your experience.', c_priv:'Read the privacy summary', c_err:'Please agree to the first item to continue.', c_agree:'Agree and continue',
+        ro_t:'What your companion does', ro_can:'It can', ro_c1:'Log readings, meals, activity and insulin you took', ro_c2:'Remind you and follow up on what you agreed', ro_c3:'Point out recurring observations in your records', ro_c4:'Remember your preferences and context', ro_cant:'It can’t', ro_n1:'Prescribe or change your treatment', ro_n2:'Recommend insulin doses', ro_n3:'Replace device alarms, emergency care or your care team', ro_em:'In an emergency, call your local emergency number.', ro_ok:'I understand',
+        ty_t:'Which type of diabetes do you have?', ty_1:'Type 1', ty_o:'Another type', ty_ns:'I’m not sure', ty_note:'Steady is designed for type 1. You can continue, but some content may not fit your situation.',
+        d_t:'What’s your date of birth?', d_b:'Used to keep the experience age-appropriate.', d_d:'Day', d_m:'Month', d_y:'Year', d_err:'Check the date. It should be a real date in the past.',
+        mi_t:'This version is for adults', mi_b:'The date you entered is under 18. The companion is designed for adults right now, so we won’t continue into the adult experience.', mi_g:'I’m a parent or guardian', mi_fix:'Edit date of birth', mi_n:'Notify me about a family version', mi_nd:'We’ll let you know', g_t:'Family and caregiver version', g_b:'We’re designing a version with guardian permissions, sharing and age-appropriate independence. It isn’t available yet.', future:'Planned',
+        dx_t:'When were you diagnosed?', dx_b:'A rough idea is fine.', dx_1:'Less than a year ago', dx_2:'1–5 years ago', dx_3:'5–10 years ago', dx_4:'10–20 years ago', dx_5:'More than 20 years ago', dx_date:'I know the date',
+        u_t:'Which glucose units do you use?', u_b:'Match your meter or sensor. You can change this later.', u_mgx:'For example 120 mg/dL', u_mmx:'For example 6.7 mmol/L',
+        b_t:'Height and weight', b_b:'Optional. Adds context for activity and meals.', b_h:'Height', b_w:'Weight', b_on:'When was this measured?', b_today:'Today', b_ago:'Within 3 months', b_old:'Longer ago',
+        tx_t:'How do you take insulin?', tx_p:'Insulin pump', tx_i:'Injections or pens', tx_ns:'I’m not sure',
+        in_t:'Which insulin do you use?', in_b:'Select all that apply.', in_r:'Mealtime (rapid-acting)', in_l:'Long-acting (basal)', other:'Other',
+        pu_t:'Which pump do you use?', pu_n:'This records what you use. It doesn’t connect the device or mean it’s supported.', pu_inj:'I use injections', se_t:'Do you use a glucose sensor?', se_none:'I don’t use a sensor',
+        ic_t:'Insulin-to-carb ratios', ic_b:'Enter the ratios your care team set, if you know them. They can differ by time of day.', ic_from:'From', ic_g:'Grams of carbs per unit', ic_add:'Add time period', ic_rm:'Remove period', ic_cf:'Correction factor', ic_tg:'Target range', ic_src:'Where are these from?', ic_s1:'My pump', ic_s2:'Care team document', ic_s3:'From memory', ic_upd:'Last updated', ic_note:'Your companion records these values. It won’t use them to suggest doses.', ic_idk_on:'Noted as unknown. You can add these later in Treatment settings.', perU:'per unit',
+        hi_t:'A little health history', hi_b:'Helps the companion be careful. Skip anything.', hi_sev:'In the past year, have you had a low that needed someone else’s help?', hi_aw:'Do you usually notice lows coming on?', yes:'Yes', no:'No', some:'Sometimes', pref:'Prefer not to say', hi_med:'Other conditions or medications', hi_medp:'Optional',
+        rt_t:'Your usual day', rt_b:'Rough times are fine. This shapes check-ins, not advice.', rt_meals:'Usual meals', rt_br:'Breakfast', rt_lu:'Lunch', rt_di:'Dinner', rt_ex:'Exercise', rt_e1:'Rarely', rt_e2:'1–2 times a week', rt_e3:'3+ times a week', rt_e4:'It varies', rt_sl:'Usual sleep', rt_ct:'Best times to check in', rt_m:'Morning', rt_md:'Midday', rt_ev:'Evening',
+        av_t:'Choose your companion', av_b:'Pick a look you like. Every companion has the same abilities and limits.', av_orb:'Orb only', av_1:'Sage', av_2:'Linen', av_3:'Harbor', av_4:'Ember',
+        vo_t:'Voice and language', vo_b:'Voices come from our speech provider. Options vary by language.', vo_lang:'Conversation language', vo_lang_b:'Can differ from the app language.', vo_prev:'Preview voice', vo_ph:'Voice names are catalog placeholders', v1:'Voice A', v1b:'Calm, lower pitch', v2:'Voice B', v2b:'Bright, medium pitch', v3:'Voice C', v3b:'Soft, slower pace',
+        na_t:'Name and style', na_l:'Companion name', na_s:'Suggestions', st_l:'How should it talk?', st_c:'Concise', st_cb:'Short and to the point', st_w:'Warm', st_wb:'Friendly and encouraging', st_e:'Explanatory', st_eb:'More detail and the reasons why',
+        no_t:'Check-ins and quiet hours', no_b:'Your companion may suggest short check-ins. You decide when.', no_f:'Check-in frequency', no_f1:'Only when I start a conversation', no_f2:'A few times a day', no_f3:'A little more for the first few days', no_q:'Quiet hours', no_to:'to', no_allow:'Allow notifications', no_why:'So reminders can reach you. A sent notification doesn’t mean it was seen, and it never replaces your device alarms.', no_on:'Notifications are on.', no_off:'Notifications are off. You can still use Steady and turn them on in system Settings anytime.', no_set:'Open system Settings', sys_t:'“Steady” would like to send you notifications', sys_b:'Notifications may include alerts, sounds and icon badges.', sys_no:'Don’t Allow', sys_yes:'Allow',
+        rv_t:'Review your profile', rv_b:'Tap anything to edit. Skipped items can be completed later.', rv_ns:'Not set', rv_done:'Looks good', rv_lang:'Language', rv_type:'Diabetes type', rv_dob:'Date of birth', rv_dx:'Diagnosed', rv_units:'Units', rv_body:'Height and weight', rv_tx:'Treatment', rv_ins:'Insulin', rv_pump:'Pump', rv_sen:'Sensor', rv_icr:'Ratios', rv_hist:'History', rv_rt:'Routine', rv_comp:'Companion', rv_notif:'Check-ins', rv_unknown:'Unknown', rv_entered:'Entered',
+        fa_t:'Let’s get to know your routine', fa_b:'For the next few days your companion will check in a little more to learn how your days usually go. Real patterns take longer, and it will say when something is only a first impression.', fa_1:'Log as you go, by voice, text or photo', fa_2:'Short check-ins at the times you chose', fa_3:'A gentle summary after a few days', fa_go:'Meet your companion'
+      },
+      he: {
+        back:'חזרה', cont:'המשך', skip:'דילוג', idk:'לא ידוע לי', later:'אשלים מאוחר יותר', stepOf:'שלב', of:'מתוך',
+        w_t:'מלווה רגוע לחיים עם סוכרת סוג 1', w_b:'תיעוד בקול, בכתב או בתמונה. זיהוי דפוסים בלי שיפוטיות. שומרים את הפרטים בשבילך.', w_ai:'המלווה הוא עוזר מבוסס בינה מלאכותית, לא אח/ות או רופא/ה.', w_lang:'שפה', w_start:'בואו נתחיל', w_have:'כבר יש לי חשבון',
+        a_t:'יצירת חשבון', a_b:'ההגדרה נשמרת תוך כדי. אפשר לעצור ולהמשיך מתי שנוח.', a_apple:'המשך עם Apple', a_google:'המשך עם Google', a_or:'או', a_email:'אימייל', a_pw:'סיסמה', a_pwh:'לפחות 10 תווים', a_create:'יצירת חשבון', a_signin_t:'טוב לראות אותך שוב', a_signin:'כניסה', a_forgot:'שכחת סיסמה?', a_new:'חדש/ה כאן? יצירת חשבון', a_have:'יש לך חשבון? כניסה', a_err:'יש להזין כתובת אימייל, למשל name@example.com',
+        r_t:'איפוס סיסמה', r_b:'הזינו אימייל ונשלח קישור לאיפוס.', r_send:'שליחת קישור', r_sent_t:'בדקו את תיבת הדואר', r_sent_b:'אם קיים חשבון עם הכתובת הזו, קישור בדרך. זה יכול לקחת כמה דקות.', r_done:'חזרה לכניסה',
+        x_t:'יש להתחבר מחדש', x_b:'לשמירה על הפרטיות שלך, החיבור הסתיים. כל מה ששמרת נשמר.', res_t:'להמשיך מאיפה שעצרת?', res_b:'החשבון והפרופיל הושלמו. הבא בתור: טיפול והגדרת המלווה.', res_go:'המשך ההגדרה',
+        c_t:'המידע שלך, הבחירות שלך', c_b:'אפשר לשנות בכל עת בהגדרות הפרטיות.', c1:'שימוש במידע שלי כדי לספק את השירות', c1b:'חובה. שומר את הרשומות שלך כדי שהמלווה יוכל להגיב ולזכור הקשר.', c2:'שימוש במידע שלי לשיפור מודלים', c2b:'רשות, כבוי כברירת מחדל. סירוב לא משנה את החוויה.', c_priv:'לסיכום מדיניות הפרטיות', c_err:'כדי להמשיך יש לאשר את הסעיף הראשון.', c_agree:'אישור והמשך',
+        ro_t:'מה המלווה עושה', ro_can:'הוא יכול', ro_c1:'לתעד מדידות, ארוחות, פעילות ואינסולין שלקחת', ro_c2:'להזכיר ולחזור אליך לגבי מה שסיכמתם', ro_c3:'להצביע על תצפיות חוזרות ברשומות שלך', ro_c4:'לזכור את ההעדפות וההקשר שלך', ro_cant:'הוא לא יכול', ro_n1:'לרשום או לשנות טיפול', ro_n2:'להמליץ על מינוני אינסולין', ro_n3:'להחליף התראות מכשיר, טיפול חירום או הצוות המטפל', ro_em:'במקרה חירום יש להתקשר למספר החירום המקומי.', ro_ok:'הבנתי',
+        ty_t:'איזה סוג סוכרת יש לך?', ty_1:'סוג 1', ty_o:'סוג אחר', ty_ns:'לא בטוח/ה', ty_note:'Steady מיועד לסוכרת סוג 1. אפשר להמשיך, אבל חלק מהתוכן עלול לא להתאים.',
+        d_t:'מה תאריך הלידה שלך?', d_b:'כדי שהחוויה תתאים לגיל.', d_d:'יום', d_m:'חודש', d_y:'שנה', d_err:'בדקו את התאריך. הוא צריך להיות תאריך אמיתי בעבר.',
+        mi_t:'הגרסה הזו מיועדת למבוגרים', mi_b:'התאריך שהוזן הוא מתחת לגיל 18. המלווה מיועד כרגע למבוגרים, ולכן לא נמשיך לחוויית המבוגרים.', mi_g:'אני הורה או אפוטרופוס', mi_fix:'עריכת תאריך הלידה', mi_n:'עדכנו אותי על גרסה למשפחות', mi_nd:'נעדכן אותך', g_t:'גרסה למשפחות ולמטפלים', g_b:'אנחנו מעצבים גרסה עם הרשאות אפוטרופוס, שיתוף ועצמאות מותאמת גיל. היא עדיין לא זמינה.', future:'מתוכנן',
+        dx_t:'מתי אובחנת?', dx_b:'הערכה גסה מספיקה.', dx_1:'לפני פחות משנה', dx_2:'לפני 1–5 שנים', dx_3:'לפני 5–10 שנים', dx_4:'לפני 10–20 שנים', dx_5:'לפני יותר מ־20 שנה', dx_date:'אני יודע/ת את התאריך',
+        u_t:'באילו יחידות גלוקוז משתמשים אצלך?', u_b:'כמו במד או בחיישן שלך. אפשר לשנות אחר כך.', u_mgx:'לדוגמה 120 mg/dL', u_mmx:'לדוגמה 6.7 mmol/L',
+        b_t:'גובה ומשקל', b_b:'רשות. מוסיף הקשר לפעילות ולארוחות.', b_h:'גובה', b_w:'משקל', b_on:'מתי זה נמדד?', b_today:'היום', b_ago:'בשלושת החודשים האחרונים', b_old:'לפני יותר זמן',
+        tx_t:'איך מקבלים אצלך אינסולין?', tx_p:'משאבת אינסולין', tx_i:'זריקות או עטים', tx_ns:'לא בטוח/ה',
+        in_t:'באיזה אינסולין משתמשים אצלך?', in_b:'אפשר לבחור כמה.', in_r:'לארוחות (מהיר)', in_l:'ארוך טווח (בזאלי)', other:'אחר',
+        pu_t:'באיזו משאבה משתמשים אצלך?', pu_n:'זה מתעד במה משתמשים. זה לא מחבר את המכשיר ולא אומר שהוא נתמך.', pu_inj:'אני משתמש/ת בזריקות', se_t:'יש לך חיישן גלוקוז?', se_none:'אין לי חיישן',
+        ic_t:'יחס אינסולין לפחמימות', ic_b:'הזינו את היחסים שקבע הצוות המטפל, אם ידוע. הם יכולים להשתנות לפי שעה.', ic_from:'משעה', ic_g:'גרם פחמימות ליחידה', ic_add:'הוספת טווח שעות', ic_rm:'הסרת טווח', ic_cf:'פקטור תיקון', ic_tg:'טווח יעד', ic_src:'מאיפה הערכים?', ic_s1:'מהמשאבה', ic_s2:'ממסמך של הצוות', ic_s3:'מהזיכרון', ic_upd:'עודכן לאחרונה', ic_note:'המלווה מתעד את הערכים. הוא לא ישתמש בהם כדי להציע מינונים.', ic_idk_on:'נרשם כלא ידוע. אפשר להוסיף בהמשך בהגדרות הטיפול.', perU:'ליחידה',
+        hi_t:'קצת היסטוריה רפואית', hi_b:'עוזר למלווה להיות זהיר. אפשר לדלג על כל דבר.', hi_sev:'בשנה האחרונה, היה לך היפו שדרש עזרה של מישהו אחר?', hi_aw:'בדרך כלל מרגישים אצלך כשהסוכר יורד?', yes:'כן', no:'לא', some:'לפעמים', pref:'מעדיף/ה לא לומר', hi_med:'מצבים או תרופות נוספים', hi_medp:'רשות',
+        rt_t:'היום הרגיל שלך', rt_b:'שעות משוערות מספיקות. זה משפיע על זמני הבדיקה, לא על עצות.', rt_meals:'ארוחות קבועות', rt_br:'בוקר', rt_lu:'צהריים', rt_di:'ערב', rt_ex:'פעילות גופנית', rt_e1:'לעיתים רחוקות', rt_e2:'1–2 בשבוע', rt_e3:'3+ בשבוע', rt_e4:'משתנה', rt_sl:'שעות שינה', rt_ct:'זמנים נוחים לבדיקה', rt_m:'בוקר', rt_md:'צהריים', rt_ev:'ערב',
+        av_t:'בחירת מלווה', av_b:'בחרו מראה שנעים לכם. לכל המלווים אותן יכולות ואותם גבולות.', av_orb:'כדור בלבד', av_1:'מרווה', av_2:'פשתן', av_3:'נמל', av_4:'גחלת',
+        vo_t:'קול ושפה', vo_b:'הקולות מגיעים מספק הדיבור שלנו. האפשרויות משתנות לפי שפה.', vo_lang:'שפת השיחה', vo_lang_b:'יכולה להיות שונה משפת האפליקציה.', vo_prev:'השמעת דוגמה', vo_ph:'שמות הקולות הם ממלאי מקום', v1:'קול A', v1b:'רגוע, נמוך', v2:'קול B', v2b:'בהיר, בינוני', v3:'קול C', v3b:'רך, איטי',
+        na_t:'שם וסגנון', na_l:'שם המלווה', na_s:'הצעות', st_l:'איך לדבר איתך?', st_c:'תמציתי', st_cb:'קצר ולעניין', st_w:'חם', st_wb:'ידידותי ומעודד', st_e:'מסביר', st_eb:'יותר פרטים והסברים',
+        no_t:'בדיקות ושעות שקטות', no_b:'המלווה עשוי להציע בדיקות קצרות. אתם מחליטים מתי.', no_f:'תדירות', no_f1:'רק כשאני פותח/ת שיחה', no_f2:'כמה פעמים ביום', no_f3:'קצת יותר בימים הראשונים', no_q:'שעות שקטות', no_to:'עד', no_allow:'אישור התראות', no_why:'כדי שתזכורות יגיעו אליך. התראה שנשלחה לא אומרת שנראתה, והיא לא מחליפה את התראות המכשיר.', no_on:'ההתראות פעילות.', no_off:'ההתראות כבויות. אפשר להמשיך להשתמש ב־Steady ולהפעיל אותן בהגדרות המערכת בכל עת.', no_set:'פתיחת הגדרות המערכת', sys_t:'‏"Steady" מבקשת לשלוח לך התראות', sys_b:'התראות עשויות לכלול צלילים ותגים.', sys_no:'לא לאפשר', sys_yes:'לאפשר',
+        rv_t:'סקירת הפרופיל', rv_b:'הקישו על פריט לעריכה. פריטים שדילגתם עליהם אפשר להשלים בהמשך.', rv_ns:'לא הוגדר', rv_done:'נראה טוב', rv_lang:'שפה', rv_type:'סוג סוכרת', rv_dob:'תאריך לידה', rv_dx:'אבחון', rv_units:'יחידות', rv_body:'גובה ומשקל', rv_tx:'טיפול', rv_ins:'אינסולין', rv_pump:'משאבה', rv_sen:'חיישן', rv_icr:'יחסים', rv_hist:'היסטוריה', rv_rt:'שגרה', rv_comp:'מלווה', rv_notif:'בדיקות', rv_unknown:'לא ידוע', rv_entered:'הוזן',
+        fa_t:'בואו נכיר את השגרה שלך', fa_b:'בימים הקרובים המלווה יבדוק מעט יותר כדי ללמוד איך הימים שלך נראים. דפוסים אמיתיים לוקחים יותר זמן, והוא יגיד כשמשהו הוא רק רושם ראשוני.', fa_1:'תיעוד תוך כדי, בקול, בכתב או בתמונה', fa_2:'בדיקות קצרות בזמנים שבחרת', fa_3:'סיכום עדין אחרי כמה ימים', fa_go:'הכירו את המלווה'
+      },
+      ar: {
+        back:'رجوع', cont:'متابعة', skip:'تخطٍّ', idk:'لا أعرف', later:'أكمل لاحقًا', stepOf:'الخطوة', of:'من',
+        w_t:'رفيق هادئ للحياة مع السكري من النوع الأول', w_b:'سجّل بالصوت أو بالكتابة أو بالصورة. لاحظ الأنماط دون أحكام. نحفظ التفاصيل عنك.', w_ai:'رفيقك مساعد بالذكاء الاصطناعي، وليس ممرضًا أو طبيبًا.', w_lang:'اللغة', w_start:'لنبدأ', w_have:'لدي حساب بالفعل',
+        a_t:'أنشئ حسابك', a_b:'يُحفظ الإعداد أولًا بأول. توقف متى شئت وتابع لاحقًا.', a_apple:'المتابعة باستخدام Apple', a_google:'المتابعة باستخدام Google', a_or:'أو', a_email:'البريد الإلكتروني', a_pw:'كلمة المرور', a_pwh:'10 أحرف على الأقل', a_create:'إنشاء الحساب', a_signin_t:'مرحبًا بعودتك', a_signin:'تسجيل الدخول', a_forgot:'نسيت كلمة المرور؟', a_new:'جديد هنا؟ أنشئ حسابًا', a_have:'لديك حساب؟ سجّل الدخول', a_err:'أدخل بريدًا إلكترونيًا مثل name@example.com',
+        r_t:'إعادة تعيين كلمة المرور', r_b:'أدخل بريدك وسنرسل رابطًا لإعادة التعيين.', r_send:'إرسال الرابط', r_sent_t:'تحقق من بريدك', r_sent_b:'إذا كان هناك حساب بهذا العنوان، فالرابط في الطريق. قد يستغرق ذلك بضع دقائق.', r_done:'العودة لتسجيل الدخول',
+        x_t:'يُرجى تسجيل الدخول مجددًا', x_b:'حفاظًا على خصوصيتك انتهت الجلسة. كل ما حفظته آمن.', res_t:'هل تتابع من حيث توقفت؟', res_b:'اكتمل الحساب والملف الشخصي. التالي: العلاج وإعداد الرفيق.', res_go:'متابعة الإعداد',
+        c_t:'بياناتك، خياراتك', c_b:'يمكنك تغيير ذلك في أي وقت من إعدادات الخصوصية.', c1:'استخدام معلوماتي لتقديم الخدمة', c1b:'مطلوب. يحفظ سجلاتك ليتمكن رفيقك من الرد وتذكّر السياق.', c2:'استخدام بياناتي لتحسين النماذج', c2b:'اختياري ومعطّل افتراضيًا. الرفض لا يغيّر تجربتك.', c_priv:'اقرأ ملخص الخصوصية', c_err:'يُرجى الموافقة على البند الأول للمتابعة.', c_agree:'موافقة ومتابعة',
+        ro_t:'ما الذي يفعله رفيقك', ro_can:'يستطيع', ro_c1:'تسجيل القراءات والوجبات والنشاط والإنسولين الذي أخذته', ro_c2:'تذكيرك ومتابعة ما اتفقتما عليه', ro_c3:'الإشارة إلى ملاحظات متكررة في سجلاتك', ro_c4:'تذكّر تفضيلاتك وسياقك', ro_cant:'لا يستطيع', ro_n1:'وصف علاجك أو تغييره', ro_n2:'التوصية بجرعات الإنسولين', ro_n3:'أن يحل محل تنبيهات الجهاز أو الطوارئ أو فريقك الطبي', ro_em:'في حالة الطوارئ اتصل برقم الطوارئ المحلي.', ro_ok:'فهمت',
+        ty_t:'ما نوع السكري لديك؟', ty_1:'النوع الأول', ty_o:'نوع آخر', ty_ns:'لست متأكدًا', ty_note:'صُمّم Steady للنوع الأول. يمكنك المتابعة، لكن بعض المحتوى قد لا يناسب حالتك.',
+        d_t:'ما تاريخ ميلادك؟', d_b:'لنجعل التجربة مناسبة لعمرك.', d_d:'اليوم', d_m:'الشهر', d_y:'السنة', d_err:'تحقق من التاريخ. يجب أن يكون تاريخًا حقيقيًا في الماضي.',
+        mi_t:'هذا الإصدار مخصص للبالغين', mi_b:'التاريخ المُدخل أقل من 18 عامًا. صُمّم الرفيق حاليًا للبالغين، لذا لن نتابع إلى تجربة البالغين.', mi_g:'أنا والد أو وصي', mi_fix:'تعديل تاريخ الميلاد', mi_n:'أبلغوني بإصدار للعائلات', mi_nd:'سنبلغك', g_t:'إصدار للعائلات ومقدمي الرعاية', g_b:'نصمّم إصدارًا بصلاحيات الوصي والمشاركة واستقلالية تناسب العمر. ليس متاحًا بعد.', future:'مُخطّط',
+        dx_t:'متى شُخّصت؟', dx_b:'تقدير تقريبي يكفي.', dx_1:'منذ أقل من سنة', dx_2:'منذ 1–5 سنوات', dx_3:'منذ 5–10 سنوات', dx_4:'منذ 10–20 سنة', dx_5:'منذ أكثر من 20 سنة', dx_date:'أعرف التاريخ',
+        u_t:'ما وحدات الغلوكوز التي تستخدمها؟', u_b:'كما يعرضها جهازك أو حساسك. يمكنك التغيير لاحقًا.', u_mgx:'مثال: 120 mg/dL', u_mmx:'مثال: 6.7 mmol/L',
+        b_t:'الطول والوزن', b_b:'اختياري. يضيف سياقًا للنشاط والوجبات.', b_h:'الطول', b_w:'الوزن', b_on:'متى قيس ذلك؟', b_today:'اليوم', b_ago:'خلال 3 أشهر', b_old:'قبل ذلك',
+        tx_t:'كيف تأخذ الإنسولين؟', tx_p:'مضخة إنسولين', tx_i:'حقن أو أقلام', tx_ns:'لست متأكدًا',
+        in_t:'ما الإنسولين الذي تستخدمه؟', in_b:'اختر كل ما ينطبق.', in_r:'للوجبات (سريع المفعول)', in_l:'طويل المفعول (قاعدي)', other:'آخر',
+        pu_t:'ما المضخة التي تستخدمها؟', pu_n:'هذا يسجّل ما تستخدمه فقط. لا يوصل الجهاز ولا يعني أنه مدعوم.', pu_inj:'أستخدم الحقن', se_t:'هل تستخدم حساس غلوكوز؟', se_none:'لا أستخدم حساسًا',
+        ic_t:'نسبة الإنسولين إلى الكربوهيدرات', ic_b:'أدخل النسب التي حددها فريقك الطبي إن كنت تعرفها. قد تختلف حسب الوقت.', ic_from:'من', ic_g:'غرام كربوهيدرات لكل وحدة', ic_add:'إضافة فترة', ic_rm:'إزالة الفترة', ic_cf:'معامل التصحيح', ic_tg:'النطاق المستهدف', ic_src:'من أين هذه القيم؟', ic_s1:'من مضختي', ic_s2:'وثيقة من الفريق الطبي', ic_s3:'من الذاكرة', ic_upd:'آخر تحديث', ic_note:'يسجّل رفيقك هذه القيم. لن يستخدمها لاقتراح جرعات.', ic_idk_on:'سُجّلت كغير معروفة. يمكنك إضافتها لاحقًا من إعدادات العلاج.', perU:'لكل وحدة',
+        hi_t:'قليل من التاريخ الصحي', hi_b:'يساعد رفيقك على الحذر. تخطَّ ما تشاء.', hi_sev:'خلال العام الماضي، هل حدث لك انخفاض احتاج إلى مساعدة شخص آخر؟', hi_aw:'هل تشعر عادةً باقتراب الانخفاض؟', yes:'نعم', no:'لا', some:'أحيانًا', pref:'أفضّل عدم القول', hi_med:'حالات أو أدوية أخرى', hi_medp:'اختياري',
+        rt_t:'يومك المعتاد', rt_b:'الأوقات التقريبية تكفي. هذا يحدد مواعيد المتابعة، لا النصائح.', rt_meals:'الوجبات المعتادة', rt_br:'الفطور', rt_lu:'الغداء', rt_di:'العشاء', rt_ex:'الرياضة', rt_e1:'نادرًا', rt_e2:'1–2 مرة أسبوعيًا', rt_e3:'3+ مرات أسبوعيًا', rt_e4:'يختلف', rt_sl:'النوم المعتاد', rt_ct:'أفضل أوقات المتابعة', rt_m:'الصباح', rt_md:'الظهيرة', rt_ev:'المساء',
+        av_t:'اختر رفيقك', av_b:'اختر مظهرًا يعجبك. لكل الرفقاء القدرات والحدود نفسها.', av_orb:'كرة فقط', av_1:'مريمية', av_2:'كتّان', av_3:'مرفأ', av_4:'جمرة',
+        vo_t:'الصوت واللغة', vo_b:'تأتي الأصوات من مزوّد الكلام لدينا. تختلف الخيارات حسب اللغة.', vo_lang:'لغة المحادثة', vo_lang_b:'يمكن أن تختلف عن لغة التطبيق.', vo_prev:'معاينة الصوت', vo_ph:'أسماء الأصوات مؤقتة', v1:'الصوت A', v1b:'هادئ، منخفض', v2:'الصوت B', v2b:'مشرق، متوسط', v3:'الصوت C', v3b:'ناعم، أبطأ',
+        na_t:'الاسم والأسلوب', na_l:'اسم الرفيق', na_s:'اقتراحات', st_l:'كيف يتحدث معك؟', st_c:'موجز', st_cb:'قصير ومباشر', st_w:'دافئ', st_wb:'ودود ومشجّع', st_e:'شارح', st_eb:'تفاصيل أكثر والأسباب',
+        no_t:'المتابعات وساعات الهدوء', no_b:'قد يقترح رفيقك متابعات قصيرة. أنت تقرر متى.', no_f:'عدد المتابعات', no_f1:'فقط عندما أبدأ محادثة', no_f2:'بضع مرات يوميًا', no_f3:'أكثر قليلًا في الأيام الأولى', no_q:'ساعات الهدوء', no_to:'إلى', no_allow:'السماح بالإشعارات', no_why:'لتصلك التذكيرات. إرسال الإشعار لا يعني أنه شوهد، ولا يحل محل تنبيهات جهازك.', no_on:'الإشعارات مفعّلة.', no_off:'الإشعارات متوقفة. يمكنك مواصلة استخدام Steady وتفعيلها من إعدادات النظام في أي وقت.', no_set:'فتح إعدادات النظام', sys_t:'يرغب "Steady" في إرسال إشعارات إليك', sys_b:'قد تتضمن الإشعارات تنبيهات وأصواتًا وشارات.', sys_no:'عدم السماح', sys_yes:'السماح',
+        rv_t:'راجع ملفك', rv_b:'اضغط على أي بند لتعديله. يمكن إكمال ما تخطيته لاحقًا.', rv_ns:'غير محدد', rv_done:'يبدو جيدًا', rv_lang:'اللغة', rv_type:'نوع السكري', rv_dob:'تاريخ الميلاد', rv_dx:'التشخيص', rv_units:'الوحدات', rv_body:'الطول والوزن', rv_tx:'العلاج', rv_ins:'الإنسولين', rv_pump:'المضخة', rv_sen:'الحساس', rv_icr:'النسب', rv_hist:'التاريخ الصحي', rv_rt:'الروتين', rv_comp:'الرفيق', rv_notif:'المتابعات', rv_unknown:'غير معروف', rv_entered:'مُدخل',
+        fa_t:'لنتعرّف على روتينك', fa_b:'خلال الأيام القليلة القادمة سيتابع رفيقك أكثر قليلًا ليتعلم كيف تمضي أيامك. الأنماط الحقيقية تحتاج وقتًا أطول، وسيخبرك عندما يكون الأمر مجرد انطباع أولي.', fa_1:'سجّل أولًا بأول بالصوت أو الكتابة أو الصورة', fa_2:'متابعات قصيرة في الأوقات التي اخترتها', fa_3:'ملخص لطيف بعد بضعة أيام', fa_go:'تعرّف على رفيقك'
+      },
+      ru: {
+        back:'Назад', cont:'Продолжить', skip:'Пропустить', idk:'Не знаю', later:'Заполнить позже', stepOf:'Шаг', of:'из',
+        w_t:'Спокойный помощник для жизни с диабетом 1 типа', w_b:'Записывайте голосом, текстом или фото. Замечайте закономерности без осуждения. Мы сохраним детали за вас.', w_ai:'Ваш помощник — ИИ-ассистент, а не медсестра и не врач.', w_lang:'Язык', w_start:'Начать', w_have:'У меня уже есть аккаунт',
+        a_t:'Создайте аккаунт', a_b:'Настройки сохраняются по ходу. Можно прерваться и продолжить позже.', a_apple:'Продолжить с Apple', a_google:'Продолжить с Google', a_or:'или', a_email:'Эл. почта', a_pw:'Пароль', a_pwh:'Не менее 10 символов', a_create:'Создать аккаунт', a_signin_t:'С возвращением', a_signin:'Войти', a_forgot:'Забыли пароль?', a_new:'Впервые здесь? Создать аккаунт', a_have:'Есть аккаунт? Войти', a_err:'Введите адрес вида name@example.com',
+        r_t:'Сброс пароля', r_b:'Введите адрес почты, и мы пришлём ссылку для сброса.', r_send:'Отправить ссылку', r_sent_t:'Проверьте почту', r_sent_b:'Если аккаунт с этим адресом существует, ссылка уже в пути. Это может занять несколько минут.', r_done:'Вернуться ко входу',
+        x_t:'Войдите снова', x_b:'Ради вашей конфиденциальности сеанс завершён. Всё сохранённое на месте.', res_t:'Продолжить с того же места?', res_b:'Аккаунт и профиль готовы. Дальше — лечение и настройка помощника.', res_go:'Продолжить настройку',
+        c_t:'Ваши данные — ваш выбор', c_b:'Это можно изменить в любой момент в настройках конфиденциальности.', c1:'Использовать мои данные для работы сервиса', c1b:'Обязательно. Хранит ваши записи, чтобы помощник мог отвечать и помнить контекст.', c2:'Использовать мои данные для улучшения моделей', c2b:'Необязательно, по умолчанию выключено. Отказ не влияет на работу приложения.', c_priv:'Кратко о конфиденциальности', c_err:'Чтобы продолжить, согласитесь с первым пунктом.', c_agree:'Согласиться и продолжить',
+        ro_t:'Что делает помощник', ro_can:'Он может', ro_c1:'Записывать измерения, еду, активность и введённый инсулин', ro_c2:'Напоминать и возвращаться к договорённостям', ro_c3:'Отмечать повторяющиеся наблюдения в ваших записях', ro_c4:'Помнить ваши предпочтения и контекст', ro_cant:'Он не может', ro_n1:'Назначать или менять лечение', ro_n2:'Рекомендовать дозы инсулина', ro_n3:'Заменять сигналы устройств, экстренную помощь или вашу медкоманду', ro_em:'В экстренной ситуации звоните в местную службу экстренной помощи.', ro_ok:'Понятно',
+        ty_t:'Какой у вас тип диабета?', ty_1:'1 тип', ty_o:'Другой тип', ty_ns:'Не уверен(а)', ty_note:'Steady создан для диабета 1 типа. Продолжить можно, но часть материалов может вам не подойти.',
+        d_t:'Ваша дата рождения', d_b:'Чтобы приложение подходило вашему возрасту.', d_d:'День', d_m:'Месяц', d_y:'Год', d_err:'Проверьте дату: она должна быть реальной и в прошлом.',
+        mi_t:'Эта версия для взрослых', mi_b:'Указанная дата соответствует возрасту до 18 лет. Сейчас помощник рассчитан на взрослых, поэтому мы не переходим к взрослой версии.', mi_g:'Я родитель или опекун', mi_fix:'Изменить дату рождения', mi_n:'Сообщить о семейной версии', mi_nd:'Мы сообщим вам', g_t:'Версия для семей и опекунов', g_b:'Мы разрабатываем версию с правами опекуна, совместным доступом и самостоятельностью по возрасту. Пока она недоступна.', future:'В планах',
+        dx_t:'Когда вам поставили диагноз?', dx_b:'Достаточно примерно.', dx_1:'Меньше года назад', dx_2:'1–5 лет назад', dx_3:'5–10 лет назад', dx_4:'10–20 лет назад', dx_5:'Более 20 лет назад', dx_date:'Я знаю дату',
+        u_t:'В каких единицах вы измеряете глюкозу?', u_b:'Как на вашем глюкометре или сенсоре. Можно изменить позже.', u_mgx:'Например, 120 mg/dL', u_mmx:'Например, 6,7 ммоль/л',
+        b_t:'Рост и вес', b_b:'Необязательно. Добавляет контекст к активности и еде.', b_h:'Рост', b_w:'Вес', b_on:'Когда измеряли?', b_today:'Сегодня', b_ago:'В последние 3 месяца', b_old:'Раньше',
+        tx_t:'Как вы вводите инсулин?', tx_p:'Инсулиновая помпа', tx_i:'Уколы или шприц-ручки', tx_ns:'Не уверен(а)',
+        in_t:'Какой инсулин вы используете?', in_b:'Выберите всё подходящее.', in_r:'На еду (ультракороткий)', in_l:'Длительный (базальный)', other:'Другое',
+        pu_t:'Какая у вас помпа?', pu_n:'Это только запись того, чем вы пользуетесь. Устройство не подключается, и это не означает его поддержку.', pu_inj:'Я делаю уколы', se_t:'Вы пользуетесь сенсором глюкозы?', se_none:'Я не пользуюсь сенсором',
+        ic_t:'Углеводные коэффициенты', ic_b:'Введите коэффициенты, назначенные вашей медкомандой, если знаете. Они могут меняться в течение дня.', ic_from:'С', ic_g:'Грамм углеводов на единицу', ic_add:'Добавить период', ic_rm:'Удалить период', ic_cf:'Фактор чувствительности', ic_tg:'Целевой диапазон', ic_src:'Откуда эти значения?', ic_s1:'Из помпы', ic_s2:'Документ медкоманды', ic_s3:'По памяти', ic_upd:'Последнее обновление', ic_note:'Помощник записывает эти значения, но не использует их для расчёта доз.', ic_idk_on:'Отмечено как неизвестное. Можно добавить позже в настройках лечения.', perU:'на единицу',
+        hi_t:'Немного о здоровье', hi_b:'Помогает помощнику быть осторожным. Любой пункт можно пропустить.', hi_sev:'За последний год была ли гипогликемия, при которой понадобилась помощь другого человека?', hi_aw:'Обычно вы чувствуете приближение гипо?', yes:'Да', no:'Нет', some:'Иногда', pref:'Предпочитаю не отвечать', hi_med:'Другие заболевания или лекарства', hi_medp:'Необязательно',
+        rt_t:'Ваш обычный день', rt_b:'Примерного времени достаточно. Это влияет на время напоминаний, а не на советы.', rt_meals:'Обычные приёмы пищи', rt_br:'Завтрак', rt_lu:'Обед', rt_di:'Ужин', rt_ex:'Физическая активность', rt_e1:'Редко', rt_e2:'1–2 раза в неделю', rt_e3:'3+ раза в неделю', rt_e4:'По-разному', rt_sl:'Обычный сон', rt_ct:'Удобное время для вопросов', rt_m:'Утро', rt_md:'День', rt_ev:'Вечер',
+        av_t:'Выберите помощника', av_b:'Выберите внешний вид. У всех помощников одинаковые возможности и ограничения.', av_orb:'Только сфера', av_1:'Шалфей', av_2:'Лён', av_3:'Гавань', av_4:'Уголёк',
+        vo_t:'Голос и язык', vo_b:'Голоса предоставляет наш речевой сервис. Выбор зависит от языка.', vo_lang:'Язык разговора', vo_lang_b:'Может отличаться от языка приложения.', vo_prev:'Прослушать голос', vo_ph:'Названия голосов временные', v1:'Голос A', v1b:'Спокойный, низкий', v2:'Голос B', v2b:'Яркий, средний', v3:'Голос C', v3b:'Мягкий, медленный',
+        na_t:'Имя и стиль', na_l:'Имя помощника', na_s:'Варианты', st_l:'Как ему говорить?', st_c:'Кратко', st_cb:'Коротко и по делу', st_w:'Тепло', st_wb:'Дружелюбно и ободряюще', st_e:'С объяснениями', st_eb:'Подробнее и с причинами',
+        no_t:'Напоминания и тихие часы', no_b:'Помощник может предлагать короткие вопросы. Время выбираете вы.', no_f:'Как часто', no_f1:'Только когда я начинаю разговор', no_f2:'Несколько раз в день', no_f3:'Чуть чаще в первые дни', no_q:'Тихие часы', no_to:'до', no_allow:'Разрешить уведомления', no_why:'Чтобы напоминания доходили до вас. Отправленное уведомление не означает, что его увидели, и оно не заменяет сигналы устройств.', no_on:'Уведомления включены.', no_off:'Уведомления выключены. Steady работает и без них; включить можно в системных настройках.', no_set:'Открыть системные настройки', sys_t:'Приложение «Steady» запрашивает разрешение на уведомления', sys_b:'Уведомления могут включать звуки и наклейки.', sys_no:'Запретить', sys_yes:'Разрешить',
+        rv_t:'Проверьте профиль', rv_b:'Нажмите на пункт, чтобы изменить. Пропущенное можно заполнить позже.', rv_ns:'Не указано', rv_done:'Всё верно', rv_lang:'Язык', rv_type:'Тип диабета', rv_dob:'Дата рождения', rv_dx:'Диагноз', rv_units:'Единицы', rv_body:'Рост и вес', rv_tx:'Лечение', rv_ins:'Инсулин', rv_pump:'Помпа', rv_sen:'Сенсор', rv_icr:'Коэффициенты', rv_hist:'Анамнез', rv_rt:'Режим дня', rv_comp:'Помощник', rv_notif:'Напоминания', rv_unknown:'Неизвестно', rv_entered:'Указано',
+        fa_t:'Давайте узнаем ваш распорядок', fa_b:'В ближайшие дни помощник будет спрашивать чуть чаще, чтобы понять, как обычно проходят ваши дни. Настоящие закономерности требуют больше времени, и он скажет, когда что-то — лишь первое впечатление.', fa_1:'Записывайте по ходу голосом, текстом или фото', fa_2:'Короткие вопросы в выбранное время', fa_3:'Мягкое резюме через несколько дней', fa_go:'Познакомиться с помощником'
+      }
+    };
+  }
+  renderVals() {
+    if (!this._S) this._S = this.strings();
+    const s = this.state || {};
+    const p = this.props || {};
+    const scen = p.scenario || 'start';
+    const v = (k, d) => (s[k] === undefined ? d : s[k]);
+    const lang = v('lang', p.lang || 'en');
+    const t = Object.assign({}, this._S.en, this._S[lang] || {});
+    const rtl = lang === 'he' || lang === 'ar';
+    const dir = rtl ? 'rtl' : 'ltr';
+    const fs = ({ '100%': 16, '130%': 20, '160%': 24 })[p.textSize] || 16;
+    const initStep = scen === 'sessionExpired' || scen === 'returningIncomplete' ? 'account' : scen === 'minor' ? 'minor' : scen === 'review' ? 'review' : 'welcome';
+    const step = v('step', initStep);
+    const accMode = v('acc', scen === 'sessionExpired' ? 'expired' : scen === 'returningIncomplete' ? 'resume' : 'signup');
+    const ORDER = ['welcome','account','consent','role','type','dob','dx','units','body','tx','insulin','pump','sensor','icr','hist','routine','avatar','voice','name','notif','review','fam'];
+    const set = (o) => this.setState(o);
+    const go = (to, extra) => set(Object.assign({ step: to, hist: (s.hist || []).concat([step]), err: null }, extra || {}));
+    const back = () => { const h = (s.hist || []).slice(); const prev = h.pop(); if (prev) set({ step: prev, hist: h, err: null, fromReview: false }); else if (step === 'account') set({ step: 'welcome', err: null }); };
+    const ageOf = () => {
+      const d = +v('dd', ''), m = +v('mm', ''), y = +v('yy', '');
+      if (!d || !m || !y || y < 1900 || m > 12 || d > 31) return null;
+      const dt = new Date(y, m - 1, d);
+      if (dt.getMonth() !== m - 1) return null;
+      const now = new Date(2026, 10, 10);
+      if (dt > now) return null;
+      let a = now.getFullYear() - y; if (m - 1 > now.getMonth() || (m - 1 === now.getMonth() && d > now.getDate())) a--; return a;
+    };
+    const nextAfter = (st) => { let n = ORDER[ORDER.indexOf(st) + 1]; if (n === 'pump' && v('tx', '') === 'pens') n = 'sensor'; return n; };
+    const next = () => {
+      if (step === 'consent' && !v('c1', false)) { set({ err: 'consent' }); return; }
+      if (step === 'dob') { const a = ageOf(); if (a === null) { set({ err: 'dob' }); return; } if (a < 18) { go('minor'); return; } }
+      if (s.fromReview && step !== 'review') { go('review', { fromReview: false }); return; }
+      go(nextAfter(step));
+    };
+    const skip = () => { if (s.fromReview) { go('review', { fromReview: false }); return; } go(nextAfter(step)); };
+    const validEmail = () => /.+@.+\..+/.test(v('email', ''));
+    const pick = (k, val) => () => set({ [k]: val });
+    const toggleIn = (k, val) => () => { const a = (s[k] || []).slice(); const i = a.indexOf(val); if (i >= 0) a.splice(i, 1); else a.push(val); set({ [k]: a }); };
+    const single = (k, list, def) => list.map((x) => { const on = v(k, def) === x.id; return Object.assign({}, x, { on: on, cls: (x.chip ? 'chip' : 'opt') + (on ? ' on' : ''), pick: pick(k, x.id) }); });
+    const multi = (k, list) => list.map((x) => { const on = (s[k] || []).indexOf(x.id) >= 0; return Object.assign({}, x, { on: on, cls: 'chip' + (on ? ' on' : ''), pick: toggleIn(k, x.id) }); });
+    const ch = (id, label, sub) => ({ id: id, label: label, sub: sub || '', chip: true });
+    const op = (id, label, sub) => ({ id: id, label: label, sub: sub || '' });
+    const on = (k) => (e) => set({ [k]: e.target.value });
+    const units = v('units', 'mgdl');
+    const unitLabel = units === 'mgdl' ? 'mg/dL' : 'mmol/L';
+
+    const LANGS = [ { code: 'en', name: 'English', dir: 'ltr' }, { code: 'he', name: 'עברית', dir: 'rtl' }, { code: 'ar', name: 'العربية', dir: 'rtl' }, { code: 'ru', name: 'Русский', dir: 'ltr' } ];
+    const langs = LANGS.map((l) => ({ code: l.code, name: l.name, dir: l.dir, dirLabel: l.dir.toUpperCase(), on: l.code === lang, cls: 'lang' + (l.code === lang ? ' on' : ''), pick: () => set({ lang: l.code }) }));
+    const convLang = v('convLang', lang);
+    const convLangs = LANGS.map((l) => ({ code: l.code, name: l.name, on: l.code === convLang, cls: 'chip' + (l.code === convLang ? ' on' : ''), pick: () => set({ convLang: l.code }) }));
+
+    const tx = v('tx', '');
+    const isPumpStep = step === 'pump';
+    const pumps = [
+      { id: '780g', label: 'MiniMed 780G', sub: 'Medtronic · MMT-1880', k: 'pump' },
+      { id: 'op5', label: 'Omnipod 5', sub: 'Insulet · tubeless pod', k: 'patch' },
+      { id: 'tslim', label: 't:slim X2', sub: 'Tandem Diabetes Care', k: 'pump' },
+      { id: 'ypso', label: 'mylife YpsoPump', sub: 'Ypsomed', k: 'pump' },
+      { id: 'pinj', label: t.pu_inj, sub: '', k: 'pen' },
+      { id: 'pother', label: t.other, sub: '', k: 'q' },
+      { id: 'pns', label: t.tx_ns, sub: '', k: 'q' }
+    ];
+    const sensors = [
+      { id: 'g4', label: 'Guardian 4', sub: 'Medtronic · MMT-7040', k: 'shell' },
+      { id: 'g7', label: 'Dexcom G7', sub: 'Dexcom', k: 'sensor' },
+      { id: 'l3', label: 'FreeStyle Libre 3', sub: 'Abbott', k: 'sensor' },
+      { id: 'snone', label: t.se_none, sub: '', k: 'none' },
+      { id: 'sother', label: t.other, sub: '', k: 'q' },
+      { id: 'sns', label: t.tx_ns, sub: '', k: 'q' }
+    ];
+    const devKey = isPumpStep ? 'pump' : 'sensor';
+    const devList = (isPumpStep ? pumps : sensors).map((d) => { const sel = v(devKey, '') === d.id; return Object.assign({}, d, { on: sel, cls: 'dev' + (sel ? ' on' : ''), pick: () => { const o = { [devKey]: d.id }; if (d.id === 'pinj') o.tx = 'pens'; set(o); }, k_pump: d.k === 'pump', k_patch: d.k === 'patch', k_sensor: d.k === 'sensor', k_shell: d.k === 'shell', k_pen: d.k === 'pen', k_none: d.k === 'none', k_q: d.k === 'q' }); });
+
+    const rows = v('icr', [{ from: '00:00', g: '' }]);
+    const icrRows = rows.map((r, i) => ({ from: r.from, g: r.g, idf: 'icf' + i, idg: 'icg' + i, rmLabel: t.ic_rm + ' ' + r.from,
+      onFrom: (e) => { const a = rows.slice(); a[i] = Object.assign({}, a[i], { from: e.target.value }); set({ icr: a }); },
+      onG: (e) => { const a = rows.slice(); a[i] = Object.assign({}, a[i], { g: e.target.value }); set({ icr: a }); },
+      rm: () => { const a = rows.slice(); a.splice(i, 1); set({ icr: a.length ? a : [{ from: '00:00', g: '' }] }); } }));
+    const icrIdk = v('icrIdk', false);
+
+    const AV = [ ['a1', t.av_1], ['a2', t.av_2], ['a3', t.av_3], ['a4', t.av_4], ['a5', t.av_orb] ];
+    const av = v('avatar', 'a1');
+    const avatars = AV.map((a) => ({ id: a[0], label: a[1], on: av === a[0], cls: 'av' + (av === a[0] ? ' on' : ''), pick: () => set({ avatar: a[0] }), a1: a[0] === 'a1', a2: a[0] === 'a2', a3: a[0] === 'a3', a4: a[0] === 'a4', a5: a[0] === 'a5' }));
+    const vsel = v('voice', 'v1');
+    const playing = v('playing', '');
+    const voices = [['v1', t.v1, t.v1b], ['v2', t.v2, t.v2b], ['v3', t.v3, t.v3b]].map((x) => ({ label: x[1], sub: x[2], on: vsel === x[0], cls: 'opt' + (vsel === x[0] ? ' on' : ''), playing: playing === x[0], idle: playing !== x[0], playLabel: t.vo_prev + ': ' + x[1], pick: () => set({ voice: x[0] }), play: () => { set({ playing: x[0], voice: x[0] }); clearTimeout(this._pt); this._pt = setTimeout(() => this.setState({ playing: '' }), 2200); } }));
+    const cname = v('cname', 'Noa');
+    const nameSugg = ['Noa', 'Ari', 'Noor', 'Sasha'].map((n) => ({ label: n, on: cname === n, cls: 'chip' + (cname === n ? ' on' : ''), pick: () => set({ cname: n }) }));
+    const perm = v('perm', 'ask');
+
+    const o = {
+      type: single('dtype', [op('t1', t.ty_1), op('to', t.ty_o), op('tns', t.ty_ns)], 't1'),
+      dx: single('dx', [op('d1', t.dx_1), op('d2', t.dx_2), op('d3', t.dx_3), op('d4', t.dx_4), op('d5', t.dx_5), op('dd', t.dx_date), op('dk', t.idk)], ''),
+      units: single('units', [op('mgdl', 'mg/dL', t.u_mgx), op('mmol', 'mmol/L', t.u_mmx)], 'mgdl'),
+      hu: single('hu', [ch('cm', 'cm'), ch('ft', 'ft/in')], 'cm'),
+      wu: single('wu', [ch('kg', 'kg'), ch('lb', 'lb')], 'kg'),
+      bon: single('bon', [ch('today', t.b_today), ch('3m', t.b_ago), ch('old', t.b_old)], 'today'),
+      tx: single('tx', [op('pump', t.tx_p), op('pens', t.tx_i), op('ns', t.tx_ns)], ''),
+      rapid: multi('rapid', ['Fiasp', 'NovoRapid / NovoLog', 'Humalog', 'Lyumjev', 'Apidra', 'Admelog'].map((x) => ch(x, x))),
+      basal: multi('basal', ['Tresiba', 'Lantus', 'Toujeo', 'Levemir', 'Basaglar'].map((x) => ch(x, x))),
+      insx: multi('insx', [ch('other', t.other), ch('idk', t.idk)]),
+      src: single('src', [ch('pump', t.ic_s1), ch('doc', t.ic_s2), ch('mem', t.ic_s3)], ''),
+      sev: single('sev', [ch('y', t.yes), ch('n', t.no), ch('p', t.pref)], ''),
+      aw: single('aw', [ch('y', t.yes), ch('s', t.some), ch('n', t.no), ch('k', t.idk)], ''),
+      ex: single('ex', [ch('1', t.rt_e1), ch('2', t.rt_e2), ch('3', t.rt_e3), ch('4', t.rt_e4)], ''),
+      ct: multi('ct', [ch('m', t.rt_m), ch('md', t.rt_md), ch('ev', t.rt_ev)]),
+      style: single('cstyle', [op('c', t.st_c, t.st_cb), op('w', t.st_w, t.st_wb), op('e', t.st_e, t.st_eb)], 'w'),
+      freq: single('freq', [op('f1', t.no_f1), op('f2', t.no_f2), op('f3', t.no_f3)], 'f3')
+    };
+
+    const lbl = (list, id) => { const x = list.find((y) => y.id === id); return x ? x.label : t.rv_ns; };
+    const goEdit = (st) => () => go(st, { fromReview: true });
+    const dob = v('yy', '') ? (v('dd', '') + '.' + v('mm', '') + '.' + v('yy', '')) : t.rv_ns;
+    const ins = (s.rapid || []).concat(s.basal || []);
+    const reviewRows = [
+      [t.rv_lang, LANGS.find((l) => l.code === lang).name, 'welcome'],
+      [t.rv_type, lbl(o.type, v('dtype', 't1')), 'type'],
+      [t.rv_dob, dob, 'dob'],
+      [t.rv_dx, lbl(o.dx, v('dx', '')), 'dx'],
+      [t.rv_units, unitLabel, 'units'],
+      [t.rv_body, v('ht', '') ? (v('ht', '') + ' ' + v('hu', 'cm') + ' · ' + v('wt', '') + ' ' + v('wu', 'kg')) : t.rv_ns, 'body'],
+      [t.rv_tx, lbl(o.tx, tx), 'tx'],
+      [t.rv_ins, ins.length ? ins.join(', ') : t.rv_ns, 'insulin'],
+      [t.rv_pump, tx === 'pens' ? t.tx_i : lbl(pumps, v('pump', '')), 'pump'],
+      [t.rv_sen, lbl(sensors, v('sensor', '')), 'sensor'],
+      [t.rv_icr, icrIdk ? t.rv_unknown : (rows.some((r) => r.g) ? t.rv_entered : t.rv_ns), 'icr'],
+      [t.rv_hist, v('sev', '') || v('aw', '') ? t.rv_entered : t.rv_ns, 'hist'],
+      [t.rv_rt, t.rv_entered, 'routine'],
+      [t.rv_comp, cname + ' · ' + lbl(o.style, v('cstyle', 'w')), 'avatar'],
+      [t.rv_notif, lbl(o.freq, v('freq', 'f3')), 'notif']
+    ].map((r) => ({ k: r[0], v: r[1], go: goEdit(r[2]) }));
+
+    const linear = ORDER.filter((x) => x !== 'welcome');
+    const pIdx = Math.max(1, linear.indexOf(step) + 1);
+    const showHead = step !== 'welcome' && step !== 'fam' && !(step === 'account' && accMode === 'expired');
+    const optional = ['body', 'hist', 'routine', 'dx', 'insulin', 'pump', 'sensor', 'icr'];
+    const err = v('err', null);
+    const famItems = [t.fa_1, t.fa_2, t.fa_3].map((x, i) => ({ n: String(i + 1), label: x }));
+    const dtype = v('dtype', 't1');
+
+    return {
+      t: t, lang: lang, dir: dir, fs: fs, rmCls: p.reducedMotion ? 'rm' : '',
+      showHead: showHead, back: back, canSkip: optional.indexOf(step) >= 0, noSkip: optional.indexOf(step) < 0, skip: skip,
+      pIdx: pIdx, pMax: linear.length, pPct: Math.round((pIdx / linear.length) * 100), progLabel: t.stepOf + ' ' + pIdx + ' ' + t.of + ' ' + linear.length,
+      is: { welcome: step === 'welcome', account: step === 'account', consent: step === 'consent', role: step === 'role', type: step === 'type', dob: step === 'dob', minor: step === 'minor', dx: step === 'dx', units: step === 'units', body: step === 'body', tx: step === 'tx', insulin: step === 'insulin', devstep: step === 'pump' || step === 'sensor', icr: step === 'icr', hist: step === 'hist', routine: step === 'routine', avatar: step === 'avatar', voice: step === 'voice', name: step === 'name', notif: step === 'notif', review: step === 'review', fam: step === 'fam' },
+      acc: { signup: accMode === 'signup', signin: accMode === 'signin', recover: accMode === 'recover', sent: accMode === 'sent', expired: accMode === 'expired', resume: accMode === 'resume' },
+      langs: langs, convLangs: convLangs,
+      toAccount: () => go('account', { acc: 'signup' }), toSignin: () => set({ step: 'account', acc: 'signin', err: null }), toSignup: () => set({ acc: 'signup', err: null }), toRecover: () => set({ step: 'account', acc: 'recover', err: null }),
+      social: () => go('consent'),
+      create: () => { if (!validEmail()) { set({ err: 'email' }); return; } go('consent'); },
+      signin: () => { if (!validEmail()) { set({ err: 'email' }); return; } set({ acc: 'resume', err: null }); },
+      sendReset: () => { if (!validEmail()) { set({ err: 'email' }); return; } set({ acc: 'sent', err: null }); },
+      resume: () => go('tx'),
+      f: { email: v('email', ''), pw: v('pw', ''), c1: v('c1', false), c2: v('c2', false), dd: v('dd', ''), mm: v('mm', ''), yy: v('yy', ''), ht: v('ht', ''), wt: v('wt', ''), icrIdk: icrIdk, cname: cname },
+      h: { email: on('email'), pw: on('pw'), dd: on('dd'), mm: on('mm'), yy: on('yy'), ht: on('ht'), wt: on('wt'), cname: on('cname') },
+      errEmail: err === 'email', emailCls: 'inp' + (err === 'email' ? ' bad' : ''),
+      c1Cls: 'opt' + (v('c1', false) ? ' on' : ''), c2Cls: 'opt' + (v('c2', false) ? ' on' : ''), tC1: () => set({ c1: !v('c1', false), err: null }), tC2: () => set({ c2: !v('c2', false) }), errConsent: err === 'consent',
+      next: next, roCan: [t.ro_c1, t.ro_c2, t.ro_c3, t.ro_c4], roCant: [t.ro_n1, t.ro_n2, t.ro_n3],
+      typeNote: dtype !== 't1', o: o,
+      errDob: err === 'dob', dobCls: 'inp' + (err === 'dob' ? ' bad' : ''), dateDir: 'ltr',
+      guardian: v('guardian', false), noGuardian: !v('guardian', false), showGuardian: () => set({ guardian: true }),
+      notifyFamily: () => set({ notified: true }), notifyLabel: v('notified', false) ? t.mi_nd : t.mi_n,
+      fixDob: () => set({ step: 'dob', guardian: false, err: null }),
+      dxDate: v('dx', '') === 'dd', showBasal: tx !== 'pump', chipJustify: rtl ? 'flex-end' : 'flex-start',
+      devTitle: isPumpStep ? t.pu_t : t.se_t, devList: devList, devOther: v(devKey, '') === (isPumpStep ? 'pother' : 'sother'),
+      idkCls: 'opt' + (icrIdk ? ' on' : ''), tIdk: () => set({ icrIdk: !icrIdk }), icrShow: !icrIdk, icrRows: icrRows,
+      addRow: () => set({ icr: rows.concat([{ from: '12:00', g: '' }]) }),
+      cfUnit: unitLabel + ' ' + t.perU, unitLabel: unitLabel,
+      avatars: avatars, voices: voices, nameSugg: nameSugg,
+      permAsk: perm === 'ask', permOn: perm === 'on', permOff: perm === 'off', sysDlg: v('sys', false),
+      askPerm: () => set({ sys: true }), permAllow: () => set({ sys: false, perm: 'on' }), permDeny: () => set({ sys: false, perm: 'off' }), noop: () => {},
+      reviewRows: reviewRows, famItems: famItems
+    };
+  }
+}
+
+;(function(){var rv=Component.prototype.renderVals;Component.prototype.renderVals=function(){var v=rv.call(this)||{};var s=this.state&&this.state.themeOverride;var p=(this.props&&this.props.theme)||'day';v.theme=s||p;var n=v.theme==='night';var self=this;v.setThemeDay=function(){self.setState({themeOverride:'day'})};v.setThemeNight=function(){self.setState({themeOverride:'night'})};v.thDayCls='chip'+(n?'':' on');v.thNightCls='chip'+(n?' on':'');return v;};})();
+</script>
+</body>
+</html>

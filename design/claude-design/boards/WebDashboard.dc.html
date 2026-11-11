@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Steady web dashboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:var(--fill)}
+a{color:var(--act)}a:hover{color:var(--acd)}
+.d{font-family:-apple-system,'SF Pro Text','Inter',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;background:var(--fill);min-height:1500px}
+.d *{box-sizing:border-box}
+.d a:focus-visible,.d button:focus-visible,.d input:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.shell{display:flex;flex-wrap:wrap;gap:0;max-width:1440px;margin:0 auto}
+.side{flex:1 1 220px;max-width:260px;padding:24px 16px;display:flex;flex-direction:column;gap:6px}
+.main{flex:999 1 560px;min-width:0;padding:24px 28px 48px;display:flex;flex-direction:column;gap:20px}
+.navb{display:flex;align-items:center;gap:12px;min-height:48px;padding:0 14px;border-radius:14px;border:0;background:transparent;font:inherit;font-size:1rem;font-weight:500;color:var(--ink2);cursor:pointer;text-align:start;width:100%;text-decoration:none}
+.navb:hover{background:var(--fill);color:var(--ink)}
+.navb.on{background:var(--card);color:var(--act);font-weight:650;box-shadow:0 1px 2px rgba(0,0,0,0)}
+.card{background:var(--card);border-radius:22px;box-shadow:0 1px 2px rgba(0,0,0,0),0 6px 20px rgba(0,0,0,0);padding:22px}
+.h1{font-size:2rem;font-weight:650;letter-spacing:-.02em;margin:0}
+.lbl{font-size:.9375rem;font-weight:600;color:var(--ink2);margin:0}
+.small{font-size:.875rem;color:var(--sec)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.kv{font-size:2rem;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-weight:700;padding:3px 8px;border-radius:8px;white-space:nowrap}
+.t-demo{background:var(--xF3E8D5);color:var(--x6B4A12)}.t-dev{background:var(--xE3ECF5);color:var(--x234E74)}.t-you{background:var(--soft);color:var(--act)}.t-est{background:var(--xF3E8D5);color:var(--x6B4A12)}.t-sug{background:var(--card);color:var(--act);border:1.5px solid var(--ac)}.t-st{background:var(--fill);color:var(--ink2)}.t-tent{background:var(--fill);color:var(--ink2);border:1.5px dashed var(--ter)}.t-rec{background:var(--soft);color:var(--act)}.t-plan{background:var(--xECE7F5);color:var(--x4B3A78)}
+.seg{display:inline-flex;background:var(--fill);border-radius:14px;padding:4px;gap:4px}
+.seg button{min-height:40px;padding:0 16px;border:0;border-radius:10px;background:transparent;font:inherit;font-weight:600;color:var(--ink2);cursor:pointer}
+.seg button.on{background:var(--card);color:var(--act);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.bars{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:10px;align-items:end;height:220px}
+.bar{display:flex;flex-direction:column;border-radius:8px;overflow:hidden;height:200px;border:0;padding:0;cursor:pointer;background:var(--fill);width:100%}
+.b-hi{background:#B597D3}.b-in{background:#7FA6C9}.b-lo{background:#E39A72}
+.b-na{background:repeating-linear-gradient(45deg,var(--fill),var(--fill) 5px,var(--bg) 5px,var(--bg) 10px);height:100%}
+.tbl{overflow-x:auto;border-radius:16px;border:1px solid var(--fill)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.9375rem}
+th{text-align:start;font-size:.8125rem;color:var(--sec);font-weight:600;padding:12px 14px;background:var(--bg);border-bottom:1px solid var(--fill)}
+td{padding:0;border-bottom:1px solid var(--fill)}
+td button{display:block;width:100%;min-height:52px;padding:12px 14px;border:0;background:transparent;font:inherit;text-align:start;cursor:pointer;color:var(--ink)}
+tr.on td{background:var(--soft)}
+tr:hover td{background:var(--bg)}
+.chip{min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-size:.875rem;font-weight:600;color:var(--ink);cursor:pointer}
+.chip.on{border-color:var(--ac);background:var(--ac);color:var(--onac)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:14px;border:0;font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
+.btn-p{background:var(--ac);color:var(--onac)}.btn-p:hover{color:var(--onac)}
+.btn-o{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+.sw{width:52px;height:32px;border-radius:16px;background:var(--line);border:0;position:relative;cursor:pointer;flex:none}
+.sw i{position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:13px;background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.2);transition:left .2s}
+.sw.on{background:var(--ac)}.sw.on i{left:23px}
+.row{display:flex;align-items:center;gap:12px}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:.8125rem;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.num{font-variant-numeric:tabular-nums}
+.prog{height:8px;background:var(--fill);border-radius:4px;overflow:hidden}
+.prog i{display:block;height:8px;background:var(--ac);transition:width .4s}
+@media (prefers-reduced-motion: reduce){.d *{transition:none !important}}
+
+/* theme B */
+:root{--fill:#E6E6EB;--hair:#E5E5EA;--line:#D1D1D6;--ink:#1D1D1F;--ink2:#3A3A3C;--sec:#6E6E73;--ter:#8E8E93;--inv:#1D1D1F;--onac:#FFFFFF;--ac:#0B7A75;--act:#0A6560;--acd:#085E5A;--soft:#E4F2F1;--soft2:#BFE3DF;--bar:rgba(255,255,255,.88);--bg:#F5F5F7;--card:#FFFFFF;--xF3E8D5:#F3E8D5;--x6B4A12:#6B4A12;--xE3ECF5:#E3ECF5;--x234E74:#234E74;--xECE7F5:#ECE7F5;--x4B3A78:#4B3A78}:root:has([data-theme="night"]),[data-theme="night"]{--fill:#2C2C2E;--hair:#38383A;--line:#48484A;--ink:#F5F5F7;--ink2:#D1D1D6;--sec:#A1A1A6;--ter:#7C7C80;--inv:#3A3A3C;--onac:#FFFFFF;--ac:#14958D;--act:#6FD6CD;--acd:#0E7C75;--soft:#10302E;--soft2:#1D5753;--bar:rgba(22,22,24,.88);--bg:#000000;--card:#1C1C1E;--xF3E8D5:#4B3E28;--x6B4A12:#E7CC9F;--xE3ECF5:#25323F;--x234E74:#9DBEDB;--xECE7F5:#2D253B;--x4B3A78:#AB9FCB;color-scheme:dark}.sheet,.dlgc{--bg:#F5F5F7}[data-theme="night"] .sheet,[data-theme="night"] .dlgc{--bg:#1C1C1E;--card:#2C2C2E;--fill:#3A3A3C;--hair:#48484A}[fill="#1E6F68"]{fill:var(--ac)}[fill="#D6ECE8"]{fill:var(--soft)}[fill="#EDE7DD"]{fill:var(--fill)}.sw i{background:#fff!important}.tabbar{background:var(--bar);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}:root{--fill:#F0F0F3}:root:has([data-theme="night"]),[data-theme="night"]{--fill:#0B0B0C}
+</style>
+</helmet>
+<div data-theme="{{theme}}" class="d" style="width: 100%">
+  <div class="shell">
+    <aside class="side" aria-label="Dashboard navigation">
+      <a href="Website.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 700; font-size: 1.25rem; padding: 0 14px 16px"><svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#D6ECE8"></circle><circle cx="20" cy="20" r="11" fill="#1E6F68"></circle></svg>Steady</a>
+      <sc-for list="{{nav}}" as="n" hint-placeholder-count="5"><button class="{{n.cls}}" aria-current="{{n.cur}}" onClick="{{n.pick}}">{{n.label}}</button></sc-for>
+      <div style="margin-top: 24px; padding: 14px; border-radius: 16px; background: var(--card); font-size: .875rem; color: var(--ink2)">Signed in as Dana K.<br><span class="tag t-demo" style="margin-top: 6px">Demo data</span></div>
+    </aside>
+    <main class="main">
+
+      <sc-if value="{{s.overview}}" hint-placeholder-val="{{ true }}">
+        <div class="row" style="justify-content: space-between; flex-wrap: wrap"><h1 class="h1">Overview</h1><div class="seg" role="radiogroup" aria-label="Period"><sc-for list="{{periods}}" as="p" hint-placeholder-count="3"><button class="{{p.cls}}" role="radio" aria-checked="{{p.on}}" onClick="{{p.pick}}">{{p.label}}</button></sc-for></div></div>
+        <p class="small" style="margin: -8px 0 0">{{rangeLabel}} · glucose in mg/dL · sensor data from Guardian 4 (planned integration shown with demo data) plus readings you entered</p>
+        <div class="kpis">
+          <div class="card"><span class="small">Time in range (70–180)</span><div class="kv">71%</div><span class="small">Below 3% · Above 26% · coverage 91%</span></div>
+          <div class="card"><span class="small">Readings</span><div class="kv">{{kReadings}}</div><span class="small">Sensor and meter</span></div>
+          <div class="card"><span class="small">Meals logged</span><div class="kv">{{kMeals}}</div><span class="small">Carbs are estimates</span></div>
+          <div class="card"><span class="small">Insulin records</span><div class="kv">{{kIns}}</div><span class="small">Reported by you</span></div>
+        </div>
+        <div class="card" style="display: flex; flex-direction: column; gap: 14px">
+          <div class="row" style="justify-content: space-between"><span class="lbl">Time in range by day</span><span class="small">Time runs left to right in every language</span></div>
+          <div class="bars">
+            <sc-for list="{{days}}" as="d" hint-placeholder-count="14"><div style="display: flex; flex-direction: column; gap: 6px; align-items: center"><button class="bar" aria-label="{{d.aria}}" onClick="{{d.pick}}"><sc-if value="{{d.na}}" hint-placeholder-val="{{ false }}"><span class="b-na"></span></sc-if><sc-if value="{{d.ok}}" hint-placeholder-val="{{ true }}"><span class="b-hi" style="height: {{d.hi}}%"></span><span class="b-in" style="height: {{d.in}}%"></span><span class="b-lo" style="height: {{d.lo}}%"></span></sc-if></button><span class="small num">{{d.label}}</span></div></sc-for>
+          </div>
+          <div class="legend"><span><svg width="12" height="12" aria-hidden="true"><rect width="12" height="12" rx="3" fill="#B597D3"></rect></svg>Above range ▲</span><span><svg width="12" height="12" aria-hidden="true"><rect width="12" height="12" rx="3" fill="#7FA6C9"></rect></svg>In range ■</span><span><svg width="12" height="12" aria-hidden="true"><rect width="12" height="12" rx="3" fill="#E39A72"></rect></svg>Below range ▼</span><span><svg width="12" height="12" aria-hidden="true"><rect width="12" height="12" rx="3" fill="#EDE7DD"></rect></svg>Not enough data</span></div>
+          <div style="background: var(--fill); border-radius: 14px; padding: 12px 14px" aria-live="polite">{{dayReadout}}</div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{s.timeline}}" hint-placeholder-val="{{ false }}">
+        <h1 class="h1">Timeline</h1>
+        <div class="row" style="flex-wrap: wrap; gap: 8px"><sc-for list="{{filters}}" as="f" hint-placeholder-count="6"><button class="{{f.cls}}" aria-pressed="{{f.on}}" onClick="{{f.pick}}">{{f.label}}</button></sc-for></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+          <div class="card tbl" style="flex: 999 1 560px; min-width: 0; padding: 0">
+            <table>
+              <thead><tr><th scope="col">Time</th><th scope="col">Type</th><th scope="col">Detail</th><th scope="col">Source</th><th scope="col">Status</th></tr></thead>
+              <tbody>
+                <sc-for list="{{rows}}" as="r" hint-placeholder-count="8"><tr class="{{r.cls}}"><td><button onClick="{{r.pick}}" class="num">{{r.time}}</button></td><td><button onClick="{{r.pick}}">{{r.type}}</button></td><td><button onClick="{{r.pick}}">{{r.detail}}</button></td><td><button onClick="{{r.pick}}"><span class="{{r.srcCls}}">{{r.src}}</span></button></td><td><button onClick="{{r.pick}}">{{r.status}}</button></td></tr></sc-for>
+              </tbody>
+            </table>
+          </div>
+          <div class="card" style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px">
+            <span class="small">Selected entry</span>
+            <span style="font-weight: 650; font-size: 1.25rem">{{sel.detail}}</span>
+            <span class="{{sel.srcCls}}" style="align-self: flex-start">{{sel.src}}</span>
+            <span class="small">{{sel.time}} · {{sel.type}}</span>
+            <span class="lbl" style="margin-top: 8px">History</span>
+            <sc-for list="{{sel.hist}}" as="h" hint-placeholder-count="2"><div class="small" style="border-bottom: 1px solid var(--fill); padding: 8px 0">{{h}}</div></sc-for>
+            <span class="small">Edits are made in the app so corrections stay with their context.</span>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{s.insights}}" hint-placeholder-val="{{ false }}">
+        <h1 class="h1">Insights</h1>
+        <sc-for list="{{insights}}" as="i" hint-placeholder-count="3">
+          <div class="card" style="display: flex; flex-direction: column; gap: 8px"><span class="{{i.cls}}" style="align-self: flex-start">{{i.tag}}</span><span style="font-weight: 650; font-size: 1.25rem">{{i.t}}</span><span class="small" style="font-size: 1rem">{{i.d}}</span><span class="small">Based on: {{i.b}}</span></div>
+        </sc-for>
+        <p class="small">Observations come from your records. They are not causes or treatment advice.</p>
+      </sc-if>
+
+      <sc-if value="{{s.settings}}" hint-placeholder-val="{{ false }}">
+        <h1 class="h1">Settings</h1>
+        <div class="kpis">
+          <div class="card" style="display: flex; flex-direction: column; gap: 10px"><span class="lbl">Language</span><span class="small">App: English · Conversation: English</span><a class="btn btn-o" href="Settings.dc.html">Change in app</a></div>
+          <div class="card" style="display: flex; flex-direction: column; gap: 10px"><span class="lbl">Membership</span><span class="small">Free trial until 19 Nov · billed through the App Store</span><span class="small">Purchases made in the app are managed in the App Store. Web purchases use the billing portal.</span></div>
+          <div class="card" style="display: flex; flex-direction: column; gap: 10px"><div class="row" style="justify-content: space-between"><span class="lbl">Help improve models</span><button class="{{trainCls}}" role="switch" aria-checked="{{train}}" aria-label="Help improve models" onClick="{{toggleTrain}}"><i></i></button></div><span class="small">Optional and separate from providing the service.</span></div>
+          <div class="card" style="display: flex; flex-direction: column; gap: 10px"><span class="lbl">Care team sharing</span><span class="tag t-plan" style="align-self: flex-start">Planned</span><span class="small">Read-only summaries for a clinician you invite.</span></div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{s.export}}" hint-placeholder-val="{{ false }}">
+        <h1 class="h1">Export</h1>
+        <div class="card" style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
+          <span class="lbl">Period</span><div class="row" style="flex-wrap: wrap; gap: 8px"><sc-for list="{{expRange}}" as="o" hint-placeholder-count="3"><button class="{{o.cls}}" aria-pressed="{{o.on}}" onClick="{{o.pick}}">{{o.label}}</button></sc-for></div>
+          <span class="lbl">Format</span><div class="row" style="flex-wrap: wrap; gap: 8px"><sc-for list="{{expFmt}}" as="o" hint-placeholder-count="2"><button class="{{o.cls}}" aria-pressed="{{o.on}}" onClick="{{o.pick}}">{{o.label}}</button></sc-for></div>
+          <sc-if value="{{expIdle}}" hint-placeholder-val="{{ true }}"><button class="btn btn-p" onClick="{{startExp}}" style="align-self: flex-start">Create export</button></sc-if>
+          <sc-if value="{{expRun}}" hint-placeholder-val="{{ false }}"><div role="status" style="display: flex; flex-direction: column; gap: 8px"><span>Preparing export…</span><div class="prog"><i style="width: {{expPct}}%"></i></div></div></sc-if>
+          <sc-if value="{{expDone}}" hint-placeholder-val="{{ false }}"><div role="status" class="row" style="justify-content: space-between; background: var(--soft); border-radius: 14px; padding: 12px 14px"><span>steady-export-2026-11-10.{{expExt}} is ready · available 7 days</span><button class="btn btn-o" onClick="{{resetExp}}">Download</button></div></sc-if>
+          <span class="small">Every row includes its source label: device, entered by you, estimate, or companion.</span>
+        </div>
+      </sc-if>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["day","night"],"default":"day","section":"Appearance"},"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const v = (k, d) => (st[k] === undefined ? d : st[k]);
+    const set = (o) => this.setState(o);
+    const sec = v('sec', 'overview');
+    const NAV = [['overview', 'Overview'], ['timeline', 'Timeline'], ['insights', 'Insights'], ['settings', 'Settings'], ['export', 'Export']];
+    const per = v('per', '14');
+    const DD = [[3, 70, 27], [2, 74, 24], [5, 65, 30], [null], [1, 78, 21], [4, 69, 27], [2, 72, 26], [4, 74, 22], [null], [2, 70, 28], [6, 66, 28], [1, 78, 21], [3, 69, 28], [3, 71, 26]];
+    const labels = ['28', '29', '30', '31', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+    const ds = v('ds', null);
+    const days = DD.map((d, i) => ({ label: labels[i], na: d[0] === null, ok: d[0] !== null, lo: d[0], in: d[1], hi: d[2], aria: d[0] === null ? labels[i] + ': not enough sensor data' : labels[i] + ': below ' + d[0] + '%, in range ' + d[1] + '%, above ' + d[2] + '%', pick: () => set({ ds: i }) }));
+    const flt = v('flt', 'all');
+    const R = [
+      ['10 Nov 13:12', 'Reminder', 'Check glucose after lunch, 15:00', 'Companion', 't-sug', 'Scheduled', 'rem', ['13:12 Scheduled from conversation']],
+      ['10 Nov 13:06', 'Glucose', '141 mg/dL', 'Device · Guardian 4', 't-dev', 'Synced', 'glu', ['13:08 Received from sensor sync']],
+      ['10 Nov 13:05', 'Glucose', '124 mg/dL', 'Entered by voice', 't-you', 'Confirmed', 'glu', ['13:05 Heard 140, corrected to 124 before saving']],
+      ['10 Nov 13:05', 'Meal', 'Lunch ≈ 62 g carbs', 'Estimate · photo', 't-est', 'Saved', 'meal', ['13:12 Created from photo', '13:12 Amounts confirmed by you']],
+      ['10 Nov 09:10', 'Suggestion', 'Check-in after lunch', 'Companion', 't-sug', 'Acknowledged', 'comp', ['09:10 Suggested', '09:11 You agreed', 'Not yet reported done']],
+      ['10 Nov 07:45', 'Meal', 'Breakfast ≈ 40 g carbs', 'Estimate · voice', 't-est', 'Edited', 'meal', ['07:52 Created ≈ 55 g', '08:10 Toast 3 → 2 slices, ≈ 40 g']],
+      ['10 Nov 07:40', 'Insulin', 'Fiasp 4 units', 'Reported by you', 't-you', 'Saved', 'ins', ['07:41 Recorded (not a recommendation)']],
+      ['10 Nov 02:10', 'Gap', 'No sensor data until 03:40', 'Device', 't-st', '—', 'glu', ['Nothing estimated for this gap']],
+      ['9 Nov 21:00', 'Check-in', 'Evening check-in', 'Companion', 't-sug', 'Sent, not answered', 'rem', ['21:00 Sent', 'Not confirmed seen']]
+    ];
+    const sel = v('sel', 2);
+    const rows = R.map((r, i) => ({ i: i, r: r })).filter((x) => flt === 'all' || x.r[6] === flt).map((x) => ({ time: x.r[0], type: x.r[1], detail: x.r[2], src: x.r[3], srcCls: 'tag ' + x.r[4], status: x.r[5], cls: sel === x.i ? 'on' : '', pick: () => set({ sel: x.i }) }));
+    const S = R[sel];
+    const exp = v('exp', 'idle');
+    const fmt = v('fmt', 'pdf');
+    return {
+      nav: NAV.map((n) => ({ label: n[1], cls: 'navb' + (sec === n[0] ? ' on' : ''), cur: sec === n[0] ? 'page' : 'false', pick: () => set({ sec: n[0] }) })),
+      s: { overview: sec === 'overview', timeline: sec === 'timeline', insights: sec === 'insights', settings: sec === 'settings', export: sec === 'export' },
+      periods: [['14', '14 days'], ['30', '30 days'], ['90', '90 days']].map((p) => ({ label: p[1], on: per === p[0], cls: per === p[0] ? 'on' : '', pick: () => set({ per: p[0] }) })),
+      rangeLabel: per === '14' ? '28 Oct – 10 Nov 2026' : per === '30' ? '12 Oct – 10 Nov 2026' : '13 Aug – 10 Nov 2026',
+      kReadings: per === '14' ? '3,402' : per === '30' ? '7,288' : '21,960', kMeals: per === '14' ? '38' : per === '30' ? '81' : '240', kIns: per === '14' ? '44' : per === '30' ? '93' : '271',
+      days: days, dayReadout: ds === null ? 'Select a day to see its breakdown. Days under 70% sensor coverage are shown as not enough data.' : days[ds].aria,
+      filters: [['all', 'All'], ['glu', 'Glucose'], ['meal', 'Meals'], ['ins', 'Insulin'], ['comp', 'Companion'], ['rem', 'Reminders']].map((f) => ({ label: f[1], on: flt === f[0], cls: 'chip' + (flt === f[0] ? ' on' : ''), pick: () => set({ flt: f[0] }) })),
+      rows: rows, sel: { time: S[0], type: S[1], detail: S[2], src: S[3], srcCls: 'tag ' + S[4], hist: S[7] },
+      insights: [['Recurring observation', 'tag t-rec', 'A similar rise after lunch on 6 of 9 recorded days', 'Usually 1–2 hours after meals logged between 12:30 and 13:30.', '9 days with lunch and ≥80% sensor coverage'], ['First impression', 'tag t-tent', 'Evenings with a walk were followed by steadier nights', 'Only 2 days so far.', '2 of 6 nights'], ['Still learning', 'tag t-tent', 'Few readings after 21:00', 'Late evenings are hard to describe yet.', 'First 3 days']].map((x) => ({ tag: x[0], cls: x[1], t: x[2], d: x[3], b: x[4] })),
+      train: v('train', false), trainCls: 'sw' + (v('train', false) ? ' on' : ''), toggleTrain: () => set({ train: !v('train', false) }),
+      expRange: [['30', 'Last 30 days'], ['90', 'Last 90 days'], ['all', 'Everything']].map((o) => ({ label: o[1], on: v('er', '90') === o[0], cls: 'chip' + (v('er', '90') === o[0] ? ' on' : ''), pick: () => set({ er: o[0] }) })),
+      expFmt: [['pdf', 'PDF summary'], ['csv', 'CSV files']].map((o) => ({ label: o[1], on: fmt === o[0], cls: 'chip' + (fmt === o[0] ? ' on' : ''), pick: () => set({ fmt: o[0] }) })),
+      expIdle: exp === 'idle', expRun: exp === 'run', expDone: exp === 'done', expPct: String(v('pct', 10)), expExt: fmt === 'pdf' ? 'pdf' : 'zip',
+      startExp: () => { set({ exp: 'run', pct: 20 }); setTimeout(() => this.setState({ pct: 70 }), 500); setTimeout(() => this.setState({ exp: 'done' }), 1200); },
+      resetExp: () => set({ exp: 'idle' })
+    };
+  }
+}
+
+;(function(){var rv=Component.prototype.renderVals;Component.prototype.renderVals=function(){var v=rv.call(this)||{};var s=this.state&&this.state.themeOverride;var p=(this.props&&this.props.theme)||'day';v.theme=s||p;var n=v.theme==='night';var self=this;v.setThemeDay=function(){self.setState({themeOverride:'day'})};v.setThemeNight=function(){self.setState({themeOverride:'night'})};v.thDayCls='chip'+(n?'':' on');v.thNightCls='chip'+(n?' on':'');return v;};})();
+</script>
+</body>
+</html>

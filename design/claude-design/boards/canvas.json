@@ -1,0 +1,206 @@
+{
+  "v": 3,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-11-10T13:30:00Z"
+  },
+  "title": "Steady — T1D companion design",
+  "launch": {
+    "view": "canvas"
+  },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 1180,
+      "title": "00 Start here · IA and route map",
+      "is_interactive": true
+    },
+    "Onboarding.dc.html": {
+      "x": 0,
+      "y": 1600,
+      "w": 390,
+      "h": 844,
+      "title": "01 Account and onboarding (EN · HE · AR · RU)",
+      "is_interactive": true
+    },
+    "Companion.dc.html": {
+      "x": 470,
+      "y": 1600,
+      "w": 390,
+      "h": 844,
+      "title": "02 Companion: voice, text, input cards",
+      "is_interactive": true
+    },
+    "Meal.dc.html": {
+      "x": 940,
+      "y": 1600,
+      "w": 390,
+      "h": 844,
+      "title": "03 Meal photo and carb estimate",
+      "is_interactive": true
+    },
+    "Overview.dc.html": {
+      "x": 1410,
+      "y": 1600,
+      "w": 390,
+      "h": 844,
+      "title": "04 Overview, graph and insights",
+      "is_interactive": true
+    },
+    "Journal.dc.html": {
+      "x": 1880,
+      "y": 1600,
+      "w": 390,
+      "h": 844,
+      "title": "05 Journal and traceability",
+      "is_interactive": true
+    },
+    "Routine.dc.html": {
+      "x": 2350,
+      "y": 1600,
+      "w": 390,
+      "h": 844,
+      "title": "06 Familiarization, follow-ups, memory",
+      "is_interactive": true
+    },
+    "Settings.dc.html": {
+      "x": 2820,
+      "y": 1600,
+      "w": 390,
+      "h": 844,
+      "title": "07 Profile and settings",
+      "is_interactive": true
+    },
+    "Subscription.dc.html": {
+      "x": 3290,
+      "y": 1600,
+      "w": 390,
+      "h": 844,
+      "title": "08 Membership and billing",
+      "is_interactive": true
+    },
+    "Website.dc.html": {
+      "x": 0,
+      "y": 2900,
+      "w": 1440,
+      "h": 3200,
+      "title": "09 Companion website",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "WebDashboard.dc.html": {
+      "x": 1520,
+      "y": 2900,
+      "w": 1440,
+      "h": 1500,
+      "title": "10 Web dashboard",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Tokens.dc.html": {
+      "x": 0,
+      "y": 6560,
+      "w": 1440,
+      "h": 7100,
+      "title": "11 Design tokens",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Components.dc.html": {
+      "x": 1520,
+      "y": 6560,
+      "w": 1440,
+      "h": 4950,
+      "title": "12 Component library",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Localization.dc.html": {
+      "x": 3040,
+      "y": 6560,
+      "w": 1440,
+      "h": 4600,
+      "title": "13 Localization and RTL",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Inventory.dc.html": {
+      "x": 4560,
+      "y": 6560,
+      "w": 1440,
+      "h": 7760,
+      "title": "14 Screen inventory and state matrix",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Handoff.dc.html": {
+      "x": 6080,
+      "y": 6560,
+      "w": 1440,
+      "h": 5900,
+      "title": "15 Developer handoff and open decisions",
+      "expand": "fill",
+      "is_interactive": true
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Onboarding.dc.html",
+    "Companion.dc.html",
+    "Meal.dc.html",
+    "Overview.dc.html",
+    "Journal.dc.html",
+    "Routine.dc.html",
+    "Settings.dc.html",
+    "Subscription.dc.html",
+    "Website.dc.html",
+    "WebDashboard.dc.html",
+    "Tokens.dc.html",
+    "Components.dc.html",
+    "Localization.dc.html",
+    "Inventory.dc.html",
+    "Handoff.dc.html"
+  ],
+  "notes": {
+    "t_main": {
+      "x": 0,
+      "y": -300,
+      "text": "Steady (working name) · Type 1 diabetes companion",
+      "kind": "title1",
+      "maxW": 1440
+    },
+    "t_mobile": {
+      "x": 0,
+      "y": 1300,
+      "text": "Mobile app · clean white, day and night (React Native + Expo)",
+      "kind": "title1",
+      "maxW": 3680
+    },
+    "s_mobile": {
+      "x": 3760,
+      "y": 1600,
+      "w": 360,
+      "text": "Press Play on any phone to use it. Every board has a Tweak called theme: day or night. Night is the inversion: black background, light text. Phones also have language, text size, reduced motion and scenario Tweaks. In the Profile phone, Accessibility has the in-app Day / Night control. All glucose and food data is demonstration data and is labelled so.",
+      "fill": "teal",
+      "size": "m"
+    },
+    "t_web": {
+      "x": 0,
+      "y": 2600,
+      "text": "Website and web dashboard (Next.js)",
+      "kind": "title1",
+      "maxW": 2960
+    },
+    "t_sys": {
+      "x": 0,
+      "y": 6260,
+      "text": "Design system and implementation handoff",
+      "kind": "title1",
+      "maxW": 7520
+    }
+  },
+  "designSystems": []
+}

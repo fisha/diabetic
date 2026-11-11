@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Familiarization, follow-ups and memory</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:var(--fill)}
+a{color:var(--act)}a:hover{color:var(--acd)}
+.ph{position:relative;width:390px;height:844px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:-apple-system,'SF Pro Text','Inter',system-ui,sans-serif;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:1.4}
+.ph *{box-sizing:border-box}
+.ph button:focus-visible,.ph a:focus-visible,.ph input:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.hdr{display:flex;align-items:center;gap:8px;padding:54px 12px 4px}
+.ttl{flex:1;font-weight:650;font-size:1.0625em;text-align:center}
+.ib{width:48px;height:48px;border-radius:24px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;color:inherit;cursor:pointer;flex:none;text-decoration:none}
+.seg{display:flex;background:var(--fill);border-radius:14px;padding:3px;gap:3px;margin:6px 16px 4px}
+.seg button{flex:1;min-height:44px;border:0;border-radius:11px;background:transparent;font:inherit;font-size:.875em;font-weight:600;color:var(--ink2);cursor:pointer}
+.seg button.on{background:var(--card);color:var(--act);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.scroll{flex:1;overflow-y:auto;padding:10px 16px 20px;display:flex;flex-direction:column;gap:14px;min-height:0}
+.card{background:var(--card);border-radius:20px;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 16px rgba(0,0,0,0);padding:16px}
+.h2{font-size:1.375em;font-weight:650;margin:0;line-height:1.2}
+.lbl{font-size:.9375em;font-weight:600;color:var(--ink2);margin:0}
+.small{font-size:.875em;color:var(--sec);line-height:1.45}
+.xs{font-size:.75em;color:var(--sec)}
+.row{display:flex;align-items:center;gap:10px}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:.75em;font-weight:700;padding:3px 8px;border-radius:8px;white-space:nowrap}
+.t-tent{background:var(--fill);color:var(--ink2);border:1.5px dashed var(--ter)}.t-rec{background:var(--soft);color:var(--act)}.t-st{background:var(--fill);color:var(--ink2)}.t-ok{background:var(--soft);color:var(--act)}.t-warn{background:var(--xFBE7DE);color:var(--x8A2E0C)}.t-pause{background:var(--xECE7F5);color:var(--x4B3A78)}
+.days{display:flex;gap:8px}
+.dy{flex:1;border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:2px;font-size:.8125em;background:var(--fill)}
+.dy.done{background:var(--soft);color:var(--act)}
+.dy.now{background:var(--ac);color:var(--onac)}
+.sw{width:52px;height:32px;border-radius:16px;background:var(--line);border:0;position:relative;cursor:pointer;flex:none;transition:background .2s}
+.sw i{position:absolute;top:3px;inset-inline-start:3px;width:26px;height:26px;border-radius:13px;background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.2);transition:inset-inline-start .2s cubic-bezier(.2,.8,.2,1)}
+.sw.on{background:var(--ac)}
+.sw.on i{inset-inline-start:23px}
+.li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--fill)}
+.chip{min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-size:.9375em;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:6px;cursor:pointer;text-decoration:none}
+.chip.on{border-color:var(--ac);background:var(--soft);color:var(--act)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.lnk{border:0;background:transparent;font:inherit;font-size:.9375em;font-weight:600;color:var(--act);cursor:pointer;min-height:44px;padding:0 8px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 18px;border-radius:16px;border:0;font:inherit;font-size:1em;font-weight:600;cursor:pointer;text-decoration:none;width:100%}
+.btn-p{background:var(--ac);color:var(--onac)}.btn-p:hover{color:var(--onac)}
+.btn-s{background:var(--soft);color:var(--act)}
+.btn-o{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+.btn-d{background:var(--xFBE7DE);color:var(--x8A2E0C)}
+.inp{min-height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);padding:0 12px;font:inherit;font-size:1em;color:var(--ink)}
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--fill);border-radius:16px;padding:12px 14px;font-size:.9375em;line-height:1.45;color:var(--ink2)}
+.bubble{background:var(--card);border-radius:20px;border-end-start-radius:6px;padding:12px 14px;box-shadow:0 1px 2px rgba(0,0,0,0);font-size:1em}
+.lock{flex:1;background:linear-gradient(180deg,var(--ink2) 0%,var(--ink) 100%);color:var(--onac);display:flex;flex-direction:column;align-items:center;padding:70px 14px 20px;gap:6px}
+.clock{font-size:4.5em;font-weight:300;letter-spacing:-.02em;line-height:1}
+.nf{width:100%;background:var(--bar);color:#111;border-radius:22px;padding:12px 14px;display:flex;gap:10px;margin-top:24px;border:0;font:inherit;text-align:start;cursor:pointer}
+.nfa{width:100%;display:flex;flex-direction:column;background:var(--bar);border-radius:16px;overflow:hidden;margin-top:8px}
+.nfa button{min-height:48px;border:0;border-bottom:1px solid rgba(0,0,0,.08);background:transparent;font:inherit;font-size:1em;color:#111;cursor:pointer;text-align:start;padding:0 16px}
+.scrim{position:absolute;inset:0;background:rgba(20,26,24,.36);display:flex;align-items:flex-end;z-index:20;animation:fade .2s}
+.sheet{width:100%;background:var(--bg);border-radius:28px 28px 0 0;padding:8px 20px 34px;animation:up .34s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;gap:12px}
+.grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto}
+.dlg{position:absolute;inset:0;background:rgba(20,26,24,.42);display:flex;align-items:center;justify-content:center;padding:24px;z-index:30;animation:fade .2s}
+.dlgc{background:var(--bg);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:12px;width:100%}
+.tabbar{display:flex;border-top:1px solid var(--hair);background:var(--card);padding:4px 8px 30px;flex:none}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:52px;justify-content:center;font-size:.75em;font-weight:600;color:var(--sec);text-decoration:none}
+.tab.on{color:var(--act)}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.num{font-variant-numeric:tabular-nums}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+@keyframes fade{from{opacity:0}}
+.rm *{animation:none !important;transition:none !important}
+@media (prefers-reduced-motion: reduce){.ph *{animation:none !important;transition:none !important}}
+
+/* theme B */
+:root{--fill:#E6E6EB;--hair:#E5E5EA;--line:#D1D1D6;--ink:#1D1D1F;--ink2:#3A3A3C;--sec:#6E6E73;--ter:#8E8E93;--inv:#1D1D1F;--onac:#FFFFFF;--ac:#0B7A75;--act:#0A6560;--acd:#085E5A;--soft:#E4F2F1;--soft2:#BFE3DF;--bar:rgba(255,255,255,.88);--bg:#FFFFFF;--card:#F5F5F7;--xFBE7DE:#FBE7DE;--x8A2E0C:#8A2E0C;--xECE7F5:#ECE7F5;--x4B3A78:#4B3A78;--x3A2E66:#3A2E66}:root:has([data-theme="night"]),[data-theme="night"]{--fill:#2C2C2E;--hair:#38383A;--line:#48484A;--ink:#F5F5F7;--ink2:#D1D1D6;--sec:#A1A1A6;--ter:#7C7C80;--inv:#3A3A3C;--onac:#FFFFFF;--ac:#14958D;--act:#6FD6CD;--acd:#0E7C75;--soft:#10302E;--soft2:#1D5753;--bar:rgba(22,22,24,.88);--bg:#000000;--card:#1C1C1E;--xFBE7DE:#472A1C;--x8A2E0C:#E7A992;--xECE7F5:#2D253B;--x4B3A78:#AB9FCB;--x3A2E66:#B1A8D2;color-scheme:dark}[data-theme="night"] .sheet,[data-theme="night"] .dlgc{--bg:#1C1C1E;--card:#2C2C2E;--fill:#3A3A3C;--hair:#48484A}[fill="#8A847A"]{fill:var(--ter)}.sw i{background:#fff!important}.tabbar{background:var(--bar);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+</style>
+</helmet>
+<div data-theme="{{theme}}" class="ph {{rmCls}}" style="font-size: {{fs}}px">
+
+<sc-if value="{{is.lock}}" hint-placeholder-val="{{ false }}">
+  <div class="lock">
+    <span class="xs" style="color: rgba(255,255,255,.8)">Design preview of a system notification</span>
+    <span class="clock num">12:30</span>
+    <span style="opacity: .85">Tuesday 10 November</span>
+    <sc-if value="{{notifLive}}" hint-placeholder-val="{{ true }}">
+      <a class="nf" href="Companion.dc.html" style="text-decoration: none" aria-label="Notification from Steady. Noa: Have you eaten lunch yet? Opens this question in your conversation">
+        <span style="width: 38px; height: 38px; border-radius: 10px; background: var(--ac); flex: none; display: flex; align-items: center; justify-content: center"><span style="width: 18px; height: 18px; border-radius: 9px; background: var(--soft2)"></span></span>
+        <span style="flex: 1; min-width: 0"><span style="display: flex; justify-content: space-between; font-size: .8125em; color: #555"><span>STEADY</span><span>now</span></span><span style="display: block; font-weight: 600">Noa</span><span style="display: block">Have you eaten lunch yet? I’ll keep it short.</span></span>
+      </a>
+      <div class="nfa" role="group" aria-label="Notification actions">
+        <a href="Companion.dc.html" style="min-height: 48px; display: flex; align-items: center; padding: 0 16px; color: #111; text-decoration: none; border-bottom: 1px solid rgba(0,0,0,.08)">Reply</a>
+        <button onClick="{{snoozeFromNotif}}">Ask again in 30 min</button>
+        <button onClick="{{notNow}}" style="border-bottom: 0">Not today</button>
+      </div>
+      <span class="xs" style="color: rgba(255,255,255,.75); margin-top: 12px; text-align: center">Notification text never shows glucose values or medical details on the lock screen.</span>
+    </sc-if>
+    <sc-if value="{{notifWithdrawn}}" hint-placeholder-val="{{ false }}"><div class="note" style="margin-top: 24px; width: 100%">{{withdrawnText}}</div></sc-if>
+    <div style="flex: 1"></div>
+    <button class="btn btn-o" style="background: rgba(255,255,255,.14); color: var(--onac); border: 0" onClick="{{withdraw}}">Simulate: lunch logged before 12:30</button>
+    <button class="btn btn-o" style="background: transparent; color: var(--onac); border: 1.5px solid rgba(255,255,255,.4)" onClick="{{closeLock}}">Back to app</button>
+  </div>
+</sc-if>
+
+<sc-if value="{{is.app}}" hint-placeholder-val="{{ true }}">
+  <div class="hdr"><a class="ib" href="Settings.dc.html" aria-label="Back to profile"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a><span class="ttl">Routine and follow-ups</span><button class="ib" aria-label="Preview a check-in notification" onClick="{{openLock}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"></path></svg></button></div>
+  <div class="seg" role="tablist"><sc-for list="{{tabs}}" as="tb" hint-placeholder-count="3"><button class="{{tb.cls}}" role="tab" aria-selected="{{tb.on}}" onClick="{{tb.pick}}">{{tb.label}}</button></sc-for></div>
+  <sc-if value="{{paused}}" hint-placeholder-val="{{ false }}"><div class="note" style="margin: 4px 16px 0; background: var(--xECE7F5); color: var(--x3A2E66)" role="status"><span style="flex: 1">Check-ins paused until {{pauseUntil}}. Reminders you set yourself still arrive.</span><button class="lnk" onClick="{{resume}}">Resume</button></div></sc-if>
+
+  <!-- RTN-02 Getting to know you -->
+  <sc-if value="{{tab.routine}}" hint-placeholder-val="{{ true }}">
+    <div class="scroll">
+      <sc-if value="{{inFam}}" hint-placeholder-val="{{ true }}">
+        <div class="card" style="display: flex; flex-direction: column; gap: 12px">
+          <span class="tag t-tent" style="align-self: flex-start">Getting to know your routine</span>
+          <span class="h2">Day 2 of about 3</span>
+          <div class="days"><div class="dy done"><b>Day 1</b><span>11 entries</span></div><div class="dy now"><b>Day 2</b><span>Today</span></div><div class="dy"><b>Day 3</b><span>Tomorrow</span></div></div>
+          <span class="small">This helps me ask better questions. It isn’t enough to understand how your body responds; that takes much longer, and I’ll say when something is only a first impression.</span>
+        </div>
+      </sc-if>
+      <sc-if value="{{famDone}}" hint-placeholder-val="{{ false }}">
+        <button class="card" style="display: flex; flex-direction: column; gap: 8px; text-align: start; border: 0; font: inherit; cursor: pointer; width: 100%" onClick="{{openSummary}}"><span class="tag t-rec" style="align-self: flex-start">New · first-days summary</span><span class="h2">Here’s what I noticed in your first days</span><span class="small">Three early impressions and two things I still don’t know.</span></button>
+      </sc-if>
+      <div class="card">
+        <p class="lbl">Next follow-up</p>
+        <div class="bubble" style="margin-top: 10px">Yesterday you said you’d try a short walk after dinner. How did it go? No pressure either way.</div>
+        <div class="row" style="margin-top: 10px"><a class="chip" href="Companion.dc.html">Answer now</a><span class="xs">Planned for 20:30, after your usual dinner</span></div>
+      </div>
+      <div class="card">
+        <div class="row" style="justify-content: space-between"><p class="lbl">What I’ve learned so far</p><button class="lnk" onClick="{{toMemory}}">Review all</button></div>
+        <sc-for list="{{learned}}" as="l" hint-placeholder-count="3"><div class="li"><span style="flex: 1"><span style="font-weight: 600">{{l.t}}</span><div class="xs">{{l.basis}}</div></span><span class="{{l.tagCls}}">{{l.tag}}</span></div></sc-for>
+        <p class="lbl" style="margin-top: 12px">Still unknown</p>
+        <p class="small" style="margin: 4px 0 0">Dinner times on weekends, and how your evenings usually go after 21:00.</p>
+      </div>
+      <div class="card">
+        <p class="lbl">Suggested check-ins</p>
+        <p class="small" style="margin: 2px 0 6px">Turn on the ones that help. You can change times anytime.</p>
+        <sc-for list="{{suggested}}" as="c" hint-placeholder-count="4">
+          <div class="li">
+            <span style="flex: 1"><span style="font-weight: 600">{{c.t}}</span><div class="xs">{{c.why}}</div></span>
+            <input class="inp num" type="time" value="{{c.time}}" aria-label="{{c.timeAria}}" style="width: 104px">
+            <button class="{{c.swCls}}" role="switch" aria-checked="{{c.on}}" aria-label="{{c.t}}" onClick="{{c.toggle}}"><i></i></button>
+          </div>
+        </sc-for>
+      </div>
+      <button class="btn btn-o" onClick="{{simulateDay3}}">{{simLabel}}</button>
+    </div>
+  </sc-if>
+
+  <!-- RTN-03 Check-ins and reminders -->
+  <sc-if value="{{tab.checkins}}" hint-placeholder-val="{{ false }}">
+    <div class="scroll">
+      <p class="lbl">Upcoming</p>
+      <sc-if value="{{noUpcoming}}" hint-placeholder-val="{{ false }}"><div class="note">Nothing scheduled. Ask Noa to remind you about anything.</div></sc-if>
+      <sc-for list="{{upcoming}}" as="r" hint-placeholder-count="3">
+        <div class="card" style="display: flex; flex-direction: column; gap: 8px">
+          <div class="row" style="justify-content: space-between; align-items: flex-start"><span style="font-weight: 650; flex: 1">{{r.t}}</span><span class="{{r.tagCls}}">{{r.tag}}</span></div>
+          <span class="small">{{r.when}}</span>
+          <div class="row" style="gap: 6px; flex-wrap: wrap"><button class="chip" onClick="{{r.snooze}}">Snooze</button><button class="chip" onClick="{{r.resched}}">Change time</button><button class="chip" onClick="{{r.dismiss}}">Dismiss</button></div>
+        </div>
+      </sc-for>
+      <p class="lbl" style="margin-top: 6px">Earlier</p>
+      <div class="card" style="padding: 4px 16px">
+        <sc-for list="{{past}}" as="r" hint-placeholder-count="4"><div class="li"><span style="flex: 1"><span style="font-weight: 600">{{r.t}}</span><div class="xs">{{r.when}}</div></span><span class="{{r.tagCls}}">{{r.tag}}</span></div></sc-for>
+      </div>
+      <div class="note">Status words mean exactly this: Scheduled (planned), Sent (handed to your phone, not proof you saw it), Opened (you tapped it), Completed (you replied or logged), Withdrawn (no longer needed).</div>
+      <div class="card" style="display: flex; flex-direction: column; gap: 12px">
+        <p class="lbl">How often</p>
+        <div class="chips"><sc-for list="{{freq}}" as="f" hint-placeholder-count="3"><button class="{{f.cls}}" aria-pressed="{{f.on}}" onClick="{{f.pick}}">{{f.label}}</button></sc-for></div>
+        <p class="lbl">Quiet hours</p>
+        <div class="row"><input class="inp num" type="time" value="22:30" aria-label="Quiet hours start"><span class="small">to</span><input class="inp num" type="time" value="07:00" aria-label="Quiet hours end"></div>
+        <span class="xs">During quiet hours I won’t send check-ins. Device alarms are not affected.</span>
+        <button class="btn btn-s" onClick="{{openPause}}">Pause check-ins</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- RTN-06 Memory -->
+  <sc-if value="{{tab.memory}}" hint-placeholder-val="{{ false }}">
+    <div class="scroll">
+      <div class="card" style="display: flex; flex-direction: column; gap: 8px">
+        <div class="row" style="justify-content: space-between"><span class="lbl">Remember things from conversations</span><button class="{{memSw}}" role="switch" aria-checked="{{memOn}}" aria-label="Remember things from conversations" onClick="{{toggleMem}}"><i></i></button></div>
+        <span class="small">Memories help Noa follow up and avoid asking twice. They never change your treatment settings.</span>
+      </div>
+      <sc-if value="{{noMem}}" hint-placeholder-val="{{ false }}"><div class="note">No memories saved. New ones will appear here with where they came from.</div></sc-if>
+      <sc-for list="{{memGroups}}" as="g" hint-placeholder-count="3">
+        <p class="lbl" style="margin-top: 4px">{{g.name}}</p>
+        <div class="card" style="padding: 4px 16px">
+          <sc-for list="{{g.items}}" as="m" hint-placeholder-count="2">
+            <div class="li" style="flex-direction: column; align-items: stretch; gap: 4px">
+              <sc-if value="{{m.view}}" hint-placeholder-val="{{ true }}">
+                <span style="font-weight: 600">{{m.t}}</span>
+                <span class="xs">{{m.src}}</span>
+                <div class="row" style="gap: 4px"><button class="lnk" style="padding: 0 8px 0 0" onClick="{{m.edit}}">Edit</button><button class="lnk" style="color: var(--x8A2E0C)" onClick="{{m.remove}}">Remove</button></div>
+              </sc-if>
+              <sc-if value="{{m.editing}}" hint-placeholder-val="{{ false }}">
+                <label class="xs" for="{{m.id}}">Edit memory</label>
+                <input id="{{m.id}}" class="inp" value="{{m.draft}}" onChange="{{m.onDraft}}" style="width: 100%">
+                <div class="row"><button class="btn btn-p" onClick="{{m.save}}">Save</button><button class="btn btn-o" onClick="{{m.cancel}}">Cancel</button></div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+      <button class="btn btn-d" onClick="{{askClear}}">Remove all memories</button>
+    </div>
+  </sc-if>
+</sc-if>
+
+<!-- RTN-05 First days summary -->
+<sc-if value="{{is.summary}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><button class="ib" aria-label="Back" onClick="{{closeSummary}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span class="ttl">Your first days</span><span style="width: 48px"></span></div>
+  <div class="scroll">
+    <span class="h2" style="font-size: 1.625em">Thanks for the first few days</span>
+    <p style="margin: 0; font-size: 1.0625em; line-height: 1.55">You logged 31 entries across 3 days. Here are some early impressions. They’re based on very few days, so treat them as starting points, not conclusions.</p>
+    <sc-for list="{{impressions}}" as="i" hint-placeholder-count="3">
+      <div class="card" style="display: flex; flex-direction: column; gap: 8px"><span class="tag t-tent" style="align-self: flex-start">First impression · {{i.n}}</span><span style="font-weight: 650">{{i.t}}</span><span class="small">{{i.d}}</span>
+        <div class="row" style="gap: 6px"><button class="{{i.yCls}}" aria-pressed="{{i.y}}" onClick="{{i.yes}}">Sounds right</button><button class="{{i.nCls}}" aria-pressed="{{i.n2}}" onClick="{{i.no}}">Not really</button></div>
+      </div>
+    </sc-for>
+    <div class="card"><p class="lbl">Things that went well</p><p class="small" style="margin: 6px 0 0">You logged breakfast every day, and you recorded insulin alongside two meals, which makes those mornings easy to read back.</p></div>
+    <div class="note">From here, check-ins return to the frequency you chose. Observations keep improving as more days are recorded.</div>
+    <a class="btn btn-p" href="Overview.dc.html">See Overview</a>
+    <button class="btn btn-o" onClick="{{extendFam}}">Keep the extra check-ins a few more days</button>
+  </div>
+</sc-if>
+
+<sc-if value="{{is.app}}" hint-placeholder-val="{{ true }}">
+<nav class="tabbar" aria-label="Main">
+  <a class="tab" href="Companion.dc.html"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="#8A847A"></circle></svg>Companion</a>
+  <a class="tab" href="Overview.dc.html"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-6 4 3 6-8 3 4"></path></svg>Overview</a>
+  <a class="tab" href="Journal.dc.html"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16H6z"></path><path d="M9 9h6M9 13h6"></path></svg>Journal</a>
+  <a class="tab on" href="Settings.dc.html" aria-current="page"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg>Profile</a>
+</nav>
+</sc-if>
+
+<sc-if value="{{sheet}}" hint-placeholder-val="{{ false }}">
+  <div class="scrim" onClick="{{closeSheet}}">
+    <div class="sheet" role="dialog" aria-modal="true" aria-label="{{sheetTitle}}" onClick="{{stopProp}}">
+      <div class="grab" aria-hidden="true"></div>
+      <div class="row" style="justify-content: space-between"><span class="lbl" style="font-size: 1.25em">{{sheetTitle}}</span><button class="ib" aria-label="Close" onClick="{{closeSheet}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+      <sc-if value="{{sheetTime}}" hint-placeholder-val="{{ false }}"><input class="inp num" type="time" value="16:00" aria-label="New time" style="width: 100%"><button class="btn btn-p" onClick="{{applyResched}}">Save new time</button></sc-if>
+      <sc-if value="{{sheetOpts}}" hint-placeholder-val="{{ true }}"><sc-for list="{{sheetList}}" as="o" hint-placeholder-count="4"><button class="btn btn-o" onClick="{{o.pick}}">{{o.label}}</button></sc-for></sc-if>
+    </div>
+  </div>
+</sc-if>
+<sc-if value="{{clearDlg}}" hint-placeholder-val="{{ false }}">
+  <div class="dlg"><div class="dlgc" role="alertdialog" aria-modal="true" aria-labelledby="clt"><span id="clt" style="font-size: 1.25em; font-weight: 650">Remove all memories?</span><span class="small" style="font-size: 1em">Noa will forget preferences and context from conversations. Your journal entries and profile are not affected. This can’t be undone.</span><button class="btn btn-d" onClick="{{clearAll}}">Remove all</button><button class="btn btn-o" onClick="{{cancelClear}}">Cancel</button></div></div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["day","night"],"default":"day","section":"Appearance"},"textSize":{"editor":"enum","options":["100%","130%","160%"],"default":"100%","section":"Accessibility"},"reducedMotion":{"editor":"boolean","default":false,"section":"Accessibility"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const p = this.props || {};
+    const v = (k, d) => (s[k] === undefined ? d : s[k]);
+    const set = (o) => this.setState(o);
+    const fs = ({ '100%': 16, '130%': 20, '160%': 24 })[p.textSize] || 16;
+    const view = v('view', 'app');
+    const tab = v('tab', 'routine');
+    const sug = v('sug', { m: true, l: true, a: false, e: true });
+    const SUG = [['m', 'Morning reading', 'You usually wake around 06:45', '07:15'], ['l', 'Lunch check-in', 'Lunch is often around 13:00', '12:30'], ['a', 'After lunch', 'Lunch rises on recent days', '15:00'], ['e', 'Evening check-in', 'Fewer readings after 21:00', '21:00']];
+    const rem = v('rem', [
+      { id: 'x1', t: 'Check glucose after lunch', when: 'Today 15:00 · you asked for this', st: 'Scheduled' },
+      { id: 'x2', t: 'Evening check-in', when: 'Today 21:00 · suggested check-in', st: 'Scheduled' },
+      { id: 'x3', t: 'Change sensor', when: 'Thu 12 Nov, 09:00 · repeats every 7 days', st: 'Scheduled' }
+    ]);
+    const tagFor = (st) => (st === 'Snoozed' ? 'tag t-pause' : st === 'Rescheduled' ? 'tag t-ok' : 'tag t-st');
+    const updRem = (id, patch) => set({ rem: rem.map((r) => (r.id === id ? Object.assign({}, r, patch) : r)) });
+    const mem = v('mem', [
+      { id: 'p1', g: 'Preferences', t: 'Prefers short answers in the morning', src: 'From conversation · 8 Nov' },
+      { id: 'p2', g: 'Preferences', t: 'Doesn’t want check-ins during work meetings, 10:00–11:00', src: 'From conversation · 9 Nov' },
+      { id: 'r1', g: 'Routine', t: 'Lunch is usually around 13:00', src: 'From your records · 3 of 3 days' },
+      { id: 'r2', g: 'Routine', t: 'Often walks after dinner', src: 'From your records · 2 of 3 days' },
+      { id: 'h1', g: 'Health context', t: 'Uses MiniMed 780G and Guardian 4', src: 'From your profile · 7 Nov' },
+      { id: 'h2', g: 'Health context', t: 'Said that walks help her relax in the evening', src: 'From conversation · 9 Nov' }
+    ]);
+    const editId = v('editId', null);
+    const groupsN = ['Preferences', 'Routine', 'Health context'];
+    const memGroups = groupsN.map((g) => ({ name: g, items: mem.filter((m) => m.g === g).map((m) => ({
+      id: 'mem-' + m.id, t: m.t, src: m.src, view: editId !== m.id, editing: editId === m.id, draft: v('draft', m.t),
+      edit: () => set({ editId: m.id, draft: m.t }), cancel: () => set({ editId: null }), onDraft: (e) => set({ draft: e.target.value }),
+      save: () => set({ editId: null, mem: mem.map((x) => (x.id === m.id ? Object.assign({}, x, { t: v('draft', x.t), src: 'Edited by you · just now' }) : x)) }),
+      remove: () => set({ mem: mem.filter((x) => x.id !== m.id) })
+    })) })).filter((g) => g.items.length);
+    const sheet = v('sheet', null);
+    const target = v('target', null);
+    const sheetList = sheet === 'snooze' ? [['15 minutes', '15 min'], ['30 minutes', '30 min'], ['1 hour', '1 h'], ['Tomorrow, same time', 'tomorrow']].map((o) => ({ label: o[0], pick: () => { updRem(target, { st: 'Snoozed', when: 'Snoozed ' + o[1] + ' · was ' + (rem.find((r) => r.id === target) || {}).when }); set({ sheet: null }); } }))
+      : sheet === 'pause' ? [['For 1 hour', '14:15 today'], ['For the rest of today', 'tomorrow 07:00'], ['For 3 days', 'Fri 13 Nov'], ['Until I turn them back on', 'you resume']].map((o) => ({ label: o[0], pick: () => set({ sheet: null, paused: o[1] }) })) : [];
+    const fam = v('famDone', false);
+    const fb = v('imp', {});
+    const IMP = [['3 days', 'Lunch tends to be around 13:00', 'Logged on all 3 days between 12:45 and 13:20.'], ['2 days', 'Readings rose after the two larger lunches', 'Only 2 examples, so this could easily change.'], ['2 days', 'Evening walks, steadier nights', 'A good habit to keep noticing.']];
+    const fq = v('freq', 'b');
+    return {
+      fs: fs, rmCls: p.reducedMotion ? 'rm' : '',
+      is: { app: view === 'app', lock: view === 'lock', summary: view === 'summary' },
+      tabs: [['routine', 'Routine'], ['checkins', 'Check-ins'], ['memory', 'Memory']].map((x) => ({ label: x[1], on: tab === x[0], cls: tab === x[0] ? 'on' : '', pick: () => set({ tab: x[0] }) })),
+      tab: { routine: tab === 'routine', checkins: tab === 'checkins', memory: tab === 'memory' },
+      inFam: !fam, famDone: fam, simLabel: fam ? 'Reset to day 2' : 'Simulate: day 3 complete', simulateDay3: () => set({ famDone: !fam }),
+      openSummary: () => set({ view: 'summary' }), closeSummary: () => set({ view: 'app' }), extendFam: () => set({ view: 'app', famDone: false }),
+      learned: [['Lunch around 13:00', '3 of 3 days', 'Fairly consistent', 'tag t-rec'], ['Walks after dinner', '2 of 3 days', 'First impression', 'tag t-tent'], ['Toast most mornings', '2 of 3 days', 'First impression', 'tag t-tent']].map((l) => ({ t: l[0], basis: l[1], tag: l[2], tagCls: l[3] })),
+      toMemory: () => set({ tab: 'memory' }),
+      suggested: SUG.map((c) => ({ t: c[1], why: c[2], time: c[3], timeAria: c[1] + ' time', on: !!sug[c[0]], swCls: 'sw' + (sug[c[0]] ? ' on' : ''), toggle: () => set({ sug: Object.assign({}, sug, { [c[0]]: !sug[c[0]] }) }) })),
+      upcoming: rem.filter((r) => r.st !== 'Dismissed').map((r) => ({ t: r.t, when: r.when, tag: r.st, tagCls: tagFor(r.st), snooze: () => set({ sheet: 'snooze', target: r.id }), resched: () => set({ sheet: 'time', target: r.id }), dismiss: () => updRem(r.id, { st: 'Dismissed' }) })),
+      noUpcoming: rem.filter((r) => r.st !== 'Dismissed').length === 0,
+      past: [['Lunch check-in', 'Today 12:30 · sent, opened 12:58, you replied', 'Completed', 'tag t-ok'], ['Morning reading', 'Today 07:15 · withdrawn, you’d logged at 07:10', 'Withdrawn', 'tag t-st'], ['Evening check-in', 'Yesterday 21:00 · sent, no reply', 'Not answered', 'tag t-st'], ['After-lunch reminder', 'Yesterday 15:00 · snoozed once, then you logged', 'Completed', 'tag t-ok']].concat(rem.filter((r) => r.st === 'Dismissed').map((r) => [r.t, 'Dismissed just now', 'Dismissed', 'tag t-st'])).map((x) => ({ t: x[0], when: x[1], tag: x[2], tagCls: x[3] })),
+      freq: [['f', 'Fewer'], ['b', 'Balanced'], ['m', 'More while learning']].map((x) => ({ label: x[1], on: fq === x[0], cls: 'chip' + (fq === x[0] ? ' on' : ''), pick: () => set({ freq: x[0] }) })),
+      paused: !!v('paused', null), pauseUntil: v('paused', ''), resume: () => set({ paused: null }), openPause: () => set({ sheet: 'pause' }),
+      sheet: !!sheet, sheetTitle: sheet === 'snooze' ? 'Snooze until' : sheet === 'pause' ? 'Pause check-ins' : 'Change time', sheetTime: sheet === 'time', sheetOpts: sheet === 'snooze' || sheet === 'pause', sheetList: sheetList,
+      closeSheet: () => set({ sheet: null }), stopProp: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
+      applyResched: () => { updRem(target, { st: 'Rescheduled', when: 'Today 16:00 · changed by you' }); set({ sheet: null }); },
+      memOn: v('memOn', true), memSw: 'sw' + (v('memOn', true) ? ' on' : ''), toggleMem: () => set({ memOn: !v('memOn', true) }),
+      memGroups: memGroups, noMem: mem.length === 0,
+      askClear: () => set({ clearDlg: true }), clearDlg: v('clearDlg', false), cancelClear: () => set({ clearDlg: false }), clearAll: () => set({ mem: [], clearDlg: false }),
+      openLock: () => set({ view: 'lock', withdrawn: false, lockAct: null }), closeLock: () => set({ view: 'app' }),
+      notifLive: !v('withdrawn', false) && !v('lockAct', null), notifWithdrawn: v('withdrawn', false) || !!v('lockAct', null),
+      withdrawnText: v('withdrawn', false) ? 'The 12:30 check-in was withdrawn because you’d already logged lunch at 12:20. Your journal shows it as “Withdrawn”.' : v('lockAct', null) === 'snooze' ? 'Snoozed. I’ll ask again at 13:00. The journal shows Sent → Snoozed.' : 'Okay. I won’t ask about lunch again today. The journal shows Sent → Dismissed.',
+      withdraw: () => set({ withdrawn: true }), snoozeFromNotif: () => set({ lockAct: 'snooze' }), notNow: () => set({ lockAct: 'dismiss' }),
+      openFromNotif: () => set({ view: 'app', tab: 'routine' }),
+      impressions: IMP.map((x, i) => ({ n: x[0], t: x[1], d: x[2], y: fb[i] === 'y', n2: fb[i] === 'n', yCls: 'chip' + (fb[i] === 'y' ? ' on' : ''), nCls: 'chip' + (fb[i] === 'n' ? ' on' : ''), yes: () => set({ imp: Object.assign({}, fb, { [i]: 'y' }) }), no: () => set({ imp: Object.assign({}, fb, { [i]: 'n' }) }) }))
+    };
+  }
+}
+
+;(function(){var rv=Component.prototype.renderVals;Component.prototype.renderVals=function(){var v=rv.call(this)||{};var s=this.state&&this.state.themeOverride;var p=(this.props&&this.props.theme)||'day';v.theme=s||p;var n=v.theme==='night';var self=this;v.setThemeDay=function(){self.setState({themeOverride:'day'})};v.setThemeNight=function(){self.setState({themeOverride:'night'})};v.thDayCls='chip'+(n?'':' on');v.thNightCls='chip'+(n?' on':'');return v;};})();
+</script>
+</body>
+</html>

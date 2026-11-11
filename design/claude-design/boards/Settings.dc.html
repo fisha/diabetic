@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Profile and settings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Rubik:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:var(--fill)}
+a{color:var(--act)}a:hover{color:var(--acd)}
+.ph{position:relative;width:390px;height:844px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:-apple-system,'SF Pro Text','Inter','Rubik','IBM Plex Sans Arabic',system-ui,sans-serif;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:1.4}
+.ph *{box-sizing:border-box}
+.ph button:focus-visible,.ph a:focus-visible,.ph input:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.hdr{display:flex;align-items:center;gap:8px;padding:54px 12px 4px}
+.ttl{flex:1;font-weight:650;font-size:1.0625em;text-align:center}
+.h1{font-size:1.75em;font-weight:650;margin:0;flex:1;letter-spacing:-.01em;padding:0 4px}
+.ib{width:48px;height:48px;border-radius:24px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;color:inherit;cursor:pointer;flex:none;text-decoration:none}
+.scroll{flex:1;overflow-y:auto;padding:10px 16px 24px;display:flex;flex-direction:column;gap:14px;min-height:0;animation:in .26s cubic-bezier(.2,.8,.2,1)}
+.card{background:var(--card);border-radius:20px;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 16px rgba(0,0,0,0);padding:16px}
+.grp{background:var(--card);border-radius:20px;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 16px rgba(0,0,0,0);padding:2px 0;overflow:hidden}
+.gh{font-size:.8125em;font-weight:700;color:var(--sec);text-transform:uppercase;letter-spacing:.05em;margin:6px 6px -6px}
+.nav{display:flex;align-items:center;gap:12px;width:100%;min-height:58px;padding:8px 16px;border:0;border-bottom:1px solid var(--fill);background:transparent;font:inherit;font-size:1em;text-align:start;cursor:pointer;color:var(--ink);text-decoration:none}
+.nav:last-child{border-bottom:0}
+.nav:hover{color:var(--ink);background:var(--bg)}
+.ni{width:34px;height:34px;border-radius:11px;background:var(--soft);color:var(--act);display:flex;align-items:center;justify-content:center;flex:none}
+.nt{flex:1;display:flex;flex-direction:column}
+.nv{font-size:.875em;color:var(--sec)}
+.lbl{font-size:.9375em;font-weight:600;color:var(--ink2);margin:0}
+.small{font-size:.875em;color:var(--sec);line-height:1.45}
+.xs{font-size:.75em;color:var(--sec)}
+.row{display:flex;align-items:center;gap:10px}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:.75em;font-weight:700;padding:3px 8px;border-radius:8px;white-space:nowrap}
+.t-ok{background:var(--soft);color:var(--act)}.t-st{background:var(--fill);color:var(--ink2)}.t-warn{background:var(--xFBE7DE);color:var(--x8A2E0C)}.t-plan{background:var(--xECE7F5);color:var(--x4B3A78)}.t-demo{background:var(--xF3E8D5);color:var(--x6B4A12)}.t-you{background:var(--soft);color:var(--act)}
+.sw{width:52px;height:32px;border-radius:16px;background:var(--line);border:0;position:relative;cursor:pointer;flex:none}
+.sw i{position:absolute;top:3px;inset-inline-start:3px;width:26px;height:26px;border-radius:13px;background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.2);transition:inset-inline-start .2s cubic-bezier(.2,.8,.2,1)}
+.sw.on{background:var(--ac)}.sw.on i{inset-inline-start:23px}
+.sw:disabled{opacity:.6;cursor:not-allowed}
+.li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--fill)}
+.li:last-child{border-bottom:0}
+.chip{min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-size:.9375em;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.chip.on{border-color:var(--ac);background:var(--soft);color:var(--act)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:10px 14px;border-radius:16px;border:1.5px solid var(--hair);background:var(--card);font:inherit;font-size:1em;color:var(--ink);cursor:pointer;text-align:start}
+.opt.on{border-color:var(--ac);background:var(--soft);box-shadow:inset 0 0 0 1px var(--ac)}
+.rad{width:22px;height:22px;border-radius:11px;border:2px solid var(--ter);flex:none}
+.opt.on .rad{border-color:var(--ac);background:var(--ac);box-shadow:inset 0 0 0 4px var(--card)}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 18px;border-radius:16px;border:0;font:inherit;font-size:1em;font-weight:600;cursor:pointer;text-decoration:none;width:100%}
+.btn-p{background:var(--ac);color:var(--onac)}.btn-p:hover{color:var(--onac)}
+.btn-p:disabled{background:var(--soft2);cursor:not-allowed}
+.btn-s{background:var(--soft);color:var(--act)}
+.btn-o{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+.btn-d{background:#B5371A;color:var(--onac)}
+.btn-d:disabled{background:#E3B5A6;cursor:not-allowed}
+.btn-dl{background:var(--xFBE7DE);color:var(--x8A2E0C)}
+.inp{min-height:52px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);padding:0 14px;font:inherit;font-size:1.0625em;color:var(--ink);width:100%}
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--fill);border-radius:16px;padding:12px 14px;font-size:.9375em;line-height:1.45;color:var(--ink2)}
+.note.plan{background:var(--xF3F0FA);color:var(--x3A2E66)}
+.note.warn{background:var(--xFBEFE9);color:var(--x5A2410)}
+.avs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.av{border:2px solid transparent;border-radius:50%;padding:2px;background:transparent;cursor:pointer;aspect-ratio:1}
+.av.on{border-color:var(--ac)}
+.av span{display:block;width:100%;height:100%;border-radius:50%}
+.status{display:flex;flex-direction:column;gap:10px;align-items:flex-start;border-radius:20px;padding:16px;background:var(--card);box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 16px rgba(0,0,0,0)}
+.sd{width:12px;height:12px;border-radius:6px;display:inline-block}
+.spin{width:22px;height:22px;border-radius:11px;border:3px solid var(--soft);border-top-color:var(--ac);animation:spin .9s linear infinite;display:inline-block}
+.prog{height:8px;background:var(--fill);border-radius:4px;overflow:hidden;width:100%}
+.prog i{display:block;height:8px;background:var(--ac);border-radius:4px;transition:width .4s}
+.dlg{position:absolute;inset:0;background:rgba(20,26,24,.42);display:flex;align-items:center;justify-content:center;padding:24px;z-index:30;animation:fade .2s}
+.dlgc{background:var(--bg);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:12px;width:100%}
+.tabbar{display:flex;border-top:1px solid var(--hair);background:var(--card);padding:4px 8px 30px;flex:none}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:52px;justify-content:center;font-size:.75em;font-weight:600;color:var(--sec);text-decoration:none}
+.tab.on{color:var(--act)}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.num{font-variant-numeric:tabular-nums;unicode-bidi:isolate;direction:ltr;display:inline-block}
+.prevw{border-radius:16px;border:1.5px dashed var(--line);padding:12px;display:flex;flex-direction:column;gap:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fade{from{opacity:0}}
+@keyframes in{from{opacity:0;transform:translateX(12px)}}
+.rm *{animation:none !important;transition:none !important}
+@media (prefers-reduced-motion: reduce){.ph *{animation:none !important;transition:none !important}}
+
+/* theme B */
+:root{--fill:#E6E6EB;--hair:#E5E5EA;--line:#D1D1D6;--ink:#1D1D1F;--ink2:#3A3A3C;--sec:#6E6E73;--ter:#8E8E93;--inv:#1D1D1F;--onac:#FFFFFF;--ac:#0B7A75;--act:#0A6560;--acd:#085E5A;--soft:#E4F2F1;--soft2:#BFE3DF;--bar:rgba(255,255,255,.88);--bg:#FFFFFF;--card:#F5F5F7;--xFBE7DE:#FBE7DE;--x8A2E0C:#8A2E0C;--xECE7F5:#ECE7F5;--x4B3A78:#4B3A78;--xF3E8D5:#F3E8D5;--x6B4A12:#6B4A12;--xF3F0FA:#F3F0FA;--x3A2E66:#3A2E66;--xFBEFE9:#FBEFE9;--x5A2410:#5A2410;--xF2DDC8:#F2DDC8;--xD9E0EE:#D9E0EE;--xF3D9CF:#F3D9CF}:root:has([data-theme="night"]),[data-theme="night"]{--fill:#2C2C2E;--hair:#38383A;--line:#48484A;--ink:#F5F5F7;--ink2:#D1D1D6;--sec:#A1A1A6;--ter:#7C7C80;--inv:#3A3A3C;--onac:#FFFFFF;--ac:#14958D;--act:#6FD6CD;--acd:#0E7C75;--soft:#10302E;--soft2:#1D5753;--bar:rgba(22,22,24,.88);--bg:#000000;--card:#1C1C1E;--xFBE7DE:#472A1C;--x8A2E0C:#E7A992;--xECE7F5:#2D253B;--x4B3A78:#AB9FCB;--xF3E8D5:#4B3E28;--x6B4A12:#E7CC9F;--xF3F0FA:#261F36;--x3A2E66:#B1A8D2;--xFBEFE9:#3E271C;--x5A2410:#E9B9A8;--xF2DDC8:#55402A;--xD9E0EE:#2E3646;--xF3D9CF:#503328;color-scheme:dark}[data-theme="night"] .sheet,[data-theme="night"] .dlgc{--bg:#1C1C1E;--card:#2C2C2E;--fill:#3A3A3C;--hair:#48484A}[fill="#8A847A"]{fill:var(--ter)}[stroke="#3A4441"]{stroke:var(--ink2)}.sw i{background:#fff!important}.tabbar{background:var(--bar);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+</style>
+</helmet>
+<div data-theme="{{theme}}" class="ph {{rmCls}}" style="font-size: {{fs}}px">
+
+<sc-if value="{{isHub}}" hint-placeholder-val="{{ true }}">
+  <div class="hdr" style="padding-left: 16px; padding-right: 16px"><h1 class="h1">Profile</h1></div>
+</sc-if>
+<sc-if value="{{isSub}}" hint-placeholder-val="{{ false }}">
+  <div class="hdr"><button class="ib" aria-label="Back" onClick="{{back}}"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span class="ttl">{{title}}</span><span style="width: 48px"></span></div>
+</sc-if>
+
+<!-- SET-01 Hub -->
+<sc-if value="{{v.hub}}" hint-placeholder-val="{{ true }}">
+  <div class="scroll">
+    <div class="card row" style="gap: 14px">
+      <span style="width: 56px; height: 56px; border-radius: 28px; background: var(--xF2DDC8); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25em; color: var(--x6B4A12); flex: none">DK</span>
+      <span style="flex: 1; display: flex; flex-direction: column"><span style="font-weight: 650; font-size: 1.125em">Dana K.</span><span class="small">dana.k@example.com</span></span>
+      <a class="tag t-ok" href="Subscription.dc.html" style="text-decoration: none">Trial · 9 days left</a>
+    </div>
+    <p class="gh">Health</p>
+    <div class="grp">
+      <button class="nav" onClick="{{go.profile}}"><span class="ni"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg></span><span class="nt">Diabetes profile<span class="nv">Type 1 · mg/dL · diagnosed 10–20 years ago</span></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></button>
+      <button class="nav" onClick="{{go.treatment}}"><span class="ni"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6M17 7l-9 9-4 1 1-4 9-9"></path></svg></span><span class="nt">Treatment settings<span class="nv">Ratios entered · correction factor unknown</span></span><span class="tag t-warn">Review</span></button>
+      <button class="nav" onClick="{{go.devices}}"><span class="ni"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="3"></rect><path d="M10 7h4"></path></svg></span><span class="nt">Devices<span class="nv">{{devSummary}}</span></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></button>
+    </div>
+    <p class="gh">Companion</p>
+    <div class="grp">
+      <button class="nav" onClick="{{go.companion}}"><span class="ni" style="background: var(--ac)"><span style="width: 14px; height: 14px; border-radius: 7px; background: var(--soft2)"></span></span><span class="nt">Noa<span class="nv">Look, voice, name and style</span></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></button>
+      <a class="nav" href="Routine.dc.html"><span class="ni"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="7"></circle><path d="M12 10v3l2 2"></path></svg></span><span class="nt">Routine, check-ins and memory<span class="nv">Getting to know you · day 2</span></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></a>
+    </div>
+    <p class="gh">App</p>
+    <div class="grp">
+      <button class="nav" onClick="{{go.language}}"><span class="ni"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg></span><span class="nt">Language<span class="nv">{{langSummary}}</span></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></button>
+      <button class="nav" onClick="{{go.a11y}}"><span class="ni"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2"></circle><path d="M5 9h14M12 9v12M8 21l4-7 4 7"></path></svg></span><span class="nt">Accessibility<span class="nv">Text {{textLabel}} · motion {{motionLabel}}</span></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></button>
+      <button class="nav" onClick="{{go.notif}}"><span class="ni"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"></path></svg></span><span class="nt">Notifications<span class="nv">{{notifSummary}}</span></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></button>
+      <button class="nav" onClick="{{go.privacy}}"><span class="ni"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path></svg></span><span class="nt">Privacy and data<span class="nv">Model training off</span></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></button>
+    </div>
+    <p class="gh">Account</p>
+    <div class="grp">
+      <a class="nav" href="Subscription.dc.html"><span class="ni"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"></rect><path d="M3 10h18"></path></svg></span><span class="nt">Membership<span class="nv">Free trial until 19 Nov</span></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></a>
+      <button class="nav" onClick="{{go.help}}"><span class="ni"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17h.01"></path></svg></span><span class="nt">Help and support</span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></button>
+      <button class="nav" onClick="{{go.export}}"><span class="ni"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg></span><span class="nt">Export your data</span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></button>
+      <button class="nav" onClick="{{askSignOut}}"><span class="ni" style="background: var(--fill); color: var(--ink2)"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"></path></svg></span><span class="nt">Sign out</span></button>
+      <button class="nav" onClick="{{go.delete}}"><span class="ni" style="background: var(--xFBE7DE); color: var(--x8A2E0C)"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></span><span class="nt" style="color: var(--x8A2E0C)">Delete account</span></button>
+    </div>
+    <span class="xs" style="text-align: center">Steady 0.9 (design reference) · Working name</span>
+  </div>
+</sc-if>
+
+<!-- SET-13 Diabetes profile -->
+<sc-if value="{{v.profile}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <div class="card" style="padding: 4px 16px">
+      <sc-for list="{{profileRows}}" as="r" hint-placeholder-count="7"><div class="li"><span style="flex: 1"><span class="small">{{r.k}}</span><div style="font-weight: 600">{{r.v}}</div><span class="xs">{{r.src}}</span></span><a class="chip" href="Onboarding.dc.html">Edit</a></div></sc-for>
+    </div>
+    <div class="note">Changing your date of birth to under 18 moves the account out of the adult experience. See Handoff: minors policy.</div>
+  </div>
+</sc-if>
+
+<!-- SET-02 Treatment settings -->
+<sc-if value="{{v.treatment}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <div class="note warn"><span style="flex: 1">These were last updated 38 days ago (3 Oct 2026). Has your care team changed anything since?</span></div>
+    <div class="row"><button class="chip" onClick="{{confirmCurrent}}">{{confirmLabel}}</button><button class="chip" onClick="{{toggleEditIcr}}">{{editIcrLabel}}</button></div>
+    <div class="card">
+      <div class="row" style="justify-content: space-between"><p class="lbl">Insulin-to-carb ratio</p><span class="tag t-demo">Demo values</span></div>
+      <p class="xs" style="margin: 4px 0 8px">Entered by you · source: pump settings · updated 3 Oct 2026</p>
+      <sc-for list="{{icr}}" as="r" hint-placeholder-count="3">
+        <div class="li">
+          <span class="num" style="min-width: 108px; font-weight: 600">{{r.range}}</span>
+          <sc-if value="{{r.view}}" hint-placeholder-val="{{ true }}"><span style="flex: 1">1 unit per <b class="num">{{r.g}}</b> g carbs</span></sc-if>
+          <sc-if value="{{r.edit}}" hint-placeholder-val="{{ false }}"><span style="flex: 1; display: flex; align-items: center; gap: 6px"><input class="inp num" inputmode="decimal" value="{{r.g}}" onChange="{{r.onG}}" aria-label="{{r.aria}}" style="width: 80px; min-height: 44px"><span class="small">g per unit</span></span></sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div class="card">
+      <div class="row" style="justify-content: space-between"><p class="lbl">Correction factor</p><span class="tag t-st">Unknown</span></div>
+      <p class="small" style="margin: 6px 0 10px">You said you don’t know this yet. That’s fine; nothing depends on it.</p>
+      <button class="chip" onClick="{{noop}}">Add when I know it</button>
+    </div>
+    <div class="card">
+      <p class="lbl">Target range</p>
+      <p style="margin: 6px 0 2px; font-weight: 600"><span class="num">100–140 mg/dL</span></p>
+      <p class="xs" style="margin: 0">From care team document · updated 3 Oct 2026. Display range on graphs: <span class="num">70–180 mg/dL</span> (standard, editable)</p>
+    </div>
+    <div class="card">
+      <p class="lbl">Insulin</p>
+      <p style="margin: 6px 0 2px" class="num">Fiasp (mealtime) · Tresiba (long-acting)</p>
+      <p class="xs" style="margin: 0">Entered during setup</p>
+    </div>
+    <div class="note"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7.5h.01"></path></svg><span>Steady records your settings so the companion has context. It never calculates or suggests doses from them.</span></div>
+    <sc-if value="{{icrEditing}}" hint-placeholder-val="{{ false }}"><button class="btn btn-p" onClick="{{saveIcr}}">Save changes</button></sc-if>
+  </div>
+</sc-if>
+
+<!-- SET-03 Devices -->
+<sc-if value="{{v.devices}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <div class="note plan"><span class="tag t-plan" style="flex: none">Planned</span><span>Live device connections aren’t available yet. Manual logging works fully without them. The flows below show how connections will work.</span></div>
+    <div class="grp">
+      <button class="nav" onClick="{{go.device}}"><span class="ni" style="background: var(--fill)"><svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 30c0-9 6-16 14-16s14 7 14 16z" fill="#fff" stroke="#3A4441" stroke-width="3"></path></svg></span><span class="nt">Guardian 4<span class="nv">Medtronic · sensor</span></span><span class="{{dev.tagCls}}">{{dev.short}}</span></button>
+      <div class="nav" style="cursor: default"><span class="ni" style="background: var(--fill)"><svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="6" width="30" height="36" rx="8" fill="#fff" stroke="#3A4441" stroke-width="3"></rect></svg></span><span class="nt">MiniMed 780G<span class="nv">Medtronic · pump · recorded in your profile</span></span><span class="tag t-st">Not connectable</span></div>
+    </div>
+    <p class="xs" style="margin: 0 6px">Device names and illustrations identify what you use. They don’t mean an official integration exists.</p>
+  </div>
+</sc-if>
+
+<!-- SET-03b Device detail with all connection states -->
+<sc-if value="{{v.device}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <span class="tag t-plan" style="align-self: flex-start">Planned capability · design only</span>
+    <div class="status" role="status" aria-live="polite">
+      <div class="row"><sc-if value="{{dev.spinning}}" hint-placeholder-val="{{ false }}"><span class="spin" aria-hidden="true"></span></sc-if><sc-if value="{{dev.dotShow}}" hint-placeholder-val="{{ true }}"><span class="sd" style="background: {{dev.dot}}"></span></sc-if><span style="font-weight: 650; font-size: 1.125em">{{dev.label}}</span></div>
+      <span class="small" style="font-size: 1em">{{dev.desc}}</span>
+      <sc-if value="{{dev.hasFresh}}" hint-placeholder-val="{{ false }}"><div class="xs">{{dev.fresh}}</div></sc-if>
+    </div>
+    <sc-if value="{{dev.explain}}" hint-placeholder-val="{{ false }}">
+      <div class="card" style="display: flex; flex-direction: column; gap: 10px">
+        <p class="lbl">Before you connect</p>
+        <div class="small">• Steady will read glucose readings from your account. It can’t change your device.</div>
+        <div class="small">• Data can arrive late. Your device and its alarms stay the source of truth.</div>
+        <div class="small">• You can disconnect anytime and choose what happens to imported data.</div>
+      </div>
+    </sc-if>
+    <sc-for list="{{dev.actions}}" as="a" hint-placeholder-count="2"><button class="{{a.cls}}" onClick="{{a.go}}">{{a.label}}</button></sc-for>
+    <sc-if value="{{dev.discChoice}}" hint-placeholder-val="{{ false }}">
+      <div class="card" style="display: flex; flex-direction: column; gap: 10px">
+        <p class="lbl">What should happen to imported readings?</p>
+        <sc-for list="{{discOpts}}" as="o" hint-placeholder-count="2"><button class="{{o.cls}}" role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}"><span class="rad"></span><span style="flex: 1">{{o.label}}<div class="xs">{{o.sub}}</div></span></button></sc-for>
+        <button class="btn btn-dl" onClick="{{confirmDisc}}">Disconnect</button>
+        <button class="btn btn-o" onClick="{{cancelDisc}}">Stay connected</button>
+      </div>
+    </sc-if>
+    <p class="lbl" style="margin-top: 6px">Preview other states</p>
+    <div class="chips"><sc-for list="{{devStates}}" as="d" hint-placeholder-count="9"><button class="{{d.cls}}" aria-pressed="{{d.on}}" onClick="{{d.pick}}">{{d.label}}</button></sc-for></div>
+  </div>
+</sc-if>
+
+<!-- SET-04 Companion -->
+<sc-if value="{{v.companion}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <div class="card" style="display: flex; flex-direction: column; gap: 12px">
+      <p class="lbl">Look</p>
+      <div class="avs" role="radiogroup" aria-label="Companion look"><sc-for list="{{avs}}" as="a" hint-placeholder-count="5"><button class="{{a.cls}}" role="radio" aria-checked="{{a.on}}" aria-label="{{a.label}}" onClick="{{a.pick}}"><span style="background: {{a.bg}}"></span></button></sc-for></div>
+      <label class="lbl" for="cn">Name</label><input id="cn" class="inp" value="{{cname}}" onChange="{{onCname}}">
+      <p class="lbl">Voice</p>
+      <div class="chips"><sc-for list="{{voices}}" as="a" hint-placeholder-count="3"><button class="{{a.cls}}" aria-pressed="{{a.on}}" onClick="{{a.pick}}">{{a.label}}</button></sc-for></div>
+      <span class="xs">Voices come from the speech provider’s catalog; names here are placeholders.</span>
+      <p class="lbl">Conversation style</p>
+      <div class="chips"><sc-for list="{{styles}}" as="a" hint-placeholder-count="3"><button class="{{a.cls}}" aria-pressed="{{a.on}}" onClick="{{a.pick}}">{{a.label}}</button></sc-for></div>
+    </div>
+    <div class="note">Changing the look, name or voice changes how Noa feels, not what Noa can do. All companions share the same abilities and safety limits.</div>
+    <sc-if value="{{compSaved}}" hint-placeholder-val="{{ false }}"><span class="small" role="status" style="text-align: center">Saved. Takes effect in your next reply.</span></sc-if>
+    <button class="btn btn-p" onClick="{{saveComp}}">Save</button>
+  </div>
+</sc-if>
+
+<!-- SET-05 Language -->
+<sc-if value="{{v.language}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <p class="lbl">App language</p>
+    <div style="display: flex; flex-direction: column; gap: 8px"><sc-for list="{{appLangs}}" as="l" hint-placeholder-count="4"><button class="{{l.cls}}" role="radio" aria-checked="{{l.on}}" lang="{{l.code}}" onClick="{{l.pick}}"><span class="rad"></span><span style="flex: 1">{{l.name}}</span><span class="xs">{{l.dir}}</span></button></sc-for></div>
+    <div class="prevw" dir="{{prevDir}}" lang="{{appLang}}"><span class="xs" dir="ltr">Preview, {{prevDirUpper}}</span><span style="font-weight: 600">{{prevText}}</span><span class="small"><span class="num">142 mg/dL</span> · <span class="num">13:01</span> · Guardian 4</span></div>
+    <p class="lbl">Conversation language</p>
+    <div class="chips"><sc-for list="{{convLangs}}" as="l" hint-placeholder-count="4"><button class="{{l.cls}}" aria-pressed="{{l.on}}" lang="{{l.code}}" onClick="{{l.pick}}">{{l.name}}</button></sc-for></div>
+    <div class="note">The app and the conversation can use different languages. Numbers, units, medication and device names keep their original form in every language.</div>
+  </div>
+</sc-if>
+
+<!-- SET-06 Accessibility -->
+<sc-if value="{{v.a11y}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <div class="card" style="display: flex; flex-direction: column; gap: 10px"><p class="lbl">Appearance</p><div class="chips"><button class="{{thDayCls}}" onClick="{{setThemeDay}}">Day</button><button class="{{thNightCls}}" onClick="{{setThemeNight}}">Night</button></div><span class="xs">Night inverts the surfaces: black background and light text. Glucose colours keep their meaning. Follows your phone’s setting by default.</span></div>
+    <div class="card" style="display: flex; flex-direction: column; gap: 10px">
+      <p class="lbl">Text size</p>
+      <div class="chips"><sc-for list="{{sizes}}" as="z" hint-placeholder-count="4"><button class="{{z.cls}}" aria-pressed="{{z.on}}" onClick="{{z.pick}}">{{z.label}}</button></sc-for></div>
+      <span class="xs">Follows your phone’s text size by default. This screen is rendered at the size you pick.</span>
+    </div>
+    <div class="card" style="padding: 4px 16px">
+      <sc-for list="{{toggles}}" as="g" hint-placeholder-count="5"><div class="li"><span style="flex: 1"><span style="font-weight: 600">{{g.label}}</span><div class="xs">{{g.sub}}</div></span><button class="{{g.cls}}" role="switch" aria-checked="{{g.on}}" aria-label="{{g.label}}" onClick="{{g.toggle}}"><i></i></button></div></sc-for>
+    </div>
+    <div class="card"><p class="lbl">Voice speed</p><div class="chips" style="margin-top: 8px"><sc-for list="{{speeds}}" as="z" hint-placeholder-count="3"><button class="{{z.cls}}" aria-pressed="{{z.on}}" onClick="{{z.pick}}">{{z.label}}</button></sc-for></div></div>
+  </div>
+</sc-if>
+
+<!-- SET-07 Notifications -->
+<sc-if value="{{v.notif}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <div class="card row" style="justify-content: space-between"><span><span style="font-weight: 600">System permission</span><div class="xs">{{permText}}</div></span><button class="chip" onClick="{{togglePerm}}">{{permBtn}}</button></div>
+    <div class="card" style="padding: 4px 16px">
+      <sc-for list="{{notifToggles}}" as="g" hint-placeholder-count="5"><div class="li"><span style="flex: 1"><span style="font-weight: 600">{{g.label}}</span><div class="xs">{{g.sub}}</div></span><button class="{{g.cls}}" role="switch" aria-checked="{{g.on}}" aria-label="{{g.label}}" onClick="{{g.toggle}}" disabled="{{permOff}}"><i></i></button></div></sc-for>
+    </div>
+    <a class="btn btn-o" href="Routine.dc.html">Quiet hours and check-in frequency</a>
+    <div class="note">Notifications can be delayed or missed by your phone. They are not an emergency or monitoring service and never replace your device alarms.</div>
+  </div>
+</sc-if>
+
+<!-- SET-08 Privacy -->
+<sc-if value="{{v.privacy}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <div class="card" style="padding: 4px 16px">
+      <div class="li"><span style="flex: 1"><span style="font-weight: 600">Provide the service</span><div class="xs">Required to store records and respond. To stop, delete your account.</div></span><button class="sw on" role="switch" aria-checked="true" aria-label="Provide the service, required" disabled="{{ true }}"><i></i></button></div>
+      <div class="li"><span style="flex: 1"><span style="font-weight: 600">Help improve models</span><div class="xs">Optional. Off by default. Separate from providing the service.</div></span><button class="{{trainCls}}" role="switch" aria-checked="{{train}}" aria-label="Help improve models" onClick="{{toggleTrain}}"><i></i></button></div>
+    </div>
+    <sc-if value="{{train}}" hint-placeholder-val="{{ false }}"><div class="note" role="status">Thanks. De-identified records may be used to improve models. Turning this off stops future use; see the policy for data already used.</div></sc-if>
+    <div class="card" style="display: flex; flex-direction: column; gap: 10px">
+      <p class="lbl">Meal photos</p>
+      <div class="chips"><sc-for list="{{photoOpts}}" as="o" hint-placeholder-count="3"><button class="{{o.cls}}" aria-pressed="{{o.on}}" onClick="{{o.pick}}">{{o.label}}</button></sc-for></div>
+      <span class="xs">Photos are sent to a nutrition analysis service. Its name and terms are listed in the privacy policy.</span>
+    </div>
+    <div class="card row" style="justify-content: space-between"><span><span style="font-weight: 600">Share with my care team</span><div class="xs">Read-only summaries for a clinician</div></span><span class="tag t-plan">Planned</span></div>
+    <a class="btn btn-o" href="Website.dc.html">Privacy policy</a>
+    <button class="btn btn-o" onClick="{{go.export}}">Export your data</button>
+  </div>
+</sc-if>
+
+<!-- SET-09 Help -->
+<sc-if value="{{v.help}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <div class="note warn"><span><b>In an emergency</b>, call your local emergency number. Steady can’t contact anyone for you.</span></div>
+    <div class="grp">
+      <sc-for list="{{faq}}" as="q" hint-placeholder-count="4"><button class="nav" onClick="{{q.toggle}}" aria-expanded="{{q.open}}"><span class="nt">{{q.q}}<sc-if value="{{q.open}}" hint-placeholder-val="{{ false }}"><span class="nv" style="margin-top: 6px">{{q.a}}</span></sc-if></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="{{q.icon}}"></path></svg></button></sc-for>
+    </div>
+    <a class="btn btn-s" href="Website.dc.html">Contact support</a>
+    <button class="btn btn-o" onClick="{{reportSent}}">{{reportLabel}}</button>
+  </div>
+</sc-if>
+
+<!-- SET-10 Export -->
+<sc-if value="{{v.export}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <sc-if value="{{exp.form}}" hint-placeholder-val="{{ true }}">
+      <p class="lbl">Period</p>
+      <div class="chips"><sc-for list="{{expRange}}" as="o" hint-placeholder-count="3"><button class="{{o.cls}}" aria-pressed="{{o.on}}" onClick="{{o.pick}}">{{o.label}}</button></sc-for></div>
+      <p class="lbl">Format</p>
+      <div style="display: flex; flex-direction: column; gap: 8px"><sc-for list="{{expFmt}}" as="o" hint-placeholder-count="2"><button class="{{o.cls}}" role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}"><span class="rad"></span><span style="flex: 1">{{o.label}}<div class="xs">{{o.sub}}</div></span></button></sc-for></div>
+      <p class="lbl">Include</p>
+      <div class="chips"><sc-for list="{{expInc}}" as="o" hint-placeholder-count="6"><button class="{{o.cls}}" aria-pressed="{{o.on}}" onClick="{{o.pick}}">{{o.label}}</button></sc-for></div>
+      <div class="note">Exports include sources and labels (device, entered by you, estimate) so others can read them correctly.</div>
+      <button class="btn btn-p" onClick="{{startExport}}">Create export</button>
+    </sc-if>
+    <sc-if value="{{exp.running}}" hint-placeholder-val="{{ false }}">
+      <div class="card" style="display: flex; flex-direction: column; gap: 12px" role="status" aria-live="polite"><span style="font-weight: 650">Preparing your export…</span><div class="prog"><i style="width: {{expPct}}%"></i></div><span class="xs">You can leave this screen; we’ll notify you when it’s ready.</span></div>
+    </sc-if>
+    <sc-if value="{{exp.ready}}" hint-placeholder-val="{{ false }}">
+      <div class="card" style="display: flex; flex-direction: column; gap: 10px" role="status"><span style="font-weight: 650">Export ready</span><span class="small">steady-export-2026-11-10.pdf · 2.4 MB · last 90 days</span><span class="xs">Available for 7 days.</span></div>
+      <button class="btn btn-p" onClick="{{noop}}">Share or save</button>
+      <button class="btn btn-o" onClick="{{resetExport}}">Create another</button>
+    </sc-if>
+  </div>
+</sc-if>
+
+<!-- SET-11 Delete account -->
+<sc-if value="{{v.delete}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll">
+    <sc-if value="{{del.form}}" hint-placeholder-val="{{ true }}">
+      <h2 style="margin: 0; font-size: 1.5em; font-weight: 650">Delete your account?</h2>
+      <p style="margin: 0; line-height: 1.5">This permanently deletes your profile, journal, conversations, memories and meal photos.</p>
+      <div class="note warn">Deleting your account doesn’t cancel a subscription bought through the App Store or Google Play. Cancel it there first.</div>
+      <button class="btn btn-o" onClick="{{go.export}}">Export my data first</button>
+      <label class="lbl" for="dc">Type DELETE to confirm</label>
+      <input id="dc" class="inp" value="{{delText}}" onChange="{{onDel}}" autocapitalize="characters" autocomplete="off">
+      <button class="btn btn-d" disabled="{{delDisabled}}" onClick="{{doDelete}}">Delete account permanently</button>
+      <button class="btn btn-o" onClick="{{back}}">Keep my account</button>
+    </sc-if>
+    <sc-if value="{{del.running}}" hint-placeholder-val="{{ false }}"><div class="card row" role="status"><span class="spin" aria-hidden="true"></span><span>Deleting your account…</span></div></sc-if>
+    <sc-if value="{{del.done}}" hint-placeholder-val="{{ false }}">
+      <div class="card" style="display: flex; flex-direction: column; gap: 10px" role="status"><span style="font-weight: 650; font-size: 1.25em">Your account is deleted</span><span class="small">You’ve been signed out. Backups are cleared within the period in our privacy policy [policy placeholder, needs legal review]. A confirmation email is on its way.</span></div>
+      <a class="btn btn-p" href="Onboarding.dc.html">Close</a>
+    </sc-if>
+  </div>
+</sc-if>
+
+<sc-if value="{{isHub}}" hint-placeholder-val="{{ true }}">
+<nav class="tabbar" aria-label="Main">
+  <a class="tab" href="Companion.dc.html"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="#8A847A"></circle></svg>Companion</a>
+  <a class="tab" href="Overview.dc.html"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-6 4 3 6-8 3 4"></path></svg>Overview</a>
+  <a class="tab" href="Journal.dc.html"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16H6z"></path><path d="M9 9h6M9 13h6"></path></svg>Journal</a>
+  <a class="tab on" href="Settings.dc.html" aria-current="page"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg>Profile</a>
+</nav>
+</sc-if>
+
+<sc-if value="{{signOutDlg}}" hint-placeholder-val="{{ false }}">
+  <div class="dlg"><div class="dlgc" role="alertdialog" aria-modal="true" aria-labelledby="sot"><span id="sot" style="font-size: 1.25em; font-weight: 650">Sign out?</span><span class="small" style="font-size: 1em">1 entry hasn’t synced yet. If you sign out now it stays on this phone until you sign in again.</span><a class="btn btn-p" href="Onboarding.dc.html">Sign out</a><button class="btn btn-o" onClick="{{cancelSignOut}}">Cancel</button></div></div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["day","night"],"default":"day","section":"Appearance"},"textSize":{"editor":"enum","options":["100%","130%","160%"],"default":"100%","section":"Accessibility"},"reducedMotion":{"editor":"boolean","default":false,"section":"Accessibility"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  later(ms, fn) { this._tms = this._tms || []; this._tms.push(setTimeout(fn, ms)); }
+  componentWillUnmount() { (this._tms || []).forEach((x) => clearTimeout(x)); }
+  renderVals() {
+    const s = this.state || {};
+    const p = this.props || {};
+    const v = (k, d) => (s[k] === undefined ? d : s[k]);
+    const set = (o) => this.setState(o);
+    const ts = v('ts', p.textSize || '100%');
+    const fs = ({ '100%': 16, '115%': 18, '130%': 20, '160%': 24 })[ts] || 16;
+    const view = v('view', 'hub');
+    const stack = v('stack', []);
+    const go = (to) => () => set({ view: to, stack: stack.concat([view]) });
+    const back = () => { const st = stack.slice(); const pv = st.pop() || 'hub'; set({ view: pv, stack: st }); };
+    const TITLES = { profile: 'Diabetes profile', treatment: 'Treatment settings', devices: 'Devices', device: 'Guardian 4', companion: 'Companion', language: 'Language', a11y: 'Accessibility', notif: 'Notifications', privacy: 'Privacy and data', help: 'Help and support', export: 'Export your data', delete: 'Delete account' };
+    const views = {}; ['hub'].concat(Object.keys(TITLES)).forEach((k) => (views[k] = view === k));
+    const tog = (k, d) => () => set({ [k]: !v(k, d) });
+    const swc = (on) => 'sw' + (on ? ' on' : '');
+    const chips = (k, d, list) => list.map((x) => ({ label: x[1], on: v(k, d) === x[0], cls: 'chip' + (v(k, d) === x[0] ? ' on' : ''), pick: () => set({ [k]: x[0] }) }));
+    const opts = (k, d, list) => list.map((x) => ({ label: x[1], sub: x[2] || '', on: v(k, d) === x[0], cls: 'opt' + (v(k, d) === x[0] ? ' on' : ''), pick: () => set({ [k]: x[0] }) }));
+
+    // Devices
+    const DS = {
+      none: ['Not connected', 'tag t-st', 'var(--ter)', 'Readings are entered by you. Connecting would add sensor data automatically.', '', [['Connect Guardian 4', 'btn btn-p', 'explain']]],
+      explain: ['Connect Guardian 4', 'tag t-st', 'var(--ter)', 'You’ll sign in to the manufacturer’s account in a secure browser window.', '', [['Continue to sign in', 'btn btn-p', 'connecting'], ['Not now', 'btn btn-o', 'none']]],
+      connecting: ['Connecting…', 'tag t-st', '', 'Waiting for the manufacturer’s service. This can take a minute.', '', [['Cancel', 'btn btn-o', 'none']]],
+      connected: ['Connected', 'tag t-ok', 'var(--ac)', 'Readings are arriving. Data can still be delayed by your phone or the service.', 'Last reading 13:01 · received 13:03 · 2 min ago', [['Sync now', 'btn btn-s', 'connected'], ['Disconnect', 'btn btn-o', 'disc']]],
+      stale: ['Connected, data delayed', 'tag t-warn', '#C77A2A', 'No new readings for 47 minutes. Check that your phone and sensor are near each other and the manufacturer app is running.', 'Last reading 12:18 · received 12:20', [['Check again', 'btn btn-s', 'connected'], ['Troubleshooting', 'btn btn-o', 'stale']]],
+      expired: ['Permission expired', 'tag t-warn', '#C77A2A', 'Access to your account ended, so no new readings will arrive. Older readings stay in your journal.', 'Last reading 8 Nov 22:40', [['Renew access', 'btn btn-p', 'connecting']]],
+      reconnect: ['Reconnection needed', 'tag t-warn', '#C77A2A', 'The service asked you to sign in again.', 'Last reading 9 Nov 06:10', [['Reconnect', 'btn btn-p', 'connecting']]],
+      down: ['Service unavailable', 'tag t-warn', '#C77A2A', 'The manufacturer’s service isn’t responding. We’ll keep trying; you can log readings manually meanwhile.', 'Last reading 12:55 · last attempt 13:04', [['Log a reading', 'btn btn-s', 'down']]],
+      unsupported: ['Not supported yet', 'tag t-st', 'var(--ter)', 'This device can’t be connected. You can still record what you use and log readings yourself.', '', [['Tell me when it’s supported', 'btn btn-s', 'unsupported']]],
+      disc: ['Disconnect Guardian 4?', 'tag t-st', 'var(--ter)', 'New readings will stop arriving.', '', []],
+      disconnected: ['Disconnected', 'tag t-st', 'var(--ter)', 'Imported readings were kept and are labelled with their source.', '', [['Connect again', 'btn btn-p', 'explain']]]
+    };
+    const ds = v('dev', 'none');
+    const D = DS[ds];
+    const devStateList = [['none', 'Not connected'], ['connecting', 'Connecting'], ['connected', 'Connected'], ['stale', 'Delayed'], ['expired', 'Permission expired'], ['reconnect', 'Reconnect'], ['down', 'Service down'], ['unsupported', 'Unsupported'], ['disc', 'Disconnecting']];
+    const goDev = (to) => () => { set({ dev: to }); if (to === 'connecting') this.later(1800, () => { if ((this.state || {}).dev === 'connecting') this.setState({ dev: 'connected' }); }); };
+
+    // ICR
+    const icr = v('icr', [['06:00–11:00', '10'], ['11:00–17:00', '12'], ['17:00–06:00', '12']]);
+    const icrEditing = v('icrEdit', false);
+
+    // Language
+    const L = [['en', 'English', 'LTR', 'Good afternoon, Dana'], ['he', 'עברית', 'RTL', 'צהריים טובים, דנה'], ['ar', 'العربية', 'RTL', 'مساء الخير يا دانة'], ['ru', 'Русский', 'LTR', 'Добрый день, Дана']];
+    const appLang = v('appLang', 'en');
+    const convLang = v('convLang', 'en');
+    const curL = L.find((x) => x[0] === appLang);
+
+    // Export
+    const exp = v('exp', 'form');
+    const inc = v('inc', ['g', 'm', 'i', 'a', 'n']);
+    const startExport = () => { set({ exp: 'running', expPct: 10 }); this.later(500, () => this.setState({ expPct: 45 })); this.later(1100, () => this.setState({ expPct: 80 })); this.later(1600, () => this.setState({ exp: 'ready' })); };
+
+    // Delete
+    const del = v('del', 'form');
+    const faqOpen = v('faq', -1);
+    const FAQ = [['Is Steady a medical device?', 'No. Steady is an AI companion for logging and reflection. It doesn’t diagnose, prescribe or recommend doses.'], ['Why didn’t I get a notification?', 'Phones can delay or block notifications, for example in low-power or focus modes. Check system Settings → Notifications.'], ['How accurate are carb estimates from photos?', 'They’re estimates. Confirming amounts or weighing food brings them closer, but they’re never exact.'], ['Can I use Steady without a sensor?', 'Yes. Everything works with readings you enter yourself.']];
+    const perm = v('perm', true);
+    return {
+      fs: fs, rmCls: v('rmOn', !!p.reducedMotion) ? 'rm' : '',
+      v: views, isHub: view === 'hub', isSub: view !== 'hub', title: TITLES[view] || '', back: back,
+      go: { profile: go('profile'), treatment: go('treatment'), devices: go('devices'), device: go('device'), companion: go('companion'), language: go('language'), a11y: go('a11y'), notif: go('notif'), privacy: go('privacy'), help: go('help'), export: go('export'), delete: go('delete') },
+      devSummary: 'Guardian 4 · ' + (DS[ds] ? DS[ds][0].toLowerCase() : '') + ' · planned', langSummary: 'App: ' + curL[1] + ' · Conversation: ' + L.find((x) => x[0] === convLang)[1],
+      textLabel: ts, motionLabel: v('rmOn', !!p.reducedMotion) ? 'reduced' : 'standard', notifSummary: perm ? 'Allowed · quiet 22:30–07:00' : 'Off in system settings',
+      profileRows: [['Diabetes type', 'Type 1', 'Confirmed by you · 7 Nov'], ['Date of birth', '14 Mar 1968', 'Entered by you'], ['Diagnosed', '10–20 years ago', 'Approximate'], ['Glucose units', 'mg/dL', ''], ['Height', '168 cm', 'Measured: within 3 months'], ['Weight', '71 kg', 'Measured: today, 7 Nov'], ['Severe lows in past year', 'Prefer not to say', ''], ['Notice lows coming on', 'Sometimes', '']].map((r) => ({ k: r[0], v: r[1], src: r[2] })),
+      confirmLabel: v('confirmed', false) ? 'Confirmed current today' : 'Still current', confirmCurrent: () => set({ confirmed: true }),
+      editIcrLabel: icrEditing ? 'Cancel editing' : 'Edit ratios', toggleEditIcr: tog('icrEdit', false), icrEditing: icrEditing,
+      icr: icr.map((r, i) => ({ range: r[0], g: r[1], view: !icrEditing, edit: icrEditing, aria: 'Grams per unit, ' + r[0], onG: (e) => { const a = icr.map((x) => x.slice()); a[i][1] = e.target.value; set({ icr: a }); } })),
+      saveIcr: () => set({ icrEdit: false, confirmed: true }), noop: () => {},
+      dev: { label: D[0], short: D[0].split(',')[0], tagCls: D[1], dot: D[2] || 'var(--ter)', dotShow: ds !== 'connecting', spinning: ds === 'connecting', desc: D[3], fresh: D[4], hasFresh: !!D[4], explain: ds === 'explain', discChoice: ds === 'disc', actions: D[5].map((a) => ({ label: a[0], cls: a[1], go: goDev(a[2]) })) },
+      devStates: devStateList.map((x) => ({ label: x[1], on: ds === x[0], cls: 'chip' + (ds === x[0] ? ' on' : ''), pick: goDev(x[0]) })),
+      discOpts: opts('discKeep', 'keep', [['keep', 'Keep imported readings', 'They stay labelled “Guardian 4 · imported”.'], ['remove', 'Remove imported readings', 'Readings you entered yourself are not affected.']]),
+      confirmDisc: () => set({ dev: 'disconnected' }), cancelDisc: () => set({ dev: 'connected' }),
+      avs: [['a1', 'Sage', 'var(--soft)'], ['a2', 'Linen', 'var(--xF2DDC8)'], ['a3', 'Harbor', 'var(--xD9E0EE)'], ['a4', 'Ember', 'var(--xF3D9CF)'], ['a5', 'Orb only', 'var(--ac)']].map((a) => ({ label: a[1], bg: a[2], on: v('av', 'a5') === a[0], cls: 'av' + (v('av', 'a5') === a[0] ? ' on' : ''), pick: () => set({ av: a[0], compSaved: false }) })),
+      cname: v('cname', 'Noa'), onCname: (e) => set({ cname: e.target.value, compSaved: false }),
+      voices: chips('voice', 'a', [['a', 'Voice A'], ['b', 'Voice B'], ['c', 'Voice C']]), styles: chips('style', 'w', [['c', 'Concise'], ['w', 'Warm'], ['e', 'Explanatory']]),
+      saveComp: () => set({ compSaved: true }), compSaved: v('compSaved', false),
+      appLangs: L.map((l) => ({ code: l[0], name: l[1], dir: l[2], on: appLang === l[0], cls: 'opt' + (appLang === l[0] ? ' on' : ''), pick: () => set({ appLang: l[0] }) })),
+      convLangs: L.map((l) => ({ code: l[0], name: l[1], on: convLang === l[0], cls: 'chip' + (convLang === l[0] ? ' on' : ''), pick: () => set({ convLang: l[0] }) })),
+      appLang: appLang, prevDir: curL[2].toLowerCase(), prevDirUpper: curL[2], prevText: curL[3],
+      sizes: [['100%', 'Default'], ['115%', 'Large'], ['130%', 'Larger'], ['160%', 'Largest']].map((z) => ({ label: z[1], on: ts === z[0], cls: 'chip' + (ts === z[0] ? ' on' : ''), pick: () => set({ ts: z[0] }) })),
+      toggles: [['rmOn', 'Reduce motion', 'Replaces movement with fades and static states', !!p.reducedMotion], ['capOn', 'Always show captions', 'Shows what the companion says while it speaks', true], ['hapOn', 'Haptic feedback', 'A light tap when a save completes', true], ['hcOn', 'Increase contrast', 'Stronger borders and darker secondary text', false], ['spkOn', 'Read numbers digit by digit', 'For example “one two four” instead of “a hundred twenty-four”', false]].map((g) => ({ label: g[1], sub: g[2], on: v(g[0], g[3]), cls: swc(v(g[0], g[3])), toggle: tog(g[0], g[3]) })),
+      speeds: chips('spd', 'n', [['s', 'Slower'], ['n', 'Normal'], ['f', 'Faster']]),
+      permText: perm ? 'Allowed' : 'Off. Turn on in system Settings to get reminders.', permBtn: perm ? 'Open system Settings' : 'Simulate: allowed', togglePerm: () => set({ perm: !perm }), permOff: !perm,
+      notifToggles: [['n1', 'Check-ins', 'Short questions at times you chose', true], ['n2', 'Reminders you set', 'Exactly when you asked', true], ['n3', 'Daily and weekly summaries', 'Evening, if there’s something new', true], ['n4', 'Device status', 'For example, data delayed (planned)', false], ['n5', 'Hide details on lock screen', 'Shows “New message from Noa” only', true]].map((g) => ({ label: g[1], sub: g[2], on: perm && v(g[0], g[3]), cls: swc(perm && v(g[0], g[3])), toggle: tog(g[0], g[3]) })),
+      train: v('train', false), trainCls: swc(v('train', false)), toggleTrain: tog('train', false),
+      photoOpts: chips('photo', '90', [['0', 'Delete after analysis'], ['90', 'Keep 90 days'], ['all', 'Keep until I delete']]),
+      faq: FAQ.map((q, i) => ({ q: q[0], a: q[1], open: faqOpen === i, icon: faqOpen === i ? 'M6 15l6-6 6 6' : 'M6 9l6 6 6-6', toggle: () => set({ faq: faqOpen === i ? -1 : i }) })),
+      reportLabel: v('rep', false) ? 'Thanks. Report sent with app logs (no health data).' : 'Report a problem', reportSent: () => set({ rep: true }),
+      exp: { form: exp === 'form', running: exp === 'running', ready: exp === 'ready' }, expPct: String(v('expPct', 10)),
+      expRange: chips('er', '90', [['30', 'Last 30 days'], ['90', 'Last 90 days'], ['all', 'Everything']]),
+      expFmt: opts('ef', 'pdf', [['pdf', 'PDF summary', 'Readable report for you or your care team'], ['csv', 'CSV files', 'Raw data for spreadsheets or other apps']]),
+      expInc: [['g', 'Glucose'], ['m', 'Meals'], ['i', 'Insulin records'], ['a', 'Activity'], ['n', 'Notes'], ['c', 'Conversations']].map((x) => ({ label: x[1], on: inc.indexOf(x[0]) >= 0, cls: 'chip' + (inc.indexOf(x[0]) >= 0 ? ' on' : ''), pick: () => set({ inc: inc.indexOf(x[0]) >= 0 ? inc.filter((y) => y !== x[0]) : inc.concat([x[0]]) }) })),
+      startExport: startExport, resetExport: () => set({ exp: 'form' }),
+      del: { form: del === 'form', running: del === 'running', done: del === 'done' }, delText: v('delText', ''), onDel: (e) => set({ delText: e.target.value }), delDisabled: v('delText', '').trim().toUpperCase() !== 'DELETE',
+      doDelete: () => { if (v('delText', '').trim().toUpperCase() !== 'DELETE') return; set({ del: 'running' }); this.later(1500, () => this.setState({ del: 'done' })); },
+      signOutDlg: v('so', false), askSignOut: () => set({ so: true }), cancelSignOut: () => set({ so: false })
+    };
+  }
+}
+
+;(function(){var rv=Component.prototype.renderVals;Component.prototype.renderVals=function(){var v=rv.call(this)||{};var s=this.state&&this.state.themeOverride;var p=(this.props&&this.props.theme)||'day';v.theme=s||p;var n=v.theme==='night';var self=this;v.setThemeDay=function(){self.setState({themeOverride:'day'})};v.setThemeNight=function(){self.setState({themeOverride:'night'})};v.thDayCls='chip'+(n?'':' on');v.thNightCls='chip'+(n?' on':'');return v;};})();
+</script>
+</body>
+</html>

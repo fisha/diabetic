@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Companion home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Rubik:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:var(--fill)}
+a{color:var(--act)}a:hover{color:var(--acd)}
+.ph{position:relative;width:390px;height:844px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:-apple-system,'SF Pro Text','Inter','Rubik','IBM Plex Sans Arabic',system-ui,sans-serif;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:1.4}
+.ph *{box-sizing:border-box}
+.ph:lang(ar){font-family:'IBM Plex Sans Arabic',-apple-system,'SF Pro Text','Inter',system-ui,sans-serif}
+.ph:lang(he){font-family:'Rubik',-apple-system,'SF Pro Text','Inter',system-ui,sans-serif}
+.hdr{display:flex;align-items:center;gap:10px;padding:54px 14px 6px}
+.ib{width:48px;height:48px;border-radius:24px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;color:var(--ink);cursor:pointer;flex:none}
+.ib:active{background:var(--fill)}
+.ib.tint{background:var(--card);box-shadow:0 1px 2px rgba(0,0,0,0)}
+.ph button:focus-visible,.ph a:focus-visible,.ph input:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.mini{width:36px;height:36px;border-radius:18px;background:var(--ac);flex:none;box-shadow:inset -3px -4px 8px rgba(0,0,0,.15)}
+.nm{font-weight:650;font-size:1.0625em}
+.sub{font-size:.8125em;color:var(--sec)}
+.micpill{display:inline-flex;align-items:center;gap:6px;background:var(--inv);color:var(--onac);border-radius:999px;padding:4px 10px;font-size:.75em;font-weight:600}
+.micpill i{width:8px;height:8px;border-radius:4px;background:#FF6B4A;display:block;animation:blink 1.2s ease-in-out infinite}
+.ctx{margin:4px 16px 0;background:var(--card);border-radius:20px;padding:12px 14px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 16px rgba(0,0,0,0);border:0;font:inherit;color:inherit;text-align:start;cursor:pointer;width:calc(100% - 32px);text-decoration:none}
+.gv{font-size:1.625em;font-weight:700;letter-spacing:-.01em}
+.gu{font-size:.8125em;font-weight:600;color:var(--ink2)}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:.75em;font-weight:700;padding:3px 8px;border-radius:8px}
+.t-in{background:var(--xE3ECF5);color:var(--x234E74)}
+.t-hi{background:var(--xEFE6F6);color:var(--x5A2F84)}
+.t-lo{background:var(--xFBE7DE);color:var(--x9A340C)}
+.t-demo{background:var(--xF3E8D5);color:var(--x6B4A12)}
+.t-stale{background:var(--fill);color:var(--ink2)}
+.main{flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;padding:8px 18px 4px;min-height:0}
+.orbbtn{position:relative;width:236px;height:236px;border:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:50%;flex:none;margin-top:6px}
+.orb{width:144px;height:144px;border-radius:50%;background:radial-gradient(circle at 36% 30%,var(--soft2) 0%,var(--ac) 46%,var(--acd) 100%);box-shadow:0 22px 44px rgba(30,111,104,.26),inset 0 -10px 24px rgba(0,0,0,.14);transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .3s;position:relative;z-index:2}
+.ring{position:absolute;inset:32px;border-radius:50%;border:2px solid rgba(30,111,104,.22);z-index:1}
+.s-idle .orb{animation:breathe 6s ease-in-out infinite}
+.s-listen .orb{transform:scale(1.07)}
+.s-listen .ring{animation:pulse 1.6s cubic-bezier(.2,.8,.2,1) infinite}
+.s-listen .ring.r2{animation-delay:.8s}
+.s-proc .orb{transform:scale(.96)}
+.s-proc .arc{position:absolute;inset:36px;border-radius:50%;border:3px solid transparent;border-top-color:var(--ac);border-right-color:var(--ac);animation:spin 1.1s linear infinite;z-index:1}
+.s-speak .orb{animation:talk .9s ease-in-out infinite}
+.s-speak .ring{animation:ripple 2.2s ease-out infinite}
+.s-speak .ring.r2{animation-delay:1.1s}
+.s-int .orb{transform:scale(.94)}
+.s-muted .orb,.s-unav .orb{filter:grayscale(1) brightness(1.15)}
+.s-recon .orb{filter:saturate(.4)}
+.s-recon .ring{border:2px dashed var(--ter);animation:spin 6s linear infinite}
+.badge{position:absolute;z-index:3;bottom:46px;inset-inline-end:46px;width:44px;height:44px;border-radius:22px;background:var(--card);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15);color:var(--ink)}
+.slbl{font-size:1.375em;font-weight:650;margin:2px 0 0;text-align:center}
+.sdesc{font-size:.9375em;color:var(--ink2);margin:4px 0 0;text-align:center;max-width:300px}
+.cap{margin-top:12px;width:100%;background:var(--fill);border-radius:18px;padding:12px 14px;font-size:1em;line-height:1.45;min-height:48px}
+.cap .who{font-size:.75em;font-weight:700;color:var(--sec);text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.qa{display:flex;gap:8px;overflow-x:auto;padding:8px 16px 4px;scrollbar-width:none;flex:none}
+.chip{min-height:48px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-size:.9375em;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:7px;cursor:pointer;white-space:nowrap;flex:none;text-decoration:none}
+.chip.on{border-color:var(--ac);background:var(--soft);color:var(--act)}
+.ctrl{display:flex;align-items:center;justify-content:space-around;padding:8px 22px 6px;flex:none}
+.cb{display:flex;flex-direction:column;align-items:center;gap:4px;border:0;background:transparent;font:inherit;font-size:.75em;font-weight:600;color:var(--ink2);cursor:pointer;min-width:64px}
+.cb .c{width:56px;height:56px;border-radius:28px;background:var(--card);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 12px rgba(0,0,0,0)}
+.cb.on .c{background:var(--inv);color:var(--onac)}
+.cb.big .c{width:72px;height:72px;border-radius:36px;background:var(--ac);color:var(--onac)}
+.cb.stop .c{background:var(--inv);color:var(--onac)}
+.tabbar{display:flex;border-top:1px solid var(--hair);background:var(--card);padding:4px 8px 30px;flex:none}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:52px;justify-content:center;font-size:.75em;font-weight:600;color:var(--sec);text-decoration:none}
+.tab.on{color:var(--act)}
+.tab:hover{color:var(--act)}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+[dir=rtl] .flip{transform:scaleX(-1)}
+.num{unicode-bidi:isolate;direction:ltr;font-variant-numeric:tabular-nums;display:inline-block}
+.chat{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:12px 16px;min-height:0}
+.msg{max-width:84%;padding:11px 14px;border-radius:20px;font-size:1em;line-height:1.45}
+.msg.c{background:var(--card);align-self:flex-start;border-end-start-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,0)}
+.msg.u{background:var(--ac);color:var(--onac);align-self:flex-end;border-end-end-radius:6px}
+.msg .via{display:block;font-size:.75em;opacity:.8;margin-top:4px}
+.rec{align-self:stretch;display:flex;align-items:center;gap:10px;background:var(--soft);border:1px solid var(--soft);border-radius:16px;padding:10px 12px;font-size:.9375em}
+.comp{display:flex;align-items:center;gap:8px;padding:8px 12px 8px;border-top:1px solid var(--hair);background:var(--bg);flex:none}
+.cin{flex:1;min-height:52px;border-radius:26px;border:1.5px solid var(--line);background:var(--card);padding:0 18px;font:inherit;font-size:1em;color:var(--ink)}
+.banner{margin:6px 16px 0;display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:16px;font-size:.875em;line-height:1.4;background:var(--fill);color:var(--ink2)}
+.banner.info{background:var(--soft);color:var(--act)}
+.scrim{position:absolute;inset:0;background:rgba(20,26,24,.36);display:flex;align-items:flex-end;z-index:20;animation:fade .2s ease-out}
+.sheet{width:100%;background:var(--bg);border-radius:28px 28px 0 0;padding:8px 20px 34px;max-height:90%;overflow-y:auto;animation:up .34s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;gap:14px}
+.grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto}
+.shd{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sh2{font-size:1.25em;font-weight:650;margin:0}
+.lbl{font-size:.9375em;font-weight:600;color:var(--ink2);margin:0}
+.small{font-size:.875em;color:var(--sec);line-height:1.45}
+.big{display:flex;align-items:center;gap:10px;background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:6px 8px 6px 18px}
+[dir=rtl] .big{padding:6px 18px 6px 8px}
+.big input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:2.25em;font-weight:700;color:var(--ink);padding:6px 0;outline:none}
+.big.bad{border-color:var(--xB03A0F)}
+.seg{display:flex;background:var(--fill);border-radius:14px;padding:3px;gap:3px}
+.seg button{min-height:44px;padding:0 12px;border:0;border-radius:11px;background:transparent;font:inherit;font-size:.875em;font-weight:600;color:var(--ink2);cursor:pointer}
+.seg button.on{background:var(--card);color:var(--act);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.inp{min-height:52px;border-radius:16px;border:1.5px solid var(--line);background:var(--card);padding:0 14px;font:inherit;font-size:1.0625em;width:100%;color:var(--ink)}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 20px;border-radius:18px;border:0;font:inherit;font-size:1.0625em;font-weight:600;cursor:pointer;text-decoration:none;width:100%;transition:transform .12s cubic-bezier(.2,.8,.2,1)}
+.btn:active{transform:scale(.97)}
+.btn-p{background:var(--ac);color:var(--onac)}.btn-p:hover{color:var(--onac)}
+.btn-p.busy{background:#5F9C96;cursor:progress}
+.btn-s{background:var(--soft);color:var(--act)}
+.btn-g{background:transparent;color:var(--act);min-height:48px}
+.btn-o{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+.row{display:flex;align-items:center;gap:10px}
+.err{display:flex;gap:8px;align-items:flex-start;color:var(--x9A2E0C);font-size:.9375em;font-weight:500}
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--fill);border-radius:16px;padding:12px 14px;font-size:.9375em;line-height:1.45;color:var(--ink2)}
+.warn{background:var(--xFBEFE9);border:1.5px solid #E8B9A6}
+.heard{background:var(--card);border-radius:16px;padding:12px 14px;border:1px dashed var(--ter);font-size:.9375em}
+.ok{display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px 0;text-align:center}
+.okc{width:64px;height:64px;border-radius:32px;background:var(--soft);color:var(--ac);display:flex;align-items:center;justify-content:center;animation:pop .36s cubic-bezier(.2,.8,.2,1)}
+.spin{width:20px;height:20px;border-radius:10px;border:2.5px solid rgba(255,255,255,.4);border-top-color:var(--card);animation:spin .8s linear infinite}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:96px;border-radius:20px;border:0;background:var(--card);font:inherit;font-size:.9375em;font-weight:600;color:var(--ink);cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,0),0 4px 12px rgba(0,0,0,0);text-decoration:none;text-align:center;padding:8px}
+.tile .ti{width:44px;height:44px;border-radius:14px;background:var(--soft);color:var(--act);display:flex;align-items:center;justify-content:center}
+.hrow{display:flex;align-items:center;gap:12px;width:100%;min-height:64px;padding:10px 4px;border:0;border-bottom:1px solid var(--fill);background:transparent;font:inherit;text-align:start;cursor:pointer;color:var(--ink)}
+.step{display:flex;align-items:center;gap:8px}
+.stepb{width:48px;height:48px;border-radius:16px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-size:1.375em;font-weight:600;color:var(--ink);cursor:pointer}
+.discard{display:flex;flex-direction:column;gap:8px;background:var(--card);border-radius:18px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+@keyframes pulse{0%{transform:scale(.85);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+@keyframes ripple{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.25);opacity:0}}
+@keyframes talk{0%,100%{transform:scale(1.0)}50%{transform:scale(1.045)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+.rm *{animation:none !important;transition:none !important}
+@media (prefers-reduced-motion: reduce){.ph *{animation:none !important;transition:none !important}}
+
+/* theme B */
+:root{--fill:#E6E6EB;--hair:#E5E5EA;--line:#D1D1D6;--ink:#1D1D1F;--ink2:#3A3A3C;--sec:#6E6E73;--ter:#8E8E93;--inv:#1D1D1F;--onac:#FFFFFF;--ac:#0B7A75;--act:#0A6560;--acd:#085E5A;--soft:#E4F2F1;--soft2:#BFE3DF;--bar:rgba(255,255,255,.88);--bg:#FFFFFF;--card:#F5F5F7;--xE3ECF5:#E3ECF5;--x234E74:#234E74;--xEFE6F6:#EFE6F6;--x5A2F84:#5A2F84;--xFBE7DE:#FBE7DE;--x9A340C:#9A340C;--xF3E8D5:#F3E8D5;--x6B4A12:#6B4A12;--xB03A0F:#B03A0F;--x9A2E0C:#9A2E0C;--xFBEFE9:#FBEFE9;--xFBE9E4:#FBE9E4;--x8A2A12:#8A2A12}:root:has([data-theme="night"]),[data-theme="night"]{--fill:#2C2C2E;--hair:#38383A;--line:#48484A;--ink:#F5F5F7;--ink2:#D1D1D6;--sec:#A1A1A6;--ter:#7C7C80;--inv:#3A3A3C;--onac:#FFFFFF;--ac:#14958D;--act:#6FD6CD;--acd:#0E7C75;--soft:#10302E;--soft2:#1D5753;--bar:rgba(22,22,24,.88);--bg:#000000;--card:#1C1C1E;--xE3ECF5:#25323F;--x234E74:#9DBEDB;--xEFE6F6:#32243D;--x5A2F84:#B596D2;--xFBE7DE:#472A1C;--x9A340C:#E5A48A;--xF3E8D5:#4B3E28;--x6B4A12:#E7CC9F;--xB03A0F:#E39A7F;--x9A2E0C:#E5A08A;--xFBEFE9:#3E271C;--xFBE9E4:#42241C;--x8A2A12:#E6A08F;color-scheme:dark}[data-theme="night"] .sheet,[data-theme="night"] .dlgc{--bg:#1C1C1E;--card:#2C2C2E;--fill:#3A3A3C;--hair:#48484A}[fill="#1E6F68"]{fill:var(--ac)}.sw i{background:#fff!important}.tabbar{background:var(--bar);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+</style>
+</helmet>
+<div data-theme="{{theme}}" class="ph {{rmCls}}" dir="{{dir}}" lang="{{lang}}" style="font-size: {{fs}}px">
+
+  <!-- COM-01 header -->
+  <div class="hdr">
+    <span class="mini" aria-hidden="true"></span>
+    <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+      <span class="nm">Noa</span>
+      <sc-if value="{{micLive}}" hint-placeholder-val="{{ false }}"><span class="micpill" role="status"><i aria-hidden="true"></i>{{t.mic_on}}</span></sc-if>
+      <sc-if value="{{micIdle}}" hint-placeholder-val="{{ true }}"><span class="sub">{{t.ai_label}}</span></sc-if>
+    </div>
+    <button class="ib tint" aria-label="{{t.history}}" onClick="{{openHistory}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5M12 7v5l3 2"></path></svg></button>
+    <button class="ib tint" aria-label="{{modeToggleLabel}}" onClick="{{toggleMode}}">
+      <sc-if value="{{isVoice}}" hint-placeholder-val="{{ true }}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"></path></svg></sc-if>
+      <sc-if value="{{isText}}" hint-placeholder-val="{{ false }}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></sc-if>
+    </button>
+  </div>
+
+  <sc-if value="{{fromNotif}}" hint-placeholder-val="{{ false }}"><div class="banner info" role="status"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"></path></svg><span>{{t.notif_from}}</span></div></sc-if>
+  <sc-if value="{{offline}}" hint-placeholder-val="{{ false }}"><div class="banner" role="status"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><path d="M2 8.8a15 15 0 0 1 4.2-2.6M10.7 5.1A15 15 0 0 1 22 8.8M5 12.6a10 10 0 0 1 5.2-2.6M16.8 10.7a10 10 0 0 1 2.2 1.9M8.5 16.4a5 5 0 0 1 7 0M12 20h.01M3 3l18 18"></path></svg><span>{{t.offline}}</span></div></sc-if>
+  <sc-if value="{{resumed}}" hint-placeholder-val="{{ false }}"><div class="banner info" role="status"><span>{{resumedLabel}}</span></div></sc-if>
+
+  <!-- Context: latest reading with freshness and source -->
+  <a class="ctx" href="Overview.dc.html" aria-label="{{ctxAria}}">
+    <div style="display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0">
+      <span class="sub">{{ctxTitle}}</span>
+      <div class="row" style="gap: 8px; flex-wrap: wrap">
+        <span class="gv num">{{ctx.val}}</span><span class="gu num">{{unitLabel}}</span>
+        <span class="{{ctx.tagCls}}"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="{{ctx.tagPath}}" fill="currentColor"></path></svg>{{ctx.tag}}</span>
+      </div>
+      <span class="sub">{{ctx.meta}}</span>
+    </div>
+    <sc-if value="{{ctx.isDemo}}" hint-placeholder-val="{{ true }}"><span class="tag t-demo">{{t.demo}}</span></sc-if>
+    <svg class="ic flip" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg>
+  </a>
+  <sc-if value="{{stale}}" hint-placeholder-val="{{ false }}"><div class="banner" role="status"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><span>{{t.stale_b}}</span></div></sc-if>
+
+  <!-- COM-01 Voice mode -->
+  <sc-if value="{{isVoice}}" hint-placeholder-val="{{ true }}">
+    <div class="main">
+      <button class="orbbtn {{orbCls}}" aria-label="{{orbAria}}" onClick="{{orbTap}}">
+        <span class="ring" aria-hidden="true"></span><span class="ring r2" aria-hidden="true"></span><span class="arc" aria-hidden="true"></span>
+        <span class="orb" aria-hidden="true"></span>
+        <sc-if value="{{showBadgeMute}}" hint-placeholder-val="{{ false }}"><span class="badge" aria-hidden="true"><svg class="ic" width="22" height="22" viewBox="0 0 24 24"><path d="M9 9v2a3 3 0 0 0 5 2.2M15 9.3V6a3 3 0 0 0-5.7-1.3M5 11a7 7 0 0 0 11.5 5.3M19 11a7 7 0 0 1-.4 2.3M12 18v3M3 3l18 18"></path></svg></span></sc-if>
+        <sc-if value="{{showBadgeOff}}" hint-placeholder-val="{{ false }}"><span class="badge" aria-hidden="true"><svg class="ic" width="22" height="22" viewBox="0 0 24 24"><path d="M2 8.8a15 15 0 0 1 4.2-2.6M10.7 5.1A15 15 0 0 1 22 8.8M8.5 16.4a5 5 0 0 1 7 0M12 20h.01M3 3l18 18"></path></svg></span></sc-if>
+      </button>
+      <p class="slbl" aria-live="polite">{{stateLabel}}</p>
+      <p class="sdesc">{{stateDesc}}</p>
+      <sc-if value="{{showCap}}" hint-placeholder-val="{{ true }}">
+        <div class="cap" aria-live="polite"><span class="who">{{capWho}}</span><span>{{capText}}</span></div>
+      </sc-if>
+      <sc-if value="{{notifAnswers}}" hint-placeholder-val="{{ false }}">
+        <div class="chips" style="margin-top: 10px; justify-content: center">
+          <button class="chip on" onClick="{{ansYes}}">{{t.ans_yes}}</button>
+          <button class="chip" onClick="{{ansNot}}">{{t.ans_not}}</button>
+          <button class="chip" onClick="{{ansSnooze}}">{{t.ans_snooze}}</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{unavail}}" hint-placeholder-val="{{ false }}"><button class="btn btn-s" style="margin-top: 12px" onClick="{{toText}}">{{t.cont_text}}</button></sc-if>
+    </div>
+  </sc-if>
+
+  <!-- COM-02 Text mode (same history) -->
+  <sc-if value="{{isText}}" hint-placeholder-val="{{ false }}">
+    <div class="chat" aria-live="polite">
+      <sc-for list="{{msgs}}" as="m" hint-placeholder-count="4">
+        <sc-if value="{{m.isRec}}" hint-placeholder-val="{{ false }}"><div class="rec"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ac); flex: none"><path d="M5 12l5 5 9-10"></path></svg><span style="flex: 1">{{m.text}}</span><span class="tag t-in" style="background: var(--card); color: var(--act)">{{m.badge}}</span></div></sc-if>
+        <sc-if value="{{m.isMsg}}" hint-placeholder-val="{{ true }}"><div class="{{m.cls}}"><span dir="auto">{{m.text}}</span><sc-if value="{{m.hasVia}}" hint-placeholder-val="{{ false }}"><span class="via">{{m.via}}</span></sc-if></div></sc-if>
+      </sc-for>
+      <sc-if value="{{typing}}" hint-placeholder-val="{{ false }}"><div class="msg c" aria-label="{{t.st_proc}}"><span class="sub">{{t.st_proc}}…</span></div></sc-if>
+    </div>
+  </sc-if>
+
+  <!-- Quick actions -->
+  <div class="qa" role="toolbar" aria-label="{{t.qa_more}}">
+    <button class="chip" onClick="{{openG}}"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ac)"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"></path></svg>{{t.qa_g}}</button>
+    <a class="chip" href="Meal.dc.html"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ac)"><path d="M4 11h16a8 8 0 0 1-16 0zM8 7c0-2 1-3 2-3M12 7c0-2 1-3 2-3"></path></svg>{{t.qa_m}}</a>
+    <button class="chip" onClick="{{openI}}"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ac)"><path d="M14 4l6 6M17 7l-9 9-4 1 1-4 9-9M9 11l4 4"></path></svg>{{t.qa_i}}</button>
+    <button class="chip" onClick="{{openA}}"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ac)"><circle cx="13" cy="4.5" r="1.8"></circle><path d="M9 21l3-7-3-3 3-4 3 3 3 1M12 14l3 3v4"></path></svg>{{t.qa_a}}</button>
+    <button class="chip" onClick="{{openN}}"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ac)"><path d="M5 4h14v12l-4 4H5z"></path><path d="M9 9h6M9 13h4"></path></svg>{{t.qa_n}}</button>
+    <button class="chip" onClick="{{openR}}"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ac)"><circle cx="12" cy="13" r="7"></circle><path d="M12 10v3l2 2M5 4L3 6M19 4l2 2"></path></svg>{{t.qa_r}}</button>
+  </div>
+
+  <!-- Voice controls -->
+  <sc-if value="{{isVoice}}" hint-placeholder-val="{{ true }}">
+    <div class="ctrl">
+      <button class="{{muteCls}}" aria-pressed="{{muted}}" onClick="{{toggleMute}}"><span class="c"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9v2a3 3 0 0 0 5 2.2M15 9.3V6a3 3 0 0 0-5.7-1.3M5 11a7 7 0 0 0 11.5 5.3M19 11a7 7 0 0 1-.4 2.3M12 18v3M3 3l18 18"></path></svg></span>{{muteLabel}}</button>
+      <sc-if value="{{showStop}}" hint-placeholder-val="{{ false }}"><button class="cb big stop" onClick="{{stopSpeak}}"><span class="c"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"></rect></svg></span>{{t.stop}}</button></sc-if>
+      <sc-if value="{{showTalk}}" hint-placeholder-val="{{ true }}"><button class="cb big" onClick="{{orbTap}}"><span class="c"><svg class="ic" width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></span>{{talkLabel}}</button></sc-if>
+      <button class="cb" onClick="{{toText}}"><span class="c"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"></path></svg></span>{{t.text}}</button>
+    </div>
+  </sc-if>
+
+  <!-- Text composer -->
+  <sc-if value="{{isText}}" hint-placeholder-val="{{ false }}">
+    <div class="comp">
+      <label for="cin" style="position: absolute; width: 1px; height: 1px; overflow: hidden">{{t.type_ph}}</label>
+      <input id="cin" class="cin" placeholder="{{t.type_ph}}" value="{{draft}}" onChange="{{onDraft}}" dir="auto" enterkeyhint="send">
+      <button class="ib tint" aria-label="{{t.send}}" onClick="{{send}}" style="background: var(--ac); color: var(--onac)"><svg class="ic flip" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg></button>
+      <button class="ib tint" aria-label="{{t.voice}}" onClick="{{toVoice}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></button>
+    </div>
+  </sc-if>
+
+  <nav class="tabbar" aria-label="Main">
+    <a class="tab on" href="Companion.dc.html" aria-current="page"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="#1E6F68"></circle></svg>{{t.tab_c}}</a>
+    <a class="tab" href="Overview.dc.html"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-6 4 3 6-8 3 4"></path></svg>{{t.tab_o}}</a>
+    <a class="tab" href="Journal.dc.html"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16H6z"></path><path d="M9 9h6M9 13h6"></path></svg>{{t.tab_j}}</a>
+    <a class="tab" href="Settings.dc.html"><svg class="ic" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg>{{t.tab_p}}</a>
+  </nav>
+
+  <!-- Sheets -->
+  <sc-if value="{{sheetOpen}}" hint-placeholder-val="{{ false }}">
+    <div class="scrim" onClick="{{scrimTap}}">
+      <div class="sheet" role="dialog" aria-modal="true" aria-label="{{sheetTitle}}" onClick="{{stop}}">
+        <div class="grab" aria-hidden="true"></div>
+        <div class="shd"><h2 class="sh2">{{sheetTitle}}</h2><button class="ib" aria-label="{{t.close}}" onClick="{{closeSheet}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+
+        <sc-if value="{{confirmDiscard}}" hint-placeholder-val="{{ false }}">
+          <div class="discard" role="alertdialog" aria-label="{{t.disc_q}}"><span class="lbl">{{t.disc_q}}</span><span class="small">{{t.disc_b}}</span><div class="row"><button class="btn btn-s" onClick="{{keepEditing}}">{{t.keep}}</button><button class="btn btn-o" onClick="{{forceClose}}">{{t.discard}}</button></div></div>
+        </sc-if>
+
+        <!-- Saved / offline / failed outcome (shared) -->
+        <sc-if value="{{saved}}" hint-placeholder-val="{{ false }}">
+          <div class="ok" role="status"><span class="okc"><svg class="ic" width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span class="lbl" style="font-size: 1.125em">{{t.saved}}</span><span class="small num">{{savedSummary}}</span></div>
+          <div class="row"><button class="btn btn-s" onClick="{{editAgain}}">{{t.edit}}</button><button class="btn btn-p" onClick="{{done}}">{{t.done}}</button></div>
+        </sc-if>
+        <sc-if value="{{offSaved}}" hint-placeholder-val="{{ false }}">
+          <div class="ok" role="status"><span class="okc" style="background: var(--fill); color: var(--ink2)"><svg class="ic" width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg></span><span class="lbl" style="font-size: 1.125em">{{t.pending}}</span><span class="small">{{t.off_saved}}</span><span class="small num">{{savedSummary}}</span></div>
+          <button class="btn btn-p" onClick="{{done}}">{{t.done}}</button>
+        </sc-if>
+        <sc-if value="{{failed}}" hint-placeholder-val="{{ false }}">
+          <div class="note warn" role="alert"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; color: var(--x9A2E0C)"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg><span>{{t.fail}}</span></div>
+        </sc-if>
+
+        <!-- COM-10 Extracted from speech/text -->
+        <sc-if value="{{sh.extract}}" hint-placeholder-val="{{ false }}">
+          <p class="small" style="margin: -6px 0 0">{{t.ex_b}}</p>
+          <div class="heard"><span class="small" style="font-weight: 700">{{t.heard}}</span><div dir="auto" style="margin-top: 4px">“{{heardText}}”</div></div>
+        </sc-if>
+
+        <!-- COM-05 Glucose form (also used by extract) -->
+        <sc-if value="{{showGForm}}" hint-placeholder-val="{{ false }}">
+          <label class="lbl" for="gval">{{t.g_val}}</label>
+          <div class="{{gBigCls}}" dir="ltr">
+            <input id="gval" inputmode="decimal" value="{{gv}}" onChange="{{onGv}}" placeholder="—" aria-describedby="gunit gerr">
+            <div class="seg" id="gunit" role="radiogroup" aria-label="{{t.g_unit}}">
+              <button class="{{segMg}}" role="radio" aria-checked="{{isMg}}" onClick="{{setMg}}">mg/dL</button>
+              <button class="{{segMm}}" role="radio" aria-checked="{{isMm}}" onClick="{{setMm}}">mmol/L</button>
+            </div>
+          </div>
+          <sc-if value="{{gErr}}" hint-placeholder-val="{{ false }}"><div class="err" id="gerr" role="alert"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg><span>{{gErrText}}</span></div></sc-if>
+          <sc-if value="{{gLow}}" hint-placeholder-val="{{ false }}">
+            <div class="note warn" role="alert" style="flex-direction: column; gap: 6px">
+              <span class="row" style="gap: 8px"><span class="tag t-lo"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 2h8L5 9z" fill="currentColor"></path></svg>{{t.low}}</span><b>{{t.g_low_t}}</b></span>
+              <span>{{t.g_low_b}}</span>
+              <span class="tag" style="background: var(--xFBE9E4); color: var(--x8A2A12); align-self: flex-start">{{t.reviewed}}</span>
+            </div>
+          </sc-if>
+          <div class="row" style="justify-content: space-between"><span class="lbl">{{t.g_time}}</span><div class="row" style="gap: 6px"><span class="num" style="font-weight: 600">{{timeLabel}}</span><button class="btn btn-g" style="width: auto; padding: 0 10px" onClick="{{toggleTime}}">{{t.change}}</button></div></div>
+          <sc-if value="{{editTime}}" hint-placeholder-val="{{ false }}"><input class="inp" type="time" value="{{evTime}}" onChange="{{onTime}}" aria-label="{{t.g_time}}" dir="ltr"></sc-if>
+          <span class="lbl">{{t.g_src}}</span>
+          <div class="chips"><sc-for list="{{gSrc}}" as="c" hint-placeholder-count="2"><button class="{{c.cls}}" aria-pressed="{{c.on}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div>
+        </sc-if>
+
+        <!-- COM-06 Insulin taken -->
+        <sc-if value="{{sh.insulin}}" hint-placeholder-val="{{ false }}">
+          <sc-if value="{{editing}}" hint-placeholder-val="{{ true }}">
+            <div class="note"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7.5h.01"></path></svg><span>{{t.in_note}}</span></div>
+            <span class="lbl">{{t.in_ins}}</span>
+            <div class="chips" dir="ltr"><sc-for list="{{insList}}" as="c" hint-placeholder-count="2"><button class="{{c.cls}}" aria-pressed="{{c.on}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div>
+            <label class="lbl" for="iu">{{t.in_units}}</label>
+            <div class="{{iBigCls}}" dir="ltr"><input id="iu" inputmode="decimal" value="{{iu}}" onChange="{{onIu}}" placeholder="—"><span class="lbl" style="padding: 0 12px">{{t.in_u}}</span></div>
+            <sc-if value="{{iErr}}" hint-placeholder-val="{{ false }}"><div class="err" role="alert">{{t.in_err}}</div></sc-if>
+            <span class="lbl">{{t.in_for}}</span>
+            <div class="chips"><sc-for list="{{insFor}}" as="c" hint-placeholder-count="3"><button class="{{c.cls}}" aria-pressed="{{c.on}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div>
+            <div class="row" style="justify-content: space-between"><span class="lbl">{{t.g_time}}</span><span class="num" style="font-weight: 600">{{timeLabel}}</span></div>
+          </sc-if>
+        </sc-if>
+
+        <!-- COM-07 Activity -->
+        <sc-if value="{{sh.activity}}" hint-placeholder-val="{{ false }}">
+          <sc-if value="{{editing}}" hint-placeholder-val="{{ true }}">
+            <span class="lbl">{{t.ac_type}}</span>
+            <div class="chips"><sc-for list="{{acTypes}}" as="c" hint-placeholder-count="6"><button class="{{c.cls}}" aria-pressed="{{c.on}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div>
+            <span class="lbl" id="durl">{{t.ac_dur}}</span>
+            <div class="step" role="group" aria-labelledby="durl"><button class="stepb" aria-label="−5" onClick="{{durDown}}">−</button><span class="num" style="font-size: 1.75em; font-weight: 700; min-width: 64px; text-align: center" aria-live="polite">{{dur}}</span><span class="lbl">{{t.min}}</span><button class="stepb" aria-label="+5" onClick="{{durUp}}">+</button></div>
+            <span class="lbl">{{t.ac_int}}</span>
+            <div class="chips"><sc-for list="{{acInt}}" as="c" hint-placeholder-count="3"><button class="{{c.cls}}" aria-pressed="{{c.on}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div>
+            <div class="row" style="justify-content: space-between"><span class="lbl">{{t.ac_when}}</span><span class="num" style="font-weight: 600">{{timeLabel}}</span></div>
+          </sc-if>
+        </sc-if>
+
+        <!-- COM-08 Symptoms / note -->
+        <sc-if value="{{sh.note}}" hint-placeholder-val="{{ false }}">
+          <sc-if value="{{editing}}" hint-placeholder-val="{{ true }}">
+            <span class="lbl">{{t.no_sym}}</span>
+            <div class="chips"><sc-for list="{{syms}}" as="c" hint-placeholder-count="6"><button class="{{c.cls}}" aria-pressed="{{c.on}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div>
+            <label class="lbl" for="ntx">{{t.no_txt}}</label>
+            <textarea id="ntx" class="inp" rows="3" dir="auto" style="padding-top: 12px; min-height: 92px; resize: none"></textarea>
+            <sc-if value="{{symUnwell}}" hint-placeholder-val="{{ false }}"><div class="note warn">{{t.unwell_b}}</div></sc-if>
+          </sc-if>
+        </sc-if>
+
+        <!-- COM-09 Reminder -->
+        <sc-if value="{{sh.reminder}}" hint-placeholder-val="{{ false }}">
+          <sc-if value="{{editing}}" hint-placeholder-val="{{ true }}">
+            <label class="lbl" for="rw">{{t.re_what}}</label>
+            <input id="rw" class="inp" value="{{rWhat}}" onChange="{{onRWhat}}" dir="auto">
+            <span class="lbl">{{t.re_when}}</span>
+            <div class="chips"><sc-for list="{{rWhen}}" as="c" hint-placeholder-count="4"><button class="{{c.cls}}" aria-pressed="{{c.on}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div>
+            <sc-if value="{{rCustom}}" hint-placeholder-val="{{ false }}"><input class="inp" type="time" value="14:30" aria-label="{{t.re_when}}" dir="ltr"></sc-if>
+            <span class="lbl">{{t.re_rep}}</span>
+            <div class="seg" style="align-self: flex-start"><sc-for list="{{rRep}}" as="c" hint-placeholder-count="2"><button class="{{c.seg}}" aria-pressed="{{c.on}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div>
+            <div class="note">{{t.re_note}}</div>
+          </sc-if>
+        </sc-if>
+
+        <!-- Primary action for forms -->
+        <sc-if value="{{showSave}}" hint-placeholder-val="{{ false }}">
+          <button class="{{saveCls}}" onClick="{{save}}" aria-busy="{{saving}}">
+            <sc-if value="{{saving}}" hint-placeholder-val="{{ false }}"><span class="spin" aria-hidden="true"></span>{{t.saving}}</sc-if>
+            <sc-if value="{{notSaving}}" hint-placeholder-val="{{ true }}">{{saveLabel}}</sc-if>
+          </button>
+          <sc-if value="{{failed}}" hint-placeholder-val="{{ false }}"><span class="small" style="text-align: center">{{t.retry_hint}}</span></sc-if>
+          <button class="btn btn-g" onClick="{{closeSheet}}">{{cancelLabel}}</button>
+        </sc-if>
+
+        <!-- COM-11 Quick log menu -->
+        <sc-if value="{{sh.quick}}" hint-placeholder-val="{{ false }}">
+          <div class="grid3">
+            <button class="tile" onClick="{{openG}}"><span class="ti"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"></path></svg></span>{{t.qa_g}}</button>
+            <a class="tile" href="Meal.dc.html"><span class="ti"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v12H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></span>{{t.ql_photo}}</a>
+            <a class="tile" href="Meal.dc.html"><span class="ti"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h16a8 8 0 0 1-16 0z"></path></svg></span>{{t.qa_m}}</a>
+            <button class="tile" onClick="{{openI}}"><span class="ti"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6M17 7l-9 9-4 1 1-4 9-9"></path></svg></span>{{t.qa_i}}</button>
+            <button class="tile" onClick="{{openA}}"><span class="ti"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="13" cy="4.5" r="1.8"></circle><path d="M9 21l3-7-3-3 3-4 3 3 3 1"></path></svg></span>{{t.qa_a}}</button>
+            <button class="tile" onClick="{{openN}}"><span class="ti"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v12l-4 4H5z"></path></svg></span>{{t.qa_n}}</button>
+          </div>
+        </sc-if>
+
+        <!-- COM-03 Conversation history -->
+        <sc-if value="{{sh.history}}" hint-placeholder-val="{{ false }}">
+          <div>
+            <sc-for list="{{convs}}" as="c" hint-placeholder-count="4">
+              <button class="hrow" onClick="{{c.open}}"><span class="mini" style="width: 32px; height: 32px; opacity: .85" aria-hidden="true"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">{{c.title}}</span><span class="small">{{c.when}} · {{c.sum}}</span></span><svg class="ic flip" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ter)"><path d="M9 6l6 6-6 6"></path></svg></button>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <!-- COM-12 Microphone denied -->
+        <sc-if value="{{sh.micDenied}}" hint-placeholder-val="{{ false }}">
+          <p class="small" style="margin: 0; font-size: 1em">{{t.mic_den_b}}</p>
+          <button class="btn btn-p" onClick="{{toTextClose}}">{{t.use_text}}</button>
+          <button class="btn btn-g" onClick="{{closeSheet}}">{{t.open_set}}</button>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["day","night"],"default":"day","section":"Appearance"},"lang":{"editor":"enum","options":["en","he","ar","ru"],"default":"en","section":"Locale"},"units":{"editor":"enum","options":["mg/dL","mmol/L"],"default":"mg/dL","section":"Locale"},"textSize":{"editor":"enum","options":["100%","130%","160%"],"default":"100%","section":"Accessibility"},"reducedMotion":{"editor":"boolean","default":false,"section":"Accessibility"},"simulate":{"editor":"enum","options":["none","fromNotification","staleData","offline","saveFails","micDenied","reconnecting","unavailable"],"default":"none","section":"Prototype"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  strings() {
+    return {
+      en: { ai_label:'AI companion', mic_on:'Microphone on', history:'Conversations', text:'Text', voice:'Switch to voice', to_text:'Switch to text', close:'Close', done:'Done', change:'Change', stop:'Stop', mute:'Mute', unmute:'Unmute', talk:'Talk', finish:'Finish', end:'End',
+        st_idle:'Tap to talk', st_idle_b:'Or type. I only listen while the microphone is on.', st_listen:'Listening', st_listen_b:'Tap when you’re done', st_proc:'Thinking', st_proc_b:'One moment', st_speak:'Speaking', st_speak_b:'Tap Stop to interrupt', st_int:'Stopped', st_int_b:'Go ahead, or tap to talk', st_muted:'Microphone muted', st_muted_b:'I can’t hear you. Unmute to talk.', st_recon:'Reconnecting', st_recon_b:'Voice paused. Your conversation is safe.', st_unav:'Voice is unavailable', st_unav_b:'Something is wrong on our side. Text still works.', cont_text:'Continue in text',
+        latest:'Latest reading', yours:'Your latest entry', min_ago:'min ago', just_now:'just now', in_range:'In range', above:'Above range', below:'Below range', low:'Low', demo:'Demo data', stale_b:'No new sensor reading for 47 min. Data may be delayed; check your device.',
+        qa_g:'Glucose', qa_m:'Meal', qa_i:'Insulin taken', qa_a:'Activity', qa_n:'Note', qa_r:'Reminder', qa_more:'Quick log', ql_t:'What would you like to log?', ql_photo:'Meal photo',
+        you:'You', heard:'I heard', c_hello:'Good afternoon, Dana. Yesterday you said lunch is usually around one. Have you eaten yet?', u_say:'I checked just now, one forty… sorry, one twenty-four.', c_reply:'Got it. I heard 124 mg/dL just now. Please check it before I save.', c_saved:'Saved. Would you like a check-in after lunch?', c_text_num:'Thanks. I read that as a glucose reading. Please check it below.', c_text_gen:'Noted. It’s part of today’s conversation.', c_notyet:'No problem. I’ll ask again after 13:30 unless you log a meal first.', c_snooze:'Okay, I’ll ask in 30 minutes.', c_int:'Okay, stopping. Go ahead.', via_voice:'via voice',
+        type_ph:'Message Noa', send:'Send',
+        g_t:'Glucose reading', g_val:'Reading', g_unit:'Unit', g_time:'Time', now:'Now', g_src:'Measured with', g_meter:'Finger-stick meter', g_sensor:'Sensor (I’m entering it)', g_save:'Save reading', saving:'Saving…', saved:'Saved to your journal', edit:'Edit', cancel:'Cancel', discard:'Discard', keep:'Keep editing', disc_q:'Discard this entry?', disc_b:'What you typed won’t be saved.', confirm:'Confirm and save', g_err_empty:'Enter a number.', g_err_range:'That’s outside what meters usually show. Check the number and the unit.', g_low_t:'This is a low reading', g_low_b:'Follow the low plan from your care team. If you feel unwell or can’t treat it, call your local emergency number.', reviewed:'Placeholder for clinically reviewed guidance',
+        off_saved:'Saved on this phone. It will sync when you’re back online.', pending:'Waiting to sync', fail:'Couldn’t save right now. Your entry is still here.', retry:'Try again', retry_hint:'Nothing was lost. Try again or keep it for later.',
+        ex_t:'Check what I heard', ex_b:'Correct anything before it becomes a record.',
+        in_t:'Insulin you took', in_note:'Records insulin you already took. Steady doesn’t recommend doses.', in_ins:'Insulin', in_units:'Amount', in_u:'units', in_for:'Reason (optional)', in_meal:'Meal', in_corr:'Correction', in_basal:'Basal', in_ns:'Not sure', in_save:'Save record', in_err:'Enter the amount you took, in units.',
+        ac_t:'Activity', ac_type:'Type', a_walk:'Walk', a_run:'Run', a_cycle:'Cycling', a_gym:'Gym', a_swim:'Swim', a_other:'Other', ac_dur:'Duration', min:'min', ac_int:'Intensity', a_l:'Light', a_m:'Moderate', a_h:'Hard', ac_when:'Started', ac_save:'Save activity',
+        no_t:'Symptoms or note', no_sym:'How are you feeling?', sy1:'Shaky', sy2:'Sweaty', sy3:'Tired', sy4:'Headache', sy5:'Thirsty', sy6:'Unwell', no_txt:'Note', no_save:'Save note', unwell_b:'If you feel very unwell, contact your care team or your local emergency number. I’m not able to assess symptoms.',
+        re_t:'Reminder', re_what:'What', re_what_v:'Check glucose after lunch', re_when:'When', r30:'In 30 min', r1h:'In 1 hour', r2h:'In 2 hours', rc:'Pick a time', re_rep:'Repeat', once:'Once', daily:'Every day', re_save:'Schedule reminder', re_note:'You’ll get a notification. If you don’t open it, I’ll mention it next time we talk. It doesn’t replace device alarms.', re_done:'Reminder scheduled',
+        mic_den_t:'Microphone access is off', mic_den_b:'Allow microphone access in system Settings to talk, or type instead.', use_text:'Use text', open_set:'Open Settings',
+        offline:'You’re offline. Voice needs a connection. Logging still works and will sync later.',
+        notif_from:'Opened from your 12:30 check-in. Sent, not confirmed seen.', ans_yes:'Yes, log my meal', ans_not:'Not yet', ans_snooze:'Ask in 30 min', resumed:'Resumed conversation from',
+        tab_c:'Companion', tab_o:'Overview', tab_j:'Journal', tab_p:'Profile',
+        h1:'Lunch check-in', h1s:'Logged 124 mg/dL', h2:'Evening walk', h2s:'Activity, 35 min', h3:'Updating ratios', h3s:'Treatment settings', h4:'Getting started', h4s:'First conversation', today:'Today', yday:'Yesterday', src_meter:'Meter (you entered)', src_sensor:'Guardian 4' },
+      he: { ai_label:'מלווה AI', mic_on:'המיקרופון פועל', history:'שיחות', text:'טקסט', voice:'מעבר לקול', to_text:'מעבר לטקסט', close:'סגירה', done:'סיום', change:'שינוי', stop:'עצירה', mute:'השתקה', unmute:'ביטול השתקה', talk:'דיבור', finish:'סיום', end:'סיום',
+        st_idle:'הקישו כדי לדבר', st_idle_b:'או כתבו. אני מקשיב רק כשהמיקרופון פועל.', st_listen:'מקשיב', st_listen_b:'הקישו כשסיימתם', st_proc:'חושב', st_proc_b:'רגע אחד', st_speak:'מדבר', st_speak_b:'הקישו "עצירה" כדי לקטוע', st_int:'נעצר', st_int_b:'אפשר לדבר, או להקיש', st_muted:'המיקרופון מושתק', st_muted_b:'אני לא שומע. בטלו השתקה כדי לדבר.', st_recon:'מתחבר מחדש', st_recon_b:'הקול מושהה. השיחה שמורה.', st_unav:'הקול לא זמין', st_unav_b:'יש תקלה אצלנו. הטקסט עדיין עובד.', cont_text:'המשך בטקסט',
+        latest:'המדידה האחרונה', yours:'הרישום האחרון שלך', min_ago:'דק׳ לפני', just_now:'עכשיו', in_range:'בטווח', above:'מעל הטווח', below:'מתחת לטווח', low:'נמוך', demo:'נתוני הדגמה', stale_b:'אין מדידת חיישן חדשה כבר 47 דקות. ייתכן עיכוב; בדקו את המכשיר.',
+        qa_g:'גלוקוז', qa_m:'ארוחה', qa_i:'אינסולין שלקחתי', qa_a:'פעילות', qa_n:'הערה', qa_r:'תזכורת', qa_more:'תיעוד מהיר', ql_t:'מה תרצו לתעד?', ql_photo:'צילום ארוחה',
+        you:'את/ה', heard:'שמעתי', c_hello:'צהריים טובים, דנה. אתמול סיפרת שארוחת הצהריים בדרך כלל בסביבות אחת. כבר אכלת?', u_say:'בדקתי עכשיו, מאה ארבעים… סליחה, מאה עשרים וארבע.', c_reply:'הבנתי. שמעתי 124 mg/dL עכשיו. בדקו את המספר לפני שאשמור.', c_saved:'נשמר. לבדוק איתך אחרי הצהריים?', c_text_num:'תודה. הבנתי את זה כמדידת גלוקוז. בדקו למטה.', c_text_gen:'רשמתי. זה חלק מהשיחה של היום.', c_notyet:'אין בעיה. אשאל שוב אחרי 13:30, אלא אם תתעדו ארוחה קודם.', c_snooze:'בסדר, אשאל בעוד 30 דקות.', c_int:'בסדר, עוצר. דברו.', via_voice:'בקול',
+        type_ph:'הודעה לנועה', send:'שליחה',
+        g_t:'מדידת גלוקוז', g_val:'ערך', g_unit:'יחידה', g_time:'שעה', now:'עכשיו', g_src:'נמדד באמצעות', g_meter:'מד דקירה', g_sensor:'חיישן (אני מזין/ה)', g_save:'שמירת המדידה', saving:'שומר…', saved:'נשמר ביומן', edit:'עריכה', cancel:'ביטול', discard:'מחיקה', keep:'להמשיך לערוך', disc_q:'למחוק את הרישום?', disc_b:'מה שהקלדתם לא יישמר.', confirm:'אישור ושמירה', g_err_empty:'יש להזין מספר.', g_err_range:'הערך מחוץ למה שמדים מציגים בדרך כלל. בדקו את המספר ואת היחידה.', g_low_t:'זו מדידה נמוכה', g_low_b:'פעלו לפי תוכנית ההיפו של הצוות המטפל. אם אתם לא מרגישים טוב או לא מצליחים לטפל, התקשרו למספר החירום המקומי.', reviewed:'מקום להנחיה שנבדקה קלינית',
+        off_saved:'נשמר בטלפון. יסונכרן כשתחזרו לרשת.', pending:'ממתין לסנכרון', fail:'לא הצלחנו לשמור כרגע. הרישום עדיין כאן.', retry:'ניסיון נוסף', retry_hint:'שום דבר לא אבד. נסו שוב או שמרו להמשך.',
+        ex_t:'בדקו מה שמעתי', ex_b:'תקנו כל דבר לפני שהוא נשמר.',
+        in_t:'אינסולין שלקחתי', in_note:'מתעד אינסולין שכבר לקחתם. Steady לא ממליץ על מינונים.', in_ins:'אינסולין', in_units:'כמות', in_u:'יחידות', in_for:'סיבה (רשות)', in_meal:'ארוחה', in_corr:'תיקון', in_basal:'בזאלי', in_ns:'לא בטוח/ה', in_save:'שמירת הרישום', in_err:'הזינו את הכמות שלקחתם, ביחידות.',
+        ac_t:'פעילות', ac_type:'סוג', a_walk:'הליכה', a_run:'ריצה', a_cycle:'אופניים', a_gym:'חדר כושר', a_swim:'שחייה', a_other:'אחר', ac_dur:'משך', min:'דק׳', ac_int:'עצימות', a_l:'קלה', a_m:'בינונית', a_h:'גבוהה', ac_when:'התחלה', ac_save:'שמירת הפעילות',
+        no_t:'תסמינים או הערה', no_sym:'איך אתם מרגישים?', sy1:'רעד', sy2:'הזעה', sy3:'עייפות', sy4:'כאב ראש', sy5:'צמא', sy6:'לא טוב', no_txt:'הערה', no_save:'שמירת ההערה', unwell_b:'אם אתם מרגישים רע מאוד, פנו לצוות המטפל או למספר החירום המקומי. אינני יכול להעריך תסמינים.',
+        re_t:'תזכורת', re_what:'מה', re_what_v:'לבדוק גלוקוז אחרי הצהריים', re_when:'מתי', r30:'בעוד 30 דק׳', r1h:'בעוד שעה', r2h:'בעוד שעתיים', rc:'בחירת שעה', re_rep:'חזרה', once:'פעם אחת', daily:'כל יום', re_save:'קביעת תזכורת', re_note:'תקבלו התראה. אם לא תפתחו אותה, אזכיר בשיחה הבאה. היא לא מחליפה את התראות המכשיר.', re_done:'התזכורת נקבעה',
+        mic_den_t:'הגישה למיקרופון כבויה', mic_den_b:'אפשרו גישה למיקרופון בהגדרות המערכת כדי לדבר, או כתבו.', use_text:'מעבר לטקסט', open_set:'פתיחת ההגדרות',
+        offline:'אין חיבור. הקול דורש חיבור. התיעוד עובד ויסונכרן אחר כך.',
+        notif_from:'נפתח מהבדיקה של 12:30. נשלח, לא אושר שנראה.', ans_yes:'כן, לתעד ארוחה', ans_not:'עוד לא', ans_snooze:'לשאול בעוד 30 דק׳', resumed:'השיחה חודשה מ',
+        tab_c:'מלווה', tab_o:'סקירה', tab_j:'יומן', tab_p:'פרופיל',
+        h1:'בדיקת צהריים', h1s:'נרשם 124 mg/dL', h2:'הליכת ערב', h2s:'פעילות, 35 דק׳', h3:'עדכון יחסים', h3s:'הגדרות טיפול', h4:'היכרות ראשונה', h4s:'השיחה הראשונה', today:'היום', yday:'אתמול', src_meter:'מד (הוזן על ידך)', src_sensor:'Guardian 4' },
+      ar: { ai_label:'رفيق ذكاء اصطناعي', mic_on:'الميكروفون يعمل', history:'المحادثات', text:'نص', voice:'التبديل إلى الصوت', to_text:'التبديل إلى النص', close:'إغلاق', done:'تم', change:'تغيير', stop:'إيقاف', mute:'كتم', unmute:'إلغاء الكتم', talk:'تحدّث', finish:'إنهاء', end:'إنهاء',
+        st_idle:'اضغط للتحدث', st_idle_b:'أو اكتب. أستمع فقط عندما يكون الميكروفون مفعّلًا.', st_listen:'أستمع', st_listen_b:'اضغط عند الانتهاء', st_proc:'أفكّر', st_proc_b:'لحظة', st_speak:'أتحدث', st_speak_b:'اضغط "إيقاف" للمقاطعة', st_int:'توقفت', st_int_b:'تفضّل، أو اضغط للتحدث', st_muted:'الميكروفون مكتوم', st_muted_b:'لا أسمعك. ألغِ الكتم للتحدث.', st_recon:'جارٍ إعادة الاتصال', st_recon_b:'الصوت متوقف مؤقتًا. محادثتك محفوظة.', st_unav:'الصوت غير متاح', st_unav_b:'هناك خلل لدينا. النص ما زال يعمل.', cont_text:'المتابعة بالنص',
+        latest:'آخر قراءة', yours:'آخر إدخال لك', min_ago:'دقيقة مضت', just_now:'الآن', in_range:'ضمن النطاق', above:'أعلى من النطاق', below:'أقل من النطاق', low:'منخفض', demo:'بيانات تجريبية', stale_b:'لا توجد قراءة جديدة من الحساس منذ 47 دقيقة. قد تتأخر البيانات؛ تحقق من جهازك.',
+        qa_g:'الغلوكوز', qa_m:'وجبة', qa_i:'إنسولين أخذته', qa_a:'نشاط', qa_n:'ملاحظة', qa_r:'تذكير', qa_more:'تسجيل سريع', ql_t:'ماذا تريد أن تسجّل؟', ql_photo:'صورة الوجبة',
+        you:'أنت', heard:'سمعت', c_hello:'مساء الخير يا دانة. ذكرتِ أمس أن الغداء عادةً حوالي الواحدة. هل تناولتِ طعامك؟', u_say:'قست الآن، مئة وأربعون… عفوًا، مئة وأربعة وعشرون.', c_reply:'فهمت. سمعت 124 mg/dL الآن. يُرجى التحقق قبل أن أحفظ.', c_saved:'تم الحفظ. هل أتابع معك بعد الغداء؟', c_text_num:'شكرًا. فهمت ذلك كقراءة غلوكوز. يُرجى التحقق أدناه.', c_text_gen:'سجّلت ذلك. إنه جزء من محادثة اليوم.', c_notyet:'لا بأس. سأسأل مجددًا بعد 13:30 ما لم تسجّل وجبة قبل ذلك.', c_snooze:'حسنًا، سأسأل بعد 30 دقيقة.', c_int:'حسنًا، توقفت. تفضّل.', via_voice:'بالصوت',
+        type_ph:'رسالة إلى نوعا', send:'إرسال',
+        g_t:'قراءة الغلوكوز', g_val:'القراءة', g_unit:'الوحدة', g_time:'الوقت', now:'الآن', g_src:'قيست بواسطة', g_meter:'جهاز وخز الإصبع', g_sensor:'الحساس (أدخلها بنفسي)', g_save:'حفظ القراءة', saving:'جارٍ الحفظ…', saved:'حُفظت في سجلك', edit:'تعديل', cancel:'إلغاء', discard:'تجاهل', keep:'متابعة التعديل', disc_q:'تجاهل هذا الإدخال؟', disc_b:'لن يُحفظ ما كتبته.', confirm:'تأكيد وحفظ', g_err_empty:'أدخل رقمًا.', g_err_range:'هذه القيمة خارج ما تعرضه الأجهزة عادةً. تحقق من الرقم والوحدة.', g_low_t:'هذه قراءة منخفضة', g_low_b:'اتبع خطة الانخفاض من فريقك الطبي. إن شعرت بتوعّك أو لم تتمكن من العلاج، اتصل برقم الطوارئ المحلي.', reviewed:'مكان لإرشادات مراجَعة سريريًا',
+        off_saved:'حُفظ على هذا الهاتف. ستتم المزامنة عند عودة الاتصال.', pending:'بانتظار المزامنة', fail:'تعذّر الحفظ الآن. إدخالك ما زال هنا.', retry:'حاول مجددًا', retry_hint:'لم يُفقد شيء. حاول مجددًا أو احتفظ به لاحقًا.',
+        ex_t:'تحقق مما سمعته', ex_b:'صحّح أي شيء قبل أن يصبح سجلًا.',
+        in_t:'إنسولين أخذته', in_note:'يسجّل الإنسولين الذي أخذته بالفعل. لا يوصي Steady بالجرعات.', in_ins:'الإنسولين', in_units:'الكمية', in_u:'وحدات', in_for:'السبب (اختياري)', in_meal:'وجبة', in_corr:'تصحيح', in_basal:'قاعدي', in_ns:'لست متأكدًا', in_save:'حفظ السجل', in_err:'أدخل الكمية التي أخذتها بالوحدات.',
+        ac_t:'النشاط', ac_type:'النوع', a_walk:'مشي', a_run:'جري', a_cycle:'دراجة', a_gym:'صالة رياضية', a_swim:'سباحة', a_other:'آخر', ac_dur:'المدة', min:'دقيقة', ac_int:'الشدة', a_l:'خفيفة', a_m:'متوسطة', a_h:'عالية', ac_when:'البداية', ac_save:'حفظ النشاط',
+        no_t:'أعراض أو ملاحظة', no_sym:'كيف تشعر؟', sy1:'ارتجاف', sy2:'تعرّق', sy3:'تعب', sy4:'صداع', sy5:'عطش', sy6:'توعّك', no_txt:'ملاحظة', no_save:'حفظ الملاحظة', unwell_b:'إن شعرت بتوعّك شديد فتواصل مع فريقك الطبي أو برقم الطوارئ المحلي. لا أستطيع تقييم الأعراض.',
+        re_t:'تذكير', re_what:'ماذا', re_what_v:'قياس الغلوكوز بعد الغداء', re_when:'متى', r30:'بعد 30 دقيقة', r1h:'بعد ساعة', r2h:'بعد ساعتين', rc:'اختر وقتًا', re_rep:'التكرار', once:'مرة واحدة', daily:'كل يوم', re_save:'جدولة التذكير', re_note:'سيصلك إشعار. إن لم تفتحه فسأذكره في محادثتنا القادمة. لا يحل محل تنبيهات الجهاز.', re_done:'تمت جدولة التذكير',
+        mic_den_t:'الوصول إلى الميكروفون متوقف', mic_den_b:'اسمح بالوصول إلى الميكروفون من إعدادات النظام للتحدث، أو اكتب.', use_text:'استخدام النص', open_set:'فتح الإعدادات',
+        offline:'أنت غير متصل. الصوت يحتاج اتصالًا. التسجيل يعمل وستتم المزامنة لاحقًا.',
+        notif_from:'فُتح من متابعة الساعة 12:30. أُرسل، ولم يتأكد أنه شوهد.', ans_yes:'نعم، سجّل وجبتي', ans_not:'ليس بعد', ans_snooze:'اسأل بعد 30 دقيقة', resumed:'استُؤنفت المحادثة من',
+        tab_c:'الرفيق', tab_o:'نظرة عامة', tab_j:'السجل', tab_p:'الملف',
+        h1:'متابعة الغداء', h1s:'سُجّل 124 mg/dL', h2:'مشي المساء', h2s:'نشاط، 35 دقيقة', h3:'تحديث النسب', h3s:'إعدادات العلاج', h4:'البداية', h4s:'المحادثة الأولى', today:'اليوم', yday:'أمس', src_meter:'جهاز (أدخلته أنت)', src_sensor:'Guardian 4' },
+      ru: { ai_label:'ИИ-помощник', mic_on:'Микрофон включён', history:'Разговоры', text:'Текст', voice:'Перейти к голосу', to_text:'Перейти к тексту', close:'Закрыть', done:'Готово', change:'Изменить', stop:'Стоп', mute:'Выкл. звук', unmute:'Вкл. звук', talk:'Говорить', finish:'Закончить', end:'Завершить',
+        st_idle:'Нажмите, чтобы говорить', st_idle_b:'Или пишите. Я слушаю только при включённом микрофоне.', st_listen:'Слушаю', st_listen_b:'Нажмите, когда закончите', st_proc:'Думаю', st_proc_b:'Секунду', st_speak:'Говорю', st_speak_b:'Нажмите «Стоп», чтобы прервать', st_int:'Остановлено', st_int_b:'Говорите или нажмите', st_muted:'Микрофон выключен', st_muted_b:'Я вас не слышу. Включите микрофон.', st_recon:'Переподключение', st_recon_b:'Голос на паузе. Разговор сохранён.', st_unav:'Голос недоступен', st_unav_b:'Проблема на нашей стороне. Текст работает.', cont_text:'Продолжить текстом',
+        latest:'Последнее измерение', yours:'Ваша последняя запись', min_ago:'мин назад', just_now:'только что', in_range:'В диапазоне', above:'Выше диапазона', below:'Ниже диапазона', low:'Низкий', demo:'Демо-данные', stale_b:'Нет новых данных сенсора уже 47 мин. Возможна задержка; проверьте устройство.',
+        qa_g:'Глюкоза', qa_m:'Еда', qa_i:'Введённый инсулин', qa_a:'Активность', qa_n:'Заметка', qa_r:'Напоминание', qa_more:'Быстрая запись', ql_t:'Что записать?', ql_photo:'Фото еды',
+        you:'Вы', heard:'Я услышал', c_hello:'Добрый день, Дана. Вчера вы говорили, что обедаете обычно около часа. Вы уже поели?', u_say:'Только что измерила, сто сорок… простите, сто двадцать четыре.', c_reply:'Понял. Я услышал 124 mg/dL. Проверьте, пожалуйста, перед сохранением.', c_saved:'Сохранено. Спросить вас после обеда?', c_text_num:'Спасибо. Я понял это как измерение глюкозы. Проверьте ниже.', c_text_gen:'Записал. Это часть сегодняшнего разговора.', c_notyet:'Хорошо. Спрошу снова после 13:30, если вы раньше не запишете еду.', c_snooze:'Хорошо, спрошу через 30 минут.', c_int:'Хорошо, останавливаюсь. Говорите.', via_voice:'голосом',
+        type_ph:'Сообщение для Ноа', send:'Отправить',
+        g_t:'Измерение глюкозы', g_val:'Значение', g_unit:'Единица', g_time:'Время', now:'Сейчас', g_src:'Чем измерено', g_meter:'Глюкометр (палец)', g_sensor:'Сенсор (ввожу сам(а))', g_save:'Сохранить измерение', saving:'Сохраняю…', saved:'Сохранено в дневник', edit:'Изменить', cancel:'Отмена', discard:'Удалить', keep:'Продолжить', disc_q:'Удалить эту запись?', disc_b:'Введённое не сохранится.', confirm:'Подтвердить и сохранить', g_err_empty:'Введите число.', g_err_range:'Значение вне обычного диапазона глюкометров. Проверьте число и единицы.', g_low_t:'Это низкое значение', g_low_b:'Следуйте плану при гипогликемии от вашей медкоманды. Если вам плохо или не получается справиться, звоните в местную экстренную службу.', reviewed:'Место для клинически проверенных рекомендаций',
+        off_saved:'Сохранено на телефоне. Синхронизируется, когда появится сеть.', pending:'Ожидает синхронизации', fail:'Сейчас не удалось сохранить. Запись остаётся здесь.', retry:'Повторить', retry_hint:'Ничего не потеряно. Повторите или отложите.',
+        ex_t:'Проверьте, что я услышал', ex_b:'Исправьте всё нужное, прежде чем запись сохранится.',
+        in_t:'Введённый инсулин', in_note:'Запись уже введённого инсулина. Steady не рекомендует дозы.', in_ins:'Инсулин', in_units:'Количество', in_u:'ед.', in_for:'Причина (необязательно)', in_meal:'Еда', in_corr:'Коррекция', in_basal:'Базальный', in_ns:'Не уверен(а)', in_save:'Сохранить запись', in_err:'Введите количество в единицах.',
+        ac_t:'Активность', ac_type:'Тип', a_walk:'Ходьба', a_run:'Бег', a_cycle:'Велосипед', a_gym:'Зал', a_swim:'Плавание', a_other:'Другое', ac_dur:'Длительность', min:'мин', ac_int:'Интенсивность', a_l:'Лёгкая', a_m:'Средняя', a_h:'Высокая', ac_when:'Начало', ac_save:'Сохранить активность',
+        no_t:'Симптомы или заметка', no_sym:'Как вы себя чувствуете?', sy1:'Дрожь', sy2:'Потливость', sy3:'Усталость', sy4:'Головная боль', sy5:'Жажда', sy6:'Плохо', no_txt:'Заметка', no_save:'Сохранить заметку', unwell_b:'Если вам очень плохо, обратитесь к медкоманде или в местную экстренную службу. Я не могу оценивать симптомы.',
+        re_t:'Напоминание', re_what:'Что', re_what_v:'Измерить глюкозу после обеда', re_when:'Когда', r30:'Через 30 мин', r1h:'Через 1 час', r2h:'Через 2 часа', rc:'Выбрать время', re_rep:'Повтор', once:'Один раз', daily:'Каждый день', re_save:'Запланировать', re_note:'Придёт уведомление. Если вы его не откроете, я напомню в следующем разговоре. Это не заменяет сигналы устройств.', re_done:'Напоминание запланировано',
+        mic_den_t:'Доступ к микрофону выключен', mic_den_b:'Разрешите доступ к микрофону в системных настройках или пишите текстом.', use_text:'Писать текстом', open_set:'Открыть настройки',
+        offline:'Нет сети. Голосу нужна связь. Записи работают и синхронизируются позже.',
+        notif_from:'Открыто из вопроса в 12:30. Отправлено, просмотр не подтверждён.', ans_yes:'Да, записать еду', ans_not:'Ещё нет', ans_snooze:'Спросить через 30 мин', resumed:'Продолжен разговор от',
+        tab_c:'Помощник', tab_o:'Обзор', tab_j:'Дневник', tab_p:'Профиль',
+        h1:'Вопрос об обеде', h1s:'Записано 124 mg/dL', h2:'Вечерняя прогулка', h2s:'Активность, 35 мин', h3:'Обновление коэффициентов', h3s:'Настройки лечения', h4:'Знакомство', h4s:'Первый разговор', today:'Сегодня', yday:'Вчера', src_meter:'Глюкометр (вручную)', src_sensor:'Guardian 4' }
+    };
+  }
+  clear() { (this._tms || []).forEach((x) => clearTimeout(x)); this._tms = []; }
+  later(ms, fn) { this._tms = this._tms || []; this._tms.push(setTimeout(fn, ms)); }
+  componentWillUnmount() { this.clear(); }
+  renderVals() {
+    if (!this._S) this._S = this.strings();
+    const s = this.state || {};
+    const p = this.props || {};
+    const sim = p.simulate || 'none';
+    const v = (k, d) => (s[k] === undefined ? d : s[k]);
+    const lang = p.lang || 'en';
+    const t = Object.assign({}, this._S.en, this._S[lang] || {});
+    const dir = lang === 'he' || lang === 'ar' ? 'rtl' : 'ltr';
+    const fs = ({ '100%': 16, '130%': 20, '160%': 24 })[p.textSize] || 16;
+    const set = (o) => this.setState(o);
+    const mode = v('mode', 'voice');
+    const vsDefault = sim === 'reconnecting' ? 'recon' : sim === 'unavailable' ? 'unav' : 'idle';
+    const vs = v('vs', vsDefault);
+    const muted = v('muted', false);
+    const prefMm = p.units === 'mmol/L';
+    const mmolOf = (mg) => (Math.round((mg / 18.016) * 10) / 10).toFixed(1);
+    const fmt = (mg) => (prefMm ? mmolOf(mg) : String(mg));
+    const unitLabel = prefMm ? 'mmol/L' : 'mg/dL';
+    const initMsgs = sim === 'fromNotification' ? [{ who: 'c', key: 'c_hello' }] : [{ who: 'c', key: 'c_hello' }];
+    const msgs = v('msgs', initMsgs);
+    const push = (arr) => msgs.concat(arr);
+    const sheet = v('sheet', null);
+    const saveState = v('save', 'idle');
+    const now = '13:05';
+
+    // context reading
+    const manual = v('lastManual', null);
+    const status = (mg) => (mg < 70 ? { tag: t.below, cls: 'tag t-lo', path: 'M1 2h8L5 9z' } : mg > 180 ? { tag: t.above, cls: 'tag t-hi', path: 'M5 1l4 7H1z' } : { tag: t.in_range, cls: 'tag t-in', path: 'M1 4h8v2H1z' });
+    let ctx;
+    if (manual) { const st = status(manual.mg); ctx = { val: fmt(manual.mg), tag: st.tag, tagCls: st.cls, tagPath: st.path, meta: t.just_now + ' · ' + t.src_meter, isDemo: true }; }
+    else { const mg = 142; const st = status(mg); const age = sim === 'staleData' ? 47 : 4; ctx = { val: fmt(mg), tag: st.tag, tagCls: st.cls, tagPath: st.path, meta: age + ' ' + t.min_ago + ' · ' + t.src_sensor, isDemo: true }; }
+    const ctxTitle = manual ? t.yours : t.latest;
+
+    // voice flow
+    const orbTap = () => {
+      if (muted) { set({ muted: false }); return; }
+      if (vs === 'recon' || vs === 'unav') return;
+      if (sim === 'micDenied') { set({ sheet: 'micDenied' }); return; }
+      if (vs === 'idle' || vs === 'int') {
+        this.clear(); set({ vs: 'listen', cap: '', capWho: t.you });
+        this.later(1100, () => this.setState({ cap: t.u_say.split('…')[0] + '…' }));
+        this.later(2300, () => this.setState({ cap: t.u_say }));
+        return;
+      }
+      if (vs === 'listen') {
+        this.clear(); set({ vs: 'proc', cap: t.u_say });
+        this.later(1200, () => { const st = this.state || {}; this.setState({ vs: 'speak', cap: t.c_reply, capWho: 'Noa', msgs: (st.msgs || initMsgs).concat([{ who: 'u', key: 'u_say', via: true }, { who: 'c', key: 'c_reply' }]) }); });
+        this.later(4200, () => { this.setState({ vs: 'idle', sheet: 'extract', gv: '124', gUnit: 'mg', save: 'idle', gErr: null, editTime: false, gsrc: 'meter' }); });
+        return;
+      }
+      if (vs === 'speak') { stopSpeak(); }
+    };
+    const stopSpeak = () => { this.clear(); const st = this.state || {}; set({ vs: 'int', cap: t.c_int, capWho: 'Noa', sheet: (st.msgs || []).length > 2 ? 'extract' : st.sheet, gv: st.gv || '124', gUnit: st.gUnit || 'mg' }); };
+
+    const stateMap = { idle: [t.st_idle, t.st_idle_b], listen: [t.st_listen, t.st_listen_b], proc: [t.st_proc, t.st_proc_b], speak: [t.st_speak, t.st_speak_b], int: [t.st_int, t.st_int_b], recon: [t.st_recon, t.st_recon_b], unav: [t.st_unav, t.st_unav_b] };
+    const sl = muted ? [t.st_muted, t.st_muted_b] : stateMap[vs];
+    const orbCls = 's-' + (muted ? 'muted' : vs);
+
+    // sheets
+    const openSheet = (name, extra) => () => { this.clear(); set(Object.assign({ sheet: name, save: 'idle', gErr: null, confirmDiscard: false, editTime: false, vs: vs === 'listen' || vs === 'speak' || vs === 'proc' ? 'idle' : vs }, extra || {})); };
+    const isForm = ['glucose', 'extract', 'insulin', 'activity', 'note', 'reminder'].indexOf(sheet) >= 0;
+    const editing = saveState === 'idle' || saveState === 'saving' || saveState === 'failed';
+    const dirty = isForm && editing && ((sheet === 'glucose' && v('gv', '')) || (sheet === 'insulin' && v('iu', '')) || sheet === 'extract');
+    const forceClose = () => set({ sheet: null, confirmDiscard: false, save: 'idle', gv: '', iu: '' });
+    const closeSheet = () => { if (dirty) { set({ confirmDiscard: true }); return; } forceClose(); };
+
+    const gUnit = v('gUnit', prefMm ? 'mm' : 'mg');
+    const gv = v('gv', '');
+    const num = parseFloat(String(gv).replace(',', '.'));
+    const mgVal = isNaN(num) ? null : (gUnit === 'mg' ? num : Math.round(num * 18.016));
+    const gLow = mgVal !== null && mgVal >= 20 && mgVal < 70;
+    const timeLabel = v('editTime', false) || v('evTime', '') ? v('evTime', now) : t.now + ' (' + now + ')';
+    const recordText = () => {
+      if (sheet === 'glucose' || sheet === 'extract') return t.qa_g + ' ' + gv + ' ' + (gUnit === 'mg' ? 'mg/dL' : 'mmol/L') + ' · ' + v('evTime', now);
+      if (sheet === 'insulin') return t.qa_i + ': ' + v('ins', 'Fiasp') + ' ' + v('iu', '') + ' ' + t.in_u + ' · ' + now;
+      if (sheet === 'activity') return t.qa_a + ': ' + v('dur', 30) + ' ' + t.min + ' · ' + now;
+      if (sheet === 'note') return t.qa_n + ' · ' + now;
+      return t.re_done + ' · 14:05';
+    };
+    const save = () => {
+      if (saveState === 'saving') return;
+      if (sheet === 'glucose' || sheet === 'extract') {
+        if (mgVal === null) { set({ gErr: 'empty' }); return; }
+        if (mgVal < 20 || mgVal > 600) { set({ gErr: 'range' }); return; }
+      }
+      if (sheet === 'insulin') { const u = parseFloat(String(v('iu', '')).replace(',', '.')); if (isNaN(u) || u <= 0 || u > 100) { set({ iErr: true }); return; } }
+      set({ save: 'saving', gErr: null, iErr: false });
+      const outcome = sim === 'offline' ? 'offline' : (sim === 'saveFails' && !s.failedOnce) ? 'failed' : 'saved';
+      this.later(900, () => {
+        const st = this.state || {};
+        const o = { save: outcome };
+        if (outcome === 'failed') o.failedOnce = true;
+        else { o.msgs = (st.msgs || initMsgs).concat([{ rec: true, text: recordText(), badge: outcome === 'offline' ? t.pending : t.saved.split(' ')[0] }]); if (sheet === 'glucose' || sheet === 'extract') o.lastManual = { mg: mgVal }; }
+        this.setState(o);
+      });
+    };
+    const done = () => { const st = this.state || {}; set({ sheet: null, save: 'idle', gv: '', iu: '', msgs: (st.msgs || msgs).concat([{ who: 'c', key: 'c_saved' }]) }); };
+
+    const chipList = (k, def, list) => list.map((x) => { const on = v(k, def) === x[0]; return { label: x[1], on: on, cls: 'chip' + (on ? ' on' : ''), seg: on ? 'on' : '', pick: () => set({ [k]: x[0] }) }; });
+    const symSel = v('syms', []);
+    const syms = [['sy1', t.sy1], ['sy2', t.sy2], ['sy3', t.sy3], ['sy4', t.sy4], ['sy5', t.sy5], ['sy6', t.sy6]].map((x) => { const on = symSel.indexOf(x[0]) >= 0; return { label: x[1], on: on, cls: 'chip' + (on ? ' on' : ''), pick: () => { const a = symSel.slice(); const i = a.indexOf(x[0]); if (i >= 0) a.splice(i, 1); else a.push(x[0]); set({ syms: a }); } }; });
+
+    const titles = { glucose: t.g_t, extract: t.ex_t, insulin: t.in_t, activity: t.ac_t, note: t.no_t, reminder: t.re_t, quick: t.ql_t, history: t.history, micDenied: t.mic_den_t };
+    const saveLabels = { glucose: t.g_save, extract: t.confirm, insulin: t.in_save, activity: t.ac_save, note: t.no_save, reminder: t.re_save };
+    const savedSummary = isForm ? recordText() : '';
+
+    const msgView = msgs.map((m) => m.rec ? { isRec: true, isMsg: false, text: m.text, badge: m.badge } : { isRec: false, isMsg: true, cls: 'msg ' + m.who, text: m.key ? t[m.key] : m.text, hasVia: !!m.via, via: t.via_voice });
+    const convs = [[t.h1, t.today + ' 12:30', t.h1s], [t.h2, t.yday + ' 18:20', t.h2s], [t.h3, '8 Nov', t.h3s], [t.h4, '7 Nov', t.h4s]].map((c) => ({ title: c[0], when: c[1], sum: c[2], open: () => set({ sheet: null, mode: 'text', resumed: c[1] }) }));
+
+    const send = () => {
+      const d = v('draft', '').trim(); if (!d) return;
+      const n = d.match(/\d+([.,]\d)?/);
+      set({ draft: '', typing: true, msgs: push([{ who: 'u', text: d }]) });
+      this.later(900, () => { const st = this.state || {}; const o = { typing: false, msgs: (st.msgs || msgs).concat([{ who: 'c', key: n ? 'c_text_num' : 'c_text_gen' }]) }; if (n) { o.sheet = 'extract'; o.gv = n[0]; o.gUnit = parseFloat(n[0].replace(',', '.')) < 35 ? 'mm' : 'mg'; o.save = 'idle'; o.heard = d; } this.setState(o); });
+    };
+
+    const isVoice = mode === 'voice';
+    const fromNotif = sim === 'fromNotification' && !v('notifDone', false);
+    const capDefault = fromNotif ? t.c_hello : t.c_hello;
+    return {
+      t: t, lang: lang, dir: dir, fs: fs, rmCls: p.reducedMotion ? 'rm' : '', unitLabel: unitLabel,
+      micLive: isVoice && vs === 'listen' && !muted, micIdle: !(isVoice && vs === 'listen' && !muted),
+      isVoice: isVoice, isText: !isVoice, modeToggleLabel: isVoice ? t.to_text : t.voice,
+      toggleMode: () => { this.clear(); set({ mode: isVoice ? 'text' : 'voice', vs: vs === 'recon' || vs === 'unav' ? vs : 'idle' }); },
+      toText: () => { this.clear(); set({ mode: 'text', vs: vs === 'recon' || vs === 'unav' ? vs : 'idle' }); }, toVoice: () => set({ mode: 'voice' }),
+      toTextClose: () => set({ mode: 'text', sheet: null }),
+      openHistory: openSheet('history'),
+      fromNotif: fromNotif, notifAnswers: fromNotif && isVoice && vs === 'idle',
+      ansYes: () => set({ notifDone: true }), ansNot: () => set({ notifDone: true, cap: t.c_notyet, capWho: 'Noa', msgs: push([{ who: 'u', text: t.ans_not }, { who: 'c', key: 'c_notyet' }]) }), ansSnooze: () => set({ notifDone: true, cap: t.c_snooze, capWho: 'Noa', msgs: push([{ who: 'u', text: t.ans_snooze }, { who: 'c', key: 'c_snooze' }]) }),
+      offline: sim === 'offline', stale: sim === 'staleData' && !manual,
+      resumed: !!v('resumed', null), resumedLabel: t.resumed + ' ' + v('resumed', ''),
+      ctx: ctx, ctxTitle: ctxTitle, ctxAria: ctxTitle + ': ' + ctx.val + ' ' + unitLabel + ', ' + ctx.tag + ', ' + ctx.meta + ', ' + t.demo,
+      orbCls: orbCls, orbTap: orbTap, orbAria: sl[0] + '. ' + sl[1],
+      stateLabel: sl[0], stateDesc: sl[1],
+      showBadgeMute: muted, showBadgeOff: vs === 'recon' || vs === 'unav',
+      showCap: true, capWho: v('capWho', 'Noa'), capText: v('cap', capDefault),
+      unavail: vs === 'unav' || vs === 'recon',
+      muted: muted, muteCls: 'cb' + (muted ? ' on' : ''), muteLabel: muted ? t.unmute : t.mute, toggleMute: () => { this.clear(); set({ muted: !muted, vs: vs === 'listen' ? 'idle' : vs }); },
+      showStop: vs === 'speak' || vs === 'proc', showTalk: !(vs === 'speak' || vs === 'proc'), stopSpeak: stopSpeak, talkLabel: vs === 'listen' ? t.finish : t.talk,
+      msgs: msgView, typing: v('typing', false), draft: v('draft', ''), onDraft: (e) => set({ draft: e.target.value }), send: send,
+      openG: openSheet('glucose', { gv: '', gUnit: prefMm ? 'mm' : 'mg', gsrc: 'meter' }), openI: openSheet('insulin', { iu: '' }), openA: openSheet('activity'), openN: openSheet('note'), openR: openSheet('reminder'),
+      sheetOpen: !!sheet, sheetTitle: titles[sheet] || '', scrimTap: closeSheet, stop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); }, closeSheet: closeSheet,
+      confirmDiscard: v('confirmDiscard', false), keepEditing: () => set({ confirmDiscard: false }), forceClose: forceClose,
+      sh: { extract: sheet === 'extract' && editing, insulin: sheet === 'insulin', activity: sheet === 'activity', note: sheet === 'note', reminder: sheet === 'reminder', quick: sheet === 'quick', history: sheet === 'history', micDenied: sheet === 'micDenied' },
+      editing: editing, saved: isForm && saveState === 'saved', offSaved: isForm && saveState === 'offline', failed: isForm && saveState === 'failed',
+      saving: saveState === 'saving', notSaving: saveState !== 'saving', saveCls: 'btn btn-p' + (saveState === 'saving' ? ' busy' : ''),
+      showSave: isForm && editing, saveLabel: saveState === 'failed' ? t.retry : saveLabels[sheet], cancelLabel: t.cancel, save: save, done: done, savedSummary: savedSummary,
+      editAgain: () => set({ save: 'idle' }),
+      heardText: v('heard', t.u_say),
+      showGForm: (sheet === 'glucose' || sheet === 'extract') && editing,
+      gv: gv, onGv: (e) => set({ gv: e.target.value, gErr: null }), gBigCls: 'big' + (v('gErr', null) ? ' bad' : ''),
+      isMg: gUnit === 'mg', isMm: gUnit === 'mm', segMg: gUnit === 'mg' ? 'on' : '', segMm: gUnit === 'mm' ? 'on' : '',
+      setMg: () => { if (gUnit === 'mg') return; const n2 = parseFloat(String(gv).replace(',', '.')); set({ gUnit: 'mg', gv: isNaN(n2) ? gv : String(Math.round(n2 * 18.016)) }); },
+      setMm: () => { if (gUnit === 'mm') return; const n2 = parseFloat(gv); set({ gUnit: 'mm', gv: isNaN(n2) ? gv : mmolOf(n2) }); },
+      gErr: !!v('gErr', null), gErrText: v('gErr', null) === 'range' ? t.g_err_range : t.g_err_empty, gLow: gLow,
+      timeLabel: timeLabel, editTime: v('editTime', false), toggleTime: () => set({ editTime: !v('editTime', false), evTime: v('evTime', now) }), evTime: v('evTime', now), onTime: (e) => set({ evTime: e.target.value }),
+      gSrc: chipList('gsrc', 'meter', [['meter', t.g_meter], ['sensor', t.g_sensor]]),
+      insList: chipList('ins', 'Fiasp', [['Fiasp', 'Fiasp'], ['Tresiba', 'Tresiba']]), iu: v('iu', ''), onIu: (e) => set({ iu: e.target.value, iErr: false }), iBigCls: 'big' + (v('iErr', false) ? ' bad' : ''), iErr: v('iErr', false),
+      insFor: chipList('ifor', '', [['meal', t.in_meal], ['corr', t.in_corr], ['basal', t.in_basal], ['ns', t.in_ns]]),
+      acTypes: chipList('act', 'walk', [['walk', t.a_walk], ['run', t.a_run], ['cycle', t.a_cycle], ['gym', t.a_gym], ['swim', t.a_swim], ['other', t.a_other]]),
+      dur: String(v('dur', 30)), durUp: () => set({ dur: Math.min(600, v('dur', 30) + 5) }), durDown: () => set({ dur: Math.max(5, v('dur', 30) - 5) }),
+      acInt: chipList('aint', 'm', [['l', t.a_l], ['m', t.a_m], ['h', t.a_h]]),
+      syms: syms, symUnwell: symSel.indexOf('sy6') >= 0,
+      rWhat: v('rWhat', t.re_what_v), onRWhat: (e) => set({ rWhat: e.target.value }),
+      rWhen: chipList('rWhen', '1h', [['30', t.r30], ['1h', t.r1h], ['2h', t.r2h], ['c', t.rc]]), rCustom: v('rWhen', '1h') === 'c',
+      rRep: chipList('rRep', 'once', [['once', t.once], ['daily', t.daily]]),
+      convs: convs
+    };
+  }
+}
+
+;(function(){var rv=Component.prototype.renderVals;Component.prototype.renderVals=function(){var v=rv.call(this)||{};var s=this.state&&this.state.themeOverride;var p=(this.props&&this.props.theme)||'day';v.theme=s||p;var n=v.theme==='night';var self=this;v.setThemeDay=function(){self.setState({themeOverride:'day'})};v.setThemeNight=function(){self.setState({themeOverride:'night'})};v.thDayCls='chip'+(n?'':' on');v.thNightCls='chip'+(n?' on':'');return v;};})();
+</script>
+</body>
+</html>
