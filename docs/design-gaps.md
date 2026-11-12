@@ -692,3 +692,22 @@ package names, code identifiers), since changing them breaks installed builds an
   Google (when the build has the native module and client ids) and email with password. Create account asks
   `/auth/options`: while email sign-up is closed it shows Google and the existing `onb.a_e_closed` note instead of the
   email form. The design's Apple button is not shown, because Apple sign-in has no provider yet.
+
+### G-47 · Same meal from the app and the pump; repeated CareLink events (**Guy, 12 Nov 2026**, implemented-unverified)
+
+Guy logged a meal in the app (estimate 55 g) and entered 40 g on the pump; the journal showed the pump's meal and
+bolus twice each, and the meal as two meals.
+
+- Repeated events: CareLink sends the same pump marker again with its time 1 s or more later on later syncs, so the
+  time-based key let each copy in. An event of the same kind and amount within 90 s of one already kept (deleted ones
+  included) is now the same event. Migration `a8c9d0e1f2b4` soft-deletes the copies already saved, keeping the first.
+- Same meal: a CareLink meal entry from 45 min after to 20 min before a meal logged in the app is linked to it
+  (`records.same_as`, nearest one). The journal shows one meal with both amounts and glucose at the meal and two hours
+  later (or the time it will be shown); summaries, insights, routines and the companion count it once. The person can
+  mark it "separate" or, on an unlinked pump meal near an app meal, "same meal" (the design's duplicate card, JRN-02);
+  a link they set or removed is never changed automatically. `PUT /records/{id}/same-as`.
+- Different carbs (product rule, for review): the pump's carbs differ from the app's estimate when they are at least
+  10 g and 20 % apart. The meal then carries a note that it may be worth checking the carb count and that insulin amounts
+  are for the care team. After three such meals in 14 days an insight "Fewer (more) carbs on the pump than estimated"
+  shows glucose at those meals and two hours later, with the carbs and care-team advice. No dose or amount is suggested.
+- The website shows such a meal once (the pump's copy is left out); it does not show the two amounts yet.

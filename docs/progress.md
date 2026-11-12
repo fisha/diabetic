@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (later): G-47, repeated CareLink pump events removed (migration `a8c9d0e1f2b4`) and a pump meal linked to the
+meal logged in the app, with the carb difference followed two hours later; prices $25/month and $250/year shown
+without buying; mobile menus and a sticky home header on the website. API 179 tests and `pnpm check` pass; the
+migration's cleanup was run here on sample rows. The journal's pair card has not been seen on a phone yet.
+
 12 Nov 2026: pull to refresh on Overview and Journal (`features/refresh/usePullRefresh.tsx`; the spinner stops when
 the screen's server loads have answered), and the app's account screens set for email and password plus Google
 (G-46). Checked in the container on the web build (sign-up shows the closed note, a wrong password is refused by the

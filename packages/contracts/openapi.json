@@ -1067,6 +1067,21 @@
             ],
             "title": "End Mgdl"
           },
+          "gap": {
+            "anyOf": [
+              {
+                "enum": [
+                  "lower",
+                  "higher"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gap"
+          },
           "key": {
             "title": "Key",
             "type": "string"
@@ -1081,7 +1096,8 @@
               "timing_good",
               "range_good",
               "activity_gap",
-              "activity_good"
+              "activity_good",
+              "carb_gap"
             ],
             "title": "Kind",
             "type": "string"
@@ -3600,6 +3616,29 @@
             "title": "Revision",
             "type": "integer"
           },
+          "same_as": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Same As"
+          },
+          "same_as_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Same As By"
+          },
           "source": {
             "title": "Source",
             "type": "string"
@@ -3756,6 +3795,28 @@
           "lead_meals"
         ],
         "title": "RoutineOut",
+        "type": "object"
+      },
+      "SameAsIn": {
+        "description": "The meal this entry is the same meal as, or null for \"a separate meal\".",
+        "properties": {
+          "meal_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Meal Id"
+          }
+        },
+        "required": [
+          "meal_id"
+        ],
+        "title": "SameAsIn",
         "type": "object"
       },
       "SendIn": {
@@ -8438,6 +8499,68 @@
           }
         ],
         "summary": "Revisions",
+        "tags": [
+          "records"
+        ]
+      }
+    },
+    "/records/{record_id}/same-as": {
+      "put": {
+        "description": "Marks this meal entry as the same meal as another (G-47), or, with null, as a separate meal. The entry that points\nis shown and counted with the other. Either side can be named: when the other one is a device's entry and this one\nis not, the device's entry is the one that points.",
+        "operationId": "same_as_records__record_id__same_as_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "record_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Record Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SameAsIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "not_a_meal, same_record or already_linked"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Same As",
         "tags": [
           "records"
         ]

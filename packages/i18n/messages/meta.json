@@ -1578,6 +1578,30 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_gap_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_gap_b2": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_gap_higher_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_gap_lower_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.f_high_b": {
     "board": "OVR-04",
     "review": [
@@ -2123,7 +2147,19 @@
       "translation"
     ]
   },
+  "jrn.dup_meal": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
   "jrn.dup_merge": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.dup_same": {
     "board": "Journal",
     "review": [
       "translation"
@@ -2344,6 +2380,80 @@
     "note": "Symptoms or note record; board has no journal example (G-23)"
   },
   "jrn.orig_kept": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_after": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_before": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_detail": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_est": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_grams": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_higher": {
+    "board": "Journal",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "jrn.pair_lower": {
+    "board": "Journal",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "jrn.pair_none": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_pump": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_split": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_wait": {
     "board": "Journal",
     "review": [
       "translation"

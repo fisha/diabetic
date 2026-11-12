@@ -1212,6 +1212,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/records/{record_id}/same-as": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Same As
+         * @description Marks this meal entry as the same meal as another (G-47), or, with null, as a separate meal. The entry that points
+         *     is shown and counted with the other. Either side can be named: when the other one is a device's entry and this one
+         *     is not, the device's entry is the one that points.
+         */
+        put: operations["same_as_records__record_id__same_as_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/settings": {
         parameters: {
             query?: never;
@@ -1770,13 +1792,15 @@ export interface components {
             daily_steps?: number | null;
             /** End Mgdl */
             end_mgdl?: number | null;
+            /** Gap */
+            gap?: ("lower" | "higher") | null;
             /** Key */
             key: string;
             /**
              * Kind
              * @enum {string}
              */
-            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good";
+            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap";
             /** Label */
             label?: string | null;
             /** Of */
@@ -2771,6 +2795,10 @@ export interface components {
             received_at: string;
             /** Revision */
             revision: number;
+            /** Same As */
+            same_as?: string | null;
+            /** Same As By */
+            same_as_by?: string | null;
             /** Source */
             source: string;
         };
@@ -2830,6 +2858,14 @@ export interface components {
             meal_times: {
                 [key: string]: string;
             };
+        };
+        /**
+         * SameAsIn
+         * @description The meal this entry is the same meal as, or null for "a separate meal".
+         */
+        SameAsIn: {
+            /** Meal Id */
+            meal_id: string | null;
         };
         /** SendIn */
         SendIn: {
@@ -5876,6 +5912,48 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["RecordRevisionOut"][];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    same_as_records__record_id__same_as_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SameAsIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecordOut"];
+                };
+            };
+            /** @description not_a_meal, same_record or already_linked */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
