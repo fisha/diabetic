@@ -2159,6 +2159,12 @@
       "translation"
     ]
   },
+  "jrn.src_pump": {
+    "board": "JRN-01",
+    "review": [
+      "translation"
+    ]
+  },
   "jrn.st_completed": {
     "board": "Journal",
     "review": [
@@ -4723,6 +4729,12 @@
       "translation"
     ]
   },
+  "ovr.src_pump": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ]
+  },
   "ovr.src_sensor": {
     "board": "Overview",
     "review": [
@@ -4731,6 +4743,12 @@
   },
   "ovr.src_you": {
     "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.src_you_pump": {
+    "board": "OVR-01",
     "review": [
       "translation"
     ]
@@ -7767,6 +7785,18 @@
       "translation"
     ]
   },
+  "wd.k_ins_mix": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.k_ins_pump": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.k_meals": {
     "board": "WebDashboard",
     "review": [
@@ -7803,7 +7833,19 @@
       "translation"
     ]
   },
+  "wd.k_tir_few": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.k_tir_none": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.k_tir_pump": {
     "board": "WebDashboard",
     "review": [
       "translation"
