@@ -58,3 +58,8 @@ test('values with units stay together left to right', () => {
   assert.equal(stripIsolates(v), '124 mg/dL');
   assert.equal(stripIsolates(isolateLtr('07:30')), '07:30');
 });
+
+test('a message missing one of its values returns its text instead of throwing (12 Nov 2026 launch crash)', () => {
+  const t = createTranslator({ locale: 'en', messages });
+  assert.equal(t('ins.f_workout_t', {}), messages.en['ins.f_workout_t']);
+});

@@ -33,7 +33,14 @@ export function createTranslator({ locale, messages, onMissing }: TranslatorOpti
       fmt = new IntlMessageFormat(source, sourceLocale);
       cache.set(key, fmt);
     }
-    const out = fmt.format(values);
+    // A missing value must never take the app down (12 Nov 2026: a title missing one crashed the app at launch).
+    let out: unknown;
+    try {
+      out = fmt.format(values);
+    } catch {
+      onMissing?.(id, sourceLocale);
+      return source;
+    }
     return typeof out === 'string' ? out : String(out);
   };
 }
