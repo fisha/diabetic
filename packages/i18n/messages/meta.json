@@ -6039,6 +6039,36 @@
       "translation"
     ]
   },
+  "set.cg_lb_s1": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_lb_s2": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_lb_s3": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_lb_s4": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_lb_steps_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cg_lb_verify": {
     "board": "Settings",
     "review": [
