@@ -25,6 +25,52 @@ These items block a release:
 7. The model evaluation (brief section 10) is a separate thread. Its findings 5 (early "saved" claims) and 6
    (averages from too few readings) are still open.
 
+## Before production and before submitting to the stores (Guy, 12 Nov 2026)
+
+Guy asked on 12 Nov 2026 that all of this be done before going to production and before sending the app to the App
+Store or Google Play. It applies to production, not to the testers' setup on his Mac. None of it is legal advice; the
+model below is to be confirmed with a privacy lawyer.
+
+Almost everything the app collects is health information: glucose, insulin, pump settings, meals in the context of
+diabetes, heart rate, voice recordings and companion conversations, and the fact that the person has type 1 diabetes.
+
+**Laws to meet, by where users are**
+
+- [ ] Israel: Privacy Protection Law with Amendment 13 (in force August 2025), where health data is information of
+      special sensitivity; Privacy Protection (Data Security) Regulations 2017 at the medium or high level, depending
+      on the number of people: a security procedure, an access list, access logs, backups and security incident
+      reporting.
+- [ ] EU users: GDPR, health data as a special category: explicit consent, a privacy policy, the right to deletion
+      and export (built), and a data processing agreement with every processor that sees the data (OpenAI first).
+- [ ] US users: HIPAA usually does not apply to a consumer app, but the FTC Health Breach Notification Rule and state
+      laws such as Washington's My Health My Data Act do.
+- [ ] Medical device rules stay out of scope only while the app gives no dose recommendations (a standing rule).
+
+**Product and legal**
+
+- [ ] A privacy policy that says what is collected, why, who processes it, and that support staff may see a person's
+      data only to handle that person's request.
+- [ ] Explicit consent at sign-up for processing health data (separate from the existing training consent).
+- [ ] Data processing agreements with OpenAI and any other processor; check each one's retention settings.
+- [ ] Review the whole model with a privacy lawyer.
+
+**Staff and admin access to health data** (principle: need to know)
+
+- [ ] By default, the admin and staff see account details and connection status only, not health data.
+- [ ] The person grants support access themselves, for a limited time and a specific request (for example "let
+      support see my data for 48 hours"); without it, no health data is shown.
+- [ ] Least access within a grant: a connection problem shows connection status, not the whole glucose history.
+- [ ] Log every view of a person's data (who, what, when, why) and keep the log.
+- [ ] A named list of authorised staff, each with a signed confidentiality commitment.
+- [ ] Product analysis and statistics from aggregated or de-identified data only, never by viewing individual users.
+- Today (testers only): the website admin can read any account's data, read-only and without a view log. Acceptable
+  for the testing stage, must change before production.
+
+**Hosting** (also item 3 of the verdict)
+
+- [ ] A real server instead of Guy's Mac behind ngrok, with encryption at rest, backups with a retention policy, and
+      an incident response procedure.
+
 ## Coverage matrix
 
 Status words: **done-test** means it was verified in the container (`docs/integration-status.md` "verified-test").
