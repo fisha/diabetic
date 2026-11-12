@@ -854,7 +854,8 @@
           "kind": {
             "enum": [
               "alert",
-              "message"
+              "message",
+              "event"
             ],
             "title": "Kind",
             "type": "string"
@@ -1159,6 +1160,17 @@
             ],
             "title": "Daily Steps"
           },
+          "days": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Days"
+          },
           "end_mgdl": {
             "anyOf": [
               {
@@ -1203,7 +1215,10 @@
               "carb_gap",
               "meal_time",
               "late_rise",
-              "workout"
+              "workout",
+              "set_interval",
+              "set_overdue",
+              "sensor_short"
             ],
             "title": "Kind",
             "type": "string"
@@ -1250,6 +1265,17 @@
               }
             ],
             "title": "Part"
+          },
+          "rated": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rated"
           },
           "record_ids": {
             "default": [],
@@ -3452,6 +3478,22 @@
             "additionalProperties": true,
             "title": "History",
             "type": "object"
+          },
+          "infusionSet": {
+            "anyOf": [
+              {
+                "enum": [
+                  "extended",
+                  "standard",
+                  "notSure"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Infusionset"
           },
           "insulinOther": {
             "title": "Insulinother",

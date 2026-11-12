@@ -819,6 +819,10 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   read nothing from 19:34 UTC because reads went to the global host and the redirect counted as "no new readings"); a
   graph answer without graphData now fails instead of counting as a successful sync. API 193 tests, `pnpm check` pass;
   journal checked in a browser with stand-in alerts.
+- 12 Nov 2026 (Guy, G-58): set and sensor changes from CareLink and LibreLinkUp in the journal, and three insights
+  (usual set interval, set past its rated days, sensors ending early) gated on `kinds=3`; infusion set kind in Treatment
+  settings. Device data inventory in docs/device-data-inventory.md. API 195 tests and `pnpm check` pass; not seen on
+  real data yet.
 
 ## Next action
 

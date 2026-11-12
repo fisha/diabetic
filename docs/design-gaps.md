@@ -839,3 +839,18 @@ message"). The journal shows each as its own row with a bell icon, under a new "
 own event, never advice. LibreLinkUp's logbook carries no alarm fields (field inspection, 12 Nov 2026) and Dexcom Share
 gives readings only, so only pump alerts appear for now. The website's old dashboard timeline (admin view) does not show
 them; the personal area is the app itself (G-55).
+
+### G-58 · Set and sensor changes (**Guy, 12 Nov 2026**, implemented-unverified)
+
+Guy asked for insights on how often the pump set and the sensor are changed, a reminder when the device's days have
+passed, and sensors that don't last their rated time. Sources: CareLink's 30-day history marks set change days
+(`Agg1d[].setChange` "YES", day only), kept as `device_events` code `set_change`; LibreLinkUp's `sensor.a` (start, epoch
+seconds), kept as `sensor_start`; CareLink's "sensor connected" messages (797/798) mark a new Medtronic sensor. Both show
+in the journal under Alerts ("Infusion set changed", "New sensor started"). Findings (only to clients sending
+`kinds=3`): `set_interval` (median days between at least three set changes in 90 days), `set_overdue` (the last change a
+whole day past the set's rated days, only when the person chose the set kind in Treatment settings for a MiniMed pump),
+`sensor_short` (at least two sensors that lasted more than a day less than the model's rated days). Rated days from the
+makers' pages, fetched 12 Nov 2026: Guardian 4 up to 7 days and Extended set up to 7 days, other current sets up to 3
+days (medtronic.com MiniMed 780G page, minimed.com Extended set page); Dexcom G7 10 days plus a 12-hour grace period
+(dexcom.com); FreeStyle Libre 3 14 days (stated on Dexcom's comparison page; Abbott's page states 15 days for Libre 3
+Plus). Simplera and Libre 2 are not listed until confirmed. The 1-day slack is a product rule. Needs clinical review.

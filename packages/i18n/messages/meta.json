@@ -258,6 +258,13 @@
     ],
     "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
   },
+  "alr.sensor_started": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: a sensor start the device service recorded."
+  },
   "alr.sensor_updating": {
     "board": "Journal",
     "review": [
@@ -271,6 +278,13 @@
       "translation"
     ],
     "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.set_changed": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: a set change day the pump recorded (time of day not given)."
   },
   "alr.signal_lost": {
     "board": "Journal",
@@ -2042,6 +2056,49 @@
       "clinical"
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_sensor_short_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight body (G-58)."
+  },
+  "ins.f_sensor_short_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight title (G-58)."
+  },
+  "ins.f_set_int_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight body (G-58)."
+  },
+  "ins.f_set_int_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight title (G-58): usual days between set changes the pump recorded."
+  },
+  "ins.f_set_over_b": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Insight body (G-58). Rated days from the maker's page."
+  },
+  "ins.f_set_over_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight title (G-58): set older than the maker's rated days."
   },
   "ins.f_steps": {
     "board": "Overview",
@@ -8566,6 +8623,41 @@
     "review": [
       "translation"
     ]
+  },
+  "set.tr_set": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Treatment settings: kind of infusion set (G-58)."
+  },
+  "set.tr_set_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Treatment settings helper."
+  },
+  "set.tr_set_ext": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Medtronic Extended infusion set, rated by the maker for up to 7 days."
+  },
+  "set.tr_set_ns": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Treatment settings."
+  },
+  "set.tr_set_std": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Other Medtronic sets, rated for up to 3 days."
   },
   "set.train_off": {
     "board": "Settings",

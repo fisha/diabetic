@@ -1780,7 +1780,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "alert" | "message";
+            kind: "alert" | "message" | "event";
             /**
              * Occurred At
              * Format: date-time
@@ -1890,6 +1890,8 @@ export interface components {
             count: number;
             /** Daily Steps */
             daily_steps?: number | null;
+            /** Days */
+            days?: number | null;
             /** End Mgdl */
             end_mgdl?: number | null;
             /** Gap */
@@ -1900,7 +1902,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time" | "late_rise" | "workout";
+            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time" | "late_rise" | "workout" | "set_interval" | "set_overdue" | "sensor_short";
             /** Label */
             label?: string | null;
             /** Of */
@@ -1909,6 +1911,8 @@ export interface components {
             other_mgdl?: number | null;
             /** Part */
             part?: ("night" | "morning" | "afternoon" | "evening") | null;
+            /** Rated */
+            rated?: number | null;
             /**
              * Record Ids
              * @default []
@@ -2738,6 +2742,8 @@ export interface components {
             history: {
                 [key: string]: unknown;
             };
+            /** Infusionset */
+            infusionSet?: ("extended" | "standard" | "notSure") | null;
             /** Insulinother */
             insulinOther: boolean;
             /** Insulinunknown */
