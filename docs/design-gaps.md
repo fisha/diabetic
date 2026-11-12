@@ -779,3 +779,13 @@ meal, then insulin. The row appears under the glucose, insulin and meal filters.
 each opening on its own (edit, delete and hide stay per event). Entries the person typed keep their own rows. Pump
 insulin also says how the pump gave it (CareLink activationType: automatic correction, bolus, manual bolus).
 `mergeMoments` in `features/journal/model.ts`, tests in `test/journal.test.ts`.
+
+### G-52 · Diabetes type 2, "no insulin", connections that fit the devices (**Guy, 12 Nov 2026**, implemented-unverified)
+
+Guy: type should be type 1, type 2 and other; without type 1 the insulin topics may not apply; choosing MiniMed should
+offer only CareLink among the data connections; the sensor is "FreeStyle Libre" without a generation number. Done:
+the type step offers type 1, type 2, another type (an earlier "not sure" answer stays valid); the treatment step has
+"I don't use insulin", which skips the insulin, pump and ratio steps; the app's Devices list offers CareLink for
+MiniMed or Guardian, Dexcom Share for Dexcom, LibreLinkUp for FreeStyle Libre, all of them when no known device was
+given, and always keeps a connection already made; the companion is told type 2 and not to assume insulin. Open,
+waiting on Guy: questions specific to type 2 (medicines, for example) and extra profile topics (nutrition, fitness).

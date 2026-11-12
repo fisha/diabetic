@@ -3245,6 +3245,7 @@
           "diabetesType": {
             "enum": [
               "type1",
+              "type2",
               "other",
               "notSure"
             ],

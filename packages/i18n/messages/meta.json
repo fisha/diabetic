@@ -4677,6 +4677,13 @@
       "translation"
     ]
   },
+  "onb.tx_none": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Treatment option; skips the insulin, pump and ratio steps."
+  },
   "onb.tx_ns": {
     "board": "Onboarding",
     "review": [
@@ -4700,6 +4707,13 @@
     "review": [
       "translation"
     ]
+  },
+  "onb.ty_2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Diabetes type option."
   },
   "onb.ty_note": {
     "board": "Onboarding",

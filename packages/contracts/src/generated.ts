@@ -2649,7 +2649,7 @@ export interface components {
              * Diabetestype
              * @enum {string}
              */
-            diabetesType: "type1" | "other" | "notSure";
+            diabetesType: "type1" | "type2" | "other" | "notSure";
             /** Diagnosed */
             diagnosed?: string | null;
             /** Diagnosedon */

@@ -8,6 +8,10 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (night, G-52): diabetes type 2 in onboarding and the website profile, "I don't use insulin" skips the
+insulin steps, Devices offers only the connections that fit the profile's pump and sensor, "FreeStyle Libre" without
+a number. API 187 tests and `pnpm check` pass; not yet seen on a phone.
+
 12 Nov 2026 (night, meal times as insights): the usual meal times from Routine's "What I've learned so far" are also
 insights (finding kind `meal_time`, one per meal, first impression below 3 days), in the app and on the website. API
 187 tests and `pnpm check` pass; not yet seen on a phone.
