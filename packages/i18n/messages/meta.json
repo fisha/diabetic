@@ -9630,6 +9630,12 @@
     ],
     "note": "The lock-screen card never updates while the app is closed; {t} is the age iOS counts."
   },
+  "wdg.la_stale": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ]
+  },
   "wdg.mixed": {
     "board": "WIDGET",
     "review": [

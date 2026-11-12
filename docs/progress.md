@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (night, lock screen): the card shows the part of the day without its hours and says "Not live · X ago";
+15 minutes after the reading iOS marks it stale and the card greys the value and shows "Not current" (patched
+expo-live-activity passes `staleDate`, `patches/`). The update runtime moved from the fingerprint to the app version
+(0.2.0) because the fingerprint differed between the Mac and the EAS build, so the first `eas update` could not reach
+build dc325b8f; raise `version` with every native change. Needs a new build. Swift not compiled here (no Xcode).
+
 12 Nov 2026 (night): meal photo analysis worked once on the iPhone, then failed: the model gave an amount in grams
 above the item limit of 100 and the whole answer was refused. The limit is now 1000 (as a saved meal allows), a single
 out-of-bounds food is left out instead of failing the meal, and the failure kind is logged. API 187 tests pass.
