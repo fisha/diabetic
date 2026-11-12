@@ -1346,6 +1346,18 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.a1c_lab": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.a1c_short": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.a1c_sub": {
     "board": "OVR-04",
     "review": [
@@ -8002,6 +8014,30 @@
     ]
   },
   "wd.pdf": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.pe_device": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.pe_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.pe_note": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.pe_saved": {
     "board": "WebDashboard",
     "review": [
       "translation"
