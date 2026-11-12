@@ -5651,8 +5651,20 @@
     },
     "/insights/hours": {
       "get": {
-        "description": "Each hour of the day over the last 14 days (for the lock-screen widget, G-40): how many days had readings then and\nhow many of those days were above, below or in the person's own range, by that day's middle value in the hour.",
+        "description": "Each hour of the day over the last 14 days (for the lock-screen widget, G-40): how many days had readings then and\nhow many of those days were above, below or in the person's own range, by that day's middle value in the hour.\nWith span=3 the blocks are three hours long (00-03, 03-06, ...), for the lock-screen card's part of the day (G-41).",
         "operationId": "by_hour_insights_hours_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "span",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "title": "Span",
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -5663,6 +5675,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "security": [

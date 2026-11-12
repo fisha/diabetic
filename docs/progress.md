@@ -673,6 +673,10 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   time-in-range setting (`personalWebView` tirSettings, band source `carelink`, labelled as such). The website now
   uses the server's range (it used only a typed one) and shows routines, meal patterns and the A1c on Insights.
   Meals and insulin the pump recorded are labelled CareLink, not "entered by you".
+- 12 Nov 2026 (Guy): the app Overview's summary card shows the time-in-range percent with below/above, for the
+  selected period (day, week, 2 weeks, month), with period-correct titles. The Live Activity shows the latest
+  reading and a three-hour part of the day with an icon (G-41 update; `span` on `/insights/hours`). Needs a new iOS
+  build; Swift not compiled in the container.
 
 ## Next action
 

@@ -654,6 +654,7 @@ export interface paths {
          * By Hour
          * @description Each hour of the day over the last 14 days (for the lock-screen widget, G-40): how many days had readings then and
          *     how many of those days were above, below or in the person's own range, by that day's middle value in the hour.
+         *     With span=3 the blocks are three hours long (00-03, 03-06, ...), for the lock-screen card's part of the day (G-41).
          */
         get: operations["by_hour_insights_hours_get"];
         put?: never;
@@ -3836,7 +3837,9 @@ export interface operations {
     };
     by_hour_insights_hours_get: {
         parameters: {
-            query?: never;
+            query?: {
+                span?: number;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -3850,6 +3853,15 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HoursOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

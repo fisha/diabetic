@@ -539,3 +539,12 @@ module's attributes type. Limits: iOS ends it after 8 hours at most, it cannot c
 Activity pushes from the server (APNs, not built), and if the person swipes it away it stays away until the next
 day. iOS Settings can turn Live Activities off for Steady. Needs a new development build; not built in Xcode or run on
 a phone.
+
+Update, 12 Nov 2026 (Guy's requests): the card now leads with the latest reading as it was when the app was left
+(value, unit, the person's range tag, its time and a running "x min ago" that iOS counts, so an old value reads as
+old). This departs from the brief's "no glucose values on the lock screen" at Guy's explicit request; anyone who sees
+the phone can read it. The hour line became a three-hour part of the day (`GET /insights/hours?span=3`, eight parts
+from "late night" 00-03 to "night" 21-24, each with an SF Symbol sun or moon) with a bar to the end of the part.
+Colours are the app's tokens; no red and no urgency. The reading travels as JSON in the module's `imageName` field and
+the icon in `dynamicIslandImageName` (the module's state has no other free fields). Swift not compiled here; needs
+the new build.
