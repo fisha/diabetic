@@ -632,3 +632,44 @@ Server (`services/api/steady_api/progress.py`, tables `progress_checks` and `ach
   enough data for a fair comparison in the period, the share with a supported improvement; also how many people
   checked had enough data (coverage) and how many wins safety blocked. It describes people's numbers, not that the
   app caused them.
+
+### G-44 · View-only sharing and the admin page (**Guy's requests, 12 Nov 2026**, implemented-unverified)
+
+Guy asked for a Settings option to let someone (a parent) view his data and insights in the app with no way to change
+anything, and for an admin page on the website listing every account, with "view as" that is read-only except for
+connecting devices. Neither is in the design; both reuse existing screens and look.
+
+- Server: table `shares` (migration `e6f7a8b9c0d2`), `GET /sharing`, `POST /sharing/invites` (an 8-character code
+  valid 7 days, one use), `POST /sharing/accept`, `DELETE /sharing/{id}` (owner removes, or viewer leaves).
+- Viewing: requests carry `X-View-As: <owner id>`. The server (`deps.current_user`) answers as the owner only for an
+  accepted, unrevoked share and only GET on the data paths (glucose, records, insights, progress, health samples,
+  profile, settings, follow-ups); anything else is 403 `view_only`. `/auth/*`, `/sharing*` and `/admin*` are always
+  answered as the signed-in account. The app and website hide edit controls too, but the server is what enforces it.
+- Admin: `STEADY_ADMIN_EMAILS` (comma separated, in `services/api/.env` on the Mac, never in the repository).
+  `GET /admin/users`; an admin may view any account with the same read-only rules, plus any method on
+  `/devices/carelink|dexcom|libre` to connect that account's devices. `/auth/me` returns `is_admin` so the website
+  shows the Admin page only to admins.
+- App: Settings > Sharing (invite, send the code with the system share sheet, remove; enter a code; view). While
+  viewing, the tabs show the owner's Overview, Journal and insights with a "view only" bar; logging, editing, the
+  companion, health sync and follow-up scheduling are off; the profile tab offers "Back to my own data". A parent
+  without a profile of their own can reach it from sign-up ("I have a code to view someone's data").
+- Website: Settings has the sharing section and device connections; a "view only" bar while viewing; settings shown
+  disabled; export only by the owner; read marks and celebrations are not touched by a viewer.
+- No alerts are sent to viewers (said on screen; the sensor maker's follower app is for alarms).
+
+### G-45 · Dexcom and FreeStyle Libre, unofficial (**Guy's decision, 12 Nov 2026**, implemented-unverified)
+
+"לשניהם תעשה כמו שעשינו ל carelink בצורה לא רשמית כרגע רק לצורך הבדיקות". `services/api/steady_api/cgm_share.py`
+and `routers/cgm.py`: Dexcom Share (the person's own Dexcom account; regions us, outside the US, Japan; Share must be
+on with a follower) and LibreLinkUp (an account the person invited in the Libre app; regional redirect; terms to
+accept are reported). Sign-in sealed like CareLink; the worker fetches every 5 minutes; readings saved with source
+`dexcom` / `libre`, deduplicated across sources. Screens: app Settings > Devices (two new rows, a screen like
+CareLink's), website Settings > Device connections. Tested only against stand-in servers (`test_cgm.py`); never run
+against Dexcom or Abbott. Neither maker offers or approves this route and it can break at any time.
+
+### G-15 note · App name
+
+12 Nov 2026: Guy named the app **Stedio** ("תחליף את שם האפליקציה בכל המקומות גם באתר ל Stedio"). Every name people
+see changed (texts in all languages, app display name, permission texts, widget and Live Activity, notification
+titles, website). Technical identifiers stay as they are (bundle ids `com.fisha.steady.dev`, App Group, Expo slug,
+package names, code identifiers), since changing them breaks installed builds and signing.

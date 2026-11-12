@@ -5881,6 +5881,114 @@
       "translation"
     ]
   },
+  "set.cg_connecting": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_dexcom_how": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_dexcom_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_dexcom_title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_dx_verify": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_failed": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_jp": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_lb_verify": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_libre_how": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_libre_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_libre_title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_none_yet": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_on": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_pw": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_region": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_user": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_wrong": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cl_added": {
     "board": "SET-05",
     "review": [
@@ -7453,6 +7561,192 @@
       "translation"
     ]
   },
+  "shr.accept": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.bad_code": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.banner": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.cancel": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.code": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.code_until": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.have_code": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.invite": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.label": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.label_ph": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.lead": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.leave": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.manage": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.mine_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.not_alarm": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.own_code": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.pending": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.remove": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.row_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.send": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.send_text": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.since": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.stop": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.theirs_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.view": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.viewing_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.viewing_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.what": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "sub.annual": {
     "board": "Subscription",
     "review": [
@@ -7897,6 +8191,72 @@
       "translation"
     ]
   },
+  "wd.adm_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_created": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_devices": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_email": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_last": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_noprofile": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_readings": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_view": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.admin": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.all": {
     "board": "WebDashboard",
     "review": [
@@ -7946,6 +8306,18 @@
     ]
   },
   "wd.care_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.cn_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.cn_t": {
     "board": "WebDashboard",
     "review": [
       "translation"
@@ -8667,6 +9039,48 @@
     ]
   },
   "wd.unavail_export": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_admin": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_admin_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_banner": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_banner_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_noexport": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_readonly": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_stop": {
     "board": "WebDashboard",
     "review": [
       "translation"

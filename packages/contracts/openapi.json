@@ -29,6 +29,22 @@
         "title": "A1cOut",
         "type": "object"
       },
+      "AcceptIn": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "maxLength": 16,
+            "minLength": 6,
+            "title": "Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "title": "AcceptIn",
+        "type": "object"
+      },
       "AchievementOut": {
         "properties": {
           "celebrated_at": {
@@ -128,6 +144,62 @@
           "intensity"
         ],
         "title": "ActivityData",
+        "type": "object"
+      },
+      "AdminUserOut": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "devices": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Devices",
+            "type": "array"
+          },
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "has_profile": {
+            "title": "Has Profile",
+            "type": "boolean"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "last_reading_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Reading At"
+          },
+          "readings_14d": {
+            "title": "Readings 14D",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "created_at",
+          "has_profile",
+          "devices",
+          "readings_14d",
+          "last_reading_at"
+        ],
+        "title": "AdminUserOut",
         "type": "object"
       },
       "AuthorizeIn": {
@@ -416,6 +488,147 @@
           "connected"
         ],
         "title": "CareLinkOut",
+        "type": "object"
+      },
+      "CgmIn": {
+        "additionalProperties": false,
+        "properties": {
+          "password": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Password",
+            "type": "string"
+          },
+          "region": {
+            "default": "ous",
+            "enum": [
+              "us",
+              "ous",
+              "jp",
+              "global"
+            ],
+            "title": "Region",
+            "type": "string"
+          },
+          "username": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Username",
+            "type": "string"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ],
+        "title": "CgmIn",
+        "type": "object"
+      },
+      "CgmOut": {
+        "properties": {
+          "added": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Added"
+          },
+          "connected": {
+            "title": "Connected",
+            "type": "boolean"
+          },
+          "detail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detail"
+          },
+          "kind": {
+            "enum": [
+              "dexcom",
+              "libre"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "last_reading_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Reading At"
+          },
+          "last_sync_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Sync At"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Region"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "enum": [
+                  "connected",
+                  "wrong_credentials",
+                  "needs_verification",
+                  "failed"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "username": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Username"
+          }
+        },
+        "required": [
+          "kind",
+          "connected"
+        ],
+        "title": "CgmOut",
         "type": "object"
       },
       "CheckOut": {
@@ -2240,6 +2453,25 @@
         "title": "InsulinData",
         "type": "object"
       },
+      "InviteIn": {
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "anyOf": [
+              {
+                "maxLength": 60,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          }
+        },
+        "title": "InviteIn",
+        "type": "object"
+      },
       "LearnedOut": {
         "properties": {
           "days": {
@@ -2297,6 +2529,11 @@
             "format": "uuid",
             "title": "Id",
             "type": "string"
+          },
+          "is_admin": {
+            "default": false,
+            "title": "Is Admin",
+            "type": "boolean"
           }
         },
         "required": [
@@ -3624,6 +3861,30 @@
         "title": "SettingsPatch",
         "type": "object"
       },
+      "SharingOut": {
+        "properties": {
+          "viewers": {
+            "items": {
+              "$ref": "#/components/schemas/ViewerOut"
+            },
+            "title": "Viewers",
+            "type": "array"
+          },
+          "viewing": {
+            "items": {
+              "$ref": "#/components/schemas/ViewingOut"
+            },
+            "title": "Viewing",
+            "type": "array"
+          }
+        },
+        "required": [
+          "viewers",
+          "viewing"
+        ],
+        "title": "SharingOut",
+        "type": "object"
+      },
       "SignIn": {
         "additionalProperties": false,
         "properties": {
@@ -3954,6 +4215,115 @@
         "title": "ValidationError",
         "type": "object"
       },
+      "ViewerOut": {
+        "description": "A share as its owner sees it: who can see their data, or an invite not used yet.",
+        "properties": {
+          "accepted_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Accepted At"
+          },
+          "code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code"
+          },
+          "code_expires_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code Expires At"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "viewer_email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Viewer Email"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "viewer_email",
+          "code",
+          "code_expires_at",
+          "accepted_at"
+        ],
+        "title": "ViewerOut",
+        "type": "object"
+      },
+      "ViewingOut": {
+        "description": "A share as the viewer sees it: whose data they can see.",
+        "properties": {
+          "accepted_at": {
+            "format": "date-time",
+            "title": "Accepted At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "owner_id": {
+            "format": "uuid",
+            "title": "Owner Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "owner_id",
+          "name",
+          "accepted_at"
+        ],
+        "title": "ViewingOut",
+        "type": "object"
+      },
       "VoiceStatusOut": {
         "properties": {
           "available": {
@@ -4087,6 +4457,36 @@
         "summary": "Delete Account",
         "tags": [
           "account"
+        ]
+      }
+    },
+    "/admin/users": {
+      "get": {
+        "operationId": "users_admin_users_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AdminUserOut"
+                  },
+                  "title": "Response Users Admin Users Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Users",
+        "tags": [
+          "admin"
         ]
       }
     },
@@ -4753,6 +5153,312 @@
           }
         ],
         "summary": "Sync Now",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/dexcom": {
+      "delete": {
+        "description": "Forgets the sign-in. With remove_readings, the readings that came from this source are deleted too.",
+        "operationId": "dexcom_disconnect_devices_dexcom_delete",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "remove_readings",
+            "required": false,
+            "schema": {
+              "default": false,
+              "title": "Remove Readings",
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemovedOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Dexcom Disconnect",
+        "tags": [
+          "devices"
+        ]
+      },
+      "get": {
+        "operationId": "dexcom_status_devices_dexcom_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Dexcom Status",
+        "tags": [
+          "devices"
+        ]
+      },
+      "put": {
+        "description": "Signs in now. Only a sign-in that worked is kept; a refused one is answered and forgotten.",
+        "operationId": "dexcom_connect_devices_dexcom_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CgmIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "description": "wrong_credentials"
+          },
+          "409": {
+            "description": "needs_verification"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "502": {
+            "description": "failed"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Dexcom Connect",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/dexcom/sync": {
+      "post": {
+        "operationId": "dexcom_sync_devices_dexcom_sync_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Dexcom Sync",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/libre": {
+      "delete": {
+        "description": "Forgets the sign-in. With remove_readings, the readings that came from this source are deleted too.",
+        "operationId": "libre_disconnect_devices_libre_delete",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "remove_readings",
+            "required": false,
+            "schema": {
+              "default": false,
+              "title": "Remove Readings",
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemovedOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Libre Disconnect",
+        "tags": [
+          "devices"
+        ]
+      },
+      "get": {
+        "operationId": "libre_status_devices_libre_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Libre Status",
+        "tags": [
+          "devices"
+        ]
+      },
+      "put": {
+        "description": "Signs in now. Only a sign-in that worked is kept; a refused one is answered and forgotten.",
+        "operationId": "libre_connect_devices_libre_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CgmIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "description": "wrong_credentials"
+          },
+          "409": {
+            "description": "needs_verification"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "502": {
+            "description": "failed"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Libre Connect",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/libre/sync": {
+      "post": {
+        "operationId": "libre_sync_devices_libre_sync_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Libre Sync",
         "tags": [
           "devices"
         ]
@@ -7399,6 +8105,167 @@
         "summary": "Patch Settings",
         "tags": [
           "settings"
+        ]
+      }
+    },
+    "/sharing": {
+      "get": {
+        "operationId": "get_sharing_sharing_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SharingOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Sharing",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
+    "/sharing/accept": {
+      "post": {
+        "description": "The viewer enters the code. It works once, within 7 days, and not for one's own data.",
+        "operationId": "accept_sharing_accept_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcceptIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ViewingOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Accept",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
+    "/sharing/invites": {
+      "post": {
+        "operationId": "invite_sharing_invites_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InviteIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ViewerOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Invite",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
+    "/sharing/{share_id}": {
+      "delete": {
+        "description": "The owner removes a viewer or cancels an invite; the viewer stops viewing. Takes effect on the next request.",
+        "operationId": "end_sharing__share_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "End",
+        "tags": [
+          "sharing"
         ]
       }
     },

@@ -701,6 +701,10 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   pushes only for week wins under the G-42 policy, and an internal KPI with data coverage. Migration `d5e6f7a8b9c1`.
   API tests `test_progress.py` (7 scenarios); app unit test `progress.test.ts`; `pnpm check` passes. Not run on a
   phone or viewed in a browser.
+- 12 Nov 2026 (Guy): view-only sharing with invite codes and an admin page with read-only "view as" (G-44,
+  migration `e6f7a8b9c0d2`, `STEADY_ADMIN_EMAILS`); unofficial Dexcom Share and LibreLinkUp connections like CareLink
+  (G-45, stand-in servers only); the app renamed to Stedio in everything people see (identifiers unchanged); an EAS
+  `testers` profile (internal distribution, API https://stedio.ngrok.app). API 166 tests and `pnpm check` pass.
 
 ## Next action
 

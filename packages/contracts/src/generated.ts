@@ -24,6 +24,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/admin/users": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Users */
+        get: operations["users_admin_users_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/me": {
         parameters: {
             query?: never;
@@ -246,6 +263,90 @@ export interface paths {
         put?: never;
         /** Sync Now */
         post: operations["sync_now_devices_carelink_sync_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/dexcom": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Dexcom Status */
+        get: operations["dexcom_status_devices_dexcom_get"];
+        /**
+         * Dexcom Connect
+         * @description Signs in now. Only a sign-in that worked is kept; a refused one is answered and forgotten.
+         */
+        put: operations["dexcom_connect_devices_dexcom_put"];
+        post?: never;
+        /**
+         * Dexcom Disconnect
+         * @description Forgets the sign-in. With remove_readings, the readings that came from this source are deleted too.
+         */
+        delete: operations["dexcom_disconnect_devices_dexcom_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/dexcom/sync": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Dexcom Sync */
+        post: operations["dexcom_sync_devices_dexcom_sync_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/libre": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Libre Status */
+        get: operations["libre_status_devices_libre_get"];
+        /**
+         * Libre Connect
+         * @description Signs in now. Only a sign-in that worked is kept; a refused one is answered and forgotten.
+         */
+        put: operations["libre_connect_devices_libre_put"];
+        post?: never;
+        /**
+         * Libre Disconnect
+         * @description Forgets the sign-in. With remove_readings, the readings that came from this source are deleted too.
+         */
+        delete: operations["libre_disconnect_devices_libre_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/libre/sync": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Libre Sync */
+        post: operations["libre_sync_devices_libre_sync_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1010,6 +1111,80 @@ export interface paths {
         patch: operations["patch_settings_settings_patch"];
         trace?: never;
     };
+    "/sharing": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Sharing */
+        get: operations["get_sharing_sharing_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sharing/accept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Accept
+         * @description The viewer enters the code. It works once, within 7 days, and not for one's own data.
+         */
+        post: operations["accept_sharing_accept_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sharing/invites": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Invite */
+        post: operations["invite_sharing_invites_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sharing/{share_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * End
+         * @description The owner removes a viewer or cancels an invite; the viewer stops viewing. Takes effect on the next request.
+         */
+        delete: operations["end_sharing__share_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/voice": {
         parameters: {
             query?: never;
@@ -1102,6 +1277,11 @@ export interface components {
             /** Mean Mgdl */
             mean_mgdl: number;
         };
+        /** AcceptIn */
+        AcceptIn: {
+            /** Code */
+            code: string;
+        };
         /** AchievementOut */
         AchievementOut: {
             /** Celebrated At */
@@ -1140,6 +1320,29 @@ export interface components {
             minutes: number;
             /** Type */
             type: string;
+        };
+        /** AdminUserOut */
+        AdminUserOut: {
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Devices */
+            devices: string[];
+            /** Email */
+            email: string;
+            /** Has Profile */
+            has_profile: boolean;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Last Reading At */
+            last_reading_at: string | null;
+            /** Readings 14D */
+            readings_14d: number;
         };
         /** AuthorizeIn */
         AuthorizeIn: {
@@ -1232,6 +1435,43 @@ export interface components {
             last_sync_at?: string | null;
             /** Notifications */
             notifications?: components["schemas"]["CareLinkNotification"][];
+            /** Region */
+            region?: string | null;
+            /** Status */
+            status?: ("connected" | "wrong_credentials" | "needs_verification" | "failed") | null;
+            /** Username */
+            username?: string | null;
+        };
+        /** CgmIn */
+        CgmIn: {
+            /** Password */
+            password: string;
+            /**
+             * Region
+             * @default ous
+             * @enum {string}
+             */
+            region: "us" | "ous" | "jp" | "global";
+            /** Username */
+            username: string;
+        };
+        /** CgmOut */
+        CgmOut: {
+            /** Added */
+            added?: number | null;
+            /** Connected */
+            connected: boolean;
+            /** Detail */
+            detail?: string | null;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "dexcom" | "libre";
+            /** Last Reading At */
+            last_reading_at?: string | null;
+            /** Last Sync At */
+            last_sync_at?: string | null;
             /** Region */
             region?: string | null;
             /** Status */
@@ -1908,6 +2148,11 @@ export interface components {
             /** Units */
             units: number;
         };
+        /** InviteIn */
+        InviteIn: {
+            /** Label */
+            label?: string | null;
+        };
         /** LearnedOut */
         LearnedOut: {
             /** Days */
@@ -1937,6 +2182,11 @@ export interface components {
              * Format: uuid
              */
             id: string;
+            /**
+             * Is Admin
+             * @default false
+             */
+            is_admin: boolean;
         };
         /** MealData */
         MealData: {
@@ -2493,6 +2743,13 @@ export interface components {
             /** Timezone */
             timezone?: string | null;
         };
+        /** SharingOut */
+        SharingOut: {
+            /** Viewers */
+            viewers: components["schemas"]["ViewerOut"][];
+            /** Viewing */
+            viewing: components["schemas"]["ViewingOut"][];
+        };
         /** SignIn */
         SignIn: {
             /**
@@ -2618,6 +2875,50 @@ export interface components {
             /** Error Type */
             type: string;
         };
+        /**
+         * ViewerOut
+         * @description A share as its owner sees it: who can see their data, or an invite not used yet.
+         */
+        ViewerOut: {
+            /** Accepted At */
+            accepted_at: string | null;
+            /** Code */
+            code: string | null;
+            /** Code Expires At */
+            code_expires_at: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string | null;
+            /** Viewer Email */
+            viewer_email: string | null;
+        };
+        /**
+         * ViewingOut
+         * @description A share as the viewer sees it: whose data they can see.
+         */
+        ViewingOut: {
+            /**
+             * Accepted At
+             * Format: date-time
+             */
+            accepted_at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+            /**
+             * Owner Id
+             * Format: uuid
+             */
+            owner_id: string;
+        };
         /** VoiceStatusOut */
         VoiceStatusOut: {
             /** Available */
@@ -2695,6 +2996,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    users_admin_users_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminUserOut"][];
                 };
             };
         };
@@ -3222,6 +3543,256 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CareLinkOut"];
+                };
+            };
+        };
+    };
+    dexcom_status_devices_dexcom_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+        };
+    };
+    dexcom_connect_devices_dexcom_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CgmIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+            /** @description wrong_credentials */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description needs_verification */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    dexcom_disconnect_devices_dexcom_delete: {
+        parameters: {
+            query?: {
+                remove_readings?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RemovedOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    dexcom_sync_devices_dexcom_sync_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+        };
+    };
+    libre_status_devices_libre_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+        };
+    };
+    libre_connect_devices_libre_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CgmIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+            /** @description wrong_credentials */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description needs_verification */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    libre_disconnect_devices_libre_delete: {
+        parameters: {
+            query?: {
+                remove_readings?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RemovedOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    libre_sync_devices_libre_sync_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
                 };
             };
         };
@@ -4963,6 +5534,121 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["SettingsOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_sharing_sharing_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SharingOut"];
+                };
+            };
+        };
+    };
+    accept_sharing_accept_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AcceptIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ViewingOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    invite_sharing_invites_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["InviteIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ViewerOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    end_sharing__share_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
