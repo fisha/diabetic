@@ -1395,6 +1395,13 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.adv_move": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
   "ins.adv_team": {
     "board": "OVR-04",
     "review": [
@@ -1434,6 +1441,36 @@
     ]
   },
   "ins.excluded": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_act_gap_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_act_gap_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_act_good_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_act_good_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_act_none_b": {
     "board": "Overview",
     "review": [
       "translation"
@@ -1566,6 +1603,12 @@
       "clinical"
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_steps": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
   },
   "ins.f_sub": {
     "board": "OVR-04",
@@ -7566,6 +7609,25 @@
     "review": [
       "translation"
     ]
+  },
+  "sum.ahead_afternoon": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "sum.ahead_evening": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "sum.ahead_morning": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Daily summary: a routine for a later part of today, shown to prepare for it."
   },
   "sum.body": {
     "board": "Overview",

@@ -650,7 +650,8 @@
               "enum": [
                 "carbs",
                 "team",
-                "timing"
+                "timing",
+                "move"
               ],
               "type": "string"
             },
@@ -660,6 +661,17 @@
           "count": {
             "title": "Count",
             "type": "integer"
+          },
+          "daily_steps": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Daily Steps"
           },
           "end_mgdl": {
             "anyOf": [
@@ -684,7 +696,9 @@
               "high_alert",
               "auto_exit",
               "timing_good",
-              "range_good"
+              "range_good",
+              "activity_gap",
+              "activity_good"
             ],
             "title": "Kind",
             "type": "string"

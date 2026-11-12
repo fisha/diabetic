@@ -681,6 +681,11 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   health store is shown beside glucose readings (Overview latest card, Journal), nearest sample within 10 minutes.
   Health workouts become journal activity entries (source apple_health / health_connect, no intensity), created on
   import and backfilled by migration `b2c3d4e5f6a9`; a workout deleted in the health app removes its unedited entry.
+- 12 Nov 2026 (Guy): companion chat clears the composer on send; long dashes become hyphens; an occasional emoji in
+  writing; with sensor readings in the last day the companion does not ask whether they checked. Insights gained
+  activity findings (`activity_gap` after 7 quiet days, `activity_good` on 3+ of 14 days, with mean daily steps).
+  Today's summary leaves out later parts of the day unless worth preparing for ("ahead of the evening"). Live
+  Activity layout centred (needs a new iOS build).
 
 ## Next action
 

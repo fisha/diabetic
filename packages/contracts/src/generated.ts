@@ -1255,9 +1255,11 @@ export interface components {
              * Advice
              * @default []
              */
-            advice: ("carbs" | "team" | "timing")[];
+            advice: ("carbs" | "team" | "timing" | "move")[];
             /** Count */
             count: number;
+            /** Daily Steps */
+            daily_steps?: number | null;
             /** End Mgdl */
             end_mgdl?: number | null;
             /** Key */
@@ -1266,7 +1268,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good";
+            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good";
             /** Label */
             label?: string | null;
             /** Of */
