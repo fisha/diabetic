@@ -668,6 +668,11 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   `a1b2c3d4e5f7` adds `device_links.last_history_at`), tests in `test_carelink.py`. Lock-screen Live Activity (G-41):
   `features/widget/live.ios.ts`, `targets/widget/HourActivity.swift`; `expo prebuild` passes with it; needs a new dev
   build. Push for reminders: the APNs key is attached to the EAS project (no code change needed).
+- 12 Nov 2026 (Guy's reports): charts and insights were empty because Guy typed a single target value and his pump's
+  high alert is off (CareLink sends highLimit 0), so no range existed. The range now falls back to CareLink's own
+  time-in-range setting (`personalWebView` tirSettings, band source `carelink`, labelled as such). The website now
+  uses the server's range (it used only a typed one) and shows routines, meal patterns and the A1c on Insights.
+  Meals and insulin the pump recorded are labelled CareLink, not "entered by you".
 
 ## Next action
 
