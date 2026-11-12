@@ -2658,6 +2658,11 @@
             "title": "Email Verified",
             "type": "boolean"
           },
+          "has_data": {
+            "default": true,
+            "title": "Has Data",
+            "type": "boolean"
+          },
           "has_profile": {
             "title": "Has Profile",
             "type": "boolean"
@@ -4134,6 +4139,43 @@
           "minutes"
         ],
         "title": "SnoozeIn",
+        "type": "object"
+      },
+      "SyncAllOut": {
+        "properties": {
+          "added": {
+            "title": "Added",
+            "type": "integer"
+          },
+          "failed": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Failed",
+            "type": "array"
+          },
+          "skipped": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Skipped",
+            "type": "array"
+          },
+          "synced": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Synced",
+            "type": "array"
+          }
+        },
+        "required": [
+          "added",
+          "synced",
+          "skipped",
+          "failed"
+        ],
+        "title": "SyncAllOut",
         "type": "object"
       },
       "ThreadOut": {
@@ -6028,6 +6070,32 @@
         "summary": "Put Push Token",
         "tags": [
           "settings"
+        ]
+      }
+    },
+    "/devices/sync": {
+      "post": {
+        "operationId": "sync_all_devices_sync_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SyncAllOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Sync All",
+        "tags": [
+          "devices"
         ]
       }
     },

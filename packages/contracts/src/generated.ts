@@ -493,6 +493,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/devices/sync": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Sync All */
+        post: operations["sync_all_devices_sync_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/exports": {
         parameters: {
             query?: never;
@@ -2371,6 +2388,11 @@ export interface components {
              * @default true
              */
             email_verified: boolean;
+            /**
+             * Has Data
+             * @default true
+             */
+            has_data: boolean;
             /** Has Profile */
             has_profile: boolean;
             /**
@@ -2983,6 +3005,17 @@ export interface components {
         SnoozeIn: {
             /** Minutes */
             minutes: number;
+        };
+        /** SyncAllOut */
+        SyncAllOut: {
+            /** Added */
+            added: number;
+            /** Failed */
+            failed: string[];
+            /** Skipped */
+            skipped: string[];
+            /** Synced */
+            synced: string[];
         };
         /** ThreadOut */
         ThreadOut: {
@@ -4293,6 +4326,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    sync_all_devices_sync_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SyncAllOut"];
                 };
             };
         };

@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (evening): the website shows only settings and asks which connection to set up until the account holds
+data (`has_data` on /auth/me); Libre's logbook (about 14 days) is read on the first fetch; the app's Profile shows the
+signed-in account with a real sign-out and a sign-in button when signed out; pull to refresh asks the server to fetch
+from every connected service now (`POST /devices/sync`, a service tried in the last minute is skipped) and sends new
+Apple Health readings; the Journal shows a loader while its first load runs. API 183 tests and `pnpm check` pass;
+checked in the browser (website first visit, app profile and sign-out, journal loader).
+
 12 Nov 2026 (latest): LibreLinkUp's first real sign-in was refused; the answer is now logged, the app no longer
 repeats a refused sign-in, and the headers follow the maintained client (G-45). API 181 tests pass. Waiting on Guy's
 next try.

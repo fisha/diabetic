@@ -2353,6 +2353,12 @@
       "translation"
     ]
   },
+  "jrn.loading": {
+    "board": "JRN-01",
+    "review": [
+      "translation"
+    ]
+  },
   "jrn.meal_edit": {
     "board": "Journal",
     "review": [
@@ -5919,6 +5925,18 @@
       "translation"
     ]
   },
+  "set.acct_in": {
+    "board": "SET-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.acct_out": {
+    "board": "SET-01",
+    "review": [
+      "translation"
+    ]
+  },
   "set.acct_t": {
     "board": "Settings",
     "review": [
@@ -7527,6 +7545,12 @@
       "translation"
     ]
   },
+  "set.so_b": {
+    "board": "SET-01",
+    "review": [
+      "translation"
+    ]
+  },
   "set.so_t": {
     "board": "Settings",
     "review": [
@@ -8747,6 +8771,18 @@
   },
   "wd.format": {
     "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.fr_b": {
+    "board": "WD-04",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.fr_t": {
+    "board": "WD-04",
     "review": [
       "translation"
     ]
