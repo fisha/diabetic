@@ -1701,6 +1701,18 @@ export interface components {
              */
             confirm: "DELETE";
         };
+        /** DeviceTargetOut */
+        DeviceTargetOut: {
+            /** High Mgdl */
+            high_mgdl: number;
+            /** Low Mgdl */
+            low_mgdl: number;
+            /**
+             * Source
+             * @enum {string}
+             */
+            source: "pump" | "carelink";
+        };
         /** ExportIn */
         ExportIn: {
             /**
@@ -2656,6 +2668,7 @@ export interface components {
             answers: {
                 [key: string]: unknown;
             };
+            device_target?: components["schemas"]["DeviceTargetOut"] | null;
             /** Diabetes Type */
             diabetes_type: string;
             /**

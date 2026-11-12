@@ -804,6 +804,33 @@
         "title": "DeleteIn",
         "type": "object"
       },
+      "DeviceTargetOut": {
+        "properties": {
+          "high_mgdl": {
+            "title": "High Mgdl",
+            "type": "number"
+          },
+          "low_mgdl": {
+            "title": "Low Mgdl",
+            "type": "number"
+          },
+          "source": {
+            "enum": [
+              "pump",
+              "carelink"
+            ],
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "low_mgdl",
+          "high_mgdl",
+          "source"
+        ],
+        "title": "DeviceTargetOut",
+        "type": "object"
+      },
       "ExportIn": {
         "additionalProperties": false,
         "properties": {
@@ -3341,6 +3368,16 @@
             "additionalProperties": true,
             "title": "Answers",
             "type": "object"
+          },
+          "device_target": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DeviceTargetOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "diabetes_type": {
             "title": "Diabetes Type",

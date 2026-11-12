@@ -7575,6 +7575,24 @@
       "translation"
     ]
   },
+  "set.tg_device": {
+    "board": "SET-02",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tg_src_carelink": {
+    "board": "SET-02",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tg_src_pump": {
+    "board": "SET-02",
+    "review": [
+      "translation"
+    ]
+  },
   "set.train_off": {
     "board": "Settings",
     "review": [

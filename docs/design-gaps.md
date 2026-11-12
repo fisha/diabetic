@@ -711,3 +711,22 @@ bolus twice each, and the meal as two meals.
   are for the care team. After three such meals in 14 days an insight "Fewer (more) carbs on the pump than estimated"
   shows glucose at those meals and two hours later, with the carbs and care-team advice. No dose or amount is suggested.
 - The website shows such a meal once (the pump's copy is left out); it does not show the two amounts yet.
+
+### G-48 · Settings that come from the pump are not edited in Stedio (**Guy, 12 Nov 2026**, implemented-unverified)
+
+Guy asked whether the range, the insulin-to-carb ratio and other settings could be taken from the pump instead of typed,
+and: "אם הוא כבר נלקח ואם עוד מידע שיש בהגדרות נלקח, אז צריך לא לתת למשתמש לערוך הגדרה שמגיעה ממשאבה או ממכשיר טיפולי."
+
+- What CareLink gives (field names checked on the Mac, 12 Nov 2026): the pump's low and high alert limits, the
+  time-in-range setting of the CareLink account (`tirSettings`), the maximum bolus and maximum automatic basal.
+  It does not give the insulin-to-carb ratio, the correction factor (sensitivity), the SmartGuard target, active
+  insulin time or the basal schedule, so those stay typed by the person.
+- Target range: while the connected equipment gives one (the pump's alert limits, else CareLink's time-in-range
+  setting, as before), it is the range used everywhere (insights, the day by hour, progress, the companion's context,
+  time in range) and wins over a typed one. `GET /profile` returns it as `device_target`; the app's Treatment
+  settings, the setup's ratios question and the website's settings show it with its source and no fields or Edit
+  button. `PUT /profile` keeps the typed target as it was while the equipment gives one. Disconnecting the equipment
+  brings the typed range back.
+- The maximum bolus and maximum automatic basal have no place in the design's settings, so they are not shown (no new
+  screen without approval).
+
