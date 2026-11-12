@@ -1572,6 +1572,7 @@
   "wdg.few": "Not enough readings at this hour yet.",
   "wdg.inside": "Usually in your range around now: {count} of {of} days.",
   "wdg.la_ago": "{t} ago",
+  "wdg.la_notlive": "Not live · {t} ago",
   "wdg.mixed": "No clear pattern at this hour over {of} days.",
   "wdg.noband": "Readings at this hour on {of} days. Add your target range to compare.",
   "wdg.part_0": "Late night",

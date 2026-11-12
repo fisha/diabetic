@@ -9623,6 +9623,13 @@
     ],
     "note": "Live Activity: age of the latest reading. {t} is filled on the phone by iOS with a running duration such as '5 min'."
   },
+  "wdg.la_notlive": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "The lock-screen card never updates while the app is closed; {t} is the age iOS counts."
+  },
   "wdg.mixed": {
     "board": "WIDGET",
     "review": [
