@@ -8,7 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
-12 Nov 2026 (latest): G-48, the target range from the pump or CareLink wins over a typed one and cannot be edited
+12 Nov 2026 (latest): LibreLinkUp's first real sign-in was refused; the answer is now logged, the app no longer
+repeats a refused sign-in, and the headers follow the maintained client (G-45). API 181 tests pass. Waiting on Guy's
+next try.
+
+12 Nov 2026 (later still): G-48, the target range from the pump or CareLink wins over a typed one and cannot be edited
 in the app, on the website or through the API (`device_target` on the profile). CareLink gives no carb ratio,
 sensitivity, target or basal settings, so those stay typed. API 180 tests and `pnpm check` pass; checked here in the
 app's web build and on the website with a CareLink link given alert limits; not yet seen on a phone.

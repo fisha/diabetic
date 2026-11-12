@@ -4033,13 +4033,6 @@ export interface operations {
                     "application/json": components["schemas"]["CgmOut"];
                 };
             };
-            /** @description wrong_credentials */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
             /** @description needs_verification */
             409: {
                 headers: {
@@ -4047,14 +4040,19 @@ export interface operations {
                 };
                 content?: never;
             };
-            /** @description Validation Error */
+            /** @description wrong_credentials */
             422: {
                 headers: {
                     [name: string]: unknown;
                 };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
+                content?: never;
+            };
+            /** @description locked */
+            429: {
+                headers: {
+                    [name: string]: unknown;
                 };
+                content?: never;
             };
             /** @description failed */
             502: {
@@ -4158,13 +4156,6 @@ export interface operations {
                     "application/json": components["schemas"]["CgmOut"];
                 };
             };
-            /** @description wrong_credentials */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
             /** @description needs_verification */
             409: {
                 headers: {
@@ -4172,14 +4163,19 @@ export interface operations {
                 };
                 content?: never;
             };
-            /** @description Validation Error */
+            /** @description wrong_credentials */
             422: {
                 headers: {
                     [name: string]: unknown;
                 };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
+                content?: never;
+            };
+            /** @description locked */
+            429: {
+                headers: {
+                    [name: string]: unknown;
                 };
+                content?: never;
             };
             /** @description failed */
             502: {

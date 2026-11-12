@@ -990,6 +990,7 @@
   "set.cg_libre_how": "In your Libre app, invite a LibreLinkUp account (it can be a second account of your own), accept the invite in LibreLinkUp, then sign in here with that account.",
   "set.cg_libre_sub": "Sensor readings through a LibreLinkUp account",
   "set.cg_libre_title": "FreeStyle Libre · LibreLinkUp",
+  "set.cg_locked": "{service} asked to wait after several sign-in attempts. Try again in a few minutes.",
   "set.cg_none_yet": "Checked {checked} · no sensor readings yet",
   "set.cg_note": "{name} has no public connection for this, so {service} is used unofficially, for testing. It may stop working when the maker changes something. Your sign-in is kept encrypted on your server and used only to fetch your readings.",
   "set.cg_on": "Connected as {user}. Readings are fetched every 5 minutes.",

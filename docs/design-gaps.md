@@ -673,6 +673,13 @@ against Dexcom or Abbott. Neither maker offers or approves this route and it can
 see changed (texts in all languages, app display name, permission texts, widget and Live Activity, notification
 titles, website). Technical identifiers stay as they are (bundle ids `com.fisha.steady.dev`, App Group, Expo slug,
 package names, code identifiers), since changing them breaks installed builds and signing.
+- First real LibreLinkUp try (Guy, 12 Nov 2026): refused as a wrong email or password although the same details work
+  in the LibreLinkUp app. The answer was not logged, and the API returned 401, which the app reads as its own session
+  ending, so it signed in again and sent the same sign-in to LibreLinkUp twice. Changed: a refused vendor sign-in is
+  422 (`locked` 429 when LibreLinkUp asks to wait), LibreLinkUp's status, message, step and region are logged (never the
+  email or password), the request headers follow the maintained nightscout-connect client (`llu.ios`, iPhone user
+  agent), and the app's sign-in fields for Dexcom and Libre no longer invite iOS to fill in the password saved for
+  Stedio. Waiting on Guy's next try for the logged answer.
 
 ### G-46 · Google sign-in, waitlist and email verification (**Guy, 12 Nov 2026**, implemented-unverified)
 

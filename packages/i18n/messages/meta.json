@@ -6105,6 +6105,12 @@
       "translation"
     ]
   },
+  "set.cg_locked": {
+    "board": "SET-02",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cg_none_yet": {
     "board": "Settings",
     "review": [

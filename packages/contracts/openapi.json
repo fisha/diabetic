@@ -5757,21 +5757,14 @@
             },
             "description": "Successful Response"
           },
-          "401": {
-            "description": "wrong_credentials"
-          },
           "409": {
             "description": "needs_verification"
           },
           "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
+            "description": "wrong_credentials"
+          },
+          "429": {
+            "description": "locked"
           },
           "502": {
             "description": "failed"
@@ -5910,21 +5903,14 @@
             },
             "description": "Successful Response"
           },
-          "401": {
-            "description": "wrong_credentials"
-          },
           "409": {
             "description": "needs_verification"
           },
           "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
+            "description": "wrong_credentials"
+          },
+          "429": {
+            "description": "locked"
           },
           "502": {
             "description": "failed"
