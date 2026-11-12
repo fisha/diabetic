@@ -8,6 +8,9 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (night, one row per moment, G-51): the Journal joins a pump meal to its bolus and pump insulin to the
+sensor reading taken at that moment, as one row. `pnpm check` passes with new journal tests; not yet seen on a phone.
+
 12 Nov 2026 (night, pump insulin): a CareLink insulin entry now says how the pump gave it (automatic correction, bolus,
 manual bolus, from CareLink's activationType already kept as the record's reason) instead of "insulin you reported
 taking", and shows the carbs of a pump meal recorded within 5 minutes of it. LibreLinkUp gives glucose only.

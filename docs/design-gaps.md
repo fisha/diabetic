@@ -769,3 +769,13 @@ Not in the design; built as a banner over the top of any screen (the existing Ba
   client ids) must live in the EAS "preview" environment, or the update ships without a server (it happened on 12 Nov
   2026: the first two updates had no API address). The runtime is the app version (0.2.0); raise it with any native
   change.
+
+### G-51 · Journal: one row per moment for pump events (**Guy, 12 Nov 2026**, implemented-unverified)
+
+Guy: "כשיש בסורס הזנה של פחמימות זה צריך ... להספר כשורה אחת שיש בה אינסולין גלוקוז וארוחה". The board shows one row
+per event. Now a pump meal joins the pump bolus within 5 minutes of it, and pump insulin (with its meal) joins the
+CareLink sensor reading within 2.5 minutes, shown as extra lines in that row with their own icons; the row's icon is
+meal, then insulin. The row appears under the glucose, insulin and meal filters. Its detail lists the merged events,
+each opening on its own (edit, delete and hide stay per event). Entries the person typed keep their own rows. Pump
+insulin also says how the pump gave it (CareLink activationType: automatic correction, bolus, manual bolus).
+`mergeMoments` in `features/journal/model.ts`, tests in `test/journal.test.ts`.
