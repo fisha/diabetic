@@ -1684,6 +1684,20 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_meal_time_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Body of the meal-time insight. Descriptive only."
+  },
+  "ins.f_meal_time_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight from the usual meal time (same as Routine's 'What I've learned so far'). meal is ins.slot_*."
+  },
   "ins.f_range_good_b": {
     "board": "OVR-04",
     "review": [

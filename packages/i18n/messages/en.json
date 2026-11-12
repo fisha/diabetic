@@ -268,6 +268,8 @@
   "ins.f_late_b": "You ate after 21:00 on {count} of the last {of} days.",
   "ins.f_late_b2": "Mornings after a late meal were around {after}; other mornings around {other}.",
   "ins.f_late_t": "Eating late at night",
+  "ins.f_meal_time_b": "Logged at about this time on {count} of {of} days with records. Knowing when you usually eat helps me ask at the right moment and look at your glucose after the meal.",
+  "ins.f_meal_time_t": "{meal} usually around {time}",
   "ins.f_range_good_b": "In your range on {count} of {of} days with readings at that time. Whatever you do then is working.",
   "ins.f_range_good_t": "Usually in range {when}",
   "ins.f_steps": "Average daily steps from your health app: {steps}.",

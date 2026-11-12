@@ -1156,7 +1156,8 @@
               "range_good",
               "activity_gap",
               "activity_good",
-              "carb_gap"
+              "carb_gap",
+              "meal_time"
             ],
             "title": "Kind",
             "type": "string"
@@ -1211,6 +1212,22 @@
             },
             "title": "Record Ids",
             "type": "array"
+          },
+          "slot": {
+            "anyOf": [
+              {
+                "enum": [
+                  "breakfast",
+                  "lunch",
+                  "dinner"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Slot"
           },
           "start_mgdl": {
             "anyOf": [
@@ -1513,7 +1530,7 @@
           },
           "qty": {
             "exclusiveMinimum": 0.0,
-            "maximum": 100.0,
+            "maximum": 1000.0,
             "title": "Qty",
             "type": "number"
           },

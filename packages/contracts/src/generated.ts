@@ -1856,7 +1856,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap";
+            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time";
             /** Label */
             label?: string | null;
             /** Of */
@@ -1870,6 +1870,8 @@ export interface components {
              * @default []
              */
             record_ids: string[];
+            /** Slot */
+            slot?: ("breakfast" | "lunch" | "dinner") | null;
             /** Start Mgdl */
             start_mgdl?: number | null;
             /**

@@ -8,6 +8,10 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (night, meal times as insights): the usual meal times from Routine's "What I've learned so far" are also
+insights (finding kind `meal_time`, one per meal, first impression below 3 days), in the app and on the website. API
+188 tests and `pnpm check` pass; not yet seen on a phone.
+
 12 Nov 2026 (night, one row per moment, G-51): the Journal joins a pump meal to its bolus and pump insulin to the
 sensor reading taken at that moment, as one row. `pnpm check` passes with new journal tests; not yet seen on a phone.
 
