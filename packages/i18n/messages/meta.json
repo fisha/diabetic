@@ -5066,12 +5066,42 @@
       "translation"
     ]
   },
+  "rtn.daily": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
   "rtn.day": {
     "board": "Localization",
     "review": [
       "translation"
     ],
     "note": "Hebrew verb follows companion persona gender Arguments replace the sample values drawn in the design."
+  },
+  "rtn.del_all": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.del_one": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.del_t": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.delete": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
   },
   "rtn.dismiss": {
     "board": "Routine",
@@ -5839,6 +5869,30 @@
   },
   "set.cl_wrong": {
     "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.clock": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.clock_12": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.clock_24": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.clock_auto": {
+    "board": "Settings",
     "review": [
       "translation"
     ]

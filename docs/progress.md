@@ -686,6 +686,10 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   activity findings (`activity_gap` after 7 quiet days, `activity_good` on 3+ of 14 days, with mean daily steps).
   Today's summary leaves out later parts of the day unless worth preparing for ("ahead of the evening"). Live
   Activity layout centred (needs a new iOS build).
+- 12 Nov 2026 (Guy): follow-ups can be deleted (a daily one: this time or every day) and show "every day"; a
+  12/24-hour clock choice under Language (default follows the language). Companion replies were slow: the model
+  (`gpt-5-mini`) ran at its default medium reasoning effort; now `STEADY_OPENAI_REASONING_EFFORT` (default low). Context
+  building measured at 160-300 ms with 30 days of CareLink data; the API logs context and model round durations.
 
 ## Next action
 
