@@ -814,6 +814,11 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   it. A session read race on screens opened by address fixed. G-56: a time of day usually in range no longer lists a
   first impression in the other direction. API 190 tests and `pnpm check` pass; checked in a browser at phone and
   desktop widths against the local API (Google sign-in itself not tried: needs Google's servers).
+- 12 Nov 2026 (Guy, G-57): pump alerts and messages in the journal under an "Alerts" filter, named in the interface
+  language (`GET /devices/events`). LibreLinkUp reads now follow a region redirect and keep the region (Itay's link
+  read nothing from 19:34 UTC because reads went to the global host and the redirect counted as "no new readings"); a
+  graph answer without graphData now fails instead of counting as a successful sync. API 193 tests, `pnpm check` pass;
+  journal checked in a browser with stand-in alerts.
 
 ## Next action
 

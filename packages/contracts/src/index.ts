@@ -52,6 +52,7 @@ export type ExportIn = S['ExportIn'];
 export type ExportOut = S['ExportOut'];
 export type FollowUpIn = S['FollowUpIn'];
 export type FollowUpOut = S['FollowUpOut'];
+export type DeviceEventOut = S['DeviceEventOut'];
 export type MemoryOut = S['MemoryOut'];
 export type SettingsOut = S['SettingsOut'];
 export type FoodItem = S['FoodItem'];

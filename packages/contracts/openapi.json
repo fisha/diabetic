@@ -836,6 +836,50 @@
         "title": "DeleteIn",
         "type": "object"
       },
+      "DeviceEventOut": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "group": {
+            "title": "Group",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "alert",
+              "message"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "occurred_at": {
+            "format": "date-time",
+            "title": "Occurred At",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "occurred_at",
+          "source",
+          "kind",
+          "code",
+          "group"
+        ],
+        "title": "DeviceEventOut",
+        "type": "object"
+      },
       "DeviceTargetOut": {
         "properties": {
           "high_mgdl": {
@@ -6092,6 +6136,69 @@
         ]
       }
     },
+    "/devices/events": {
+      "get": {
+        "description": "The pump's alerts and messages in a period, for the journal (Guy, 12 Nov 2026), oldest first.",
+        "operationId": "device_events_devices_events_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "since",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Since",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "until",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Until",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceEventOut"
+                  },
+                  "title": "Response Device Events Devices Events Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Device Events",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
     "/devices/libre": {
       "delete": {
         "description": "Forgets the sign-in. With remove_readings, the readings that came from this source are deleted too.",
@@ -7598,6 +7705,16 @@
                 }
               ],
               "title": "Until"
+            }
+          },
+          {
+            "in": "query",
+            "name": "kinds",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "title": "Kinds",
+              "type": "integer"
             }
           }
         ],

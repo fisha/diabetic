@@ -1,4 +1,319 @@
 {
+  "alr.auto_exit": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.auto_max": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.battery_low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.battery_replace": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.before_high": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.before_low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.bg_needed": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.bolus_not_delivered": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.bolus_stopped": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.calibrate": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.calibration_rejected": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.correction_prompt": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.delivery_limit": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.delivery_stopped": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.emergency": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.fall_fast": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.flow_blocked": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.high": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.high_long": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.insulin_reset": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.loading": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.low_long": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.low_urgent": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.missed_bolus": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.no_readings": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.other": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.pump_error": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.pump_lost": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.reminder": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.reservoir_low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.resumed": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.rise_fast": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.sensor_change": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.sensor_connected": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.sensor_ending": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.sensor_expired": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.sensor_updating": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.set_change": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.signal_lost": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.silenced": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.suspend_before_low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.suspend_low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.time_change": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.transmitter_charge": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
   "cmp.badge.confirmed": {
     "board": "Components",
     "review": [
@@ -2157,6 +2472,13 @@
       "translation"
     ]
   },
+  "jrn.alert_src": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal alert row detail."
+  },
   "jrn.b_device": {
     "board": "Journal",
     "review": [
@@ -2339,6 +2661,13 @@
       "translation"
     ]
   },
+  "jrn.f_alert": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal filter: pump and sensor alerts."
+  },
   "jrn.f_all": {
     "board": "Journal",
     "review": [
@@ -2480,6 +2809,13 @@
     "review": [
       "translation"
     ]
+  },
+  "jrn.k_alert": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal entry kind: a pump or sensor alert."
   },
   "jrn.k_comp": {
     "board": "Journal",

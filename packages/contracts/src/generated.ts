@@ -450,6 +450,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/devices/events": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Device Events
+         * @description The pump's alerts and messages in a period, for the journal (Guy, 12 Nov 2026), oldest first.
+         */
+        get: operations["device_events_devices_events_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/devices/libre": {
         parameters: {
             query?: never;
@@ -1744,6 +1764,30 @@ export interface components {
              * @constant
              */
             confirm: "DELETE";
+        };
+        /** DeviceEventOut */
+        DeviceEventOut: {
+            /** Code */
+            code: string;
+            /** Group */
+            group: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "alert" | "message";
+            /**
+             * Occurred At
+             * Format: date-time
+             */
+            occurred_at: string;
+            /** Source */
+            source: string;
         };
         /** DeviceTargetOut */
         DeviceTargetOut: {
@@ -4240,6 +4284,38 @@ export interface operations {
             };
         };
     };
+    device_events_devices_events_get: {
+        parameters: {
+            query: {
+                since: string;
+                until: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DeviceEventOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     libre_status_devices_libre_get: {
         parameters: {
             query?: never;
@@ -5228,6 +5304,7 @@ export interface operations {
         parameters: {
             query?: {
                 until?: string | null;
+                kinds?: number;
             };
             header?: never;
             path?: never;

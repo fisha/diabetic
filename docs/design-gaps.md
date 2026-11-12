@@ -828,3 +828,14 @@ permission; insight push settings are on the server and can be changed from the 
 Guy saw "usually in range at night" (11 of 15 days) beside "above your range at night" (a first impression, 4 of 15).
 When a time of day has the "usually in range" finding, a first-impression above or below observation for that time of
 day is not listed. A recurring one (at least 3 days and half of the days) is always listed.
+
+### G-57 · Pump alerts in the journal (**Guy, 12 Nov 2026**, implemented-unverified)
+
+Guy asked for every alert and message the devices give in the journal, with its own filter, in the interface
+language. The pump's alerts and messages (CareLink notification history, kept in `device_events` since 11 Nov) are
+listed by `GET /devices/events` with a named kind (`steady_api/alerts.py`: 44 kinds covering every code in
+carelink_messages.json except the pump's own "unknown" and "new notification" messages, which show as "Pump
+message"). The journal shows each as its own row with a bell icon, under a new "Alerts" filter; the name is the pump's
+own event, never advice. LibreLinkUp's logbook carries no alarm fields (field inspection, 12 Nov 2026) and Dexcom Share
+gives readings only, so only pump alerts appear for now. The website's old dashboard timeline (admin view) does not show
+them; the personal area is the app itself (G-55).
