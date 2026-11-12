@@ -7229,12 +7229,6 @@
       "translation"
     ]
   },
-  "set.dev_plan": {
-    "board": "Settings",
-    "review": [
-      "translation"
-    ]
-  },
   "set.dev_planned_cap": {
     "board": "Settings",
     "review": [
@@ -7360,6 +7354,13 @@
     "review": [
       "translation"
     ]
+  },
+  "set.ds_phone": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Tag on the phone's health store row when the app is open in a browser: it is connected from the phone app."
   },
   "set.ds_reconnect": {
     "board": "Settings",
@@ -7794,6 +7795,13 @@
     "review": [
       "translation"
     ]
+  },
+  "set.hd_web": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Apple Health / Health Connect screen when the app is open in a browser."
   },
   "set.help": {
     "board": "Settings",

@@ -810,3 +810,21 @@ four hours after eating, shown when the richer meals rise at least 20 mg/dL more
 meals followed by another within four hours left out, at least 3 meals each; `workout`, per kind of activity done at
 least 3 times in 14 days (logged or from Apple Health), the median at the start and an hour after it ended. Both point
 to the care team; no amounts. Only meals logged after this update have protein and fat; pump meals never do.
+
+### G-55 · The app itself as the website's personal area (**Guy, 12 Nov 2026**, implemented-unverified)
+
+Guy asked for the personal area on the website to look exactly like the app, responsive, and chose the app itself
+over a copy. The app's web build is exported with `EXPO_BASE_URL=/app` (`pnpm --filter ./apps/mobile export:website`,
+into `apps/web/public/app`, before `next build`) and the website serves it at `/app` (route handler for `/app`,
+fallback rewrite for deeper paths). The website's sign-in buttons open `/app`; the Next.js dashboard stays for the
+admin pages. In a window at least 900 px wide the tabs become a side bar and the app sits in a centred frame (1120 px;
+screens other than the tabs 720 px). Sign-in uses Google's own button (Google Identity Services, the website's web
+client id). In the browser only the sign-in and whose shared data is viewed are kept in localStorage (health data
+stays in memory). Things that live on the phone say "On your phone": Apple Health or Health Connect, and notification
+permission; insight push settings are on the server and can be changed from the browser.
+
+### G-56 · A time of day usually in range hides a first impression the other way (**Guy, 12 Nov 2026**, implemented-unverified)
+
+Guy saw "usually in range at night" (11 of 15 days) beside "above your range at night" (a first impression, 4 of 15).
+When a time of day has the "usually in range" finding, a first-impression above or below observation for that time of
+day is not listed. A recurring one (at least 3 days and half of the days) is always listed.
