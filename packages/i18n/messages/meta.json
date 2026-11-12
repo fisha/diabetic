@@ -3513,6 +3513,24 @@
       "translation"
     ]
   },
+  "onb.ic_tg_hi": {
+    "board": "ONB-13",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_tg_lo": {
+    "board": "ONB-13",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_tg_one": {
+    "board": "ONB-13",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.ic_upd": {
     "board": "Onboarding",
     "review": [
