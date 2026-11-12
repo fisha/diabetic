@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (night, launch crash): from the update with meal-time insights on, the app crashed right after loading:
+the finding title for `meal_time` (and later `workout`) needs values the generic title call did not give, and the
+message formatter threw while building the Overview. Fixed: titles get every value they use, a missing value returns
+the message text instead of throwing, and the API sends the new kinds only to clients that ask with `kinds=2`, so
+older app code on a phone (the embedded bundle, or a rolled-back update) no longer meets them. Reproduced in the web
+build with a signed-in account before the fix; API 188 tests and `pnpm check` pass.
+
 12 Nov 2026 (night, G-54): meals store protein and fat; insights for a later rise after meals richer in protein and
 fat and for glucose around each kind of workout, in the app, on the website and for the companion. API 188 tests and
 `pnpm check` pass; not yet seen with real data.
