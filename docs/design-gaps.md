@@ -764,3 +764,8 @@ Not in the design; built as a banner over the top of any screen (the existing Ba
 - A newer native build is offered as "New version to install" with the install link from `GET /app/version`
   (`STEADY_APP_LATEST_BUILD` and `STEADY_APP_INSTALL_URL` in the API's `.env`; unset shows nothing).
 - "Not now" hides it until the next check. Development builds (code from Metro) and the web show nothing.
+- Publishing: `eas update` does not apply a build profile's `env` from `eas.json`; it bundles only the EAS environment
+  named by `--environment` (plus local `.env`). Every `EXPO_PUBLIC_*` the app needs (API address, variant, Google
+  client ids) must live in the EAS "preview" environment, or the update ships without a server (it happened on 12 Nov
+  2026: the first two updates had no API address). The runtime is the app version (0.2.0); raise it with any native
+  change.
