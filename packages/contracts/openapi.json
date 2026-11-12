@@ -110,7 +110,8 @@
             "default": "profile",
             "enum": [
               "profile",
-              "pump"
+              "pump",
+              "carelink"
             ],
             "title": "Source",
             "type": "string"

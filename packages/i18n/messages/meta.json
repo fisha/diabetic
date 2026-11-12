@@ -1384,6 +1384,12 @@
       "translation"
     ]
   },
+  "ins.basis_carelink": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.basis_pump": {
     "board": "INS-01",
     "review": [
@@ -4674,6 +4680,12 @@
       "translation"
     ]
   },
+  "ovr.range_carelink": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ]
+  },
   "ovr.range_pump": {
     "board": "OVR-01",
     "review": [
@@ -7828,6 +7840,12 @@
     ]
   },
   "wd.k_tir_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.k_tir_carelink": {
     "board": "WebDashboard",
     "review": [
       "translation"

@@ -1059,7 +1059,7 @@ export interface components {
              * @default profile
              * @enum {string}
              */
-            source: "profile" | "pump";
+            source: "profile" | "pump" | "carelink";
         };
         /** Body_transcribe_voice_transcribe_post */
         Body_transcribe_voice_transcribe_post: {
