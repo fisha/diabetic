@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (night, Journal fixes from Guy): a sensor reading says "Sensor" instead of the logging form's "(I'm
+entering it)"; heart rate is a heart icon and the number, without "per minute"; insulin titles always show the number of
+units (Hebrew plural rules read 0.4 as "one", which printed "one unit" for pump micro-doses) and the pump's own entries
+are named "Insulin from the pump" in the interface language instead of "Pump". JS only, so it goes out as an update.
+`pnpm check` passes; not yet seen on a phone.
+
 12 Nov 2026 (night, lock screen): the card shows the part of the day without its hours and says "Not live · X ago";
 15 minutes after the reading iOS marks it stale and the card greys the value and shows "Not current" (patched
 expo-live-activity passes `staleDate`, `patches/`). The update runtime moved from the fingerprint to the app version

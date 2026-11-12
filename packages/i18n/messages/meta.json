@@ -2303,6 +2303,13 @@
       "translation"
     ]
   },
+  "jrn.g_sensor": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Source of a glucose reading in the Journal."
+  },
   "jrn.hide": {
     "board": "Journal",
     "review": [
@@ -2315,11 +2322,25 @@
       "translation"
     ]
   },
+  "jrn.ins_any": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Insulin entry with no insulin name."
+  },
   "jrn.ins_detail": {
     "board": "Journal",
     "review": [
       "translation"
     ]
+  },
+  "jrn.ins_pump": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Insulin entries the pump reports without an insulin name."
   },
   "jrn.ins_src": {
     "board": "Journal",
@@ -2333,6 +2354,13 @@
       "translation"
     ],
     "note": "Journal title of an insulin record, board 'Fiasp, 4 units'"
+  },
+  "jrn.ins_title2": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal insulin entry; units is the actual number, can be fractional (0.35)."
   },
   "jrn.ins_title_n": {
     "board": "Journal",
