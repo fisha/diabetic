@@ -664,6 +664,10 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
 - Lock-screen widget (G-40): `GET /insights/hours`, `features/widget` (texts per hour, App Group storage, refresh on
   opening), Swift target `targets/widget`. `expo prebuild` creates the widget target with the App Group entitlement;
   not built in Xcode or run on a phone (needs a new dev build). Tests: `test_hours_for_the_widget`, app unit test.
+- 12 Nov 2026: CareLink 30-day history (`carelink.fetch_history`, `history_readings`, `_sync_history`, migration
+  `a1b2c3d4e5f7` adds `device_links.last_history_at`), tests in `test_carelink.py`. Lock-screen Live Activity (G-41):
+  `features/widget/live.ios.ts`, `targets/widget/HourActivity.swift`; `expo prebuild` passes with it; needs a new dev
+  build. Push for reminders: the APNs key is attached to the EAS project (no code change needed).
 
 ## Next action
 

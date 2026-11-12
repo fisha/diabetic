@@ -526,3 +526,16 @@ or "Not enough readings at this hour yet" (fewer than 3 days). Words only, no gl
 is visible to others (brief section 9). The widget moves to the next hour's line by itself; the lines are refreshed
 when the app is opened. It needs a new development build (native code) and the App Group capability, which EAS adds.
 Android has no widget yet.
+
+### G-41 · Lock-screen Live Activity: this hour's line on its own (**Guy's request, 12 Nov 2026**, implemented-unverified)
+
+Not in the design; Guy asked for a card that appears on the locked phone without adding a widget ("כמו סוג של push
+אבל מעוצב אחר"). An iOS Live Activity: when the person leaves the app, it shows the widget's line for this hour (G-40,
+words only) with a bar that runs to the end of the hour, on the lock screen and in the Dynamic Island. Opening the
+app refreshes it. It is not an alarm and carries no reading, so it cannot pass for a CGM alert (brief section 8).
+`expo-live-activity` 0.4.2 starts it (its own config plugin clashes with `@bacons/apple-targets`, so only its native
+module is used); the view is `targets/widget/HourActivity.swift` in the existing widget target, with a copy of the
+module's attributes type. Limits: iOS ends it after 8 hours at most, it cannot change hour by itself without Live
+Activity pushes from the server (APNs, not built), and if the person swipes it away it stays away until the next
+day. iOS Settings can turn Live Activities off for Steady. Needs a new development build; not built in Xcode or run on
+a phone.
