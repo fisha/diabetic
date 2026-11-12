@@ -115,6 +115,8 @@
   "com.no_txt": "Note",
   "com.notif_from": "Opened from your {time} check-in. Sent, not confirmed seen.",
   "com.now": "Now",
+  "com.now_label": "Insights for this time of day",
+  "com.now_page": "{n} of {of}",
   "com.off_saved": "Saved on this phone. It will sync when you’re back online.",
   "com.offline": "You’re offline. Voice needs a connection. Logging still works and will sync later.",
   "com.once": "Once",
