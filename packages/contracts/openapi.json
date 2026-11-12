@@ -1697,6 +1697,24 @@
             "title": "Source",
             "type": "string"
           },
+          "trend": {
+            "anyOf": [
+              {
+                "enum": [
+                  "up_fast",
+                  "up",
+                  "flat",
+                  "down",
+                  "down_fast"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trend"
+          },
           "unit": {
             "enum": [
               "mg/dL",

@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (evening, second batch): trend arrows from CareLink (lastSGTrend), Dexcom Share (Trend) and
+LibreLinkUp (TrendArrow) are kept with the reading (`glucose_records.trend`, migration `b1c2d3e4f5a7`) and shown beside
+the latest reading in the app (while under 15 minutes old) and in the website's timeline; the website timeline shows
+the heart rate from Apple Health / Health Connect beside a reading, as the app does; sharing moved to the Account group
+in the app's Profile; the app reloads its screens every 5 minutes while open and on coming to the front, and reads the
+health store every 5 minutes (was 15). API 183 tests and `pnpm check` pass; the website timeline was checked in the
+browser with a trend and a heart rate.
+
 12 Nov 2026 (evening): the website shows only settings and asks which connection to set up until the account holds
 data (`has_data` on /auth/me); Libre's logbook (about 14 days) is read on the first fetch; the app's Profile shows the
 signed-in account with a real sign-out and a sign-in button when signed out; pull to refresh asks the server to fetch

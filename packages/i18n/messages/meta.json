@@ -1146,6 +1146,36 @@
       "translation"
     ]
   },
+  "com.tr_down": {
+    "board": "CMP-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.tr_down_fast": {
+    "board": "CMP-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.tr_flat": {
+    "board": "CMP-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.tr_up": {
+    "board": "CMP-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.tr_up_fast": {
+    "board": "CMP-01",
+    "review": [
+      "translation"
+    ]
+  },
   "com.type_ph": {
     "board": "Companion",
     "review": [
@@ -8639,6 +8669,12 @@
   },
   "wd.d_act": {
     "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.d_hr": {
+    "board": "WD-02",
     "review": [
       "translation"
     ]

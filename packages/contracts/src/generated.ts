@@ -2047,6 +2047,8 @@ export interface components {
             revision: number;
             /** Source */
             source: string;
+            /** Trend */
+            trend?: ("up_fast" | "up" | "flat" | "down" | "down_fast") | null;
             /**
              * Unit
              * @enum {string}
