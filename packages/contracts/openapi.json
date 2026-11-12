@@ -2667,6 +2667,17 @@
             "title": "Approved",
             "type": "boolean"
           },
+          "avatar_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Avatar Url"
+          },
           "email": {
             "title": "Email",
             "type": "string"

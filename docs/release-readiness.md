@@ -126,4 +126,4 @@ All of them are listed in `services/api/.env.example`, without values. Two need 
 ## Migrations
 
 Run `uv run alembic upgrade head` after every pull that adds a file in `services/api/alembic/versions/`. The latest is
-`f7a8b9c0d1e3` (Google sign-in, waitlist and email verification, G-46). `a8c9d0e1f2b4` (same meal from two sources, G-47) also soft-deletes repeated CareLink pump events (rows are kept). `b1c2d3e4f5a7` adds `glucose_records.trend`. Each migration so far only adds columns, tables or rows. None is destructive.
+`f7a8b9c0d1e3` (Google sign-in, waitlist and email verification, G-46). `a8c9d0e1f2b4` (same meal from two sources, G-47) also soft-deletes repeated CareLink pump events (rows are kept). `b1c2d3e4f5a7` adds `glucose_records.trend`. `c2d3e4f5a6b8` adds `users.avatar_url`. Each migration so far only adds columns, tables or rows. None is destructive.

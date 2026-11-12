@@ -4937,6 +4937,13 @@
     ],
     "note": "Arguments replace the sample values drawn in the design."
   },
+  "ovr.last24": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Rolling window ending now, as a pump reports time in range."
+  },
   "ovr.left_hide": {
     "board": "Overview",
     "review": [
@@ -5059,6 +5066,12 @@
     ]
   },
   "ovr.open_jrn": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.p_24h": {
     "board": "Overview",
     "review": [
       "translation"
@@ -5214,6 +5227,12 @@
     "review": [
       "translation",
       "clinical"
+    ]
+  },
+  "ovr.sum_24h": {
+    "board": "Overview",
+    "review": [
+      "translation"
     ]
   },
   "ovr.sum_2w": {
@@ -9064,6 +9083,12 @@
       "translation"
     ]
   },
+  "wd.p1": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.p14": {
     "board": "WebDashboard",
     "review": [
@@ -9143,6 +9168,12 @@
     ]
   },
   "wd.range_line": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.range_line_24": {
     "board": "WebDashboard",
     "review": [
       "translation"

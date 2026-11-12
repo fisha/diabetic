@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (evening, third batch, G-49): the Overview gains a rolling 24-hour period (app: 24 hours, Day, Week, 2 weeks,
+Month; website: 24 hours beside 14/30/90 days), so its time in range can match the pump's; the Google profile picture
+of a Google account shows on the app's account card and the website's account box (migration `c2d3e4f5a6b8`); the
+companion header shows the chosen companion picture and no "AI companion" line. API 184 tests and `pnpm check` pass;
+checked in the browser (app 24-hour overview, profile picture, companion header; website 24-hour overview).
+
 12 Nov 2026 (evening, second batch): trend arrows from CareLink (lastSGTrend), Dexcom Share (Trend) and
 LibreLinkUp (TrendArrow) are kept with the reading (`glucose_records.trend`, migration `b1c2d3e4f5a7`) and shown beside
 the latest reading in the app (while under 15 minutes old) and in the website's timeline; the website timeline shows

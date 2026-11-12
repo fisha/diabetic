@@ -2383,6 +2383,8 @@ export interface components {
              * @default true
              */
             approved: boolean;
+            /** Avatar Url */
+            avatar_url?: string | null;
             /** Email */
             email: string;
             /**

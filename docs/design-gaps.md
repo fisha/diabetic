@@ -737,3 +737,18 @@ and: "אם הוא כבר נלקח ואם עוד מידע שיש בהגדרות �
 - The maximum bolus and maximum automatic basal have no place in the design's settings, so they are not shown (no new
   screen without approval).
 
+
+### G-49 · A rolling 24-hour period; Google picture; companion picture in the header (**Guy, 12 Nov 2026**, implemented-unverified)
+
+- Guy's pump showed 72% in range while the app showed 83%: the pump counts the rolling last 24 hours and the app's
+  "Day" counted since midnight (same readings, same 70-180 range). At Guy's ask the Overview's periods are now
+  24 hours, Day, Week, 2 weeks and Month in the app. "24 hours" is the rolling day ending now, drawn on the day graph;
+  Day stays the calendar day. The website's Overview gains "24 hours" beside 14/30/90 days; it shows the figures for
+  that window and leaves out the per-day bars (one rolling day has nothing to compare).
+- An account that signs in with Google keeps the Google profile picture (`users.avatar_url`, migration `c2d3e4f5a6b8`,
+  renewed at each Google sign-in, only https on googleusercontent.com). The app's Profile account card and the
+  website's account box show it instead of the person icon. An account signed in before this shows it after its next
+  Google sign-in.
+- The companion screen's header shows the companion picture chosen in onboarding in place of the green dot, and the
+  "AI companion" line under the name is gone at Guy's ask. Brief §4 (do not imply a human): screen readers still hear
+  "AI companion" with the name, and the welcome screen states it in full (`onb.w_ai`).
