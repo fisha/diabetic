@@ -8221,6 +8221,60 @@
       "translation"
     ]
   },
+  "wd.adm_del_admin": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_cancel": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_go": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_type": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_delete": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_deleted": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.adm_devices": {
     "board": "WebDashboard",
     "review": [

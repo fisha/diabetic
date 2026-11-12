@@ -41,6 +41,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/admin/users/{user_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Delete User
+         * @description Deletes another account and everything in it, as the person's own "Delete account" does. Never the admin's own
+         *     account or another admin's, and only when the typed email matches the account's.
+         */
+        delete: operations["delete_user_admin_users__user_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/admin/users/{user_id}/approve": {
         parameters: {
             query?: never;
@@ -1418,6 +1439,11 @@ export interface components {
             minutes: number;
             /** Type */
             type: string;
+        };
+        /** AdminDeleteIn */
+        AdminDeleteIn: {
+            /** Confirm Email */
+            confirm_email: string;
         };
         /** AdminUserOut */
         AdminUserOut: {
@@ -3162,6 +3188,46 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AdminUserOut"][];
+                };
+            };
+        };
+    };
+    delete_user_admin_users__user_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AdminDeleteIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description confirm_mismatch, self or admin */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

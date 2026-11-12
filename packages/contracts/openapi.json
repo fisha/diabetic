@@ -146,6 +146,19 @@
         "title": "ActivityData",
         "type": "object"
       },
+      "AdminDeleteIn": {
+        "properties": {
+          "confirm_email": {
+            "title": "Confirm Email",
+            "type": "string"
+          }
+        },
+        "required": [
+          "confirm_email"
+        ],
+        "title": "AdminDeleteIn",
+        "type": "object"
+      },
       "AdminUserOut": {
         "properties": {
           "approved_at": {
@@ -4599,6 +4612,61 @@
           }
         ],
         "summary": "Users",
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/admin/users/{user_id}": {
+      "delete": {
+        "description": "Deletes another account and everything in it, as the person's own \"Delete account\" does. Never the admin's own\naccount or another admin's, and only when the typed email matches the account's.",
+        "operationId": "delete_user_admin_users__user_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "User Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminDeleteIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "confirm_mismatch, self or admin"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete User",
         "tags": [
           "admin"
         ]
