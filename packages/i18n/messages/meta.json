@@ -1676,6 +1676,20 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_late_rise_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Medians; rise and other are signed changes with unit."
+  },
+  "ins.f_late_rise_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "G-54 finding late_rise."
+  },
   "ins.f_late_t": {
     "board": "OVR-04",
     "review": [
@@ -1759,6 +1773,20 @@
       "clinical"
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_workout_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Median wording per Guy (חציון)."
+  },
+  "ins.f_workout_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "G-54 finding workout; activity is ins.wk_*."
   },
   "ins.fb_fail": {
     "board": "Overview",
@@ -2086,6 +2114,42 @@
       "clinical"
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.wk_cycle": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.wk_gym": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.wk_other": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.wk_run": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.wk_swim": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.wk_walk": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
   },
   "jrn.act_title": {
     "board": "Journal",

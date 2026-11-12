@@ -1856,7 +1856,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time";
+            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time" | "late_rise" | "workout";
             /** Label */
             label?: string | null;
             /** Of */
@@ -1976,10 +1976,14 @@ export interface components {
             assumption?: string | null;
             /** Carbs Per 100G */
             carbs_per_100g?: number | null;
+            /** Fat Per 100G */
+            fat_per_100g?: number | null;
             /** Grams Per Unit */
             grams_per_unit?: number | null;
             /** Name */
             name: string;
+            /** Protein Per 100G */
+            protein_per_100g?: number | null;
             /** Qty */
             qty: number;
             question?: components["schemas"]["FoodQuestion"] | null;
@@ -1993,8 +1997,12 @@ export interface components {
         FoodMatch: {
             /** Carbs Per 100G */
             carbs_per_100g: number | null;
+            /** Fat Per 100G */
+            fat_per_100g?: number | null;
             /** Name */
             name: string;
+            /** Protein Per 100G */
+            protein_per_100g?: number | null;
             /** Source Id */
             source_id: string;
         };
@@ -2450,6 +2458,11 @@ export interface components {
             ate: "all" | "most" | "half" | "little";
             /** Carbs Total G */
             carbs_total_g: number;
+            /**
+             * Fat Total G
+             * @default null
+             */
+            fat_total_g: number | null;
             /** Items */
             items: components["schemas"]["MealItemData"][];
             /**
@@ -2457,6 +2470,11 @@ export interface components {
              * @default null
              */
             photo_id: string | null;
+            /**
+             * Protein Total G
+             * @default null
+             */
+            protein_total_g: number | null;
         };
         /** MealItemData */
         MealItemData: {
@@ -2465,8 +2483,18 @@ export interface components {
              * @default null
              */
             carbs_g: number | null;
+            /**
+             * Fat G
+             * @default null
+             */
+            fat_g: number | null;
             /** Name */
             name: string;
+            /**
+             * Protein G
+             * @default null
+             */
+            protein_g: number | null;
             /**
              * Prov
              * @enum {string}

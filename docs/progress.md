@@ -8,6 +8,10 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (night, G-54): meals store protein and fat; insights for a later rise after meals richer in protein and
+fat and for glucose around each kind of workout, in the app, on the website and for the companion. API 188 tests and
+`pnpm check` pass; not yet seen with real data.
+
 12 Nov 2026 (night, G-53): optional medicines (not type 1), food and fitness steps in onboarding, shift work and
 cycle in the routine step, editable in the app's Diabetes profile and on the website; the companion gets them as
 facts. API 187 tests and `pnpm check` pass; the three new steps were checked on the app's web build; not yet seen on a

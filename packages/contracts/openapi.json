@@ -1157,7 +1157,9 @@
               "activity_gap",
               "activity_good",
               "carb_gap",
-              "meal_time"
+              "meal_time",
+              "late_rise",
+              "workout"
             ],
             "title": "Kind",
             "type": "string"
@@ -1509,6 +1511,19 @@
             ],
             "title": "Carbs Per 100G"
           },
+          "fat_per_100g": {
+            "anyOf": [
+              {
+                "maximum": 100.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fat Per 100G"
+          },
           "grams_per_unit": {
             "anyOf": [
               {
@@ -1527,6 +1542,19 @@
             "minLength": 1,
             "title": "Name",
             "type": "string"
+          },
+          "protein_per_100g": {
+            "anyOf": [
+              {
+                "maximum": 100.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Protein Per 100G"
           },
           "qty": {
             "exclusiveMinimum": 0.0,
@@ -1579,9 +1607,31 @@
             ],
             "title": "Carbs Per 100G"
           },
+          "fat_per_100g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fat Per 100G"
+          },
           "name": {
             "title": "Name",
             "type": "string"
+          },
+          "protein_per_100g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Protein Per 100G"
           },
           "source_id": {
             "title": "Source Id",
@@ -2787,6 +2837,20 @@
             "title": "Carbs Total G",
             "type": "number"
           },
+          "fat_total_g": {
+            "anyOf": [
+              {
+                "maximum": 2000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Fat Total G"
+          },
           "items": {
             "items": {
               "$ref": "#/components/schemas/MealItemData"
@@ -2807,6 +2871,20 @@
             ],
             "default": null,
             "title": "Photo Id"
+          },
+          "protein_total_g": {
+            "anyOf": [
+              {
+                "maximum": 2000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Protein Total G"
           }
         },
         "required": [
@@ -2835,10 +2913,38 @@
             "default": null,
             "title": "Carbs G"
           },
+          "fat_g": {
+            "anyOf": [
+              {
+                "maximum": 1000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Fat G"
+          },
           "name": {
             "maxLength": 120,
             "title": "Name",
             "type": "string"
+          },
+          "protein_g": {
+            "anyOf": [
+              {
+                "maximum": 1000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Protein G"
           },
           "prov": {
             "enum": [

@@ -799,3 +799,14 @@ target) and `fitness` (kinds of training, usual times, goal). The routine step a
 menstrual cycle into account. Review, the app's Diabetes profile and the website profile editor show and edit them.
 The companion is told the answers as short facts (never advice on medicines). Insights that use them (late rise after
 protein or fat, glucose around training) are a next step and need meal macros or workout data per kind.
+
+### G-54 · Insights from protein, fat and workout kind (**Guy, 12 Nov 2026**, implemented-unverified)
+
+Guy asked for the insights that use the new profile topics. Meals now store protein and fat (per food and in total,
+the total only when every food has a value) from the photo or description analysis (the model now estimates protein
+and fat per 100 g) and from USDA search (nutrients 203 and 204); nothing is shown on the meal screens. Two findings:
+`late_rise`, the person's richer half of meals by protein plus fat against the other half, glucose change from two to
+four hours after eating, shown when the richer meals rise at least 20 mg/dL more (a product rule) and still rise,
+meals followed by another within four hours left out, at least 3 meals each; `workout`, per kind of activity done at
+least 3 times in 14 days (logged or from Apple Health), the median at the start and an hour after it ended. Both point
+to the care team; no amounts. Only meals logged after this update have protein and fat; pump meals never do.
