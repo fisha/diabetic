@@ -2329,11 +2329,39 @@
     ],
     "note": "Insulin entry with no insulin name."
   },
+  "jrn.ins_auto": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "CareLink activationType AUTOCORRECTION."
+  },
+  "jrn.ins_bolus": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "CareLink activationType RECOMMENDED or unknown: a bolus the person gave on the pump."
+  },
+  "jrn.ins_carbs": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Carbs entered on the pump with this bolus."
+  },
   "jrn.ins_detail": {
     "board": "Journal",
     "review": [
       "translation"
     ]
+  },
+  "jrn.ins_manual": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "CareLink activationType MANUAL."
   },
   "jrn.ins_pump": {
     "board": "Journal",
@@ -2594,6 +2622,13 @@
     "review": [
       "translation"
     ]
+  },
+  "jrn.src_pump_d": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump insulin entry with no known kind."
   },
   "jrn.st_completed": {
     "board": "Journal",

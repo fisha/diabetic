@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (night, pump insulin): a CareLink insulin entry now says how the pump gave it (automatic correction, bolus,
+manual bolus, from CareLink's activationType already kept as the record's reason) instead of "insulin you reported
+taking", and shows the carbs of a pump meal recorded within 5 minutes of it. LibreLinkUp gives glucose only.
+`pnpm check` passes; not yet seen on a phone.
+
 12 Nov 2026 (night, Journal fixes from Guy): a sensor reading says "Sensor" instead of the logging form's "(I'm
 entering it)"; heart rate is a heart icon and the number, without "per minute"; insulin titles always show the number of
 units (Hebrew plural rules read 0.4 as "one", which printed "one unit" for pump micro-doses) and the pump's own entries
