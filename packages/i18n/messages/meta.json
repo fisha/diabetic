@@ -1612,6 +1612,12 @@
       "translation"
     ]
   },
+  "ins.median_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.no_band": {
     "board": "Overview",
     "review": [
@@ -7960,6 +7966,12 @@
     ]
   },
   "wd.ltr": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.median_q": {
     "board": "WebDashboard",
     "review": [
       "translation"
