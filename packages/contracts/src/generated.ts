@@ -41,6 +41,47 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/admin/users/{user_id}/approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Approve
+         * @description Takes an account off the waitlist (Guy, 12 Nov 2026) and emails it. Approving twice changes nothing.
+         */
+        post: operations["approve_admin_users__user_id__approve_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/google": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Google
+         * @description Sign in or sign up with Google. The account is found by its Google id, else by the Google-verified email (an
+         *     account made with email and password is linked then), else made new without a password.
+         */
+        post: operations["google_auth_google_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/me": {
         parameters: {
             query?: never;
@@ -50,6 +91,26 @@ export interface paths {
         };
         /** Me */
         get: operations["me_auth_me_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/options": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Options
+         * @description Which ways to make an account are open, so the app and the website show only those.
+         */
+        get: operations["options_auth_options_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -120,6 +181,43 @@ export interface paths {
         put?: never;
         /** Sign Up */
         post: operations["sign_up_auth_sign_up_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/verify": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Verify */
+        post: operations["verify_auth_verify_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/verify/send": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Send Verification
+         * @description Sends a new code to the signed-in account's email (not more than once a minute).
+         */
+        post: operations["send_verification_auth_verify_send_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1323,6 +1421,8 @@ export interface components {
         };
         /** AdminUserOut */
         AdminUserOut: {
+            /** Approved At */
+            approved_at: string | null;
             /**
              * Created At
              * Format: date-time
@@ -1343,6 +1443,25 @@ export interface components {
             last_reading_at: string | null;
             /** Readings 14D */
             readings_14d: number;
+            /** Via Google */
+            via_google: boolean;
+        };
+        /** ApprovedOut */
+        ApprovedOut: {
+            /**
+             * Approved At
+             * Format: date-time
+             */
+            approved_at: string;
+            /** Emailed */
+            emailed: boolean;
+        };
+        /** AuthOptions */
+        AuthOptions: {
+            /** Email Sign Up */
+            email_sign_up: boolean;
+            /** Google */
+            google: boolean;
         };
         /** AuthorizeIn */
         AuthorizeIn: {
@@ -1899,6 +2018,11 @@ export interface components {
             /** Value Mgdl */
             value_mgdl: number;
         };
+        /** GoogleIn */
+        GoogleIn: {
+            /** Id Token */
+            id_token: string;
+        };
         /** HTTPValidationError */
         HTTPValidationError: {
             /** Detail */
@@ -2173,8 +2297,18 @@ export interface components {
         };
         /** Me */
         Me: {
+            /**
+             * Approved
+             * @default true
+             */
+            approved: boolean;
             /** Email */
             email: string;
+            /**
+             * Email Verified
+             * @default true
+             */
+            email_verified: boolean;
             /** Has Profile */
             has_profile: boolean;
             /**
@@ -2875,6 +3009,18 @@ export interface components {
             /** Error Type */
             type: string;
         };
+        /** VerifyIn */
+        VerifyIn: {
+            /** Code */
+            code: string;
+        };
+        /** VerifySent */
+        VerifySent: {
+            /** Sent */
+            sent: boolean;
+            /** Verified */
+            verified: boolean;
+        };
         /**
          * ViewerOut
          * @description A share as its owner sees it: who can see their data, or an invite not used yet.
@@ -3020,6 +3166,84 @@ export interface operations {
             };
         };
     };
+    approve_admin_users__user_id__approve_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApprovedOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    google_auth_google_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GoogleIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Tokens"];
+                };
+            };
+            /** @description invalid_google_token */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description google_unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     me_auth_me_get: {
         parameters: {
             query?: never;
@@ -3036,6 +3260,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Me"];
+                };
+            };
+        };
+    };
+    options_auth_options_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuthOptions"];
                 };
             };
         };
@@ -3188,6 +3432,91 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
                 };
+            };
+            /** @description email_sign_up_closed */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    verify_auth_verify_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VerifyIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Me"];
+                };
+            };
+            /** @description wrong_code, expired_code or too_many_attempts */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    send_verification_auth_verify_send_post: {
+        parameters: {
+            query?: {
+                locale?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VerifySent"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description too_soon */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

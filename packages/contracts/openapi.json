@@ -148,6 +148,18 @@
       },
       "AdminUserOut": {
         "properties": {
+          "approved_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approved At"
+          },
           "created_at": {
             "format": "date-time",
             "title": "Created At",
@@ -188,6 +200,10 @@
           "readings_14d": {
             "title": "Readings 14D",
             "type": "integer"
+          },
+          "via_google": {
+            "title": "Via Google",
+            "type": "boolean"
           }
         },
         "required": [
@@ -197,9 +213,48 @@
           "has_profile",
           "devices",
           "readings_14d",
-          "last_reading_at"
+          "last_reading_at",
+          "approved_at",
+          "via_google"
         ],
         "title": "AdminUserOut",
+        "type": "object"
+      },
+      "ApprovedOut": {
+        "properties": {
+          "approved_at": {
+            "format": "date-time",
+            "title": "Approved At",
+            "type": "string"
+          },
+          "emailed": {
+            "title": "Emailed",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "approved_at",
+          "emailed"
+        ],
+        "title": "ApprovedOut",
+        "type": "object"
+      },
+      "AuthOptions": {
+        "properties": {
+          "email_sign_up": {
+            "title": "Email Sign Up",
+            "type": "boolean"
+          },
+          "google": {
+            "title": "Google",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "email_sign_up",
+          "google"
+        ],
+        "title": "AuthOptions",
         "type": "object"
       },
       "AuthorizeIn": {
@@ -1731,6 +1786,22 @@
         "title": "GlucoseRevisionOut",
         "type": "object"
       },
+      "GoogleIn": {
+        "additionalProperties": false,
+        "properties": {
+          "id_token": {
+            "maxLength": 4096,
+            "minLength": 20,
+            "title": "Id Token",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id_token"
+        ],
+        "title": "GoogleIn",
+        "type": "object"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -2517,9 +2588,19 @@
       },
       "Me": {
         "properties": {
+          "approved": {
+            "default": true,
+            "title": "Approved",
+            "type": "boolean"
+          },
           "email": {
             "title": "Email",
             "type": "string"
+          },
+          "email_verified": {
+            "default": true,
+            "title": "Email Verified",
+            "type": "boolean"
           },
           "has_profile": {
             "title": "Has Profile",
@@ -4215,6 +4296,39 @@
         "title": "ValidationError",
         "type": "object"
       },
+      "VerifyIn": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "pattern": "^[0-9]{6}$",
+            "title": "Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "title": "VerifyIn",
+        "type": "object"
+      },
+      "VerifySent": {
+        "properties": {
+          "sent": {
+            "title": "Sent",
+            "type": "boolean"
+          },
+          "verified": {
+            "title": "Verified",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "sent",
+          "verified"
+        ],
+        "title": "VerifySent",
+        "type": "object"
+      },
       "ViewerOut": {
         "description": "A share as its owner sees it: who can see their data, or an invite not used yet.",
         "properties": {
@@ -4415,7 +4529,7 @@
     }
   },
   "info": {
-    "title": "Steady API",
+    "title": "Stedio API",
     "version": "0.1.0"
   },
   "openapi": "3.1.0",
@@ -4490,6 +4604,103 @@
         ]
       }
     },
+    "/admin/users/{user_id}/approve": {
+      "post": {
+        "description": "Takes an account off the waitlist (Guy, 12 Nov 2026) and emails it. Approving twice changes nothing.",
+        "operationId": "approve_admin_users__user_id__approve_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "User Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApprovedOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Approve",
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/auth/google": {
+      "post": {
+        "description": "Sign in or sign up with Google. The account is found by its Google id, else by the Google-verified email (an\naccount made with email and password is linked then), else made new without a password.",
+        "operationId": "google_auth_google_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GoogleIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tokens"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "description": "invalid_google_token"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "503": {
+            "description": "google_unavailable"
+          }
+        },
+        "summary": "Google",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
     "/auth/me": {
       "get": {
         "operationId": "me_auth_me_get",
@@ -4511,6 +4722,28 @@
           }
         ],
         "summary": "Me",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/options": {
+      "get": {
+        "description": "Which ways to make an account are open, so the app and the website show only those.",
+        "operationId": "options_auth_options_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthOptions"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Options",
         "tags": [
           "auth"
         ]
@@ -4674,9 +4907,113 @@
               }
             },
             "description": "Validation Error"
+          },
+          "503": {
+            "description": "email_sign_up_closed"
           }
         },
         "summary": "Sign Up",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/verify": {
+      "post": {
+        "operationId": "verify_auth_verify_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Me"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "description": "wrong_code, expired_code or too_many_attempts"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Verify",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/verify/send": {
+      "post": {
+        "description": "Sends a new code to the signed-in account's email (not more than once a minute).",
+        "operationId": "send_verification_auth_verify_send_post",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "locale",
+            "required": false,
+            "schema": {
+              "default": "en",
+              "title": "Locale",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifySent"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "429": {
+            "description": "too_soon"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Send Verification",
         "tags": [
           "auth"
         ]

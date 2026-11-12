@@ -126,4 +126,4 @@ All of them are listed in `services/api/.env.example`, without values. Two need 
 ## Migrations
 
 Run `uv run alembic upgrade head` after every pull that adds a file in `services/api/alembic/versions/`. The latest is
-`e6f7a8b9c0d2` (view-only shares, G-44). Each migration so far only adds columns, tables or rows. None is destructive.
+`f7a8b9c0d1e3` (Google sign-in, waitlist and email verification, G-46). Each migration so far only adds columns, tables or rows. None is destructive.

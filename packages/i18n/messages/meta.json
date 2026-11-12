@@ -3216,6 +3216,12 @@
       "translation"
     ]
   },
+  "onb.a_e_closed": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.a_e_failed": {
     "board": "Onboarding",
     "review": [
@@ -8191,6 +8197,18 @@
       "translation"
     ]
   },
+  "wd.adm_approve": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_approved": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.adm_b": {
     "board": "WebDashboard",
     "review": [
@@ -8215,7 +8233,19 @@
       "translation"
     ]
   },
+  "wd.adm_emailed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.adm_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_google": {
     "board": "WebDashboard",
     "review": [
       "translation"
@@ -8233,7 +8263,19 @@
       "translation"
     ]
   },
+  "wd.adm_not_emailed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.adm_readings": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_status": {
     "board": "WebDashboard",
     "review": [
       "translation"
@@ -8246,6 +8288,12 @@
     ]
   },
   "wd.adm_view": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_waiting": {
     "board": "WebDashboard",
     "review": [
       "translation"
@@ -8696,6 +8744,18 @@
       "translation"
     ]
   },
+  "wd.np_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.np_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.overview": {
     "board": "WebDashboard",
     "review": [
@@ -8942,6 +9002,24 @@
       "translation"
     ]
   },
+  "wd.su_google_bad": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.su_google_off": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.su_taken": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.t_act": {
     "board": "WebDashboard",
     "review": [
@@ -9081,6 +9159,30 @@
     ]
   },
   "wd.view_stop": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.wl_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.wl_lead": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.wl_or": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.wl_t": {
     "board": "WebDashboard",
     "review": [
       "translation"
@@ -9837,6 +9939,36 @@
   },
   "win.tir_week_t": {
     "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "wl.b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "wl.check": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "wl.out": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "wl.still": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "wl.t": {
+    "board": "Onboarding",
     "review": [
       "translation"
     ]

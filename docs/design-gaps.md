@@ -673,3 +673,18 @@ against Dexcom or Abbott. Neither maker offers or approves this route and it can
 see changed (texts in all languages, app display name, permission texts, widget and Live Activity, notification
 titles, website). Technical identifiers stay as they are (bundle ids `com.fisha.steady.dev`, App Group, Expo slug,
 package names, code identifiers), since changing them breaks installed builds and signing.
+
+### G-46 · Google sign-in, waitlist and email verification (**Guy, 12 Nov 2026**, implemented-unverified)
+
+- Google sign-in: `POST /auth/google` with a Google ID token, checked against Google's keys, issuer, expiry, our OAuth
+  client ids (`STEADY_GOOGLE_CLIENT_IDS`) and a verified email. Website: Google's own button (Identity Services,
+  `NEXT_PUBLIC_GOOGLE_CLIENT_ID`). App: `@react-native-google-signin/google-signin` (Google's native sheet, no in-app
+  web view; `EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID`, `EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID`, needs a new native build). A Google
+  sign-in links an existing account with the same email; an unverified one loses its password then.
+- Waitlist ("לגבי האתר… הרשמה לרשימת המתנה"): a new account waits (`users.approved_at`, 403 `waitlisted` on the data
+  paths) until an admin approves it on the website's Admin page (`POST /admin/users/{id}/approve`), which emails the
+  person when an SMTP sender is set; otherwise the page says no email was sent. Applies to accounts made in the app
+  too, so the waitlist cannot be skipped. Existing accounts were approved by migration `f7a8b9c0d1e3`.
+- Email sign-up: needs a verification code by email (`/auth/verify/send`, `/auth/verify`, 6 digits, 30 minutes, 5
+  tries). Guy chose Google only for now, so email sign-up is closed (`GET /auth/options`, 503 `email_sign_up_closed`)
+  until an SMTP sender is set. The website offers only Google for new people; existing accounts sign in as before.

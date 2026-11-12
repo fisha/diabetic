@@ -705,6 +705,10 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   migration `e6f7a8b9c0d2`, `STEADY_ADMIN_EMAILS`); unofficial Dexcom Share and LibreLinkUp connections like CareLink
   (G-45, stand-in servers only); the app renamed to Stedio in everything people see (identifiers unchanged); an EAS
   `testers` profile (internal distribution, API https://stedio.ngrok.app). API 166 tests and `pnpm check` pass.
+- 12 Nov 2026 (Guy, G-46): Google sign-in (website button, native sheet in the app), a waitlist approved from the
+  Admin page with an approval email, and email verification codes (email sign-up closed until a mail sender is set).
+  Migration `f7a8b9c0d1e3`. API 174 tests, `pnpm check` and a browser run of waitlist and approval pass. Google itself
+  untested until the client ids exist.
 
 ## Next action
 
