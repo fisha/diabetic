@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (evening, fixes): meal photos never reached the server from the iPhone. Expo's fetch (the global fetch
+since SDK 54) cannot send React Native's `{ uri, name, type }` form parts and threw before any request, which the app
+showed as "photo analysis unavailable". The upload now sends an expo-file-system `File`; the server recognises a photo
+by its first bytes when its type is missing or unusual. Also: registering the same push token twice at once no longer
+returns 500 (one upsert), and a failed USDA search logs its status (never the address, which carries the key). API 185
+tests pass. Not yet verified on the phone.
+
 12 Nov 2026 (evening, third batch, G-49): the Overview gains a rolling 24-hour period (app: 24 hours, Day, Week, 2 weeks,
 Month; website: 24 hours beside 14/30/90 days), so its time in range can match the pump's; the Google profile picture
 of a Google account shows on the app's account card and the website's account box (migration `c2d3e4f5a6b8`); the
