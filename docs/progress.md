@@ -8,6 +8,10 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (night): meal photo analysis worked once on the iPhone, then failed: the model gave an amount in grams
+above the item limit of 100 and the whole answer was refused. The limit is now 1000 (as a saved meal allows), a single
+out-of-bounds food is left out instead of failing the meal, and the failure kind is logged. API 187 tests pass.
+
 12 Nov 2026 (evening, G-50): "Update available" in the app: `expo-updates` (channels per EAS profile, fingerprint
 runtime) with a banner that downloads and restarts, and "New version to install" from `GET /app/version`. Needs a new
 iPhone build (Guy approved); updates are then published with `eas update --channel testers`. `pnpm check` and the API
