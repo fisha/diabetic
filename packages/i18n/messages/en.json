@@ -80,6 +80,8 @@
   "com.heard": "I heard",
   "com.hist_empty": "Nothing here yet",
   "com.history": "Conversations",
+  "com.hr": "Heart rate {bpm}/min",
+  "com.hr_k": "Heart rate",
   "com.in_basal": "Basal",
   "com.in_corr": "Correction",
   "com.in_err": "Enter the amount you took, in units.",

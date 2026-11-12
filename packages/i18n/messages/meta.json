@@ -496,6 +496,19 @@
       "translation"
     ]
   },
+  "com.hr": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Heart rate from Apple Health or Health Connect near a glucose reading."
+  },
+  "com.hr_k": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
   "com.in_basal": {
     "board": "Companion",
     "review": [

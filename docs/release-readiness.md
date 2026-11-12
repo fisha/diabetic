@@ -126,4 +126,4 @@ All of them are listed in `services/api/.env.example`, without values. Two need 
 ## Migrations
 
 Run `uv run alembic upgrade head` after every pull that adds a file in `services/api/alembic/versions/`. The latest is
-`a1b2c3d4e5f7` (CareLink history time). Each migration so far only adds columns or tables. None is destructive.
+`b2c3d4e5f6a9` (CareLink history time). Each migration so far only adds columns or tables. None is destructive.

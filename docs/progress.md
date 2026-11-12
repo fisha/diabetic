@@ -677,6 +677,10 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   selected period (day, week, 2 weeks, month), with period-correct titles. The Live Activity shows the latest
   reading and a three-hour part of the day with an icon (G-41 update; `span` on `/insights/hours`). Needs a new iOS
   build; Swift not compiled in the container.
+- 12 Nov 2026 (Guy): today's time in range counts against the part of the day that has passed. Heart rate from the
+  health store is shown beside glucose readings (Overview latest card, Journal), nearest sample within 10 minutes.
+  Health workouts become journal activity entries (source apple_health / health_connect, no intensity), created on
+  import and backfilled by migration `b2c3d4e5f6a9`; a workout deleted in the health app removes its unedited entry.
 
 ## Next action
 

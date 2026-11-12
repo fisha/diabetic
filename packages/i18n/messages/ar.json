@@ -80,6 +80,8 @@
   "com.heard": "سمعت",
   "com.hist_empty": "لا شيء هنا بعد",
   "com.history": "المحادثات",
+  "com.hr": "النبض {bpm}/دقيقة",
+  "com.hr_k": "النبض",
   "com.in_basal": "قاعدي",
   "com.in_corr": "تصحيح",
   "com.in_err": "أدخل الكمية التي أخذتها بالوحدات.",
