@@ -592,3 +592,43 @@ the N most recent days with data"), a "Where this comes from" block, the last-an
 day) and a note when unread topics were corrected or ended. The app marks an insight read when its detail opens; the
 website when "Where this comes from" is opened. Not in the design: the tags reuse the existing badge, the rest is
 footnote text in the existing cards. Push delivery to a phone is untested end to end.
+
+### G-43 · Daily progress check and small wins (**Guy's request, 12 Nov 2026**, implemented-unverified)
+
+Guy asked for a daily automatic check of the person's progress and a gentle celebration of small wins, in the app and
+on the website, inside the existing insights. Additions only: a win card in the existing insight card look on the
+Overview (app) and the Insights page (website), a confetti burst, and one setting.
+
+Server (`services/api/steady_api/progress.py`, tables `progress_checks` and `achievements`, migration
+`d5e6f7a8b9c1`, `GET /progress`, `POST /progress/{id}/state`):
+- Once a day per person (worker, or on opening), for the last complete local day: that day against the day before,
+  and the last 7 days against the 7 before; every result is kept (`progress_checks`).
+- Measures: share of readings in the person's own range, share below it, and low episodes (3 readings in a row below
+  the range, at most 15 minutes apart). The range is the typed one, else the pump's or CareLink's. Lower glucose is
+  never progress by itself.
+- Fair or nothing: a day counts with at least 70% of a sensor's readings; a week with at least 5 such days. Missing
+  data is never progress, stability or decline.
+- Wins (product defaults in `progress.py`, not clinical targets; for clinical review):
+  - a better week: time in range up at least 5 points;
+  - less time below: down at least 1 point and at least a third, from at least 2%, with time in range not falling more
+    than 2 points;
+  - a good day: at least 10 points above the day before and 5 above the previous week's mean (one good day against one
+    bad day is noise);
+  - steady: 4 fair weeks within 5 points of each other with time below not rising; said as steady, not as progress,
+    and not counted as improvement.
+- Safety gate: in the same comparison, more time below the range (over 0.5 points) or more low episodes blocks every
+  win; the check records that it was blocked.
+- Words say what was measured, over which days, on how many full days, and that it does not show the cause. No meals,
+  no insulin, no "thanks to us", no score; nothing at all on days without a win.
+- Duplicates: each win has a unique dedupe; a week win at most once a week, steady once per 4 weeks; reruns change
+  nothing. A correction (edit, hide, delete) re-checks the last 14 days and withdraws wins no longer supported.
+- Pushes: only the week wins, through the insight push policy (G-42: off switch, quiet hours, weekly cap, 20-hour gap,
+  digest), generic text with no values ("Something went well this week"); never when the win was already seen or was
+  withdrawn. Daily wins and steady stretches are shown, never pushed.
+- Celebration: a week win gets a short confetti burst once, in whichever interface opens it first (kept on the
+  server); off with the "Celebrate small wins" setting (app Settings > Notifications, website settings), and never
+  with the system's reduce-motion setting.
+- Internal KPI (`progress.kpi`, `uv run python -m steady_api.progress --days 7`, counts only): of the people with
+  enough data for a fair comparison in the period, the share with a supported improvement; also how many people
+  checked had enough data (coverage) and how many wins safety blocked. It describes people's numbers, not that the
+  app caused them.

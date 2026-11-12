@@ -29,6 +29,79 @@
         "title": "A1cOut",
         "type": "object"
       },
+      "AchievementOut": {
+        "properties": {
+          "celebrated_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Celebrated At"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "data": {
+            "additionalProperties": true,
+            "title": "Data",
+            "type": "object"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "tir_day",
+              "tir_week",
+              "below_week",
+              "steady"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "seen_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seen At"
+          },
+          "significant": {
+            "title": "Significant",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "day",
+          "significant",
+          "data",
+          "created_at",
+          "seen_at",
+          "celebrated_at"
+        ],
+        "title": "AchievementOut",
+        "type": "object"
+      },
       "ActivityData": {
         "additionalProperties": false,
         "properties": {
@@ -343,6 +416,35 @@
           "connected"
         ],
         "title": "CareLinkOut",
+        "type": "object"
+      },
+      "CheckOut": {
+        "properties": {
+          "coverage": {
+            "additionalProperties": true,
+            "title": "Coverage",
+            "type": "object"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "eligible": {
+            "title": "Eligible",
+            "type": "boolean"
+          },
+          "improved": {
+            "title": "Improved",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "day",
+          "eligible",
+          "improved",
+          "coverage"
+        ],
+        "title": "CheckOut",
         "type": "object"
       },
       "ConsentIn": {
@@ -2931,6 +3033,38 @@
         "title": "ProfileOut",
         "type": "object"
       },
+      "ProgressOut": {
+        "properties": {
+          "achievements": {
+            "items": {
+              "$ref": "#/components/schemas/AchievementOut"
+            },
+            "title": "Achievements",
+            "type": "array"
+          },
+          "celebrate": {
+            "title": "Celebrate",
+            "type": "boolean"
+          },
+          "last_check": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CheckOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "achievements",
+          "last_check",
+          "celebrate"
+        ],
+        "title": "ProgressOut",
+        "type": "object"
+      },
       "ProposalIn": {
         "additionalProperties": false,
         "properties": {
@@ -3350,6 +3484,11 @@
       },
       "SettingsOut": {
         "properties": {
+          "celebrate": {
+            "default": true,
+            "title": "Celebrate",
+            "type": "boolean"
+          },
           "insight_interval_days": {
             "default": 14,
             "title": "Insight Interval Days",
@@ -3394,6 +3533,17 @@
       "SettingsPatch": {
         "additionalProperties": false,
         "properties": {
+          "celebrate": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Celebrate"
+          },
           "insight_interval_days": {
             "anyOf": [
               {
@@ -3531,34 +3681,6 @@
           "minutes"
         ],
         "title": "SnoozeIn",
-        "type": "object"
-      },
-      "StateIn": {
-        "additionalProperties": false,
-        "properties": {
-          "action": {
-            "enum": [
-              "seen",
-              "read"
-            ],
-            "title": "Action",
-            "type": "string"
-          },
-          "via": {
-            "enum": [
-              "app",
-              "web",
-              "push"
-            ],
-            "title": "Via",
-            "type": "string"
-          }
-        },
-        "required": [
-          "action",
-          "via"
-        ],
-        "title": "StateIn",
         "type": "object"
       },
       "ThreadOut": {
@@ -3856,6 +3978,62 @@
           "available"
         ],
         "title": "VoiceStatusOut",
+        "type": "object"
+      },
+      "steady_api__routers__insights__StateIn": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "seen",
+              "read"
+            ],
+            "title": "Action",
+            "type": "string"
+          },
+          "via": {
+            "enum": [
+              "app",
+              "web",
+              "push"
+            ],
+            "title": "Via",
+            "type": "string"
+          }
+        },
+        "required": [
+          "action",
+          "via"
+        ],
+        "title": "StateIn",
+        "type": "object"
+      },
+      "steady_api__routers__progress__StateIn": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "seen",
+              "celebrated"
+            ],
+            "title": "Action",
+            "type": "string"
+          },
+          "via": {
+            "enum": [
+              "app",
+              "web",
+              "push"
+            ],
+            "title": "Via",
+            "type": "string"
+          }
+        },
+        "required": [
+          "action",
+          "via"
+        ],
+        "title": "StateIn",
         "type": "object"
       }
     },
@@ -6150,7 +6328,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/StateIn"
+                "$ref": "#/components/schemas/steady_api__routers__insights__StateIn"
               }
             }
           },
@@ -6667,6 +6845,85 @@
         "summary": "Put Profile",
         "tags": [
           "profile"
+        ]
+      }
+    },
+    "/progress": {
+      "get": {
+        "description": "Wins of the last 14 days, newest first (the daily check runs here too if it is due).",
+        "operationId": "get_progress_progress_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgressOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Progress",
+        "tags": [
+          "progress"
+        ]
+      }
+    },
+    "/progress/{achievement_id}/state": {
+      "post": {
+        "description": "Seen, or the celebration shown: once, anywhere. A second celebration of the same win is refused (409).",
+        "operationId": "set_state_progress__achievement_id__state_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "achievement_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Achievement Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/steady_api__routers__progress__StateIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set State",
+        "tags": [
+          "progress"
         ]
       }
     },

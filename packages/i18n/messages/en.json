@@ -1520,5 +1520,19 @@
   "web.sub": "Steady is a calm AI companion you can talk to. It logs what you tell it, follows up when you ask, and helps you notice patterns without judgment.",
   "web.terms": "Terms",
   "web.to_dashboard": "Go to your dashboard",
-  "web.trial": "Free trial, then one simple membership. Works without a connected device."
+  "web.trial": "Free trial, then one simple membership. Works without a connected device.",
+  "win.basis_day": "Based on two days with near-complete sensor data, compared with your own past week. It doesn't say what caused it.",
+  "win.basis_steady": "Based on {weeks} weeks, each with at least 5 days of near-complete sensor data, ending {day}.",
+  "win.basis_week": "Based on {days} and {prev_days} days with near-complete sensor data in the two weeks. It doesn't say what caused it.",
+  "win.below_week_b": "From {range}, {pct}% of your readings were below your range, compared with {prev}% in the week before, with time in range holding.",
+  "win.below_week_t": "Less time below your range",
+  "win.set": "Celebrate small wins",
+  "win.set_b": "A short burst of confetti for a bigger win, once. The message shows either way. Off when the phone is set to reduce motion.",
+  "win.steady_b": "For {weeks} weeks in a row your time in range has held steady at about {pct}%. Keeping that up takes effort.",
+  "win.steady_t": "Steady for {weeks} weeks",
+  "win.tag": "A small win",
+  "win.tir_day_b": "On {day}, {pct}% of your readings were in your range, compared with {prev}% the day before. Nice.",
+  "win.tir_day_t": "A good day in your range",
+  "win.tir_week_b": "From {range}, {pct}% of your readings were in your range, compared with {prev}% in the week before. Well done.",
+  "win.tir_week_t": "More time in your range this week"
 }

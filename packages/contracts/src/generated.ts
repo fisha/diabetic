@@ -878,6 +878,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/progress": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Progress
+         * @description Wins of the last 14 days, newest first (the daily check runs here too if it is due).
+         */
+        get: operations["get_progress_progress_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/progress/{achievement_id}/state": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Set State
+         * @description Seen, or the celebration shown: once, anywhere. A second celebration of the same win is refused (409).
+         */
+        post: operations["set_state_progress__achievement_id__state_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/records": {
         parameters: {
             query?: never;
@@ -1062,6 +1102,36 @@ export interface components {
             /** Mean Mgdl */
             mean_mgdl: number;
         };
+        /** AchievementOut */
+        AchievementOut: {
+            /** Celebrated At */
+            celebrated_at: string | null;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Data */
+            data: {
+                [key: string]: unknown;
+            };
+            /** Day */
+            day: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "tir_day" | "tir_week" | "below_week" | "steady";
+            /** Seen At */
+            seen_at: string | null;
+            /** Significant */
+            significant: boolean;
+        };
         /** ActivityData */
         ActivityData: {
             /** Intensity */
@@ -1168,6 +1238,19 @@ export interface components {
             status?: ("connected" | "wrong_credentials" | "needs_verification" | "failed") | null;
             /** Username */
             username?: string | null;
+        };
+        /** CheckOut */
+        CheckOut: {
+            /** Coverage */
+            coverage: {
+                [key: string]: unknown;
+            };
+            /** Day */
+            day: string;
+            /** Eligible */
+            eligible: boolean;
+            /** Improved */
+            improved: boolean;
         };
         /** ConsentIn */
         ConsentIn: {
@@ -2157,6 +2240,14 @@ export interface components {
              */
             updated_at: string;
         };
+        /** ProgressOut */
+        ProgressOut: {
+            /** Achievements */
+            achievements: components["schemas"]["AchievementOut"][];
+            /** Celebrate */
+            celebrate: boolean;
+            last_check: components["schemas"]["CheckOut"] | null;
+        };
         /** ProposalIn */
         ProposalIn: {
             /**
@@ -2356,6 +2447,11 @@ export interface components {
         /** SettingsOut */
         SettingsOut: {
             /**
+             * Celebrate
+             * @default true
+             */
+            celebrate: boolean;
+            /**
              * Insight Interval Days
              * @default 14
              */
@@ -2382,6 +2478,8 @@ export interface components {
         };
         /** SettingsPatch */
         SettingsPatch: {
+            /** Celebrate */
+            celebrate?: boolean | null;
             /** Insight Interval Days */
             insight_interval_days?: number | null;
             /** Insight Push */
@@ -2419,19 +2517,6 @@ export interface components {
         SnoozeIn: {
             /** Minutes */
             minutes: number;
-        };
-        /** StateIn */
-        StateIn: {
-            /**
-             * Action
-             * @enum {string}
-             */
-            action: "seen" | "read";
-            /**
-             * Via
-             * @enum {string}
-             */
-            via: "app" | "web" | "push";
         };
         /** ThreadOut */
         ThreadOut: {
@@ -2547,6 +2632,32 @@ export interface components {
              * @default []
              */
             voices: string[];
+        };
+        /** StateIn */
+        steady_api__routers__insights__StateIn: {
+            /**
+             * Action
+             * @enum {string}
+             */
+            action: "seen" | "read";
+            /**
+             * Via
+             * @enum {string}
+             */
+            via: "app" | "web" | "push";
+        };
+        /** StateIn */
+        steady_api__routers__progress__StateIn: {
+            /**
+             * Action
+             * @enum {string}
+             */
+            action: "seen" | "celebrated";
+            /**
+             * Via
+             * @enum {string}
+             */
+            via: "app" | "web" | "push";
         };
     };
     responses: never;
@@ -4113,7 +4224,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["StateIn"];
+                "application/json": components["schemas"]["steady_api__routers__insights__StateIn"];
             };
         };
         responses: {
@@ -4511,6 +4622,59 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    get_progress_progress_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProgressOut"];
+                };
+            };
+        };
+    };
+    set_state_progress__achievement_id__state_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                achievement_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["steady_api__routers__progress__StateIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
             };
         };
     };

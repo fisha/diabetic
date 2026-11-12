@@ -695,6 +695,12 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   14 days), corrections, and insight pushes with quiet hours, a weekly cap (default 2), a digest and an off switch.
   Migration `c4d5e6f7a8b0`. API tests `test_tracking.py` (5 scenarios); app unit test `track.test.ts`; `pnpm check`
   passes. Not deployed to the Mac and not run on a phone; push delivery untested end to end.
+- 12 Nov 2026 (Guy, G-43; not deployed): a daily progress check against the person's own range (day against the day
+  before, week against week, fair windows only, safety gate on time below and low episodes), small-win messages in
+  the app and on the website, a one-time confetti for week wins (setting to turn it off; respects reduced motion),
+  pushes only for week wins under the G-42 policy, and an internal KPI with data coverage. Migration `d5e6f7a8b9c1`.
+  API tests `test_progress.py` (7 scenarios); app unit test `progress.test.ts`; `pnpm check` passes. Not run on a
+  phone or viewed in a browser.
 
 ## Next action
 

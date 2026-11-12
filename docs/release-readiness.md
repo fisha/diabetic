@@ -126,4 +126,4 @@ All of them are listed in `services/api/.env.example`, without values. Two need 
 ## Migrations
 
 Run `uv run alembic upgrade head` after every pull that adds a file in `services/api/alembic/versions/`. The latest is
-`c4d5e6f7a8b0` (kept insights, insight updates and insight pushes, G-42). Each migration so far only adds columns, tables or rows. None is destructive.
+`d5e6f7a8b9c1` (daily progress checks and small wins, G-43). Each migration so far only adds columns, tables or rows. None is destructive.

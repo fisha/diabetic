@@ -9342,5 +9342,89 @@
     "review": [
       "translation"
     ]
+  },
+  "win.basis_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.basis_steady": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.basis_week": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.below_week_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.below_week_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.set": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.set_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.steady_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.steady_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.tag": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.tir_day_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.tir_day_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.tir_week_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.tir_week_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
   }
 }
