@@ -544,6 +544,16 @@
             "title": "Notifications",
             "type": "array"
           },
+          "pump": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PumpStatusOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "region": {
             "anyOf": [
               {
@@ -3832,6 +3842,158 @@
           "certainty"
         ],
         "title": "ProvenanceOut",
+        "type": "object"
+      },
+      "PumpStatusOut": {
+        "description": "The pump's state at the last poll, as CareLink reported it. Every field is optional: older pumps or a pump out\nof reach leave some out.",
+        "properties": {
+          "active_insulin_units": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Active Insulin Units"
+          },
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "battery_percent": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Battery Percent"
+          },
+          "phone_battery_percent": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone Battery Percent"
+          },
+          "pump_in_range": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pump In Range"
+          },
+          "reservoir_percent": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reservoir Percent"
+          },
+          "reservoir_units": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reservoir Units"
+          },
+          "sensor_hours_left": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor Hours Left"
+          },
+          "sensor_in_range": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor In Range"
+          },
+          "sensor_state": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor State"
+          },
+          "smartguard": {
+            "anyOf": [
+              {
+                "enum": [
+                  "auto",
+                  "safe_basal",
+                  "manual"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Smartguard"
+          },
+          "suspended": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Suspended"
+          },
+          "transmitter_battery_percent": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transmitter Battery Percent"
+          }
+        },
+        "required": [
+          "at"
+        ],
+        "title": "PumpStatusOut",
         "type": "object"
       },
       "PushTokenIn": {

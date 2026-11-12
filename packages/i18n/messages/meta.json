@@ -604,6 +604,12 @@
       "translation"
     ]
   },
+  "com.ai_pump": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
   "com.ans_not": {
     "board": "Companion",
     "review": [
@@ -7176,6 +7182,18 @@
       "translation"
     ]
   },
+  "set.cl_ai": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_batt": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cl_connect": {
     "board": "SET-05",
     "review": [
@@ -7260,6 +7278,18 @@
       "translation"
     ]
   },
+  "set.cl_out_pump": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_out_sensor": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cl_page": {
     "board": "SET-05",
     "review": [
@@ -7267,6 +7297,24 @@
     ]
   },
   "set.cl_page_web": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_pump": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_pump_at": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_pump_old": {
     "board": "SET-05",
     "review": [
       "translation"
@@ -7284,13 +7332,109 @@
       "translation"
     ]
   },
+  "set.cl_res": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sensor": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sensor_left": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sg": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sg_auto": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sg_manual": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sg_safe": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ss_calib": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ss_change": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ss_disc": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ss_nodata": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ss_search": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ss_warm": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cl_sub": {
     "board": "SET-05",
     "review": [
       "translation"
     ]
   },
+  "set.cl_susp": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cl_title": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_tx": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_units": {
     "board": "SET-05",
     "review": [
       "translation"

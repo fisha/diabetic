@@ -1666,6 +1666,7 @@ export interface components {
             last_sync_at?: string | null;
             /** Notifications */
             notifications?: components["schemas"]["CareLinkNotification"][];
+            pump?: components["schemas"]["PumpStatusOut"] | null;
             /** Region */
             region?: string | null;
             /** Status */
@@ -2876,6 +2877,42 @@ export interface components {
             period_to: string;
             /** Sources */
             sources: string[];
+        };
+        /**
+         * PumpStatusOut
+         * @description The pump's state at the last poll, as CareLink reported it. Every field is optional: older pumps or a pump out
+         *     of reach leave some out.
+         */
+        PumpStatusOut: {
+            /** Active Insulin Units */
+            active_insulin_units?: number | null;
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /** Battery Percent */
+            battery_percent?: number | null;
+            /** Phone Battery Percent */
+            phone_battery_percent?: number | null;
+            /** Pump In Range */
+            pump_in_range?: boolean | null;
+            /** Reservoir Percent */
+            reservoir_percent?: number | null;
+            /** Reservoir Units */
+            reservoir_units?: number | null;
+            /** Sensor Hours Left */
+            sensor_hours_left?: number | null;
+            /** Sensor In Range */
+            sensor_in_range?: boolean | null;
+            /** Sensor State */
+            sensor_state?: string | null;
+            /** Smartguard */
+            smartguard?: ("auto" | "safe_basal" | "manual") | null;
+            /** Suspended */
+            suspended?: boolean | null;
+            /** Transmitter Battery Percent */
+            transmitter_battery_percent?: number | null;
         };
         /** PushTokenIn */
         PushTokenIn: {

@@ -22,16 +22,16 @@ labelling before any reminder uses them (no invented thresholds).
 | `markers` LOW_GLUCOSE_SUSPENDED (`deliverySuspended`) | not read | Journal row "Insulin paused"; suspend insight | Suspends seen directly, not only through alerts |
 | `markers` AUTO_MODE_STATUS | not read | Journal row; Overview: time in SmartGuard | When and how often SmartGuard is off |
 | `notificationHistory`, `lastAlarm` (`faultId`, `type`, `additionalInfo.unitsRemaining`, `alertSilenced`) | shown (G-57) | Journal "Alerts" filter | Every pump alert, named; alert insights |
-| `activeInsulin.amount` | not read | Companion header beside the latest reading, read-only "from the pump" | The pump's own active insulin when the person looks at glucose |
-| `reservoirRemainingUnits`, `reservoirLevelPercent` | not read | Devices > CareLink status card | Reservoir state without the pump in hand; refill pattern |
-| `pumpBatteryLevelPercent` | not read | Devices status card | Battery state |
-| `pumpSuspended` | not read | Devices status card, Companion note | Insulin delivery paused right now |
-| `sensorDurationHours/Minutes`, `sensorLifeText` | not read | Devices status card; sensor change insight | Sensor life left; how long each sensor lasts |
+| `activeInsulin.amount` | shown (G-59) | Companion header beside the latest reading, read-only "from the pump" | The pump's own active insulin when the person looks at glucose |
+| `reservoirRemainingUnits`, `reservoirLevelPercent` | shown (G-59) | Devices > CareLink status card | Reservoir state without the pump in hand; refill pattern |
+| `pumpBatteryLevelPercent` | shown (G-59) | Devices status card | Battery state |
+| `pumpSuspended` | shown (G-59) | Devices status card, Companion note | Insulin delivery paused right now |
+| `sensorDurationHours/Minutes`, `sensorLifeText` | shown, hours (G-59) | Devices status card; sensor change insight | Sensor life left; how long each sensor lasts |
 | `calibStatus`, `timeToNextCalib*`, `calFreeSensor` | not read | Devices status card | When a calibration is due (Guardian 4 needs none) |
-| `gstBatteryLevel`, `gstCommunicationState` | not read | Devices status card | Transmitter charge and link |
-| `conduitInRange`, `conduitSensorInRange`, `conduitMedicalDeviceInRange`, `conduitBatteryLevel` | stored (part) | Devices status card | Why data stopped: phone away from pump, sensor out of range |
-| `sensorState`, `systemStatusMessage` | stored | Devices status card in plain words | Sensor warm-up, change sensor, signal loss |
-| `therapyAlgorithmState` (`autoModeShieldState`, `autoModeReadinessState`, `plgmLgsState`) | not read | Devices status card | SmartGuard on or off and why |
+| `gstBatteryLevel`, `gstCommunicationState` | shown, battery (G-59) | Devices status card | Transmitter charge and link |
+| `conduitInRange`, `conduitSensorInRange`, `conduitMedicalDeviceInRange`, `conduitBatteryLevel` | shown (G-59) | Devices status card | Why data stopped: phone away from pump, sensor out of range |
+| `sensorState`, `systemStatusMessage` | shown, six known states (G-59) | Devices status card in plain words | Sensor warm-up, change sensor, signal loss |
+| `therapyAlgorithmState` (`autoModeShieldState`, `autoModeReadinessState`, `plgmLgsState`) | shown, shield state (G-59) | Devices status card | SmartGuard on or off and why |
 | `limits[]` (`lowLimit`, `highLimit`) | used | Target range when none typed (G-48) | Range for insights |
 | `maxAutoBasalRate`, `maxBolusAmount` | used | Treatment settings, read-only (G-48) | Pump settings shown from the source |
 | `averageSG`, `timeInRange`, `aboveHyperLimit`, `belowHypoLimit` | not read | Not needed: computed from readings | (Check our numbers against the pump's) |

@@ -854,3 +854,16 @@ makers' pages, fetched 12 Nov 2026: Guardian 4 up to 7 days and Extended set up 
 days (medtronic.com MiniMed 780G page, minimed.com Extended set page); Dexcom G7 10 days plus a 12-hour grace period
 (dexcom.com); FreeStyle Libre 3 14 days (stated on Dexcom's comparison page; Abbott's page states 15 days for Libre 3
 Plus). Simplera and Libre 2 are not listed until confirmed. The 1-day slack is a product rule. Needs clinical review.
+
+### G-59 · Pump status and the pump's active insulin (**Guy, 12 Nov 2026**, implemented-unverified)
+
+From Guy's ask that every piece of device data gets a place (inventory items 2 and 3). Devices > CareLink shows a
+"Pump status" card from the last CareLink poll: active insulin, reservoir (units and percent), pump battery, sensor
+time left (`sensorDurationHours`, read as time left: the value is 72-168 h on a 7-day sensor, not yet confirmed by two
+polls), transmitter battery, SmartGuard on / Safe Basal / manual (`therapyAlgorithmState.autoModeShieldState`), and
+plain notes for paused delivery, phone or sensor out of range and six known sensor states. Values outside a plausible
+range are dropped. After 15 minutes without a new poll the values turn grey with "not live". The companion screen
+shows the pump's active insulin under the latest reading, labelled "from the pump at HH:MM", only while the poll is
+fresh and never while viewing someone else's data. Read-only, no advice. Not in the design: card layout follows the
+existing CareLink notes card.
+
