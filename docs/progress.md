@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026: pull to refresh on Overview and Journal (`features/refresh/usePullRefresh.tsx`; the spinner stops when
+the screen's server loads have answered), and the app's account screens set for email and password plus Google
+(G-46). Checked in the container on the web build (sign-up shows the closed note, a wrong password is refused by the
+server); the pull gesture and the Google button need the iPhone build.
+
 ## Stage 1 record
 
 **What was inspected**

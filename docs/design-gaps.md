@@ -688,3 +688,7 @@ package names, code identifiers), since changing them breaks installed builds an
 - Email sign-up: needs a verification code by email (`/auth/verify/send`, `/auth/verify`, 6 digits, 30 minutes, 5
   tries). Guy chose Google only for now, so email sign-up is closed (`GET /auth/options`, 503 `email_sign_up_closed`)
   until an SMTP sender is set. The website offers only Google for new people; existing accounts sign in as before.
+- App account screens (Guy, 12 Nov 2026: "תכין את החיבוריות עם שם משתמש וסיסמה / גוגל באפליקציה"): Sign in offers
+  Google (when the build has the native module and client ids) and email with password. Create account asks
+  `/auth/options`: while email sign-up is closed it shows Google and the existing `onb.a_e_closed` note instead of the
+  email form. The design's Apple button is not shown, because Apple sign-in has no provider yet.
