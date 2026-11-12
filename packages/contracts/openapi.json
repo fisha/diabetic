@@ -2027,6 +2027,18 @@
               }
             ]
           },
+          "analyzed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Analyzed At"
+          },
           "band": {
             "anyOf": [
               {
@@ -2069,6 +2081,14 @@
                 "type": "null"
               }
             ]
+          },
+          "topics": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/TopicOut"
+            },
+            "title": "Topics",
+            "type": "array"
           },
           "window_days": {
             "title": "Window Days",
@@ -2930,6 +2950,60 @@
         "title": "ProposalIn",
         "type": "object"
       },
+      "ProvenanceOut": {
+        "properties": {
+          "basis": {
+            "title": "Basis",
+            "type": "integer"
+          },
+          "certainty": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "title": "Certainty",
+            "type": "string"
+          },
+          "computed_at": {
+            "format": "date-time",
+            "title": "Computed At",
+            "type": "string"
+          },
+          "coverage_pct": {
+            "title": "Coverage Pct",
+            "type": "integer"
+          },
+          "period_from": {
+            "format": "date-time",
+            "title": "Period From",
+            "type": "string"
+          },
+          "period_to": {
+            "format": "date-time",
+            "title": "Period To",
+            "type": "string"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sources",
+            "type": "array"
+          }
+        },
+        "required": [
+          "sources",
+          "period_from",
+          "period_to",
+          "computed_at",
+          "coverage_pct",
+          "basis",
+          "certainty"
+        ],
+        "title": "ProvenanceOut",
+        "type": "object"
+      },
       "PushTokenIn": {
         "additionalProperties": false,
         "properties": {
@@ -3276,6 +3350,21 @@
       },
       "SettingsOut": {
         "properties": {
+          "insight_interval_days": {
+            "default": 14,
+            "title": "Insight Interval Days",
+            "type": "integer"
+          },
+          "insight_push": {
+            "default": true,
+            "title": "Insight Push",
+            "type": "boolean"
+          },
+          "insight_push_week_cap": {
+            "default": 2,
+            "title": "Insight Push Week Cap",
+            "type": "integer"
+          },
           "memory_enabled": {
             "title": "Memory Enabled",
             "type": "boolean"
@@ -3305,6 +3394,43 @@
       "SettingsPatch": {
         "additionalProperties": false,
         "properties": {
+          "insight_interval_days": {
+            "anyOf": [
+              {
+                "maximum": 60.0,
+                "minimum": 7.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Insight Interval Days"
+          },
+          "insight_push": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Insight Push"
+          },
+          "insight_push_week_cap": {
+            "anyOf": [
+              {
+                "maximum": 7.0,
+                "minimum": 1.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Insight Push Week Cap"
+          },
           "memory_enabled": {
             "anyOf": [
               {
@@ -3407,6 +3533,34 @@
         "title": "SnoozeIn",
         "type": "object"
       },
+      "StateIn": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "seen",
+              "read"
+            ],
+            "title": "Action",
+            "type": "string"
+          },
+          "via": {
+            "enum": [
+              "app",
+              "web",
+              "push"
+            ],
+            "title": "Via",
+            "type": "string"
+          }
+        },
+        "required": [
+          "action",
+          "via"
+        ],
+        "title": "StateIn",
+        "type": "object"
+      },
       "ThreadOut": {
         "properties": {
           "conversation_id": {
@@ -3465,6 +3619,105 @@
         "title": "Tokens",
         "type": "object"
       },
+      "TopicOut": {
+        "properties": {
+          "changed_at": {
+            "format": "date-time",
+            "title": "Changed At",
+            "type": "string"
+          },
+          "first_seen_at": {
+            "format": "date-time",
+            "title": "First Seen At",
+            "type": "string"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "latest": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/UpdateOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/ProvenanceOut"
+          },
+          "read_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Read At"
+          },
+          "read_via": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Read Via"
+          },
+          "seen_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seen At"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "ended",
+              "insufficient",
+              "corrected"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "unread": {
+            "title": "Unread",
+            "type": "boolean"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "key",
+          "status",
+          "first_seen_at",
+          "changed_at",
+          "version",
+          "provenance",
+          "seen_at",
+          "read_at",
+          "read_via",
+          "unread",
+          "latest"
+        ],
+        "title": "TopicOut",
+        "type": "object"
+      },
       "TranscriptOut": {
         "properties": {
           "text": {
@@ -3476,6 +3729,67 @@
           "text"
         ],
         "title": "TranscriptOut",
+        "type": "object"
+      },
+      "UpdateOut": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "data": {
+            "additionalProperties": true,
+            "title": "Data",
+            "type": "object"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "new",
+              "changed",
+              "continuing",
+              "ended",
+              "corrected"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "push_state": {
+            "title": "Push State",
+            "type": "string"
+          },
+          "pushed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pushed At"
+          }
+        },
+        "required": [
+          "id",
+          "key",
+          "kind",
+          "data",
+          "created_at",
+          "push_state",
+          "pushed_at"
+        ],
+        "title": "UpdateOut",
         "type": "object"
       },
       "ValidationError": {
@@ -5712,6 +6026,61 @@
         ]
       }
     },
+    "/insights/updates": {
+      "get": {
+        "description": "Recent insight updates (new, changed, follow-up, ended, corrected), newest first, whether pushed or not.",
+        "operationId": "list_updates_insights_updates_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 30,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/UpdateOut"
+                  },
+                  "title": "Response List Updates Insights Updates Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Updates",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
     "/insights/{key}/feedback": {
       "post": {
         "operationId": "feedback_insights__key__feedback_post",
@@ -5757,6 +6126,57 @@
           }
         ],
         "summary": "Feedback",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/{key}/state": {
+      "post": {
+        "description": "Seen or read on a screen: kept on the server, so the app and the website show the same state.",
+        "operationId": "set_state_insights__key__state_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "schema": {
+              "title": "Key",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StateIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set State",
         "tags": [
           "insights"
         ]

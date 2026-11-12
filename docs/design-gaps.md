@@ -548,3 +548,47 @@ from "late night" 00-03 to "night" 21-24, each with an SF Symbol sun or moon) wi
 Colours are the app's tokens; no red and no urgency. The reading travels as JSON in the module's `imageName` field and
 the icon in `dynamicIslandImageName` (the module's state has no other free fields). Swift not compiled here; needs
 the new build.
+
+### G-42 · Kept insights, follow-up updates and insight pushes (**Guy's spec, 12 Nov 2026**, implemented-unverified)
+
+Guy's 12 Nov 2026 spec: insights analysed in the background with no goals, questionnaires or logging required; one
+server source of truth for the app and the website; pushes separate from insight generation. Additions only; the
+existing screens, navigation and flows are unchanged.
+
+Server (`services/api/steady_api/tracking.py`, tables `insight_topics`, `insight_updates`, `insight_pushes`,
+migration `c4d5e6f7a8b0`):
+- Each insight key is one topic per person, with a status (active, ended, insufficient, corrected), first seen,
+  last seen, changed, version, and provenance: sources, the period checked, when it was analysed, data completeness
+  (share of days with readings) and certainty (low, medium, high from the days or meals it rests on and coverage).
+- Updates: `new`, `changed` (the fingerprint moved), `continuing` (a periodic follow-up), `ended` and `corrected`.
+  Each has a dedupe key, so reruns and retries never make the same update twice; a follow-up's key carries its date,
+  so it is never blocked as a duplicate of the first finding.
+- A follow-up is made only when the interval has passed and there is fresh data: at least 7 of the recent days with
+  data covering 50% of them. Without fresh data nothing is said to continue, end or be stable. A pattern is called
+  ended only when the recent data was sufficient; otherwise its status is `insufficient` and no update is made.
+- Editing, deleting or hiding a reading or record marks a correction; dependent topics that change or disappear are
+  marked `corrected` (shown, never pushed).
+- The first analysis for someone is a baseline: listed, never pushed.
+- Read state: `POST /insights/{key}/state` (`seen` or `read`, via `app`, `web` or `push`). A push is never a read.
+  Unread means not read since the last change or update. `GET /insights` returns `topics` and `analyzed_at`;
+  `GET /insights/updates` lists updates with their push state.
+- Pushes (`push_due`): only `new`, `changed` and `continuing`; skipped when the topic was already read, when pushes
+  are off, during quiet hours (the person's check-in quiet hours, else 21:00-08:00 in their time zone), above the
+  weekly cap, or within 20 hours of the last insight push. Several pending updates go as one digest. An update not
+  sent within 3 days is dropped, not resent. The text is generic, with no values; the data carries the insight key
+  (or the list for a digest), and a tap opens that insight (the app's Overview then the insight).
+- The worker analyses everyone due every 6 hours (`RUN_EVERY`), whether or not the app is open.
+
+Defaults and where to change them:
+- Follow-up interval per topic: 14 days. Person: Settings > Notifications (app) or the settings page (website),
+  7, 14 or 30 days (`insight_interval_days`, API accepts 7-60).
+- Insight pushes a week: at most 2 (`insight_push_week_cap`, 1-7; the screens offer 1, 2, 3). Pushes on by default
+  (`insight_push`).
+- Code constants in `tracking.py`: `RUN_EVERY`, `FRESH_DAYS`, `FRESH_COVERAGE`, `MIN_PUSH_GAP`, `PUSH_MAX_WAIT`,
+  `DEFAULT_QUIET`.
+
+App and website: a "New" or "Updated" tag on unread cards, the latest update line ("Follow-up from ...: also seen in
+the N most recent days with data"), a "Where this comes from" block, the last-analysed time (marked when older than a
+day) and a note when unread topics were corrected or ended. The app marks an insight read when its detail opens; the
+website when "Where this comes from" is opened. Not in the design: the tags reuse the existing badge, the rest is
+footnote text in the existing cards. Push delivery to a phone is untested end to end.

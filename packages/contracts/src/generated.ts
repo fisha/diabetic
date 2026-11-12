@@ -665,6 +665,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/insights/updates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Updates
+         * @description Recent insight updates (new, changed, follow-up, ended, corrected), newest first, whether pushed or not.
+         */
+        get: operations["list_updates_insights_updates_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/insights/{key}/feedback": {
         parameters: {
             query?: never;
@@ -676,6 +696,26 @@ export interface paths {
         put?: never;
         /** Feedback */
         post: operations["feedback_insights__key__feedback_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/{key}/state": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Set State
+         * @description Seen or read on a screen: kept on the server, so the app and the website show the same state.
+         */
+        post: operations["set_state_insights__key__state_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1749,6 +1789,8 @@ export interface components {
         /** InsightsOut */
         InsightsOut: {
             a1c?: components["schemas"]["A1cOut"] | null;
+            /** Analyzed At */
+            analyzed_at?: string | null;
             band: components["schemas"]["BandOut"] | null;
             /**
              * Findings
@@ -1763,6 +1805,11 @@ export interface components {
              */
             meal_patterns: components["schemas"]["MealPatternOut"][];
             routine?: components["schemas"]["RoutineOut"] | null;
+            /**
+             * Topics
+             * @default []
+             */
+            topics: components["schemas"]["TopicOut"][];
             /** Window Days */
             window_days: number;
         };
@@ -2118,6 +2165,35 @@ export interface components {
              */
             status: "saved" | "pending" | "dismissed";
         };
+        /** ProvenanceOut */
+        ProvenanceOut: {
+            /** Basis */
+            basis: number;
+            /**
+             * Certainty
+             * @enum {string}
+             */
+            certainty: "low" | "medium" | "high";
+            /**
+             * Computed At
+             * Format: date-time
+             */
+            computed_at: string;
+            /** Coverage Pct */
+            coverage_pct: number;
+            /**
+             * Period From
+             * Format: date-time
+             */
+            period_from: string;
+            /**
+             * Period To
+             * Format: date-time
+             */
+            period_to: string;
+            /** Sources */
+            sources: string[];
+        };
         /** PushTokenIn */
         PushTokenIn: {
             /**
@@ -2279,6 +2355,21 @@ export interface components {
         };
         /** SettingsOut */
         SettingsOut: {
+            /**
+             * Insight Interval Days
+             * @default 14
+             */
+            insight_interval_days: number;
+            /**
+             * Insight Push
+             * @default true
+             */
+            insight_push: boolean;
+            /**
+             * Insight Push Week Cap
+             * @default 2
+             */
+            insight_push_week_cap: number;
             /** Memory Enabled */
             memory_enabled: boolean;
             /**
@@ -2291,6 +2382,12 @@ export interface components {
         };
         /** SettingsPatch */
         SettingsPatch: {
+            /** Insight Interval Days */
+            insight_interval_days?: number | null;
+            /** Insight Push */
+            insight_push?: boolean | null;
+            /** Insight Push Week Cap */
+            insight_push_week_cap?: number | null;
             /** Memory Enabled */
             memory_enabled?: boolean | null;
             /** Photo Retention */
@@ -2323,6 +2420,19 @@ export interface components {
             /** Minutes */
             minutes: number;
         };
+        /** StateIn */
+        StateIn: {
+            /**
+             * Action
+             * @enum {string}
+             */
+            action: "seen" | "read";
+            /**
+             * Via
+             * @enum {string}
+             */
+            via: "app" | "web" | "push";
+        };
         /** ThreadOut */
         ThreadOut: {
             /** Conversation Id */
@@ -2345,10 +2455,70 @@ export interface components {
              */
             token_type: "bearer";
         };
+        /** TopicOut */
+        TopicOut: {
+            /**
+             * Changed At
+             * Format: date-time
+             */
+            changed_at: string;
+            /**
+             * First Seen At
+             * Format: date-time
+             */
+            first_seen_at: string;
+            /** Key */
+            key: string;
+            latest: components["schemas"]["UpdateOut"] | null;
+            provenance: components["schemas"]["ProvenanceOut"];
+            /** Read At */
+            read_at: string | null;
+            /** Read Via */
+            read_via: string | null;
+            /** Seen At */
+            seen_at: string | null;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "active" | "ended" | "insufficient" | "corrected";
+            /** Unread */
+            unread: boolean;
+            /** Version */
+            version: number;
+        };
         /** TranscriptOut */
         TranscriptOut: {
             /** Text */
             text: string;
+        };
+        /** UpdateOut */
+        UpdateOut: {
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Data */
+            data: {
+                [key: string]: unknown;
+            };
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Key */
+            key: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "new" | "changed" | "continuing" | "ended" | "corrected";
+            /** Push State */
+            push_state: string;
+            /** Pushed At */
+            pushed_at: string | null;
         };
         /** ValidationError */
         ValidationError: {
@@ -3868,6 +4038,37 @@ export interface operations {
             };
         };
     };
+    list_updates_insights_updates_get: {
+        parameters: {
+            query?: {
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UpdateOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     feedback_insights__key__feedback_post: {
         parameters: {
             query?: never;
@@ -3880,6 +4081,39 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["FeedbackIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_state_insights__key__state_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StateIn"];
             };
         };
         responses: {

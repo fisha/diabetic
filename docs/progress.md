@@ -690,6 +690,11 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   12/24-hour clock choice under Language (default follows the language). Companion replies were slow: the model
   (`gpt-5-mini`) ran at its default medium reasoning effort; now `STEADY_OPENAI_REASONING_EFFORT` (default low). Context
   building measured at 160-300 ms with 30 days of CareLink data; the API logs context and model round durations.
+- 12 Nov 2026 (Guy's spec, G-42; not deployed at his request): insights are kept on the server as topics with
+  provenance, read state shared by the app and the website, periodic follow-up updates on fresh data (default every
+  14 days), corrections, and insight pushes with quiet hours, a weekly cap (default 2), a digest and an off switch.
+  Migration `c4d5e6f7a8b0`. API tests `test_tracking.py` (5 scenarios); app unit test `track.test.ts`; `pnpm check`
+  passes. Not deployed to the Mac and not run on a phone; push delivery untested end to end.
 
 ## Next action
 

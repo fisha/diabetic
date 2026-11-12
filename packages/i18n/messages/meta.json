@@ -1410,6 +1410,18 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.analyzed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.analyzed_old": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.basis": {
     "board": "Overview",
     "review": [
@@ -1435,6 +1447,24 @@
     ]
   },
   "ins.body_below": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.cert_high": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.cert_low": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.cert_medium": {
     "board": "Overview",
     "review": [
       "translation"
@@ -1668,6 +1698,19 @@
       "translation"
     ]
   },
+  "ins.gone_corrected": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.gone_ended": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Says only that the pattern was not seen in recent data; never that something improved."
+  },
   "ins.median_b": {
     "board": "OVR-04",
     "review": [
@@ -1731,6 +1774,78 @@
       "translation"
     ]
   },
+  "ins.prov_at": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.prov_cov": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.prov_period": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.prov_src": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.prov_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_cap": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_days": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_every": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_push": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_push_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_week": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.slot_breakfast": {
     "board": "INS-01",
     "review": [
@@ -1745,6 +1860,18 @@
   },
   "ins.slot_lunch": {
     "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.src_app": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.src_none": {
+    "board": "Overview",
     "review": [
       "translation"
     ]
@@ -1798,6 +1925,43 @@
     ]
   },
   "ins.t_below_night": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.tag_new": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.tag_updated": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.upd_changed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.upd_continuing": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "A follow-up, not a new finding. Correlation only, no cause."
+  },
+  "ins.upd_corrected": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.upd_new": {
     "board": "Overview",
     "review": [
       "translation"
