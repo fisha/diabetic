@@ -3274,6 +3274,30 @@
             ],
             "title": "Diagnosedon"
           },
+          "fitness": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fitness"
+          },
+          "food": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Food"
+          },
           "history": {
             "additionalProperties": true,
             "title": "History",
@@ -3297,6 +3321,18 @@
               }
             ],
             "title": "Laststep"
+          },
+          "meds": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Meds"
           },
           "pump": {
             "anyOf": [

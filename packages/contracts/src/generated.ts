@@ -2654,6 +2654,14 @@ export interface components {
             diagnosed?: string | null;
             /** Diagnosedon */
             diagnosedOn?: string | null;
+            /** Fitness */
+            fitness?: {
+                [key: string]: unknown;
+            } | null;
+            /** Food */
+            food?: {
+                [key: string]: unknown;
+            } | null;
             /** History */
             history: {
                 [key: string]: unknown;
@@ -2664,6 +2672,10 @@ export interface components {
             insulinUnknown: boolean;
             /** Laststep */
             lastStep?: string | null;
+            /** Meds */
+            meds?: {
+                [key: string]: unknown;
+            } | null;
             /** Pump */
             pump?: string | null;
             /** Pumpother */

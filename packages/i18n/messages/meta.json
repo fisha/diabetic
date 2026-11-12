@@ -3854,6 +3854,246 @@
       "translation"
     ]
   },
+  "onb.fd_av_celiac": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_av_gluten": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_av_lactose": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_av_nuts": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_av_other": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_avoid": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_fasting": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_keto": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_lowCarb": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_mediterranean": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_note": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_protein": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_regular": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_style": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_vegan": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_vegetarian": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_aerobic": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_g_fitness": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_g_keep": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_g_lose": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_g_muscle": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_g_none": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_goal": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_kinds": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_none": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_note": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_strength": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_swim": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_team": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_w_evening": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_w_midday": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_w_morning": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_w_varies": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_walk": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_when": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_yoga": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.future": {
     "board": "Onboarding",
     "review": [
@@ -4047,6 +4287,96 @@
     ]
   },
   "onb.later": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_ck": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_ck_daily": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_ck_rarely": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_ck_sensor": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_ck_weekly": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_dpp4": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_glp1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_metformin": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_none": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_note": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_other": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_sglt2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_sulfonylurea": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_t": {
     "board": "Onboarding",
     "review": [
       "translation"
@@ -4395,6 +4725,30 @@
       "translation"
     ]
   },
+  "onb.rt_cy_no": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_cy_preferNot": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_cy_yes": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_cycle": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.rt_di": {
     "board": "Onboarding",
     "review": [
@@ -4461,6 +4815,30 @@
       "translation"
     ]
   },
+  "onb.rt_sh_nights": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_sh_no": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_sh_shifts": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_shift": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.rt_sl": {
     "board": "Onboarding",
     "review": [
@@ -4515,6 +4893,18 @@
       "translation"
     ]
   },
+  "onb.rv_fit": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_food": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.rv_hist": {
     "board": "Onboarding",
     "review": [
@@ -4534,6 +4924,12 @@
     ]
   },
   "onb.rv_lang": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_meds": {
     "board": "Onboarding",
     "review": [
       "translation"

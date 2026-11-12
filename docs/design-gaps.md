@@ -789,3 +789,13 @@ the type step offers type 1, type 2, another type (an earlier "not sure" answer 
 MiniMed or Guardian, Dexcom Share for Dexcom, LibreLinkUp for FreeStyle Libre, all of them when no known device was
 given, and always keeps a connection already made; the companion is told type 2 and not to assume insulin. Open,
 waiting on Guy: questions specific to type 2 (medicines, for example) and extra profile topics (nutrition, fitness).
+
+### G-53 · Lifestyle and medicine questions in the profile (**Guy, 12 Nov 2026**, implemented-unverified)
+
+Guy chose "everything as recommended" on 12 Nov 2026. Three optional onboarding steps that are not on the board, all
+skippable and with nothing preselected: `meds` (diabetes medicines other than insulin and how often glucose is
+checked, shown only when the type is not type 1), `food` (eating style, sensitivities including celiac, protein
+target) and `fitness` (kinds of training, usual times, goal). The routine step adds shift work and whether to take a
+menstrual cycle into account. Review, the app's Diabetes profile and the website profile editor show and edit them.
+The companion is told the answers as short facts (never advice on medicines). Insights that use them (late rise after
+protein or fat, glucose around training) are a next step and need meal macros or workout data per kind.
