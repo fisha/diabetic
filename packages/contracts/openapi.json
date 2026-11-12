@@ -233,6 +233,38 @@
         "title": "AdminUserOut",
         "type": "object"
       },
+      "AppVersionOut": {
+        "properties": {
+          "install_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Install Url"
+          },
+          "latest_build": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latest Build"
+          }
+        },
+        "required": [
+          "latest_build",
+          "install_url"
+        ],
+        "title": "AppVersionOut",
+        "type": "object"
+      },
       "ApprovedOut": {
         "properties": {
           "approved_at": {
@@ -4887,6 +4919,28 @@
         "summary": "Approve",
         "tags": [
           "admin"
+        ]
+      }
+    },
+    "/app/version": {
+      "get": {
+        "description": "Public: it says only which build number is newest and where to install it.",
+        "operationId": "version_app_version_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppVersionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Version",
+        "tags": [
+          "app"
         ]
       }
     },

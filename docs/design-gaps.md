@@ -752,3 +752,15 @@ and: "אם הוא כבר נלקח ואם עוד מידע שיש בהגדרות �
 - The companion screen's header shows the companion picture chosen in onboarding in place of the green dot, and the
   "AI companion" line under the name is gone at Guy's ask. Brief §4 (do not imply a human): screen readers still hear
   "AI companion" with the name, and the welcome screen states it in full (`onb.w_ai`).
+
+### G-50 · "Update available" in the app (**Guy, 12 Nov 2026**, implemented-unverified)
+
+Guy asked for the app to say when there is an update and offer a button, and approved a new iPhone build for it.
+Not in the design; built as a banner over the top of any screen (the existing Banner component) with two buttons.
+- A JS update published with `eas update` to the build's channel ("testers", "preview", "production"; set in
+  `eas.json`) is offered as "Update available" / "Update now": it downloads and restarts the app. `runtimeVersion` uses
+  the fingerprint policy, so an update never reaches a build whose native code differs. The app checks at launch and
+  when it comes back to the front (at most every 30 minutes) and never downloads without the button.
+- A newer native build is offered as "New version to install" with the install link from `GET /app/version`
+  (`STEADY_APP_LATEST_BUILD` and `STEADY_APP_INSTALL_URL` in the API's `.env`; unset shows nothing).
+- "Not now" hides it until the next check. Development builds (code from Metro) and the web show nothing.

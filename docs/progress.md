@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+12 Nov 2026 (evening, G-50): "Update available" in the app: `expo-updates` (channels per EAS profile, fingerprint
+runtime) with a banner that downloads and restarts, and "New version to install" from `GET /app/version`. Needs a new
+iPhone build (Guy approved); updates are then published with `eas update --channel testers`. `pnpm check` and the API
+tests pass; the web preview starts; not yet run on a phone.
+
 12 Nov 2026 (evening, fixes): meal photos never reached the server from the iPhone. Expo's fetch (the global fetch
 since SDK 54) cannot send React Native's `{ uri, name, type }` form parts and threw before any request, which the app
 showed as "photo analysis unavailable". The upload now sends an expo-file-system `File`; the server recognises a photo

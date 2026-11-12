@@ -82,6 +82,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/app/version": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Version
+         * @description Public: it says only which build number is newest and where to install it.
+         */
+        get: operations["version_app_version_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/google": {
         parameters: {
             query?: never;
@@ -1510,6 +1530,13 @@ export interface components {
             readings_14d: number;
             /** Via Google */
             via_google: boolean;
+        };
+        /** AppVersionOut */
+        AppVersionOut: {
+            /** Install Url */
+            install_url: string | null;
+            /** Latest Build */
+            latest_build: number | null;
         };
         /** ApprovedOut */
         ApprovedOut: {
@@ -3345,6 +3372,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    version_app_version_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AppVersionOut"];
                 };
             };
         };

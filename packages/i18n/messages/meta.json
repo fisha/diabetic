@@ -8446,6 +8446,66 @@
       "translation"
     ]
   },
+  "upd.fail_b": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.fail_t": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.install": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.install_b": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.install_t": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.later": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.ready_b": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.ready_t": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.retry": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.update": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.adm_approve": {
     "board": "WebDashboard",
     "review": [

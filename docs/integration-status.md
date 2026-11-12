@@ -39,4 +39,5 @@ Visual implementation is tracked separately in `docs/design-inventory.md`. Updat
 | Website and web dashboard | verified-test | `apps/web`: signed-in dashboard with overview, timeline, insights, settings and export; English and Hebrew right to left checked. Not deployed. | Hosting decision; G-12 (session kept in memory only) |
 | Transactional email | unconfigured | Needed for password reset. The recover screen keeps its G-04 state. | Email provider |
 | App preferences (non-health) | implemented-unverified | Appearance, text size, motion, captions, haptics, voice speed, notification kinds. | Device run |
+| App updates (G-50) | implemented-unverified | expo-updates on EAS Update with a channel per build profile; banner with update and install buttons; `GET /app/version`. | A build that includes it, `EAS_PROJECT_ID` at build time, a first `eas update` |
 | Native builds (EAS) | unconfigured | `eas.json` has development, simulator, preview and production profiles. `expo export` for iOS and Android passes. | Guy's Expo account (`eas login`), Apple and Google developer accounts |

@@ -70,3 +70,4 @@ export type SharingOut = S['SharingOut'];
 export type ViewerOut = S['ViewerOut'];
 export type ViewingOut = S['ViewingOut'];
 export type AdminUserOut = S['AdminUserOut'];
+export type AppVersionOut = S['AppVersionOut'];
