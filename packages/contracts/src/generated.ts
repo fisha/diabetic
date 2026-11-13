@@ -1117,7 +1117,11 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get?: never;
+        /**
+         * Get Photo
+         * @description The photo of a saved meal, for its Journal card (Guy, 13 Nov 2026). Only the person's own; gone once removed.
+         */
+        get: operations["get_photo_meal_photos__photo_id__get"];
         put?: never;
         post?: never;
         /** Delete Photo */
@@ -6317,6 +6321,44 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["PhotoOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_photo_meal_photos__photo_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                photo_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/jpeg": unknown;
+                };
+            };
+            /** @description not_found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {

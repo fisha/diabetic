@@ -533,6 +533,7 @@
   "jrn.loading": "Loading your journal",
   "jrn.meal_edit": "Open meal editor",
   "jrn.meal_edit_note": "Meals are corrected in the meal editor, where you can change foods and amounts.",
+  "jrn.meal_photo": "Photo of the meal",
   "jrn.meal_src_photo": "Photo analysis, amounts confirmed by you",
   "jrn.meal_src_you": "Entered by you",
   "jrn.meal_title": "Meal ≈ {carbs} g carbs",

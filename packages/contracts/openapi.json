@@ -9663,6 +9663,52 @@
         "tags": [
           "meal"
         ]
+      },
+      "get": {
+        "description": "The photo of a saved meal, for its Journal card (Guy, 13 Nov 2026). Only the person's own; gone once removed.",
+        "operationId": "get_photo_meal_photos__photo_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "photo_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Photo Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "image/jpeg": {}
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Photo",
+        "tags": [
+          "meal"
+        ]
       }
     },
     "/meal/photos/{photo_id}/analyze": {
