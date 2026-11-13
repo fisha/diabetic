@@ -184,7 +184,7 @@ cmd_urls() {
 cmd_deploy_web() {
   export PATH="$NODE_BIN:$PATH"
   say "Exporting the app for the website..."
-  (cd "$MOBILE_DIR" && EXPO_PUBLIC_API_URL="$API_URL" EAS_PROJECT_ID=cf1df890-5cdd-44b7-8661-29475dd7ce60 APP_BUNDLE_ID=com.fisha.steady.dev pnpm export:website) | tail -1
+  (cd "$MOBILE_DIR" && EXPO_PUBLIC_API_URL="$API_URL" EXPO_PUBLIC_APPLE_SERVICES_ID=com.fisha.steady.web EAS_PROJECT_ID=cf1df890-5cdd-44b7-8661-29475dd7ce60 APP_BUNDLE_ID=com.fisha.steady.dev pnpm export:website) | tail -1
   say "Building the website..."
   (cd "$WEB_DIR" && STEADY_API_URL=http://localhost:8010 pnpm exec next build) | grep -E "Compiled|rror" | head -5
   stop_one web; start_one web
