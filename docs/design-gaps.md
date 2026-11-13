@@ -1038,3 +1038,27 @@ the same for Health Connect.
   per-source total, not the sum. The same rule now also applies to the steps in the activity finding and in the
   companion's context (they used to add both).
 - Descriptive only: the person's own values; no step goal or target.
+
+
+### G-68 · The companion orb becomes a character: idle life, costumes and accessories (**Guy, 13 Nov 2026**, implemented-unverified)
+
+"העיגול הירוק, הוא ממש צריך להיות דמות.. בזמן שהוא לא בשימוש (אין שיחה) הוא צריך לקפוץ, להשתעמם, להפוך פתאום למזרק,
+פתאום למשאבת אינסולין, פתאום לבקבוק אינסולין… בפרופיל בתוך התפריט של stedio יהיה אפשר להלביש עליו אקססוריז במקום
+הבחירת מראה, נגיד אפשר לשים לו כובע מצחיק, שפם, משקפיים וכו".
+
+- **A face in every state** (the conversation face of 13 Nov, now also idle, muted, reconnecting; sleepy eyes when
+  voice is unavailable). Smoke stays for conversations only.
+- **Idle life** (`apps/mobile/src/components/character/catalog.ts`, `VoiceOrb.tsx`): a gesture every 3.5 to 8.5 s:
+  hop, a jump with a somersault, a puff, a tilt, looking around; after a while without a conversation it gets bored
+  (eyelids droop, it sinks, yawns, a few "z"). Now and then it poofs into a costume for about 2.5 s: syringe, insulin
+  pump, insulin vial, insulin pen, juice box, never the same twice in a row. With a sad face (high reading) only small
+  gestures. Nothing with reduced motion. Decorative only; it stands for no app work.
+- **Accessories** in Profile > Companion instead of the look picker: hat (party, top hat, cap, beanie, crown), glasses
+  (round, shades, hearts), mustache (classic, curly, bushy), extras (bow tie, scarf), one per slot, with a live preview
+  that hops when something is put on. Saved with the profile as `companion.accessories` (the API keeps `companion` as
+  a free object, so no API change); unknown ids are dropped on load. The companion header shows the character wearing
+  them instead of the onboarding avatar.
+- Not in the design boards. Still open: onboarding ONB-16 ("choose a look", the person avatars) is unchanged and its
+  choice is no longer shown anywhere; the website profile has no accessory picker yet (it keeps the saved ones).
+- JS only, so it also ships to 0.2.0 builds as an update. Checked in the web preview (day, night, Hebrew); not yet
+  seen on a phone.
