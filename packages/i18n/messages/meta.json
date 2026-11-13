@@ -8442,6 +8442,19 @@
       "translation"
     ]
   },
+  "set.admin": {
+    "board": "SET-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Website only, admins only: opens the admin page"
+  },
+  "set.admin_sub": {
+    "board": "SET-01",
+    "review": [
+      "translation"
+    ]
+  },
   "set.app_lang": {
     "board": "Settings",
     "review": [
@@ -11251,6 +11264,13 @@
     "review": [
       "translation"
     ]
+  },
+  "wd.adm_app": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin nav link to the admin's own data, which is the app at /app"
   },
   "wd.adm_approve": {
     "board": "WebDashboard",
