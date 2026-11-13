@@ -121,6 +121,25 @@
       "ActivityData": {
         "additionalProperties": false,
         "properties": {
+          "feeling": {
+            "anyOf": [
+              {
+                "enum": [
+                  "great",
+                  "good",
+                  "ok",
+                  "hard",
+                  "bad"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Feeling"
+          },
           "intensity": {
             "maxLength": 20,
             "title": "Intensity",
@@ -748,6 +767,25 @@
         "title": "CgmOut",
         "type": "object"
       },
+      "ChangeMetaOut": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "at",
+          "source"
+        ],
+        "title": "ChangeMetaOut",
+        "type": "object"
+      },
       "CheckOut": {
         "properties": {
           "coverage": {
@@ -836,6 +874,20 @@
           "preview"
         ],
         "title": "ConversationOut",
+        "type": "object"
+      },
+      "DayIn": {
+        "additionalProperties": false,
+        "properties": {
+          "complete": {
+            "title": "Complete",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "complete"
+        ],
+        "title": "DayIn",
         "type": "object"
       },
       "DeleteIn": {
@@ -933,7 +985,12 @@
               "why",
               "records",
               "left_out",
-              "talk_companion"
+              "reading",
+              "talk_companion",
+              "fix_records",
+              "fix_target",
+              "fix_goals",
+              "fix_log"
             ],
             "title": "Name",
             "type": "string"
@@ -1094,6 +1151,27 @@
           "expires_at"
         ],
         "title": "ExportOut",
+        "type": "object"
+      },
+      "FactOut": {
+        "properties": {
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Evidence",
+            "type": "array"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "evidence"
+        ],
+        "title": "FactOut",
         "type": "object"
       },
       "FamDayOut": {
@@ -1610,6 +1688,78 @@
         "title": "FollowUpOut",
         "type": "object"
       },
+      "FoodDayOut": {
+        "properties": {
+          "carbs_g": {
+            "title": "Carbs G",
+            "type": "number"
+          },
+          "complete": {
+            "title": "Complete",
+            "type": "boolean"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "fat_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fat G"
+          },
+          "fat_partial": {
+            "title": "Fat Partial",
+            "type": "boolean"
+          },
+          "items": {
+            "title": "Items",
+            "type": "integer"
+          },
+          "meals": {
+            "title": "Meals",
+            "type": "integer"
+          },
+          "measured_items": {
+            "title": "Measured Items",
+            "type": "integer"
+          },
+          "protein_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Protein G"
+          },
+          "protein_partial": {
+            "title": "Protein Partial",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "day",
+          "meals",
+          "carbs_g",
+          "protein_g",
+          "protein_partial",
+          "fat_g",
+          "fat_partial",
+          "measured_items",
+          "items",
+          "complete"
+        ],
+        "title": "FoodDayOut",
+        "type": "object"
+      },
       "FoodItem": {
         "properties": {
           "assumption": {
@@ -1816,6 +1966,70 @@
           "provider"
         ],
         "title": "FoodResult",
+        "type": "object"
+      },
+      "FoodSummaryOut": {
+        "properties": {
+          "carbs_avg_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Carbs Avg G"
+          },
+          "complete_days": {
+            "title": "Complete Days",
+            "type": "integer"
+          },
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/FoodDayOut"
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "goals": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Goals",
+            "type": "array"
+          },
+          "protein_avg_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Protein Avg G"
+          },
+          "target": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ProteinTargetOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "days",
+          "complete_days",
+          "protein_avg_g",
+          "carbs_avg_g",
+          "target",
+          "goals"
+        ],
+        "title": "FoodSummaryOut",
         "type": "object"
       },
       "GlucoseIn": {
@@ -2085,6 +2299,74 @@
         "title": "GlucoseRevisionOut",
         "type": "object"
       },
+      "GoalsIn": {
+        "additionalProperties": false,
+        "description": "\"What would you like us to help with?\" and \"What is hardest for you day to day?\" (goals.py lists the values).",
+        "properties": {
+          "hard": {
+            "default": [],
+            "items": {
+              "enum": [
+                "carbs",
+                "lows",
+                "highs",
+                "nights",
+                "exercise",
+                "eating_out",
+                "remembering",
+                "burnout",
+                "devices",
+                "sleep",
+                "work",
+                "other"
+              ],
+              "type": "string"
+            },
+            "title": "Hard",
+            "type": "array"
+          },
+          "hardOther": {
+            "default": "",
+            "maxLength": 200,
+            "title": "Hardother",
+            "type": "string"
+          },
+          "help": {
+            "default": [],
+            "items": {
+              "enum": [
+                "range",
+                "lows",
+                "highs",
+                "meals",
+                "exercise",
+                "weight",
+                "routine",
+                "labs",
+                "understand",
+                "calm",
+                "other"
+              ],
+              "type": "string"
+            },
+            "title": "Help",
+            "type": "array"
+          },
+          "helpOther": {
+            "default": "",
+            "maxLength": 200,
+            "title": "Helpother",
+            "type": "string"
+          },
+          "skipped": {
+            "default": false,
+            "title": "Skipped",
+            "type": "boolean"
+          }
+        },
+        "title": "GoalsIn",
+        "type": "object"
+      },
       "GoogleIn": {
         "additionalProperties": false,
         "properties": {
@@ -2112,6 +2394,71 @@
           }
         },
         "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "HabitData": {
+        "additionalProperties": false,
+        "description": "A habit the person keeps track of (no sensor needed): done or not, with an optional amount in its own unit.",
+        "properties": {
+          "amount": {
+            "anyOf": [
+              {
+                "maximum": 100000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Amount"
+          },
+          "done": {
+            "default": true,
+            "title": "Done",
+            "type": "boolean"
+          },
+          "habit": {
+            "enum": [
+              "walk",
+              "steps",
+              "water",
+              "vegetables",
+              "sleep",
+              "no_sweet_drinks",
+              "weigh_in",
+              "meds_taken",
+              "glucose_check",
+              "other"
+            ],
+            "title": "Habit",
+            "type": "string"
+          },
+          "name": {
+            "default": "",
+            "maxLength": 60,
+            "title": "Name",
+            "type": "string"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "maxLength": 16,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Unit"
+          }
+        },
+        "required": [
+          "habit"
+        ],
+        "title": "HabitData",
         "type": "object"
       },
       "HealthExtraBatch": {
@@ -2604,6 +2951,32 @@
         "title": "HoursOut",
         "type": "object"
       },
+      "HypothesisOut": {
+        "properties": {
+          "check": {
+            "title": "Check",
+            "type": "string"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Evidence",
+            "type": "array"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "evidence",
+          "check"
+        ],
+        "title": "HypothesisOut",
+        "type": "object"
+      },
       "InsightDayOut": {
         "properties": {
           "day": {
@@ -2785,6 +3158,14 @@
             "title": "Topics",
             "type": "array"
           },
+          "why": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/WhyOut"
+            },
+            "title": "Why",
+            "type": "array"
+          },
           "window_days": {
             "title": "Window Days",
             "type": "integer"
@@ -2833,6 +3214,80 @@
         "title": "InsulinData",
         "type": "object"
       },
+      "InterpretIn": {
+        "additionalProperties": false,
+        "properties": {
+          "locale": {
+            "default": "en",
+            "enum": [
+              "en",
+              "he",
+              "ar",
+              "ru"
+            ],
+            "title": "Locale",
+            "type": "string"
+          }
+        },
+        "title": "InterpretIn",
+        "type": "object"
+      },
+      "InterpretationOut": {
+        "description": "The model's reading of one insight (interpret.py): what the records show, possibilities, and what is missing.",
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "facts": {
+            "items": {
+              "$ref": "#/components/schemas/FactOut"
+            },
+            "title": "Facts",
+            "type": "array"
+          },
+          "hypotheses": {
+            "items": {
+              "$ref": "#/components/schemas/HypothesisOut"
+            },
+            "title": "Hypotheses",
+            "type": "array"
+          },
+          "kept": {
+            "title": "Kept",
+            "type": "boolean"
+          },
+          "missing": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing",
+            "type": "array"
+          },
+          "question": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Question"
+          }
+        },
+        "required": [
+          "facts",
+          "hypotheses",
+          "missing",
+          "question",
+          "created_at",
+          "kept"
+        ],
+        "title": "InterpretationOut",
+        "type": "object"
+      },
       "InviteIn": {
         "additionalProperties": false,
         "properties": {
@@ -2850,6 +3305,71 @@
           }
         },
         "title": "InviteIn",
+        "type": "object"
+      },
+      "LabData": {
+        "additionalProperties": false,
+        "description": "A lab or clinic result the person entered (13 Nov 2026), with the date it was taken and where it came from. Stored as\nentered; Stedio does not grade it against a range.",
+        "properties": {
+          "name": {
+            "default": "",
+            "maxLength": 60,
+            "title": "Name",
+            "type": "string"
+          },
+          "source": {
+            "enum": [
+              "lab_report",
+              "care_team",
+              "self",
+              "other"
+            ],
+            "title": "Source",
+            "type": "string"
+          },
+          "taken_on": {
+            "format": "date",
+            "title": "Taken On",
+            "type": "string"
+          },
+          "test": {
+            "enum": [
+              "a1c",
+              "fasting_glucose",
+              "ogtt",
+              "ldl",
+              "hdl",
+              "triglycerides",
+              "cholesterol",
+              "egfr",
+              "creatinine",
+              "uacr",
+              "tsh",
+              "other"
+            ],
+            "title": "Test",
+            "type": "string"
+          },
+          "unit": {
+            "maxLength": 16,
+            "title": "Unit",
+            "type": "string"
+          },
+          "value": {
+            "maximum": 100000,
+            "minimum": 0,
+            "title": "Value",
+            "type": "number"
+          }
+        },
+        "required": [
+          "test",
+          "value",
+          "unit",
+          "taken_on",
+          "source"
+        ],
+        "title": "LabData",
         "type": "object"
       },
       "LearnedOut": {
@@ -3488,6 +4008,7 @@
             "enum": [
               "type1",
               "type2",
+              "prediabetes",
               "other",
               "notSure"
             ],
@@ -3516,6 +4037,21 @@
             ],
             "title": "Diagnosedon"
           },
+          "dismissed": {
+            "anyOf": [
+              {
+                "items": {
+                  "const": "completeProfile",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dismissed"
+          },
           "fitness": {
             "anyOf": [
               {
@@ -3539,6 +4075,16 @@
               }
             ],
             "title": "Food"
+          },
+          "goals": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GoalsIn"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "history": {
             "additionalProperties": true,
@@ -3716,6 +4262,62 @@
         "title": "PhotoOut",
         "type": "object"
       },
+      "ProfileChangeOut": {
+        "properties": {
+          "after": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After"
+          },
+          "before": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "path": {
+            "title": "Path",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "path",
+          "before",
+          "after",
+          "source",
+          "created_at"
+        ],
+        "title": "ProfileChangeOut",
+        "type": "object"
+      },
       "ProfileIn": {
         "additionalProperties": false,
         "properties": {
@@ -3731,6 +4333,23 @@
             ],
             "title": "Locale",
             "type": "string"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "enum": [
+                  "onboarding",
+                  "settings",
+                  "companion",
+                  "website"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
           }
         },
         "required": [
@@ -3745,6 +4364,14 @@
           "answers": {
             "additionalProperties": true,
             "title": "Answers",
+            "type": "object"
+          },
+          "changed": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ChangeMetaOut"
+            },
+            "default": {},
+            "title": "Changed",
             "type": "object"
           },
           "device_target": {
@@ -3844,6 +4471,52 @@
           "status"
         ],
         "title": "ProposalIn",
+        "type": "object"
+      },
+      "ProteinTargetOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "number"
+          },
+          "set_on": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Set On"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "unit": {
+            "enum": [
+              "g_day",
+              "g_kg"
+            ],
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "unit",
+          "source",
+          "set_on"
+        ],
+        "title": "ProteinTargetOut",
         "type": "object"
       },
       "ProvenanceOut": {
@@ -4215,7 +4888,9 @@
               "insulin",
               "activity",
               "note",
-              "meal"
+              "meal",
+              "lab",
+              "habit"
             ],
             "title": "Kind",
             "type": "string"
@@ -4276,7 +4951,9 @@
               "insulin",
               "activity",
               "note",
-              "meal"
+              "meal",
+              "lab",
+              "habit"
             ],
             "title": "Kind",
             "type": "string"
@@ -4760,6 +5437,68 @@
           "password"
         ],
         "title": "SignUp",
+        "type": "object"
+      },
+      "SimilarOut": {
+        "properties": {
+          "after_median_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Median Mgdl"
+          },
+          "enough": {
+            "title": "Enough",
+            "type": "boolean"
+          },
+          "feelings": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Feelings",
+            "type": "object"
+          },
+          "similar": {
+            "items": {
+              "$ref": "#/components/schemas/WorkoutOut"
+            },
+            "title": "Similar",
+            "type": "array"
+          },
+          "start_median_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Median Mgdl"
+          },
+          "with_readings": {
+            "title": "With Readings",
+            "type": "integer"
+          },
+          "workout": {
+            "$ref": "#/components/schemas/WorkoutOut"
+          }
+        },
+        "required": [
+          "workout",
+          "similar",
+          "enough",
+          "feelings",
+          "start_median_mgdl",
+          "after_median_mgdl",
+          "with_readings"
+        ],
+        "title": "SimilarOut",
         "type": "object"
       },
       "SnoozeIn": {
@@ -5254,6 +5993,192 @@
         "title": "VoiceStatusOut",
         "type": "object"
       },
+      "WhyOut": {
+        "description": "\"Why am I seeing this?\" for one insight: what it rests on and which of the person's goals it speaks to.",
+        "properties": {
+          "band_source": {
+            "anyOf": [
+              {
+                "enum": [
+                  "profile",
+                  "pump",
+                  "carelink"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Band Source"
+          },
+          "basis": {
+            "default": 0,
+            "title": "Basis",
+            "type": "integer"
+          },
+          "certainty": {
+            "anyOf": [
+              {
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Certainty"
+          },
+          "coverage_pct": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coverage Pct"
+          },
+          "data": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Data",
+            "type": "array"
+          },
+          "fixes": {
+            "default": [],
+            "items": {
+              "enum": [
+                "records",
+                "target",
+                "goals",
+                "log"
+              ],
+              "type": "string"
+            },
+            "title": "Fixes",
+            "type": "array"
+          },
+          "goals": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Goals",
+            "type": "array"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "period_from": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period From"
+          },
+          "period_to": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period To"
+          }
+        },
+        "required": [
+          "key"
+        ],
+        "title": "WhyOut",
+        "type": "object"
+      },
+      "WorkoutOut": {
+        "properties": {
+          "after_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Mgdl"
+          },
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "feeling": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Feeling"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "intensity": {
+            "title": "Intensity",
+            "type": "string"
+          },
+          "minutes": {
+            "title": "Minutes",
+            "type": "integer"
+          },
+          "start_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Mgdl"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "at",
+          "type",
+          "minutes",
+          "intensity",
+          "feeling",
+          "start_mgdl",
+          "after_mgdl"
+        ],
+        "title": "WorkoutOut",
+        "type": "object"
+      },
       "steady_api__routers__insights__StateIn": {
         "additionalProperties": false,
         "properties": {
@@ -5361,6 +6286,53 @@
         "summary": "Delete Account",
         "tags": [
           "account"
+        ]
+      }
+    },
+    "/activity/{record_id}/similar": {
+      "get": {
+        "operationId": "similar_workouts_activity__record_id__similar_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "record_id",
+            "required": true,
+            "schema": {
+              "title": "Record Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimilarOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Similar Workouts",
+        "tags": [
+          "daily"
         ]
       }
     },
@@ -8380,6 +9352,70 @@
         ]
       }
     },
+    "/insights/{key}/interpret": {
+      "post": {
+        "description": "A personal reading of one current insight. Not for someone viewing a shared account (it would be kept as theirs).",
+        "operationId": "interpret_insight_insights__key__interpret_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "schema": {
+              "title": "Key",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterpretIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterpretationOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "503": {
+            "description": "llm_unconfigured or llm_failed"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Interpret Insight",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
     "/insights/{key}/state": {
       "post": {
         "description": "Seen or read on a screen: kept on the server, so the app and the website show the same state.",
@@ -9044,6 +10080,123 @@
         ]
       }
     },
+    "/nutrition/days/{day}": {
+      "put": {
+        "description": "The person says the day's meals are all logged (or not). Only today and earlier.",
+        "operationId": "mark_day_nutrition_days__day__put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "day",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "title": "Day",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DayIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/FoodDayOut"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Response Mark Day Nutrition Days  Day  Put"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Mark Day",
+        "tags": [
+          "daily"
+        ]
+      }
+    },
+    "/nutrition/summary": {
+      "get": {
+        "operationId": "food_summary_nutrition_summary_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "days",
+            "required": false,
+            "schema": {
+              "default": 7,
+              "maximum": 31,
+              "minimum": 1,
+              "title": "Days",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FoodSummaryOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Food Summary",
+        "tags": [
+          "daily"
+        ]
+      }
+    },
     "/profile": {
       "get": {
         "operationId": "get_profile_profile_get",
@@ -9105,6 +10258,66 @@
           }
         ],
         "summary": "Put Profile",
+        "tags": [
+          "profile"
+        ]
+      }
+    },
+    "/profile/history": {
+      "get": {
+        "description": "Changes to the profile answers, newest first (at most 100), optionally for one section (\"food\", \"goals\").",
+        "operationId": "profile_history_profile_history_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "section",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 24,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Section"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProfileChangeOut"
+                  },
+                  "title": "Response Profile History Profile History Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Profile History",
         "tags": [
           "profile"
         ]
@@ -9191,6 +10404,7 @@
     },
     "/records": {
       "get": {
+        "description": "`kinds=2`: the client knows lab results and habits (13 Nov 2026); older app code gets only the kinds it knows.",
         "operationId": "list_records_records_get",
         "parameters": [
           {
@@ -9224,7 +10438,9 @@
                     "insulin",
                     "activity",
                     "note",
-                    "meal"
+                    "meal",
+                    "lab",
+                    "habit"
                   ],
                   "type": "string"
                 },
@@ -9243,6 +10459,16 @@
               "default": true,
               "title": "Include Hidden",
               "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "kinds",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "title": "Kinds",
+              "type": "integer"
             }
           }
         ],

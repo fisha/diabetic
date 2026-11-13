@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+13 Nov 2026 (G-62, thread "Build the diabetes companion app"): Guy's 8-item batch, built end to end (details in
+`docs/design-gaps.md` G-62): Sol on the Responses API, the model's personal reading of an insight with tools and
+evidence checks, "Why am I seeing this?", prediabetes, goals and difficulties, food/meds/fitness details, labs and
+habits, questions asked later, companion profile proposals and change history. Same morning: moving confetti on the
+small-win card and a closable "complete your profile" banner on Profile. Migration `f3a4b5c6d7e8` is on the Mac.
+API 241 tests and `pnpm check` (app 66 tests) pass. Not yet seen on a phone; the app screens were not checked
+visually in a browser in this round. Next: deploy, then Guy's look on the phone.
+
 13 Nov 2026 (progress metrics and insight ranker, G-61; thread "Build progress metrics and insight ranking model"):
 Guy asked for lasting progress measurement, learning data, a small trained insight ranker, a research tool and
 consent enforcement. All of it is built (design and rules in `docs/ml-ranker.md`). Shared metrics now measure each

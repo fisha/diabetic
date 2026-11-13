@@ -891,3 +891,33 @@ The consensus thresholds (70-180, 54, 250, 14 days, 70 %) come from Battelino 20
 added at Guy's request: two Overview cards for week, 2 weeks and month, using the existing card, legend and note
 styles, with no score. The design has no "I'll try this" confirmation on an insight, so the only action recorded is
 talking it over with the companion. A design for an explicit action would make the learning data better.
+
+### G-62 · Personal interpretation, prediabetes, goals, gradual profile and transparency (**Guy, 13 Nov 2026**, implemented-unverified)
+
+Guy's 8-item batch of 13 Nov 2026, plus two small asks the same morning. None of it is in the design boards; every
+screen reuses existing cards, chips, banners and sheets.
+- Text model: `gpt-6.1-sol` on the Responses API (chat, tools, JSON schema, food photos). Voice is unchanged.
+- Personal reading of an insight ("Read my records"): the model may use tools (the insight, the profile, glucose by
+  part of day, records around it) and must answer in facts with cited evidence, possibilities with how to check them,
+  what is missing, and one question. The server drops facts without seen evidence, causal wording and dose wording.
+  Cached per person, insight, day and language. Metrics, permissions and safety checks stay in code.
+- "Why am I seeing this?" on every insight: the data kinds it rests on, the period, whether the range is the person's
+  or the device's, which goals it speaks to, and fixes (records, range, goals, log more).
+- Diabetes type: type 1, type 2, prediabetes, other, not sure; no preselected type for a new person. Nothing is
+  inferred from readings, and type 1 targets are not applied to prediabetes.
+- Goals ("what should we help with" and "what is hardest day to day"), multiple choice with skip and "other";
+  fitness goals became a list ("none" alone). Goals order insights and hold back non-goal pushes (device and low
+  alerts always go out).
+- Food: allergies, celiac, intolerances and preferences apart; optional protein target the person enters with unit,
+  who set it and date. A 7-day food card separates weighed from estimated and full days from partial ones.
+- Medicines and care-team limits for every type, type 1 included. Activity has an optional "how it felt"; similar
+  workouts (same type, similar length, 90 days, at least 3) show feelings and glucose medians with no cause claimed.
+- Without a sensor: habits and lab or clinic results with date and source; no CGM metric from single readings.
+- Onboarding asks only what is needed to start; diagnosis, body, meds, history, routine, food and fitness are asked
+  later (the companion asks at most once a week per topic, three times in all). The companion proposes a profile
+  update only for a lasting change, on a confirm card. Every profile change keeps source, date and before/after
+  (Settings › Diabetes profile › Change history).
+- Profile: a banner at the top lists unanswered profile questions with "Complete now" and "Close"; once closed it
+  never shows again (kept with the profile as `dismissed`, so the website follows).
+- Small win card: confetti keeps drifting inside the card while celebrations are on; with reduce motion the pieces
+  stand still.
