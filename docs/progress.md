@@ -14,6 +14,14 @@ now and then in range; fades out as the reading ages. App tests (87), typecheck 
 preview. JS only. Next: Guy's look on the phone; then the next character moments (trend glance, night nap, meals,
 workouts, set changes, seasons, a hug).
 
+13 Nov 2026 (G-70, thread "Add gamified unlocks for the companion"): companion unlocks. 18 new accessories open over
+time for habits (meals logged, workouts, days with a sensor, days in a row, messages, small wins, days together),
+never for a glucose value; nothing is ever taken back. API (table `unlocks`, migration `f8a9b0c1d2e4`, worker step,
+`GET /rewards`, `POST /rewards/state`) 293 tests and ruff pass; app 94 tests and typecheck pass; website typecheck,
+lint and build pass. The new drawings, the locked picker and the "unlocked!" dialog were checked in the web preview
+with a temporary stand-in for the server answer; not run on a phone. JS only for the app (OTA on 0.3.0). Next: run
+the migration and deploy the API before the app OTA.
+
 13 Nov 2026 (G-69, thread "Write insulin and glucose to Apple Health"): Apple Fitness and Health Connect activity:
 exercise minutes and stood hours read on iPhone, a routine for them and for workouts on the Routine card, and lows in
 the 12 hours after workouts added to the workout insight. API 269 tests, ruff, app 85 tests and typecheck pass; no

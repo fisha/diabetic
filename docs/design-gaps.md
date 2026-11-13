@@ -1100,6 +1100,30 @@ the same for Health Connect.
 - No personal bests for exercise minutes or stood hours yet (only steps and active energy, G-67).
 
 
+### G-70 · Companion unlocks: new accessories open over time for habits (**Guy, 13 Nov 2026**, implemented-unverified)
+Guy (13 Nov 2026): "the new accessory that unlocked... it could be cool to bring in some gamification, so each time
+something new comes in". No design board; built in the existing picker, card and dialog looks.
+- 18 new accessories (hats: chef, flowers, cowboy, wizard, viking, graduate, pirate; glasses: stars, aviators,
+  monocle, pixel; mustaches: swirl, pencil, walrus; extras: medal, tie, lei, headphones). Today's 13 accessories are
+  starter items, open for everyone: nothing that existed is taken away.
+- Rules (`services/api/steady_api/rewards.py`, product rules, not clinical targets): habits and time together only:
+  messages to the companion, meals the person logged (not a device's carb entries), the best run of days with any
+  check-in (logging or talking), workouts, small wins (G-43, already measured against the person's own past), days
+  with a sensor on (readings in 18+ hours of the day) and days since joining. No glucose value, range or reading is a
+  goal. Paced from 1 message and 5 meals up to 100 meals and a 30-day run.
+- Nothing is lost: an unlock is kept for good (no withdrawal), a broken run costs nothing (best run counts), no
+  countdowns, no pushes.
+- Checked by the worker every 5 minutes for people active in the last 2 days, and on `GET /rewards`. Seen and
+  celebrated are kept once on the server for the app and the website (`POST /rewards/state`). Viewers (G-44) can read
+  `/rewards` and change nothing; the app and website show them no celebration.
+- App: Profile › Companion shows "x of 31 unlocked" with a bar, "Next up" (the locked item closest to opening), locked
+  tiles dimmed with a lock and their count ("3 of 5"); tapping one shows what opens it. A dot marks items new since the
+  last visit. On the Overview, a dialog "Something new unlocked!" with the character wearing it, why it opened, "Put it
+  on", "Open the wardrobe" (several) and "Later"; confetti only with celebrations on and reduce motion off. Without an
+  answer from the server the new items are hidden from the picker (never shown as fake locked).
+- Website: an "unlocked" card with confetti on Insights, and locked items with their hint in the profile editor.
+- Not done: an "unlock" card in the companion carousel (possible through `NowInsights.extra`), titles and colours.
+
 ## Glucose alerts with sound (13 Nov 2026, Guy asked)
 Profile › Notifications has a "Glucose alerts with sound" card with no design board: on/off, urgent low / low / high
 levels (steppers, low and high from the person's range, urgent low default 54 mg/dL), sound per level, repeat interval,

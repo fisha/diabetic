@@ -1617,6 +1617,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/rewards": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Rewards
+         * @description The whole catalog. The check runs here too, so a new unlock shows as soon as the app asks.
+         */
+        get: operations["get_rewards_rewards_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rewards/state": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Set State
+         * @description Seen, or the celebration shown (which is also seen). Once, anywhere; unknown or locked ids are ignored.
+         */
+        post: operations["set_state_rewards_state_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/settings": {
         parameters: {
             query?: never;
@@ -3887,6 +3927,42 @@ export interface components {
              */
             due_at: string;
         };
+        /** RewardItemOut */
+        RewardItemOut: {
+            /** Celebrated At */
+            celebrated_at?: string | null;
+            /** Current */
+            current?: number | null;
+            /** Id */
+            id: string;
+            /** Item */
+            item: string;
+            /** Order */
+            order: number;
+            rule?: components["schemas"]["RuleOut"] | null;
+            /** Seen At */
+            seen_at?: string | null;
+            /**
+             * Slot
+             * @enum {string}
+             */
+            slot: "hat" | "glasses" | "mustache" | "neck";
+            /** Starter */
+            starter: boolean;
+            /** Unlocked */
+            unlocked: boolean;
+            /** Unlocked At */
+            unlocked_at?: string | null;
+            /** Unlocked Count */
+            unlocked_count?: number | null;
+        };
+        /** RewardsOut */
+        RewardsOut: {
+            /** Celebrate */
+            celebrate: boolean;
+            /** Items */
+            items: components["schemas"]["RewardItemOut"][];
+        };
         /** RoutineOut */
         RoutineOut: {
             /** Lead Meals */
@@ -3897,6 +3973,16 @@ export interface components {
             meal_times: {
                 [key: string]: string;
             };
+        };
+        /** RuleOut */
+        RuleOut: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "talks" | "meals" | "streak" | "workouts" | "wins" | "sensor_days" | "days";
+            /** Target */
+            target: number;
         };
         /**
          * SameAsIn
@@ -4409,6 +4495,21 @@ export interface components {
              * @enum {string}
              */
             via: "app" | "web" | "push";
+        };
+        /** StateIn */
+        steady_api__routers__rewards__StateIn: {
+            /**
+             * Action
+             * @enum {string}
+             */
+            action: "seen" | "celebrated";
+            /** Ids */
+            ids: string[];
+            /**
+             * Via
+             * @enum {string}
+             */
+            via: "app" | "web";
         };
     };
     responses: never;
@@ -7952,6 +8053,57 @@ export interface operations {
             };
             /** @description not_a_meal, same_record or already_linked */
             409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_rewards_rewards_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RewardsOut"];
+                };
+            };
+        };
+    };
+    set_state_rewards_state_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["steady_api__routers__rewards__StateIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };

@@ -5678,6 +5678,139 @@
         "title": "RescheduleIn",
         "type": "object"
       },
+      "RewardItemOut": {
+        "properties": {
+          "celebrated_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Celebrated At"
+          },
+          "current": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Current"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "item": {
+            "title": "Item",
+            "type": "string"
+          },
+          "order": {
+            "title": "Order",
+            "type": "integer"
+          },
+          "rule": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RuleOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "seen_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seen At"
+          },
+          "slot": {
+            "enum": [
+              "hat",
+              "glasses",
+              "mustache",
+              "neck"
+            ],
+            "title": "Slot",
+            "type": "string"
+          },
+          "starter": {
+            "title": "Starter",
+            "type": "boolean"
+          },
+          "unlocked": {
+            "title": "Unlocked",
+            "type": "boolean"
+          },
+          "unlocked_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unlocked At"
+          },
+          "unlocked_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unlocked Count"
+          }
+        },
+        "required": [
+          "id",
+          "slot",
+          "item",
+          "starter",
+          "unlocked",
+          "order"
+        ],
+        "title": "RewardItemOut",
+        "type": "object"
+      },
+      "RewardsOut": {
+        "properties": {
+          "celebrate": {
+            "title": "Celebrate",
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RewardItemOut"
+            },
+            "title": "Items",
+            "type": "array"
+          }
+        },
+        "required": [
+          "items",
+          "celebrate"
+        ],
+        "title": "RewardsOut",
+        "type": "object"
+      },
       "RoutineOut": {
         "properties": {
           "lead_meals": {
@@ -5709,6 +5842,33 @@
           "lead_meals"
         ],
         "title": "RoutineOut",
+        "type": "object"
+      },
+      "RuleOut": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "talks",
+              "meals",
+              "streak",
+              "workouts",
+              "wins",
+              "sensor_days",
+              "days"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "target": {
+            "title": "Target",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "kind",
+          "target"
+        ],
+        "title": "RuleOut",
         "type": "object"
       },
       "SameAsIn": {
@@ -7241,6 +7401,43 @@
           }
         },
         "required": [
+          "action",
+          "via"
+        ],
+        "title": "StateIn",
+        "type": "object"
+      },
+      "steady_api__routers__rewards__StateIn": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "seen",
+              "celebrated"
+            ],
+            "title": "Action",
+            "type": "string"
+          },
+          "ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 18,
+            "minItems": 1,
+            "title": "Ids",
+            "type": "array"
+          },
+          "via": {
+            "enum": [
+              "app",
+              "web"
+            ],
+            "title": "Via",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ids",
           "action",
           "via"
         ],
@@ -12355,6 +12552,73 @@
         "summary": "Same As",
         "tags": [
           "records"
+        ]
+      }
+    },
+    "/rewards": {
+      "get": {
+        "description": "The whole catalog. The check runs here too, so a new unlock shows as soon as the app asks.",
+        "operationId": "get_rewards_rewards_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RewardsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Rewards",
+        "tags": [
+          "rewards"
+        ]
+      }
+    },
+    "/rewards/state": {
+      "post": {
+        "description": "Seen, or the celebration shown (which is also seen). Once, anywhere; unknown or locked ids are ignored.",
+        "operationId": "set_state_rewards_state_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/steady_api__routers__rewards__StateIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set State",
+        "tags": [
+          "rewards"
         ]
       }
     },
