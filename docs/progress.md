@@ -713,6 +713,27 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
 - Latest reading card above the talk button (Guy's request; G-30).
 - ML: the brief's separate model-evaluation track (section 10) was not started; a separate thread now runs it.
 
+## Companion evaluation track (started 11 Nov 2026)
+
+The separate model-experiment track from brief section 10 had not been started; Guy asked about the missing "ML
+layer" on 11 Nov 2026. It now lives in `evals/` (main repository), outside the app and the API, and never changes
+production behaviour. See `evals/README.md` and `evals/FINDINGS.md`.
+
+- 60 held-out and 8 dev cases in English, Hebrew, Arabic and Russian, run through the production prompt, data block
+  and tools (fixture records only), with deterministic checks for tools, numbers, dose and judgement limits, unbacked
+  claims and language.
+- A candidate structured scope check (`evals/steady_evals/scope.py`): dose requests, someone else's readings, minors,
+  other diabetes types, acute symptoms.
+- Curated sources with dates, population tags, rights status and attribution (`evals/sources/sources.toml`); none
+  cleared for reuse yet.
+- Meal-photo carbohydrate error against weighed meals (`evals/steady_evals/food.py`); LogMeal and Passio adapters wait
+  for their documentation and trial keys.
+- First real runs (11 Nov 2026, on the Mac, Guy approved): gpt-5-mini 148/180, gpt-5 49/60 after regrading; see
+  `evals/reports/report-2026-11-11.md`. 25 harness tests pass.
+- MedGemma: Guy decided on 11 Nov 2026 to continue without it for now. LogMeal/Passio: not needed (Guy); the meal
+  evaluation covers the production OpenAI adapter and waits for about 30 weighed meals from Guy.
+- Findings F-1 to F-7 and the run results were handed to the build work as proposals.
+
 ## Guy's follow-ups the same evening (11 Nov 2026)
 
 - Voice speed: replies were held until the whole answer was spoken; now each sentence is sent once its audio is in, into

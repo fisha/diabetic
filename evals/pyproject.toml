@@ -1,0 +1,19 @@
+# The evaluation track runs in the API's environment (it imports the production prompt and tools read-only):
+#   uv run --project ../services/api python -m steady_evals.run ...
+# This file only configures lint and tests for the track.
+
+[tool.ruff]
+line-length = 150
+target-version = "py312"
+extend-exclude = ["cases/build_cases.py"]  # dense case table, kept one case per call
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint.per-file-ignores]
+"steady_evals/production.py" = ["E402"]  # sys.path must point at services/api before importing it
+"steady_evals/checks.py" = ["E501"]  # phrase patterns read better on one line
+"steady_evals/scope.py" = ["E501"]
