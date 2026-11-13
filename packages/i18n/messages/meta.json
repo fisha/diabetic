@@ -8620,6 +8620,12 @@
       "translation"
     ]
   },
+  "rtn.mem_empty": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "rtn.mem_none": {
     "board": "Routine",
     "review": [
@@ -10347,6 +10353,12 @@
       "translation"
     ]
   },
+  "set.done": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "set.ds_connected": {
     "board": "Settings",
     "review": [
@@ -11064,6 +11076,12 @@
       "translation"
     ]
   },
+  "set.name_needed": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "set.night": {
     "board": "Settings",
     "review": [
@@ -11288,7 +11306,19 @@
       "translation"
     ]
   },
+  "set.saved_auto": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "set.saved_local": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.saving_auto": {
     "board": "Settings",
     "review": [
       "translation"
