@@ -1813,7 +1813,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "insight" | "insight_question" | "follow_up";
+            kind: "insight" | "insight_question" | "follow_up" | "reading" | "alert" | "win";
             /** Question */
             question?: string | null;
             /** Ref */

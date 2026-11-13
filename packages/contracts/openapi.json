@@ -44,7 +44,10 @@
             "enum": [
               "insight",
               "insight_question",
-              "follow_up"
+              "follow_up",
+              "reading",
+              "alert",
+              "win"
             ],
             "title": "Kind",
             "type": "string"

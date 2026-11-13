@@ -4751,6 +4751,138 @@
       "translation"
     ]
   },
+  "now.alert_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.checkin_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.high_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.in_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.in_t0": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.in_t1": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.in_t2": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.in_t3": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.low_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.move_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.move_t0": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.move_t1": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.move_t2": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.move_t3": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.reading_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.reminder_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.talk": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.tir_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.tir_t0": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.tir_t1": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.tir_t2": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.tir_t3": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
   "ntf.check_in": {
     "board": "Companion",
     "review": [
