@@ -1974,6 +1974,8 @@
   "wd.st_edited": "Edited",
   "wd.st_hidden": "Hidden from summaries",
   "wd.st_saved": "Saved",
+  "wd.su_apple": "Continue with Apple",
+  "wd.su_apple_off": "Sign in with Apple isn't available right now. You can use Google or your email and password.",
   "wd.su_google_bad": "Google sign-in didn't go through. Try again.",
   "wd.su_google_off": "Google sign-in isn't available right now. Use email and password.",
   "wd.su_taken": "An account with this email already exists. Sign in instead.",

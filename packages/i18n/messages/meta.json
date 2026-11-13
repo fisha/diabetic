@@ -12141,6 +12141,18 @@
       "translation"
     ]
   },
+  "wd.su_apple": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.su_apple_off": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.su_google_bad": {
     "board": "WebDashboard",
     "review": [
