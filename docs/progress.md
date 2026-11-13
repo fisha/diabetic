@@ -847,6 +847,26 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   daily (`last_history_at`). Continuous history further back needs LibreView (the main-account sign-in waiting on
   Guy). API tests pass.
 
+- 13 Nov 2026 (Guy's batch):
+  - Libre drops fixed reconnecting. A read refused in its body (status not 0), or a passing failure, set the link to
+    "failed", and the app then showed the sign-in form, so the tester signed in again each time. Now a refused read
+    signs in again on its own, at most twice an hour per link. The sign-in is renewed before the ticket's expiry.
+    Failures are retried after 5, 10, 20, then 30 minutes; a lockout waits an hour. The app shows "connected,
+    retrying" with an optional sign-in instead of the form. Logs record the answer's status and keys only.
+  - Voice continuity. The server guessed when the phone finished playing from the audio length. The microphone could
+    open while the phone still played, between sentences of one answer, or when audio arrived late. Echo or a late
+    transcript then stopped the reply ("walkie-talkie", cut answers). Now the phone reports `played`, and the
+    microphone stays closed while the model is still speaking the rest of the answer. Words placed in a closed
+    stretch are ignored. `reply_end` carries `more`, so the orb stays on speaking through gaps. The Stop button still
+    cuts at once. A per-turn timing line is logged (first audio, parts, audio length, play end, ignored words, cuts,
+    phone underruns). A dropped connection resumes on its own up to twice, without a new greeting. The orb stays in
+    place while the captions scroll under it.
+  - Orb: on the home screen, a little hop, puff or tilt every 5-11 s. In conversation, soft smoke inside and a small
+    face: the smoke drifts and swells with the voice while listening, swirls while thinking, and the mouth moves while
+    speaking. Reduced motion keeps everything still.
+  - API tests and `pnpm check` pass; the orb was checked in the web build. On a real iPhone still to check: echo with
+    the speaker, noise, pauses, a network switch and the app in the background.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API

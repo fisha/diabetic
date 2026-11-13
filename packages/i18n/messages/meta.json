@@ -7947,6 +7947,24 @@
       "translation"
     ]
   },
+  "set.ds_retry_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_retrying": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_sign_again": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "set.ds_stale": {
     "board": "Settings",
     "review": [
