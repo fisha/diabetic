@@ -1286,6 +1286,7 @@
   "set.ds_reconnect": "נדרש חיבור מחדש",
   "set.ds_stale": "מחובר, הנתונים מתעכבים",
   "set.ds_unavail": "לא זמין",
+  "set.ds_unknown": "המצב לא ידוע כרגע",
   "set.ds_unsupported": "עדיין לא נתמך",
   "set.edit": "עריכה",
   "set.emergency": "במקרה חירום, התקשרו למספר החירום המקומי. Stedio לא יכולה ליצור קשר עם אף אחד בשבילך.",

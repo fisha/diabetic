@@ -830,6 +830,12 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   wear) from CareLink's 30-day history. API 197 tests, app tests and `pnpm check` pass; checked in the app's web build
   with stand-in days.
 
+- 13 Nov 2026 (morning): Guy and Itay saw CareLink and Libre as signed out. Cause: the API on the Mac stopped with
+  the Mac thread's session at ~02:00 UTC (now started detached); the links stayed connected. The app showed the
+  sign-in form whenever the first read of a link failed; now an unreachable server shows "status unknown", the
+  server-unreachable note and a try-again button, never the form. `pnpm check` passes; checked in the web build with
+  the API answering 502.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API

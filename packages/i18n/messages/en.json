@@ -1286,6 +1286,7 @@
   "set.ds_reconnect": "Reconnection needed",
   "set.ds_stale": "Connected, data delayed",
   "set.ds_unavail": "Not available",
+  "set.ds_unknown": "Status unknown",
   "set.ds_unsupported": "Not supported yet",
   "set.edit": "Edit",
   "set.emergency": "In an emergency, call your local emergency number. Stedio can’t contact anyone for you.",
