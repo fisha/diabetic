@@ -1058,8 +1058,12 @@ the same for Health Connect.
   that hops when something is put on. Saved with the profile as `companion.accessories` (the API keeps `companion` as
   a free object, so no API change); unknown ids are dropped on load. The companion header shows the character wearing
   them instead of the onboarding avatar.
-- Not in the design boards. Still open: onboarding ONB-16 ("choose a look", the person avatars) is unchanged and its
-  choice is no longer shown anywhere; the website profile has no accessory picker yet (it keeps the saved ones).
+- Not in the design boards. Onboarding ONB-16 ("choose a look", the person avatars) is removed (Guy, 13 Nov 2026:
+  "כן"); a draft saved on it resumes at the voice step. The website profile has the same accessory choices as chips.
+- 13 Nov 2026 launch crash on the 0.2.0 update: a plain helper function called from two animated styles threw on the
+  UI thread (the web preview runs worklets on the JS thread, so it passed there). Fixed by inlining; every worklet in
+  VoiceOrb now captures only values and shared values (checked in the Reanimated babel output). Rule: no plain
+  function calls inside `useAnimatedStyle`; check a native Release run, not only the web preview, before an update.
 - JS only, so it also ships to 0.2.0 builds as an update. Checked in the web preview (day, night, Hebrew); not yet
   seen on a phone.
 
