@@ -76,6 +76,13 @@
     ],
     "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
   },
+  "alr.cartridge_changed": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: the pump recorded a filled cartridge (Tandem)."
+  },
   "alr.correction_prompt": {
     "board": "Journal",
     "review": [
@@ -8665,6 +8672,43 @@
       "translation"
     ]
   },
+  "set.cg_tandem_how": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_tandem_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_tandem_title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_tn_region": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_tn_upload": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Tandem pump model and when the phone app last uploaded its data."
+  },
+  "set.cg_tn_verify": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cg_user": {
     "board": "Settings",
     "review": [
@@ -9877,6 +9921,29 @@
       "translation"
     ]
   },
+  "set.ic_dev_cf": {
+    "board": "SET-02",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "The pump's own correction factor, shown as set on the pump. Not a recommendation."
+  },
+  "set.ic_dev_period": {
+    "board": "SET-02",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "The pump's own carb ratio, shown as set on the pump. Not a recommendation."
+  },
+  "set.ic_src_tandem": {
+    "board": "SET-02",
+    "review": [
+      "translation"
+    ],
+    "note": "Carb ratio and correction factor read from the pump; shown, not edited."
+  },
   "set.icr": {
     "board": "Settings",
     "review": [
@@ -10342,6 +10409,12 @@
     ]
   },
   "set.tg_src_pump": {
+    "board": "SET-02",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tg_src_tandem": {
     "board": "SET-02",
     "review": [
       "translation"

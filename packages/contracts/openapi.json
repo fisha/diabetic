@@ -419,7 +419,8 @@
             "enum": [
               "profile",
               "pump",
-              "carelink"
+              "carelink",
+              "tandem"
             ],
             "title": "Source",
             "type": "string"
@@ -685,6 +686,7 @@
               "us",
               "ous",
               "jp",
+              "eu",
               "global"
             ],
             "title": "Region",
@@ -735,7 +737,8 @@
           "kind": {
             "enum": [
               "dexcom",
-              "libre"
+              "libre",
+              "tandem"
             ],
             "title": "Kind",
             "type": "string"
@@ -763,6 +766,16 @@
               }
             ],
             "title": "Last Sync At"
+          },
+          "pump": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TandemPumpOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "region": {
             "anyOf": [
@@ -994,6 +1007,64 @@
         "title": "DeviceEventOut",
         "type": "object"
       },
+      "DeviceRatioPeriodOut": {
+        "properties": {
+          "from": {
+            "title": "From",
+            "type": "string"
+          },
+          "grams": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Grams"
+          }
+        },
+        "required": [
+          "from"
+        ],
+        "title": "DeviceRatioPeriodOut",
+        "type": "object"
+      },
+      "DeviceRatiosOut": {
+        "description": "Carb ratio by time and correction factor as set on the connected pump (Tandem, 13 Nov 2026). While set, the\ntyped ones are kept as they were and cannot be edited in Stedio (G-48). Shown only; never used to suggest a dose.",
+        "properties": {
+          "correction_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Correction Mgdl"
+          },
+          "periods": {
+            "items": {
+              "$ref": "#/components/schemas/DeviceRatioPeriodOut"
+            },
+            "title": "Periods",
+            "type": "array"
+          },
+          "source": {
+            "const": "tandem",
+            "default": "tandem",
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "periods"
+        ],
+        "title": "DeviceRatiosOut",
+        "type": "object"
+      },
       "DeviceTargetOut": {
         "properties": {
           "high_mgdl": {
@@ -1007,7 +1078,8 @@
           "source": {
             "enum": [
               "pump",
-              "carelink"
+              "carelink",
+              "tandem"
             ],
             "title": "Source",
             "type": "string"
@@ -4516,6 +4588,16 @@
             "title": "Changed",
             "type": "object"
           },
+          "device_ratios": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DeviceRatiosOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "device_target": {
             "anyOf": [
               {
@@ -4772,6 +4854,24 @@
           "day"
         ],
         "title": "PumpDayOut",
+        "type": "object"
+      },
+      "PumpRangeOut": {
+        "properties": {
+          "high_mgdl": {
+            "title": "High Mgdl",
+            "type": "number"
+          },
+          "low_mgdl": {
+            "title": "Low Mgdl",
+            "type": "number"
+          }
+        },
+        "required": [
+          "low_mgdl",
+          "high_mgdl"
+        ],
+        "title": "PumpRangeOut",
         "type": "object"
       },
       "PumpStatusOut": {
@@ -5739,6 +5839,162 @@
         "title": "SyncAllOut",
         "type": "object"
       },
+      "TandemProfileOut": {
+        "properties": {
+          "insulin_duration_min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Insulin Duration Min"
+          },
+          "max_bolus_u": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Bolus U"
+          },
+          "name": {
+            "default": "",
+            "title": "Name",
+            "type": "string"
+          },
+          "segments": {
+            "items": {
+              "$ref": "#/components/schemas/TandemSegmentOut"
+            },
+            "title": "Segments",
+            "type": "array"
+          }
+        },
+        "title": "TandemProfileOut",
+        "type": "object"
+      },
+      "TandemPumpOut": {
+        "description": "What Tandem Source says about the pump, shown as set on the pump (read-only in Stedio, G-48).",
+        "properties": {
+          "alert_limits": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PumpRangeOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "last_upload": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Upload"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "profile": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TandemProfileOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "range": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PumpRangeOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "title": "TandemPumpOut",
+        "type": "object"
+      },
+      "TandemSegmentOut": {
+        "properties": {
+          "basal_u_h": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Basal U H"
+          },
+          "correction_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Correction Mgdl"
+          },
+          "from": {
+            "title": "From",
+            "type": "string"
+          },
+          "grams_per_unit": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Grams Per Unit"
+          },
+          "target_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Mgdl"
+          }
+        },
+        "required": [
+          "from"
+        ],
+        "title": "TandemSegmentOut",
+        "type": "object"
+      },
       "ThreadOut": {
         "properties": {
           "conversation_id": {
@@ -6187,7 +6443,8 @@
                 "enum": [
                   "profile",
                   "pump",
-                  "carelink"
+                  "carelink",
+                  "tandem"
                 ],
                 "type": "string"
               },
@@ -8061,6 +8318,152 @@
           }
         ],
         "summary": "Sync All",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/tandem": {
+      "delete": {
+        "description": "Forgets the sign-in. With remove_readings, the readings that came from this source are deleted too.",
+        "operationId": "tandem_disconnect_devices_tandem_delete",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "remove_readings",
+            "required": false,
+            "schema": {
+              "default": false,
+              "title": "Remove Readings",
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemovedOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Tandem Disconnect",
+        "tags": [
+          "devices"
+        ]
+      },
+      "get": {
+        "operationId": "tandem_status_devices_tandem_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Tandem Status",
+        "tags": [
+          "devices"
+        ]
+      },
+      "put": {
+        "description": "Signs in now. Only a sign-in that worked is kept; a refused one is answered and forgotten.",
+        "operationId": "tandem_connect_devices_tandem_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CgmIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "needs_verification"
+          },
+          "422": {
+            "description": "wrong_credentials"
+          },
+          "429": {
+            "description": "locked"
+          },
+          "502": {
+            "description": "failed"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Tandem Connect",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/tandem/sync": {
+      "post": {
+        "operationId": "tandem_sync_devices_tandem_sync_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Tandem Sync",
         "tags": [
           "devices"
         ]
