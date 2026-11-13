@@ -1011,7 +1011,10 @@ time or every 5 minutes, learn from public repositories.
   leaves out everything with that id or from Stedio's own app id, so nothing written ever comes back in. Each write run
   reads Stedio's own samples in the window and adds only what is missing, replaces a record whose revision changed
   (old copy removed first) and removes samples of records deleted or hidden; a second run with nothing changed writes
-  nothing. Runs with each health sync: the first covers 7 days, then from a day before the last run.
+  nothing. Runs with each health sync: the first covers 7 days, then from a day before the last run, and every 6 hours
+  the whole week again (edits and deletions of older records; a change to a record older than a week is not carried).
+  Sync ids carry a one-way tag of the account (`stedio:<tag>:<kind>:<id>`), so a second account on the same phone never
+  removes the first one's samples. An iPhone meal written with a part missing (protein or fat refused) is written again.
 - Never while viewing someone else's data (G-44).
 - Native change: write usage text (iOS) and `WRITE_BLOOD_GLUCOSE`, `WRITE_NUTRITION` (Android); app version 0.3.0 so
   the update never reaches a 0.2.0 build. Needs a new testers build.
