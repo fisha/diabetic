@@ -990,3 +990,28 @@ time or every 5 minutes, learn from public repositories.
   lists of onboarding, Treatment settings and the website profile (Guy approved, 13 Nov 2026; id `tandemMobi`).
 - Not verified against Tandem: tested only with a stand-in server. Nobody has a Tandem account for a real try yet.
 
+
+### G-66 · Writing glucose, insulin and meals to Apple Health and Health Connect (**Guy, 13 Nov 2026**, implemented-unverified)
+
+"האם האפליקציה שלנו יכולה לעדכן את apple health באינסולין וגלוקוז?", then "כן אפשר לבנות. השאלה אם נדע לא לקחת את
+המידע שכתבנו חזרה לתוך האפליקציה ולייצר כפילות?", and meals too; "כל מה שאני אומר פה על אפל תקף גם לאנדרואיד".
+
+- **Off until the person turns it on**: a switch "Write to Apple Health / Health Connect" on the store's device screen
+  (SET-05, not in the design), shown while connected. Turning it on asks the store for write permission; off stops
+  writing and leaves what was written (the person removes it in the Health app). Disconnecting turns it off.
+- **What is written** (`apps/mobile/src/features/health/writePlan.ts`): glucose from CareLink, Tandem and what was
+  logged in Stedio (manual, voice; marked as user entered); insulin from the same sources as basal or bolus (pump and
+  auto-correction boluses are boluses; a dose without a reason or with "not sure" is not written, Stedio doesn't
+  guess); meals with carbs, protein and fat when known and the item names. Never written: Dexcom and Libre readings
+  (their apps write them, some hours late), anything Stedio read from the store, hidden records, a pump meal linked to
+  a logged meal (G-47). A measurement another app already wrote within a few minutes (sensor: any value; meter, dose
+  and meal: the same value) is skipped. Health Connect has no insulin type, so Android writes glucose and meals.
+- **No copies either way**: each written sample carries Stedio's sync id (`stedio:<kind>:<record id>`) and the record's
+  revision (iPhone: metadata `StedioSyncId`/`StedioSyncVersion`; Android: client record id and version). Reading
+  leaves out everything with that id or from Stedio's own app id, so nothing written ever comes back in. Each write run
+  reads Stedio's own samples in the window and adds only what is missing, replaces a record whose revision changed
+  (old copy removed first) and removes samples of records deleted or hidden; a second run with nothing changed writes
+  nothing. Runs with each health sync: the first covers 7 days, then from a day before the last run.
+- Never while viewing someone else's data (G-44).
+- Native change: write usage text (iOS) and `WRITE_BLOOD_GLUCOSE`, `WRITE_NUTRITION` (Android); app version 0.3.0 so
+  the update never reaches a 0.2.0 build. Needs a new testers build.
