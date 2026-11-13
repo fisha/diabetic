@@ -3670,6 +3670,11 @@ export interface components {
              */
             celebrate: boolean;
             /**
+             * Device Alert Push
+             * @default []
+             */
+            device_alert_push: ("low" | "high" | "falling" | "rising" | "reservoir" | "battery" | "sensor" | "delivery")[];
+            /**
              * Insight Interval Days
              * @default 14
              */
@@ -3698,6 +3703,8 @@ export interface components {
         SettingsPatch: {
             /** Celebrate */
             celebrate?: boolean | null;
+            /** Device Alert Push */
+            device_alert_push?: ("low" | "high" | "falling" | "rising" | "reservoir" | "battery" | "sensor" | "delivery")[] | null;
             /** Insight Interval Days */
             insight_interval_days?: number | null;
             /** Insight Push */

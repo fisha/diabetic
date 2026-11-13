@@ -939,3 +939,19 @@ Not in the boards; Guy asked for each.
   Google; a private relay email is kept as given. Shown on sign-in and create-account where the device offers it.
 - Not done: Android widgets (no Android build yet), a watch face complication (needs a watchOS app).
 
+### G-64 · Quiet voice call, orb moods, steadier sound, pump alert pushes (**Guy, 13 Nov 2026**, implemented-unverified)
+
+- Voice conversation: no captions under the orb during a call; the conversation is in text mode. "Always show captions"
+  (Accessibility) now defaults to off and brings them back.
+- Orb face in conversation: larger eyes and mouth; a smile while the latest reading (under 20 minutes old) is in range,
+  a frown with raised brows while it is above range, a wink every 7-15 seconds unless sad; speaking keeps the moving
+  mouth. Calm (small smile) otherwise, including below range. With reduced motion nothing moves.
+- Sound gaps: the server log showed two playback gaps in every answer of several sentences (`phone_underruns=2`). The
+  phone and the browser now start each run of audio 0.5 s after it arrives and lengthen that by 0.3 s (up to 1.5 s)
+  after any gap. First-reply latency also rose over one call (2.2 s to 12.6 s); not yet explained.
+- Notifications: "Pump alerts" lists low, high, falling fast, rising fast, reservoir, battery, sensor and insulin
+  delivery, each off until chosen, shown while CareLink is connected. Only the pump's own alerts are pushed (no
+  thresholds of ours), one push per sync naming the kinds, alerts older than 30 minutes go only to the journal, and
+  the note says they can be minutes late and the pump stays the alarm. Server: `user_settings.device_alert_push`,
+  migration c3d4e5f6a7b1, `device_push.py`.
+

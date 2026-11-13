@@ -5379,6 +5379,24 @@
             "title": "Celebrate",
             "type": "boolean"
           },
+          "device_alert_push": {
+            "default": [],
+            "items": {
+              "enum": [
+                "low",
+                "high",
+                "falling",
+                "rising",
+                "reservoir",
+                "battery",
+                "sensor",
+                "delivery"
+              ],
+              "type": "string"
+            },
+            "title": "Device Alert Push",
+            "type": "array"
+          },
           "insight_interval_days": {
             "default": 14,
             "title": "Insight Interval Days",
@@ -5433,6 +5451,31 @@
               }
             ],
             "title": "Celebrate"
+          },
+          "device_alert_push": {
+            "anyOf": [
+              {
+                "items": {
+                  "enum": [
+                    "low",
+                    "high",
+                    "falling",
+                    "rising",
+                    "reservoir",
+                    "battery",
+                    "sensor",
+                    "delivery"
+                  ],
+                  "type": "string"
+                },
+                "maxItems": 8,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Device Alert Push"
           },
           "insight_interval_days": {
             "anyOf": [

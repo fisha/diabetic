@@ -1678,6 +1678,66 @@
       "translation"
     ]
   },
+  "dal.battery": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "dal.delivery": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "dal.falling": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "dal.high": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "dal.low": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "dal.note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "dal.reservoir": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "dal.rising": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "dal.sensor": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "dal.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "exp.col_carbs_g": {
     "board": "Settings",
     "review": [

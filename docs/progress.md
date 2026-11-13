@@ -899,6 +899,9 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   (he saw only one), the lock-screen widget no longer offered on the home screen, gallery names translated; Face ID
   lock in Privacy; Sign in with Apple (API `POST /auth/apple`, migration b2c3d4e5f6a0 `users.apple_sub`, setting
   `STEADY_APPLE_AUDIENCES`, default the bundle id). G-63. API tests (4 new) and `pnpm check` pass; needs a new build.
+- 13 Nov 2026 (Guy, later): G-64, no live captions in a voice call, orb smile/wink/frown, audio jitter buffer, pump
+  alert pushes chosen in Notifications (migration c3d4e5f6a7b1). API tests pass except the known-flaky ranker pipeline
+  test (passes on rerun, also without these changes); `pnpm check` passes; orb faces checked in the web build.
 
 ## Next action
 
