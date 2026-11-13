@@ -1,0 +1,204 @@
+#!/usr/bin/env bash
+# Stedio local stack control. LOCAL DEVELOPMENT ONLY (Guy's Mac Studio).
+#
+#   stedio                 Status of every service (same as: stedio status)
+#   stedio up [svc...]     Start services (default: all) in the background, detached from the terminal
+#   stedio stop [svc...]   Stop services (default: all except the database and the ngrok tunnels)
+#   stedio restart [svc..] Restart services (default: api web)
+#   stedio status          What is running, with addresses
+#   stedio logs [svc...]   Follow logs (default: api web). Ctrl-C stops following, not the services
+#   stedio log <svc> [n]   Print the last n lines (default 80) of one service's log
+#   stedio urls            Public and local addresses
+#   stedio deploy-web      Re-export the app for the website, rebuild it and restart it
+#   stedio help
+#
+# Services: db (Postgres in Docker), api (FastAPI :8010), web (Next.js :3000),
+#           tunnel-api (ngrok -> https://stedio.ngrok.app), tunnel-web (ngrok -> https://stedio.ngrok.dev)
+# Logs and pid files live in /Volumes/Studio SSD/Workspace/steady-run.
+# The mixmaster-pro tunnel and servers are never touched.
+
+set -uo pipefail
+
+REPO="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"
+RUN="${STEDIO_RUN_DIR:-/Volumes/Studio SSD/Workspace/steady-run}"
+API_DIR="$REPO/services/api"
+WEB_DIR="$REPO/apps/web"
+MOBILE_DIR="$REPO/apps/mobile"
+NODE_BIN="/opt/homebrew/opt/node@22/bin"
+API_URL="https://stedio.ngrok.app"
+WEB_URL="https://stedio.ngrok.dev"
+CORS='["http://localhost:8081","http://localhost:3000","https://stedio.ngrok.dev"]'
+ALL="db api web tunnel-api tunnel-web"
+mkdir -p "$RUN/pids"
+
+if [ -t 1 ] && [ -z "${NO_COLOR:-}" ]; then
+  G=$'\033[32m'; R=$'\033[31m'; Y=$'\033[33m'; D=$'\033[2m'; B=$'\033[1m'; X=$'\033[0m'
+else
+  G=""; R=""; Y=""; D=""; B=""; X=""
+fi
+say() { printf '%s\n' "$*"; }
+err() { printf '%s%s%s\n' "$R" "$*" "$X" >&2; }
+
+color_of() { [ -n "$X" ] || return 0; case "$1" in db) printf '\033[36m';; api) printf '\033[35m';; web) printf '\033[34m';; tunnel-*) printf '\033[33m';; esac; }
+
+# Start a command in its own session so it survives the terminal (or a Claude session) closing.
+daemon() { # <name> <cwd> <command>
+  local name="$1" cwd="$2" cmd="$3"
+  python3 - "$RUN/$name.log" "$cwd" "$cmd" "$RUN/pids/$name.pid" <<'PY'
+import os, sys
+log, cwd, cmd, pidfile = sys.argv[1:5]
+if os.fork():
+    sys.exit(0)
+os.setsid()
+pid = os.fork()
+if pid:
+    open(pidfile, "w").write(str(pid))
+    sys.exit(0)
+os.chdir(cwd)
+fd = os.open(log, os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
+os.dup2(fd, 1); os.dup2(fd, 2)
+os.dup2(os.open(os.devnull, os.O_RDONLY), 0)
+os.execvp("/bin/zsh", ["/bin/zsh", "-lc", cmd])
+PY
+}
+
+port_pid() { lsof -ti "tcp:$1" -sTCP:LISTEN 2>/dev/null | head -1; }
+tunnel_pid() { pgrep -f "ngrok http $1 --url $2" | head -1; }
+pid_of() {
+  case "$1" in
+    api) port_pid 8010 ;;
+    web) port_pid 3000 ;;
+    tunnel-api) tunnel_pid 8010 "$API_URL" ;;
+    tunnel-web) tunnel_pid 3000 "$WEB_URL" ;;
+  esac
+}
+db_running() { [ "$(docker inspect -f '{{.State.Running}}' steady-db-1 2>/dev/null)" = "true" ]; }
+is_up() { if [ "$1" = db ]; then db_running; else [ -n "$(pid_of "$1")" ]; fi; }
+
+check_url() { curl -s -o /dev/null -m 8 -w '%{http_code}' "$1" 2>/dev/null; }
+
+expand() { # services from args, or the default given as $1
+  local def="$1"; shift
+  local out="" s
+  [ $# -eq 0 ] && { echo "$def"; return; }
+  for s in "$@"; do
+    case "$s" in
+      all) out="$out $ALL" ;;
+      tunnels) out="$out tunnel-api tunnel-web" ;;
+      db|api|web|tunnel-api|tunnel-web) out="$out $s" ;;
+      *) err "Unknown service: $s (use: $ALL, tunnels, all)"; exit 1 ;;
+    esac
+  done
+  echo "$out"
+}
+
+start_one() {
+  local s="$1"
+  if is_up "$s"; then say "  $s: already running"; return; fi
+  case "$s" in
+    db)
+      if ! docker info >/dev/null 2>&1; then
+        say "  db: starting Docker Desktop"; open -a Docker
+        for _ in $(seq 1 60); do docker info >/dev/null 2>&1 && break; sleep 2; done
+      fi
+      docker start steady-db-1 >/dev/null && docker update --restart unless-stopped steady-db-1 >/dev/null
+      for _ in $(seq 1 30); do docker exec steady-db-1 pg_isready -U steady >/dev/null 2>&1 && break; sleep 1; done
+      ;;
+    api)
+      daemon api "$API_DIR" "STEADY_CORS_ORIGINS='$CORS' exec uv run uvicorn steady_api.main:app --host 127.0.0.1 --port 8010 --proxy-headers --forwarded-allow-ips=127.0.0.1 --log-level info"
+      for _ in $(seq 1 40); do [ "$(check_url http://127.0.0.1:8010/health)" = 200 ] && break; sleep 0.5; done
+      ;;
+    web)
+      [ -f "$WEB_DIR/.next/BUILD_ID" ] || { err "  web: no build yet; run: stedio deploy-web"; return; }
+      daemon web "$WEB_DIR" "export PATH=$NODE_BIN:\$PATH; STEADY_API_URL=http://localhost:8010 exec pnpm exec next start -p 3000"
+      for _ in $(seq 1 40); do [ -n "$(port_pid 3000)" ] && break; sleep 0.5; done
+      ;;
+    tunnel-api) daemon tunnel-api "$REPO" "exec ngrok http 8010 --url $API_URL --log=stdout" ;;
+    tunnel-web) daemon tunnel-web "$REPO" "exec ngrok http 3000 --url $WEB_URL --log=stdout" ;;
+  esac
+  sleep 1
+  if is_up "$s"; then say "  ${G}$s: started${X}"; else err "  $s: did not start; see: stedio log $s"; fi
+}
+
+stop_one() {
+  local s="$1" p
+  case "$s" in
+    db) db_running && docker stop steady-db-1 >/dev/null; say "  db: stopped" ; return ;;
+  esac
+  p="$(pid_of "$s")"
+  if [ -z "$p" ]; then say "  $s: not running"; return; fi
+  kill "$p" 2>/dev/null
+  # uv/pnpm wrappers leave a child on the port; wait, then make sure the port is free.
+  for _ in $(seq 1 20); do [ -z "$(pid_of "$s")" ] && break; sleep 0.5; done
+  p="$(pid_of "$s")"; [ -n "$p" ] && kill "$p" 2>/dev/null
+  say "  $s: stopped"
+}
+
+cmd_status() {
+  say "${B}Stedio local stack${X}  ${D}($REPO)${X}"
+  local s state detail
+  for s in $ALL; do
+    if is_up "$s"; then state="${G}running${X}"; else state="${R}stopped${X}"; fi
+    case "$s" in
+      db) detail="docker steady-db-1 :5432" ;;
+      api) detail="127.0.0.1:8010  pid $(pid_of api)" ;;
+      web) detail="127.0.0.1:3000  pid $(pid_of web)" ;;
+      tunnel-api) detail="$API_URL -> :8010" ;;
+      tunnel-web) detail="$WEB_URL -> :3000" ;;
+    esac
+    printf '  %-11s %-18s %s\n' "$s" "$state" "$detail"
+  done
+  say ""
+  say "  ${D}public checks:${X} api/health $(check_url "$API_URL/health")   site /he $(check_url "$WEB_URL/he")   site /app $(check_url "$WEB_URL/app")"
+  say "  ${D}versions:${X} main $(git -C "$REPO" rev-parse --short HEAD 2>/dev/null)  api $(git -C "$API_DIR" rev-parse --short HEAD 2>/dev/null)  app $(git -C "$MOBILE_DIR" rev-parse --short HEAD 2>/dev/null)  web $(git -C "$WEB_DIR" rev-parse --short HEAD 2>/dev/null)"
+}
+
+cmd_logs() {
+  local sel; sel="$(expand "api web" "$@")"
+  say "Following logs for:$sel   (Ctrl-C stops following; services keep running)"
+  local pids="" s
+  for s in $sel; do
+    if [ "$s" = db ]; then
+      (docker logs -f --tail 20 steady-db-1 2>&1 | sed -u "s/^/$(color_of db)[db]$X /") & pids="$pids $!"
+    else
+      touch "$RUN/$s.log"
+      (tail -n 20 -F "$RUN/$s.log" 2>/dev/null | sed -u "s/^/$(color_of "$s")[$s]$X /") & pids="$pids $!"
+    fi
+  done
+  trap 'kill $pids 2>/dev/null; exit 0' INT TERM
+  wait
+}
+
+cmd_log() {
+  local s="${1:-api}" n="${2:-80}"
+  if [ "$s" = db ]; then docker logs --tail "$n" steady-db-1 2>&1; else tail -n "$n" "$RUN/$s.log"; fi
+}
+
+cmd_urls() {
+  say "  API      $API_URL          (local http://127.0.0.1:8010, docs /docs)"
+  say "  Website  $WEB_URL/he       (local http://127.0.0.1:3000)"
+  say "  Web app  $WEB_URL/app"
+  say "  ngrok inspectors: http://127.0.0.1:4041 / :4042 (4040 is mixmaster)"
+}
+
+cmd_deploy_web() {
+  export PATH="$NODE_BIN:$PATH"
+  say "Exporting the app for the website..."
+  (cd "$MOBILE_DIR" && EXPO_PUBLIC_API_URL="$API_URL" EAS_PROJECT_ID=cf1df890-5cdd-44b7-8661-29475dd7ce60 APP_BUNDLE_ID=com.fisha.steady.dev pnpm export:website) | tail -1
+  say "Building the website..."
+  (cd "$WEB_DIR" && STEADY_API_URL=http://localhost:8010 pnpm exec next build) | grep -E "Compiled|rror" | head -5
+  stop_one web; start_one web
+}
+
+case "${1:-status}" in
+  up|start) shift; say "Starting..."; for s in $(expand "$ALL" "$@"); do start_one "$s"; done; echo; cmd_status ;;
+  stop|down) shift; for s in $(expand "api web" "$@"); do stop_one "$s"; done ;;
+  restart) shift; for s in $(expand "api web" "$@"); do stop_one "$s"; start_one "$s"; done ;;
+  status|ps) cmd_status ;;
+  logs|tail|follow) shift; cmd_logs "$@" ;;
+  log) shift; cmd_log "$@" ;;
+  urls|url) cmd_urls ;;
+  deploy-web) cmd_deploy_web ;;
+  help|-h|--help) sed -n '2,17p' "$(readlink -f "${BASH_SOURCE[0]}")" | sed 's/^# \{0,1\}//' ;;
+  *) err "Unknown command: $1"; sed -n '2,17p' "$(readlink -f "${BASH_SOURCE[0]}")" | sed 's/^# \{0,1\}//'; exit 1 ;;
+esac
