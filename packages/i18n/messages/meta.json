@@ -1,4 +1,333 @@
 {
+  "alr.auto_exit": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.auto_max": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.battery_low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.battery_replace": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.before_high": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.before_low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.bg_needed": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.bolus_not_delivered": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.bolus_stopped": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.calibrate": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.calibration_rejected": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.correction_prompt": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.delivery_limit": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.delivery_stopped": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.emergency": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.fall_fast": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.flow_blocked": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.high": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.high_long": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.insulin_reset": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.loading": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.low_long": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.low_urgent": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.missed_bolus": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.no_readings": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.other": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.pump_error": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.pump_lost": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.reminder": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.reservoir_low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.resumed": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.rise_fast": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.sensor_change": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.sensor_connected": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.sensor_ending": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.sensor_expired": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.sensor_started": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: a sensor start the device service recorded."
+  },
+  "alr.sensor_updating": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.set_change": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.set_changed": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: a set change day the pump recorded (time of day not given)."
+  },
+  "alr.signal_lost": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.silenced": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.suspend_before_low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.suspend_low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.time_change": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
+  "alr.transmitter_charge": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
+  },
   "cmp.badge.confirmed": {
     "board": "Components",
     "review": [
@@ -239,6 +568,12 @@
       "translation"
     ]
   },
+  "com.ac_feel": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
   "com.ac_int": {
     "board": "Companion",
     "review": [
@@ -270,6 +605,12 @@
     ]
   },
   "com.ai_label": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ai_pump": {
     "board": "Companion",
     "review": [
       "translation"
@@ -395,6 +736,36 @@
       "translation"
     ]
   },
+  "com.feel_bad": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.feel_good": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.feel_great": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.feel_hard": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.feel_ok": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
   "com.finish": {
     "board": "Companion",
     "review": [
@@ -491,6 +862,19 @@
     "note": "G-03 approved empty state for COM-11"
   },
   "com.history": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.hr": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Heart rate from Apple Health or Health Connect near a glucose reading."
+  },
+  "com.hr_k": {
     "board": "Companion",
     "review": [
       "translation"
@@ -703,6 +1087,18 @@
       "translation"
     ]
   },
+  "com.now_label": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.now_page": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
   "com.off_saved": {
     "board": "Companion",
     "review": [
@@ -735,6 +1131,54 @@
     "note": "Status under orb, must stay short"
   },
   "com.pending": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.pf_add": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.pf_kept": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.pf_no": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.pf_remove": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.pf_saved": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.pf_set": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.pf_title": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.pf_yes": {
     "board": "Companion",
     "review": [
       "translation"
@@ -1121,6 +1565,36 @@
       "translation"
     ]
   },
+  "com.tr_down": {
+    "board": "CMP-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.tr_down_fast": {
+    "board": "CMP-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.tr_flat": {
+    "board": "CMP-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.tr_up": {
+    "board": "CMP-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.tr_up_fast": {
+    "board": "CMP-01",
+    "review": [
+      "translation"
+    ]
+  },
   "com.type_ph": {
     "board": "Companion",
     "review": [
@@ -1330,8 +1804,243 @@
       "translation"
     ]
   },
+  "hab.amount": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.done": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.glucose_check": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.meds_taken": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.name": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.no_sweet_drinks": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.not_done": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.note": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.other": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.save": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.sleep": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.steps": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.tile": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.title": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.u_glasses": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.u_hours": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.u_min": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.u_servings": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.u_steps": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.vegetables": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.walk": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.water": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.weigh_in": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "hab.which": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.a1c_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.a1c_basis": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.a1c_lab": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.a1c_short": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.a1c_sub": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.a1c_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.adv_carbs": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.adv_move": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "ins.adv_team": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.analyzed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.analyzed_old": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.basis": {
     "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.basis_carelink": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.basis_pump": {
+    "board": "INS-01",
     "review": [
       "translation"
     ]
@@ -1348,11 +2057,366 @@
       "translation"
     ]
   },
+  "ins.cert_high": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.cert_low": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.cert_medium": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.ev_glucose": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.ev_insight": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.ev_profile": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.ev_record": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.excluded": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "ins.f_act_gap_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_act_gap_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_act_good_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_act_good_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_act_none_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_auto_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_auto_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_basis": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_good_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_good_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_info_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_watch_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_watch_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_gap_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_gap_b2": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_gap_higher_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_gap_lower_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_high_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_high_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_late_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_late_b2": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_late_rise_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Medians; rise and other are signed changes with unit."
+  },
+  "ins.f_late_rise_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "G-54 finding late_rise."
+  },
+  "ins.f_late_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_meal_time_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Body of the meal-time insight. Descriptive only."
+  },
+  "ins.f_meal_time_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight from the usual meal time (same as Routine's 'What I've learned so far'). meal is ins.slot_*."
+  },
+  "ins.f_range_good_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_range_good_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_sensor_short_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight body (G-58)."
+  },
+  "ins.f_sensor_short_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight title (G-58)."
+  },
+  "ins.f_set_int_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight body (G-58)."
+  },
+  "ins.f_set_int_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight title (G-58): usual days between set changes the pump recorded."
+  },
+  "ins.f_set_over_b": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Insight body (G-58). Rated days from the maker's page."
+  },
+  "ins.f_set_over_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight title (G-58): set older than the maker's rated days."
+  },
+  "ins.f_steps": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_sub": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_suspend_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_suspend_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_timing_good_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_timing_good_t": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_workout_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Median wording per Guy (חציון)."
+  },
+  "ins.f_workout_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "G-54 finding workout; activity is ins.wk_*."
   },
   "ins.fb_fail": {
     "board": "Overview",
@@ -1372,6 +2436,49 @@
       "translation"
     ]
   },
+  "ins.fix_goals": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.fix_log": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.fix_records": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.fix_target": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.gone_corrected": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.gone_ended": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Says only that the pattern was not seen in recent data; never that something improved."
+  },
+  "ins.median_b": {
+    "board": "OVR-04",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.no_band": {
     "board": "Overview",
     "review": [
@@ -1380,6 +2487,218 @@
     "note": "G-07: shown instead of insights while no target range is set. The example only shows the format."
   },
   "ins.obs": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.p_basis": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.p_rise_b": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.p_rise_b2": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.p_rise_t": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.p_sub": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.p_timing_b": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.p_timing_t": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.prov_at": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.prov_cov": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.prov_period": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.prov_src": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.prov_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.rd_answer": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.rd_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.rd_btn": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.rd_check": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.rd_empty": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.rd_facts": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.rd_fail": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.rd_hyp": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.rd_missing": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.rd_note": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.rd_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_cap": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_days": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_every": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_push": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_push_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.set_week": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.slot_breakfast": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.slot_dinner": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.slot_lunch": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.src_app": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.src_none": {
     "board": "Overview",
     "review": [
       "translation"
@@ -1439,11 +2758,221 @@
       "translation"
     ]
   },
+  "ins.tag_new": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.tag_updated": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.upd_changed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.upd_continuing": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "A follow-up, not a new finding. Correlation only, no cause."
+  },
+  "ins.upd_corrected": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.upd_new": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.when_afternoon": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.when_any": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.when_evening": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.when_morning": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.when_night": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.why_band_dev": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_band_you": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_d_activity": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_d_health": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_d_insulin": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_d_meals": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_d_pump": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_d_sensor": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_data": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_data_none": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_fix": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_goals": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_goals_none": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_hide": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.why_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.wk_cycle": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.wk_gym": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.wk_other": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.wk_run": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.wk_swim": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.wk_walk": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
   "jrn.act_title": {
     "board": "Journal",
     "review": [
       "translation"
     ]
+  },
+  "jrn.alert_src": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal alert row detail."
   },
   "jrn.b_device": {
     "board": "Journal",
@@ -1555,7 +3084,19 @@
       "translation"
     ]
   },
+  "jrn.dup_meal": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
   "jrn.dup_merge": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.dup_same": {
     "board": "Journal",
     "review": [
       "translation"
@@ -1615,6 +3156,13 @@
       "translation"
     ]
   },
+  "jrn.f_alert": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal filter: pump and sensor alerts."
+  },
   "jrn.f_all": {
     "board": "Journal",
     "review": [
@@ -1657,6 +3205,13 @@
       "translation"
     ]
   },
+  "jrn.g_sensor": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Source of a glucose reading in the Journal."
+  },
   "jrn.hide": {
     "board": "Journal",
     "review": [
@@ -1669,11 +3224,53 @@
       "translation"
     ]
   },
+  "jrn.ins_any": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Insulin entry with no insulin name."
+  },
+  "jrn.ins_auto": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "CareLink activationType AUTOCORRECTION."
+  },
+  "jrn.ins_bolus": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "CareLink activationType RECOMMENDED or unknown: a bolus the person gave on the pump."
+  },
+  "jrn.ins_carbs": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Carbs entered on the pump with this bolus."
+  },
   "jrn.ins_detail": {
     "board": "Journal",
     "review": [
       "translation"
     ]
+  },
+  "jrn.ins_manual": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "CareLink activationType MANUAL."
+  },
+  "jrn.ins_pump": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Insulin entries the pump reports without an insulin name."
   },
   "jrn.ins_src": {
     "board": "Journal",
@@ -1688,6 +3285,13 @@
     ],
     "note": "Journal title of an insulin record, board 'Fiasp, 4 units'"
   },
+  "jrn.ins_title2": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal insulin entry; units is the actual number, can be fractional (0.35)."
+  },
   "jrn.ins_title_n": {
     "board": "Journal",
     "review": [
@@ -1700,6 +3304,13 @@
     "review": [
       "translation"
     ]
+  },
+  "jrn.k_alert": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal entry kind: a pump or sensor alert."
   },
   "jrn.k_comp": {
     "board": "Journal",
@@ -1737,6 +3348,24 @@
       "translation"
     ]
   },
+  "jrn.lab_detail": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.lab_title": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.loading": {
+    "board": "JRN-01",
+    "review": [
+      "translation"
+    ]
+  },
   "jrn.meal_edit": {
     "board": "Journal",
     "review": [
@@ -1744,6 +3373,12 @@
     ]
   },
   "jrn.meal_edit_note": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.meal_photo": {
     "board": "Journal",
     "review": [
       "translation"
@@ -1776,6 +3411,80 @@
     "note": "Symptoms or note record; board has no journal example (G-23)"
   },
   "jrn.orig_kept": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_after": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_before": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_detail": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_est": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_grams": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_higher": {
+    "board": "Journal",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "jrn.pair_lower": {
+    "board": "Journal",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "jrn.pair_none": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_pump": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_split": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.pair_wait": {
     "board": "Journal",
     "review": [
       "translation"
@@ -1834,6 +3543,19 @@
     "review": [
       "translation"
     ]
+  },
+  "jrn.src_pump": {
+    "board": "JRN-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.src_pump_d": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump insulin entry with no known kind."
   },
   "jrn.st_completed": {
     "board": "Journal",
@@ -1935,6 +3657,228 @@
   },
   "jrn.yday_d": {
     "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.name": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.note": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.save": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.source": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.src_care_team": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.src_lab_report": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.src_other": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.src_self": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.t_a1c": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.t_cholesterol": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.t_creatinine": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.t_egfr": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.t_fasting_glucose": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.t_hdl": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.t_ldl": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.t_ogtt": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.t_other": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.t_triglycerides": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.t_tsh": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.t_uacr": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.taken": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.test": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.tile": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.title": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.unit": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.unit_h": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.value": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "lh.habit": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lh.lab": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lh.t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.bio": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.cancel": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.prompt": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.set": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.set_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.unlock": {
+    "board": "Settings",
     "review": [
       "translation"
     ]
@@ -2624,6 +4568,78 @@
     ],
     "note": "Lock-screen notification body; generic on purpose (no health details)"
   },
+  "nut.carbs_avg": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "nut.for_goals": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "nut.logged": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "nut.mark_full": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "nut.measured": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "nut.need_full": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "nut.protein_avg": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "nut.protein_partial": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "nut.t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "nut.target_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "nut.target_kg": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "nut.today_full": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.a_apple": {
     "board": "Onboarding",
     "review": [
@@ -2637,6 +4653,12 @@
     ]
   },
   "onb.a_create": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.a_e_closed": {
     "board": "Onboarding",
     "review": [
       "translation"
@@ -3039,6 +5061,420 @@
       "translation"
     ]
   },
+  "onb.fd_al_eggs": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_al_fish": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_al_milk": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_al_nuts": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_al_other": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_al_peanuts": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_al_sesame": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_al_shellfish": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_al_soy": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_al_wheat": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_allergies": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_av_celiac": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_av_gluten": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_av_lactose": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_av_nuts": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_av_other": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_avoid": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_celiac": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_dislikes": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_dislikes_h": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_fasting": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_in_fructose": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_in_gluten": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_in_lactose": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_in_other": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_intol": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_keto": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_lowCarb": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_mediterranean": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_note": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_protein": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_pt_amount": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_pt_gday": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_pt_gkg": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_pt_h": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_pt_src": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_pt_src_careTeam": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_pt_src_dietitian": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_pt_src_self": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_pt_unit": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_regular": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_style": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_vegan": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.fd_vegetarian": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_aerobic": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_g_fitness": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_g_keep": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_g_lose": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_g_muscle": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_g_none": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_goal": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_goals": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_kinds": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_none": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_note": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_strength": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_swim": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_team": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_w_evening": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_w_midday": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_w_morning": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_w_varies": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_walk": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_when": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ft_yoga": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.future": {
     "board": "Onboarding",
     "review": [
@@ -3052,6 +5488,168 @@
     ]
   },
   "onb.g_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_d_burnout": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_d_carbs": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_d_devices": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_d_eating_out": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_d_exercise": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_d_highs": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_d_lows": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_d_nights": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_d_other": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_d_remembering": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_d_sleep": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_d_work": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_h_calm": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_h_exercise": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_h_highs": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_h_labs": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_h_lows": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_h_meals": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_h_other": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_h_range": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_h_routine": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_h_understand": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_h_weight": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_hard": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_note": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.gl_t": {
     "board": "Onboarding",
     "review": [
       "translation"
@@ -3177,6 +5775,24 @@
       "translation"
     ]
   },
+  "onb.ic_tg_hi": {
+    "board": "ONB-13",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_tg_lo": {
+    "board": "ONB-13",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ic_tg_one": {
+    "board": "ONB-13",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.ic_upd": {
     "board": "Onboarding",
     "review": [
@@ -3214,6 +5830,126 @@
     ]
   },
   "onb.later": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_ck": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_ck_daily": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_ck_rarely": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_ck_sensor": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_ck_weekly": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_dpp4": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_glp1": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_limits": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_limits_h": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_metformin": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_more": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_more_h": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_none": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_note": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_other": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_sglt2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_sulfonylurea": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.md_t1": {
     "board": "Onboarding",
     "review": [
       "translation"
@@ -3562,6 +6298,30 @@
       "translation"
     ]
   },
+  "onb.rt_cy_no": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_cy_preferNot": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_cy_yes": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_cycle": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.rt_di": {
     "board": "Onboarding",
     "review": [
@@ -3628,6 +6388,30 @@
       "translation"
     ]
   },
+  "onb.rt_sh_nights": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_sh_no": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_sh_shifts": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rt_shift": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.rt_sl": {
     "board": "Onboarding",
     "review": [
@@ -3682,6 +6466,24 @@
       "translation"
     ]
   },
+  "onb.rv_fit": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_food": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_goals": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.rv_hist": {
     "board": "Onboarding",
     "review": [
@@ -3701,6 +6503,12 @@
     ]
   },
   "onb.rv_lang": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_meds": {
     "board": "Onboarding",
     "review": [
       "translation"
@@ -3731,6 +6539,12 @@
     ]
   },
   "onb.rv_sen": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.rv_skipped": {
     "board": "Onboarding",
     "review": [
       "translation"
@@ -3844,6 +6658,13 @@
       "translation"
     ]
   },
+  "onb.tx_none": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Treatment option; skips the insulin, pump and ratio steps."
+  },
   "onb.tx_ns": {
     "board": "Onboarding",
     "review": [
@@ -3868,7 +6689,26 @@
       "translation"
     ]
   },
+  "onb.ty_2": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Diabetes type option."
+  },
+  "onb.ty_err": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.ty_note": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ty_note_pre": {
     "board": "Onboarding",
     "review": [
       "translation"
@@ -3881,6 +6721,12 @@
     ]
   },
   "onb.ty_o": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.ty_pre": {
     "board": "Onboarding",
     "review": [
       "translation"
@@ -4181,6 +7027,13 @@
     ],
     "note": "Arguments replace the sample values drawn in the design."
   },
+  "ovr.last24": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Rolling window ending now, as a pump reports time in range."
+  },
   "ovr.left_hide": {
     "board": "Overview",
     "review": [
@@ -4308,6 +7161,12 @@
       "translation"
     ]
   },
+  "ovr.p_24h": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
   "ovr.p_2w": {
     "board": "Overview",
     "review": [
@@ -4340,6 +7199,60 @@
   },
   "ovr.prev": {
     "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_exits": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_sg": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_src": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_tdd": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_tdd1": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_wear": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.range_carelink": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.range_pump": {
+    "board": "OVR-01",
     "review": [
       "translation"
     ]
@@ -4393,6 +7306,12 @@
       "translation"
     ]
   },
+  "ovr.src_pump": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ]
+  },
   "ovr.src_sensor": {
     "board": "Overview",
     "review": [
@@ -4401,6 +7320,12 @@
   },
   "ovr.src_you": {
     "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.src_you_pump": {
+    "board": "OVR-01",
     "review": [
       "translation"
     ]
@@ -4434,6 +7359,30 @@
     "review": [
       "translation",
       "clinical"
+    ]
+  },
+  "ovr.sum_24h": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.sum_2w": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.sum_month": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.sum_past": {
+    "board": "Overview",
+    "review": [
+      "translation"
     ]
   },
   "ovr.sum_read": {
@@ -4491,6 +7440,18 @@
       "clinical"
     ],
     "note": "Coverage threshold comes from clinical config (G-06)."
+  },
+  "ovr.tir_pct_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.tir_pct_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
   },
   "ovr.tir_sensor": {
     "board": "Overview",
@@ -4572,6 +7533,258 @@
       "translation"
     ]
   },
+  "pc.b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.close": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.go": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_body": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_diagnosis": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_fitness": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_food": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_goals": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_insulin": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_meds": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_pump": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_ratios": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_routine": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_sensor": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_treatment": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.s_type": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "pc.t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "prg.base_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.base_when": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.col_base": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.col_last": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.lg_base": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.lg_before": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.lg_na": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.lg_week": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.no_range": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.row_cons": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.row_cov": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.row_cv": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.row_tbr": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.row_tir": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.st_insufficient": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.st_none": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.st_sustained": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.trend_sub": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.trend_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.week_a11y": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.week_a11y_na": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
   "rtn.answer": {
     "board": "Routine",
     "review": [
@@ -4584,12 +7797,42 @@
       "translation"
     ]
   },
+  "rtn.daily": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
   "rtn.day": {
     "board": "Localization",
     "review": [
       "translation"
     ],
     "note": "Hebrew verb follows companion persona gender Arguments replace the sample values drawn in the design."
+  },
+  "rtn.del_all": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.del_one": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.del_t": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.delete": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
   },
   "rtn.dismiss": {
     "board": "Routine",
@@ -4621,6 +7864,20 @@
     "review": [
       "translation"
     ]
+  },
+  "rtn.fd_day": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 day card label."
+  },
+  "rtn.fd_entries": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 day card: entries logged that day (sensor streams not counted)."
   },
   "rtn.fd_extend": {
     "board": "Routine",
@@ -4664,6 +7921,20 @@
       "translation"
     ]
   },
+  "rtn.fd_today": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 day card for today."
+  },
+  "rtn.fd_tomorrow": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 day card for tomorrow."
+  },
   "rtn.fd_well": {
     "board": "Routine",
     "review": [
@@ -4705,6 +7976,34 @@
     "review": [
       "translation"
     ]
+  },
+  "rtn.l_basis": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 basis of a learned item: days with that meal of days with any record."
+  },
+  "rtn.l_breakfast": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 learned item from the person's meal records (G-36)."
+  },
+  "rtn.l_dinner": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 learned item (G-36)."
+  },
+  "rtn.l_lunch": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 learned item (G-36)."
   },
   "rtn.learned": {
     "board": "Routine",
@@ -4815,12 +8114,25 @@
       "translation"
     ]
   },
+  "rtn.src_app": {
+    "board": "JRN-04",
+    "review": [
+      "translation"
+    ]
+  },
   "rtn.src_conv": {
     "board": "Routine",
     "review": [
       "translation"
     ],
     "note": "Board memory source line"
+  },
+  "rtn.src_guess": {
+    "board": "RTN-06",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-06 memory source line for the companion's own unconfirmed impression (a hypothesis, G-37). Editing makes it the person's fact."
   },
   "rtn.src_you": {
     "board": "Routine",
@@ -4962,6 +8274,48 @@
       "translation"
     ]
   },
+  "rtn.u_breakfast": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 still unknown item (G-36)."
+  },
+  "rtn.u_dinner": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 still unknown item (G-36)."
+  },
+  "rtn.u_glucose": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 still unknown item (G-36)."
+  },
+  "rtn.u_insulin": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 still unknown item (G-36). Missing records do not mean insulin was not taken."
+  },
+  "rtn.u_lunch": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 still unknown item (G-36)."
+  },
+  "rtn.u_meals": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "RTN-01 still unknown item (G-36)."
+  },
   "rtn.unavail_pause": {
     "board": "Routine",
     "review": [
@@ -4980,6 +8334,12 @@
       "translation"
     ]
   },
+  "rtn.why": {
+    "board": "JRN-04",
+    "review": [
+      "translation"
+    ]
+  },
   "set.a11y": {
     "board": "Settings",
     "review": [
@@ -4994,6 +8354,18 @@
   },
   "set.acct_b": {
     "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.acct_in": {
+    "board": "SET-01",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.acct_out": {
+    "board": "SET-01",
     "review": [
       "translation"
     ]
@@ -5088,6 +8460,150 @@
       "translation"
     ]
   },
+  "set.cg_connecting": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_dexcom_how": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_dexcom_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_dexcom_title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_dx_verify": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_failed": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_jp": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_lb_s1": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_lb_s2": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_lb_s3": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_lb_s4": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_lb_steps_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_lb_verify": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_libre_how": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_libre_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_libre_title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_locked": {
+    "board": "SET-02",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_none_yet": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_on": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_pw": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_region": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_user": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cg_wrong": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cl_added": {
     "board": "SET-05",
     "review": [
@@ -5095,6 +8611,18 @@
     ]
   },
   "set.cl_again": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ai": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_batt": {
     "board": "SET-05",
     "review": [
       "translation"
@@ -5184,6 +8712,18 @@
       "translation"
     ]
   },
+  "set.cl_out_pump": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_out_sensor": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cl_page": {
     "board": "SET-05",
     "review": [
@@ -5191,6 +8731,24 @@
     ]
   },
   "set.cl_page_web": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_pump": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_pump_at": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_pump_old": {
     "board": "SET-05",
     "review": [
       "translation"
@@ -5208,13 +8766,109 @@
       "translation"
     ]
   },
+  "set.cl_res": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sensor": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sensor_left": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sg": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sg_auto": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sg_manual": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_sg_safe": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ss_calib": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ss_change": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ss_disc": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ss_nodata": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ss_search": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_ss_warm": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cl_sub": {
     "board": "SET-05",
     "review": [
       "translation"
     ]
   },
+  "set.cl_susp": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
   "set.cl_title": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_tx": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.cl_units": {
     "board": "SET-05",
     "review": [
       "translation"
@@ -5240,6 +8894,30 @@
   },
   "set.cl_wrong": {
     "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.clock": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.clock_12": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.clock_24": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.clock_auto": {
+    "board": "Settings",
     "review": [
       "translation"
     ]
@@ -5522,12 +9200,6 @@
       "translation"
     ]
   },
-  "set.dev_plan": {
-    "board": "Settings",
-    "review": [
-      "translation"
-    ]
-  },
   "set.dev_planned_cap": {
     "board": "Settings",
     "review": [
@@ -5654,7 +9326,32 @@
       "translation"
     ]
   },
+  "set.ds_phone": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Tag on the phone's health store row when the app is open in a browser: it is connected from the phone app."
+  },
   "set.ds_reconnect": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_retry_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_retrying": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_sign_again": {
     "board": "Settings",
     "review": [
       "translation"
@@ -5668,6 +9365,12 @@
   },
   "set.ds_unavail": {
     "board": "SET-05",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_unknown": {
+    "board": "Settings",
     "review": [
       "translation"
     ]
@@ -5945,6 +9648,13 @@
       "translation"
     ]
   },
+  "set.hb4": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "Health store 'Before you connect' (G-39): what else is read and why."
+  },
   "set.hc": {
     "board": "Settings",
     "review": [
@@ -6011,6 +9721,20 @@
       "translation"
     ]
   },
+  "set.hd_newest": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "Device detail, health store: when the newest reading was measured, apart from the last sync (G-35)."
+  },
+  "set.hd_removed": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "After a sync that removed readings deleted in the health app (G-35). Readings the person corrected in Steady are kept."
+  },
   "set.hd_rm_fail": {
     "board": "SET-05",
     "review": [
@@ -6028,6 +9752,20 @@
     "review": [
       "translation"
     ]
+  },
+  "set.hd_stale_b": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "Body of the stale banner (G-35). Must match the existing Sync now button label."
+  },
+  "set.hd_stale_t": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "Banner when the last successful sync is more than a day old (G-35)."
   },
   "set.hd_synced": {
     "board": "SET-05",
@@ -6052,6 +9790,13 @@
     "review": [
       "translation"
     ]
+  },
+  "set.hd_web": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Apple Health / Health Connect screen when the app is open in a browser."
   },
   "set.help": {
     "board": "Settings",
@@ -6258,6 +10003,24 @@
       "translation"
     ]
   },
+  "set.pf_history": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.pf_history_fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.pf_history_none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "set.ph_0": {
     "board": "Settings",
     "review": [
@@ -6403,6 +10166,12 @@
       "translation"
     ]
   },
+  "set.so_b": {
+    "board": "SET-01",
+    "review": [
+      "translation"
+    ]
+  },
   "set.so_t": {
     "board": "Settings",
     "review": [
@@ -6439,7 +10208,37 @@
       "translation"
     ]
   },
+  "set.src_companion": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.src_migration": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.src_onboarding": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.src_settings": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "set.src_setup": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.src_website": {
     "board": "Settings",
     "review": [
       "translation"
@@ -6456,6 +10255,59 @@
     "review": [
       "translation"
     ]
+  },
+  "set.tg_device": {
+    "board": "SET-02",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tg_src_carelink": {
+    "board": "SET-02",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tg_src_pump": {
+    "board": "SET-02",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tr_set": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Treatment settings: kind of infusion set (G-58)."
+  },
+  "set.tr_set_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Treatment settings helper."
+  },
+  "set.tr_set_ext": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Medtronic Extended infusion set, rated by the maker for up to 7 days."
+  },
+  "set.tr_set_ns": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Treatment settings."
+  },
+  "set.tr_set_std": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Other Medtronic sets, rated for up to 3 days."
   },
   "set.train_off": {
     "board": "Settings",
@@ -6596,6 +10448,192 @@
     ]
   },
   "set.voice": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.accept": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.bad_code": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.banner": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.cancel": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.code": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.code_until": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.have_code": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.invite": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.label": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.label_ph": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.lead": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.leave": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.manage": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.mine_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.not_alarm": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.own_code": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.pending": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.remove": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.row_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.send": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.send_text": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.since": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.stop": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.theirs_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.view": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.viewing_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.viewing_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.what": {
     "board": "Settings",
     "review": [
       "translation"
@@ -6976,6 +11014,25 @@
       "translation"
     ]
   },
+  "sum.ahead_afternoon": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "sum.ahead_evening": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "sum.ahead_morning": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Daily summary: a routine for a later part of today, shown to prepare for it."
+  },
   "sum.body": {
     "board": "Overview",
     "review": [
@@ -7022,6 +11079,277 @@
   },
   "sys.saveFailed": {
     "board": "Localization",
+    "review": [
+      "translation"
+    ]
+  },
+  "td.a11y": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.lg_band": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.lg_mid": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.sub": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.thin": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.title": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "upd.fail_b": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.fail_t": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.install": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.install_b": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.install_t": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.later": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.ready_b": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.ready_t": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.retry": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.update": {
+    "board": "Updates",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_approve": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_approved": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_created": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_admin": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_cancel": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_go": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_del_type": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_delete": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_deleted": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_devices": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_email": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_emailed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_google": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_last": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_noprofile": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_not_emailed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_readings": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_status": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_view": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.adm_waiting": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.admin": {
+    "board": "WebDashboard",
     "review": [
       "translation"
     ]
@@ -7080,6 +11408,18 @@
       "translation"
     ]
   },
+  "wd.cn_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.cn_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.create": {
     "board": "WebDashboard",
     "review": [
@@ -7094,6 +11434,12 @@
   },
   "wd.d_act": {
     "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.d_hr": {
+    "board": "WD-02",
     "review": [
       "translation"
     ]
@@ -7230,6 +11576,18 @@
       "translation"
     ]
   },
+  "wd.fr_b": {
+    "board": "WD-04",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.fr_t": {
+    "board": "WD-04",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.hist_none": {
     "board": "WebDashboard",
     "review": [
@@ -7285,6 +11643,18 @@
       "translation"
     ]
   },
+  "wd.k_ins_mix": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.k_ins_pump": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.k_meals": {
     "board": "WebDashboard",
     "review": [
@@ -7321,7 +11691,25 @@
       "translation"
     ]
   },
+  "wd.k_tir_carelink": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.k_tir_few": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.k_tir_none": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.k_tir_pump": {
     "board": "WebDashboard",
     "review": [
       "translation"
@@ -7393,6 +11781,12 @@
       "translation"
     ]
   },
+  "wd.median_q": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.mem_b": {
     "board": "WebDashboard",
     "review": [
@@ -7417,7 +11811,25 @@
       "translation"
     ]
   },
+  "wd.np_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.np_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.overview": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.p1": {
     "board": "WebDashboard",
     "review": [
       "translation"
@@ -7442,6 +11854,30 @@
     ]
   },
   "wd.pdf": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.pe_device": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.pe_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.pe_note": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.pe_saved": {
     "board": "WebDashboard",
     "review": [
       "translation"
@@ -7478,6 +11914,12 @@
     ]
   },
   "wd.range_line": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.range_line_24": {
     "board": "WebDashboard",
     "review": [
       "translation"
@@ -7639,6 +12081,24 @@
       "translation"
     ]
   },
+  "wd.su_google_bad": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.su_google_off": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.su_taken": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.t_act": {
     "board": "WebDashboard",
     "review": [
@@ -7740,6 +12200,277 @@
     "review": [
       "translation"
     ]
+  },
+  "wd.view_admin": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_admin_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_banner": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_banner_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_noexport": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_readonly": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.view_stop": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.wl_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.wl_lead": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.wl_or": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.wl_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wdg.above": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.below": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.empty": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.few": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.h_few": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ]
+  },
+  "wdg.h_from": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ]
+  },
+  "wdg.h_noband": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ]
+  },
+  "wdg.h_today": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ]
+  },
+  "wdg.inside": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.la_ago": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: age of the latest reading. {t} is filled on the phone by iOS with a running duration such as '5 min'."
+  },
+  "wdg.la_notlive": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "The lock-screen card never updates while the app is closed; {t} is the age iOS counts."
+  },
+  "wdg.la_stale": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ]
+  },
+  "wdg.mixed": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.noband": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.part_0": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: the 3-hour part of the day starting 00:00."
+  },
+  "wdg.part_12": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: the 3-hour part of the day starting 12:00."
+  },
+  "wdg.part_15": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: the 3-hour part of the day starting 15:00."
+  },
+  "wdg.part_18": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: the 3-hour part of the day starting 18:00."
+  },
+  "wdg.part_21": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: the 3-hour part of the day starting 21:00."
+  },
+  "wdg.part_3": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: the 3-hour part of the day starting 03:00."
+  },
+  "wdg.part_6": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: the 3-hour part of the day starting 06:00."
+  },
+  "wdg.part_9": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: the 3-hour part of the day starting 09:00."
+  },
+  "wdg.part_t": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity title: part of the day and its hours."
+  },
+  "wdg.pt_above": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: this 3-hour part of the day over the last 14 days. Words only, no advice."
+  },
+  "wdg.pt_below": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: this 3-hour part of the day over the last 14 days. Words only, no advice."
+  },
+  "wdg.pt_few": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: this 3-hour part of the day over the last 14 days. Words only, no advice."
+  },
+  "wdg.pt_inside": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: this 3-hour part of the day over the last 14 days. Words only, no advice."
+  },
+  "wdg.pt_mixed": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: this 3-hour part of the day over the last 14 days. Words only, no advice."
+  },
+  "wdg.pt_noband": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Live Activity: this 3-hour part of the day over the last 14 days. Words only, no advice."
+  },
+  "wdg.title": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
   },
   "web.a1": {
     "board": "Website",
@@ -8240,6 +12971,174 @@
   },
   "web.trial": {
     "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.basis_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.basis_steady": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.basis_week": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.below_week_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.below_week_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.set": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.set_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.steady_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.steady_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.tag": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.tir_day_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.tir_day_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.tir_week_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "win.tir_week_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "wk.count": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "wk.felt": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "wk.glucose": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "wk.no_readings": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "wk.not_enough": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "wk.note": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "wk.t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "wk.this": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "wk.this_none": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "wl.b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "wl.check": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "wl.out": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "wl.still": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "wl.t": {
+    "board": "Onboarding",
     "review": [
       "translation"
     ]

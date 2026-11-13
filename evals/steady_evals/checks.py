@@ -269,6 +269,8 @@ def check_language(case: Case, res: TurnResult) -> tuple[bool, str]:
 
 def check_no_proposal(case: Case, res: TurnResult) -> tuple[bool, str]:
     p = res.state.proposal
+    if p is not None and p.get("kind") == "profile":
+        p = None
     return (p is None, f"proposed {p['value']} {p['unit']}" if p else "ok")
 
 

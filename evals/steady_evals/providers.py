@@ -173,6 +173,39 @@ class OpenAICompatible:
         return Completion(text=text, tool_calls=calls, latency_s=dt, usage=usage, raw_text=msg.content)
 
 
+class ProductionOpenAI:
+    """The production adapter itself (`steady_api.ai.provider.OpenAIProvider`: Responses API, reasoning effort), so a run
+    measures exactly what the API sends. Only for OpenAI; other servers use OpenAICompatible."""
+
+    tool_mode = "native"
+
+    def __init__(self, model: str, effort: str = "low", api_key_env: str = "OPENAI_API_KEY", timeout: float = 120, label: str | None = None):
+        from steady_api.ai.provider import OpenAIProvider
+
+        from .production import API  # noqa: F401  (puts services/api on the path)
+
+        key = os.environ.get(api_key_env)
+        if not key:
+            raise ProviderError(f"Set {api_key_env} in the environment (never in a file in the repository).")
+        self.inner = OpenAIProvider(key, model, timeout, effort)
+        self.label = label or f"{model}[production,{effort or 'default'}]"
+
+    def complete(self, messages: list[dict], tools: list[dict]) -> Completion:
+        from steady_api.ai.provider import ProviderFailed
+
+        t0 = time.monotonic()
+        try:
+            c = self.inner.complete(messages, tools)
+        except ProviderFailed as exc:
+            raise ProviderError(str(exc)) from exc
+        return Completion(
+            text=c.text,
+            tool_calls=[ToolCall(id=t.id, name=t.name, arguments=t.arguments) for t in c.tool_calls],
+            latency_s=time.monotonic() - t0,
+            raw_text=c.text,
+        )
+
+
 class Scripted:
     """Replays fixed completions. Only for the harness's own tests; never reported as a model result."""
 

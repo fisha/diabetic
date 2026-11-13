@@ -25,7 +25,7 @@ const server = http.createServer((req, res) => {
   const page = await ctx.newPage(); global.lastPage = page;
   page.on('pageerror', (e) => errors.push(e.message));
   const shot = (n) => page.screenshot({ path: path.join(out, `${n}.png`) });
-  const tab = async (name) => { await page.getByText(name, { exact: true }).last().click(); await page.waitForTimeout(1800); };
+  const tab = async (name) => { await page.getByRole('tab', { name, exact: true }).click(); await page.waitForTimeout(1800); };
   const say = async (text) => {
     await page.getByLabel('Message Noa', { exact: false }).first().fill(text);
     await page.getByLabel('Send', { exact: true }).first().click(); await page.waitForTimeout(2000);
@@ -60,11 +60,15 @@ const server = http.createServer((req, res) => {
     ok('conversation follow-up on server', fus.some((f) => f.origin === 'conversation' && f.title === 'to take a walk'));
     const mems = (await api('/memories', { token: te.access_token })).json;
     ok('memory on server', mems.length === 1 && mems[0].text === 'I prefer short replies');
+    // An impression the companion saved is kept apart from what the person said (G-37).
+    await say('remember it seems I skip breakfast');
+    const imp = (await api('/memories', { token: te.access_token })).json;
+    ok('impression on server', imp.length === 2 && imp[1].kind === 'impression');
 
-    // Journal shows both reminders with their lifecycle.
+    // Journal shows the reminder with its lifecycle (the one due in minutes: "in 2 hours" can fall on tomorrow's page).
     await tab('Journal');
-    ok('journal reminder', await page.getByText('Check glucose after lunch').first().isVisible());
-    await page.getByText('Check glucose after lunch').first().click(); await page.waitForTimeout(800);
+    ok('journal reminder', await page.getByText('to take a walk').first().isVisible());
+    await page.getByText('to take a walk', { exact: true }).last().click(); await page.waitForTimeout(800);
     await shot('f01-journal-reminder');
     ok('lifecycle shown', await page.getByText('Scheduled', { exact: true }).first().isVisible());
     await page.getByText('Change, snooze or cancel', { exact: true }).click(); await page.waitForTimeout(1500);
@@ -79,8 +83,15 @@ const server = http.createServer((req, res) => {
     await page.getByText('Memory', { exact: true }).first().click(); await page.waitForTimeout(1500);
     await shot('f03-memory');
     ok('memory listed', await page.getByText('I prefer short replies').last().isVisible());
+    ok('impression marked', await page.getByText('impression, not confirmed', { exact: false }).last().isVisible());
     await page.getByText('Remove all memories', { exact: true }).click(); await page.waitForTimeout(1500);
     ok('memories removed', (await api('/memories', { token: te.access_token })).json.length === 0);
+
+    // Routine tab: the first days from the server (G-36).
+    await page.getByText('Routine', { exact: true }).first().click(); await page.waitForTimeout(1500);
+    await shot('f04-first-days');
+    ok('first days card', await page.getByText('Day 1 of about 3').first().isVisible());
+    ok('still unknown listed', await page.getByText('your usual breakfast time', { exact: false }).first().isVisible());
   } catch (e) {
     results.push('ERROR ' + e.message.split('\n')[0]); await global.lastPage.screenshot({ path: path.join(out, 'zz-fail.png') }); console.log('fail url', global.lastPage.url());
   }

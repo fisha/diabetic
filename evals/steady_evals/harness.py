@@ -13,6 +13,7 @@ from .production import (
     TOOL_SPECS,
     DeviceLink,
     GlucoseRecord,
+    HealthSample,
     Memory,
     Profile,
     Record,
@@ -84,7 +85,7 @@ class FixtureDB:
             start = min(self.local_now.replace(hour=0, minute=0, second=0, microsecond=0), self.local_now - timedelta(hours=6))
             rows = sorted((r for r in self.records if r.occurred_at >= start), key=lambda r: r.occurred_at)
             return _Rows(rows[: prod_context.MAX_RECORDS])
-        if entity is DeviceLink:
+        if entity is DeviceLink or entity is HealthSample:
             return _Rows()
         raise NotImplementedError(f"FixtureDB has no answer for {entity}")
 
@@ -107,7 +108,8 @@ def data_block(case: Case, profile: Profile) -> list[str]:
 def build_messages(case: Case) -> list[dict]:
     mems = [Memory(group=m["group"], text=m["text"]) for m in case.memories] if case.memory_on else []
     profile = build_profile(case)
-    sp = system_prompt(profile, mems, case.now, case.memory_on, None, data=data_block(case, profile))
+    cgm = any(g.get("method") == "sensor" and g["minutes_ago"] <= 24 * 60 for g in case.records.get("glucose", []))
+    sp = system_prompt(profile, mems, case.now, case.memory_on, None, data=data_block(case, profile), cgm=cgm)
     return [{"role": "system", "content": sp}, *case.history, {"role": "user", "content": case.user}]
 
 

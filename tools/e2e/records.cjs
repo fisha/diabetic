@@ -25,7 +25,7 @@ const server = http.createServer((req, res) => {
   const page = await ctx.newPage(); global.lastPage = page;
   page.on('pageerror', (e) => errors.push(e.message));
   const shot = (n) => page.screenshot({ path: path.join(out, `${n}.png`) });
-  const tab = async (name) => { await page.getByText(name, { exact: true }).last().click(); await page.waitForTimeout(1800); };
+  const tab = async (name) => { await page.getByRole('tab', { name, exact: true }).click(); await page.waitForTimeout(1800); };
   const chip = async (name) => { await tab('Companion'); await page.getByText(name, { exact: true }).first().click(); await page.waitForTimeout(1500); };
   const range = `since=${encodeURIComponent(new Date(Date.now() - 86400000).toISOString())}&until=${encodeURIComponent(new Date(Date.now() + 3600000).toISOString())}`;
   try {

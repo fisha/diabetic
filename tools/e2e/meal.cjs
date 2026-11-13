@@ -26,7 +26,7 @@ const server = http.createServer((req, res) => {
   const page = await ctx.newPage(); global.lastPage = page;
   page.on('pageerror', (e) => errors.push(e.message));
   const shot = (n) => page.screenshot({ path: path.join(out, `${n}.png`) });
-  const meal = async () => { await page.getByText('Companion', { exact: true }).last().click(); await page.waitForTimeout(1500); await page.getByRole('button', { name: 'Meal', exact: true }).last().click(); await page.waitForTimeout(1500); };
+  const meal = async () => { await page.getByRole('tab', { name: 'Companion', exact: true }).click(); await page.waitForTimeout(1500); await page.getByRole('button', { name: 'Meal', exact: true }).last().click(); await page.waitForTimeout(1500); };
   const range = `since=${encodeURIComponent(new Date(Date.now() - 86400000).toISOString())}&until=${encodeURIComponent(new Date(Date.now() + 3600000).toISOString())}`;
   try {
     await api('/auth/sign-up', { method: 'POST', body: { email: 'f@example.com', password: 'correct horse battery' } });

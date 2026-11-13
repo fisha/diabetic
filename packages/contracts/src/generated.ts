@@ -24,6 +24,142 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/activity/{record_id}/similar": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Similar Workouts */
+        get: operations["similar_workouts_activity__record_id__similar_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/users": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Users */
+        get: operations["users_admin_users_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/users/{user_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Delete User
+         * @description Deletes another account and everything in it, as the person's own "Delete account" does. Never the admin's own
+         *     account or another admin's, and only when the typed email matches the account's.
+         */
+        delete: operations["delete_user_admin_users__user_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/users/{user_id}/approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Approve
+         * @description Takes an account off the waitlist (Guy, 12 Nov 2026) and emails it. Approving twice changes nothing.
+         */
+        post: operations["approve_admin_users__user_id__approve_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/app/version": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Version
+         * @description Public: it says only which build number is newest and where to install it.
+         */
+        get: operations["version_app_version_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/apple": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Apple
+         * @description Sign in or sign up with Apple (iPhone app), linked the same way as Google.
+         */
+        post: operations["apple_auth_apple_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/google": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Google
+         * @description Sign in or sign up with Google. The account is found by its Google id, else by the Google-verified email (an
+         *     account made with email and password is linked then), else made new without a password.
+         */
+        post: operations["google_auth_google_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/me": {
         parameters: {
             query?: never;
@@ -33,6 +169,26 @@ export interface paths {
         };
         /** Me */
         get: operations["me_auth_me_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/options": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Options
+         * @description Which ways to make an account are open, so the app and the website show only those.
+         */
+        get: operations["options_auth_options_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -103,6 +259,43 @@ export interface paths {
         put?: never;
         /** Sign Up */
         post: operations["sign_up_auth_sign_up_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/verify": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Verify */
+        post: operations["verify_auth_verify_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/verify/send": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Send Verification
+         * @description Sends a new code to the signed-in account's email (not more than once a minute).
+         */
+        post: operations["send_verification_auth_verify_send_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -252,6 +445,110 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/devices/dexcom": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Dexcom Status */
+        get: operations["dexcom_status_devices_dexcom_get"];
+        /**
+         * Dexcom Connect
+         * @description Signs in now. Only a sign-in that worked is kept; a refused one is answered and forgotten.
+         */
+        put: operations["dexcom_connect_devices_dexcom_put"];
+        post?: never;
+        /**
+         * Dexcom Disconnect
+         * @description Forgets the sign-in. With remove_readings, the readings that came from this source are deleted too.
+         */
+        delete: operations["dexcom_disconnect_devices_dexcom_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/dexcom/sync": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Dexcom Sync */
+        post: operations["dexcom_sync_devices_dexcom_sync_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/events": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Device Events
+         * @description The pump's alerts and messages in a period, for the journal (Guy, 12 Nov 2026), oldest first.
+         */
+        get: operations["device_events_devices_events_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/libre": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Libre Status */
+        get: operations["libre_status_devices_libre_get"];
+        /**
+         * Libre Connect
+         * @description Signs in now. Only a sign-in that worked is kept; a refused one is answered and forgotten.
+         */
+        put: operations["libre_connect_devices_libre_put"];
+        post?: never;
+        /**
+         * Libre Disconnect
+         * @description Forgets the sign-in. With remove_readings, the readings that came from this source are deleted too.
+         */
+        delete: operations["libre_disconnect_devices_libre_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/libre/sync": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Libre Sync */
+        post: operations["libre_sync_devices_libre_sync_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/devices/push-token": {
         parameters: {
             query?: never;
@@ -268,6 +565,23 @@ export interface paths {
         post?: never;
         /** Delete Push Token */
         delete: operations["delete_push_token_devices_push_token_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/sync": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Sync All */
+        post: operations["sync_all_devices_sync_post"];
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -588,6 +902,24 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/health-data/samples": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Samples */
+        get: operations["list_samples_health_data_samples_get"];
+        put?: never;
+        /** Import Samples */
+        post: operations["import_samples_health_data_samples_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/insights": {
         parameters: {
             query?: never;
@@ -595,10 +927,95 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** List Insights */
+        /**
+         * List Insights
+         * @description `shown=true`: the client lists these insights on screen now, so each listing is kept as learning data.
+         */
         get: operations["list_insights_insights_get"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/familiarization": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Familiarization
+         * @description The first days (RTN-01): which day, entries per day, first impressions of the routine, and what is not known yet.
+         */
+        get: operations["get_familiarization_insights_familiarization_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/hours": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * By Hour
+         * @description Each hour of the day over the last 14 days (for the lock-screen widget, G-40): how many days had readings then and
+         *     how many of those days were above, below or in the person's own range, by that day's middle value in the hour.
+         *     With span=3 the blocks are three hours long (00-03, 03-06, ...), for the lock-screen card's part of the day (G-41).
+         */
+        get: operations["by_hour_insights_hours_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/updates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Updates
+         * @description Recent insight updates (new, changed, follow-up, ended, corrected), newest first, whether pushed or not.
+         */
+        get: operations["list_updates_insights_updates_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/{key}/event": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Insight Event
+         * @description What the person did with an insight, kept apart from opening it and from what they said about it.
+         */
+        post: operations["insight_event_insights__key__event_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -617,6 +1034,64 @@ export interface paths {
         /** Feedback */
         post: operations["feedback_insights__key__feedback_post"];
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/{key}/interpret": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Interpret Insight
+         * @description A personal reading of one current insight. Not for someone viewing a shared account (it would be kept as theirs).
+         */
+        post: operations["interpret_insight_insights__key__interpret_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/{key}/state": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Set State
+         * @description Seen or read on a screen: kept on the server, so the app and the website show the same state.
+         */
+        post: operations["set_state_insights__key__state_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/live-activity": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Register */
+        put: operations["register_live_activity_put"];
+        post?: never;
+        /** Unregister */
+        delete: operations["unregister_live_activity_delete"];
         options?: never;
         head?: never;
         patch?: never;
@@ -680,7 +1155,11 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get?: never;
+        /**
+         * Get Photo
+         * @description The photo of a saved meal, for its Journal card (Guy, 13 Nov 2026). Only the person's own; gone once removed.
+         */
+        get: operations["get_photo_meal_photos__photo_id__get"];
         put?: never;
         post?: never;
         /** Delete Photo */
@@ -760,6 +1239,103 @@ export interface paths {
         patch: operations["edit_memory_memories__memory_id__patch"];
         trace?: never;
     };
+    "/metrics/progress": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Progress
+         * @description Weekly windows up to yesterday (local), the baseline, and whether a change held (see metrics.progress).
+         */
+        get: operations["get_progress_metrics_progress_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/metrics/quality": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Quality
+         * @description Data quality: each source's measured rhythm, duplicates and overlaps dropped, gaps and coverage per day.
+         */
+        get: operations["get_quality_metrics_quality_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/metrics/typical-day": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Typical Day
+         * @description The spread of glucose by time of day over [from, to) (default: the last 14 days), and whether there was enough.
+         */
+        get: operations["get_typical_day_metrics_typical_day_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/nutrition/days/{day}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Mark Day
+         * @description The person says the day's meals are all logged (or not). Only today and earlier.
+         */
+        put: operations["mark_day_nutrition_days__day__put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/nutrition/summary": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Food Summary */
+        get: operations["food_summary_nutrition_summary_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/profile": {
         parameters: {
             query?: never;
@@ -778,6 +1354,66 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/profile/history": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Profile History
+         * @description Changes to the profile answers, newest first (at most 100), optionally for one section ("food", "goals").
+         */
+        get: operations["profile_history_profile_history_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/progress": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Progress
+         * @description Wins of the last 14 days, newest first (the daily check runs here too if it is due).
+         */
+        get: operations["get_progress_progress_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/progress/{achievement_id}/state": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Set State
+         * @description Seen, or the celebration shown: once, anywhere. A second celebration of the same win is refused (409).
+         */
+        post: operations["set_state_progress__achievement_id__state_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/records": {
         parameters: {
             query?: never;
@@ -785,7 +1421,10 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** List Records */
+        /**
+         * List Records
+         * @description `kinds=2`: the client knows lab results and habits (13 Nov 2026); older app code gets only the kinds it knows.
+         */
         get: operations["list_records_records_get"];
         put?: never;
         /** Create */
@@ -852,6 +1491,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/records/{record_id}/same-as": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Same As
+         * @description Marks this meal entry as the same meal as another (G-47), or, with null, as a separate meal. The entry that points
+         *     is shown and counted with the other. Either side can be named: when the other one is a device's entry and this one
+         *     is not, the device's entry is the one that points.
+         */
+        put: operations["same_as_records__record_id__same_as_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/settings": {
         parameters: {
             query?: never;
@@ -868,6 +1529,80 @@ export interface paths {
         head?: never;
         /** Patch Settings */
         patch: operations["patch_settings_settings_patch"];
+        trace?: never;
+    };
+    "/sharing": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Sharing */
+        get: operations["get_sharing_sharing_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sharing/accept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Accept
+         * @description The viewer enters the code. It works once, within 7 days, and not for one's own data.
+         */
+        post: operations["accept_sharing_accept_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sharing/invites": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Invite */
+        post: operations["invite_sharing_invites_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sharing/{share_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * End
+         * @description The owner removes a viewer or cancels an invite; the viewer stops viewing. Takes effect on the next request.
+         */
+        delete: operations["end_sharing__share_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/voice": {
@@ -951,14 +1686,131 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** A1cOut */
+        A1cOut: {
+            /** Coverage */
+            coverage: number;
+            /** Days */
+            days: number;
+            /** Gmi Percent */
+            gmi_percent: number;
+            /** Mean Mgdl */
+            mean_mgdl: number;
+        };
+        /** AcceptIn */
+        AcceptIn: {
+            /** Code */
+            code: string;
+        };
+        /** AchievementOut */
+        AchievementOut: {
+            /** Celebrated At */
+            celebrated_at: string | null;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Data */
+            data: {
+                [key: string]: unknown;
+            };
+            /** Day */
+            day: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "tir_day" | "tir_week" | "below_week" | "steady";
+            /** Seen At */
+            seen_at: string | null;
+            /** Significant */
+            significant: boolean;
+        };
         /** ActivityData */
         ActivityData: {
+            /**
+             * Feeling
+             * @default null
+             */
+            feeling: ("great" | "good" | "ok" | "hard" | "bad") | null;
             /** Intensity */
             intensity: string;
             /** Minutes */
             minutes: number;
             /** Type */
             type: string;
+        };
+        /** AdminDeleteIn */
+        AdminDeleteIn: {
+            /** Confirm Email */
+            confirm_email: string;
+        };
+        /** AdminUserOut */
+        AdminUserOut: {
+            /** Approved At */
+            approved_at: string | null;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Devices */
+            devices: string[];
+            /** Email */
+            email: string;
+            /** Has Profile */
+            has_profile: boolean;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Last Reading At */
+            last_reading_at: string | null;
+            /** Readings 14D */
+            readings_14d: number;
+            /** Via Google */
+            via_google: boolean;
+        };
+        /** AppVersionOut */
+        AppVersionOut: {
+            /** Install Url */
+            install_url: string | null;
+            /** Latest Build */
+            latest_build: number | null;
+        };
+        /** AppleIn */
+        AppleIn: {
+            /** Id Token */
+            id_token: string;
+        };
+        /** ApprovedOut */
+        ApprovedOut: {
+            /**
+             * Approved At
+             * Format: date-time
+             */
+            approved_at: string;
+            /** Emailed */
+            emailed: boolean;
+        };
+        /** AuthOptions */
+        AuthOptions: {
+            /**
+             * Apple
+             * @default false
+             */
+            apple: boolean;
+            /** Email Sign Up */
+            email_sign_up: boolean;
+            /** Google */
+            google: boolean;
         };
         /** AuthorizeIn */
         AuthorizeIn: {
@@ -978,12 +1830,25 @@ export interface components {
             /** Url */
             url: string;
         };
+        /** BandIn */
+        BandIn: {
+            /** High */
+            high: number;
+            /** Low */
+            low: number;
+        };
         /** BandOut */
         BandOut: {
             /** High Mgdl */
             high_mgdl: number;
             /** Low Mgdl */
             low_mgdl: number;
+            /**
+             * Source
+             * @default profile
+             * @enum {string}
+             */
+            source: "profile" | "pump" | "carelink";
         };
         /** Body_transcribe_voice_transcribe_post */
         Body_transcribe_voice_transcribe_post: {
@@ -1033,6 +1898,8 @@ export interface components {
             added?: number | null;
             /** Connected */
             connected: boolean;
+            /** Days */
+            days?: components["schemas"]["PumpDayOut"][];
             /** Detail */
             detail?: string | null;
             /** Device */
@@ -1045,12 +1912,73 @@ export interface components {
             last_sync_at?: string | null;
             /** Notifications */
             notifications?: components["schemas"]["CareLinkNotification"][];
+            pump?: components["schemas"]["PumpStatusOut"] | null;
             /** Region */
             region?: string | null;
             /** Status */
             status?: ("connected" | "wrong_credentials" | "needs_verification" | "failed") | null;
             /** Username */
             username?: string | null;
+        };
+        /** CgmIn */
+        CgmIn: {
+            /** Password */
+            password: string;
+            /**
+             * Region
+             * @default ous
+             * @enum {string}
+             */
+            region: "us" | "ous" | "jp" | "global";
+            /** Username */
+            username: string;
+        };
+        /** CgmOut */
+        CgmOut: {
+            /** Added */
+            added?: number | null;
+            /** Connected */
+            connected: boolean;
+            /** Detail */
+            detail?: string | null;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "dexcom" | "libre";
+            /** Last Reading At */
+            last_reading_at?: string | null;
+            /** Last Sync At */
+            last_sync_at?: string | null;
+            /** Region */
+            region?: string | null;
+            /** Status */
+            status?: ("connected" | "wrong_credentials" | "needs_verification" | "failed") | null;
+            /** Username */
+            username?: string | null;
+        };
+        /** ChangeMetaOut */
+        ChangeMetaOut: {
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /** Source */
+            source: string;
+        };
+        /** CheckOut */
+        CheckOut: {
+            /** Coverage */
+            coverage: {
+                [key: string]: unknown;
+            };
+            /** Day */
+            day: string;
+            /** Eligible */
+            eligible: boolean;
+            /** Improved */
+            improved: boolean;
         };
         /** ConsentIn */
         ConsentIn: {
@@ -1086,6 +2014,11 @@ export interface components {
             /** Title */
             title: string;
         };
+        /** DayIn */
+        DayIn: {
+            /** Complete */
+            complete: boolean;
+        };
         /** DeleteIn */
         DeleteIn: {
             /**
@@ -1093,6 +2026,61 @@ export interface components {
              * @constant
              */
             confirm: "DELETE";
+        };
+        /** DeviceEventOut */
+        DeviceEventOut: {
+            /** Code */
+            code: string;
+            /** Group */
+            group: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "alert" | "message" | "event";
+            /**
+             * Occurred At
+             * Format: date-time
+             */
+            occurred_at: string;
+            /** Source */
+            source: string;
+        };
+        /** DeviceTargetOut */
+        DeviceTargetOut: {
+            /** High Mgdl */
+            high_mgdl: number;
+            /** Low Mgdl */
+            low_mgdl: number;
+            /**
+             * Source
+             * @enum {string}
+             */
+            source: "pump" | "carelink";
+        };
+        /** EventIn */
+        EventIn: {
+            /**
+             * Name
+             * @enum {string}
+             */
+            name: "why" | "records" | "left_out" | "reading" | "talk_companion" | "fix_records" | "fix_target" | "fix_goals" | "fix_log";
+            /**
+             * Type
+             * @enum {string}
+             */
+            type: "detail" | "action";
+            /**
+             * Via
+             * @default app
+             * @enum {string}
+             */
+            via: "app" | "web" | "push";
         };
         /** ExportIn */
         ExportIn: {
@@ -1144,6 +2132,33 @@ export interface components {
              */
             until: string;
         };
+        /** FactOut */
+        FactOut: {
+            /** Evidence */
+            evidence: string[];
+            /** Text */
+            text: string;
+        };
+        /** FamDayOut */
+        FamDayOut: {
+            /** Date */
+            date: string;
+            /** Entries */
+            entries: number;
+        };
+        /** FamiliarizationOut */
+        FamiliarizationOut: {
+            /** Day */
+            day: number | null;
+            /** Days */
+            days: components["schemas"]["FamDayOut"][];
+            /** Learned */
+            learned: components["schemas"]["LearnedOut"][];
+            /** Total */
+            total: number;
+            /** Unknown */
+            unknown: string[];
+        };
         /** FeedbackIn */
         FeedbackIn: {
             /**
@@ -1151,6 +2166,55 @@ export interface components {
              * @enum {string}
              */
             verdict: "useful" | "wrong_data" | "known" | "not_relevant" | "other" | "mute";
+        };
+        /** FindingOut */
+        FindingOut: {
+            /**
+             * Advice
+             * @default []
+             */
+            advice: ("carbs" | "team" | "timing" | "move")[];
+            /** Count */
+            count: number;
+            /** Daily Steps */
+            daily_steps?: number | null;
+            /** Days */
+            days?: number | null;
+            /** End Mgdl */
+            end_mgdl?: number | null;
+            /** Gap */
+            gap?: ("lower" | "higher") | null;
+            /** Key */
+            key: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time" | "late_rise" | "workout" | "set_interval" | "set_overdue" | "sensor_short";
+            /** Label */
+            label?: string | null;
+            /** Of */
+            of: number;
+            /** Other Mgdl */
+            other_mgdl?: number | null;
+            /** Part */
+            part?: ("night" | "morning" | "afternoon" | "evening") | null;
+            /** Rated */
+            rated?: number | null;
+            /**
+             * Record Ids
+             * @default []
+             */
+            record_ids: string[];
+            /** Slot */
+            slot?: ("breakfast" | "lunch" | "dinner") | null;
+            /** Start Mgdl */
+            start_mgdl?: number | null;
+            /**
+             * Tone
+             * @enum {string}
+             */
+            tone: "watch" | "good" | "info";
         };
         /** FinishIn */
         FinishIn: {
@@ -1217,7 +2281,9 @@ export interface components {
              * Origin
              * @enum {string}
              */
-            origin: "user" | "conversation";
+            origin: "user" | "conversation" | "app";
+            /** Reason */
+            reason?: string | null;
             /**
              * Repeat
              * @enum {string}
@@ -1237,6 +2303,31 @@ export interface components {
             status: "scheduled" | "snoozed" | "rescheduled" | "sent" | "opened" | "completed" | "withdrawn" | "notAnswered" | "dismissed";
             /** Title */
             title: string;
+            /** Topic */
+            topic?: string | null;
+        };
+        /** FoodDayOut */
+        FoodDayOut: {
+            /** Carbs G */
+            carbs_g: number;
+            /** Complete */
+            complete: boolean;
+            /** Day */
+            day: string;
+            /** Fat G */
+            fat_g: number | null;
+            /** Fat Partial */
+            fat_partial: boolean;
+            /** Items */
+            items: number;
+            /** Meals */
+            meals: number;
+            /** Measured Items */
+            measured_items: number;
+            /** Protein G */
+            protein_g: number | null;
+            /** Protein Partial */
+            protein_partial: boolean;
         };
         /** FoodItem */
         FoodItem: {
@@ -1244,10 +2335,14 @@ export interface components {
             assumption?: string | null;
             /** Carbs Per 100G */
             carbs_per_100g?: number | null;
+            /** Fat Per 100G */
+            fat_per_100g?: number | null;
             /** Grams Per Unit */
             grams_per_unit?: number | null;
             /** Name */
             name: string;
+            /** Protein Per 100G */
+            protein_per_100g?: number | null;
             /** Qty */
             qty: number;
             question?: components["schemas"]["FoodQuestion"] | null;
@@ -1261,8 +2356,12 @@ export interface components {
         FoodMatch: {
             /** Carbs Per 100G */
             carbs_per_100g: number | null;
+            /** Fat Per 100G */
+            fat_per_100g?: number | null;
             /** Name */
             name: string;
+            /** Protein Per 100G */
+            protein_per_100g?: number | null;
             /** Source Id */
             source_id: string;
         };
@@ -1279,6 +2378,20 @@ export interface components {
             items: components["schemas"]["FoodItem"][];
             /** Provider */
             provider: string;
+        };
+        /** FoodSummaryOut */
+        FoodSummaryOut: {
+            /** Carbs Avg G */
+            carbs_avg_g: number | null;
+            /** Complete Days */
+            complete_days: number;
+            /** Days */
+            days: components["schemas"]["FoodDayOut"][];
+            /** Goals */
+            goals: string[];
+            /** Protein Avg G */
+            protein_avg_g: number | null;
+            target: components["schemas"]["ProteinTargetOut"] | null;
         };
         /** GlucoseIn */
         GlucoseIn: {
@@ -1344,6 +2457,8 @@ export interface components {
             revision: number;
             /** Source */
             source: string;
+            /** Trend */
+            trend?: ("up_fast" | "up" | "flat" | "down" | "down_fast") | null;
             /**
              * Unit
              * @enum {string}
@@ -1394,10 +2509,133 @@ export interface components {
             /** Value Mgdl */
             value_mgdl: number;
         };
+        /**
+         * GoalsIn
+         * @description "What would you like us to help with?" and "What is hardest for you day to day?" (goals.py lists the values).
+         */
+        GoalsIn: {
+            /**
+             * Hard
+             * @default []
+             */
+            hard: ("carbs" | "lows" | "highs" | "nights" | "exercise" | "eating_out" | "remembering" | "burnout" | "devices" | "sleep" | "work" | "other")[];
+            /**
+             * Hardother
+             * @default
+             */
+            hardOther: string;
+            /**
+             * Help
+             * @default []
+             */
+            help: ("range" | "lows" | "highs" | "meals" | "exercise" | "weight" | "routine" | "labs" | "understand" | "calm" | "other")[];
+            /**
+             * Helpother
+             * @default
+             */
+            helpOther: string;
+            /**
+             * Skipped
+             * @default false
+             */
+            skipped: boolean;
+        };
+        /** GoogleIn */
+        GoogleIn: {
+            /** Id Token */
+            id_token: string;
+        };
         /** HTTPValidationError */
         HTTPValidationError: {
             /** Detail */
             detail?: components["schemas"]["ValidationError"][];
+        };
+        /**
+         * HabitData
+         * @description A habit the person keeps track of (no sensor needed): done or not, with an optional amount in its own unit.
+         */
+        HabitData: {
+            /**
+             * Amount
+             * @default null
+             */
+            amount: number | null;
+            /**
+             * Done
+             * @default true
+             */
+            done: boolean;
+            /**
+             * Habit
+             * @enum {string}
+             */
+            habit: "walk" | "steps" | "water" | "vegetables" | "sleep" | "no_sweet_drinks" | "weigh_in" | "meds_taken" | "glucose_check" | "other";
+            /**
+             * Name
+             * @default
+             */
+            name: string;
+            /**
+             * Unit
+             * @default null
+             */
+            unit: string | null;
+        };
+        /** HealthExtraBatch */
+        HealthExtraBatch: {
+            /** Items */
+            items: components["schemas"]["HealthExtraIn"][];
+            /**
+             * Store
+             * @enum {string}
+             */
+            store: "apple_health" | "health_connect";
+            /** Window From */
+            window_from?: string | null;
+            /** Window To */
+            window_to?: string | null;
+        };
+        /** HealthExtraIn */
+        HealthExtraIn: {
+            /** Data */
+            data?: {
+                [key: string]: string | number | boolean;
+            } | null;
+            /**
+             * End
+             * Format: date-time
+             */
+            end: string;
+            /**
+             * Origin
+             * @default
+             */
+            origin: string;
+            /** Sample Id */
+            sample_id: string;
+            /**
+             * Start
+             * Format: date-time
+             */
+            start: string;
+            /**
+             * Type
+             * @enum {string}
+             */
+            type: "heart_rate" | "resting_heart_rate" | "hrv" | "steps" | "active_energy" | "distance" | "weight" | "carbs" | "insulin" | "spo2" | "sleep" | "workout";
+            /** Unit */
+            unit?: string | null;
+            /** Value */
+            value?: number | null;
+        };
+        /** HealthExtraOut */
+        HealthExtraOut: {
+            /** Added */
+            added: number;
+            /** Received */
+            received: number;
+            /** Removed */
+            removed: number;
         };
         /** HealthImportIn */
         HealthImportIn: {
@@ -1408,6 +2646,10 @@ export interface components {
              * @enum {string}
              */
             store: "apple_health" | "health_connect";
+            /** Window From */
+            window_from?: string | null;
+            /** Window To */
+            window_to?: string | null;
         };
         /** HealthImportOut */
         HealthImportOut: {
@@ -1415,6 +2657,11 @@ export interface components {
             added: number;
             /** Received */
             received: number;
+            /**
+             * Removed
+             * @default 0
+             */
+            removed: number;
             /** Skipped */
             skipped: number;
         };
@@ -1445,10 +2692,69 @@ export interface components {
             /** Value */
             value: number;
         };
+        /** HealthSampleOut */
+        HealthSampleOut: {
+            /** Data */
+            data: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * End At
+             * Format: date-time
+             */
+            end_at: string;
+            /** Origin */
+            origin: string | null;
+            /**
+             * Start At
+             * Format: date-time
+             */
+            start_at: string;
+            /** Store */
+            store: string;
+            /** Type */
+            type: string;
+            /** Unit */
+            unit: string | null;
+            /** Value */
+            value: number | null;
+        };
         /** HideIn */
         HideIn: {
             /** Hidden */
             hidden: boolean;
+        };
+        /** HourOut */
+        HourOut: {
+            /** Above */
+            above: number;
+            /** Below */
+            below: number;
+            /** Days */
+            days: number;
+            /** Hour */
+            hour: number;
+            /** Inside */
+            inside: number;
+            /** Middle Mgdl */
+            middle_mgdl: number | null;
+        };
+        /** HoursOut */
+        HoursOut: {
+            band: components["schemas"]["BandOut"] | null;
+            /** Hours */
+            hours: components["schemas"]["HourOut"][];
+            /** Window Days */
+            window_days: number;
+        };
+        /** HypothesisOut */
+        HypothesisOut: {
+            /** Check */
+            check: string;
+            /** Evidence */
+            evidence: string[];
+            /** Text */
+            text: string;
         };
         /** InsightDayOut */
         InsightDayOut: {
@@ -1491,9 +2797,34 @@ export interface components {
         };
         /** InsightsOut */
         InsightsOut: {
+            a1c?: components["schemas"]["A1cOut"] | null;
+            /** Analyzed At */
+            analyzed_at?: string | null;
             band: components["schemas"]["BandOut"] | null;
+            /**
+             * Findings
+             * @default []
+             */
+            findings: components["schemas"]["FindingOut"][];
             /** Insights */
             insights: components["schemas"]["InsightOut"][];
+            /**
+             * Meal Patterns
+             * @default []
+             */
+            meal_patterns: components["schemas"]["MealPatternOut"][];
+            ranking?: components["schemas"]["RankingOut"] | null;
+            routine?: components["schemas"]["RoutineOut"] | null;
+            /**
+             * Topics
+             * @default []
+             */
+            topics: components["schemas"]["TopicOut"][];
+            /**
+             * Why
+             * @default []
+             */
+            why: components["schemas"]["WhyOut"][];
             /** Window Days */
             window_days: number;
         };
@@ -1509,10 +2840,125 @@ export interface components {
             /** Units */
             units: number;
         };
+        /** InterpretIn */
+        InterpretIn: {
+            /**
+             * Locale
+             * @default en
+             * @enum {string}
+             */
+            locale: "en" | "he" | "ar" | "ru";
+        };
+        /**
+         * InterpretationOut
+         * @description The model's reading of one insight (interpret.py): what the records show, possibilities, and what is missing.
+         */
+        InterpretationOut: {
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Facts */
+            facts: components["schemas"]["FactOut"][];
+            /** Hypotheses */
+            hypotheses: components["schemas"]["HypothesisOut"][];
+            /** Kept */
+            kept: boolean;
+            /** Missing */
+            missing: string[];
+            /** Question */
+            question: string | null;
+        };
+        /** InviteIn */
+        InviteIn: {
+            /** Label */
+            label?: string | null;
+        };
+        /**
+         * LabData
+         * @description A lab or clinic result the person entered (13 Nov 2026), with the date it was taken and where it came from. Stored as
+         *     entered; Stedio does not grade it against a range.
+         */
+        LabData: {
+            /**
+             * Name
+             * @default
+             */
+            name: string;
+            /**
+             * Source
+             * @enum {string}
+             */
+            source: "lab_report" | "care_team" | "self" | "other";
+            /**
+             * Taken On
+             * Format: date
+             */
+            taken_on: string;
+            /**
+             * Test
+             * @enum {string}
+             */
+            test: "a1c" | "fasting_glucose" | "ogtt" | "ldl" | "hdl" | "triglycerides" | "cholesterol" | "egfr" | "creatinine" | "uacr" | "tsh" | "other";
+            /** Unit */
+            unit: string;
+            /** Value */
+            value: number;
+        };
+        /** LearnedOut */
+        LearnedOut: {
+            /** Days */
+            days: number;
+            /** Firm */
+            firm: boolean;
+            /** Key */
+            key: string;
+            /** Of Days */
+            of_days: number;
+            /**
+             * Slot
+             * @enum {string}
+             */
+            slot: "breakfast" | "lunch" | "dinner";
+            /** Time */
+            time: string;
+        };
+        /** LiveActivityIn */
+        LiveActivityIn: {
+            band?: components["schemas"]["BandIn"] | null;
+            /** Parts */
+            parts?: components["schemas"]["PartIn"][];
+            /** Token */
+            token: string;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "mgdl" | "mmol";
+            words: components["schemas"]["WordsIn"];
+        };
         /** Me */
         Me: {
+            /**
+             * Approved
+             * @default true
+             */
+            approved: boolean;
+            /** Avatar Url */
+            avatar_url?: string | null;
             /** Email */
             email: string;
+            /**
+             * Email Verified
+             * @default true
+             */
+            email_verified: boolean;
+            /**
+             * Has Data
+             * @default true
+             */
+            has_data: boolean;
             /** Has Profile */
             has_profile: boolean;
             /**
@@ -1520,6 +2966,11 @@ export interface components {
              * Format: uuid
              */
             id: string;
+            /**
+             * Is Admin
+             * @default false
+             */
+            is_admin: boolean;
         };
         /** MealData */
         MealData: {
@@ -1532,6 +2983,11 @@ export interface components {
             ate: "all" | "most" | "half" | "little";
             /** Carbs Total G */
             carbs_total_g: number;
+            /**
+             * Fat Total G
+             * @default null
+             */
+            fat_total_g: number | null;
             /** Items */
             items: components["schemas"]["MealItemData"][];
             /**
@@ -1539,6 +2995,11 @@ export interface components {
              * @default null
              */
             photo_id: string | null;
+            /**
+             * Protein Total G
+             * @default null
+             */
+            protein_total_g: number | null;
         };
         /** MealItemData */
         MealItemData: {
@@ -1547,8 +3008,18 @@ export interface components {
              * @default null
              */
             carbs_g: number | null;
+            /**
+             * Fat G
+             * @default null
+             */
+            fat_g: number | null;
             /** Name */
             name: string;
+            /**
+             * Protein G
+             * @default null
+             */
+            protein_g: number | null;
             /**
              * Prov
              * @enum {string}
@@ -1563,6 +3034,40 @@ export interface components {
              * @default false
              */
             weighed: boolean;
+        };
+        /** MealPatternOut */
+        MealPatternOut: {
+            /**
+             * After Meals
+             * @default 0
+             */
+            after_meals: number;
+            /** After Mgdl */
+            after_mgdl?: number | null;
+            /**
+             * Before Meals
+             * @default 0
+             */
+            before_meals: number;
+            /** Before Mgdl */
+            before_mgdl?: number | null;
+            /** End Mgdl */
+            end_mgdl?: number | null;
+            /** Key */
+            key: string;
+            /** Meals */
+            meals: number;
+            /** Record Ids */
+            record_ids: string[];
+            /** Rise Mgdl */
+            rise_mgdl?: number | null;
+            /**
+             * Slot
+             * @enum {string}
+             */
+            slot: "breakfast" | "lunch" | "dinner";
+            /** Start Mgdl */
+            start_mgdl?: number | null;
         };
         /** MembershipOut */
         MembershipOut: {
@@ -1594,6 +3099,12 @@ export interface components {
              * Format: uuid
              */
             id: string;
+            /**
+             * Kind
+             * @default fact
+             * @enum {string}
+             */
+            kind: "fact" | "impression";
             /**
              * Source
              * @enum {string}
@@ -1691,21 +3202,38 @@ export interface components {
              * Diabetestype
              * @enum {string}
              */
-            diabetesType: "type1" | "other" | "notSure";
+            diabetesType: "type1" | "type2" | "prediabetes" | "other" | "notSure";
             /** Diagnosed */
             diagnosed?: string | null;
             /** Diagnosedon */
             diagnosedOn?: string | null;
+            /** Dismissed */
+            dismissed?: "completeProfile"[] | null;
+            /** Fitness */
+            fitness?: {
+                [key: string]: unknown;
+            } | null;
+            /** Food */
+            food?: {
+                [key: string]: unknown;
+            } | null;
+            goals?: components["schemas"]["GoalsIn"] | null;
             /** History */
             history: {
                 [key: string]: unknown;
             };
+            /** Infusionset */
+            infusionSet?: ("extended" | "standard" | "notSure") | null;
             /** Insulinother */
             insulinOther: boolean;
             /** Insulinunknown */
             insulinUnknown: boolean;
             /** Laststep */
             lastStep?: string | null;
+            /** Meds */
+            meds?: {
+                [key: string]: unknown;
+            } | null;
             /** Pump */
             pump?: string | null;
             /** Pumpother */
@@ -1742,6 +3270,22 @@ export interface components {
             /** Text */
             text: string;
         };
+        /**
+         * PartIn
+         * @description A three-hour part of the day as the card shows it, in ms since 1970.
+         */
+        PartIn: {
+            /** From */
+            from: number;
+            /** Icon */
+            icon?: string | null;
+            /** Line */
+            line?: string | null;
+            /** Title */
+            title: string;
+            /** To */
+            to: number;
+        };
         /** PhotoOut */
         PhotoOut: {
             /**
@@ -1749,6 +3293,31 @@ export interface components {
              * Format: uuid
              */
             photo_id: string;
+        };
+        /** ProfileChangeOut */
+        ProfileChangeOut: {
+            /** After */
+            after: {
+                [key: string]: unknown;
+            } | null;
+            /** Before */
+            before: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Path */
+            path: string;
+            /** Source */
+            source: string;
         };
         /** ProfileIn */
         ProfileIn: {
@@ -1758,6 +3327,8 @@ export interface components {
              * @enum {string}
              */
             locale: "en" | "he" | "ar" | "ru";
+            /** Source */
+            source?: ("onboarding" | "settings" | "companion" | "website") | null;
         };
         /** ProfileOut */
         ProfileOut: {
@@ -1765,6 +3336,14 @@ export interface components {
             answers: {
                 [key: string]: unknown;
             };
+            /**
+             * Changed
+             * @default {}
+             */
+            changed: {
+                [key: string]: components["schemas"]["ChangeMetaOut"];
+            };
+            device_target?: components["schemas"]["DeviceTargetOut"] | null;
             /** Diabetes Type */
             diabetes_type: string;
             /**
@@ -1783,6 +3362,14 @@ export interface components {
              */
             updated_at: string;
         };
+        /** ProgressOut */
+        ProgressOut: {
+            /** Achievements */
+            achievements: components["schemas"]["AchievementOut"][];
+            /** Celebrate */
+            celebrate: boolean;
+            last_check: components["schemas"]["CheckOut"] | null;
+        };
         /** ProposalIn */
         ProposalIn: {
             /**
@@ -1790,6 +3377,104 @@ export interface components {
              * @enum {string}
              */
             status: "saved" | "pending" | "dismissed";
+        };
+        /** ProteinTargetOut */
+        ProteinTargetOut: {
+            /** Amount */
+            amount: number;
+            /** Set On */
+            set_on: string | null;
+            /** Source */
+            source: string | null;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "g_day" | "g_kg";
+        };
+        /** ProvenanceOut */
+        ProvenanceOut: {
+            /** Basis */
+            basis: number;
+            /**
+             * Certainty
+             * @enum {string}
+             */
+            certainty: "low" | "medium" | "high";
+            /**
+             * Computed At
+             * Format: date-time
+             */
+            computed_at: string;
+            /** Coverage Pct */
+            coverage_pct: number;
+            /**
+             * Period From
+             * Format: date-time
+             */
+            period_from: string;
+            /**
+             * Period To
+             * Format: date-time
+             */
+            period_to: string;
+            /** Sources */
+            sources: string[];
+        };
+        /**
+         * PumpDayOut
+         * @description One finished day as the pump's 30-day history reports it.
+         */
+        PumpDayOut: {
+            /**
+             * Day
+             * Format: date
+             */
+            day: string;
+            /** Insulin Units */
+            insulin_units?: number | null;
+            /** Sensor Min */
+            sensor_min?: number | null;
+            /** Smartguard Exits */
+            smartguard_exits?: number | null;
+            /** Smartguard Min */
+            smartguard_min?: number | null;
+        };
+        /**
+         * PumpStatusOut
+         * @description The pump's state at the last poll, as CareLink reported it. Every field is optional: older pumps or a pump out
+         *     of reach leave some out.
+         */
+        PumpStatusOut: {
+            /** Active Insulin Units */
+            active_insulin_units?: number | null;
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /** Battery Percent */
+            battery_percent?: number | null;
+            /** Phone Battery Percent */
+            phone_battery_percent?: number | null;
+            /** Pump In Range */
+            pump_in_range?: boolean | null;
+            /** Reservoir Percent */
+            reservoir_percent?: number | null;
+            /** Reservoir Units */
+            reservoir_units?: number | null;
+            /** Sensor Hours Left */
+            sensor_hours_left?: number | null;
+            /** Sensor In Range */
+            sensor_in_range?: boolean | null;
+            /** Sensor State */
+            sensor_state?: string | null;
+            /** Smartguard */
+            smartguard?: ("auto" | "safe_basal" | "manual") | null;
+            /** Suspended */
+            suspended?: boolean | null;
+            /** Transmitter Battery Percent */
+            transmitter_battery_percent?: number | null;
         };
         /** PushTokenIn */
         PushTokenIn: {
@@ -1800,6 +3485,21 @@ export interface components {
             platform: "ios" | "android";
             /** Token */
             token: string;
+        };
+        /** RankingOut */
+        RankingOut: {
+            /** Mode */
+            mode: string;
+            /** Model Version */
+            model_version?: string | null;
+            /** Order */
+            order: string[];
+            /** Reason */
+            reason?: string | null;
+            /** Rules Version */
+            rules_version: string;
+            /** Served */
+            served: string;
         };
         /** RecordIn */
         RecordIn: {
@@ -1818,7 +3518,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "insulin" | "activity" | "note" | "meal";
+            kind: "insulin" | "activity" | "note" | "meal" | "lab" | "habit";
             /**
              * Occurred At
              * Format: date-time
@@ -1854,7 +3554,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "insulin" | "activity" | "note" | "meal";
+            kind: "insulin" | "activity" | "note" | "meal" | "lab" | "habit";
             /**
              * Occurred At
              * Format: date-time
@@ -1867,6 +3567,10 @@ export interface components {
             received_at: string;
             /** Revision */
             revision: number;
+            /** Same As */
+            same_as?: string | null;
+            /** Same As By */
+            same_as_by?: string | null;
             /** Source */
             source: string;
         };
@@ -1916,6 +3620,25 @@ export interface components {
              */
             due_at: string;
         };
+        /** RoutineOut */
+        RoutineOut: {
+            /** Lead Meals */
+            lead_meals: number;
+            /** Lead Minutes */
+            lead_minutes: number | null;
+            /** Meal Times */
+            meal_times: {
+                [key: string]: string;
+            };
+        };
+        /**
+         * SameAsIn
+         * @description The meal this entry is the same meal as, or null for "a separate meal".
+         */
+        SameAsIn: {
+            /** Meal Id */
+            meal_id: string | null;
+        };
         /** SendIn */
         SendIn: {
             /** Client Id */
@@ -1941,6 +3664,26 @@ export interface components {
         };
         /** SettingsOut */
         SettingsOut: {
+            /**
+             * Celebrate
+             * @default true
+             */
+            celebrate: boolean;
+            /**
+             * Insight Interval Days
+             * @default 14
+             */
+            insight_interval_days: number;
+            /**
+             * Insight Push
+             * @default true
+             */
+            insight_push: boolean;
+            /**
+             * Insight Push Week Cap
+             * @default 2
+             */
+            insight_push_week_cap: number;
             /** Memory Enabled */
             memory_enabled: boolean;
             /**
@@ -1953,12 +3696,27 @@ export interface components {
         };
         /** SettingsPatch */
         SettingsPatch: {
+            /** Celebrate */
+            celebrate?: boolean | null;
+            /** Insight Interval Days */
+            insight_interval_days?: number | null;
+            /** Insight Push */
+            insight_push?: boolean | null;
+            /** Insight Push Week Cap */
+            insight_push_week_cap?: number | null;
             /** Memory Enabled */
             memory_enabled?: boolean | null;
             /** Photo Retention */
             photo_retention?: ("afterAnalysis" | "days90" | "untilDeleted") | null;
             /** Timezone */
             timezone?: string | null;
+        };
+        /** SharingOut */
+        SharingOut: {
+            /** Viewers */
+            viewers: components["schemas"]["ViewerOut"][];
+            /** Viewing */
+            viewing: components["schemas"]["ViewingOut"][];
         };
         /** SignIn */
         SignIn: {
@@ -1980,10 +3738,39 @@ export interface components {
             /** Password */
             password: string;
         };
+        /** SimilarOut */
+        SimilarOut: {
+            /** After Median Mgdl */
+            after_median_mgdl: number | null;
+            /** Enough */
+            enough: boolean;
+            /** Feelings */
+            feelings: {
+                [key: string]: number;
+            };
+            /** Similar */
+            similar: components["schemas"]["WorkoutOut"][];
+            /** Start Median Mgdl */
+            start_median_mgdl: number | null;
+            /** With Readings */
+            with_readings: number;
+            workout: components["schemas"]["WorkoutOut"];
+        };
         /** SnoozeIn */
         SnoozeIn: {
             /** Minutes */
             minutes: number;
+        };
+        /** SyncAllOut */
+        SyncAllOut: {
+            /** Added */
+            added: number;
+            /** Failed */
+            failed: string[];
+            /** Skipped */
+            skipped: string[];
+            /** Synced */
+            synced: string[];
         };
         /** ThreadOut */
         ThreadOut: {
@@ -2007,10 +3794,70 @@ export interface components {
              */
             token_type: "bearer";
         };
+        /** TopicOut */
+        TopicOut: {
+            /**
+             * Changed At
+             * Format: date-time
+             */
+            changed_at: string;
+            /**
+             * First Seen At
+             * Format: date-time
+             */
+            first_seen_at: string;
+            /** Key */
+            key: string;
+            latest: components["schemas"]["UpdateOut"] | null;
+            provenance: components["schemas"]["ProvenanceOut"];
+            /** Read At */
+            read_at: string | null;
+            /** Read Via */
+            read_via: string | null;
+            /** Seen At */
+            seen_at: string | null;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "active" | "ended" | "insufficient" | "corrected";
+            /** Unread */
+            unread: boolean;
+            /** Version */
+            version: number;
+        };
         /** TranscriptOut */
         TranscriptOut: {
             /** Text */
             text: string;
+        };
+        /** UpdateOut */
+        UpdateOut: {
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Data */
+            data: {
+                [key: string]: unknown;
+            };
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Key */
+            key: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "new" | "changed" | "continuing" | "ended" | "corrected";
+            /** Push State */
+            push_state: string;
+            /** Pushed At */
+            pushed_at: string | null;
         };
         /** ValidationError */
         ValidationError: {
@@ -2024,6 +3871,62 @@ export interface components {
             msg: string;
             /** Error Type */
             type: string;
+        };
+        /** VerifyIn */
+        VerifyIn: {
+            /** Code */
+            code: string;
+        };
+        /** VerifySent */
+        VerifySent: {
+            /** Sent */
+            sent: boolean;
+            /** Verified */
+            verified: boolean;
+        };
+        /**
+         * ViewerOut
+         * @description A share as its owner sees it: who can see their data, or an invite not used yet.
+         */
+        ViewerOut: {
+            /** Accepted At */
+            accepted_at: string | null;
+            /** Code */
+            code: string | null;
+            /** Code Expires At */
+            code_expires_at: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string | null;
+            /** Viewer Email */
+            viewer_email: string | null;
+        };
+        /**
+         * ViewingOut
+         * @description A share as the viewer sees it: whose data they can see.
+         */
+        ViewingOut: {
+            /**
+             * Accepted At
+             * Format: date-time
+             */
+            accepted_at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+            /**
+             * Owner Id
+             * Format: uuid
+             */
+            owner_id: string;
         };
         /** VoiceStatusOut */
         VoiceStatusOut: {
@@ -2039,6 +3942,108 @@ export interface components {
              * @default []
              */
             voices: string[];
+        };
+        /**
+         * WhyOut
+         * @description "Why am I seeing this?" for one insight: what it rests on and which of the person's goals it speaks to.
+         */
+        WhyOut: {
+            /** Band Source */
+            band_source?: ("profile" | "pump" | "carelink") | null;
+            /**
+             * Basis
+             * @default 0
+             */
+            basis: number;
+            /** Certainty */
+            certainty?: ("low" | "medium" | "high") | null;
+            /** Coverage Pct */
+            coverage_pct?: number | null;
+            /**
+             * Data
+             * @default []
+             */
+            data: string[];
+            /**
+             * Fixes
+             * @default []
+             */
+            fixes: ("records" | "target" | "goals" | "log")[];
+            /**
+             * Goals
+             * @default []
+             */
+            goals: string[];
+            /** Key */
+            key: string;
+            /** Period From */
+            period_from?: string | null;
+            /** Period To */
+            period_to?: string | null;
+        };
+        /**
+         * WordsIn
+         * @description The card's words in the app's language: range labels, "not live · {t}" and "not current".
+         */
+        WordsIn: {
+            /** Above */
+            above: string;
+            /** Ago */
+            ago: string;
+            /** Below */
+            below: string;
+            /** In */
+            in: string;
+            /** Old */
+            old: string;
+        };
+        /** WorkoutOut */
+        WorkoutOut: {
+            /** After Mgdl */
+            after_mgdl: number | null;
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /** Feeling */
+            feeling: string | null;
+            /** Id */
+            id: string;
+            /** Intensity */
+            intensity: string;
+            /** Minutes */
+            minutes: number;
+            /** Start Mgdl */
+            start_mgdl: number | null;
+            /** Type */
+            type: string;
+        };
+        /** StateIn */
+        steady_api__routers__insights__StateIn: {
+            /**
+             * Action
+             * @enum {string}
+             */
+            action: "seen" | "read";
+            /**
+             * Via
+             * @enum {string}
+             */
+            via: "app" | "web" | "push";
+        };
+        /** StateIn */
+        steady_api__routers__progress__StateIn: {
+            /**
+             * Action
+             * @enum {string}
+             */
+            action: "seen" | "celebrated";
+            /**
+             * Via
+             * @enum {string}
+             */
+            via: "app" | "web" | "push";
         };
     };
     responses: never;
@@ -2080,6 +4085,242 @@ export interface operations {
             };
         };
     };
+    similar_workouts_activity__record_id__similar_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SimilarOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    users_admin_users_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminUserOut"][];
+                };
+            };
+        };
+    };
+    delete_user_admin_users__user_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AdminDeleteIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description confirm_mismatch, self or admin */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    approve_admin_users__user_id__approve_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApprovedOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    version_app_version_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AppVersionOut"];
+                };
+            };
+        };
+    };
+    apple_auth_apple_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AppleIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Tokens"];
+                };
+            };
+            /** @description invalid_apple_token */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description apple_unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    google_auth_google_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GoogleIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Tokens"];
+                };
+            };
+            /** @description invalid_google_token */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description google_unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     me_auth_me_get: {
         parameters: {
             query?: never;
@@ -2096,6 +4337,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Me"];
+                };
+            };
+        };
+    };
+    options_auth_options_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuthOptions"];
                 };
             };
         };
@@ -2248,6 +4509,91 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
                 };
+            };
+            /** @description email_sign_up_closed */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    verify_auth_verify_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VerifyIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Me"];
+                };
+            };
+            /** @description wrong_code, expired_code or too_many_attempts */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    send_verification_auth_verify_send_post: {
+        parameters: {
+            query?: {
+                locale?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VerifySent"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description too_soon */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
@@ -2607,6 +4953,284 @@ export interface operations {
             };
         };
     };
+    dexcom_status_devices_dexcom_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+        };
+    };
+    dexcom_connect_devices_dexcom_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CgmIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+            /** @description needs_verification */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description wrong_credentials */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description locked */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    dexcom_disconnect_devices_dexcom_delete: {
+        parameters: {
+            query?: {
+                remove_readings?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RemovedOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    dexcom_sync_devices_dexcom_sync_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+        };
+    };
+    device_events_devices_events_get: {
+        parameters: {
+            query: {
+                since: string;
+                until: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DeviceEventOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    libre_status_devices_libre_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+        };
+    };
+    libre_connect_devices_libre_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CgmIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+            /** @description needs_verification */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description wrong_credentials */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description locked */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    libre_disconnect_devices_libre_delete: {
+        parameters: {
+            query?: {
+                remove_readings?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RemovedOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    libre_sync_devices_libre_sync_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+        };
+    };
     put_push_token_devices_push_token_put: {
         parameters: {
             query?: never;
@@ -2663,6 +5287,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    sync_all_devices_sync_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SyncAllOut"];
                 };
             };
         };
@@ -3382,10 +6026,79 @@ export interface operations {
             };
         };
     };
+    list_samples_health_data_samples_get: {
+        parameters: {
+            query: {
+                since: string;
+                until: string;
+                type?: ("heart_rate" | "resting_heart_rate" | "hrv" | "steps" | "active_energy" | "distance" | "weight" | "carbs" | "insulin" | "spo2" | "sleep" | "workout") | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HealthSampleOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    import_samples_health_data_samples_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["HealthExtraBatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HealthExtraOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     list_insights_insights_get: {
         parameters: {
             query?: {
                 until?: string | null;
+                kinds?: number;
+                shown?: boolean;
+                via?: "app" | "web";
             };
             header?: never;
             path?: never;
@@ -3401,6 +6114,121 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["InsightsOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_familiarization_insights_familiarization_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FamiliarizationOut"];
+                };
+            };
+        };
+    };
+    by_hour_insights_hours_get: {
+        parameters: {
+            query?: {
+                span?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HoursOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_updates_insights_updates_get: {
+        parameters: {
+            query?: {
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UpdateOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    insight_event_insights__key__event_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["EventIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -3443,6 +6271,137 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
                 };
+            };
+        };
+    };
+    interpret_insight_insights__key__interpret_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["InterpretIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InterpretationOut"];
+                };
+            };
+            /** @description not_found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description llm_unconfigured or llm_failed */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    set_state_insights__key__state_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["steady_api__routers__insights__StateIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    register_live_activity_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LiveActivityIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    unregister_live_activity_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
@@ -3559,6 +6518,44 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["PhotoOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_photo_meal_photos__photo_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                photo_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/jpeg": unknown;
+                };
+            };
+            /** @description not_found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -3767,6 +6764,173 @@ export interface operations {
             };
         };
     };
+    get_progress_metrics_progress_get: {
+        parameters: {
+            query?: {
+                weeks?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_quality_metrics_quality_get: {
+        parameters: {
+            query?: {
+                days?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_typical_day_metrics_typical_day_get: {
+        parameters: {
+            query?: {
+                from?: string | null;
+                to?: string | null;
+                bin_minutes?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    mark_day_nutrition_days__day__put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                day: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DayIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FoodDayOut"] | null;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    food_summary_nutrition_summary_get: {
+        parameters: {
+            query?: {
+                days?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FoodSummaryOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     get_profile_profile_get: {
         parameters: {
             query?: never;
@@ -3825,13 +6989,98 @@ export interface operations {
             };
         };
     };
+    profile_history_profile_history_get: {
+        parameters: {
+            query?: {
+                section?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProfileChangeOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_progress_progress_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProgressOut"];
+                };
+            };
+        };
+    };
+    set_state_progress__achievement_id__state_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                achievement_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["steady_api__routers__progress__StateIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     list_records_records_get: {
         parameters: {
             query: {
                 since: string;
                 until: string;
-                kind?: ("insulin" | "activity" | "note" | "meal") | null;
+                kind?: ("insulin" | "activity" | "note" | "meal" | "lab" | "habit") | null;
                 include_hidden?: boolean;
+                kinds?: number;
             };
             header?: never;
             path?: never;
@@ -4069,6 +7318,48 @@ export interface operations {
             };
         };
     };
+    same_as_records__record_id__same_as_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SameAsIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecordOut"];
+                };
+            };
+            /** @description not_a_meal, same_record or already_linked */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     get_settings__settings_get: {
         parameters: {
             query?: never;
@@ -4110,6 +7401,121 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["SettingsOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_sharing_sharing_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SharingOut"];
+                };
+            };
+        };
+    };
+    accept_sharing_accept_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AcceptIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ViewingOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    invite_sharing_invites_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["InviteIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ViewerOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    end_sharing__share_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {

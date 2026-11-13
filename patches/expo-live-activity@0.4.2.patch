@@ -1,0 +1,67 @@
+diff --git a/build/index.d.ts b/build/index.d.ts
+index 125311485a6581649d5f30c167bed86a986f955b..61e9bc8594be308ab2e596d8e51c6712a8a72b2a 100644
+--- a/build/index.d.ts
++++ b/build/index.d.ts
+@@ -14,6 +14,8 @@ export type LiveActivityState = {
+     progressBar?: ProgressBarType;
+     imageName?: string;
+     dynamicIslandImageName?: string;
++    /** Stedio patch: when the content goes stale, ms since 1970. */
++    staleDate?: number;
+ };
+ export type NativeLiveActivityState = {
+     title: string;
+diff --git a/ios/ExpoLiveActivityModule.swift b/ios/ExpoLiveActivityModule.swift
+index 6fdf9f5d07e6178d968b7f5800d234855145038b..3a1f69c87c118147b5d55641c08e0ae51b30daea 100644
+--- a/ios/ExpoLiveActivityModule.swift
++++ b/ios/ExpoLiveActivityModule.swift
+@@ -12,6 +12,10 @@ public class ExpoLiveActivityModule: Module {
+     @Field
+     var progressBar: ProgressBar?
+ 
++    // Stedio patch: when the content goes stale (ms since 1970); the widget reads `context.isStale` after it.
++    @Field
++    var staleDate: Double?
++
+     struct ProgressBar: Record {
+       @Field
+       var date: Double?
+@@ -254,14 +258,14 @@ public class ExpoLiveActivityModule: Module {
+ 
+         let activity = try Activity.request(
+           attributes: attributes,
+-          content: .init(state: initialState, staleDate: nil),
++          content: .init(state: initialState, staleDate: state.staleDate.map { Date(timeIntervalSince1970: $0 / 1000) }),
+           pushType: pushNotificationsEnabled ? .token : nil
+         )
+ 
+         Task {
+           var newState = activity.content.state
+           try await updateImages(state: state, newState: &newState)
+-          await activity.update(ActivityContent(state: newState, staleDate: nil))
++          await activity.update(ActivityContent(state: newState, staleDate: state.staleDate.map { Date(timeIntervalSince1970: $0 / 1000) }))
+         }
+ 
+         return activity.id
+@@ -315,7 +319,7 @@ public class ExpoLiveActivityModule: Module {
+           progress: state.progressBar?.progress
+         )
+         try await updateImages(state: state, newState: &newState)
+-        await activity.update(ActivityContent(state: newState, staleDate: nil))
++        await activity.update(ActivityContent(state: newState, staleDate: state.staleDate.map { Date(timeIntervalSince1970: $0 / 1000) }))
+       }
+     }
+   }
+diff --git a/src/index.ts b/src/index.ts
+index 675bc9e385fa608a16f727df22ea471c42e9f77c..a3923bcd53050d1ee998cfee086e6a9a58eb4ce3 100644
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -23,6 +23,8 @@ export type LiveActivityState = {
+   progressBar?: ProgressBarType
+   imageName?: string
+   dynamicIslandImageName?: string
++  /** Stedio patch: when the content goes stale, ms since 1970. */
++  staleDate?: number
+ }
+ 
+ export type NativeLiveActivityState = {

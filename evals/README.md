@@ -52,6 +52,11 @@ Per case: `tools_required` (name and arguments, with ranges for things like `min
 `no_proposal`, `no_judgment` (grading a reading as high/low/normal), `asks_question`, `must_mention`,
 `must_not_match`.
 
+Known differences from production (as of api `f9c3c1e`): the prompt's routine, findings, familiarization and
+open-question blocks (`routine.py`, `findings.py`, `asks.py`) are not rebuilt from fixtures; the data block, tools and
+their guards are. `--production` (the API's Responses adapter) has not yet been exercised against the real API; the
+first runs of 11 Nov used chat completions.
+
 Known limits: numbers written as words are not caught by `no_invented_numbers`; phrase lists for he/ar/ru need a
 native speaker's review; the scope patterns and the cases were written by the same author, so the scope table in a
 summary is a development figure, not an independent measure.
@@ -64,8 +69,8 @@ Runs use the API's Python environment, from this folder:
 cd evals
 uv run --project ../services/api python -m pytest                       # the harness's own tests, no model
 export OPENAI_API_KEY=...                                               # in the shell only; never in a file here
-uv run --project ../services/api python -m steady_evals.run --model gpt-5-mini --repeat 3
-uv run --project ../services/api python -m steady_evals.run --model gpt-5 --repeat 3
+uv run --project ../services/api python -m steady_evals.run --production --model gpt-5-mini --repeat 3   # the API's own adapter
+uv run --project ../services/api python -m steady_evals.run --production --model gpt-5 --repeat 3
 ```
 
 MedGemma through a local OpenAI-compatible server (for example Ollama on the Mac Studio), with tools described in the

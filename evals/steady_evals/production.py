@@ -13,9 +13,9 @@ if str(API) not in sys.path:
 from steady_api.ai import context as prod_context
 from steady_api.ai import tools as prod_tools
 from steady_api.ai.prompt import system_prompt
-from steady_api.ai.safety import reads_as_dose_instruction
+from steady_api.ai.safety import about_someone_else, reads_as_dose_instruction
 from steady_api.clinical import GLUCOSE_ENTRY_MGDL_MAX, GLUCOSE_ENTRY_MGDL_MIN, MGDL_PER_MMOL, to_mgdl
-from steady_api.models import DeviceLink, GlucoseRecord, Memory, Profile, Record, User
+from steady_api.models import DeviceLink, GlucoseRecord, HealthSample, Memory, Profile, Record, User
 
 TOOL_SPECS = prod_tools.SPECS
 MAX_TOOL_ROUNDS = 4  # mirrors steady_api.routers.conversation.MAX_TOOL_ROUNDS
@@ -28,6 +28,8 @@ __all__ = [
     "TOOL_SPECS",
     "DeviceLink",
     "GlucoseRecord",
+    "HealthSample",
+    "about_someone_else",
     "Memory",
     "Record",
     "User",

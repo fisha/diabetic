@@ -23,7 +23,7 @@ from . import cases as cases_mod
 from . import scope
 from .checks import grade
 from .harness import run_case
-from .providers import OpenAICompatible
+from .providers import OpenAICompatible, ProductionOpenAI
 
 REPORTS = Path(__file__).resolve().parents[1] / "reports" / "runs"
 
@@ -39,14 +39,18 @@ def run(args: argparse.Namespace) -> Path:
     selected = cases_mod.load(split=args.split, langs=tuple(args.lang) if args.lang else None, ids=set(args.case) if args.case else None)
     if not selected:
         sys.exit("No cases selected.")
-    provider = OpenAICompatible(
-        model=args.model,
-        base_url=args.base_url,
-        api_key_env=args.api_key_env,
-        tool_mode=args.tool_mode,
-        fold_system_role=args.fold_system,
-        temperature=args.temperature,
-        label=args.label,
+    provider = (
+        ProductionOpenAI(args.model, args.effort, args.api_key_env, label=args.label)
+        if args.production
+        else OpenAICompatible(
+            model=args.model,
+            base_url=args.base_url,
+            api_key_env=args.api_key_env,
+            tool_mode=args.tool_mode,
+            fold_system_role=args.fold_system,
+            temperature=args.temperature,
+            label=args.label,
+        )
     )
     stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     out = REPORTS / f"{stamp}-{re.sub(r'[^A-Za-z0-9._-]+', '_', provider.label)}"
@@ -173,6 +177,8 @@ def scope_table(selected: list) -> list[str]:
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--model", required=True)
+    p.add_argument("--production", action="store_true", help="Use the API's own OpenAI adapter (Responses API), as production does")
+    p.add_argument("--effort", default="low", help="Reasoning effort with --production (production default: low)")
     p.add_argument("--base-url", help="OpenAI-compatible endpoint (Ollama, vLLM, ...). Omit for OpenAI.")
     p.add_argument("--api-key-env", default="OPENAI_API_KEY", help="Environment variable holding the key")
     p.add_argument("--tool-mode", choices=["native", "prompted"], default="native")

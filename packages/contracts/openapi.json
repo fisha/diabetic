@@ -1,9 +1,145 @@
 {
   "components": {
     "schemas": {
+      "A1cOut": {
+        "properties": {
+          "coverage": {
+            "title": "Coverage",
+            "type": "number"
+          },
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "gmi_percent": {
+            "title": "Gmi Percent",
+            "type": "number"
+          },
+          "mean_mgdl": {
+            "title": "Mean Mgdl",
+            "type": "number"
+          }
+        },
+        "required": [
+          "gmi_percent",
+          "mean_mgdl",
+          "days",
+          "coverage"
+        ],
+        "title": "A1cOut",
+        "type": "object"
+      },
+      "AcceptIn": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "maxLength": 16,
+            "minLength": 6,
+            "title": "Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "title": "AcceptIn",
+        "type": "object"
+      },
+      "AchievementOut": {
+        "properties": {
+          "celebrated_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Celebrated At"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "data": {
+            "additionalProperties": true,
+            "title": "Data",
+            "type": "object"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "tir_day",
+              "tir_week",
+              "below_week",
+              "steady"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "seen_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seen At"
+          },
+          "significant": {
+            "title": "Significant",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "day",
+          "significant",
+          "data",
+          "created_at",
+          "seen_at",
+          "celebrated_at"
+        ],
+        "title": "AchievementOut",
+        "type": "object"
+      },
       "ActivityData": {
         "additionalProperties": false,
         "properties": {
+          "feeling": {
+            "anyOf": [
+              {
+                "enum": [
+                  "great",
+                  "good",
+                  "ok",
+                  "hard",
+                  "bad"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Feeling"
+          },
           "intensity": {
             "maxLength": 20,
             "title": "Intensity",
@@ -27,6 +163,183 @@
           "intensity"
         ],
         "title": "ActivityData",
+        "type": "object"
+      },
+      "AdminDeleteIn": {
+        "properties": {
+          "confirm_email": {
+            "title": "Confirm Email",
+            "type": "string"
+          }
+        },
+        "required": [
+          "confirm_email"
+        ],
+        "title": "AdminDeleteIn",
+        "type": "object"
+      },
+      "AdminUserOut": {
+        "properties": {
+          "approved_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approved At"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "devices": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Devices",
+            "type": "array"
+          },
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "has_profile": {
+            "title": "Has Profile",
+            "type": "boolean"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "last_reading_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Reading At"
+          },
+          "readings_14d": {
+            "title": "Readings 14D",
+            "type": "integer"
+          },
+          "via_google": {
+            "title": "Via Google",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "created_at",
+          "has_profile",
+          "devices",
+          "readings_14d",
+          "last_reading_at",
+          "approved_at",
+          "via_google"
+        ],
+        "title": "AdminUserOut",
+        "type": "object"
+      },
+      "AppVersionOut": {
+        "properties": {
+          "install_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Install Url"
+          },
+          "latest_build": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latest Build"
+          }
+        },
+        "required": [
+          "latest_build",
+          "install_url"
+        ],
+        "title": "AppVersionOut",
+        "type": "object"
+      },
+      "AppleIn": {
+        "additionalProperties": false,
+        "properties": {
+          "id_token": {
+            "maxLength": 4096,
+            "minLength": 20,
+            "title": "Id Token",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id_token"
+        ],
+        "title": "AppleIn",
+        "type": "object"
+      },
+      "ApprovedOut": {
+        "properties": {
+          "approved_at": {
+            "format": "date-time",
+            "title": "Approved At",
+            "type": "string"
+          },
+          "emailed": {
+            "title": "Emailed",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "approved_at",
+          "emailed"
+        ],
+        "title": "ApprovedOut",
+        "type": "object"
+      },
+      "AuthOptions": {
+        "properties": {
+          "apple": {
+            "default": false,
+            "title": "Apple",
+            "type": "boolean"
+          },
+          "email_sign_up": {
+            "title": "Email Sign Up",
+            "type": "boolean"
+          },
+          "google": {
+            "title": "Google",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "email_sign_up",
+          "google"
+        ],
+        "title": "AuthOptions",
         "type": "object"
       },
       "AuthorizeIn": {
@@ -68,6 +381,29 @@
         "title": "AuthorizeOut",
         "type": "object"
       },
+      "BandIn": {
+        "additionalProperties": false,
+        "properties": {
+          "high": {
+            "maximum": 400.0,
+            "minimum": 20.0,
+            "title": "High",
+            "type": "number"
+          },
+          "low": {
+            "maximum": 400.0,
+            "minimum": 20.0,
+            "title": "Low",
+            "type": "number"
+          }
+        },
+        "required": [
+          "low",
+          "high"
+        ],
+        "title": "BandIn",
+        "type": "object"
+      },
       "BandOut": {
         "properties": {
           "high_mgdl": {
@@ -77,6 +413,16 @@
           "low_mgdl": {
             "title": "Low Mgdl",
             "type": "number"
+          },
+          "source": {
+            "default": "profile",
+            "enum": [
+              "profile",
+              "pump",
+              "carelink"
+            ],
+            "title": "Source",
+            "type": "string"
           }
         },
         "required": [
@@ -207,6 +553,13 @@
             "title": "Connected",
             "type": "boolean"
           },
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/PumpDayOut"
+            },
+            "title": "Days",
+            "type": "array"
+          },
           "detail": {
             "anyOf": [
               {
@@ -261,6 +614,16 @@
             "title": "Notifications",
             "type": "array"
           },
+          "pump": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PumpStatusOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "region": {
             "anyOf": [
               {
@@ -305,6 +668,195 @@
           "connected"
         ],
         "title": "CareLinkOut",
+        "type": "object"
+      },
+      "CgmIn": {
+        "additionalProperties": false,
+        "properties": {
+          "password": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Password",
+            "type": "string"
+          },
+          "region": {
+            "default": "ous",
+            "enum": [
+              "us",
+              "ous",
+              "jp",
+              "global"
+            ],
+            "title": "Region",
+            "type": "string"
+          },
+          "username": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Username",
+            "type": "string"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ],
+        "title": "CgmIn",
+        "type": "object"
+      },
+      "CgmOut": {
+        "properties": {
+          "added": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Added"
+          },
+          "connected": {
+            "title": "Connected",
+            "type": "boolean"
+          },
+          "detail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detail"
+          },
+          "kind": {
+            "enum": [
+              "dexcom",
+              "libre"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "last_reading_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Reading At"
+          },
+          "last_sync_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Sync At"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Region"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "enum": [
+                  "connected",
+                  "wrong_credentials",
+                  "needs_verification",
+                  "failed"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "username": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Username"
+          }
+        },
+        "required": [
+          "kind",
+          "connected"
+        ],
+        "title": "CgmOut",
+        "type": "object"
+      },
+      "ChangeMetaOut": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "at",
+          "source"
+        ],
+        "title": "ChangeMetaOut",
+        "type": "object"
+      },
+      "CheckOut": {
+        "properties": {
+          "coverage": {
+            "additionalProperties": true,
+            "title": "Coverage",
+            "type": "object"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "eligible": {
+            "title": "Eligible",
+            "type": "boolean"
+          },
+          "improved": {
+            "title": "Improved",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "day",
+          "eligible",
+          "improved",
+          "coverage"
+        ],
+        "title": "CheckOut",
         "type": "object"
       },
       "ConsentIn": {
@@ -368,6 +920,20 @@
         "title": "ConversationOut",
         "type": "object"
       },
+      "DayIn": {
+        "additionalProperties": false,
+        "properties": {
+          "complete": {
+            "title": "Complete",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "complete"
+        ],
+        "title": "DayIn",
+        "type": "object"
+      },
       "DeleteIn": {
         "additionalProperties": false,
         "properties": {
@@ -381,6 +947,122 @@
           "confirm"
         ],
         "title": "DeleteIn",
+        "type": "object"
+      },
+      "DeviceEventOut": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "group": {
+            "title": "Group",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "alert",
+              "message",
+              "event"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "occurred_at": {
+            "format": "date-time",
+            "title": "Occurred At",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "occurred_at",
+          "source",
+          "kind",
+          "code",
+          "group"
+        ],
+        "title": "DeviceEventOut",
+        "type": "object"
+      },
+      "DeviceTargetOut": {
+        "properties": {
+          "high_mgdl": {
+            "title": "High Mgdl",
+            "type": "number"
+          },
+          "low_mgdl": {
+            "title": "Low Mgdl",
+            "type": "number"
+          },
+          "source": {
+            "enum": [
+              "pump",
+              "carelink"
+            ],
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "low_mgdl",
+          "high_mgdl",
+          "source"
+        ],
+        "title": "DeviceTargetOut",
+        "type": "object"
+      },
+      "EventIn": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "enum": [
+              "why",
+              "records",
+              "left_out",
+              "reading",
+              "talk_companion",
+              "fix_records",
+              "fix_target",
+              "fix_goals",
+              "fix_log"
+            ],
+            "title": "Name",
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "detail",
+              "action"
+            ],
+            "title": "Type",
+            "type": "string"
+          },
+          "via": {
+            "default": "app",
+            "enum": [
+              "app",
+              "web",
+              "push"
+            ],
+            "title": "Via",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "name"
+        ],
+        "title": "EventIn",
         "type": "object"
       },
       "ExportIn": {
@@ -515,6 +1197,94 @@
         "title": "ExportOut",
         "type": "object"
       },
+      "FactOut": {
+        "properties": {
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Evidence",
+            "type": "array"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "evidence"
+        ],
+        "title": "FactOut",
+        "type": "object"
+      },
+      "FamDayOut": {
+        "properties": {
+          "date": {
+            "title": "Date",
+            "type": "string"
+          },
+          "entries": {
+            "title": "Entries",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "date",
+          "entries"
+        ],
+        "title": "FamDayOut",
+        "type": "object"
+      },
+      "FamiliarizationOut": {
+        "properties": {
+          "day": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Day"
+          },
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/FamDayOut"
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "learned": {
+            "items": {
+              "$ref": "#/components/schemas/LearnedOut"
+            },
+            "title": "Learned",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          },
+          "unknown": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Unknown",
+            "type": "array"
+          }
+        },
+        "required": [
+          "day",
+          "total",
+          "days",
+          "learned",
+          "unknown"
+        ],
+        "title": "FamiliarizationOut",
+        "type": "object"
+      },
       "FeedbackIn": {
         "additionalProperties": false,
         "properties": {
@@ -535,6 +1305,209 @@
           "verdict"
         ],
         "title": "FeedbackIn",
+        "type": "object"
+      },
+      "FindingOut": {
+        "properties": {
+          "advice": {
+            "default": [],
+            "items": {
+              "enum": [
+                "carbs",
+                "team",
+                "timing",
+                "move"
+              ],
+              "type": "string"
+            },
+            "title": "Advice",
+            "type": "array"
+          },
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "daily_steps": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Daily Steps"
+          },
+          "days": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Days"
+          },
+          "end_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Mgdl"
+          },
+          "gap": {
+            "anyOf": [
+              {
+                "enum": [
+                  "lower",
+                  "higher"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gap"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "food",
+              "late_meal",
+              "suspend",
+              "high_alert",
+              "auto_exit",
+              "timing_good",
+              "range_good",
+              "activity_gap",
+              "activity_good",
+              "carb_gap",
+              "meal_time",
+              "late_rise",
+              "workout",
+              "set_interval",
+              "set_overdue",
+              "sensor_short"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "of": {
+            "title": "Of",
+            "type": "integer"
+          },
+          "other_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Other Mgdl"
+          },
+          "part": {
+            "anyOf": [
+              {
+                "enum": [
+                  "night",
+                  "morning",
+                  "afternoon",
+                  "evening"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Part"
+          },
+          "rated": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rated"
+          },
+          "record_ids": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Record Ids",
+            "type": "array"
+          },
+          "slot": {
+            "anyOf": [
+              {
+                "enum": [
+                  "breakfast",
+                  "lunch",
+                  "dinner"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Slot"
+          },
+          "start_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Mgdl"
+          },
+          "tone": {
+            "enum": [
+              "watch",
+              "good",
+              "info"
+            ],
+            "title": "Tone",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "kind",
+          "tone",
+          "count",
+          "of"
+        ],
+        "title": "FindingOut",
         "type": "object"
       },
       "FinishIn": {
@@ -667,10 +1640,22 @@
           "origin": {
             "enum": [
               "user",
-              "conversation"
+              "conversation",
+              "app"
             ],
             "title": "Origin",
             "type": "string"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
           },
           "repeat": {
             "enum": [
@@ -715,6 +1700,17 @@
           "title": {
             "title": "Title",
             "type": "string"
+          },
+          "topic": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Topic"
           }
         },
         "required": [
@@ -734,6 +1730,78 @@
           "created_at"
         ],
         "title": "FollowUpOut",
+        "type": "object"
+      },
+      "FoodDayOut": {
+        "properties": {
+          "carbs_g": {
+            "title": "Carbs G",
+            "type": "number"
+          },
+          "complete": {
+            "title": "Complete",
+            "type": "boolean"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "fat_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fat G"
+          },
+          "fat_partial": {
+            "title": "Fat Partial",
+            "type": "boolean"
+          },
+          "items": {
+            "title": "Items",
+            "type": "integer"
+          },
+          "meals": {
+            "title": "Meals",
+            "type": "integer"
+          },
+          "measured_items": {
+            "title": "Measured Items",
+            "type": "integer"
+          },
+          "protein_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Protein G"
+          },
+          "protein_partial": {
+            "title": "Protein Partial",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "day",
+          "meals",
+          "carbs_g",
+          "protein_g",
+          "protein_partial",
+          "fat_g",
+          "fat_partial",
+          "measured_items",
+          "items",
+          "complete"
+        ],
+        "title": "FoodDayOut",
         "type": "object"
       },
       "FoodItem": {
@@ -763,6 +1831,19 @@
             ],
             "title": "Carbs Per 100G"
           },
+          "fat_per_100g": {
+            "anyOf": [
+              {
+                "maximum": 100.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fat Per 100G"
+          },
           "grams_per_unit": {
             "anyOf": [
               {
@@ -782,9 +1863,22 @@
             "title": "Name",
             "type": "string"
           },
+          "protein_per_100g": {
+            "anyOf": [
+              {
+                "maximum": 100.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Protein Per 100G"
+          },
           "qty": {
             "exclusiveMinimum": 0.0,
-            "maximum": 100.0,
+            "maximum": 1000.0,
             "title": "Qty",
             "type": "number"
           },
@@ -833,9 +1927,31 @@
             ],
             "title": "Carbs Per 100G"
           },
+          "fat_per_100g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fat Per 100G"
+          },
           "name": {
             "title": "Name",
             "type": "string"
+          },
+          "protein_per_100g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Protein Per 100G"
           },
           "source_id": {
             "title": "Source Id",
@@ -894,6 +2010,70 @@
           "provider"
         ],
         "title": "FoodResult",
+        "type": "object"
+      },
+      "FoodSummaryOut": {
+        "properties": {
+          "carbs_avg_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Carbs Avg G"
+          },
+          "complete_days": {
+            "title": "Complete Days",
+            "type": "integer"
+          },
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/FoodDayOut"
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "goals": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Goals",
+            "type": "array"
+          },
+          "protein_avg_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Protein Avg G"
+          },
+          "target": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ProteinTargetOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "days",
+          "complete_days",
+          "protein_avg_g",
+          "carbs_avg_g",
+          "target",
+          "goals"
+        ],
+        "title": "FoodSummaryOut",
         "type": "object"
       },
       "GlucoseIn": {
@@ -999,6 +2179,24 @@
           "source": {
             "title": "Source",
             "type": "string"
+          },
+          "trend": {
+            "anyOf": [
+              {
+                "enum": [
+                  "up_fast",
+                  "up",
+                  "flat",
+                  "down",
+                  "down_fast"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trend"
           },
           "unit": {
             "enum": [
@@ -1145,6 +2343,90 @@
         "title": "GlucoseRevisionOut",
         "type": "object"
       },
+      "GoalsIn": {
+        "additionalProperties": false,
+        "description": "\"What would you like us to help with?\" and \"What is hardest for you day to day?\" (goals.py lists the values).",
+        "properties": {
+          "hard": {
+            "default": [],
+            "items": {
+              "enum": [
+                "carbs",
+                "lows",
+                "highs",
+                "nights",
+                "exercise",
+                "eating_out",
+                "remembering",
+                "burnout",
+                "devices",
+                "sleep",
+                "work",
+                "other"
+              ],
+              "type": "string"
+            },
+            "title": "Hard",
+            "type": "array"
+          },
+          "hardOther": {
+            "default": "",
+            "maxLength": 200,
+            "title": "Hardother",
+            "type": "string"
+          },
+          "help": {
+            "default": [],
+            "items": {
+              "enum": [
+                "range",
+                "lows",
+                "highs",
+                "meals",
+                "exercise",
+                "weight",
+                "routine",
+                "labs",
+                "understand",
+                "calm",
+                "other"
+              ],
+              "type": "string"
+            },
+            "title": "Help",
+            "type": "array"
+          },
+          "helpOther": {
+            "default": "",
+            "maxLength": 200,
+            "title": "Helpother",
+            "type": "string"
+          },
+          "skipped": {
+            "default": false,
+            "title": "Skipped",
+            "type": "boolean"
+          }
+        },
+        "title": "GoalsIn",
+        "type": "object"
+      },
+      "GoogleIn": {
+        "additionalProperties": false,
+        "properties": {
+          "id_token": {
+            "maxLength": 4096,
+            "minLength": 20,
+            "title": "Id Token",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id_token"
+        ],
+        "title": "GoogleIn",
+        "type": "object"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -1156,6 +2438,252 @@
           }
         },
         "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "HabitData": {
+        "additionalProperties": false,
+        "description": "A habit the person keeps track of (no sensor needed): done or not, with an optional amount in its own unit.",
+        "properties": {
+          "amount": {
+            "anyOf": [
+              {
+                "maximum": 100000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Amount"
+          },
+          "done": {
+            "default": true,
+            "title": "Done",
+            "type": "boolean"
+          },
+          "habit": {
+            "enum": [
+              "walk",
+              "steps",
+              "water",
+              "vegetables",
+              "sleep",
+              "no_sweet_drinks",
+              "weigh_in",
+              "meds_taken",
+              "glucose_check",
+              "other"
+            ],
+            "title": "Habit",
+            "type": "string"
+          },
+          "name": {
+            "default": "",
+            "maxLength": 60,
+            "title": "Name",
+            "type": "string"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "maxLength": 16,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Unit"
+          }
+        },
+        "required": [
+          "habit"
+        ],
+        "title": "HabitData",
+        "type": "object"
+      },
+      "HealthExtraBatch": {
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/HealthExtraIn"
+            },
+            "maxItems": 1000,
+            "title": "Items",
+            "type": "array"
+          },
+          "store": {
+            "enum": [
+              "apple_health",
+              "health_connect"
+            ],
+            "title": "Store",
+            "type": "string"
+          },
+          "window_from": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Window From"
+          },
+          "window_to": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Window To"
+          }
+        },
+        "required": [
+          "store",
+          "items"
+        ],
+        "title": "HealthExtraBatch",
+        "type": "object"
+      },
+      "HealthExtraIn": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                },
+                "maxProperties": 8,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data"
+          },
+          "end": {
+            "format": "date-time",
+            "title": "End",
+            "type": "string"
+          },
+          "origin": {
+            "default": "",
+            "maxLength": 120,
+            "title": "Origin",
+            "type": "string"
+          },
+          "sample_id": {
+            "maxLength": 64,
+            "minLength": 8,
+            "pattern": "^[A-Za-z0-9_-]+$",
+            "title": "Sample Id",
+            "type": "string"
+          },
+          "start": {
+            "format": "date-time",
+            "title": "Start",
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "heart_rate",
+              "resting_heart_rate",
+              "hrv",
+              "steps",
+              "active_energy",
+              "distance",
+              "weight",
+              "carbs",
+              "insulin",
+              "spo2",
+              "sleep",
+              "workout"
+            ],
+            "title": "Type",
+            "type": "string"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "maxLength": 16,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "maximum": 1000000.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "type",
+          "sample_id",
+          "start",
+          "end"
+        ],
+        "title": "HealthExtraIn",
+        "type": "object"
+      },
+      "HealthExtraOut": {
+        "properties": {
+          "added": {
+            "title": "Added",
+            "type": "integer"
+          },
+          "received": {
+            "title": "Received",
+            "type": "integer"
+          },
+          "removed": {
+            "title": "Removed",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "received",
+          "added",
+          "removed"
+        ],
+        "title": "HealthExtraOut",
         "type": "object"
       },
       "HealthImportIn": {
@@ -1176,6 +2704,30 @@
             ],
             "title": "Store",
             "type": "string"
+          },
+          "window_from": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Window From"
+          },
+          "window_to": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Window To"
           }
         },
         "required": [
@@ -1193,6 +2745,11 @@
           },
           "received": {
             "title": "Received",
+            "type": "integer"
+          },
+          "removed": {
+            "default": 0,
+            "title": "Removed",
             "type": "integer"
           },
           "skipped": {
@@ -1268,6 +2825,85 @@
         "title": "HealthSampleIn",
         "type": "object"
       },
+      "HealthSampleOut": {
+        "properties": {
+          "data": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data"
+          },
+          "end_at": {
+            "format": "date-time",
+            "title": "End At",
+            "type": "string"
+          },
+          "origin": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          },
+          "start_at": {
+            "format": "date-time",
+            "title": "Start At",
+            "type": "string"
+          },
+          "store": {
+            "title": "Store",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "type",
+          "start_at",
+          "end_at",
+          "value",
+          "unit",
+          "origin",
+          "data",
+          "store"
+        ],
+        "title": "HealthSampleOut",
+        "type": "object"
+      },
       "HideIn": {
         "additionalProperties": false,
         "properties": {
@@ -1280,6 +2916,109 @@
           "hidden"
         ],
         "title": "HideIn",
+        "type": "object"
+      },
+      "HourOut": {
+        "properties": {
+          "above": {
+            "title": "Above",
+            "type": "integer"
+          },
+          "below": {
+            "title": "Below",
+            "type": "integer"
+          },
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "hour": {
+            "title": "Hour",
+            "type": "integer"
+          },
+          "inside": {
+            "title": "Inside",
+            "type": "integer"
+          },
+          "middle_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Middle Mgdl"
+          }
+        },
+        "required": [
+          "hour",
+          "days",
+          "middle_mgdl",
+          "above",
+          "below",
+          "inside"
+        ],
+        "title": "HourOut",
+        "type": "object"
+      },
+      "HoursOut": {
+        "properties": {
+          "band": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/BandOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "hours": {
+            "items": {
+              "$ref": "#/components/schemas/HourOut"
+            },
+            "title": "Hours",
+            "type": "array"
+          },
+          "window_days": {
+            "title": "Window Days",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "band",
+          "window_days",
+          "hours"
+        ],
+        "title": "HoursOut",
+        "type": "object"
+      },
+      "HypothesisOut": {
+        "properties": {
+          "check": {
+            "title": "Check",
+            "type": "string"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Evidence",
+            "type": "array"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "evidence",
+          "check"
+        ],
+        "title": "HypothesisOut",
         "type": "object"
       },
       "InsightDayOut": {
@@ -1380,6 +3119,28 @@
       },
       "InsightsOut": {
         "properties": {
+          "a1c": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/A1cOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "analyzed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Analyzed At"
+          },
           "band": {
             "anyOf": [
               {
@@ -1390,11 +3151,63 @@
               }
             ]
           },
+          "findings": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/FindingOut"
+            },
+            "title": "Findings",
+            "type": "array"
+          },
           "insights": {
             "items": {
               "$ref": "#/components/schemas/InsightOut"
             },
             "title": "Insights",
+            "type": "array"
+          },
+          "meal_patterns": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/MealPatternOut"
+            },
+            "title": "Meal Patterns",
+            "type": "array"
+          },
+          "ranking": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RankingOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "routine": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RoutineOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "topics": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/TopicOut"
+            },
+            "title": "Topics",
+            "type": "array"
+          },
+          "why": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/WhyOut"
+            },
+            "title": "Why",
             "type": "array"
           },
           "window_days": {
@@ -1445,11 +3258,286 @@
         "title": "InsulinData",
         "type": "object"
       },
+      "InterpretIn": {
+        "additionalProperties": false,
+        "properties": {
+          "locale": {
+            "default": "en",
+            "enum": [
+              "en",
+              "he",
+              "ar",
+              "ru"
+            ],
+            "title": "Locale",
+            "type": "string"
+          }
+        },
+        "title": "InterpretIn",
+        "type": "object"
+      },
+      "InterpretationOut": {
+        "description": "The model's reading of one insight (interpret.py): what the records show, possibilities, and what is missing.",
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "facts": {
+            "items": {
+              "$ref": "#/components/schemas/FactOut"
+            },
+            "title": "Facts",
+            "type": "array"
+          },
+          "hypotheses": {
+            "items": {
+              "$ref": "#/components/schemas/HypothesisOut"
+            },
+            "title": "Hypotheses",
+            "type": "array"
+          },
+          "kept": {
+            "title": "Kept",
+            "type": "boolean"
+          },
+          "missing": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing",
+            "type": "array"
+          },
+          "question": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Question"
+          }
+        },
+        "required": [
+          "facts",
+          "hypotheses",
+          "missing",
+          "question",
+          "created_at",
+          "kept"
+        ],
+        "title": "InterpretationOut",
+        "type": "object"
+      },
+      "InviteIn": {
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "anyOf": [
+              {
+                "maxLength": 60,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          }
+        },
+        "title": "InviteIn",
+        "type": "object"
+      },
+      "LabData": {
+        "additionalProperties": false,
+        "description": "A lab or clinic result the person entered (13 Nov 2026), with the date it was taken and where it came from. Stored as\nentered; Stedio does not grade it against a range.",
+        "properties": {
+          "name": {
+            "default": "",
+            "maxLength": 60,
+            "title": "Name",
+            "type": "string"
+          },
+          "source": {
+            "enum": [
+              "lab_report",
+              "care_team",
+              "self",
+              "other"
+            ],
+            "title": "Source",
+            "type": "string"
+          },
+          "taken_on": {
+            "format": "date",
+            "title": "Taken On",
+            "type": "string"
+          },
+          "test": {
+            "enum": [
+              "a1c",
+              "fasting_glucose",
+              "ogtt",
+              "ldl",
+              "hdl",
+              "triglycerides",
+              "cholesterol",
+              "egfr",
+              "creatinine",
+              "uacr",
+              "tsh",
+              "other"
+            ],
+            "title": "Test",
+            "type": "string"
+          },
+          "unit": {
+            "maxLength": 16,
+            "title": "Unit",
+            "type": "string"
+          },
+          "value": {
+            "maximum": 100000,
+            "minimum": 0,
+            "title": "Value",
+            "type": "number"
+          }
+        },
+        "required": [
+          "test",
+          "value",
+          "unit",
+          "taken_on",
+          "source"
+        ],
+        "title": "LabData",
+        "type": "object"
+      },
+      "LearnedOut": {
+        "properties": {
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "firm": {
+            "title": "Firm",
+            "type": "boolean"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "of_days": {
+            "title": "Of Days",
+            "type": "integer"
+          },
+          "slot": {
+            "enum": [
+              "breakfast",
+              "lunch",
+              "dinner"
+            ],
+            "title": "Slot",
+            "type": "string"
+          },
+          "time": {
+            "title": "Time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "slot",
+          "time",
+          "days",
+          "of_days",
+          "firm"
+        ],
+        "title": "LearnedOut",
+        "type": "object"
+      },
+      "LiveActivityIn": {
+        "additionalProperties": false,
+        "properties": {
+          "band": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/BandIn"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "parts": {
+            "items": {
+              "$ref": "#/components/schemas/PartIn"
+            },
+            "maxItems": 12,
+            "title": "Parts",
+            "type": "array"
+          },
+          "token": {
+            "maxLength": 400,
+            "minLength": 16,
+            "pattern": "^[0-9a-fA-F]+$",
+            "title": "Token",
+            "type": "string"
+          },
+          "unit": {
+            "enum": [
+              "mgdl",
+              "mmol"
+            ],
+            "title": "Unit",
+            "type": "string"
+          },
+          "words": {
+            "$ref": "#/components/schemas/WordsIn"
+          }
+        },
+        "required": [
+          "token",
+          "unit",
+          "words"
+        ],
+        "title": "LiveActivityIn",
+        "type": "object"
+      },
       "Me": {
         "properties": {
+          "approved": {
+            "default": true,
+            "title": "Approved",
+            "type": "boolean"
+          },
+          "avatar_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Avatar Url"
+          },
           "email": {
             "title": "Email",
             "type": "string"
+          },
+          "email_verified": {
+            "default": true,
+            "title": "Email Verified",
+            "type": "boolean"
+          },
+          "has_data": {
+            "default": true,
+            "title": "Has Data",
+            "type": "boolean"
           },
           "has_profile": {
             "title": "Has Profile",
@@ -1459,6 +3547,11 @@
             "format": "uuid",
             "title": "Id",
             "type": "string"
+          },
+          "is_admin": {
+            "default": false,
+            "title": "Is Admin",
+            "type": "boolean"
           }
         },
         "required": [
@@ -1492,6 +3585,20 @@
             "title": "Carbs Total G",
             "type": "number"
           },
+          "fat_total_g": {
+            "anyOf": [
+              {
+                "maximum": 2000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Fat Total G"
+          },
           "items": {
             "items": {
               "$ref": "#/components/schemas/MealItemData"
@@ -1512,6 +3619,20 @@
             ],
             "default": null,
             "title": "Photo Id"
+          },
+          "protein_total_g": {
+            "anyOf": [
+              {
+                "maximum": 2000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Protein Total G"
           }
         },
         "required": [
@@ -1540,10 +3661,38 @@
             "default": null,
             "title": "Carbs G"
           },
+          "fat_g": {
+            "anyOf": [
+              {
+                "maximum": 1000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Fat G"
+          },
           "name": {
             "maxLength": 120,
             "title": "Name",
             "type": "string"
+          },
+          "protein_g": {
+            "anyOf": [
+              {
+                "maximum": 1000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Protein G"
           },
           "prov": {
             "enum": [
@@ -1580,6 +3729,107 @@
           "prov"
         ],
         "title": "MealItemData",
+        "type": "object"
+      },
+      "MealPatternOut": {
+        "properties": {
+          "after_meals": {
+            "default": 0,
+            "title": "After Meals",
+            "type": "integer"
+          },
+          "after_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Mgdl"
+          },
+          "before_meals": {
+            "default": 0,
+            "title": "Before Meals",
+            "type": "integer"
+          },
+          "before_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before Mgdl"
+          },
+          "end_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Mgdl"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "meals": {
+            "title": "Meals",
+            "type": "integer"
+          },
+          "record_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Record Ids",
+            "type": "array"
+          },
+          "rise_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rise Mgdl"
+          },
+          "slot": {
+            "enum": [
+              "breakfast",
+              "lunch",
+              "dinner"
+            ],
+            "title": "Slot",
+            "type": "string"
+          },
+          "start_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Mgdl"
+          }
+        },
+        "required": [
+          "key",
+          "slot",
+          "meals",
+          "record_ids"
+        ],
+        "title": "MealPatternOut",
         "type": "object"
       },
       "MembershipOut": {
@@ -1621,6 +3871,15 @@
           "id": {
             "format": "uuid",
             "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "default": "fact",
+            "enum": [
+              "fact",
+              "impression"
+            ],
+            "title": "Kind",
             "type": "string"
           },
           "source": {
@@ -1840,6 +4099,8 @@
           "diabetesType": {
             "enum": [
               "type1",
+              "type2",
+              "prediabetes",
               "other",
               "notSure"
             ],
@@ -1868,10 +4129,75 @@
             ],
             "title": "Diagnosedon"
           },
+          "dismissed": {
+            "anyOf": [
+              {
+                "items": {
+                  "const": "completeProfile",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dismissed"
+          },
+          "fitness": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fitness"
+          },
+          "food": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Food"
+          },
+          "goals": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GoalsIn"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "history": {
             "additionalProperties": true,
             "title": "History",
             "type": "object"
+          },
+          "infusionSet": {
+            "anyOf": [
+              {
+                "enum": [
+                  "extended",
+                  "standard",
+                  "notSure"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Infusionset"
           },
           "insulinOther": {
             "title": "Insulinother",
@@ -1891,6 +4217,18 @@
               }
             ],
             "title": "Laststep"
+          },
+          "meds": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Meds"
           },
           "pump": {
             "anyOf": [
@@ -2002,6 +4340,56 @@
         "title": "ParseIn",
         "type": "object"
       },
+      "PartIn": {
+        "additionalProperties": false,
+        "description": "A three-hour part of the day as the card shows it, in ms since 1970.",
+        "properties": {
+          "from": {
+            "title": "From",
+            "type": "integer"
+          },
+          "icon": {
+            "anyOf": [
+              {
+                "maxLength": 60,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Icon"
+          },
+          "line": {
+            "anyOf": [
+              {
+                "maxLength": 300,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Line"
+          },
+          "title": {
+            "maxLength": 120,
+            "title": "Title",
+            "type": "string"
+          },
+          "to": {
+            "title": "To",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "title"
+        ],
+        "title": "PartIn",
+        "type": "object"
+      },
       "PhotoOut": {
         "properties": {
           "photo_id": {
@@ -2014,6 +4402,62 @@
           "photo_id"
         ],
         "title": "PhotoOut",
+        "type": "object"
+      },
+      "ProfileChangeOut": {
+        "properties": {
+          "after": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After"
+          },
+          "before": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "path": {
+            "title": "Path",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "path",
+          "before",
+          "after",
+          "source",
+          "created_at"
+        ],
+        "title": "ProfileChangeOut",
         "type": "object"
       },
       "ProfileIn": {
@@ -2031,6 +4475,23 @@
             ],
             "title": "Locale",
             "type": "string"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "enum": [
+                  "onboarding",
+                  "settings",
+                  "companion",
+                  "website"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
           }
         },
         "required": [
@@ -2046,6 +4507,24 @@
             "additionalProperties": true,
             "title": "Answers",
             "type": "object"
+          },
+          "changed": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ChangeMetaOut"
+            },
+            "default": {},
+            "title": "Changed",
+            "type": "object"
+          },
+          "device_target": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DeviceTargetOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "diabetes_type": {
             "title": "Diabetes Type",
@@ -2085,6 +4564,38 @@
         "title": "ProfileOut",
         "type": "object"
       },
+      "ProgressOut": {
+        "properties": {
+          "achievements": {
+            "items": {
+              "$ref": "#/components/schemas/AchievementOut"
+            },
+            "title": "Achievements",
+            "type": "array"
+          },
+          "celebrate": {
+            "title": "Celebrate",
+            "type": "boolean"
+          },
+          "last_check": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CheckOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "achievements",
+          "last_check",
+          "celebrate"
+        ],
+        "title": "ProgressOut",
+        "type": "object"
+      },
       "ProposalIn": {
         "additionalProperties": false,
         "properties": {
@@ -2102,6 +4613,317 @@
           "status"
         ],
         "title": "ProposalIn",
+        "type": "object"
+      },
+      "ProteinTargetOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "number"
+          },
+          "set_on": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Set On"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "unit": {
+            "enum": [
+              "g_day",
+              "g_kg"
+            ],
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "unit",
+          "source",
+          "set_on"
+        ],
+        "title": "ProteinTargetOut",
+        "type": "object"
+      },
+      "ProvenanceOut": {
+        "properties": {
+          "basis": {
+            "title": "Basis",
+            "type": "integer"
+          },
+          "certainty": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "title": "Certainty",
+            "type": "string"
+          },
+          "computed_at": {
+            "format": "date-time",
+            "title": "Computed At",
+            "type": "string"
+          },
+          "coverage_pct": {
+            "title": "Coverage Pct",
+            "type": "integer"
+          },
+          "period_from": {
+            "format": "date-time",
+            "title": "Period From",
+            "type": "string"
+          },
+          "period_to": {
+            "format": "date-time",
+            "title": "Period To",
+            "type": "string"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sources",
+            "type": "array"
+          }
+        },
+        "required": [
+          "sources",
+          "period_from",
+          "period_to",
+          "computed_at",
+          "coverage_pct",
+          "basis",
+          "certainty"
+        ],
+        "title": "ProvenanceOut",
+        "type": "object"
+      },
+      "PumpDayOut": {
+        "description": "One finished day as the pump's 30-day history reports it.",
+        "properties": {
+          "day": {
+            "format": "date",
+            "title": "Day",
+            "type": "string"
+          },
+          "insulin_units": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Insulin Units"
+          },
+          "sensor_min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor Min"
+          },
+          "smartguard_exits": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Smartguard Exits"
+          },
+          "smartguard_min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Smartguard Min"
+          }
+        },
+        "required": [
+          "day"
+        ],
+        "title": "PumpDayOut",
+        "type": "object"
+      },
+      "PumpStatusOut": {
+        "description": "The pump's state at the last poll, as CareLink reported it. Every field is optional: older pumps or a pump out\nof reach leave some out.",
+        "properties": {
+          "active_insulin_units": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Active Insulin Units"
+          },
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "battery_percent": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Battery Percent"
+          },
+          "phone_battery_percent": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone Battery Percent"
+          },
+          "pump_in_range": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pump In Range"
+          },
+          "reservoir_percent": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reservoir Percent"
+          },
+          "reservoir_units": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reservoir Units"
+          },
+          "sensor_hours_left": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor Hours Left"
+          },
+          "sensor_in_range": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor In Range"
+          },
+          "sensor_state": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor State"
+          },
+          "smartguard": {
+            "anyOf": [
+              {
+                "enum": [
+                  "auto",
+                  "safe_basal",
+                  "manual"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Smartguard"
+          },
+          "suspended": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Suspended"
+          },
+          "transmitter_battery_percent": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transmitter Battery Percent"
+          }
+        },
+        "required": [
+          "at"
+        ],
+        "title": "PumpStatusOut",
         "type": "object"
       },
       "PushTokenIn": {
@@ -2130,6 +4952,59 @@
         "title": "PushTokenIn",
         "type": "object"
       },
+      "RankingOut": {
+        "properties": {
+          "mode": {
+            "title": "Mode",
+            "type": "string"
+          },
+          "model_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Version"
+          },
+          "order": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Order",
+            "type": "array"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "rules_version": {
+            "title": "Rules Version",
+            "type": "string"
+          },
+          "served": {
+            "title": "Served",
+            "type": "string"
+          }
+        },
+        "required": [
+          "order",
+          "served",
+          "mode",
+          "rules_version"
+        ],
+        "title": "RankingOut",
+        "type": "object"
+      },
       "RecordIn": {
         "additionalProperties": false,
         "properties": {
@@ -2155,7 +5030,9 @@
               "insulin",
               "activity",
               "note",
-              "meal"
+              "meal",
+              "lab",
+              "habit"
             ],
             "title": "Kind",
             "type": "string"
@@ -2216,7 +5093,9 @@
               "insulin",
               "activity",
               "note",
-              "meal"
+              "meal",
+              "lab",
+              "habit"
             ],
             "title": "Kind",
             "type": "string"
@@ -2234,6 +5113,29 @@
           "revision": {
             "title": "Revision",
             "type": "integer"
+          },
+          "same_as": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Same As"
+          },
+          "same_as_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Same As By"
           },
           "source": {
             "title": "Source",
@@ -2360,6 +5262,61 @@
         "title": "RescheduleIn",
         "type": "object"
       },
+      "RoutineOut": {
+        "properties": {
+          "lead_meals": {
+            "title": "Lead Meals",
+            "type": "integer"
+          },
+          "lead_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lead Minutes"
+          },
+          "meal_times": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Meal Times",
+            "type": "object"
+          }
+        },
+        "required": [
+          "meal_times",
+          "lead_minutes",
+          "lead_meals"
+        ],
+        "title": "RoutineOut",
+        "type": "object"
+      },
+      "SameAsIn": {
+        "description": "The meal this entry is the same meal as, or null for \"a separate meal\".",
+        "properties": {
+          "meal_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Meal Id"
+          }
+        },
+        "required": [
+          "meal_id"
+        ],
+        "title": "SameAsIn",
+        "type": "object"
+      },
       "SendIn": {
         "additionalProperties": false,
         "properties": {
@@ -2417,6 +5374,26 @@
       },
       "SettingsOut": {
         "properties": {
+          "celebrate": {
+            "default": true,
+            "title": "Celebrate",
+            "type": "boolean"
+          },
+          "insight_interval_days": {
+            "default": 14,
+            "title": "Insight Interval Days",
+            "type": "integer"
+          },
+          "insight_push": {
+            "default": true,
+            "title": "Insight Push",
+            "type": "boolean"
+          },
+          "insight_push_week_cap": {
+            "default": 2,
+            "title": "Insight Push Week Cap",
+            "type": "integer"
+          },
           "memory_enabled": {
             "title": "Memory Enabled",
             "type": "boolean"
@@ -2446,6 +5423,54 @@
       "SettingsPatch": {
         "additionalProperties": false,
         "properties": {
+          "celebrate": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Celebrate"
+          },
+          "insight_interval_days": {
+            "anyOf": [
+              {
+                "maximum": 60.0,
+                "minimum": 7.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Insight Interval Days"
+          },
+          "insight_push": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Insight Push"
+          },
+          "insight_push_week_cap": {
+            "anyOf": [
+              {
+                "maximum": 7.0,
+                "minimum": 1.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Insight Push Week Cap"
+          },
           "memory_enabled": {
             "anyOf": [
               {
@@ -2487,6 +5512,30 @@
           }
         },
         "title": "SettingsPatch",
+        "type": "object"
+      },
+      "SharingOut": {
+        "properties": {
+          "viewers": {
+            "items": {
+              "$ref": "#/components/schemas/ViewerOut"
+            },
+            "title": "Viewers",
+            "type": "array"
+          },
+          "viewing": {
+            "items": {
+              "$ref": "#/components/schemas/ViewingOut"
+            },
+            "title": "Viewing",
+            "type": "array"
+          }
+        },
+        "required": [
+          "viewers",
+          "viewing"
+        ],
+        "title": "SharingOut",
         "type": "object"
       },
       "SignIn": {
@@ -2532,6 +5581,68 @@
         "title": "SignUp",
         "type": "object"
       },
+      "SimilarOut": {
+        "properties": {
+          "after_median_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Median Mgdl"
+          },
+          "enough": {
+            "title": "Enough",
+            "type": "boolean"
+          },
+          "feelings": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Feelings",
+            "type": "object"
+          },
+          "similar": {
+            "items": {
+              "$ref": "#/components/schemas/WorkoutOut"
+            },
+            "title": "Similar",
+            "type": "array"
+          },
+          "start_median_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Median Mgdl"
+          },
+          "with_readings": {
+            "title": "With Readings",
+            "type": "integer"
+          },
+          "workout": {
+            "$ref": "#/components/schemas/WorkoutOut"
+          }
+        },
+        "required": [
+          "workout",
+          "similar",
+          "enough",
+          "feelings",
+          "start_median_mgdl",
+          "after_median_mgdl",
+          "with_readings"
+        ],
+        "title": "SimilarOut",
+        "type": "object"
+      },
       "SnoozeIn": {
         "additionalProperties": false,
         "properties": {
@@ -2546,6 +5657,43 @@
           "minutes"
         ],
         "title": "SnoozeIn",
+        "type": "object"
+      },
+      "SyncAllOut": {
+        "properties": {
+          "added": {
+            "title": "Added",
+            "type": "integer"
+          },
+          "failed": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Failed",
+            "type": "array"
+          },
+          "skipped": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Skipped",
+            "type": "array"
+          },
+          "synced": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Synced",
+            "type": "array"
+          }
+        },
+        "required": [
+          "added",
+          "synced",
+          "skipped",
+          "failed"
+        ],
+        "title": "SyncAllOut",
         "type": "object"
       },
       "ThreadOut": {
@@ -2606,6 +5754,105 @@
         "title": "Tokens",
         "type": "object"
       },
+      "TopicOut": {
+        "properties": {
+          "changed_at": {
+            "format": "date-time",
+            "title": "Changed At",
+            "type": "string"
+          },
+          "first_seen_at": {
+            "format": "date-time",
+            "title": "First Seen At",
+            "type": "string"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "latest": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/UpdateOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/ProvenanceOut"
+          },
+          "read_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Read At"
+          },
+          "read_via": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Read Via"
+          },
+          "seen_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seen At"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "ended",
+              "insufficient",
+              "corrected"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "unread": {
+            "title": "Unread",
+            "type": "boolean"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "key",
+          "status",
+          "first_seen_at",
+          "changed_at",
+          "version",
+          "provenance",
+          "seen_at",
+          "read_at",
+          "read_via",
+          "unread",
+          "latest"
+        ],
+        "title": "TopicOut",
+        "type": "object"
+      },
       "TranscriptOut": {
         "properties": {
           "text": {
@@ -2617,6 +5864,67 @@
           "text"
         ],
         "title": "TranscriptOut",
+        "type": "object"
+      },
+      "UpdateOut": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "data": {
+            "additionalProperties": true,
+            "title": "Data",
+            "type": "object"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "new",
+              "changed",
+              "continuing",
+              "ended",
+              "corrected"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "push_state": {
+            "title": "Push State",
+            "type": "string"
+          },
+          "pushed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pushed At"
+          }
+        },
+        "required": [
+          "id",
+          "key",
+          "kind",
+          "data",
+          "created_at",
+          "push_state",
+          "pushed_at"
+        ],
+        "title": "UpdateOut",
         "type": "object"
       },
       "ValidationError": {
@@ -2659,6 +5967,148 @@
         "title": "ValidationError",
         "type": "object"
       },
+      "VerifyIn": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "pattern": "^[0-9]{6}$",
+            "title": "Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "title": "VerifyIn",
+        "type": "object"
+      },
+      "VerifySent": {
+        "properties": {
+          "sent": {
+            "title": "Sent",
+            "type": "boolean"
+          },
+          "verified": {
+            "title": "Verified",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "sent",
+          "verified"
+        ],
+        "title": "VerifySent",
+        "type": "object"
+      },
+      "ViewerOut": {
+        "description": "A share as its owner sees it: who can see their data, or an invite not used yet.",
+        "properties": {
+          "accepted_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Accepted At"
+          },
+          "code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code"
+          },
+          "code_expires_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code Expires At"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "viewer_email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Viewer Email"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "viewer_email",
+          "code",
+          "code_expires_at",
+          "accepted_at"
+        ],
+        "title": "ViewerOut",
+        "type": "object"
+      },
+      "ViewingOut": {
+        "description": "A share as the viewer sees it: whose data they can see.",
+        "properties": {
+          "accepted_at": {
+            "format": "date-time",
+            "title": "Accepted At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "owner_id": {
+            "format": "uuid",
+            "title": "Owner Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "owner_id",
+          "name",
+          "accepted_at"
+        ],
+        "title": "ViewingOut",
+        "type": "object"
+      },
       "VoiceStatusOut": {
         "properties": {
           "available": {
@@ -2684,6 +6134,288 @@
         ],
         "title": "VoiceStatusOut",
         "type": "object"
+      },
+      "WhyOut": {
+        "description": "\"Why am I seeing this?\" for one insight: what it rests on and which of the person's goals it speaks to.",
+        "properties": {
+          "band_source": {
+            "anyOf": [
+              {
+                "enum": [
+                  "profile",
+                  "pump",
+                  "carelink"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Band Source"
+          },
+          "basis": {
+            "default": 0,
+            "title": "Basis",
+            "type": "integer"
+          },
+          "certainty": {
+            "anyOf": [
+              {
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Certainty"
+          },
+          "coverage_pct": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coverage Pct"
+          },
+          "data": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Data",
+            "type": "array"
+          },
+          "fixes": {
+            "default": [],
+            "items": {
+              "enum": [
+                "records",
+                "target",
+                "goals",
+                "log"
+              ],
+              "type": "string"
+            },
+            "title": "Fixes",
+            "type": "array"
+          },
+          "goals": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Goals",
+            "type": "array"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "period_from": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period From"
+          },
+          "period_to": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period To"
+          }
+        },
+        "required": [
+          "key"
+        ],
+        "title": "WhyOut",
+        "type": "object"
+      },
+      "WordsIn": {
+        "additionalProperties": false,
+        "description": "The card's words in the app's language: range labels, \"not live \u00b7 {t}\" and \"not current\".",
+        "properties": {
+          "above": {
+            "maxLength": 60,
+            "title": "Above",
+            "type": "string"
+          },
+          "ago": {
+            "maxLength": 80,
+            "title": "Ago",
+            "type": "string"
+          },
+          "below": {
+            "maxLength": 60,
+            "title": "Below",
+            "type": "string"
+          },
+          "in": {
+            "maxLength": 60,
+            "title": "In",
+            "type": "string"
+          },
+          "old": {
+            "maxLength": 80,
+            "title": "Old",
+            "type": "string"
+          }
+        },
+        "required": [
+          "below",
+          "above",
+          "in",
+          "ago",
+          "old"
+        ],
+        "title": "WordsIn",
+        "type": "object"
+      },
+      "WorkoutOut": {
+        "properties": {
+          "after_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Mgdl"
+          },
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "feeling": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Feeling"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "intensity": {
+            "title": "Intensity",
+            "type": "string"
+          },
+          "minutes": {
+            "title": "Minutes",
+            "type": "integer"
+          },
+          "start_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Mgdl"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "at",
+          "type",
+          "minutes",
+          "intensity",
+          "feeling",
+          "start_mgdl",
+          "after_mgdl"
+        ],
+        "title": "WorkoutOut",
+        "type": "object"
+      },
+      "steady_api__routers__insights__StateIn": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "seen",
+              "read"
+            ],
+            "title": "Action",
+            "type": "string"
+          },
+          "via": {
+            "enum": [
+              "app",
+              "web",
+              "push"
+            ],
+            "title": "Via",
+            "type": "string"
+          }
+        },
+        "required": [
+          "action",
+          "via"
+        ],
+        "title": "StateIn",
+        "type": "object"
+      },
+      "steady_api__routers__progress__StateIn": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "seen",
+              "celebrated"
+            ],
+            "title": "Action",
+            "type": "string"
+          },
+          "via": {
+            "enum": [
+              "app",
+              "web",
+              "push"
+            ],
+            "title": "Via",
+            "type": "string"
+          }
+        },
+        "required": [
+          "action",
+          "via"
+        ],
+        "title": "StateIn",
+        "type": "object"
       }
     },
     "securitySchemes": {
@@ -2694,7 +6426,7 @@
     }
   },
   "info": {
-    "title": "Steady API",
+    "title": "Stedio API",
     "version": "0.1.0"
   },
   "openapi": "3.1.0",
@@ -2739,6 +6471,305 @@
         ]
       }
     },
+    "/activity/{record_id}/similar": {
+      "get": {
+        "operationId": "similar_workouts_activity__record_id__similar_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "record_id",
+            "required": true,
+            "schema": {
+              "title": "Record Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimilarOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Similar Workouts",
+        "tags": [
+          "daily"
+        ]
+      }
+    },
+    "/admin/users": {
+      "get": {
+        "operationId": "users_admin_users_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AdminUserOut"
+                  },
+                  "title": "Response Users Admin Users Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Users",
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/admin/users/{user_id}": {
+      "delete": {
+        "description": "Deletes another account and everything in it, as the person's own \"Delete account\" does. Never the admin's own\naccount or another admin's, and only when the typed email matches the account's.",
+        "operationId": "delete_user_admin_users__user_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "User Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminDeleteIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "confirm_mismatch, self or admin"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete User",
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/admin/users/{user_id}/approve": {
+      "post": {
+        "description": "Takes an account off the waitlist (Guy, 12 Nov 2026) and emails it. Approving twice changes nothing.",
+        "operationId": "approve_admin_users__user_id__approve_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "User Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApprovedOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Approve",
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/app/version": {
+      "get": {
+        "description": "Public: it says only which build number is newest and where to install it.",
+        "operationId": "version_app_version_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppVersionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Version",
+        "tags": [
+          "app"
+        ]
+      }
+    },
+    "/auth/apple": {
+      "post": {
+        "description": "Sign in or sign up with Apple (iPhone app), linked the same way as Google.",
+        "operationId": "apple_auth_apple_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppleIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tokens"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "description": "invalid_apple_token"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "503": {
+            "description": "apple_unavailable"
+          }
+        },
+        "summary": "Apple",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/google": {
+      "post": {
+        "description": "Sign in or sign up with Google. The account is found by its Google id, else by the Google-verified email (an\naccount made with email and password is linked then), else made new without a password.",
+        "operationId": "google_auth_google_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GoogleIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tokens"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "description": "invalid_google_token"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "503": {
+            "description": "google_unavailable"
+          }
+        },
+        "summary": "Google",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
     "/auth/me": {
       "get": {
         "operationId": "me_auth_me_get",
@@ -2760,6 +6791,28 @@
           }
         ],
         "summary": "Me",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/options": {
+      "get": {
+        "description": "Which ways to make an account are open, so the app and the website show only those.",
+        "operationId": "options_auth_options_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthOptions"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Options",
         "tags": [
           "auth"
         ]
@@ -2923,9 +6976,113 @@
               }
             },
             "description": "Validation Error"
+          },
+          "503": {
+            "description": "email_sign_up_closed"
           }
         },
         "summary": "Sign Up",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/verify": {
+      "post": {
+        "operationId": "verify_auth_verify_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Me"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "description": "wrong_code, expired_code or too_many_attempts"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Verify",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/verify/send": {
+      "post": {
+        "description": "Sends a new code to the signed-in account's email (not more than once a minute).",
+        "operationId": "send_verification_auth_verify_send_post",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "locale",
+            "required": false,
+            "schema": {
+              "default": "en",
+              "title": "Locale",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifySent"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "429": {
+            "description": "too_soon"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Send Verification",
         "tags": [
           "auth"
         ]
@@ -3407,6 +7564,361 @@
         ]
       }
     },
+    "/devices/dexcom": {
+      "delete": {
+        "description": "Forgets the sign-in. With remove_readings, the readings that came from this source are deleted too.",
+        "operationId": "dexcom_disconnect_devices_dexcom_delete",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "remove_readings",
+            "required": false,
+            "schema": {
+              "default": false,
+              "title": "Remove Readings",
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemovedOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Dexcom Disconnect",
+        "tags": [
+          "devices"
+        ]
+      },
+      "get": {
+        "operationId": "dexcom_status_devices_dexcom_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Dexcom Status",
+        "tags": [
+          "devices"
+        ]
+      },
+      "put": {
+        "description": "Signs in now. Only a sign-in that worked is kept; a refused one is answered and forgotten.",
+        "operationId": "dexcom_connect_devices_dexcom_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CgmIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "needs_verification"
+          },
+          "422": {
+            "description": "wrong_credentials"
+          },
+          "429": {
+            "description": "locked"
+          },
+          "502": {
+            "description": "failed"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Dexcom Connect",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/dexcom/sync": {
+      "post": {
+        "operationId": "dexcom_sync_devices_dexcom_sync_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Dexcom Sync",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/events": {
+      "get": {
+        "description": "The pump's alerts and messages in a period, for the journal (Guy, 12 Nov 2026), oldest first.",
+        "operationId": "device_events_devices_events_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "since",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Since",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "until",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Until",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceEventOut"
+                  },
+                  "title": "Response Device Events Devices Events Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Device Events",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/libre": {
+      "delete": {
+        "description": "Forgets the sign-in. With remove_readings, the readings that came from this source are deleted too.",
+        "operationId": "libre_disconnect_devices_libre_delete",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "remove_readings",
+            "required": false,
+            "schema": {
+              "default": false,
+              "title": "Remove Readings",
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemovedOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Libre Disconnect",
+        "tags": [
+          "devices"
+        ]
+      },
+      "get": {
+        "operationId": "libre_status_devices_libre_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Libre Status",
+        "tags": [
+          "devices"
+        ]
+      },
+      "put": {
+        "description": "Signs in now. Only a sign-in that worked is kept; a refused one is answered and forgotten.",
+        "operationId": "libre_connect_devices_libre_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CgmIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "needs_verification"
+          },
+          "422": {
+            "description": "wrong_credentials"
+          },
+          "429": {
+            "description": "locked"
+          },
+          "502": {
+            "description": "failed"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Libre Connect",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/libre/sync": {
+      "post": {
+        "operationId": "libre_sync_devices_libre_sync_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CgmOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Libre Sync",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
     "/devices/push-token": {
       "delete": {
         "operationId": "delete_push_token_devices_push_token_delete",
@@ -3482,6 +7994,32 @@
         "summary": "Put Push Token",
         "tags": [
           "settings"
+        ]
+      }
+    },
+    "/devices/sync": {
+      "post": {
+        "operationId": "sync_all_devices_sync_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SyncAllOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Sync All",
+        "tags": [
+          "devices"
         ]
       }
     },
@@ -4586,8 +9124,145 @@
         ]
       }
     },
+    "/health-data/samples": {
+      "get": {
+        "operationId": "list_samples_health_data_samples_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "since",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Since",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "until",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Until",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "heart_rate",
+                    "resting_heart_rate",
+                    "hrv",
+                    "steps",
+                    "active_energy",
+                    "distance",
+                    "weight",
+                    "carbs",
+                    "insulin",
+                    "spo2",
+                    "sleep",
+                    "workout"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HealthSampleOut"
+                  },
+                  "title": "Response List Samples Health Data Samples Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Samples",
+        "tags": [
+          "health-data"
+        ]
+      },
+      "post": {
+        "operationId": "import_samples_health_data_samples_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HealthExtraBatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthExtraOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Import Samples",
+        "tags": [
+          "health-data"
+        ]
+      }
+    },
     "/insights": {
       "get": {
+        "description": "`shown=true`: the client lists these insights on screen now, so each listing is kept as learning data.",
         "operationId": "list_insights_insights_get",
         "parameters": [
           {
@@ -4605,6 +9280,40 @@
                 }
               ],
               "title": "Until"
+            }
+          },
+          {
+            "in": "query",
+            "name": "kinds",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "title": "Kinds",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "shown",
+            "required": false,
+            "schema": {
+              "default": false,
+              "title": "Shown",
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "via",
+            "required": false,
+            "schema": {
+              "default": "app",
+              "enum": [
+                "app",
+                "web"
+              ],
+              "title": "Via",
+              "type": "string"
             }
           }
         ],
@@ -4636,6 +9345,188 @@
           }
         ],
         "summary": "List Insights",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/familiarization": {
+      "get": {
+        "description": "The first days (RTN-01): which day, entries per day, first impressions of the routine, and what is not known yet.",
+        "operationId": "get_familiarization_insights_familiarization_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FamiliarizationOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Familiarization",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/hours": {
+      "get": {
+        "description": "Each hour of the day over the last 14 days (for the lock-screen widget, G-40): how many days had readings then and\nhow many of those days were above, below or in the person's own range, by that day's middle value in the hour.\nWith span=3 the blocks are three hours long (00-03, 03-06, ...), for the lock-screen card's part of the day (G-41).",
+        "operationId": "by_hour_insights_hours_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "span",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "title": "Span",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HoursOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "By Hour",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/updates": {
+      "get": {
+        "description": "Recent insight updates (new, changed, follow-up, ended, corrected), newest first, whether pushed or not.",
+        "operationId": "list_updates_insights_updates_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 30,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/UpdateOut"
+                  },
+                  "title": "Response List Updates Insights Updates Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Updates",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/{key}/event": {
+      "post": {
+        "description": "What the person did with an insight, kept apart from opening it and from what they said about it.",
+        "operationId": "insight_event_insights__key__event_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "schema": {
+              "title": "Key",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Insight Event",
         "tags": [
           "insights"
         ]
@@ -4688,6 +9579,177 @@
         "summary": "Feedback",
         "tags": [
           "insights"
+        ]
+      }
+    },
+    "/insights/{key}/interpret": {
+      "post": {
+        "description": "A personal reading of one current insight. Not for someone viewing a shared account (it would be kept as theirs).",
+        "operationId": "interpret_insight_insights__key__interpret_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "schema": {
+              "title": "Key",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterpretIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterpretationOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "503": {
+            "description": "llm_unconfigured or llm_failed"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Interpret Insight",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/{key}/state": {
+      "post": {
+        "description": "Seen or read on a screen: kept on the server, so the app and the website show the same state.",
+        "operationId": "set_state_insights__key__state_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "schema": {
+              "title": "Key",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/steady_api__routers__insights__StateIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set State",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/live-activity": {
+      "delete": {
+        "operationId": "unregister_live_activity_delete",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Unregister",
+        "tags": [
+          "live-activity"
+        ]
+      },
+      "put": {
+        "operationId": "register_live_activity_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiveActivityIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Register",
+        "tags": [
+          "live-activity"
         ]
       }
     },
@@ -4884,6 +9946,52 @@
           }
         ],
         "summary": "Delete Photo",
+        "tags": [
+          "meal"
+        ]
+      },
+      "get": {
+        "description": "The photo of a saved meal, for its Journal card (Guy, 13 Nov 2026). Only the person's own; gone once removed.",
+        "operationId": "get_photo_meal_photos__photo_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "photo_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Photo Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "image/jpeg": {}
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Photo",
         "tags": [
           "meal"
         ]
@@ -5113,6 +10221,314 @@
         ]
       }
     },
+    "/metrics/progress": {
+      "get": {
+        "description": "Weekly windows up to yesterday (local), the baseline, and whether a change held (see metrics.progress).",
+        "operationId": "get_progress_metrics_progress_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "weeks",
+            "required": false,
+            "schema": {
+              "default": 12,
+              "maximum": 26,
+              "minimum": 4,
+              "title": "Weeks",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Progress Metrics Progress Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Progress",
+        "tags": [
+          "metrics"
+        ]
+      }
+    },
+    "/metrics/quality": {
+      "get": {
+        "description": "Data quality: each source's measured rhythm, duplicates and overlaps dropped, gaps and coverage per day.",
+        "operationId": "get_quality_metrics_quality_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "days",
+            "required": false,
+            "schema": {
+              "default": 30,
+              "maximum": 92,
+              "minimum": 1,
+              "title": "Days",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Quality Metrics Quality Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Quality",
+        "tags": [
+          "metrics"
+        ]
+      }
+    },
+    "/metrics/typical-day": {
+      "get": {
+        "description": "The spread of glucose by time of day over [from, to) (default: the last 14 days), and whether there was enough.",
+        "operationId": "get_typical_day_metrics_typical_day_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "From"
+            }
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "To"
+            }
+          },
+          {
+            "in": "query",
+            "name": "bin_minutes",
+            "required": false,
+            "schema": {
+              "default": 60,
+              "title": "Bin Minutes",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Typical Day Metrics Typical Day Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Typical Day",
+        "tags": [
+          "metrics"
+        ]
+      }
+    },
+    "/nutrition/days/{day}": {
+      "put": {
+        "description": "The person says the day's meals are all logged (or not). Only today and earlier.",
+        "operationId": "mark_day_nutrition_days__day__put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "day",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "title": "Day",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DayIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/FoodDayOut"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Response Mark Day Nutrition Days  Day  Put"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Mark Day",
+        "tags": [
+          "daily"
+        ]
+      }
+    },
+    "/nutrition/summary": {
+      "get": {
+        "operationId": "food_summary_nutrition_summary_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "days",
+            "required": false,
+            "schema": {
+              "default": 7,
+              "maximum": 31,
+              "minimum": 1,
+              "title": "Days",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FoodSummaryOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Food Summary",
+        "tags": [
+          "daily"
+        ]
+      }
+    },
     "/profile": {
       "get": {
         "operationId": "get_profile_profile_get",
@@ -5179,8 +10595,148 @@
         ]
       }
     },
+    "/profile/history": {
+      "get": {
+        "description": "Changes to the profile answers, newest first (at most 100), optionally for one section (\"food\", \"goals\").",
+        "operationId": "profile_history_profile_history_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "section",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 24,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Section"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProfileChangeOut"
+                  },
+                  "title": "Response Profile History Profile History Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Profile History",
+        "tags": [
+          "profile"
+        ]
+      }
+    },
+    "/progress": {
+      "get": {
+        "description": "Wins of the last 14 days, newest first (the daily check runs here too if it is due).",
+        "operationId": "get_progress_progress_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgressOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Progress",
+        "tags": [
+          "progress"
+        ]
+      }
+    },
+    "/progress/{achievement_id}/state": {
+      "post": {
+        "description": "Seen, or the celebration shown: once, anywhere. A second celebration of the same win is refused (409).",
+        "operationId": "set_state_progress__achievement_id__state_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "achievement_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Achievement Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/steady_api__routers__progress__StateIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set State",
+        "tags": [
+          "progress"
+        ]
+      }
+    },
     "/records": {
       "get": {
+        "description": "`kinds=2`: the client knows lab results and habits (13 Nov 2026); older app code gets only the kinds it knows.",
         "operationId": "list_records_records_get",
         "parameters": [
           {
@@ -5214,7 +10770,9 @@
                     "insulin",
                     "activity",
                     "note",
-                    "meal"
+                    "meal",
+                    "lab",
+                    "habit"
                   ],
                   "type": "string"
                 },
@@ -5233,6 +10791,16 @@
               "default": true,
               "title": "Include Hidden",
               "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "kinds",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "title": "Kinds",
+              "type": "integer"
             }
           }
         ],
@@ -5584,6 +11152,68 @@
         ]
       }
     },
+    "/records/{record_id}/same-as": {
+      "put": {
+        "description": "Marks this meal entry as the same meal as another (G-47), or, with null, as a separate meal. The entry that points\nis shown and counted with the other. Either side can be named: when the other one is a device's entry and this one\nis not, the device's entry is the one that points.",
+        "operationId": "same_as_records__record_id__same_as_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "record_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Record Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SameAsIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "not_a_meal, same_record or already_linked"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Same As",
+        "tags": [
+          "records"
+        ]
+      }
+    },
     "/settings": {
       "get": {
         "operationId": "get_settings__settings_get",
@@ -5651,6 +11281,167 @@
         "summary": "Patch Settings",
         "tags": [
           "settings"
+        ]
+      }
+    },
+    "/sharing": {
+      "get": {
+        "operationId": "get_sharing_sharing_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SharingOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Sharing",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
+    "/sharing/accept": {
+      "post": {
+        "description": "The viewer enters the code. It works once, within 7 days, and not for one's own data.",
+        "operationId": "accept_sharing_accept_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcceptIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ViewingOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Accept",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
+    "/sharing/invites": {
+      "post": {
+        "operationId": "invite_sharing_invites_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InviteIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ViewerOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Invite",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
+    "/sharing/{share_id}": {
+      "delete": {
+        "description": "The owner removes a viewer or cancels an invite; the viewer stops viewing. Takes effect on the next request.",
+        "operationId": "end_sharing__share_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "End",
+        "tags": [
+          "sharing"
         ]
       }
     },

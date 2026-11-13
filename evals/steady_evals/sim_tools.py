@@ -6,15 +6,16 @@ is rejected here too. Results have the same shape as `steady_api.ai.tools._dispa
 file: `tests/test_sim_tools.py` fails when production adds a tool this module doesn't know.
 """
 
+import re
 from dataclasses import dataclass, field
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta
 
 from pydantic import ValidationError
 
 from .cases import Case
-from .production import GLUCOSE_ENTRY_MGDL_MAX, GLUCOSE_ENTRY_MGDL_MIN, prod_tools, to_mgdl
+from .production import GLUCOSE_ENTRY_MGDL_MAX, GLUCOSE_ENTRY_MGDL_MIN, about_someone_else, prod_tools, to_mgdl
 
-KNOWN = {"propose_glucose", "recent_records", "remember", "schedule_follow_up"}
+KNOWN = {"propose_glucose", "recent_records", "remember", "schedule_follow_up", "propose_profile_update", "note_profile_question"}
 MAX_MEMORIES = prod_tools.MAX_MEMORIES
 
 
@@ -47,8 +48,29 @@ def _dispatch(case: Case, name: str, args: dict, state: SimState) -> dict:
             return {"error": "out_of_range", "detail": "Ask the person to check the number and unit."}
         if state.proposal is not None:
             return {"status": "already_proposed", "detail": "A card is already shown for this message."}
+        own = "mmol/L" if case.profile.get("glucose_unit") == "mmol" else "mg/dL"
+        said_unit = re.search(r"mmol|ממול|ммоль|ملمول" if a.unit == "mmol/L" else r"mg|מ\"ג|מג|мг|ملغ", f"{case.user} {a.heard}", re.I)
+        if a.unit != own and not said_unit:
+            return {"status": "not_proposed", "detail": f"The person's unit is {own}. Ask which unit they meant before proposing."}
+        if about_someone_else(a.heard) or about_someone_else(case.user):
+            return {"status": "not_proposed", "detail": "This reading is about someone else; it does not go on the person's record. Say so briefly."}
         state.proposal = {"value": a.value, "unit": a.unit, "heard": a.heard, "minutes_ago": a.minutes_ago}
         return {"status": "shown_for_confirmation", "saved": False}
+    if name == "propose_profile_update":
+        a = prod_tools.ProposeProfile.model_validate(args)
+        if not a.lasting:
+            return {"status": "not_proposed", "detail": "A one-time event does not change the profile. Don't change it; talk about it if it helps."}
+        if (why := prod_tools.check_profile(a)) is not None:
+            return {"error": why}
+        if state.proposal is not None:
+            return {"status": "already_proposed", "detail": "A card is already shown for this message."}
+        if about_someone_else(a.heard) or about_someone_else(case.user):
+            return {"status": "not_proposed", "detail": "This is about someone else, not the person's own profile."}
+        state.proposal = {"kind": "profile", "field": a.field, "op": a.op, "values": a.values}
+        return {"status": "shown_for_confirmation", "saved": False}
+    if name == "note_profile_question":
+        prod_tools.NoteQuestion.model_validate(args)
+        return {"status": "noted"}
     if name == "recent_records":
         a = prod_tools.RecentRecords.model_validate(args)
         return _recent(case, a.hours)
@@ -79,7 +101,7 @@ def _dispatch(case: Case, name: str, args: dict, state: SimState) -> dict:
 
 
 def _recent(case: Case, hours: int) -> dict:
-    """Times are UTC, as production returns them (`measured_at.isoformat()` of a timestamptz read in a UTC session)."""
+    """Same shape as production: times on the person's clock (`at_local`, "%a %H:%M"), with the source."""
     limit = hours * 60
     g = sorted((x for x in case.records.get("glucose", []) if x["minutes_ago"] <= limit), key=lambda x: -x["minutes_ago"])
     r = sorted((x for x in case.records.get("records", []) if x["minutes_ago"] <= limit), key=lambda x: -x["minutes_ago"])
@@ -87,13 +109,22 @@ def _recent(case: Case, hours: int) -> dict:
         "hours": hours,
         "glucose": [
             {
-                "at": _at(case, x["minutes_ago"]).astimezone(UTC).isoformat(),
+                "at_local": _at(case, x["minutes_ago"]).strftime("%a %H:%M"),
                 "value": x["value"],
                 "unit": x["unit"],
                 "method": x.get("method", "manual"),
+                "source": x.get("source", "manual"),
             }
             for x in g
         ],
-        "records": [{"at": _at(case, x["minutes_ago"]).astimezone(UTC).isoformat(), "kind": x["kind"], "data": x.get("data", {})} for x in r],
+        "records": [
+            {
+                "at_local": _at(case, x["minutes_ago"]).strftime("%a %H:%M"),
+                "kind": x["kind"],
+                "data": x.get("data", {}),
+                "source": x.get("source", "manual"),
+            }
+            for x in r
+        ],
         "note": "Only what the person saved. Do not infer anything that is not here.",
     }

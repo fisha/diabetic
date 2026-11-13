@@ -8,6 +8,135 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+13 Nov 2026 (G-62, thread "Build the diabetes companion app"): Guy's 8-item batch, built end to end (details in
+`docs/design-gaps.md` G-62): Sol on the Responses API, the model's personal reading of an insight with tools and
+evidence checks, "Why am I seeing this?", prediabetes, goals and difficulties, food/meds/fitness details, labs and
+habits, questions asked later, companion profile proposals and change history. Same morning: moving confetti on the
+small-win card and a closable "complete your profile" banner on Profile. Migration `f3a4b5c6d7e8` is on the Mac.
+API 241 tests and `pnpm check` (app 66 tests) pass. Not yet seen on a phone; the app screens were not checked
+visually in a browser in this round. Next: deploy, then Guy's look on the phone.
+
+13 Nov 2026 (progress metrics and insight ranker, G-61; thread "Build progress metrics and insight ranking model"):
+Guy asked for lasting progress measurement, learning data, a small trained insight ranker, a research tool and
+consent enforcement. All of it is built (design and rules in `docs/ml-ranker.md`). Shared metrics now measure each
+sensor's own rhythm instead of assuming 288 readings a day. That assumption had made a full LibreLinkUp day count as
+33 %, emptying the day bars and hiding the estimated A1c; it is fixed in the app's day bars, the estimated A1c, the
+follow-up coverage and the daily check. The other changes:
+- duplicates and overlapping sources resolved;
+- the person's range kept apart from the consensus thresholds;
+- a baseline period, with a change counted as sustained only after 3 sufficient weeks;
+- "A typical day" and "Progress against your starting period" in the Overview for week, 2 weeks and month;
+- insight listings, clicks, actions, feedback and 7/14/28-day outcomes kept apart;
+- the training consent enforced, with withdrawal removing rows and models;
+- `steady_ml`: versioned datasets, logistic regression, an evaluation gate on unseen people and later periods
+  against the rules, a registry with rollback, and jobs run by the worker;
+- the ranker in shadow mode by default, with a tester flag and a fallback to the rules;
+- a Streamlit research tool behind a token, local only.
+
+Migration `e2f3a4b5c6d7` is on the Mac (13 Nov). API 231 tests pass. The browser e2e `tools/e2e/progress.cjs`
+passes on the web build. Nothing is seen with real data yet, and there is no trained model, because no real
+listings exist yet.
+
+12 Nov 2026 (night, launch crash): from the update with meal-time insights on, the app crashed right after loading:
+the finding title for `meal_time` (and later `workout`) needs values the generic title call did not give, and the
+message formatter threw while building the Overview. Fixed: titles get every value they use, a missing value returns
+the message text instead of throwing, and the API sends the new kinds only to clients that ask with `kinds=2`, so
+older app code on a phone (the embedded bundle, or a rolled-back update) no longer meets them. Reproduced in the web
+build with a signed-in account before the fix; API 188 tests and `pnpm check` pass.
+
+12 Nov 2026 (night, G-54): meals store protein and fat; insights for a later rise after meals richer in protein and
+fat and for glucose around each kind of workout, in the app, on the website and for the companion. API 188 tests and
+`pnpm check` pass; not yet seen with real data.
+
+12 Nov 2026 (night, G-53): optional medicines (not type 1), food and fitness steps in onboarding, shift work and
+cycle in the routine step, editable in the app's Diabetes profile and on the website; the companion gets them as
+facts. API 187 tests and `pnpm check` pass; the three new steps were checked on the app's web build; not yet seen on a
+phone.
+
+12 Nov 2026 (night, G-52): diabetes type 2 in onboarding and the website profile, "I don't use insulin" skips the
+insulin steps, Devices offers only the connections that fit the profile's pump and sensor, "FreeStyle Libre" without
+a number. API 187 tests and `pnpm check` pass; not yet seen on a phone.
+
+12 Nov 2026 (night, meal times as insights): the usual meal times from Routine's "What I've learned so far" are also
+insights (finding kind `meal_time`, one per meal, first impression below 3 days), in the app and on the website. API
+187 tests and `pnpm check` pass; not yet seen on a phone.
+
+12 Nov 2026 (night, one row per moment, G-51): the Journal joins a pump meal to its bolus and pump insulin to the
+sensor reading taken at that moment, as one row. `pnpm check` passes with new journal tests; not yet seen on a phone.
+
+12 Nov 2026 (night, pump insulin): a CareLink insulin entry now says how the pump gave it (automatic correction, bolus,
+manual bolus, from CareLink's activationType already kept as the record's reason) instead of "insulin you reported
+taking", and shows the carbs of a pump meal recorded within 5 minutes of it. LibreLinkUp gives glucose only.
+`pnpm check` passes; not yet seen on a phone.
+
+12 Nov 2026 (night, Journal fixes from Guy): a sensor reading says "Sensor" instead of the logging form's "(I'm
+entering it)"; heart rate is a heart icon and the number, without "per minute"; insulin titles always show the number of
+units (Hebrew plural rules read 0.4 as "one", which printed "one unit" for pump micro-doses) and the pump's own entries
+are named "Insulin from the pump" in the interface language instead of "Pump". JS only, so it goes out as an update.
+`pnpm check` passes; not yet seen on a phone.
+
+12 Nov 2026 (night, lock screen): the card shows the part of the day without its hours and says "Not live · X ago";
+15 minutes after the reading iOS marks it stale and the card greys the value and shows "Not current" (patched
+expo-live-activity passes `staleDate`, `patches/`). The update runtime moved from the fingerprint to the app version
+(0.2.0) because the fingerprint differed between the Mac and the EAS build, so the first `eas update` could not reach
+build dc325b8f; raise `version` with every native change. Needs a new build. Swift not compiled here (no Xcode).
+
+12 Nov 2026 (night): meal photo analysis worked once on the iPhone, then failed: the model gave an amount in grams
+above the item limit of 100 and the whole answer was refused. The limit is now 1000 (as a saved meal allows), a single
+out-of-bounds food is left out instead of failing the meal, and the failure kind is logged. API 187 tests pass.
+
+12 Nov 2026 (evening, G-50): "Update available" in the app: `expo-updates` (channels per EAS profile, fingerprint
+runtime) with a banner that downloads and restarts, and "New version to install" from `GET /app/version`. Needs a new
+iPhone build (Guy approved); updates are then published with `eas update --channel testers`. `pnpm check` and the API
+tests pass; the web preview starts; not yet run on a phone.
+
+12 Nov 2026 (evening, fixes): meal photos never reached the server from the iPhone. Expo's fetch (the global fetch
+since SDK 54) cannot send React Native's `{ uri, name, type }` form parts and threw before any request, which the app
+showed as "photo analysis unavailable". The upload now sends an expo-file-system `File`; the server recognises a photo
+by its first bytes when its type is missing or unusual. Also: registering the same push token twice at once no longer
+returns 500 (one upsert), and a failed USDA search logs its status (never the address, which carries the key). API 185
+tests pass. Not yet verified on the phone.
+
+12 Nov 2026 (evening, third batch, G-49): the Overview gains a rolling 24-hour period (app: 24 hours, Day, Week, 2 weeks,
+Month; website: 24 hours beside 14/30/90 days), so its time in range can match the pump's; the Google profile picture
+of a Google account shows on the app's account card and the website's account box (migration `c2d3e4f5a6b8`); the
+companion header shows the chosen companion picture and no "AI companion" line. API 184 tests and `pnpm check` pass;
+checked in the browser (app 24-hour overview, profile picture, companion header; website 24-hour overview).
+
+12 Nov 2026 (evening, second batch): trend arrows from CareLink (lastSGTrend), Dexcom Share (Trend) and
+LibreLinkUp (TrendArrow) are kept with the reading (`glucose_records.trend`, migration `b1c2d3e4f5a7`) and shown beside
+the latest reading in the app (while under 15 minutes old) and in the website's timeline; the website timeline shows
+the heart rate from Apple Health / Health Connect beside a reading, as the app does; sharing moved to the Account group
+in the app's Profile; the app reloads its screens every 5 minutes while open and on coming to the front, and reads the
+health store every 5 minutes (was 15). API 183 tests and `pnpm check` pass; the website timeline was checked in the
+browser with a trend and a heart rate.
+
+12 Nov 2026 (evening): the website shows only settings and asks which connection to set up until the account holds
+data (`has_data` on /auth/me); Libre's logbook (about 14 days) is read on the first fetch; the app's Profile shows the
+signed-in account with a real sign-out and a sign-in button when signed out; pull to refresh asks the server to fetch
+from every connected service now (`POST /devices/sync`, a service tried in the last minute is skipped) and sends new
+Apple Health readings; the Journal shows a loader while its first load runs. API 183 tests and `pnpm check` pass;
+checked in the browser (website first visit, app profile and sign-out, journal loader).
+
+12 Nov 2026 (latest): LibreLinkUp's first real sign-in was refused; the answer is now logged, the app no longer
+repeats a refused sign-in, and the headers follow the maintained client (G-45). API 181 tests pass. Waiting on Guy's
+next try.
+
+12 Nov 2026 (later still): G-48, the target range from the pump or CareLink wins over a typed one and cannot be edited
+in the app, on the website or through the API (`device_target` on the profile). CareLink gives no carb ratio,
+sensitivity, target or basal settings, so those stay typed. API 180 tests and `pnpm check` pass; checked here in the
+app's web build and on the website with a CareLink link given alert limits; not yet seen on a phone.
+
+12 Nov 2026 (later): G-47, repeated CareLink pump events removed (migration `a8c9d0e1f2b4`) and a pump meal linked to the
+meal logged in the app, with the carb difference followed two hours later; prices $25/month and $250/year shown
+without buying; mobile menus and a sticky home header on the website. API 179 tests and `pnpm check` pass; the
+migration's cleanup was run here on sample rows. The journal's pair card has not been seen on a phone yet.
+
+12 Nov 2026: pull to refresh on Overview and Journal (`features/refresh/usePullRefresh.tsx`; the spinner stops when
+the screen's server loads have answered), and the app's account screens set for email and password plus Google
+(G-46). Checked in the container on the web build (sign-up shows the closed note, a wrong password is refused by the
+server); the pull gesture and the Google button need the iPhone build.
+
 ## Stage 1 record
 
 **What was inspected**
@@ -604,6 +733,193 @@ production behaviour. See `evals/README.md` and `evals/FINDINGS.md`.
 - MedGemma: Guy decided on 11 Nov 2026 to continue without it for now. LogMeal/Passio: not needed (Guy); the meal
   evaluation covers the production OpenAI adapter and waits for about 30 weighed meals from Guy.
 - Findings F-1 to F-7 and the run results were handed to the build work as proposals.
+
+## Guy's follow-ups the same evening (11 Nov 2026)
+
+- Voice speed: replies were held until the whole answer was spoken; now each sentence is sent once its audio is in, into
+  the same reply message. Log lines with timestamps: "live turn latency" and "live delegation answered in".
+- Dose check widened (eval F-1): numbers in words, treatment changes without a number. recent_records in local time (F-4).
+- Reading pill (G-30 revised), companion tab orb (G-33), insights range from pump limits (G-32, card open), CareLink pump
+  alerts (G-31).
+- The mobile typecheck had been failing since the CareLink page commit (one `string | undefined`); `pnpm -s check` hid the
+  exit code. Fixed; always check the exit code.
+- Overview week / 2 weeks / month: CareLink's API returns only the last 24 hours, so history builds up from the day of
+  connection; days under 70% sensor coverage show no split by design.
+
+## Spec audit gaps, follow-ups (11 Nov 2026)
+
+- Failed push: tried again after 5 and 15 minutes, then left unsent (never shown as sent).
+- Check-ins wait for the end of the person's quiet hours (onboarding `checkIns.quietFrom/quietTo`); reminders keep their time.
+- Frequency (`onlyWhenIStart` 0, `fewTimesADay` 3, `moreAtFirst` 5 in the first 3 days) caps check-ins the app starts on
+  its own (`followups.proactive_allowed`, used by data-driven suggestions, origin `app`).
+- A check-in with a `topic` (glucose, meal, insulin, activity) is withdrawn when such a record arrives before it is due.
+- Daily repeats keep the local clock across DST. Each follow-up can carry a `reason`, shown in the Journal as "Why".
+
+## Spec audit gaps, privacy and safety (11 Nov 2026)
+
+- Meal photos and exports are Fernet-encrypted on disk (`sealing.seal_file`); older plain files still read.
+  Database rows are not encrypted per field: at rest they rely on disk encryption of the host (FileVault on the Mac).
+  Field-level or managed-database encryption is a hosting decision for Guy's batch.
+- Logs: the engine hides SQL parameters; `tests/test_logs.py` checks every log call only names kinds, types or timings.
+- Push lock-screen text in the person's language (still generic).
+- propose_glucose refuses a reading about someone else (eval F-2); the prompt uses the stored diabetes type (F-3); what
+  the app should do for "other" / "not sure" is a decision for Guy.
+- Cross-source sensor dedupe (CareLink vs health store), 3 min and 1 mg/dL. Journal "merge duplicate" still unavailable.
+
+## Spec audit gaps, health store (11 Nov 2026)
+
+- Deletions and corrections in Apple Health / Health Connect reach the account (G-35): sync batches carry the time
+  window they cover, the server removes readings from that store missing in the window, keeps ones the person
+  corrected, and never removes on an empty read. API test `test_window_removes_readings_deleted_in_the_store`, app
+  test for the batch windows.
+- The health device screen shows the newest reading time apart from the last sync, how many were removed, and a
+  "Not updated since" banner after a day without a successful sync. Typechecked only; the screen needs an iPhone.
+
+## Spec audit gaps, first days (11 Nov 2026)
+
+- Familiarization (brief section 6, RTN-01, G-36): `GET /insights/familiarization` gives the day of about three,
+  entries per day, first impressions of meal times and what is still unknown; the Routine tab shows them and the
+  companion's instructions carry them. API test `test_familiarization_first_days`; web e2e `followups.cjs` checks the
+  card (screenshot f04-first-days). The e2e's journal step now uses the reminder due in minutes, because one due "in 2
+  hours" lands on tomorrow's journal page late in the evening.
+
+## Spec audit gaps, structured memory (11 Nov 2026)
+
+- Memories have a kind, fact or impression (G-37, migration `c3d4e5f6a7b8`; the Mac needs `uv run alembic upgrade
+  head`). API test `test_impression_is_kept_apart_from_facts_until_the_person_confirms`; web e2e `followups.cjs`
+  checks the "not confirmed" line (screenshot f03-memory).
+
+## Release readiness (11 Nov 2026)
+
+- `docs/release-readiness.md`: verdict (not ready for release; fit for Guy's own development use), coverage matrix
+  over brief sections 7 to 10 with evidence and open items, build/run, environment variables, migrations.
+- `services/api/.env.example` now lists every setting, including `STEADY_SEALING_KEY` and why to set it once.
+
+## Guy's "insights are the key" request (11 Nov 2026, night)
+
+- Routines from all sources (G-38): foods usually followed by high glucose or by glucose in range, late meals and
+  the morning after, pump suspends / high alerts / leaving automatic mode by time of day, insulin before eating and
+  times of day in range; each with fixed advice (carb count, care team). Meal patterns say before and after values.
+- Estimated A1c (GMI) when 14+ days of sensor data cover 70 %.
+- CareLink alerts are now kept in `device_events` at every import (CareLink shows only the last day); readings, meals
+  and boluses were already kept, so the history grows past CareLink's window. Migration `97f70b09db11` also adds
+  `health_samples` for the coming Apple Health types.
+- The companion gets all findings and the A1c estimate. Tests: `test_findings.py`, `test_carelink.py`; web e2e
+  `tools/e2e/findings.cjs` (screens r01-r03).
+
+- All health store types (G-39): `health_samples` table, `POST/GET /health-data/samples`, iOS and Android readers,
+  windowed sync, companion context (activity, heart rate incl. at insulin, sleep, weight). API tests
+  `test_health_data.py` and the snapshot test; app unit test; iOS and Android bundles export. Device run pending.
+
+- Lock-screen widget (G-40): `GET /insights/hours`, `features/widget` (texts per hour, App Group storage, refresh on
+  opening), Swift target `targets/widget`. `expo prebuild` creates the widget target with the App Group entitlement;
+  not built in Xcode or run on a phone (needs a new dev build). Tests: `test_hours_for_the_widget`, app unit test.
+- 12 Nov 2026: CareLink 30-day history (`carelink.fetch_history`, `history_readings`, `_sync_history`, migration
+  `a1b2c3d4e5f7` adds `device_links.last_history_at`), tests in `test_carelink.py`. Lock-screen Live Activity (G-41):
+  `features/widget/live.ios.ts`, `targets/widget/HourActivity.swift`; `expo prebuild` passes with it; needs a new dev
+  build. Push for reminders: the APNs key is attached to the EAS project (no code change needed).
+- 12 Nov 2026 (Guy's reports): charts and insights were empty because Guy typed a single target value and his pump's
+  high alert is off (CareLink sends highLimit 0), so no range existed. The range now falls back to CareLink's own
+  time-in-range setting (`personalWebView` tirSettings, band source `carelink`, labelled as such). The website now
+  uses the server's range (it used only a typed one) and shows routines, meal patterns and the A1c on Insights.
+  Meals and insulin the pump recorded are labelled CareLink, not "entered by you".
+- 12 Nov 2026 (Guy): the app Overview's summary card shows the time-in-range percent with below/above, for the
+  selected period (day, week, 2 weeks, month), with period-correct titles. The Live Activity shows the latest
+  reading and a three-hour part of the day with an icon (G-41 update; `span` on `/insights/hours`). Needs a new iOS
+  build; Swift not compiled in the container.
+- 12 Nov 2026 (Guy): today's time in range counts against the part of the day that has passed. Heart rate from the
+  health store is shown beside glucose readings (Overview latest card, Journal), nearest sample within 10 minutes.
+  Health workouts become journal activity entries (source apple_health / health_connect, no intensity), created on
+  import and backfilled by migration `b2c3d4e5f6a9`; a workout deleted in the health app removes its unedited entry.
+- 12 Nov 2026 (Guy): companion chat clears the composer on send; long dashes become hyphens; an occasional emoji in
+  writing; with sensor readings in the last day the companion does not ask whether they checked. Insights gained
+  activity findings (`activity_gap` after 7 quiet days, `activity_good` on 3+ of 14 days, with mean daily steps).
+  Today's summary leaves out later parts of the day unless worth preparing for ("ahead of the evening"). Live
+  Activity layout centred (needs a new iOS build).
+- 12 Nov 2026 (Guy): follow-ups can be deleted (a daily one: this time or every day) and show "every day"; a
+  12/24-hour clock choice under Language (default follows the language). Companion replies were slow: the model
+  (`gpt-5-mini`) ran at its default medium reasoning effort; now `STEADY_OPENAI_REASONING_EFFORT` (default low). Context
+  building measured at 160-300 ms with 30 days of CareLink data; the API logs context and model round durations.
+- 12 Nov 2026 (Guy's spec, G-42; not deployed at his request): insights are kept on the server as topics with
+  provenance, read state shared by the app and the website, periodic follow-up updates on fresh data (default every
+  14 days), corrections, and insight pushes with quiet hours, a weekly cap (default 2), a digest and an off switch.
+  Migration `c4d5e6f7a8b0`. API tests `test_tracking.py` (5 scenarios); app unit test `track.test.ts`; `pnpm check`
+  passes. Not deployed to the Mac and not run on a phone; push delivery untested end to end.
+- 12 Nov 2026 (Guy, G-43; not deployed): a daily progress check against the person's own range (day against the day
+  before, week against week, fair windows only, safety gate on time below and low episodes), small-win messages in
+  the app and on the website, a one-time confetti for week wins (setting to turn it off; respects reduced motion),
+  pushes only for week wins under the G-42 policy, and an internal KPI with data coverage. Migration `d5e6f7a8b9c1`.
+  API tests `test_progress.py` (7 scenarios); app unit test `progress.test.ts`; `pnpm check` passes. Not run on a
+  phone or viewed in a browser.
+- 12 Nov 2026 (Guy): view-only sharing with invite codes and an admin page with read-only "view as" (G-44,
+  migration `e6f7a8b9c0d2`, `STEADY_ADMIN_EMAILS`); unofficial Dexcom Share and LibreLinkUp connections like CareLink
+  (G-45, stand-in servers only); the app renamed to Stedio in everything people see (identifiers unchanged); an EAS
+  `testers` profile (internal distribution, API https://stedio.ngrok.app). API 166 tests and `pnpm check` pass.
+- 12 Nov 2026 (Guy, G-46): Google sign-in (website button, native sheet in the app), a waitlist approved from the
+  Admin page with an approval email, and email verification codes (email sign-up closed until a mail sender is set).
+  Migration `f7a8b9c0d1e3`. API 174 tests, `pnpm check` and a browser run of waitlist and approval pass. Google itself
+  untested until the client ids exist.
+- 12 Nov 2026 (Guy, G-55): the app itself is the website's personal area at `/app` (web export with base URL, side
+  bar on wide screens, Google's own sign-in button, sign-in kept across reloads), the website's sign-in buttons open
+  it. A session read race on screens opened by address fixed. G-56: a time of day usually in range no longer lists a
+  first impression in the other direction. API 190 tests and `pnpm check` pass; checked in a browser at phone and
+  desktop widths against the local API (Google sign-in itself not tried: needs Google's servers).
+- 12 Nov 2026 (Guy, G-57): pump alerts and messages in the journal under an "Alerts" filter, named in the interface
+  language (`GET /devices/events`). LibreLinkUp reads now follow a region redirect and keep the region (Itay's link
+  read nothing from 19:34 UTC because reads went to the global host and the redirect counted as "no new readings"); a
+  graph answer without graphData now fails instead of counting as a successful sync. API 193 tests, `pnpm check` pass;
+  journal checked in a browser with stand-in alerts.
+- 12 Nov 2026 (Guy, G-58): set and sensor changes from CareLink and LibreLinkUp in the journal, and three insights
+  (usual set interval, set past its rated days, sensors ending early) gated on `kinds=3`; infusion set kind in Treatment
+  settings. Device data inventory in docs/device-data-inventory.md. API 195 tests and `pnpm check` pass; not seen on
+  real data yet.
+- 12 Nov 2026 (Guy, G-59): pump status card in Devices > CareLink (active insulin, reservoir, battery, sensor time
+  left, transmitter, SmartGuard, paused, out of range) and the pump's active insulin under the latest reading on the
+  companion screen. API 196 tests and `pnpm check` pass; checked in the app's web build with the CareLink stand-in.
+- 12 Nov 2026 (Guy, G-60): the pump's daily totals in Overview (insulin per day, time in SmartGuard, exits, sensor
+  wear) from CareLink's 30-day history. API 197 tests, app tests and `pnpm check` pass; checked in the app's web build
+  with stand-in days.
+
+- 13 Nov 2026 (morning): Guy and Itay saw CareLink and Libre as signed out. Cause: the API on the Mac stopped with
+  the Mac thread's session at ~02:00 UTC (now started detached); the links stayed connected. The app showed the
+  sign-in form whenever the first read of a link failed; now an unreachable server shows "status unknown", the
+  server-unreachable note and a try-again button, never the form. `pnpm check` passes; checked in the web build with
+  the API answering 502.
+
+- 13 Nov 2026 (Guy): the lock-screen card showed only "usually in range". It now shows the most useful insight for
+  the time it appears (set past its days or sensors ending early, then recurring highs or lows, pump suspends, high
+  alerts or SmartGuard exits in this part of the day, first impressions, the usual meal time, what goes well), titles
+  only, and falls back to the part's usual line. Unit tested; not seen on the phone yet.
+
+- 13 Nov 2026 (Guy: "Libre pulls only 24 hours"): LibreLinkUp's graph holds about 12 hours; the logbook (about two
+  weeks of the readings the sensor logged, scans and alarms, not every 5 minutes) was read only on a link's first
+  fetch, and Itay's first fetch read nothing (region bug). Now the logbook is read on the first fetch and then about
+  daily (`last_history_at`). Continuous history further back needs LibreView (the main-account sign-in waiting on
+  Guy). API tests pass.
+
+- 13 Nov 2026 (Guy's batch):
+  - Libre drops fixed reconnecting. A read refused in its body (status not 0), or a passing failure, set the link to
+    "failed", and the app then showed the sign-in form, so the tester signed in again each time. Now a refused read
+    signs in again on its own, at most twice an hour per link. The sign-in is renewed before the ticket's expiry.
+    Failures are retried after 5, 10, 20, then 30 minutes; a lockout waits an hour. The app shows "connected,
+    retrying" with an optional sign-in instead of the form. Logs record the answer's status and keys only.
+  - Voice continuity. The server guessed when the phone finished playing from the audio length. The microphone could
+    open while the phone still played, between sentences of one answer, or when audio arrived late. Echo or a late
+    transcript then stopped the reply ("walkie-talkie", cut answers). Now the phone reports `played`, and the
+    microphone stays closed while the model is still speaking the rest of the answer. Words placed in a closed
+    stretch are ignored. `reply_end` carries `more`, so the orb stays on speaking through gaps. The Stop button still
+    cuts at once. A per-turn timing line is logged (first audio, parts, audio length, play end, ignored words, cuts,
+    phone underruns). A dropped connection resumes on its own up to twice, without a new greeting. The orb stays in
+    place while the captions scroll under it.
+  - Orb: on the home screen, a little hop, puff or tilt every 5-11 s. In conversation, soft smoke inside and a small
+    face: the smoke drifts and swells with the voice while listening, swirls while thinking, and the mouth moves while
+    speaking. Reduced motion keeps everything still.
+  - API tests and `pnpm check` pass; the orb was checked in the web build. On a real iPhone still to check: echo with
+    the speaker, noise, pauses, a network switch and the app in the background.
+- 13 Nov 2026 (Guy, after testers build 3): three separate home screen widgets instead of one with an edit menu
+  (he saw only one), the lock-screen widget no longer offered on the home screen, gallery names translated; Face ID
+  lock in Privacy; Sign in with Apple (API `POST /auth/apple`, migration b2c3d4e5f6a0 `users.apple_sub`, setting
+  `STEADY_APPLE_AUDIENCES`, default the bundle id). G-63. API tests (4 new) and `pnpm check` pass; needs a new build.
 
 ## Next action
 
