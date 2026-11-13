@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+13 Nov 2026 (G-66, thread "Write insulin and glucose to Apple Health"): writing glucose, insulin and meals to Apple
+Health and Health Connect (no insulin there), off until the person turns it on, with sync ids so nothing written is
+read back or written twice. App unit tests, typecheck pass; app version 0.3.0 (native change). Not run on a device.
+Next: Xcode compile check on the Mac and a testers build with Guy's go-ahead; then steps/active-energy routines and
+personal records (Guy's same-evening request).
+
 13 Nov 2026 (G-65, thread "Add Dexcom and Tandem integrations"): Tandem Source connection (t:slim X2, Tandem Mobi),
 reading only, following tconnectsync; Dexcom stays on Share because the official API is 1 to 3 hours late. API, app
 and website built; API 255 tests and `pnpm check` pass; no migration. Not run against Tandem (no account yet); the app

@@ -9922,6 +9922,48 @@
     ],
     "note": "Apple Health / Health Connect screen when the app is open in a browser."
   },
+  "set.hd_write": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "Device detail, health store: switch that turns writing to Apple Health / Health Connect on (Guy, 13 Nov 2026)."
+  },
+  "set.hd_write_b": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "Helper under the write switch on iPhone: what is written and what never is."
+  },
+  "set.hd_write_b_hc": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "Helper under the write switch on Android: Health Connect has no insulin type."
+  },
+  "set.hd_write_fail": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "The store refused every write: writing is not allowed."
+  },
+  "set.hd_write_load": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "The account's records did not load, so nothing was written this time."
+  },
+  "set.hd_written": {
+    "board": "SET-05",
+    "review": [
+      "translation"
+    ],
+    "note": "When writing last ran and how many records it added or replaced."
+  },
   "set.help": {
     "board": "Settings",
     "review": [
