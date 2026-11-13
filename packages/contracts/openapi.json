@@ -183,6 +183,16 @@
           "window_days": {
             "title": "Window Days",
             "type": "integer"
+          },
+          "workouts": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WorkoutsOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
@@ -1530,6 +1540,17 @@
             ],
             "title": "Label"
           },
+          "lows": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lows"
+          },
           "of": {
             "title": "Of",
             "type": "integer"
@@ -2741,7 +2762,9 @@
               "insulin",
               "spo2",
               "sleep",
-              "workout"
+              "workout",
+              "exercise_time",
+              "stand_hour"
             ],
             "title": "Type",
             "type": "string"
@@ -6292,7 +6315,9 @@
           "kind": {
             "enum": [
               "steps",
-              "active_energy"
+              "active_energy",
+              "exercise",
+              "stand"
             ],
             "title": "Kind",
             "type": "string"
@@ -6737,6 +6762,24 @@
         "title": "WordsIn",
         "type": "object"
       },
+      "WorkoutKindOut": {
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "count"
+        ],
+        "title": "WorkoutKindOut",
+        "type": "object"
+      },
       "WorkoutOut": {
         "properties": {
           "after_mgdl": {
@@ -6805,6 +6848,63 @@
           "after_mgdl"
         ],
         "title": "WorkoutOut",
+        "type": "object"
+      },
+      "WorkoutsOut": {
+        "description": "Workouts and logged activity of the last weeks: how many, the person's own kinds, when, a middle length.",
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "kinds": {
+            "items": {
+              "$ref": "#/components/schemas/WorkoutKindOut"
+            },
+            "title": "Kinds",
+            "type": "array"
+          },
+          "minutes": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Minutes"
+          },
+          "part": {
+            "anyOf": [
+              {
+                "enum": [
+                  "night",
+                  "morning",
+                  "afternoon",
+                  "evening"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Part"
+          }
+        },
+        "required": [
+          "days",
+          "count",
+          "kinds",
+          "part",
+          "minutes"
+        ],
+        "title": "WorkoutsOut",
         "type": "object"
       },
       "steady_api__routers__insights__StateIn": {
@@ -9718,8 +9818,22 @@
     },
     "/health-data/activity": {
       "get": {
-        "description": "Steps and active energy as a routine, with the person's best day (G-67). Empty values until there are enough days.",
+        "description": "Steps and active energy as a routine, with the person's best day (G-67). Empty values until there are enough days.\nkinds=2 adds exercise minutes, stood hours and the workouts summary (G-69), for app code that knows them.",
         "operationId": "get_activity_health_data_activity_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "kinds",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "maximum": 2,
+              "minimum": 1,
+              "title": "Kinds",
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -9730,6 +9844,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "security": [
@@ -9786,7 +9910,9 @@
                     "insulin",
                     "spo2",
                     "sleep",
-                    "workout"
+                    "workout",
+                    "exercise_time",
+                    "stand_hour"
                   ],
                   "type": "string"
                 },

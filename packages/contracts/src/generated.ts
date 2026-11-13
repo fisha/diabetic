@@ -954,6 +954,7 @@ export interface paths {
         /**
          * Get Activity
          * @description Steps and active energy as a routine, with the person's best day (G-67). Empty values until there are enough days.
+         *     kinds=2 adds exercise minutes, stood hours and the workouts summary (G-69), for app code that knows them.
          */
         get: operations["get_activity_health_data_activity_get"];
         put?: never;
@@ -1817,6 +1818,7 @@ export interface components {
             min_days: number;
             /** Window Days */
             window_days: number;
+            workouts?: components["schemas"]["WorkoutsOut"] | null;
         };
         /** AdminDeleteIn */
         AdminDeleteIn: {
@@ -2297,6 +2299,8 @@ export interface components {
             kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time" | "late_rise" | "workout" | "set_interval" | "set_overdue" | "sensor_short";
             /** Label */
             label?: string | null;
+            /** Lows */
+            lows?: number | null;
             /** Of */
             of: number;
             /** Other Mgdl */
@@ -2726,7 +2730,7 @@ export interface components {
              * Type
              * @enum {string}
              */
-            type: "heart_rate" | "resting_heart_rate" | "hrv" | "steps" | "active_energy" | "distance" | "weight" | "carbs" | "insulin" | "spo2" | "sleep" | "workout";
+            type: "heart_rate" | "resting_heart_rate" | "hrv" | "steps" | "active_energy" | "distance" | "weight" | "carbs" | "insulin" | "spo2" | "sleep" | "workout" | "exercise_time" | "stand_hour";
             /** Unit */
             unit?: string | null;
             /** Value */
@@ -4030,7 +4034,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "steps" | "active_energy";
+            kind: "steps" | "active_energy" | "exercise" | "stand";
             /** Median */
             median: number | null;
             /** Part */
@@ -4180,6 +4184,13 @@ export interface components {
             /** Old */
             old: string;
         };
+        /** WorkoutKindOut */
+        WorkoutKindOut: {
+            /** Count */
+            count: number;
+            /** Kind */
+            kind: string;
+        };
         /** WorkoutOut */
         WorkoutOut: {
             /** After Mgdl */
@@ -4201,6 +4212,22 @@ export interface components {
             start_mgdl: number | null;
             /** Type */
             type: string;
+        };
+        /**
+         * WorkoutsOut
+         * @description Workouts and logged activity of the last weeks: how many, the person's own kinds, when, a middle length.
+         */
+        WorkoutsOut: {
+            /** Count */
+            count: number;
+            /** Days */
+            days: number;
+            /** Kinds */
+            kinds: components["schemas"]["WorkoutKindOut"][];
+            /** Minutes */
+            minutes: number | null;
+            /** Part */
+            part: ("night" | "morning" | "afternoon" | "evening") | null;
         };
         /** StateIn */
         steady_api__routers__insights__StateIn: {
@@ -6334,7 +6361,9 @@ export interface operations {
     };
     get_activity_health_data_activity_get: {
         parameters: {
-            query?: never;
+            query?: {
+                kinds?: number;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -6350,6 +6379,15 @@ export interface operations {
                     "application/json": components["schemas"]["ActivityOut"];
                 };
             };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
     };
     list_samples_health_data_samples_get: {
@@ -6357,7 +6395,7 @@ export interface operations {
             query: {
                 since: string;
                 until: string;
-                type?: ("heart_rate" | "resting_heart_rate" | "hrv" | "steps" | "active_energy" | "distance" | "weight" | "carbs" | "insulin" | "spo2" | "sleep" | "workout") | null;
+                type?: ("heart_rate" | "resting_heart_rate" | "hrv" | "steps" | "active_energy" | "distance" | "weight" | "carbs" | "insulin" | "spo2" | "sleep" | "workout" | "exercise_time" | "stand_hour") | null;
             };
             header?: never;
             path?: never;
