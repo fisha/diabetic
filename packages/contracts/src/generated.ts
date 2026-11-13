@@ -1059,6 +1059,24 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/live-activity": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Register */
+        put: operations["register_live_activity_put"];
+        post?: never;
+        /** Unregister */
+        delete: operations["unregister_live_activity_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/meal/foods": {
         parameters: {
             query?: never;
@@ -1781,6 +1799,13 @@ export interface components {
             ticket: string;
             /** Url */
             url: string;
+        };
+        /** BandIn */
+        BandIn: {
+            /** High */
+            high: number;
+            /** Low */
+            low: number;
         };
         /** BandOut */
         BandOut: {
@@ -2869,6 +2894,20 @@ export interface components {
             /** Time */
             time: string;
         };
+        /** LiveActivityIn */
+        LiveActivityIn: {
+            band?: components["schemas"]["BandIn"] | null;
+            /** Parts */
+            parts?: components["schemas"]["PartIn"][];
+            /** Token */
+            token: string;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "mgdl" | "mmol";
+            words: components["schemas"]["WordsIn"];
+        };
         /** Me */
         Me: {
             /**
@@ -3200,6 +3239,22 @@ export interface components {
         ParseIn: {
             /** Text */
             text: string;
+        };
+        /**
+         * PartIn
+         * @description A three-hour part of the day as the card shows it, in ms since 1970.
+         */
+        PartIn: {
+            /** From */
+            from: number;
+            /** Icon */
+            icon?: string | null;
+            /** Line */
+            line?: string | null;
+            /** Title */
+            title: string;
+            /** To */
+            to: number;
         };
         /** PhotoOut */
         PhotoOut: {
@@ -3895,6 +3950,22 @@ export interface components {
             period_from?: string | null;
             /** Period To */
             period_to?: string | null;
+        };
+        /**
+         * WordsIn
+         * @description The card's words in the app's language: range labels, "not live · {t}" and "not current".
+         */
+        WordsIn: {
+            /** Above */
+            above: string;
+            /** Ago */
+            ago: string;
+            /** Below */
+            below: string;
+            /** In */
+            in: string;
+            /** Old */
+            old: string;
         };
         /** WorkoutOut */
         WorkoutOut: {
@@ -6205,6 +6276,55 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
                 };
+            };
+        };
+    };
+    register_live_activity_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LiveActivityIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    unregister_live_activity_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

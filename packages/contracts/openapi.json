@@ -360,6 +360,29 @@
         "title": "AuthorizeOut",
         "type": "object"
       },
+      "BandIn": {
+        "additionalProperties": false,
+        "properties": {
+          "high": {
+            "maximum": 400.0,
+            "minimum": 20.0,
+            "title": "High",
+            "type": "number"
+          },
+          "low": {
+            "maximum": 400.0,
+            "minimum": 20.0,
+            "title": "Low",
+            "type": "number"
+          }
+        },
+        "required": [
+          "low",
+          "high"
+        ],
+        "title": "BandIn",
+        "type": "object"
+      },
       "BandOut": {
         "properties": {
           "high_mgdl": {
@@ -3415,6 +3438,54 @@
         "title": "LearnedOut",
         "type": "object"
       },
+      "LiveActivityIn": {
+        "additionalProperties": false,
+        "properties": {
+          "band": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/BandIn"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "parts": {
+            "items": {
+              "$ref": "#/components/schemas/PartIn"
+            },
+            "maxItems": 12,
+            "title": "Parts",
+            "type": "array"
+          },
+          "token": {
+            "maxLength": 400,
+            "minLength": 16,
+            "pattern": "^[0-9a-fA-F]+$",
+            "title": "Token",
+            "type": "string"
+          },
+          "unit": {
+            "enum": [
+              "mgdl",
+              "mmol"
+            ],
+            "title": "Unit",
+            "type": "string"
+          },
+          "words": {
+            "$ref": "#/components/schemas/WordsIn"
+          }
+        },
+        "required": [
+          "token",
+          "unit",
+          "words"
+        ],
+        "title": "LiveActivityIn",
+        "type": "object"
+      },
       "Me": {
         "properties": {
           "approved": {
@@ -4246,6 +4317,56 @@
           "text"
         ],
         "title": "ParseIn",
+        "type": "object"
+      },
+      "PartIn": {
+        "additionalProperties": false,
+        "description": "A three-hour part of the day as the card shows it, in ms since 1970.",
+        "properties": {
+          "from": {
+            "title": "From",
+            "type": "integer"
+          },
+          "icon": {
+            "anyOf": [
+              {
+                "maxLength": 60,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Icon"
+          },
+          "line": {
+            "anyOf": [
+              {
+                "maxLength": 300,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Line"
+          },
+          "title": {
+            "maxLength": 120,
+            "title": "Title",
+            "type": "string"
+          },
+          "to": {
+            "title": "To",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "title"
+        ],
+        "title": "PartIn",
         "type": "object"
       },
       "PhotoOut": {
@@ -6107,6 +6228,46 @@
           "key"
         ],
         "title": "WhyOut",
+        "type": "object"
+      },
+      "WordsIn": {
+        "additionalProperties": false,
+        "description": "The card's words in the app's language: range labels, \"not live \u00b7 {t}\" and \"not current\".",
+        "properties": {
+          "above": {
+            "maxLength": 60,
+            "title": "Above",
+            "type": "string"
+          },
+          "ago": {
+            "maxLength": 80,
+            "title": "Ago",
+            "type": "string"
+          },
+          "below": {
+            "maxLength": 60,
+            "title": "Below",
+            "type": "string"
+          },
+          "in": {
+            "maxLength": 60,
+            "title": "In",
+            "type": "string"
+          },
+          "old": {
+            "maxLength": 80,
+            "title": "Old",
+            "type": "string"
+          }
+        },
+        "required": [
+          "below",
+          "above",
+          "in",
+          "ago",
+          "old"
+        ],
+        "title": "WordsIn",
         "type": "object"
       },
       "WorkoutOut": {
@@ -9464,6 +9625,62 @@
         "summary": "Set State",
         "tags": [
           "insights"
+        ]
+      }
+    },
+    "/live-activity": {
+      "delete": {
+        "operationId": "unregister_live_activity_delete",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Unregister",
+        "tags": [
+          "live-activity"
+        ]
+      },
+      "put": {
+        "operationId": "register_live_activity_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiveActivityIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Register",
+        "tags": [
+          "live-activity"
         ]
       }
     },
