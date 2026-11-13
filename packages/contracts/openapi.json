@@ -29,6 +29,65 @@
         "title": "A1cOut",
         "type": "object"
       },
+      "AboutIn": {
+        "additionalProperties": false,
+        "description": "What the screen showed when the person tapped \"talk about this\" (Guy, 13 Nov 2026): an insight, the question its\nreading asked, or a follow-up. The text is what the app showed them, from their own data.",
+        "properties": {
+          "client_id": {
+            "maxLength": 64,
+            "minLength": 8,
+            "pattern": "^[A-Za-z0-9_-]+$",
+            "title": "Client Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "insight",
+              "insight_question",
+              "follow_up"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "question": {
+            "anyOf": [
+              {
+                "maxLength": 400,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Question"
+          },
+          "ref": {
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Ref",
+            "type": "string"
+          },
+          "summary": {
+            "default": "",
+            "maxLength": 1500,
+            "title": "Summary",
+            "type": "string"
+          },
+          "title": {
+            "default": "",
+            "maxLength": 200,
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "client_id",
+          "kind",
+          "ref"
+        ],
+        "title": "AboutIn",
+        "type": "object"
+      },
       "AcceptIn": {
         "additionalProperties": false,
         "properties": {
@@ -7893,6 +7952,59 @@
         "summary": "Send Verification",
         "tags": [
           "auth"
+        ]
+      }
+    },
+    "/conversation/about": {
+      "post": {
+        "description": "The companion opens about the item the person was looking at, already knowing it, with a short first line.",
+        "operationId": "open_about_conversation_about_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AboutIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "502": {
+            "description": "llm_failed"
+          },
+          "503": {
+            "description": "llm_unconfigured"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Open About",
+        "tags": [
+          "conversation"
         ]
       }
     },

@@ -86,6 +86,7 @@
   "com.a_run": "Run",
   "com.a_swim": "Swim",
   "com.a_walk": "Walk",
+  "com.about": "About: {title}",
   "com.above": "Above range",
   "com.ac_dur": "Duration",
   "com.ac_feel": "How it felt (optional)",

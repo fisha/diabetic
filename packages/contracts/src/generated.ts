@@ -322,6 +322,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversation/about": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Open About
+         * @description The companion opens about the item the person was looking at, already knowing it, with a short first line.
+         */
+        post: operations["open_about_conversation_about_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/conversation/messages": {
         parameters: {
             query?: never;
@@ -1780,6 +1800,34 @@ export interface components {
             gmi_percent: number;
             /** Mean Mgdl */
             mean_mgdl: number;
+        };
+        /**
+         * AboutIn
+         * @description What the screen showed when the person tapped "talk about this" (Guy, 13 Nov 2026): an insight, the question its
+         *     reading asked, or a follow-up. The text is what the app showed them, from their own data.
+         */
+        AboutIn: {
+            /** Client Id */
+            client_id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "insight" | "insight_question" | "follow_up";
+            /** Question */
+            question?: string | null;
+            /** Ref */
+            ref: string;
+            /**
+             * Summary
+             * @default
+             */
+            summary: string;
+            /**
+             * Title
+             * @default
+             */
+            title: string;
         };
         /** AcceptIn */
         AcceptIn: {
@@ -4938,6 +4986,53 @@ export interface operations {
             };
             /** @description too_soon */
             429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    open_about_conversation_about_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AboutIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MessageOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description llm_failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description llm_unconfigured */
+            503: {
                 headers: {
                     [name: string]: unknown;
                 };
