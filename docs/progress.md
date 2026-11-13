@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+13 Nov 2026 (G-68 follow-up, thread "Turn the companion orb into a character"): the character's body follows the
+latest fresh reading: cold sweat and shivers below the range, hot sweat and a rising red flush above it, a thumbs-up
+now and then in range; fades out as the reading ages. App tests (87), typecheck and lint pass; checked in the web
+preview. JS only. Next: Guy's look on the phone; then the next character moments (trend glance, night nap, meals,
+workouts, set changes, seasons, a hug).
+
 13 Nov 2026 (G-69, thread "Write insulin and glucose to Apple Health"): Apple Fitness and Health Connect activity:
 exercise minutes and stood hours read on iPhone, a routine for them and for workouts on the Routine card, and lows in
 the 12 hours after workouts added to the workout insight. API 269 tests, ruff, app 85 tests and typecheck pass; no
