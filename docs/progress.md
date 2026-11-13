@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+13 Nov 2026 (G-68, thread "Turn the companion orb into a character"): the orb has a face in every state, an idle
+life (hops, somersault, boredom with a yawn, and costumes: syringe, insulin pump, vial, pen, juice box) and
+accessories chosen in Profile > Companion instead of the look picker (hat, glasses, mustache, bow tie or scarf), saved
+with the profile. App tests (84) and typecheck pass; checked in the web preview in day and night. JS only, so it can
+also go to the 0.2.0 testers as an update. Next: Guy's look on the phone; decide what happens to onboarding's
+"choose a look" step.
+
 13 Nov 2026 (G-67, same thread): steps and active energy as a routine on the Routine screen and personal bests as
 small wins (iPhone and watch counted once). API 263 tests, ruff, app tests and typecheck pass; no migration. Screen not
 checked visually. Next: deploy (API and app), then a look on the phone with build 5.
