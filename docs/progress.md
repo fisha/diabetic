@@ -8,6 +8,27 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+13 Nov 2026 (progress metrics and insight ranker, G-61; thread "Build progress metrics and insight ranking model"):
+Guy asked for lasting progress measurement, learning data, a small trained insight ranker, a research tool and
+consent enforcement. All of it is built (design and rules in `docs/ml-ranker.md`). Shared metrics now measure each
+sensor's own rhythm instead of assuming 288 readings a day. That assumption had made a full LibreLinkUp day count as
+33 %, emptying the day bars and hiding the estimated A1c; it is fixed in the app's day bars, the estimated A1c, the
+follow-up coverage and the daily check. The other changes:
+- duplicates and overlapping sources resolved;
+- the person's range kept apart from the consensus thresholds;
+- a baseline period, with a change counted as sustained only after 3 sufficient weeks;
+- "A typical day" and "Progress against your starting period" in the Overview for week, 2 weeks and month;
+- insight listings, clicks, actions, feedback and 7/14/28-day outcomes kept apart;
+- the training consent enforced, with withdrawal removing rows and models;
+- `steady_ml`: versioned datasets, logistic regression, an evaluation gate on unseen people and later periods
+  against the rules, a registry with rollback, and jobs run by the worker;
+- the ranker in shadow mode by default, with a tester flag and a fallback to the rules;
+- a Streamlit research tool behind a token, local only.
+
+Migration `e2f3a4b5c6d7` is on the Mac (13 Nov). API 231 tests pass. The browser e2e `tools/e2e/progress.cjs`
+passes on the web build. Nothing is seen with real data yet, and there is no trained model, because no real
+listings exist yet.
+
 12 Nov 2026 (night, launch crash): from the update with meal-time insights on, the app crashed right after loading:
 the finding title for `meal_time` (and later `workout`) needs values the generic title call did not give, and the
 message formatter threw while building the Overview. Fixed: titles get every value they use, a missing value returns

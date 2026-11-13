@@ -169,7 +169,11 @@ All of them are listed in `services/api/.env.example`, without values. Two need 
 - `STEADY_SEALING_KEY` should be set once and kept. If it is unset, it is derived from `STEADY_JWT_SECRET`, and then
   changing that secret makes the sealed CareLink sign-in, meal photos and exports unreadable.
 
+- Training data (G-61): before production, the training consent text, the pseudonymised training tables (personal health
+  data, not anonymous), their retention, and who may run the research tool need the same review as the rest of this
+  list. The research tool must stay local or behind proper staff access.
+
 ## Migrations
 
 Run `uv run alembic upgrade head` after every pull that adds a file in `services/api/alembic/versions/`. The latest is
-`f7a8b9c0d1e3` (Google sign-in, waitlist and email verification, G-46). `a8c9d0e1f2b4` (same meal from two sources, G-47) also soft-deletes repeated CareLink pump events (rows are kept). `b1c2d3e4f5a7` adds `glucose_records.trend`. `c2d3e4f5a6b8` adds `users.avatar_url`. Each migration so far only adds columns, tables or rows. None is destructive.
+`f7a8b9c0d1e3` (Google sign-in, waitlist and email verification, G-46). `a8c9d0e1f2b4` (same meal from two sources, G-47) also soft-deletes repeated CareLink pump events (rows are kept). `b1c2d3e4f5a7` adds `glucose_records.trend`. `c2d3e4f5a6b8` adds `users.avatar_url`. `e2f3a4b5c6d7` adds the learning, ranking and training tables (G-61). Each migration so far only adds columns, tables or rows. None is destructive.

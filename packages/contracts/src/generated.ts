@@ -890,7 +890,10 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** List Insights */
+        /**
+         * List Insights
+         * @description `shown=true`: the client lists these insights on screen now, so each listing is kept as learning data.
+         */
         get: operations["list_insights_insights_get"];
         put?: never;
         post?: never;
@@ -956,6 +959,26 @@ export interface paths {
         get: operations["list_updates_insights_updates_get"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/{key}/event": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Insight Event
+         * @description What the person did with an insight, kept apart from opening it and from what they said about it.
+         */
+        post: operations["insight_event_insights__key__event_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1135,6 +1158,66 @@ export interface paths {
         head?: never;
         /** Edit Memory */
         patch: operations["edit_memory_memories__memory_id__patch"];
+        trace?: never;
+    };
+    "/metrics/progress": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Progress
+         * @description Weekly windows up to yesterday (local), the baseline, and whether a change held (see metrics.progress).
+         */
+        get: operations["get_progress_metrics_progress_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/metrics/quality": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Quality
+         * @description Data quality: each source's measured rhythm, duplicates and overlaps dropped, gaps and coverage per day.
+         */
+        get: operations["get_quality_metrics_quality_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/metrics/typical-day": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Typical Day
+         * @description The spread of glucose by time of day over [from, to) (default: the last 14 days), and whether there was enough.
+         */
+        get: operations["get_typical_day_metrics_typical_day_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/profile": {
@@ -1804,6 +1887,25 @@ export interface components {
              */
             source: "pump" | "carelink";
         };
+        /** EventIn */
+        EventIn: {
+            /**
+             * Name
+             * @enum {string}
+             */
+            name: "why" | "records" | "left_out" | "talk_companion";
+            /**
+             * Type
+             * @enum {string}
+             */
+            type: "detail" | "action";
+            /**
+             * Via
+             * @default app
+             * @enum {string}
+             */
+            via: "app" | "web" | "push";
+        };
         /** ExportIn */
         ExportIn: {
             /**
@@ -2420,6 +2522,7 @@ export interface components {
              * @default []
              */
             meal_patterns: components["schemas"]["MealPatternOut"][];
+            ranking?: components["schemas"]["RankingOut"] | null;
             routine?: components["schemas"]["RoutineOut"] | null;
             /**
              * Topics
@@ -2944,6 +3047,21 @@ export interface components {
             platform: "ios" | "android";
             /** Token */
             token: string;
+        };
+        /** RankingOut */
+        RankingOut: {
+            /** Mode */
+            mode: string;
+            /** Model Version */
+            model_version?: string | null;
+            /** Order */
+            order: string[];
+            /** Reason */
+            reason?: string | null;
+            /** Rules Version */
+            rules_version: string;
+            /** Served */
+            served: string;
         };
         /** RecordIn */
         RecordIn: {
@@ -5369,6 +5487,8 @@ export interface operations {
             query?: {
                 until?: string | null;
                 kinds?: number;
+                shown?: boolean;
+                via?: "app" | "web";
             };
             header?: never;
             path?: never;
@@ -5466,6 +5586,39 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["UpdateOut"][];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    insight_event_insights__key__event_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["EventIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -5852,6 +6005,107 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["MemoryOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_progress_metrics_progress_get: {
+        parameters: {
+            query?: {
+                weeks?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_quality_metrics_quality_get: {
+        parameters: {
+            query?: {
+                days?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_typical_day_metrics_typical_day_get: {
+        parameters: {
+            query?: {
+                from?: string | null;
+                to?: string | null;
+                bin_minutes?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
                 };
             };
             /** @description Validation Error */

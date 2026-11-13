@@ -925,6 +925,45 @@
         "title": "DeviceTargetOut",
         "type": "object"
       },
+      "EventIn": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "enum": [
+              "why",
+              "records",
+              "left_out",
+              "talk_companion"
+            ],
+            "title": "Name",
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "detail",
+              "action"
+            ],
+            "title": "Type",
+            "type": "string"
+          },
+          "via": {
+            "default": "app",
+            "enum": [
+              "app",
+              "web",
+              "push"
+            ],
+            "title": "Via",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "name"
+        ],
+        "title": "EventIn",
+        "type": "object"
+      },
       "ExportIn": {
         "additionalProperties": false,
         "properties": {
@@ -2718,6 +2757,16 @@
             "title": "Meal Patterns",
             "type": "array"
           },
+          "ranking": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RankingOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "routine": {
             "anyOf": [
               {
@@ -4086,6 +4135,59 @@
           "platform"
         ],
         "title": "PushTokenIn",
+        "type": "object"
+      },
+      "RankingOut": {
+        "properties": {
+          "mode": {
+            "title": "Mode",
+            "type": "string"
+          },
+          "model_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Version"
+          },
+          "order": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Order",
+            "type": "array"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "rules_version": {
+            "title": "Rules Version",
+            "type": "string"
+          },
+          "served": {
+            "title": "Served",
+            "type": "string"
+          }
+        },
+        "required": [
+          "order",
+          "served",
+          "mode",
+          "rules_version"
+        ],
+        "title": "RankingOut",
         "type": "object"
       },
       "RecordIn": {
@@ -7958,6 +8060,7 @@
     },
     "/insights": {
       "get": {
+        "description": "`shown=true`: the client lists these insights on screen now, so each listing is kept as learning data.",
         "operationId": "list_insights_insights_get",
         "parameters": [
           {
@@ -7985,6 +8088,30 @@
               "default": 1,
               "title": "Kinds",
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "shown",
+            "required": false,
+            "schema": {
+              "default": false,
+              "title": "Shown",
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "via",
+            "required": false,
+            "schema": {
+              "default": "app",
+              "enum": [
+                "app",
+                "web"
+              ],
+              "title": "Via",
+              "type": "string"
             }
           }
         ],
@@ -8147,6 +8274,57 @@
           }
         ],
         "summary": "List Updates",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/{key}/event": {
+      "post": {
+        "description": "What the person did with an insight, kept apart from opening it and from what they said about it.",
+        "operationId": "insight_event_insights__key__event_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "schema": {
+              "title": "Key",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Insight Event",
         "tags": [
           "insights"
         ]
@@ -8672,6 +8850,197 @@
         "summary": "Edit Memory",
         "tags": [
           "memories"
+        ]
+      }
+    },
+    "/metrics/progress": {
+      "get": {
+        "description": "Weekly windows up to yesterday (local), the baseline, and whether a change held (see metrics.progress).",
+        "operationId": "get_progress_metrics_progress_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "weeks",
+            "required": false,
+            "schema": {
+              "default": 12,
+              "maximum": 26,
+              "minimum": 4,
+              "title": "Weeks",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Progress Metrics Progress Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Progress",
+        "tags": [
+          "metrics"
+        ]
+      }
+    },
+    "/metrics/quality": {
+      "get": {
+        "description": "Data quality: each source's measured rhythm, duplicates and overlaps dropped, gaps and coverage per day.",
+        "operationId": "get_quality_metrics_quality_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "days",
+            "required": false,
+            "schema": {
+              "default": 30,
+              "maximum": 92,
+              "minimum": 1,
+              "title": "Days",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Quality Metrics Quality Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Quality",
+        "tags": [
+          "metrics"
+        ]
+      }
+    },
+    "/metrics/typical-day": {
+      "get": {
+        "description": "The spread of glucose by time of day over [from, to) (default: the last 14 days), and whether there was enough.",
+        "operationId": "get_typical_day_metrics_typical_day_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "From"
+            }
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "To"
+            }
+          },
+          {
+            "in": "query",
+            "name": "bin_minutes",
+            "required": false,
+            "schema": {
+              "default": 60,
+              "title": "Bin Minutes",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Typical Day Metrics Typical Day Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Typical Day",
+        "tags": [
+          "metrics"
         ]
       }
     },

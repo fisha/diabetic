@@ -6393,6 +6393,156 @@
       "translation"
     ]
   },
+  "prg.base_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.base_when": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.col_base": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.col_last": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.lg_base": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.lg_before": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.lg_na": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.lg_week": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.no_range": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.row_cons": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.row_cov": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.row_cv": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.row_tbr": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.row_tir": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.st_insufficient": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.st_none": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.st_sustained": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.trend_sub": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.trend_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.week_a11y": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.week_a11y_na": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
   "rtn.answer": {
     "board": "Routine",
     "review": [
@@ -9642,6 +9792,55 @@
     "review": [
       "translation"
     ]
+  },
+  "td.a11y": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.lg_band": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.lg_mid": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.sub": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.thin": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.title": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
   },
   "upd.fail_b": {
     "board": "Updates",

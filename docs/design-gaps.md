@@ -877,3 +877,17 @@ average total insulin per day (`Agg1d[].tdd`), share of the day in SmartGuard (`
 someone else's data. Automatic insulin per day (AUTO_BASAL_DELIVERY markers) is not built: display/message gives only
 the last day, so it would need storing every poll.
 
+### G-61 · Progress against a baseline, typical day, learning data and the insight ranker (**Guy, 13 Nov 2026**, implemented-unverified)
+
+The design rules are in `docs/ml-ranker.md`. The product rules below are not clinical:
+- The baseline is the first 14 days with 70 % coverage.
+- A week needs 70 % coverage and 5 days.
+- A change is sustained only after 3 such weeks after the baseline, with time in range at least 5 points above the
+  baseline and time below range at most 1 point above it.
+- A typical day needs 5 days, and an hour needs 3 days.
+- Readings 30 s apart are duplicates, and a reading covers at most 1.2 times its sensor's interval.
+
+The consensus thresholds (70-180, 54, 250, 14 days, 70 %) come from Battelino 2019. Not in the design boards, and
+added at Guy's request: two Overview cards for week, 2 weeks and month, using the existing card, legend and note
+styles, with no score. The design has no "I'll try this" confirmation on an insight, so the only action recorded is
+talking it over with the companion. A design for an explicit action would make the learning data better.
