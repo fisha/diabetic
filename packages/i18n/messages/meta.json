@@ -1765,6 +1765,30 @@
       "translation"
     ]
   },
+  "env.denied": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "env.set": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "env.set_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "env.unsupported": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "exp.col_carbs_g": {
     "board": "Settings",
     "review": [
@@ -4878,6 +4902,42 @@
     ]
   },
   "now.tir_t3": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.w_air_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.w_air_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.w_cold_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.w_cold_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.w_hot_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.w_hot_t": {
     "board": "Companion",
     "review": [
       "translation"

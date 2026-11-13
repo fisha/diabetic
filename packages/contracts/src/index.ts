@@ -57,6 +57,7 @@ export type FollowUpOut = S['FollowUpOut'];
 export type DeviceEventOut = S['DeviceEventOut'];
 export type MemoryOut = S['MemoryOut'];
 export type SettingsOut = S['SettingsOut'];
+export type EnvironmentOut = S['EnvironmentOut'];
 export type GlucoseAlertsIn = S['GlucoseAlertsIn'];
 export type GlucoseAlertsOut = S['GlucoseAlertsOut'];
 export type FoodItem = S['FoodItem'];
