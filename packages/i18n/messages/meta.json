@@ -7859,6 +7859,111 @@
     ],
     "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
   },
+  "rtn.act": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_best": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_energy": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_few": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_n_kcal": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_n_steps": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_part_afternoon": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_part_evening": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_part_morning": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_part_night": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_split": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_steps": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_today": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_usual": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_usual_b": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
   "rtn.answer": {
     "board": "Routine",
     "review": [
@@ -13189,6 +13294,13 @@
       "translation"
     ]
   },
+  "win.basis_best": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
   "win.basis_day": {
     "board": "Overview",
     "review": [
@@ -13219,6 +13331,20 @@
       "translation"
     ]
   },
+  "win.energy_best_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "win.energy_best_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
   "win.set": {
     "board": "Settings",
     "review": [
@@ -13242,6 +13368,20 @@
     "review": [
       "translation"
     ]
+  },
+  "win.steps_best_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "win.steps_best_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
   },
   "win.tag": {
     "board": "Overview",
