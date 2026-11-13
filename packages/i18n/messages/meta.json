@@ -12253,6 +12253,30 @@
     ],
     "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
   },
+  "wdg.h_few": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ]
+  },
+  "wdg.h_from": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ]
+  },
+  "wdg.h_noband": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ]
+  },
+  "wdg.h_today": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ]
+  },
   "wdg.inside": {
     "board": "WIDGET",
     "review": [
