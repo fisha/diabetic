@@ -1,4 +1,18 @@
 {
+  "adm.app_signin": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Website app, opened from the admin page while signed out"
+  },
+  "adm.app_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Website app, opened from the admin page"
+  },
   "alr.auto_exit": {
     "board": "Journal",
     "review": [
@@ -11880,6 +11894,13 @@
       "translation"
     ]
   },
+  "wd.adm_view_app": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin table: view this account in the app (opens a new tab)"
+  },
   "wd.adm_waiting": {
     "board": "WebDashboard",
     "review": [
@@ -13021,6 +13042,13 @@
       "translation"
     ],
     "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
+  },
+  "wdg.watch_empty": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Apple Watch complication and app, when the iPhone has no reading to send"
   },
   "web.a1": {
     "board": "Website",
