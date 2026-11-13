@@ -1075,6 +1075,15 @@ the same for Health Connect.
   threshold. A reading fades out between 10 and 20 minutes old and nothing shows after that. The face frowns below as
   well as above the range now. Out of range no costumes or jumps. Reduced motion: drops and colour stay, no motion.
   Checked in the web preview and the worklet closures; not yet seen on a phone. All states are in /dev/character.
+- **Character moments** (Guy, 13 Nov 2026: "את כולם"), all in the web preview and `/dev/character`, not yet on a phone:
+  eyes follow the trend arrow of a fresh reading; a somersault with a thumbs-up when a reading comes back in range
+  after a low; a nap in a nightcap during the person's own sleep time from Routine (never without those times) and a
+  startled wake on a low; chewing after a meal logged in the last hour and licking its lips when carbs were counted; a
+  sweatband and heavy breathing after a workout that ended in the last 90 minutes; a new set, cartridge or sensor held
+  up (last two hours, own data only); a menorah crown on Hanukkah (dates listed 2026-2030); a hug over the
+  conversation when the reply carries `flags.support` (API tool `show_support`, no migration). Each recent thing plays
+  once per app run, only the newest. Reactions are drawn in `character/Reactions.tsx` and `Hug.tsx`, never in
+  ACCESSORIES. Not built: sunglasses in hot weather (no weather or location source).
 
 
 ### G-69 · Apple Fitness and Health Connect activity: exercise minutes, stood hours, workouts, lows after workouts (**Guy, 13 Nov 2026**, implemented-unverified)

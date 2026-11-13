@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+13 Nov 2026 (G-68 moments, same thread): trend glance, back-in-range cheer, night nap with a startled wake on a low,
+meal chewing and lip licking, workout sweatband, new set held up, Hanukkah crown, and a hug on hard moments (API
+`show_support` tool, `flags.support`). App 96 tests and typecheck, API 285 tests and ruff pass; web preview only.
+Next: deploy the API for the hug, OTA, Guy's look on the phone.
+
 13 Nov 2026 (G-68 follow-up, thread "Turn the companion orb into a character"): the character's body follows the
 latest fresh reading: cold sweat and shivers below the range, hot sweat and a rising red flush above it, a thumbs-up
 now and then in range; fades out as the reading ages. App tests (87), typecheck and lint pass; checked in the web
