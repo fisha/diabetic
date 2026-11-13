@@ -1066,6 +1066,15 @@ the same for Health Connect.
   function calls inside `useAnimatedStyle`; check a native Release run, not only the web preview, before an update.
 - JS only, so it also ships to 0.2.0 builds as an update. Checked in the web preview (day, night, Hebrew); not yet
   seen on a phone.
+- **The body follows the reading** (Guy, 13 Nov 2026: "שהכדור יזיע אם הסוכר מתחת לטווח כמו זיעה קרה ורעידות… מעל
+  הטווח הוא יזיע מחום יהיה קצת אדמדם ככל שהסוכר עולה… בטווח… להוציא יד ולעשות like"), `character/Feel.tsx`,
+  `bodyFeel` in `catalog.ts`. Below the person's range: cold sweat drops, a bluish chill and short shivers. Above it:
+  hot sweat, blushing cheeks and a red flush rising from the chin. In range: a white-gloved thumbs-up from the side now
+  and then while idle (never two close together). The side comes only from the person's own range; the strength only
+  scales the drawing from the range edge to the sensor's display limits (40, 400 mg/dL) and is not a clinical
+  threshold. A reading fades out between 10 and 20 minutes old and nothing shows after that. The face frowns below as
+  well as above the range now. Out of range no costumes or jumps. Reduced motion: drops and colour stay, no motion.
+  Checked in the web preview and the worklet closures; not yet seen on a phone. All states are in /dev/character.
 
 
 ### G-69 · Apple Fitness and Health Connect activity: exercise minutes, stood hours, workouts, lows after workouts (**Guy, 13 Nov 2026**, implemented-unverified)
