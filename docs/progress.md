@@ -826,6 +826,9 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
 - 12 Nov 2026 (Guy, G-59): pump status card in Devices > CareLink (active insulin, reservoir, battery, sensor time
   left, transmitter, SmartGuard, paused, out of range) and the pump's active insulin under the latest reading on the
   companion screen. API 196 tests and `pnpm check` pass; checked in the app's web build with the CareLink stand-in.
+- 12 Nov 2026 (Guy, G-60): the pump's daily totals in Overview (insulin per day, time in SmartGuard, exits, sensor
+  wear) from CareLink's 30-day history. API 197 tests, app tests and `pnpm check` pass; checked in the app's web build
+  with stand-in days.
 
 ## Next action
 

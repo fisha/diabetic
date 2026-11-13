@@ -44,9 +44,9 @@ labelling before any reminder uses them (no invented thresholds).
 | `Agg1d[].sg.sgVal` | shown | All glucose views | 30 days of readings |
 | `Agg1d[].setChange` | not read | Journal row "Set changed"; set change insight | Real set change dates: interval, reminder when overdue (*verify* the set's rated days) |
 | `Agg7d/14d/30d.avgSetChange` | not read | Set change insight | The person's usual interval |
-| `tdd` (total daily dose) | not read | Overview: insulin per day | Daily insulin trend |
-| `autoMode`, `autoModeExit` | not read | Overview: time in SmartGuard; exits per day | SmartGuard use and exits |
-| `sensorUsage` | not read | Overview: sensor wear time | Gaps in sensor wear |
+| `tdd` (total daily dose) | shown (G-60) | Overview: insulin per day | Daily insulin trend |
+| `autoMode`, `autoModeExit` | shown (G-60) | Overview: time in SmartGuard; exits per day | SmartGuard use and exits |
+| `sensorUsage` | shown (G-60) | Overview: sensor wear time | Gaps in sensor wear |
 | `bg.avg`, `sg.sd` | not read | Overview (variability) | Glucose variability |
 | `hypoPattern[]`, `hyperPattern[]` (`episodes[]` with `category`, `duration`, `startTS`) | not read | Insights | The pump's own recurring lows and highs by time |
 | `sensorOverlay` (mean, 5/25/75/95 percentiles) | not read | Overview chart (daily profile) | A one-glance typical day |

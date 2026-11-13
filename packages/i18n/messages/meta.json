@@ -6063,6 +6063,48 @@
       "translation"
     ]
   },
+  "ovr.pump_exits": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_sg": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_src": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_tdd": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_tdd1": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.pump_wear": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
   "ovr.range_carelink": {
     "board": "OVR-01",
     "review": [

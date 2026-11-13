@@ -1654,6 +1654,8 @@ export interface components {
             added?: number | null;
             /** Connected */
             connected: boolean;
+            /** Days */
+            days?: components["schemas"]["PumpDayOut"][];
             /** Detail */
             detail?: string | null;
             /** Device */
@@ -2877,6 +2879,25 @@ export interface components {
             period_to: string;
             /** Sources */
             sources: string[];
+        };
+        /**
+         * PumpDayOut
+         * @description One finished day as the pump's 30-day history reports it.
+         */
+        PumpDayOut: {
+            /**
+             * Day
+             * Format: date
+             */
+            day: string;
+            /** Insulin Units */
+            insulin_units?: number | null;
+            /** Sensor Min */
+            sensor_min?: number | null;
+            /** Smartguard Exits */
+            smartguard_exits?: number | null;
+            /** Smartguard Min */
+            smartguard_min?: number | null;
         };
         /**
          * PumpStatusOut

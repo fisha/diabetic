@@ -867,3 +867,13 @@ shows the pump's active insulin under the latest reading, labelled "from the pum
 fresh and never while viewing someone else's data. Read-only, no advice. Not in the design: card layout follows the
 existing CareLink notes card.
 
+### G-60 · The pump's daily totals in Overview (**Guy, 12 Nov 2026**, implemented-unverified)
+
+Inventory item 4. A "From the pump" card under the period summary for a week, two weeks, a month or a past day:
+average total insulin per day (`Agg1d[].tdd`), share of the day in SmartGuard (`autoMode`, minutes), SmartGuard exits
+(`autoModeExit`, count) and sensor wear (`sensorUsage`, minutes), over the whole days of the period that CareLink's
+30-day history covers; the day in progress and the rolling 24 hours are left out. Units checked on Guy's account on
+12 Nov 2026 by field ranges only (tdd 0-100 with decimals, durations 0-1440, exits 0-100). Not shown while viewing
+someone else's data. Automatic insulin per day (AUTO_BASAL_DELIVERY markers) is not built: display/message gives only
+the last day, so it would need storing every poll.
+

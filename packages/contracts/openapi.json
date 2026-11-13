@@ -490,6 +490,13 @@
             "title": "Connected",
             "type": "boolean"
           },
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/PumpDayOut"
+            },
+            "title": "Days",
+            "type": "array"
+          },
           "detail": {
             "anyOf": [
               {
@@ -3842,6 +3849,65 @@
           "certainty"
         ],
         "title": "ProvenanceOut",
+        "type": "object"
+      },
+      "PumpDayOut": {
+        "description": "One finished day as the pump's 30-day history reports it.",
+        "properties": {
+          "day": {
+            "format": "date",
+            "title": "Day",
+            "type": "string"
+          },
+          "insulin_units": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Insulin Units"
+          },
+          "sensor_min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor Min"
+          },
+          "smartguard_exits": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Smartguard Exits"
+          },
+          "smartguard_min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Smartguard Min"
+          }
+        },
+        "required": [
+          "day"
+        ],
+        "title": "PumpDayOut",
         "type": "object"
       },
       "PumpStatusOut": {
