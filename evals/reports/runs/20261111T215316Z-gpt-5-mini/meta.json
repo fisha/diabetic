@@ -1,0 +1,14 @@
+{
+  "model": "gpt-5-mini",
+  "label": "gpt-5-mini",
+  "base_url_set": false,
+  "tool_mode": "native",
+  "fold_system": false,
+  "temperature": null,
+  "split": "heldout",
+  "repeat": 3,
+  "cases": 60,
+  "main_rev": "d491f98",
+  "api_rev": "ca7d8ad",
+  "started": "20261111T215316Z"
+}
