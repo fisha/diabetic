@@ -859,8 +859,8 @@ Plus). Simplera and Libre 2 are not listed until confirmed. The 1-day slack is a
 
 From Guy's ask that every piece of device data gets a place (inventory items 2 and 3). Devices > CareLink shows a
 "Pump status" card from the last CareLink poll: active insulin, reservoir (units and percent), pump battery, sensor
-time left (`sensorDurationHours`, read as time left: the value is 72-168 h on a 7-day sensor, not yet confirmed by two
-polls), transmitter battery, SmartGuard on / Safe Basal / manual (`therapyAlgorithmState.autoModeShieldState`), and
+time left (`sensorDurationHours`, read as time left: confirmed on Guy's pump on 13 Nov 2026, two polls an hour apart counted
+down by the elapsed hour), transmitter battery, SmartGuard on / Safe Basal / manual (`therapyAlgorithmState.autoModeShieldState`), and
 plain notes for paused delivery, phone or sensor out of range and six known sensor states. Values outside a plausible
 range are dropped. After 15 minutes without a new poll the values turn grey with "not live". The companion screen
 shows the pump's active insulin under the latest reading, labelled "from the pump at HH:MM", only while the poll is
