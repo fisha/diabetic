@@ -1062,3 +1062,27 @@ the same for Health Connect.
   choice is no longer shown anywhere; the website profile has no accessory picker yet (it keeps the saved ones).
 - JS only, so it also ships to 0.2.0 builds as an update. Checked in the web preview (day, night, Hebrew); not yet
   seen on a phone.
+
+
+### G-69 · Apple Fitness and Health Connect activity: exercise minutes, stood hours, workouts, lows after workouts (**Guy, 13 Nov 2026**, implemented-unverified)
+
+"אני חושב שצריך לחבר את ה fitness app של אפל ו Google health".
+
+- Read (no native change): on iPhone, Apple's exercise minutes (`HKQuantityTypeIdentifierAppleExerciseTime`) and
+  stand hours (`HKCategoryTypeIdentifierAppleStandHour`, sent as 1 stood / 0 not) join the types already read (steps,
+  active energy, workouts). The Fitness app's ring goals (activity summaries) are not read. On Android, Health Connect
+  has no exercise-minute or stand type: exercise sessions (already read, written there by Fitbit, Google Fit, Samsung
+  Health and others), steps and active calories are what it has. HealthKit read types are asked for at run time and the
+  Android `READ_EXERCISE` permission was already declared, so this needs no new build by itself (the app asks for the
+  new iPhone types the next time it requests access).
+- Routine card (RTN-01, renamed "Activity and fitness"): exercise minutes and stood hours with the same usual day,
+  weekdays/weekend, part of day, best day and today as steps (G-67). Exercise minutes of a day are Apple's count or the
+  minutes of that day's workouts, the larger, never both added (Android has only workouts). A workouts block: how many
+  in the last 28 full days, the person's three most common kinds, the part of the day when it is most of them (needs 4
+  workouts), and a usual (median) length. `GET /health-data/activity?kinds=2`; without `kinds=2` the answer is as before.
+- Glucose context: the existing "glucose around a workout" insight (G-54) now also counts workouts followed by a
+  reading below the person's own range low within 12 hours of the end, the night after included (field `lows`, older
+  clients ignore it). Half or more of them is a "watch" insight with the existing "talk to your care team" advice; no
+  dose or food advice. 12 hours is a product window, not a clinical threshold. The companion's context says the same.
+- No personal bests for exercise minutes or stood hours yet (only steps and active energy, G-67).
+

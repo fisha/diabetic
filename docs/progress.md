@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+13 Nov 2026 (G-69, thread "Write insulin and glucose to Apple Health"): Apple Fitness and Health Connect activity:
+exercise minutes and stood hours read on iPhone, a routine for them and for workouts on the Routine card, and lows in
+the 12 hours after workouts added to the workout insight. API 269 tests, ruff, app 85 tests and typecheck pass; no
+migration and no native change. Not run on a device. Next: deploy the API before app code that sends the new types.
+
 13 Nov 2026 (G-68, thread "Turn the companion orb into a character"): the orb has a face in every state, an idle
 life (hops, somersault, boredom with a yawn, and costumes: syringe, insulin pump, vial, pen, juice box) and
 accessories chosen in Profile > Companion instead of the look picker (hat, glasses, mustache, bow tie or scarf), saved
