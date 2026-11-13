@@ -836,6 +836,11 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   server-unreachable note and a try-again button, never the form. `pnpm check` passes; checked in the web build with
   the API answering 502.
 
+- 13 Nov 2026 (Guy): the lock-screen card showed only "usually in range". It now shows the most useful insight for
+  the time it appears (set past its days or sensors ending early, then recurring highs or lows, pump suspends, high
+  alerts or SmartGuard exits in this part of the day, first impressions, the usual meal time, what goes well), titles
+  only, and falls back to the part's usual line. Unit tested; not seen on the phone yet.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API
