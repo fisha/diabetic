@@ -841,6 +841,12 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
   alerts or SmartGuard exits in this part of the day, first impressions, the usual meal time, what goes well), titles
   only, and falls back to the part's usual line. Unit tested; not seen on the phone yet.
 
+- 13 Nov 2026 (Guy: "Libre pulls only 24 hours"): LibreLinkUp's graph holds about 12 hours; the logbook (about two
+  weeks of the readings the sensor logged, scans and alarms, not every 5 minutes) was read only on a link's first
+  fetch, and Itay's first fetch read nothing (region bug). Now the logbook is read on the first fetch and then about
+  daily (`last_history_at`). Continuous history further back needs LibreView (the main-account sign-in waiting on
+  Guy). API tests pass.
+
 ## Next action
 
 Guy, in one batch (the full list is in the thread): install Docker Desktop and uv on the Mac and start the API
