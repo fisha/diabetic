@@ -284,6 +284,22 @@
         "title": "AppVersionOut",
         "type": "object"
       },
+      "AppleIn": {
+        "additionalProperties": false,
+        "properties": {
+          "id_token": {
+            "maxLength": 4096,
+            "minLength": 20,
+            "title": "Id Token",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id_token"
+        ],
+        "title": "AppleIn",
+        "type": "object"
+      },
       "ApprovedOut": {
         "properties": {
           "approved_at": {
@@ -305,6 +321,11 @@
       },
       "AuthOptions": {
         "properties": {
+          "apple": {
+            "default": false,
+            "title": "Apple",
+            "type": "boolean"
+          },
           "email_sign_up": {
             "title": "Email Sign Up",
             "type": "boolean"
@@ -6650,6 +6671,54 @@
         "summary": "Version",
         "tags": [
           "app"
+        ]
+      }
+    },
+    "/auth/apple": {
+      "post": {
+        "description": "Sign in or sign up with Apple (iPhone app), linked the same way as Google.",
+        "operationId": "apple_auth_apple_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppleIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tokens"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "description": "invalid_apple_token"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "503": {
+            "description": "apple_unavailable"
+          }
+        },
+        "summary": "Apple",
+        "tags": [
+          "auth"
         ]
       }
     },

@@ -921,3 +921,21 @@ screen reuses existing cards, chips, banners and sheets.
   never shows again (kept with the profile as `dismissed`, so the website follows).
 - Small win card: confetti keeps drifting inside the card while celebrations are on; with reduce motion the pieces
   stand still.
+
+### G-63 · Icon quick actions, home screen widgets, app lock and Sign in with Apple (**Guy, 13 Nov 2026**, implemented-unverified)
+
+Not in the boards; Guy asked for each.
+- Long press on the app icon: the first four entries of the + menu (glucose, meal photo, meal, insulin), through
+  `expo-quick-actions`; none while viewing someone else's data.
+- Home screen widgets: three widgets in the gallery, "Latest reading", "Today in range" and "Usual at this hour",
+  each small, medium and large. Medium adds one other item beside the chosen one, large adds both. A reading older
+  than 15 minutes turns grey with "not current". Names in the gallery follow the app language (Localizable.strings
+  in the widget target). The small size is what CarPlay (iOS 26) shows. The first build used one widget with an edit
+  menu; Guy saw only one widget, so it became three.
+- Face ID / Touch ID lock: off by default, turned on in Privacy (asks once to confirm). Covers the app at start, in
+  the app switcher and after more than 30 seconds away; the phone passcode is the fallback. Known gap: a screen
+  presented over the tabs (a sheet or the meal flow) is not covered by the lock view.
+- Sign in with Apple on iPhone (`POST /auth/apple`), linked to an existing account by the Apple-verified email like
+  Google; a private relay email is kept as given. Shown on sign-in and create-account where the device offers it.
+- Not done: Android widgets (no Android build yet), a watch face complication (needs a watchOS app).
+

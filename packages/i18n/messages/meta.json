@@ -3841,6 +3841,48 @@
       "translation"
     ]
   },
+  "lock.bio": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.cancel": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.prompt": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.set": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.set_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "lock.unlock": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "meal.a1": {
     "board": "Meal",
     "review": [

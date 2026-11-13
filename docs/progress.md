@@ -895,6 +895,10 @@ API: run `uv run python scripts/live_probe.py` in `services/api` on the Mac.
     speaking. Reduced motion keeps everything still.
   - API tests and `pnpm check` pass; the orb was checked in the web build. On a real iPhone still to check: echo with
     the speaker, noise, pauses, a network switch and the app in the background.
+- 13 Nov 2026 (Guy, after testers build 3): three separate home screen widgets instead of one with an edit menu
+  (he saw only one), the lock-screen widget no longer offered on the home screen, gallery names translated; Face ID
+  lock in Privacy; Sign in with Apple (API `POST /auth/apple`, migration b2c3d4e5f6a0 `users.apple_sub`, setting
+  `STEADY_APPLE_AUDIENCES`, default the bundle id). G-63. API tests (4 new) and `pnpm check` pass; needs a new build.
 
 ## Next action
 

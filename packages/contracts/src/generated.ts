@@ -119,6 +119,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/apple": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Apple
+         * @description Sign in or sign up with Apple (iPhone app), linked the same way as Google.
+         */
+        post: operations["apple_auth_apple_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/google": {
         parameters: {
             query?: never;
@@ -1765,6 +1785,11 @@ export interface components {
             /** Latest Build */
             latest_build: number | null;
         };
+        /** AppleIn */
+        AppleIn: {
+            /** Id Token */
+            id_token: string;
+        };
         /** ApprovedOut */
         ApprovedOut: {
             /**
@@ -1777,6 +1802,11 @@ export interface components {
         };
         /** AuthOptions */
         AuthOptions: {
+            /**
+             * Apple
+             * @default false
+             */
+            apple: boolean;
             /** Email Sign Up */
             email_sign_up: boolean;
             /** Google */
@@ -4194,6 +4224,53 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["AppVersionOut"];
                 };
+            };
+        };
+    };
+    apple_auth_apple_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AppleIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Tokens"];
+                };
+            };
+            /** @description invalid_apple_token */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description apple_unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
