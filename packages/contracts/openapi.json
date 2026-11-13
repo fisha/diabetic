@@ -290,6 +290,77 @@
         "title": "AdminUserOut",
         "type": "object"
       },
+      "AlertLevel": {
+        "additionalProperties": false,
+        "properties": {
+          "mgdl": {
+            "anyOf": [
+              {
+                "maximum": 400.0,
+                "minimum": 40.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mgdl"
+          },
+          "on": {
+            "default": true,
+            "title": "On",
+            "type": "boolean"
+          },
+          "sound": {
+            "default": true,
+            "title": "Sound",
+            "type": "boolean"
+          }
+        },
+        "title": "AlertLevel",
+        "type": "object"
+      },
+      "AlertLevelOut": {
+        "additionalProperties": false,
+        "properties": {
+          "level_mgdl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Level Mgdl"
+          },
+          "mgdl": {
+            "anyOf": [
+              {
+                "maximum": 400.0,
+                "minimum": 40.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mgdl"
+          },
+          "on": {
+            "default": true,
+            "title": "On",
+            "type": "boolean"
+          },
+          "sound": {
+            "default": true,
+            "title": "Sound",
+            "type": "boolean"
+          }
+        },
+        "title": "AlertLevelOut",
+        "type": "object"
+      },
       "AppVersionOut": {
         "properties": {
           "install_url": {
@@ -926,6 +997,40 @@
           "coverage"
         ],
         "title": "CheckOut",
+        "type": "object"
+      },
+      "ClientErrorIn": {
+        "description": "A render error the app caught and survived (13 Nov 2026, the companion character crash). Code facts only.",
+        "properties": {
+          "app_version": {
+            "default": "",
+            "maxLength": 20,
+            "title": "App Version",
+            "type": "string"
+          },
+          "frame": {
+            "default": "",
+            "maxLength": 300,
+            "title": "Frame",
+            "type": "string"
+          },
+          "message": {
+            "maxLength": 300,
+            "title": "Message",
+            "type": "string"
+          },
+          "where": {
+            "maxLength": 40,
+            "pattern": "^[a-z0-9_.-]+$",
+            "title": "Where",
+            "type": "string"
+          }
+        },
+        "required": [
+          "where",
+          "message"
+        ],
+        "title": "ClientErrorIn",
         "type": "object"
       },
       "ConsentIn": {
@@ -2213,6 +2318,86 @@
           "goals"
         ],
         "title": "FoodSummaryOut",
+        "type": "object"
+      },
+      "GlucoseAlertsIn": {
+        "additionalProperties": false,
+        "properties": {
+          "high": {
+            "$ref": "#/components/schemas/AlertLevel"
+          },
+          "low": {
+            "$ref": "#/components/schemas/AlertLevel"
+          },
+          "max_per_day": {
+            "default": 8,
+            "maximum": 24.0,
+            "minimum": 1.0,
+            "title": "Max Per Day",
+            "type": "integer"
+          },
+          "on": {
+            "title": "On",
+            "type": "boolean"
+          },
+          "repeat_min": {
+            "default": 30,
+            "enum": [
+              15,
+              30,
+              60,
+              120,
+              240
+            ],
+            "title": "Repeat Min",
+            "type": "integer"
+          },
+          "urgent_low": {
+            "$ref": "#/components/schemas/AlertLevel"
+          }
+        },
+        "required": [
+          "on",
+          "urgent_low",
+          "low",
+          "high"
+        ],
+        "title": "GlucoseAlertsIn",
+        "type": "object"
+      },
+      "GlucoseAlertsOut": {
+        "properties": {
+          "high": {
+            "$ref": "#/components/schemas/AlertLevelOut"
+          },
+          "low": {
+            "$ref": "#/components/schemas/AlertLevelOut"
+          },
+          "max_per_day": {
+            "title": "Max Per Day",
+            "type": "integer"
+          },
+          "on": {
+            "title": "On",
+            "type": "boolean"
+          },
+          "repeat_min": {
+            "title": "Repeat Min",
+            "type": "integer"
+          },
+          "urgent_low": {
+            "$ref": "#/components/schemas/AlertLevelOut"
+          }
+        },
+        "required": [
+          "on",
+          "urgent_low",
+          "low",
+          "high",
+          "repeat_min",
+          "max_per_day"
+        ],
+        "title": "GlucoseAlertsOut",
         "type": "object"
       },
       "GlucoseIn": {
@@ -5566,6 +5751,16 @@
             "title": "Device Alert Push",
             "type": "array"
           },
+          "glucose_alerts": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GlucoseAlertsOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "insight_interval_days": {
             "default": 14,
             "title": "Insight Interval Days",
@@ -5645,6 +5840,16 @@
               }
             ],
             "title": "Device Alert Push"
+          },
+          "glucose_alerts": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GlucoseAlertsIn"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "insight_interval_days": {
             "anyOf": [
@@ -6746,6 +6951,23 @@
             "title": "In",
             "type": "string"
           },
+          "lc": {
+            "anyOf": [
+              {
+                "enum": [
+                  "en",
+                  "he",
+                  "ar",
+                  "ru"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lc"
+          },
           "old": {
             "maxLength": 80,
             "title": "Old",
@@ -7195,6 +7417,46 @@
         "summary": "Approve",
         "tags": [
           "admin"
+        ]
+      }
+    },
+    "/app/client-error": {
+      "post": {
+        "description": "Logs a caught app error for debugging: where, the message and the top frame, without the account or any values.",
+        "operationId": "client_error_app_client_error_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientErrorIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Client Error",
+        "tags": [
+          "app"
         ]
       }
     },

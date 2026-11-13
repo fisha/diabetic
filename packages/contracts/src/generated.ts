@@ -99,6 +99,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/app/client-error": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Client Error
+         * @description Logs a caught app error for debugging: where, the message and the top frame, without the account or any values.
+         */
+        post: operations["client_error_app_client_error_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/app/version": {
         parameters: {
             query?: never;
@@ -1852,6 +1872,38 @@ export interface components {
             /** Via Google */
             via_google: boolean;
         };
+        /** AlertLevel */
+        AlertLevel: {
+            /** Mgdl */
+            mgdl?: number | null;
+            /**
+             * On
+             * @default true
+             */
+            on: boolean;
+            /**
+             * Sound
+             * @default true
+             */
+            sound: boolean;
+        };
+        /** AlertLevelOut */
+        AlertLevelOut: {
+            /** Level Mgdl */
+            level_mgdl?: number | null;
+            /** Mgdl */
+            mgdl?: number | null;
+            /**
+             * On
+             * @default true
+             */
+            on: boolean;
+            /**
+             * Sound
+             * @default true
+             */
+            sound: boolean;
+        };
         /** AppVersionOut */
         AppVersionOut: {
             /** Install Url */
@@ -2061,6 +2113,26 @@ export interface components {
             eligible: boolean;
             /** Improved */
             improved: boolean;
+        };
+        /**
+         * ClientErrorIn
+         * @description A render error the app caught and survived (13 Nov 2026, the companion character crash). Code facts only.
+         */
+        ClientErrorIn: {
+            /**
+             * App Version
+             * @default
+             */
+            app_version: string;
+            /**
+             * Frame
+             * @default
+             */
+            frame: string;
+            /** Message */
+            message: string;
+            /** Where */
+            where: string;
         };
         /** ConsentIn */
         ConsentIn: {
@@ -2500,6 +2572,37 @@ export interface components {
             /** Protein Avg G */
             protein_avg_g: number | null;
             target: components["schemas"]["ProteinTargetOut"] | null;
+        };
+        /** GlucoseAlertsIn */
+        GlucoseAlertsIn: {
+            high: components["schemas"]["AlertLevel"];
+            low: components["schemas"]["AlertLevel"];
+            /**
+             * Max Per Day
+             * @default 8
+             */
+            max_per_day: number;
+            /** On */
+            on: boolean;
+            /**
+             * Repeat Min
+             * @default 30
+             * @enum {integer}
+             */
+            repeat_min: 15 | 30 | 60 | 120 | 240;
+            urgent_low: components["schemas"]["AlertLevel"];
+        };
+        /** GlucoseAlertsOut */
+        GlucoseAlertsOut: {
+            high: components["schemas"]["AlertLevelOut"];
+            low: components["schemas"]["AlertLevelOut"];
+            /** Max Per Day */
+            max_per_day: number;
+            /** On */
+            on: boolean;
+            /** Repeat Min */
+            repeat_min: number;
+            urgent_low: components["schemas"]["AlertLevelOut"];
         };
         /** GlucoseIn */
         GlucoseIn: {
@@ -3790,6 +3893,7 @@ export interface components {
              * @default []
              */
             device_alert_push: ("low" | "high" | "falling" | "rising" | "reservoir" | "battery" | "sensor" | "delivery")[];
+            glucose_alerts?: components["schemas"]["GlucoseAlertsOut"] | null;
             /**
              * Insight Interval Days
              * @default 14
@@ -3821,6 +3925,7 @@ export interface components {
             celebrate?: boolean | null;
             /** Device Alert Push */
             device_alert_push?: ("low" | "high" | "falling" | "rising" | "reservoir" | "battery" | "sensor" | "delivery")[] | null;
+            glucose_alerts?: components["schemas"]["GlucoseAlertsIn"] | null;
             /** Insight Interval Days */
             insight_interval_days?: number | null;
             /** Insight Push */
@@ -4181,6 +4286,8 @@ export interface components {
             below: string;
             /** In */
             in: string;
+            /** Lc */
+            lc?: ("en" | "he" | "ar" | "ru") | null;
             /** Old */
             old: string;
         };
@@ -4405,6 +4512,37 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["ApprovedOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    client_error_app_client_error_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClientErrorIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {

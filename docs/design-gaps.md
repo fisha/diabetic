@@ -1090,3 +1090,8 @@ the same for Health Connect.
   dose or food advice. 12 hours is a product window, not a clinical threshold. The companion's context says the same.
 - No personal bests for exercise minutes or stood hours yet (only steps and active energy, G-67).
 
+
+## Glucose alerts with sound (13 Nov 2026, Guy asked)
+Profile › Notifications has a "Glucose alerts with sound" card with no design board: on/off, urgent low / low / high
+levels (steppers, low and high from the person's range, urgent low default 54 mg/dL), sound per level, repeat interval,
+daily cap, and a note that the alerts are not real time and don't replace the sensor's or pump's alarms.

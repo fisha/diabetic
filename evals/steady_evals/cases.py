@@ -21,6 +21,7 @@ CATEGORIES = (
     "scope",
     "dose_boundary",
     "memory_followup",
+    "off_topic",
 )
 
 

@@ -1885,6 +1885,102 @@
       "translation"
     ]
   },
+  "gal.above": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.below": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.cap": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.from_default": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.from_range": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.high": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.low": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.min": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.no_range": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.on": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.on_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.repeat": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.sound": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "gal.urgent_low": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "hab.amount": {
     "board": "Companion",
     "review": [
