@@ -1015,3 +1015,23 @@ time or every 5 minutes, learn from public repositories.
 - Never while viewing someone else's data (G-44).
 - Native change: write usage text (iOS) and `WRITE_BLOOD_GLUCOSE`, `WRITE_NUTRITION` (Android); app version 0.3.0 so
   the update never reaches a 0.2.0 build. Needs a new testers build.
+
+### G-67 · Steps and active energy as a routine, and personal bests (**Guy, 13 Nov 2026**, implemented-unverified)
+
+"אני רוצה גם להציג שגרות שקשורות בצעדים ובשריפת כלוריות מאפל health וגם להחמיא למשתמש שהוא מגיע לשיאים חדשים",
+the same for Health Connect.
+
+- Routine screen (RTN-01, not in the design): a card "Steps and active energy" under "What I've learned", only when
+  the store sent steps or active energy. Per type: a usual day (median of the last 14 full days, needs 5 days with data,
+  explained as a median on the card), weekdays against the weekend (each needs 2 days; Friday-Saturday weekend in
+  Israel and other Fri-Sat time zones, else Saturday-Sunday), the part of the day with most of it (median per part),
+  the best day of the last year and today so far. Fewer days: "Not enough data yet: N of 5 days".
+  API `GET /health-data/activity` (`steady_api/activity.py`).
+- Personal bests (small wins, G-43): the daily check adds `steps_best` / `energy_best` when the day's total is above
+  every earlier day of the last year, after at least 14 earlier days with data (a tie is not a best). Significant, so
+  confetti once and the generic "Something went well" push under the insight push policy. Not withdrawn by a glucose
+  correction. Only clients sending `GET /progress?kinds=2` get them (the app does; the website not yet).
+- Counting: the iPhone and the watch store the same walk separately, so a day's (or part's) total is the largest
+  per-source total, not the sum. The same rule now also applies to the steps in the activity finding and in the
+  companion's context (they used to add both).
+- Descriptive only: the person's own values; no step goal or target.

@@ -944,6 +944,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/health-data/activity": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Activity
+         * @description Steps and active energy as a routine, with the person's best day (G-67). Empty values until there are enough days.
+         */
+        get: operations["get_activity_health_data_activity_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/health-data/samples": {
         parameters: {
             query?: never;
@@ -1425,7 +1445,8 @@ export interface paths {
         };
         /**
          * Get Progress
-         * @description Wins of the last 14 days, newest first (the daily check runs here too if it is due).
+         * @description Wins of the last 14 days, newest first (the daily check runs here too if it is due). `kinds=2`: the client knows
+         *     personal bests of steps and active energy (G-67); older app code doesn't get them.
          */
         get: operations["get_progress_progress_get"];
         put?: never;
@@ -1768,7 +1789,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "tir_day" | "tir_week" | "below_week" | "steady";
+            kind: "tir_day" | "tir_week" | "below_week" | "steady" | "steps_best" | "energy_best";
             /** Seen At */
             seen_at: string | null;
             /** Significant */
@@ -1787,6 +1808,15 @@ export interface components {
             minutes: number;
             /** Type */
             type: string;
+        };
+        /** ActivityOut */
+        ActivityOut: {
+            /** Items */
+            items: components["schemas"]["UsualOut"][];
+            /** Min Days */
+            min_days: number;
+            /** Window Days */
+            window_days: number;
         };
         /** AdminDeleteIn */
         AdminDeleteIn: {
@@ -1891,6 +1921,13 @@ export interface components {
              * @enum {string}
              */
             source: "profile" | "pump" | "carelink" | "tandem";
+        };
+        /** BestOut */
+        BestOut: {
+            /** Day */
+            day: string;
+            /** Value */
+            value: number;
         };
         /** Body_transcribe_voice_transcribe_post */
         Body_transcribe_voice_transcribe_post: {
@@ -3980,6 +4017,30 @@ export interface components {
             push_state: string;
             /** Pushed At */
             pushed_at: string | null;
+        };
+        /**
+         * UsualOut
+         * @description One type's routine (G-67): middle of the last full days, weekdays and weekend, the busiest part of the day.
+         */
+        UsualOut: {
+            best: components["schemas"]["BestOut"] | null;
+            /** Days */
+            days: number;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "steps" | "active_energy";
+            /** Median */
+            median: number | null;
+            /** Part */
+            part: ("night" | "morning" | "afternoon" | "evening") | null;
+            /** Today */
+            today: number | null;
+            /** Weekday */
+            weekday: number | null;
+            /** Weekend */
+            weekend: number | null;
         };
         /** ValidationError */
         ValidationError: {
@@ -6271,6 +6332,26 @@ export interface operations {
             };
         };
     };
+    get_activity_health_data_activity_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ActivityOut"];
+                };
+            };
+        };
+    };
     list_samples_health_data_samples_get: {
         parameters: {
             query: {
@@ -7267,7 +7348,9 @@ export interface operations {
     };
     get_progress_progress_get: {
         parameters: {
-            query?: never;
+            query?: {
+                kinds?: number;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -7281,6 +7364,15 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ProgressOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

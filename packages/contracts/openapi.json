@@ -83,7 +83,9 @@
               "tir_day",
               "tir_week",
               "below_week",
-              "steady"
+              "steady",
+              "steps_best",
+              "energy_best"
             ],
             "title": "Kind",
             "type": "string"
@@ -163,6 +165,32 @@
           "intensity"
         ],
         "title": "ActivityData",
+        "type": "object"
+      },
+      "ActivityOut": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/UsualOut"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "min_days": {
+            "title": "Min Days",
+            "type": "integer"
+          },
+          "window_days": {
+            "title": "Window Days",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "window_days",
+          "min_days",
+          "items"
+        ],
+        "title": "ActivityOut",
         "type": "object"
       },
       "AdminDeleteIn": {
@@ -431,6 +459,24 @@
           "high_mgdl"
         ],
         "title": "BandOut",
+        "type": "object"
+      },
+      "BestOut": {
+        "properties": {
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "value": {
+            "title": "Value",
+            "type": "number"
+          }
+        },
+        "required": [
+          "value",
+          "day"
+        ],
+        "title": "BestOut",
         "type": "object"
       },
       "Body_transcribe_voice_transcribe_post": {
@@ -6226,6 +6272,106 @@
         "title": "UpdateOut",
         "type": "object"
       },
+      "UsualOut": {
+        "description": "One type's routine (G-67): middle of the last full days, weekdays and weekend, the busiest part of the day.",
+        "properties": {
+          "best": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/BestOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "kind": {
+            "enum": [
+              "steps",
+              "active_energy"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "median": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Median"
+          },
+          "part": {
+            "anyOf": [
+              {
+                "enum": [
+                  "night",
+                  "morning",
+                  "afternoon",
+                  "evening"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Part"
+          },
+          "today": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Today"
+          },
+          "weekday": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weekday"
+          },
+          "weekend": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weekend"
+          }
+        },
+        "required": [
+          "kind",
+          "days",
+          "median",
+          "weekday",
+          "weekend",
+          "part",
+          "best",
+          "today"
+        ],
+        "title": "UsualOut",
+        "type": "object"
+      },
       "ValidationError": {
         "properties": {
           "ctx": {
@@ -9570,6 +9716,33 @@
         ]
       }
     },
+    "/health-data/activity": {
+      "get": {
+        "description": "Steps and active energy as a routine, with the person's best day (G-67). Empty values until there are enough days.",
+        "operationId": "get_activity_health_data_activity_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivityOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Activity",
+        "tags": [
+          "health-data"
+        ]
+      }
+    },
     "/health-data/samples": {
       "get": {
         "operationId": "list_samples_health_data_samples_get",
@@ -11103,8 +11276,20 @@
     },
     "/progress": {
       "get": {
-        "description": "Wins of the last 14 days, newest first (the daily check runs here too if it is due).",
+        "description": "Wins of the last 14 days, newest first (the daily check runs here too if it is due). `kinds=2`: the client knows\npersonal bests of steps and active energy (G-67); older app code doesn't get them.",
         "operationId": "get_progress_progress_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "kinds",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "title": "Kinds",
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -11115,6 +11300,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "security": [
