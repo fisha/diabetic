@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+13 Nov 2026 (G-65, thread "Add Dexcom and Tandem integrations"): Tandem Source connection (t:slim X2, Tandem Mobi),
+reading only, following tconnectsync; Dexcom stays on Share because the official API is 1 to 3 hours late. API, app
+and website built; API 255 tests and `pnpm check` pass; no migration. Not run against Tandem (no account yet); the app
+screens were not checked visually. Next: deploy, then a real Tandem Source account.
+
 13 Nov 2026 (G-62, thread "Build the diabetes companion app"): Guy's 8-item batch, built end to end (details in
 `docs/design-gaps.md` G-62): Sol on the Responses API, the model's personal reading of an insight with tools and
 evidence checks, "Why am I seeing this?", prediabetes, goals and difficulties, food/meds/fitness details, labs and

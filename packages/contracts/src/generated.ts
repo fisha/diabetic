@@ -587,6 +587,48 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/devices/tandem": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Tandem Status */
+        get: operations["tandem_status_devices_tandem_get"];
+        /**
+         * Tandem Connect
+         * @description Signs in now. Only a sign-in that worked is kept; a refused one is answered and forgotten.
+         */
+        put: operations["tandem_connect_devices_tandem_put"];
+        post?: never;
+        /**
+         * Tandem Disconnect
+         * @description Forgets the sign-in. With remove_readings, the readings that came from this source are deleted too.
+         */
+        delete: operations["tandem_disconnect_devices_tandem_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/tandem/sync": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Tandem Sync */
+        post: operations["tandem_sync_devices_tandem_sync_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/exports": {
         parameters: {
             query?: never;
@@ -1848,7 +1890,7 @@ export interface components {
              * @default profile
              * @enum {string}
              */
-            source: "profile" | "pump" | "carelink";
+            source: "profile" | "pump" | "carelink" | "tandem";
         };
         /** Body_transcribe_voice_transcribe_post */
         Body_transcribe_voice_transcribe_post: {
@@ -1929,7 +1971,7 @@ export interface components {
              * @default ous
              * @enum {string}
              */
-            region: "us" | "ous" | "jp" | "global";
+            region: "us" | "ous" | "jp" | "eu" | "global";
             /** Username */
             username: string;
         };
@@ -1945,11 +1987,12 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "dexcom" | "libre";
+            kind: "dexcom" | "libre" | "tandem";
             /** Last Reading At */
             last_reading_at?: string | null;
             /** Last Sync At */
             last_sync_at?: string | null;
+            pump?: components["schemas"]["TandemPumpOut"] | null;
             /** Region */
             region?: string | null;
             /** Status */
@@ -2051,6 +2094,30 @@ export interface components {
             /** Source */
             source: string;
         };
+        /** DeviceRatioPeriodOut */
+        DeviceRatioPeriodOut: {
+            /** From */
+            from: string;
+            /** Grams */
+            grams?: number | null;
+        };
+        /**
+         * DeviceRatiosOut
+         * @description Carb ratio by time and correction factor as set on the connected pump (Tandem, 13 Nov 2026). While set, the
+         *     typed ones are kept as they were and cannot be edited in Stedio (G-48). Shown only; never used to suggest a dose.
+         */
+        DeviceRatiosOut: {
+            /** Correction Mgdl */
+            correction_mgdl?: number | null;
+            /** Periods */
+            periods: components["schemas"]["DeviceRatioPeriodOut"][];
+            /**
+             * Source
+             * @default tandem
+             * @constant
+             */
+            source: "tandem";
+        };
         /** DeviceTargetOut */
         DeviceTargetOut: {
             /** High Mgdl */
@@ -2061,7 +2128,7 @@ export interface components {
              * Source
              * @enum {string}
              */
-            source: "pump" | "carelink";
+            source: "pump" | "carelink" | "tandem";
         };
         /** EventIn */
         EventIn: {
@@ -3343,6 +3410,7 @@ export interface components {
             changed: {
                 [key: string]: components["schemas"]["ChangeMetaOut"];
             };
+            device_ratios?: components["schemas"]["DeviceRatiosOut"] | null;
             device_target?: components["schemas"]["DeviceTargetOut"] | null;
             /** Diabetes Type */
             diabetes_type: string;
@@ -3439,6 +3507,13 @@ export interface components {
             smartguard_exits?: number | null;
             /** Smartguard Min */
             smartguard_min?: number | null;
+        };
+        /** PumpRangeOut */
+        PumpRangeOut: {
+            /** High Mgdl */
+            high_mgdl: number;
+            /** Low Mgdl */
+            low_mgdl: number;
         };
         /**
          * PumpStatusOut
@@ -3779,6 +3854,46 @@ export interface components {
             /** Synced */
             synced: string[];
         };
+        /** TandemProfileOut */
+        TandemProfileOut: {
+            /** Insulin Duration Min */
+            insulin_duration_min?: number | null;
+            /** Max Bolus U */
+            max_bolus_u?: number | null;
+            /**
+             * Name
+             * @default
+             */
+            name: string;
+            /** Segments */
+            segments?: components["schemas"]["TandemSegmentOut"][];
+        };
+        /**
+         * TandemPumpOut
+         * @description What Tandem Source says about the pump, shown as set on the pump (read-only in Stedio, G-48).
+         */
+        TandemPumpOut: {
+            alert_limits?: components["schemas"]["PumpRangeOut"] | null;
+            /** Last Upload */
+            last_upload?: string | null;
+            /** Model */
+            model?: string | null;
+            profile?: components["schemas"]["TandemProfileOut"] | null;
+            range?: components["schemas"]["PumpRangeOut"] | null;
+        };
+        /** TandemSegmentOut */
+        TandemSegmentOut: {
+            /** Basal U H */
+            basal_u_h?: number | null;
+            /** Correction Mgdl */
+            correction_mgdl?: number | null;
+            /** From */
+            from: string;
+            /** Grams Per Unit */
+            grams_per_unit?: number | null;
+            /** Target Mgdl */
+            target_mgdl?: number | null;
+        };
         /** ThreadOut */
         ThreadOut: {
             /** Conversation Id */
@@ -3956,7 +4071,7 @@ export interface components {
          */
         WhyOut: {
             /** Band Source */
-            band_source?: ("profile" | "pump" | "carelink") | null;
+            band_source?: ("profile" | "pump" | "carelink" | "tandem") | null;
             /**
              * Basis
              * @default 0
@@ -5314,6 +5429,129 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SyncAllOut"];
+                };
+            };
+        };
+    };
+    tandem_status_devices_tandem_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+        };
+    };
+    tandem_connect_devices_tandem_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CgmIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+            /** @description needs_verification */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description wrong_credentials */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description locked */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    tandem_disconnect_devices_tandem_delete: {
+        parameters: {
+            query?: {
+                remove_readings?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RemovedOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    tandem_sync_devices_tandem_sync_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CgmOut"];
                 };
             };
         };

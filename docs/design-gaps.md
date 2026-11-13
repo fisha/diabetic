@@ -955,3 +955,38 @@ Not in the boards; Guy asked for each.
   the note says they can be minutes late and the pump stays the alarm. Server: `user_settings.device_alert_push`,
   migration c3d4e5f6a7b1, `device_push.py`.
 
+### G-65 · Tandem Source, and Dexcom stays on Share (**Guy, 13 Nov 2026**, implemented-unverified)
+
+"לגבי אינטגרציות אנחנו צריכים אחת עם dexcom ואחת עם tandem diabetes", and if the makers' own access is not real
+time or every 5 minutes, learn from public repositories.
+
+- **Reading only, always** (Guy, 13 Nov 2026: "הכי חשוב אם מישהי מהם מאשרת לתת דרכה בולוסים אנחנו לא נבצע את זה
+  ונשתמש רק בקריאה בלבד"). No device connection ever sends anything to a pump or makes a request that changes data
+  at the maker, even if a maker offers it. `tests/test_tandem.py` checks that the only non-GET calls to Tandem are
+  the sign-in and the token.
+- Dexcom: the official developer API (developer.dexcom.com, v3) delivers readings one hour late in the US and three
+  hours late elsewhere, Israel included. Dexcom Share (G-45) reads every 5 minutes, so it stays the Dexcom connection
+  and the official API is not built.
+- Tandem: no public access. `steady_api/tandem.py` follows the open-source tconnectsync (MIT, read October 2026)
+  against Tandem Source: email and password, OpenID Connect with PKCE for Tandem Source's web client (regions us and
+  eu), `bff/pumper` for the pumps and settings, `bff/pump-logs` for the history log. Data reaches Tandem Source only
+  when Tandem's phone app uploads (Tandem states no interval), so it is not real time; with a Dexcom sensor on the
+  pump, glucose also comes live through Share and duplicates are dropped (`dedupe.py`).
+- Kept: sensor readings through the pump (G6, G7, Libre 2/3; source `tandem`), boluses (Control-IQ automatic
+  corrections marked "auto correction") and carbs entered on the pump as records (linked to the person's own meal like
+  CareLink's, G-47), cannula fill as a set change (G-58), cartridge fill (new alert kind `cartridge_changed`), sensor
+  session starts, alarms, alerts, malfunctions, CGM alerts and suspend/resume as device events with named kinds
+  (`alerts.py` TANDEM table; an id not listed is "Pump message").
+- Read-only settings (G-48): the pump's CGM alert limits (else the Tandem Source range) become the target range; the
+  carb ratios by time and the correction factor (one factor when the pump has one for the whole day) of the active
+  profile are shown in Treatment settings, onboarding and the website and cannot be edited there
+  (`ProfileOut.device_ratios`; the server keeps the typed values). The device screen shows the pump model and its last
+  upload. Basal, target BG, insulin duration and max bolus are read and kept on the link but not shown yet.
+- Sign-in renewal: Tandem's refresh token when it gives one (no password sent), else a new sign-in at most twice an
+  hour per link (G-45 rule). A refused sign-in is 422 and forgotten. First sync reads four weeks, then a week about
+  daily and two days every 5 minutes.
+- Screens: app Settings > Devices row "Tandem · Tandem Source" (Settings > Devices lists every connection Stedio has, CareLink, Dexcom, Libre and Tandem, whatever pump and sensor the profile names; Guy, 13 Nov 2026), the same
+  screen as Dexcom and Libre with a region choice; website Settings > Device connections. Tandem Mobi is not in the
+  pump list of onboarding yet (design gap: needs Guy's approval to add).
+- Not verified against Tandem: tested only with a stand-in server. Nobody has a Tandem account for a real try yet.
+

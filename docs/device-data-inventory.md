@@ -68,6 +68,15 @@ labelling before any reminder uses them (no invented thresholds).
 
 Readings and trend only (`Value`, `Trend`, `WT`). No alerts, sensor or settings fields.
 
+## Tandem Source (G-65, 13 Nov 2026)
+
+Reading only. `bff/pumper`: pumps (model, last upload; serial number not kept), the account's low/high range, the active
+profile (carb ratio, correction factor, target BG, basal by time, insulin duration, max bolus) and CGM alert limits.
+`bff/pump-logs`: CGM readings (shown), bolus requests and completions (insulin and carbs records), cannula and
+cartridge fills, CGM session starts, alarms, alerts, malfunctions, CGM alerts, suspend and resume (journal, Alerts
+filter). Read but not shown yet: basal, target BG, insulin duration, max bolus. Not read: basal delivery, daily
+status, Control-IQ mode changes (sleep, exercise), BG meter readings.
+
 ## Apple Health (read today, 13 types)
 
 Glucose, insulin delivery, heart rate, resting heart rate, HRV, steps, distance, active energy, workouts, sleep,
