@@ -2478,6 +2478,13 @@
     ],
     "note": "Median wording per Guy (חציון)."
   },
+  "ins.f_workout_lows": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
   "ins.f_workout_t": {
     "board": "Insights",
     "review": [
@@ -7864,7 +7871,7 @@
     "review": [
       "translation"
     ],
-    "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
   },
   "rtn.act_best": {
     "board": "RTN-01",
@@ -7880,6 +7887,13 @@
     ],
     "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
   },
+  "rtn.act_exercise": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
   "rtn.act_few": {
     "board": "RTN-01",
     "review": [
@@ -7887,12 +7901,26 @@
     ],
     "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
   },
+  "rtn.act_n_hours": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
   "rtn.act_n_kcal": {
     "board": "RTN-01",
     "review": [
       "translation"
     ],
     "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_n_min": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
   },
   "rtn.act_n_steps": {
     "board": "RTN-01",
@@ -7936,6 +7964,13 @@
     ],
     "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
   },
+  "rtn.act_stand": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
   "rtn.act_steps": {
     "board": "RTN-01",
     "review": [
@@ -7963,6 +7998,69 @@
       "translation"
     ],
     "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_wk_count": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_wk_kinds": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_wk_minutes": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_wk_minutes_b": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_wk_part_afternoon": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_wk_part_evening": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_wk_part_morning": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_wk_part_night": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_workouts": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
   },
   "rtn.answer": {
     "board": "Routine",
