@@ -713,6 +713,7 @@
   "meal.saved_h": "Saved to your journal",
   "meal.saved_t": "Meal saved",
   "meal.search": "Search foods",
+  "meal.search_down": "The food database isn’t answering right now. Try again in a minute, or add your own food and enter its carbs.",
   "meal.serving": "Typical serving: {amount}",
   "meal.shoot": "Take photo",
   "meal.title": "Log a meal",

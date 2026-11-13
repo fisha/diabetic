@@ -4468,6 +4468,13 @@
       "translation"
     ]
   },
+  "meal.search_down": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Food search failed because the nutrition database timed out (not because it isn't connected)"
+  },
   "meal.serving": {
     "board": "Meal",
     "review": [
