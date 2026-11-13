@@ -985,7 +985,7 @@ time or every 5 minutes, learn from public repositories.
 - Sign-in renewal: Tandem's refresh token when it gives one (no password sent), else a new sign-in at most twice an
   hour per link (G-45 rule). A refused sign-in is 422 and forgotten. First sync reads four weeks, then a week about
   daily and two days every 5 minutes.
-- Screens: app Settings > Devices row "Tandem · Tandem Source" (offered for t:slim X2 or no known pump), the same
+- Screens: app Settings > Devices row "Tandem · Tandem Source" (Settings > Devices lists every connection Stedio has, CareLink, Dexcom, Libre and Tandem, whatever pump and sensor the profile names; Guy, 13 Nov 2026), the same
   screen as Dexcom and Libre with a region choice; website Settings > Device connections. Tandem Mobi is not in the
   pump list of onboarding yet (design gap: needs Guy's approval to add).
 - Not verified against Tandem: tested only with a stand-in server. Nobody has a Tandem account for a real try yet.
