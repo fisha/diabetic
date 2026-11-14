@@ -1125,12 +1125,16 @@ something new comes in". No design board; built in the existing picker, card and
 - Checked by the worker every 5 minutes for people active in the last 2 days, and on `GET /rewards`. Seen and
   celebrated are kept once on the server for the app and the website (`POST /rewards/state`). Viewers (G-44) can read
   `/rewards` and change nothing; the app and website show them no celebration.
-- App: Profile › Companion shows "x of 31 unlocked" with a bar, "Next up" (the locked item closest to opening), locked
+- App: Profile › Companion shows "Next up" (the locked item closest to opening), locked
   tiles dimmed with a lock and their count ("3 of 5"); tapping one shows what opens it. A dot marks items new since the
   last visit. On the Overview, a dialog "Something new unlocked!" with the character wearing it, why it opened, "Put it
   on", "Open the wardrobe" (several) and "Later"; confetti only with celebrations on and reduce motion off. Without an
   answer from the server the new items are hidden from the picker (never shown as fake locked).
 - Website: an "unlocked" card with confetti on Insights, and locked items with their hint in the profile editor.
+- 14 Nov 2026 (Guy): at most one new item a local day, even when more are earned (a long history opens them one by one,
+  in catalog order); no counts anywhere ("x of 31", "3 new things" removed; the dialog says "Something new
+  unlocked!"). The companion's name can no longer be changed: the name field is gone from onboarding, Profile ›
+  Companion and the website editor; a name already saved stays.
 - Not done: an "unlock" card in the companion carousel (possible through `NowInsights.extra`), titles and colours.
 
 ### G-71 · Privacy, terms and accessibility pages (**Guy, 14 Nov 2026**, implemented-unverified)
