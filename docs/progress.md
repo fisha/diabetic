@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+14 Nov 2026 (G-72, thread "Show Health data insights in overview"): Overview has a "Body today" card from Apple Health /
+Health Connect (steps and a usual day, distance, average heart rate, resting heart rate, last night's sleep against the
+person's usual night, times awake, deep and REM), and three new insights: glucose after shorter and longer nights, on
+days with fewer and more steps, and with a lower and higher resting heart rate (28 days, `kinds=4`). Website insights
+too; the companion hears them. API tests (new `test_body.py`) and ruff, app typecheck and tests, web typecheck, lint
+and tests, i18n tests pass. No migration, no native change (OTA). Not run on a phone. Next: deploy the API, then OTA.
+
 14 Nov 2026 (G-71, thread "Write privacy and terms pages"): the website's footer links open real pages: privacy
 policy (GDPR and Israeli Amendment 13: controller, data, legal bases with explicit consent for health data, processors,
 read-only devices, transfers, retention, rights, security), terms of use (mentor, no treatment instructions or doses,

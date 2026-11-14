@@ -1738,6 +1738,28 @@
             ],
             "title": "End Mgdl"
           },
+          "factor_high": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Factor High"
+          },
+          "factor_low": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Factor Low"
+          },
           "gap": {
             "anyOf": [
               {
@@ -1774,7 +1796,10 @@
               "workout",
               "set_interval",
               "set_overdue",
-              "sensor_short"
+              "sensor_short",
+              "sleep_glucose",
+              "steps_glucose",
+              "rhr_glucose"
             ],
             "title": "Kind",
             "type": "string"
@@ -1832,6 +1857,28 @@
               }
             ],
             "title": "Part"
+          },
+          "pct_high": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pct High"
+          },
+          "pct_low": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pct Low"
           },
           "rated": {
             "anyOf": [
@@ -3498,6 +3545,34 @@
         "title": "HealthSampleOut",
         "type": "object"
       },
+      "HeartOut": {
+        "properties": {
+          "high": {
+            "title": "High",
+            "type": "integer"
+          },
+          "low": {
+            "title": "Low",
+            "type": "integer"
+          },
+          "mean": {
+            "title": "Mean",
+            "type": "integer"
+          },
+          "samples": {
+            "title": "Samples",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "mean",
+          "low",
+          "high",
+          "samples"
+        ],
+        "title": "HeartOut",
+        "type": "object"
+      },
       "HideIn": {
         "additionalProperties": false,
         "properties": {
@@ -4614,6 +4689,84 @@
           "created_at"
         ],
         "title": "MessageOut",
+        "type": "object"
+      },
+      "NightOut": {
+        "properties": {
+          "asleep_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Asleep Min"
+          },
+          "awake": {
+            "title": "Awake",
+            "type": "integer"
+          },
+          "bed": {
+            "format": "date-time",
+            "title": "Bed",
+            "type": "string"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "deep_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deep Min"
+          },
+          "in_bed_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "In Bed Min"
+          },
+          "rem_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rem Min"
+          },
+          "wake": {
+            "format": "date-time",
+            "title": "Wake",
+            "type": "string"
+          }
+        },
+        "required": [
+          "day",
+          "asleep_min",
+          "in_bed_min",
+          "bed",
+          "wake",
+          "awake",
+          "deep_min",
+          "rem_min"
+        ],
+        "title": "NightOut",
         "type": "object"
       },
       "NoteData": {
@@ -6838,6 +6991,143 @@
           "messages"
         ],
         "title": "ThreadOut",
+        "type": "object"
+      },
+      "TodayOut": {
+        "description": "Today so far from the health store (G-72): walking, heart rate, last night's sleep against the person's usual.",
+        "properties": {
+          "awake_usual": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Awake Usual"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "distance_km": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distance Km"
+          },
+          "heart": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HeartOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "night": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NightOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "night_usual_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Night Usual Min"
+          },
+          "night_vs_usual": {
+            "anyOf": [
+              {
+                "enum": [
+                  "shorter",
+                  "usual",
+                  "longer"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Night Vs Usual"
+          },
+          "resting": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resting"
+          },
+          "resting_usual": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resting Usual"
+          },
+          "steps": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steps"
+          },
+          "steps_usual": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steps Usual"
+          }
+        },
+        "required": [
+          "day",
+          "steps",
+          "steps_usual",
+          "distance_km",
+          "heart",
+          "resting",
+          "resting_usual",
+          "night",
+          "night_usual_min",
+          "night_vs_usual",
+          "awake_usual"
+        ],
+        "title": "TodayOut",
         "type": "object"
       },
       "Tokens": {
@@ -11266,6 +11556,32 @@
           }
         ],
         "summary": "Import Samples",
+        "tags": [
+          "health-data"
+        ]
+      }
+    },
+    "/health-data/today": {
+      "get": {
+        "operationId": "get_today_health_data_today_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TodayOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Today",
         "tags": [
           "health-data"
         ]

@@ -1155,6 +1155,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/health-data/today": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Today */
+        get: operations["get_today_health_data_today_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/insights": {
         parameters: {
             query?: never;
@@ -2655,6 +2672,10 @@ export interface components {
             days?: number | null;
             /** End Mgdl */
             end_mgdl?: number | null;
+            /** Factor High */
+            factor_high?: number | null;
+            /** Factor Low */
+            factor_low?: number | null;
             /** Gap */
             gap?: ("lower" | "higher") | null;
             /** Key */
@@ -2663,7 +2684,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time" | "late_rise" | "workout" | "set_interval" | "set_overdue" | "sensor_short";
+            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time" | "late_rise" | "workout" | "set_interval" | "set_overdue" | "sensor_short" | "sleep_glucose" | "steps_glucose" | "rhr_glucose";
             /** Label */
             label?: string | null;
             /** Lows */
@@ -2674,6 +2695,10 @@ export interface components {
             other_mgdl?: number | null;
             /** Part */
             part?: ("night" | "morning" | "afternoon" | "evening") | null;
+            /** Pct High */
+            pct_high?: number | null;
+            /** Pct Low */
+            pct_low?: number | null;
             /** Rated */
             rated?: number | null;
             /**
@@ -3270,6 +3295,17 @@ export interface components {
             /** Value */
             value: number | null;
         };
+        /** HeartOut */
+        HeartOut: {
+            /** High */
+            high: number;
+            /** Low */
+            low: number;
+            /** Mean */
+            mean: number;
+            /** Samples */
+            samples: number;
+        };
         /** HideIn */
         HideIn: {
             /** Hidden */
@@ -3712,6 +3748,31 @@ export interface components {
             text: string | null;
             /** Via */
             via: string;
+        };
+        /** NightOut */
+        NightOut: {
+            /** Asleep Min */
+            asleep_min: number | null;
+            /** Awake */
+            awake: number;
+            /**
+             * Bed
+             * Format: date-time
+             */
+            bed: string;
+            /** Day */
+            day: string;
+            /** Deep Min */
+            deep_min: number | null;
+            /** In Bed Min */
+            in_bed_min: number | null;
+            /** Rem Min */
+            rem_min: number | null;
+            /**
+             * Wake
+             * Format: date-time
+             */
+            wake: string;
         };
         /** NoteData */
         NoteData: {
@@ -4468,6 +4529,32 @@ export interface components {
             conversation_id: string | null;
             /** Messages */
             messages: components["schemas"]["MessageOut"][];
+        };
+        /**
+         * TodayOut
+         * @description Today so far from the health store (G-72): walking, heart rate, last night's sleep against the person's usual.
+         */
+        TodayOut: {
+            /** Awake Usual */
+            awake_usual: number | null;
+            /** Day */
+            day: string;
+            /** Distance Km */
+            distance_km: number | null;
+            heart: components["schemas"]["HeartOut"] | null;
+            night: components["schemas"]["NightOut"] | null;
+            /** Night Usual Min */
+            night_usual_min: number | null;
+            /** Night Vs Usual */
+            night_vs_usual: ("shorter" | "usual" | "longer") | null;
+            /** Resting */
+            resting: number | null;
+            /** Resting Usual */
+            resting_usual: number | null;
+            /** Steps */
+            steps: number | null;
+            /** Steps Usual */
+            steps_usual: number | null;
         };
         /** Tokens */
         Tokens: {
@@ -7364,6 +7451,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_today_health_data_today_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TodayOut"];
                 };
             };
         };

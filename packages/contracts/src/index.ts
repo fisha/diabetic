@@ -51,6 +51,7 @@ export type RewardsOut = S['RewardsOut'];
 export type RewardItemOut = S['RewardItemOut'];
 export type ActivityOut = S['ActivityOut'];
 export type UsualOut = S['UsualOut'];
+export type TodayOut = S['TodayOut'];
 export type UpdateOut = S['UpdateOut'];
 export type ExportIn = S['ExportIn'];
 export type ExportOut = S['ExportOut'];
