@@ -230,6 +230,107 @@
         "title": "ActivityData",
         "type": "object"
       },
+      "ActivityDetailsOut": {
+        "description": "What the health app recorded during one activity (Guy, 14 Nov 2026): only what exists, nothing estimated.",
+        "properties": {
+          "distance_km": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distance Km"
+          },
+          "hr_max": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hr Max"
+          },
+          "hr_mean": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hr Mean"
+          },
+          "hr_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hr Min"
+          },
+          "hr_samples": {
+            "title": "Hr Samples",
+            "type": "integer"
+          },
+          "kcal": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kcal"
+          },
+          "minutes": {
+            "title": "Minutes",
+            "type": "integer"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "steps": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steps"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "minutes",
+          "source",
+          "kcal",
+          "distance_km",
+          "steps",
+          "hr_mean",
+          "hr_max",
+          "hr_min",
+          "hr_samples"
+        ],
+        "title": "ActivityDetailsOut",
+        "type": "object"
+      },
       "ActivityOut": {
         "properties": {
           "items": {
@@ -8105,6 +8206,53 @@
         "summary": "Delete Account",
         "tags": [
           "account"
+        ]
+      }
+    },
+    "/activity/{record_id}/details": {
+      "get": {
+        "operationId": "activity_details_activity__record_id__details_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "record_id",
+            "required": true,
+            "schema": {
+              "title": "Record Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivityDetailsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Activity Details",
+        "tags": [
+          "daily"
         ]
       }
     },

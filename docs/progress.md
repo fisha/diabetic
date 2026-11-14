@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+14 Nov 2026 (G-73, same thread): a compliment from the companion while moving (exercise minutes or brisk steps, once per
+stretch, quiet hours kept), activity details in the journal (distance, steps, energy, heart rate), Overview's body and
+food cards as icon tiles, and the "logged all of today" button only from 18:00 with today kept out of the averages
+until it ends. API 323 tests and ruff, app typecheck and 102 tests, i18n tests pass; tiles checked in the web preview
+(day and night, Hebrew). JS only. Not run on a phone; the 15-minute timing depends on iOS background delivery.
+
 14 Nov 2026 (G-72, thread "Show Health data insights in overview"): Overview has a "Body today" card from Apple Health /
 Health Connect (steps and a usual day, distance, average heart rate, resting heart rate, last night's sleep against the
 person's usual night, times awake, deep and REM), and three new insights: glucose after shorter and longer nights, on
