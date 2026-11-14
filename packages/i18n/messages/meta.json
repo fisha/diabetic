@@ -1,4 +1,35 @@
 {
+  "act.d_t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal activity detail (Guy, 14 Nov 2026)."
+  },
+  "act.d_t_any": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "act.kcal": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "act.l_hr_max": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "act.l_kcal": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
   "adm.app_signin": {
     "board": "WebDashboard",
     "review": [
@@ -349,29 +380,12 @@
     ],
     "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
   },
-  "bd.awake": {
+  "bd.bpm": {
     "board": "Overview",
     "review": [
       "translation"
-    ]
-  },
-  "bd.awake_only": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
-  },
-  "bd.distance": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
-  },
-  "bd.heart": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
+    ],
+    "note": "Beats per minute, short."
   },
   "bd.hm": {
     "board": "Overview",
@@ -380,52 +394,90 @@
     ],
     "note": "Duration, hours and minutes. Hebrew uses h:mm."
   },
-  "bd.in_bed": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ],
-    "note": "Only time in bed is known, e.g. iPhone without a watch."
-  },
-  "bd.resting": {
+  "bd.km": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
-  "bd.resting_usual": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ],
-    "note": "usual: median of the last 14 days."
-  },
-  "bd.sleep": {
+  "bd.l_awake": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "bd.l_dist": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.l_hr": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.l_in_bed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "iPhone without a watch: only time in bed is known."
+  },
+  "bd.l_long": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.l_rest": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.l_same": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.l_short": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Against the person's own usual night, never a clinical target."
+  },
+  "bd.l_sleep": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.l_steps": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Tile label (G-72, icons not text, Guy 14 Nov 2026)."
+  },
+  "bd.l_usual": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "The person's own median of the last 14 days."
   },
   "bd.src": {
     "board": "Overview",
     "review": [
       "translation"
     ],
-    "note": "store is Apple Health or Health Connect."
+    "note": "store: Apple Health or Health Connect."
   },
   "bd.stages": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
-  },
-  "bd.steps": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
-  },
-  "bd.steps_usual": {
     "board": "Overview",
     "review": [
       "translation"
@@ -437,25 +489,6 @@
       "translation"
     ],
     "note": "Card title: walking, heart rate and last night's sleep from the health app (G-72)."
-  },
-  "bd.vs_longer": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
-  },
-  "bd.vs_shorter": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ],
-    "note": "usual: median of the last 14 nights; never a clinical target."
-  },
-  "bd.vs_usual": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
   },
   "cmp.badge.confirmed": {
     "board": "Components",
@@ -5195,53 +5228,70 @@
     ],
     "note": "Lock-screen notification body; generic on purpose (no health details)"
   },
-  "nut.carbs_avg": {
+  "nut.avg_note": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
-  "nut.for_goals": {
+  "nut.done_note": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
-  "nut.logged": {
+  "nut.done_today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Shown from the evening (18:00) or once marked (Guy, 14 Nov 2026)."
+  },
+  "nut.g": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
-  "nut.mark_full": {
+  "nut.l_carbs": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Average over full days."
+  },
+  "nut.l_full": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Days the person marked as fully logged; today counts once it is over."
+  },
+  "nut.l_meals": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
-  "nut.measured": {
+  "nut.l_protein": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Average over full days."
+  },
+  "nut.l_weighed": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
-  "nut.need_full": {
+  "nut.of": {
     "board": "Overview",
     "review": [
       "translation"
-    ]
-  },
-  "nut.protein_avg": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
-  },
-  "nut.protein_partial": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
+    ],
+    "note": "Weighed items of all items."
   },
   "nut.t": {
     "board": "Overview",
@@ -5256,12 +5306,6 @@
     ]
   },
   "nut.target_kg": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
-  },
-  "nut.today_full": {
     "board": "Overview",
     "review": [
       "translation"

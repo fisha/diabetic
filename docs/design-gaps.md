@@ -1175,6 +1175,28 @@ Overview's existing card style (as the food and labs cards do) and the insights 
   rate of the last 24 hours. The older sleep line added the watch's and the iPhone's records together; fixed.
 - The website's insights show the same new kinds.
 
+### G-73 · A compliment while moving, activity details in the journal, tiles on Overview (**Guy, 14 Nov 2026**, implemented-unverified)
+Guy (14 Nov 2026): "אם יש פעילות גופנית צריך להחמיא תוך כדי הפעילות בטווח של רבע שעה", "גם צריך להיות כתוב ביומן
+בתוך הפעילות עוד נתונים אם קיימים", "בסקירה של אימונים או תזונה, עדיף יותר אייקונים פחות טקסט", and the "day complete"
+button "אולי גם לא להציע את זה עד שעות הערב". No design boards.
+- Compliment (`steady_api/moving.py`): after the phone sends health data, if the person is moving now (at least 5 of
+  Apple's exercise minutes in the last 10 minutes, or steps at 100 a minute or more over at least 5 minutes, the
+  published moderate-walking cadence, Tudor-Locke et al. 2018), the companion sends one short compliment as a push, with
+  its name as the title. One per stretch (none again within 2 hours), at most 3 a day, never in quiet hours (21:00-08:00
+  when not set), only while the newest sample is at most 10 minutes old and up to 45 minutes after the stretch began.
+  Heart rate alone never counts (stress, heat, illness). Compliment only: no glucose advice, no amounts.
+- Timing: the iPhone now asks HealthKit to wake it for exercise minutes and steps as they come. iOS may still deliver
+  steps only hourly, and Apple Health is locked while the iPhone is locked, so a compliment within 15 minutes depends on
+  the phone being unlocked or the watch syncing; Android's background sync runs about every 30 minutes. Not verified on a
+  device.
+- Journal: an activity shows what the health app recorded during it, as tiles: distance (the workout's own when the
+  watch gave one, else the walking distance in that time), steps, active energy, average and highest heart rate.
+  `GET /activity/{id}/details`. Duration stays in the entry's rows.
+- Overview: "Body today", "Food" and the journal's activity details are tiles of icon, number and short label. New icons
+  (steps, route, moon, flame, egg, scale) in the boards' stroke style.
+- Food: the button reads "I've logged all of today", shows from 18:00 (or while marked, to undo), and today joins the
+  daily averages only once it is over, so marking it at midday no longer pulls them down.
+
 ## Glucose alerts with sound (13 Nov 2026, Guy asked)
 Profile › Notifications has a "Glucose alerts with sound" card with no design board: on/off, urgent low / low / high
 levels (steppers, low and high from the person's range, urgent low default 54 mg/dL), sound per level, repeat interval,

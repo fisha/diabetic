@@ -24,6 +24,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/activity/{record_id}/details": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Activity Details */
+        get: operations["activity_details_activity__record_id__details_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/activity/{record_id}/similar": {
         parameters: {
             query?: never;
@@ -2124,6 +2141,32 @@ export interface components {
             intensity: string;
             /** Minutes */
             minutes: number;
+            /** Type */
+            type: string;
+        };
+        /**
+         * ActivityDetailsOut
+         * @description What the health app recorded during one activity (Guy, 14 Nov 2026): only what exists, nothing estimated.
+         */
+        ActivityDetailsOut: {
+            /** Distance Km */
+            distance_km: number | null;
+            /** Hr Max */
+            hr_max: number | null;
+            /** Hr Mean */
+            hr_mean: number | null;
+            /** Hr Min */
+            hr_min: number | null;
+            /** Hr Samples */
+            hr_samples: number;
+            /** Kcal */
+            kcal: number | null;
+            /** Minutes */
+            minutes: number;
+            /** Source */
+            source: string;
+            /** Steps */
+            steps: number | null;
             /** Type */
             type: string;
         };
@@ -4914,6 +4957,37 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    activity_details_activity__record_id__details_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ActivityDetailsOut"];
+                };
             };
             /** @description Validation Error */
             422: {
