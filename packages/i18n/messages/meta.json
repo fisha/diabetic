@@ -505,6 +505,13 @@
       "translation"
     ]
   },
+  "cmp.stepper.type": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Screen reader hint on a stepper's value that can be typed"
+  },
   "cmp.timeline.notYet": {
     "board": "Components",
     "review": [
@@ -3749,6 +3756,27 @@
     "review": [
       "translation"
     ]
+  },
+  "jrn.rem_done": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Reminder detail: mark the reminder done"
+  },
+  "jrn.rem_done_set": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Reminder detail for a set-change reminder: marks it done and records the set change"
+  },
+  "jrn.rem_snooze": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Reminder detail: opens the snooze choices"
   },
   "jrn.retry": {
     "board": "Journal",

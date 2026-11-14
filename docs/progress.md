@@ -991,3 +991,12 @@ for a dev build. Then: run every flow on the phone, clinical and translation rev
   (Google sign-in joins the waitlist). The app's membership screen has a `free` state with no prices, buy or restore.
 - Website "planned" note replaced by the devices supported today (CareLink, Dexcom Share, LibreLinkUp, Tandem Source,
   Apple Health, Health Connect), read-only. FAQ answer 1 updated. All four languages.
+
+### 14 Nov 2026: reminders, day names, alert thresholds, voice
+- Reminder detail: Done / Snooze (15, 30, 60 min, tomorrow) / Cancel on the reminder itself; Done on a set-change
+  reminder also records the set change. The time row is shown once.
+- Day names for the last week also in small wins (app and website), website insights, routine, journal source, meals.
+- Glucose alert thresholds step by 1 mg/dL (0.1 mmol/L), can be typed, and save after a pause (no jumps). The
+  celebrate setting now describes companion unlocks only (small wins have no confetti).
+- Live voice: loudspeaker in the default mode (louder); a watchdog wakes paused audio and counts a finished answer as
+  played; interruptions and device route changes restart the session, audio and microphone.
