@@ -1137,3 +1137,8 @@ something new comes in". No design board; built in the existing picker, card and
 Profile › Notifications has a "Glucose alerts with sound" card with no design board: on/off, urgent low / low / high
 levels (steppers, low and high from the person's range, urgent low default 54 mg/dL), sound per level, repeat interval,
 daily cap, and a note that the alerts are not real time and don't replace the sensor's or pump's alarms.
+
+## "I changed my set" (14 Nov 2026, Guy's report)
+No design board: a chip on the carousel's set-past-its-days card and a button on that insight say the set was changed
+now. CareLink reports set changes only per day in its history, hours later. The website timeline also lists device
+alerts and events now, with a "Device alert" type, as the app's journal does.
