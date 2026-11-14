@@ -3781,6 +3781,13 @@
     ],
     "note": "Pump insulin entry with no known kind."
   },
+  "jrn.src_you": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Where a device event came from when the person logged it (\"I changed my set\")"
+  },
   "jrn.st_completed": {
     "board": "Journal",
     "review": [

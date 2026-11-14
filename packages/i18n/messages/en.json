@@ -598,6 +598,7 @@
   "jrn.src": "Source",
   "jrn.src_pump": "recorded by the pump",
   "jrn.src_pump_d": "Recorded by the pump",
+  "jrn.src_you": "Logged by you",
   "jrn.st_completed": "Completed",
   "jrn.st_declined": "You declined",
   "jrn.st_opened": "Opened",
