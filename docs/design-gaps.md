@@ -1133,6 +1133,24 @@ something new comes in". No design board; built in the existing picker, card and
 - Website: an "unlocked" card with confetti on Insights, and locked items with their hint in the profile editor.
 - Not done: an "unlock" card in the companion carousel (possible through `NowInsights.extra`), titles and colours.
 
+### G-71 · Privacy, terms and accessibility pages (**Guy, 14 Nov 2026**, implemented-unverified)
+Guy (14 Nov 2026): "בפוטר יש פרטיות ותנאים, צריך ליצור אותם כעמודים נפרדים ולכתוב את התוכן שם… gdpr, נגישות… ada…
+אנחנו לא נותנים הוראות לטיפול, אנחנו מנטור". The Website board has only the footer links, so the pages use the site's
+own header, card and type styles.
+- `/[locale]/privacy`, `/[locale]/terms`, `/[locale]/accessibility` in all four languages (texts in
+  `apps/web/src/legal/texts`, one file per page and language; page chrome strings in the catalog). Contents on the
+  side (sticky on wide screens), numbered sections, language switch that stays on the same page.
+- Facts come from the code and `docs/release-readiness.md` only. Anything not decided (legal entity, contacts, hosting
+  country, backup and log retention, minimum age, governing law, OpenAI DPA) is written as a highlighted placeholder
+  `⟦…⟧`; the full list is `docs/legal-open-items.md`. Not legal advice: a lawyer reviews before production.
+- Footer: Privacy, Terms, Accessibility (new), Help, Sign in, as a navigation landmark. Home privacy section: a link to
+  the full policy.
+- Accessibility work found on the way: a not-found page in the visitor's language (the default one had no `lang`, no
+  `main`), reduced motion turns off smooth scrolling, the Russian plan switch no longer scrolls sideways at 320 px, and
+  the fonts are served by the site (next/font) instead of Google Fonts, so a visit sends nothing to Google (GDPR).
+- Not done: the app's Settings › Privacy "Privacy policy" button still says "not available" (it needs the website
+  address in the app; JS only); the accessibility statement's dashboard and app checks.
+
 ## Glucose alerts with sound (13 Nov 2026, Guy asked)
 Profile › Notifications has a "Glucose alerts with sound" card with no design board: on/off, urgent low / low / high
 levels (steppers, low and high from the person's range, urgent low default 54 mg/dL), sound per level, repeat interval,

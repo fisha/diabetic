@@ -14004,6 +14004,12 @@
       "translation"
     ]
   },
+  "web.a11y": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
   "web.a2": {
     "board": "Website",
     "review": [
@@ -14205,6 +14211,12 @@
       "translation"
     ]
   },
+  "web.foot_nav": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
   "web.free_b": {
     "board": "Website",
     "review": [
@@ -14291,6 +14303,33 @@
       "translation"
     ]
   },
+  "web.lg_toc": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.lg_todo": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Legal pages: follows the highlighted word web.lg_todo_tag"
+  },
+  "web.lg_todo_tag": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Legal pages: highlighted like a placeholder, followed by web.lg_todo"
+  },
+  "web.lg_updated": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Privacy, terms and accessibility pages: date the text last changed"
+  },
   "web.monthly": {
     "board": "Website",
     "review": [
@@ -14332,6 +14371,20 @@
     "review": [
       "translation"
     ]
+  },
+  "web.nf_back": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website: page for an address that does not exist (design gap G-71)"
+  },
+  "web.nf_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website: page for an address that does not exist (design gap G-71)"
   },
   "web.note_annual": {
     "board": "Website",
@@ -14479,6 +14532,12 @@
     ]
   },
   "web.pv_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.pv_more": {
     "board": "Website",
     "review": [
       "translation"
