@@ -50,6 +50,8 @@ diabetes, heart rate, voice recordings and companion conversations, and the fact
 
 - [ ] A privacy policy that says what is collected, why, who processes it, and that support staff may see a person's
       data only to handle that person's request.
+      Drafted 14 Nov 2026 (G-71): website `/privacy`, `/terms`, `/accessibility` in four languages; the placeholders
+      and decisions still open are in `docs/legal-open-items.md`. Needs the lawyer review below.
 - [ ] Explicit consent at sign-up for processing health data (separate from the existing training consent).
 - [ ] Data processing agreements with OpenAI and any other processor; check each one's retention settings.
 - [ ] Review the whole model with a privacy lawyer.

@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+14 Nov 2026 (G-71, thread "Write privacy and terms pages"): the website's footer links open real pages: privacy
+policy (GDPR and Israeli Amendment 13: controller, data, legal bases with explicit consent for health data, processors,
+read-only devices, transfers, retention, rights, security), terms of use (mentor, no treatment instructions or doses,
+ADA guidance, not a medical device, not for emergencies) and an accessibility statement (IS 5568 / WCAG 2.1 AA), in
+all four languages. Unknown details are highlighted placeholders, listed in `docs/legal-open-items.md` for Guy and a
+lawyer. Accessibility fixes: localized not-found page with `lang`, reduced motion, 320 px reflow, night primary button
+contrast; fonts self-hosted instead of Google Fonts. axe-core: 0 violations on 20 pages in day and night; web typecheck,
+lint, tests and build pass. Next: Guy fills the placeholders; deploy the website.
+
 14 Nov 2026 (thread "Build the diabetes companion app"): the approved batch. Forgot password by emailed code;
 Routine first-days summary (RTN-02), snooze and pause dialogs with the paused banner, remove-all confirmation;
 "not today" and pause on the server (migration `a7b8c9d0e1f5`); notification buttons; background sync from Apple Health
