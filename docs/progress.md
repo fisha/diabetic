@@ -46,6 +46,11 @@ microphone started before the greeting); meal time editable, previous meals. API
 (typecheck, lint, tests) pass; iOS and Android bundles export. Not run on a phone; Swift and Kotlin not compiled here.
 Next: deploy and OTA at runtime 0.3.0, then raise the version, simulator compile check and the native build.
 
+14 Nov 2026 (G-70 follow-up, thread "Add gamified unlocks for the companion"): Guy asked for a fixed companion name and
+fewer unlocks at once. The name field is removed (onboarding, Profile › Companion, website). The server opens at most
+one new item a local day, and no counts are shown. API rewards tests and full suite, app tests and typecheck, website
+typecheck and lint pass. No migration. JS only for the app (OTA on 0.3.0).
+
 13 Nov 2026 (G-68 moments, same thread): trend glance, back-in-range cheer, night nap with a startled wake on a low,
 meal chewing and lip licking, workout sweatband, new set held up, Hanukkah crown, and a hug on hard moments (API
 `show_support` tool, `flags.support`). App 96 tests and typecheck, API 285 tests and ruff pass; web preview only.
