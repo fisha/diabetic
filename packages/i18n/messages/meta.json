@@ -4956,6 +4956,27 @@
       "translation"
     ]
   },
+  "ntf.a_answer": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Notification button: opens the companion"
+  },
+  "ntf.a_dismiss": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Notification button"
+  },
+  "ntf.a_not_today": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Notification button: a daily one moves to tomorrow"
+  },
   "ntf.check_in": {
     "board": "Companion",
     "review": [
@@ -6549,13 +6570,49 @@
       "translation"
     ]
   },
+  "onb.r_again": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.r_b": {
     "board": "Onboarding",
     "review": [
       "translation"
     ]
   },
+  "onb.r_code": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.r_code_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "onb.r_done": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.r_e_code": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.r_e_tries": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.r_new_pw": {
     "board": "Onboarding",
     "review": [
       "translation"
@@ -6574,6 +6631,12 @@
     ]
   },
   "onb.r_sent_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.r_set": {
     "board": "Onboarding",
     "review": [
       "translation"
@@ -8395,6 +8458,24 @@
       "translation"
     ]
   },
+  "rtn.cl_body": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.cl_title": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.cl_yes": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
   "rtn.daily": {
     "board": "Routine",
     "review": [
@@ -8495,7 +8576,19 @@
       "translation"
     ]
   },
+  "rtn.fd_intro": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
   "rtn.fd_no": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_none": {
     "board": "Routine",
     "review": [
       "translation"
@@ -8508,6 +8601,12 @@
     ]
   },
   "rtn.fd_ovr": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_seen": {
     "board": "Routine",
     "review": [
       "translation"
@@ -8532,6 +8631,30 @@
       "translation"
     ],
     "note": "RTN-01 day card for tomorrow."
+  },
+  "rtn.fd_w_days": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_w_insulin": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_w_meals": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.fd_w_readings": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
   },
   "rtn.fd_well": {
     "board": "Routine",
@@ -8675,6 +8798,43 @@
       "translation"
     ]
   },
+  "rtn.paused": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ],
+    "note": "{until}: a day and time, e.g. 'Fri 07:00'"
+  },
+  "rtn.paused_on": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.pz_1h": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.pz_3d": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.pz_on": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.pz_today": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
   "rtn.quiet": {
     "board": "Routine",
     "review": [
@@ -8707,6 +8867,42 @@
     ]
   },
   "rtn.resched": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.resume": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.sn_15": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.sn_30": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.sn_60": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.sn_title": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "rtn.sn_tmr": {
     "board": "Routine",
     "review": [
       "translation"

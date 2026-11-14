@@ -217,6 +217,48 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/password/forgot": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Forgot Password
+         * @description AUTH-04 (Guy, 14 Nov 2026): a 6-digit code by email to set a new password. The answer is the same whether or not an
+         *     account has this address, so it never tells who has one; at most one mail a minute per account. Without a mail
+         *     sender it says so (503) instead of pretending a mail went out.
+         */
+        post: operations["forgot_password_auth_password_forgot_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/password/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reset Password
+         * @description The emailed code and a new password: the password is set, every other session ends, and this one signs in.
+         */
+        post: operations["reset_password_auth_password_reset_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/refresh": {
         parameters: {
             query?: never;
@@ -787,6 +829,30 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/follow-ups/pause": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Pause */
+        get: operations["get_pause_follow_ups_pause_get"];
+        /**
+         * Pause
+         * @description Pause check-ins (RTN-05, 14 Nov 2026): for an hour, the rest of the day, three days or until turned back on.
+         *     Check-ins due meanwhile are withdrawn (a daily one moves to its first day after). Reminders the person set
+         *     themselves still arrive.
+         */
+        put: operations["pause_follow_ups_pause_put"];
+        post?: never;
+        /** Resume */
+        delete: operations["resume_follow_ups_pause_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/follow-ups/{fid}": {
         parameters: {
             query?: never;
@@ -855,6 +921,26 @@ export interface paths {
         put?: never;
         /** Dismiss */
         post: operations["dismiss_follow_ups__fid__dismiss_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/follow-ups/{fid}/not-today": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Not Today
+         * @description "Not today" from the notification (RTN-07): a daily one moves to tomorrow, a one-off is dismissed.
+         */
+        post: operations["not_today_follow_ups__fid__not_today_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1102,6 +1188,66 @@ export interface paths {
          */
         get: operations["get_familiarization_insights_familiarization_get"];
         put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/first-days": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get First Days
+         * @description RTN-02: the first-days summary. Counts and the meal times seen; impressions the person can confirm or reject.
+         */
+        get: operations["get_first_days_insights_first_days_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/first-days/extend": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * First Days Extend
+         * @description Keep the extra check-ins a few more days: getting to know the person goes on for EXTEND_DAYS more days, once.
+         */
+        post: operations["first_days_extend_insights_first_days_extend_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/first-days/feedback": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * First Days Feedback
+         * @description The person's answer on an impression ("Sounds right" / "Not really"); null clears it.
+         */
+        put: operations["first_days_feedback_insights_first_days_feedback_put"];
         post?: never;
         delete?: never;
         options?: never;
@@ -2552,6 +2698,38 @@ export interface components {
             /** Ticket */
             ticket: string;
         };
+        /** FirstDaysFeedbackIn */
+        FirstDaysFeedbackIn: {
+            /** Answer */
+            answer: ("y" | "n") | null;
+            /** Key */
+            key: string;
+        };
+        /** FirstDaysOut */
+        FirstDaysOut: {
+            /** Days */
+            days: components["schemas"]["FamDayOut"][];
+            /** Extended */
+            extended: boolean;
+            /** Feedback */
+            feedback: {
+                [key: string]: "y" | "n";
+            };
+            /** Impressions */
+            impressions: components["schemas"]["LearnedOut"][];
+            /** Insulin */
+            insulin: number;
+            /** Logged Days */
+            logged_days: number;
+            /** Meals */
+            meals: number;
+            /** Readings */
+            readings: number;
+            /** Ready */
+            ready: boolean;
+            /** Total */
+            total: number;
+        };
         /** FollowUpIn */
         FollowUpIn: {
             /**
@@ -2721,6 +2899,19 @@ export interface components {
             /** Protein Avg G */
             protein_avg_g: number | null;
             target: components["schemas"]["ProteinTargetOut"] | null;
+        };
+        /** ForgotIn */
+        ForgotIn: {
+            /**
+             * Email
+             * Format: email
+             */
+            email: string;
+            /**
+             * Locale
+             * @default en
+             */
+            locale: string;
         };
         /** GlucoseAlertsIn */
         GlucoseAlertsIn: {
@@ -3646,6 +3837,18 @@ export interface components {
             /** To */
             to: number;
         };
+        /** PauseIn */
+        PauseIn: {
+            /** Until */
+            until?: string | null;
+        };
+        /** PauseOut */
+        PauseOut: {
+            /** Paused */
+            paused: boolean;
+            /** Until */
+            until: string | null;
+        };
         /** PhotoOut */
         PhotoOut: {
             /**
@@ -3994,6 +4197,18 @@ export interface components {
              * Format: date-time
              */
             due_at: string;
+        };
+        /** ResetIn */
+        ResetIn: {
+            /** Code */
+            code: string;
+            /**
+             * Email
+             * Format: email
+             */
+            email: string;
+            /** Password */
+            password: string;
         };
         /** RewardItemOut */
         RewardItemOut: {
@@ -4927,6 +5142,88 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AuthOptions"];
+                };
+            };
+        };
+    };
+    forgot_password_auth_password_forgot_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ForgotIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description mail_unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    reset_password_auth_password_reset_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ResetIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Tokens"];
+                };
+            };
+            /** @description wrong_code, expired_code or too_many_attempts */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
@@ -6326,6 +6623,79 @@ export interface operations {
             };
         };
     };
+    get_pause_follow_ups_pause_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PauseOut"];
+                };
+            };
+        };
+    };
+    pause_follow_ups_pause_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PauseIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PauseOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    resume_follow_ups_pause_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PauseOut"];
+                };
+            };
+        };
+    };
     withdraw_follow_ups__fid__delete: {
         parameters: {
             query?: {
@@ -6420,6 +6790,37 @@ export interface operations {
         };
     };
     dismiss_follow_ups__fid__dismiss_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                fid: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FollowUpOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    not_today_follow_ups__fid__not_today_post: {
         parameters: {
             query?: never;
             header?: never;
@@ -7017,6 +7418,79 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["FamiliarizationOut"];
+                };
+            };
+        };
+    };
+    get_first_days_insights_first_days_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FirstDaysOut"];
+                };
+            };
+        };
+    };
+    first_days_extend_insights_first_days_extend_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FirstDaysOut"];
+                };
+            };
+        };
+    };
+    first_days_feedback_insights_first_days_feedback_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FirstDaysFeedbackIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FirstDaysOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

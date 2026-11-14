@@ -1921,6 +1921,108 @@
         "title": "FinishIn",
         "type": "object"
       },
+      "FirstDaysFeedbackIn": {
+        "properties": {
+          "answer": {
+            "anyOf": [
+              {
+                "enum": [
+                  "y",
+                  "n"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Answer"
+          },
+          "key": {
+            "maxLength": 40,
+            "pattern": "^meal:[a-z]+$",
+            "title": "Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "answer"
+        ],
+        "title": "FirstDaysFeedbackIn",
+        "type": "object"
+      },
+      "FirstDaysOut": {
+        "properties": {
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/FamDayOut"
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "extended": {
+            "title": "Extended",
+            "type": "boolean"
+          },
+          "feedback": {
+            "additionalProperties": {
+              "enum": [
+                "y",
+                "n"
+              ],
+              "type": "string"
+            },
+            "title": "Feedback",
+            "type": "object"
+          },
+          "impressions": {
+            "items": {
+              "$ref": "#/components/schemas/LearnedOut"
+            },
+            "title": "Impressions",
+            "type": "array"
+          },
+          "insulin": {
+            "title": "Insulin",
+            "type": "integer"
+          },
+          "logged_days": {
+            "title": "Logged Days",
+            "type": "integer"
+          },
+          "meals": {
+            "title": "Meals",
+            "type": "integer"
+          },
+          "readings": {
+            "title": "Readings",
+            "type": "integer"
+          },
+          "ready": {
+            "title": "Ready",
+            "type": "boolean"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "ready",
+          "total",
+          "days",
+          "impressions",
+          "logged_days",
+          "meals",
+          "insulin",
+          "readings",
+          "feedback",
+          "extended"
+        ],
+        "title": "FirstDaysOut",
+        "type": "object"
+      },
       "FollowUpIn": {
         "additionalProperties": false,
         "properties": {
@@ -2463,6 +2565,27 @@
           "goals"
         ],
         "title": "FoodSummaryOut",
+        "type": "object"
+      },
+      "ForgotIn": {
+        "additionalProperties": false,
+        "properties": {
+          "email": {
+            "format": "email",
+            "title": "Email",
+            "type": "string"
+          },
+          "locale": {
+            "default": "en",
+            "maxLength": 8,
+            "title": "Locale",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "title": "ForgotIn",
         "type": "object"
       },
       "GlucoseAlertsIn": {
@@ -4861,6 +4984,51 @@
         "title": "PartIn",
         "type": "object"
       },
+      "PauseIn": {
+        "additionalProperties": false,
+        "properties": {
+          "until": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Until"
+          }
+        },
+        "title": "PauseIn",
+        "type": "object"
+      },
+      "PauseOut": {
+        "properties": {
+          "paused": {
+            "title": "Paused",
+            "type": "boolean"
+          },
+          "until": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Until"
+          }
+        },
+        "required": [
+          "paused",
+          "until"
+        ],
+        "title": "PauseOut",
+        "type": "object"
+      },
       "PhotoOut": {
         "properties": {
           "photo_id": {
@@ -5782,6 +5950,34 @@
           "due_at"
         ],
         "title": "RescheduleIn",
+        "type": "object"
+      },
+      "ResetIn": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "pattern": "^[0-9]{6}$",
+            "title": "Code",
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "title": "Email",
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 256,
+            "minLength": 10,
+            "title": "Password",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "code",
+          "password"
+        ],
+        "title": "ResetIn",
         "type": "object"
       },
       "RewardItemOut": {
@@ -8009,6 +8205,98 @@
         ]
       }
     },
+    "/auth/password/forgot": {
+      "post": {
+        "description": "AUTH-04 (Guy, 14 Nov 2026): a 6-digit code by email to set a new password. The answer is the same whether or not an\naccount has this address, so it never tells who has one; at most one mail a minute per account. Without a mail\nsender it says so (503) instead of pretending a mail went out.",
+        "operationId": "forgot_password_auth_password_forgot_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Forgot Password Auth Password Forgot Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "503": {
+            "description": "mail_unavailable"
+          }
+        },
+        "summary": "Forgot Password",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/password/reset": {
+      "post": {
+        "description": "The emailed code and a new password: the password is set, every other session ends, and this one signs in.",
+        "operationId": "reset_password_auth_password_reset_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tokens"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "description": "wrong_code, expired_code or too_many_attempts"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Reset Password",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
     "/auth/refresh": {
       "post": {
         "operationId": "refresh_auth_refresh_post",
@@ -9815,6 +10103,101 @@
         ]
       }
     },
+    "/follow-ups/pause": {
+      "delete": {
+        "operationId": "resume_follow_ups_pause_delete",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PauseOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Resume",
+        "tags": [
+          "follow-ups"
+        ]
+      },
+      "get": {
+        "operationId": "get_pause_follow_ups_pause_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PauseOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Pause",
+        "tags": [
+          "follow-ups"
+        ]
+      },
+      "put": {
+        "description": "Pause check-ins (RTN-05, 14 Nov 2026): for an hour, the rest of the day, three days or until turned back on.\nCheck-ins due meanwhile are withdrawn (a daily one moves to its first day after). Reminders the person set\nthemselves still arrive.",
+        "operationId": "pause_follow_ups_pause_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PauseIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PauseOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Pause",
+        "tags": [
+          "follow-ups"
+        ]
+      }
+    },
     "/follow-ups/{fid}": {
       "delete": {
         "description": "Withdraws this follow-up, or with `series` every open occurrence of a daily one.",
@@ -10007,6 +10390,55 @@
           }
         ],
         "summary": "Dismiss",
+        "tags": [
+          "follow-ups"
+        ]
+      }
+    },
+    "/follow-ups/{fid}/not-today": {
+      "post": {
+        "description": "\"Not today\" from the notification (RTN-07): a daily one moves to tomorrow, a one-off is dismissed.",
+        "operationId": "not_today_follow_ups__fid__not_today_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "fid",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Fid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FollowUpOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Not Today",
         "tags": [
           "follow-ups"
         ]
@@ -10951,6 +11383,107 @@
           }
         ],
         "summary": "Get Familiarization",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/first-days": {
+      "get": {
+        "description": "RTN-02: the first-days summary. Counts and the meal times seen; impressions the person can confirm or reject.",
+        "operationId": "get_first_days_insights_first_days_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FirstDaysOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get First Days",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/first-days/extend": {
+      "post": {
+        "description": "Keep the extra check-ins a few more days: getting to know the person goes on for EXTEND_DAYS more days, once.",
+        "operationId": "first_days_extend_insights_first_days_extend_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FirstDaysOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "First Days Extend",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/first-days/feedback": {
+      "put": {
+        "description": "The person's answer on an impression (\"Sounds right\" / \"Not really\"); null clears it.",
+        "operationId": "first_days_feedback_insights_first_days_feedback_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FirstDaysFeedbackIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FirstDaysOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "First Days Feedback",
         "tags": [
           "insights"
         ]
