@@ -100,6 +100,15 @@ The API, the research tool and the outcome windows all use the same functions.
     job per tick.
   - `uv run python -m steady_ml.jobs run` runs the queue in its own process.
   - Nothing trains on a page load.
+- **Scheduled retraining (13 Nov 2026).**
+  - The worker queues one training run every `STEADY_ML_RETRAIN_HOURS` (24 by default; 0 turns it off) and runs it like
+    any queued job. Each run builds a new dataset from the people who consent at that moment.
+  - With too little data the run is still kept, as `failed_gate` with its reasons (for example too few rows), and the
+    server keeps serving the rules' order.
+  - A model that passes its gate becomes current on its own while the ranker is in shadow or off
+    (`STEADY_ML_AUTO_PROMOTE`, on by default). In active mode it stays a candidate until a person promotes it.
+- **Health check.** `uv run python -m steady_ml.status` prints counts, statuses and times only: listings, events,
+  outcomes, decisions, jobs, datasets, models, the current model and the last training run.
 - **Registry.** `uv run python -m steady_ml.registry list | promote <version> | rollback`.
 
 ## 5. Serving (`steady_api/ranking.py`, in `GET /insights`)
@@ -141,4 +150,7 @@ STEADY_RESEARCH_TOKEN=<any long secret> uv run --group research streamlit run st
 - Browser: `tools/e2e/progress.cjs` on the app's web build, against the real API with 45 days of synthetic
   15-minute readings. Day bars, the typical day, the trend card and its wording, the server order, and listing,
   click and action events all pass, with no page errors.
+- Mac check, 13 Nov 2026 23:48 UTC: listings, events and decisions are being recorded; 3 accounts have training
+  consent. Before the schedule above, no training run had ever been queued. Outcomes start 7 days after the first
+  listing (13 Nov), so none are due before 20 Nov.
 - Not yet: real data on the Mac, a model trained on real listings (there are none yet), and active mode for testers.
