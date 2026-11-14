@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+14 Nov 2026 (thread "Build the diabetes companion app"): the approved batch. Forgot password by emailed code;
+Routine first-days summary (RTN-02), snooze and pause dialogs with the paused banner, remove-all confirmation;
+"not today" and pause on the server (migration `a7b8c9d0e1f5`); notification buttons; background sync from Apple Health
+and Health Connect (native, next build); recent days by weekday; RTL chat bubbles; voice fixes (delegations always
+answered with a 20 s limit, a held reply released when the model's audio stops, a moment kept before speech, the
+microphone started before the greeting); meal time editable, previous meals. API 312 tests and ruff, root check
+(typecheck, lint, tests) pass; iOS and Android bundles export. Not run on a phone; Swift and Kotlin not compiled here.
+Next: deploy and OTA at runtime 0.3.0, then raise the version, simulator compile check and the native build.
+
 13 Nov 2026 (G-68 moments, same thread): trend glance, back-in-range cheer, night nap with a startled wake on a low,
 meal chewing and lip licking, workout sweatband, new set held up, Hanukkah crown, and a hug on hard moments (API
 `show_support` tool, `flags.support`). App 96 tests and typecheck, API 285 tests and ruff pass; web preview only.

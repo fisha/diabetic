@@ -399,6 +399,13 @@
     ],
     "note": "G-05 label on unreviewed clinical copy in development builds"
   },
+  "cmp.field.done": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Closes the time picker"
+  },
   "cmp.field.notSet": {
     "board": "Components",
     "review": [
@@ -2988,26 +2995,29 @@
     "board": "Overview",
     "review": [
       "translation"
-    ]
+    ],
+    "note": "{when}: today, yesterday, last Tuesday, or on 11 Nov, with its own preposition (14 Nov 2026)."
   },
   "ins.upd_continuing": {
     "board": "Overview",
     "review": [
       "translation"
     ],
-    "note": "A follow-up, not a new finding. Correlation only, no cause."
+    "note": "{when}: today, yesterday, last Tuesday, or on 11 Nov, with its own preposition (14 Nov 2026)."
   },
   "ins.upd_corrected": {
     "board": "Overview",
     "review": [
       "translation"
-    ]
+    ],
+    "note": "{when}: today, yesterday, last Tuesday, or on 11 Nov, with its own preposition (14 Nov 2026)."
   },
   "ins.upd_new": {
     "board": "Overview",
     "review": [
       "translation"
-    ]
+    ],
+    "note": "{when}: today, yesterday, last Tuesday, or on 11 Nov, with its own preposition (14 Nov 2026)."
   },
   "ins.when_afternoon": {
     "board": "OVR-04",
@@ -8249,6 +8259,75 @@
       "translation"
     ],
     "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "rel.last_0": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "A day 2 to 6 days ago, said by its weekday (Sunday) as people say it (Guy, 14 Nov 2026). mid=yes inside a sentence."
+  },
+  "rel.last_1": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "A day 2 to 6 days ago, said by its weekday (Monday) as people say it (Guy, 14 Nov 2026). mid=yes inside a sentence."
+  },
+  "rel.last_2": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "A day 2 to 6 days ago, said by its weekday (Tuesday) as people say it (Guy, 14 Nov 2026). mid=yes inside a sentence."
+  },
+  "rel.last_3": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "A day 2 to 6 days ago, said by its weekday (Wednesday) as people say it (Guy, 14 Nov 2026). mid=yes inside a sentence."
+  },
+  "rel.last_4": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "A day 2 to 6 days ago, said by its weekday (Thursday) as people say it (Guy, 14 Nov 2026). mid=yes inside a sentence."
+  },
+  "rel.last_5": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "A day 2 to 6 days ago, said by its weekday (Friday) as people say it (Guy, 14 Nov 2026). mid=yes inside a sentence."
+  },
+  "rel.last_6": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "A day 2 to 6 days ago, said by its weekday (Saturday) as people say it (Guy, 14 Nov 2026). mid=yes inside a sentence."
+  },
+  "rel.on": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "A date older than a week inside a sentence, e.g. \"Updated on 11 Nov\"."
+  },
+  "rel.today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "A day in the last week said as people say it (Guy, 14 Nov 2026). mid=yes inside a sentence."
+  },
+  "rel.yesterday": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
   },
   "rtn.act": {
     "board": "RTN-01",

@@ -1142,3 +1142,17 @@ daily cap, and a note that the alerts are not real time and don't replace the se
 No design board: a chip on the carousel's set-past-its-days card and a button on that insight say the set was changed
 now. CareLink reports set changes only per day in its history, hours later. The website timeline also lists device
 alerts and events now, with a "Device alert" type, as the app's journal does.
+
+## Routine screens, forgot password, notification buttons, background sync (14 Nov 2026, Guy approved the batch)
+- Forgot password works with a 6-digit code by email (POST /auth/password/forgot and /reset), not the design's link,
+  so no web page or deep link is needed. Without SMTP on the server the app says it is unavailable.
+- The snooze and pause "sheets" are dialogs with the design's options; "rest of today" ends when quiet hours end.
+- Notification buttons (answer, not today, dismiss) have no board; texts are new (ntf.a_*).
+- Background sync from Apple Health (background delivery) and Health Connect (an inexact alarm about every 30
+  minutes and a headless task) has no visible part beyond the existing Devices screens; needs the next native build.
+- The time field on iOS opens its wheel in a sheet with "Done" (the meal's time at the bottom of the screen opened
+  its wheel out of sight). On the web it is the browser's time input.
+- Previous meals: the start screen lists up to 8 distinct meals of the last 60 days (was 5 of 14, including repeats).
+- Chat bubbles: the person's on the right and the companion's on the left in RTL too (Guy), unlike the board's
+  start/end mirroring.
+- Recent days read as today, yesterday or the weekday ("last Tuesday") in insights and in the companion's words.
