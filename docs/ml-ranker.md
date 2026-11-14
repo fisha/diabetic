@@ -125,6 +125,12 @@ The API, the research tool and the outcome windows all use the same functions.
   `insufficient_user_data`, `not_a_tester`, `shadow`, `mode_off` or `model_error`.
 - Rollback: `steady_ml.registry rollback`, or set the mode to `shadow` or `off`.
 - The app sorts the cards by `ranking.order`. Older app code ignores it.
+- The lock-screen card keeps its own kinds of priority (device first, then what to watch), and between cards of the same
+  kind it follows `ranking.order` (14 Nov 2026).
+- The companion (text, voice and live voice) gets the latest served order from the last 2 days and what the person
+  said about each insight in the last 90 days (useful, talked over, already known, not relevant, wrong data), so it
+  starts from the same insights and doesn't raise the ones waved away (`learning.describe_for_companion`, 14 Nov 2026).
+- Insight pushes keep the rules' policy and are not reordered by the model.
 
 ## 6. Research tool (`services/api/steady_research/app.py`, Streamlit)
 
@@ -153,4 +159,7 @@ STEADY_RESEARCH_TOKEN=<any long secret> uv run --group research streamlit run st
 - Mac check, 13 Nov 2026 23:48 UTC: listings, events and decisions are being recorded; 3 accounts have training
   consent. Before the schedule above, no training run had ever been queued. Outcomes start 7 days after the first
   listing (13 Nov), so none are due before 20 Nov.
+- Mac check, 14 Nov 2026 09:27 UTC: the scheduled run ran at 00:02 UTC with 0 rows and was kept as `failed_gate`
+  (could_not_train). That is expected, because a listing becomes a training row only once its 7-day label window has
+  closed, and the first listings were on 13 Nov. Rows start on 20 Nov, and the gate needs 200 training rows.
 - Not yet: real data on the Mac, a model trained on real listings (there are none yet), and active mode for testers.
