@@ -610,6 +610,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/devices/set-change": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Set Changed
+         * @description "I changed my set" (Guy, 14 Nov 2026): CareLink reports a set change only in its daily history, hours later, so the
+         *     person can say it now. Kept like a pump's set change (one a day), which ends the "set past its days" card.
+         */
+        post: operations["set_changed_devices_set_change_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/devices/sync": {
         parameters: {
             query?: never;
@@ -4062,6 +4083,11 @@ export interface components {
             message: components["schemas"]["MessageOut"];
             reply: components["schemas"]["MessageOut"];
         };
+        /** SetChangeIn */
+        SetChangeIn: {
+            /** At */
+            at?: string | null;
+        };
         /** SettingsOut */
         SettingsOut: {
             /**
@@ -5870,6 +5896,39 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_changed_devices_set_change_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SetChangeIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DeviceEventOut"];
+                };
             };
             /** @description Validation Error */
             422: {

@@ -4871,6 +4871,19 @@
       "translation"
     ]
   },
+  "now.set_done": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Button on the set-past-its-days card: the person says the infusion set was changed now."
+  },
+  "now.set_failed": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
   "now.talk": {
     "board": "Companion",
     "review": [
@@ -13300,6 +13313,13 @@
     "review": [
       "translation"
     ]
+  },
+  "wd.t_alert": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Type column of the website timeline: an alert or event from the pump or sensor."
   },
   "wd.t_glu": {
     "board": "WebDashboard",

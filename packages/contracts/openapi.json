@@ -6054,6 +6054,24 @@
         "title": "SendOut",
         "type": "object"
       },
+      "SetChangeIn": {
+        "properties": {
+          "at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "At"
+          }
+        },
+        "title": "SetChangeIn",
+        "type": "object"
+      },
       "SettingsOut": {
         "properties": {
           "celebrate": {
@@ -9220,6 +9238,53 @@
         "summary": "Put Push Token",
         "tags": [
           "settings"
+        ]
+      }
+    },
+    "/devices/set-change": {
+      "post": {
+        "description": "\"I changed my set\" (Guy, 14 Nov 2026): CareLink reports a set change only in its daily history, hours later, so the\nperson can say it now. Kept like a pump's set change (one a day), which ends the \"set past its days\" card.",
+        "operationId": "set_changed_devices_set_change_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetChangeIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceEventOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Changed",
+        "tags": [
+          "devices"
         ]
       }
     },
