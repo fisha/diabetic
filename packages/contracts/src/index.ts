@@ -91,6 +91,7 @@ export type ProfileChangeOut = S['ProfileChangeOut'];
 export type LabData = S['LabData'];
 export type HabitData = S['HabitData'];
 export type FoodSummaryOut = S['FoodSummaryOut'];
+export type LearningOut = S['LearningOut'];
 export type FoodDayOut = S['FoodDayOut'];
 export type SimilarOut = S['SimilarOut'];
 export type WorkoutOut = S['WorkoutOut'];

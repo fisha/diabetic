@@ -1311,6 +1311,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/insights/learning": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Learning Status
+         * @description How far the order of insights has learned from the person (warming up, learning, checking, personal).
+         */
+        get: operations["learning_status_insights_learning_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/insights/updates": {
         parameters: {
             query?: never;
@@ -2887,6 +2907,8 @@ export interface components {
             carbs_g: number;
             /** Complete */
             complete: boolean;
+            /** Complete By */
+            complete_by?: ("auto" | "person") | null;
             /** Day */
             day: string;
             /** Fat G */
@@ -3553,6 +3575,21 @@ export interface components {
             slot: "breakfast" | "lunch" | "dinner";
             /** Time */
             time: string;
+        };
+        /** LearningOut */
+        LearningOut: {
+            /** Days Needed */
+            days_needed: number;
+            /** Days Seen */
+            days_seen: number;
+            /** Examples */
+            examples: number;
+            /** First Ready On */
+            first_ready_on: string | null;
+            /** Since */
+            since: string | null;
+            /** Stage */
+            stage: string;
         };
         /** LiveActivityIn */
         LiveActivityIn: {
@@ -7703,6 +7740,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    learning_status_insights_learning_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LearningOut"] | null;
                 };
             };
         };
