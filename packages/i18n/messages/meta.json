@@ -1165,6 +1165,69 @@
       "translation"
     ]
   },
+  "com.lg_dismissed": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Log card from the conversation (G-75, 14 Nov 2026); not on the board."
+  },
+  "com.lg_edit": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Log card from the conversation (G-75, 14 Nov 2026); not on the board."
+  },
+  "com.lg_fail": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Log card from the conversation (G-75, 14 Nov 2026); not on the board."
+  },
+  "com.lg_no_est": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Log card from the conversation (G-75, 14 Nov 2026); not on the board."
+  },
+  "com.lg_save": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Log card from the conversation (G-75, 14 Nov 2026); not on the board."
+  },
+  "com.lg_saved": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Log card from the conversation (G-75, 14 Nov 2026); not on the board."
+  },
+  "com.lg_title": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Log card from the conversation (G-75, 14 Nov 2026); not on the board."
+  },
+  "com.lg_update": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Log card from the conversation (G-75, 14 Nov 2026); not on the board."
+  },
+  "com.lg_update_title": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Log card from the conversation (G-75, 14 Nov 2026); not on the board."
+  },
   "com.low": {
     "board": "Companion",
     "review": [

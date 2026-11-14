@@ -5594,6 +5594,18 @@
       "ProposalIn": {
         "additionalProperties": false,
         "properties": {
+          "record_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Record Id"
+          },
           "status": {
             "enum": [
               "saved",
@@ -9287,6 +9299,58 @@
           }
         ],
         "summary": "Resolve Proposal",
+        "tags": [
+          "conversation"
+        ]
+      }
+    },
+    "/conversation/messages/{message_id}/proposal/save": {
+      "post": {
+        "description": "Save on a log card (meal, activity, insulin, note): the server writes the record the card shows. A retry returns\nthe saved card; a card that was dismissed or replaced by a newer one is not saved.",
+        "operationId": "save_proposal_conversation_messages__message_id__proposal_save_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "message_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Message Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "not_open"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Save Proposal",
         "tags": [
           "conversation"
         ]
