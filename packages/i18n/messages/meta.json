@@ -12141,6 +12141,13 @@
       "translation"
     ]
   },
+  "sub.b_free": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ],
+    "note": "Membership screen body"
+  },
   "sub.b_member": {
     "board": "Subscription",
     "review": [
@@ -12212,6 +12219,13 @@
     "review": [
       "translation"
     ]
+  },
+  "sub.h_free": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ],
+    "note": "Membership screen title; no prices are shown"
   },
   "sub.h_member": {
     "board": "Subscription",
@@ -12386,6 +12400,13 @@
     "review": [
       "translation"
     ]
+  },
+  "sub.s_free": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ],
+    "note": "Membership status tag while Stedio is on a waiting list"
   },
   "sub.s_member": {
     "board": "Subscription",
@@ -14114,6 +14135,62 @@
       "translation"
     ]
   },
+  "web.dev_dx": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website supported device line"
+  },
+  "web.dev_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website supported devices card title"
+  },
+  "web.dev_hl": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website supported device line"
+  },
+  "web.dev_lb": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website supported device line"
+  },
+  "web.dev_mm": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website supported device line; product names stay in Latin script"
+  },
+  "web.dev_ro": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website note under the supported devices list (read-only rule, Guy)"
+  },
+  "web.dev_tag": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website tag on the supported devices card"
+  },
+  "web.dev_td": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website supported device line"
+  },
   "web.disclaimer": {
     "board": "Website",
     "review": [
@@ -14127,6 +14204,41 @@
     "review": [
       "translation"
     ]
+  },
+  "web.free_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website membership card body"
+  },
+  "web.free_cta": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website button; opens the sign-in page where Google sign-in joins the waiting list"
+  },
+  "web.free_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website membership card title; no prices are shown"
+  },
+  "web.free_hero": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website hero line under the store buttons"
+  },
+  "web.free_tag": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website membership card tag while Stedio is on a waiting list"
   },
   "web.h": {
     "board": "Website",

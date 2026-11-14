@@ -985,3 +985,9 @@ Guy, in one batch (the full list is in the thread): install Docker Desktop and u
 `eas login` and `eas init`; an Apple developer account and a test iPhone (and an Android phone for Health Connect)
 for a dev build. Then: run every flow on the phone, clinical and translation reviews, and the open decisions
 (billing, email provider, hosting, G-06, G-16, G-19).
+
+### 14 Nov 2026: free waiting list, supported devices
+- Website membership shows no prices: a "free during the waiting list" card with a join button to the dashboard sign-in
+  (Google sign-in joins the waitlist). The app's membership screen has a `free` state with no prices, buy or restore.
+- Website "planned" note replaced by the devices supported today (CareLink, Dexcom Share, LibreLinkUp, Tandem Source,
+  Apple Health, Health Connect), read-only. FAQ answer 1 updated. All four languages.
