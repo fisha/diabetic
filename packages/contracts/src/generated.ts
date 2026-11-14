@@ -442,6 +442,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversation/messages/{message_id}/proposal/save": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Save Proposal
+         * @description Save on a log card (meal, activity, insulin, note): the server writes the record the card shows. A retry returns
+         *     the saved card; a card that was dismissed or replaced by a newer one is not saved.
+         */
+        post: operations["save_proposal_conversation_messages__message_id__proposal_save_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/conversations": {
         parameters: {
             query?: never;
@@ -4084,6 +4105,8 @@ export interface components {
         };
         /** ProposalIn */
         ProposalIn: {
+            /** Record Id */
+            record_id?: string | null;
             /**
              * Status
              * @enum {string}
@@ -5810,6 +5833,44 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["MessageOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    save_proposal_conversation_messages__message_id__proposal_save_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                message_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MessageOut"];
+                };
+            };
+            /** @description not_open */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {

@@ -2434,5 +2434,14 @@
   "wl.check": "Check again",
   "wl.out": "Sign out",
   "wl.still": "Not approved yet.",
-  "wl.t": "You're on the waitlist"
+  "wl.t": "You're on the waitlist",
+  "com.lg_title": "Add to your journal?",
+  "com.lg_update_title": "Update the saved meal?",
+  "com.lg_save": "Save",
+  "com.lg_update": "Update",
+  "com.lg_edit": "Edit",
+  "com.lg_saved": "Saved to your journal",
+  "com.lg_dismissed": "Not saved",
+  "com.lg_fail": "Couldn't save. Try again.",
+  "com.lg_no_est": "No carb estimate yet. Edit to add the foods."
 }

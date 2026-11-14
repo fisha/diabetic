@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+14 Nov 2026 (G-75, thread "Log food and readings by chat and voice"): the companion logs from the text chat and live
+voice: cards for a meal (with the food estimate), activity, insulin the person says they took (never with a connected
+pump) and a note; Save on the card or "save it" in words; a clarified meal replaces its card or updates the saved meal.
+Itay's note fixed: answering a food question in the meal editor re-estimates its carbs. API 335 tests and ruff, app
+typecheck, 108 tests and lint (no new problems), i18n tests pass. JS only, no migration. Cards not yet seen on a phone
+or in the web preview.
+
 14 Nov 2026 (G-74, same thread): a logged meal and its pump bolus share one journal row; the food card shows today's
 meals, carbs and protein so far with the full-day average beside them; a full day is read from the journal and the
 pump's carb entries once the day ends (no button); Overview shows how far insight ordering has learned ("למידה":

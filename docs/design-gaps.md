@@ -1244,3 +1244,20 @@ alerts and events now, with a "Device alert" type, as the app's journal does.
 - Chat bubbles: the person's on the right and the companion's on the left in RTL too (Guy), unlike the board's
   start/end mirroring.
 - Recent days read as today, yesterday or the weekday ("last Tuesday") in insights and in the companion's words.
+
+### G-75 · Logging by conversation, text and voice; a meal question that updates the carbs (**Guy, 14 Nov 2026**, implemented-unverified)
+Guy (14 Nov 2026): "תאפשר למשתמש גם בשיח הקולי והטקסטואלי להזין נתונים, למשל אוכל ומדדים". Itay (tester, same day): the
+companion estimated his "mix vegetable curry", asked whether it was mostly potato, and did not update anything after his
+answer; the meal editor's own question did not change the carbs either. No design boards for these cards.
+- The companion has tools that show a card in the conversation for a meal (the food provider's estimate, foods and carbs),
+  activity, insulin the person says they already took, and a note. Glucose keeps its sheet (COM-10).
+- Nothing is saved until the person taps Save on the card or says so (`save_proposal`, only for the newest open card from
+  the last 30 minutes). The server writes the record like the log sheets; source `voice` when it came from a call.
+- A meal clarified in the conversation is proposed again: the new card replaces an open one; if the first was already
+  saved (on the card or after Edit in the meal editor), saving the new card changes that meal (a new revision).
+- Insulin: only what the person says they took, never from a question, never an amount from the companion, never while a
+  CareLink or Tandem pump is connected (the pump's record wins), and not when the same units are already recorded within
+  30 minutes. The reply does not repeat the units (the dose check).
+- In a call the open cards show under the character, like profile cards (G-62).
+- Meal editor: answering a food's question re-estimates that food with the answer and keeps the amount and unit.
+
