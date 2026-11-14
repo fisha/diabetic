@@ -1151,6 +1151,30 @@ own header, card and type styles.
 - Not done: the app's Settings › Privacy "Privacy policy" button still says "not available" (it needs the website
   address in the app; JS only); the accessibility statement's dashboard and app checks.
 
+### G-72 · Walking, heart rate and sleep on Overview, and next to glucose (**Guy, 14 Nov 2026**, implemented-unverified)
+Guy (14 Nov 2026): "בסקירה צריך להציג גם כמה הלכתי היום, מה הדופק הממוצע ובכללי יש הרבה דברים שאנחנו לוקחים מhealth
+אבל לא מציגים תובנות, למשל אם ישנתי טוב או לא טוב, אלה דברים שמשפיעים על הסוכר". No design board: the card uses
+Overview's existing card style (as the food and labs cards do) and the insights use the existing insight cards.
+- Overview, "Body today" card (day and 24-hour views of today only, never while viewing someone else): steps so far and
+  a usual day (median of the last 14 days, at least 5 days), walking and running distance, average heart rate today
+  with the lowest and highest, resting heart rate against the usual one, and last night: time asleep, bed and wake
+  times, times awake, deep and REM sleep, and shorter / about / longer than the usual night. `GET /health-data/today`.
+- "Slept well" is only against the person's own nights: shorter or longer than the median of the last 14 nights by at
+  least an hour (product rule). No clinical sleep target is used. An iPhone without a watch gives only time in bed,
+  which is shown as that.
+- A night belongs to the day of waking (sleep that started from 15:00 the day before). The iPhone and the watch record
+  the same night and the same walk: a night and a day's steps come from the one source that saw most of it, never
+  added across sources (as G-67).
+- Insights (new finding kinds `sleep_glucose`, `steps_glucose`, `rhr_glucose`, only to clients sending `kinds=4`): over
+  the last 28 full days, the days are split into the lower and upper half by minutes asleep the night before, steps,
+  or resting heart rate, and the mean time in range and the median glucose of each half are shown. After a night,
+  glucose counts from waking until midnight (readings in at least 8 different hours); otherwise the whole day (at
+  least 12 hours). At least 4 days on each side, and shown only when time in range differs by 5 points or more.
+  Product rules. Worded as a pattern in their days, never a cause, a rule or a target; no advice line.
+- The companion hears the same patterns, last night's sleep (one source, with their usual night) and the average heart
+  rate of the last 24 hours. The older sleep line added the watch's and the iPhone's records together; fixed.
+- The website's insights show the same new kinds.
+
 ## Glucose alerts with sound (13 Nov 2026, Guy asked)
 Profile › Notifications has a "Glucose alerts with sound" card with no design board: on/off, urgent low / low / high
 levels (steppers, low and high from the person's range, urgent low default 54 mg/dL), sound per level, repeat interval,

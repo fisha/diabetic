@@ -349,6 +349,114 @@
     ],
     "note": "Journal: name of a pump alert or message kind (the pump's own event, no advice)."
   },
+  "bd.awake": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.awake_only": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.distance": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.heart": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.hm": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Duration, hours and minutes. Hebrew uses h:mm."
+  },
+  "bd.in_bed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Only time in bed is known, e.g. iPhone without a watch."
+  },
+  "bd.resting": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.resting_usual": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "usual: median of the last 14 days."
+  },
+  "bd.sleep": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.src": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "store is Apple Health or Health Connect."
+  },
+  "bd.stages": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.steps": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.steps_usual": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Card title: walking, heart rate and last night's sleep from the health app (G-72)."
+  },
+  "bd.vs_longer": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.vs_shorter": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "usual: median of the last 14 nights; never a clinical target."
+  },
+  "bd.vs_usual": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
   "cmp.badge.confirmed": {
     "board": "Components",
     "review": [
@@ -2380,6 +2488,18 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_body_basis": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_body_g": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
   "ins.f_food_b": {
     "board": "OVR-04",
     "review": [
@@ -2536,6 +2656,19 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_rhr_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_rhr_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "G-72 finding rhr_glucose."
+  },
   "ins.f_sensor_short_b": {
     "board": "Insights",
     "review": [
@@ -2579,11 +2712,37 @@
     ],
     "note": "Insight title (G-58): set older than the maker's rated days."
   },
+  "ins.f_sleep_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_sleep_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "G-72 finding sleep_glucose."
+  },
   "ins.f_steps": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "ins.f_steps_b": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.f_steps_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "G-72 finding steps_glucose."
   },
   "ins.f_sub": {
     "board": "OVR-04",
