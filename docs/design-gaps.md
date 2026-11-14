@@ -1197,6 +1197,26 @@ button "אולי גם לא להציע את זה עד שעות הערב". No desi
 - Food: the button reads "I've logged all of today", shows from 18:00 (or while marked, to undo), and today joins the
   daily averages only once it is over, so marking it at midday no longer pulls them down.
 
+### G-74 · Food today, a full day read from what the person does, learning status, devices list (**Guy, 14 Nov 2026**, implemented-unverified)
+Guy (14 Nov 2026): the meal and its bolus "באותה שורה"; the carbs on Overview "לא מעודכנות... לא מכילות גם את מה שהוזן
+באפליקציה"; "הסימון של יום מלא הכרחי? אי אפשר להבין את זה לבד מהפעולות של המשתמש?"; Overview should show the
+model's status "אבל לא לקרוא לזה ״מודל״ אולי למידה... מתחמם אם עוד לא עברו 7 ימים"; and Devices should not list the
+Guardian and the 780G, which are treatment, not integrations. No design boards.
+- Journal: a meal (logged in the app, or its pump copy) and a pump bolus up to 10 minutes from it are one row, with any
+  automatic correction at the bolus's moment.
+- Food card: today's meals, carbs and protein so far (every meal in the journal, a meal entered in the app and on the
+  pump counted once), with the average over fully logged days as a second line when there are any.
+- A full day is no longer a button. Once the day is over it reads as fully logged when every carb amount entered on the
+  pump that day is matched to a meal logged in the app, and the app has at least two meals 4 hours or more apart; a
+  day with one logged meal, or with an unmatched pump entry, stays partial. Product rules. The person's own mark
+  (`PUT /nutrition/days/{day}`, kept for an override; no button now) wins either way.
+- Learning (`GET /insights/learning`), a quiet line under the insights' heading, never the word "model": warming up
+  (no example yet: an insight shown counts as an example after 7 days; days left shown with a bar), learning (examples,
+  no model that passed its gate), checking (a model passed its gate and runs in shadow, or the person is not a tester),
+  tailored to you (the person's order comes from the model). Hidden when ranking is off.
+- Devices & connections lists only data connections (Apple Health / Health Connect, CareLink, Dexcom, LibreLinkUp,
+  Tandem). The pump and sensor from the profile stay in the profile.
+
 ## Glucose alerts with sound (13 Nov 2026, Guy asked)
 Profile › Notifications has a "Glucose alerts with sound" card with no design board: on/off, urgent low / low / high
 levels (steppers, low and high from the person's range, urgent low default 54 mg/dL), sound per level, repeat interval,

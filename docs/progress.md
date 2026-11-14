@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+14 Nov 2026 (G-74, same thread): a logged meal and its pump bolus share one journal row; the food card shows today's
+meals, carbs and protein so far with the full-day average beside them; a full day is read from the journal and the
+pump's carb entries once the day ends (no button); Overview shows how far insight ordering has learned ("למידה":
+warming up, learning, checking, tailored to you); Devices lists only data connections. API 325 tests and ruff, app
+typecheck, 104 tests and lint (no new problems), i18n tests pass; cards checked in the web preview (Hebrew). JS only,
+no migration. Not run on a phone.
+
 14 Nov 2026 (G-73, same thread): a compliment from the companion while moving (exercise minutes or brisk steps, once per
 stretch, quiet hours kept), activity details in the journal (distance, steps, energy, heart rate), Overview's body and
 food cards as icon tiles, and the "logged all of today" button only from 18:00 with today kept out of the averages

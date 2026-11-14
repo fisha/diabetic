@@ -2381,6 +2381,21 @@
             "title": "Complete",
             "type": "boolean"
           },
+          "complete_by": {
+            "anyOf": [
+              {
+                "enum": [
+                  "auto",
+                  "person"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Complete By"
+          },
           "day": {
             "title": "Day",
             "type": "string"
@@ -4227,6 +4242,60 @@
           "firm"
         ],
         "title": "LearnedOut",
+        "type": "object"
+      },
+      "LearningOut": {
+        "properties": {
+          "days_needed": {
+            "title": "Days Needed",
+            "type": "integer"
+          },
+          "days_seen": {
+            "title": "Days Seen",
+            "type": "integer"
+          },
+          "examples": {
+            "title": "Examples",
+            "type": "integer"
+          },
+          "first_ready_on": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Ready On"
+          },
+          "since": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Since"
+          },
+          "stage": {
+            "title": "Stage",
+            "type": "string"
+          }
+        },
+        "required": [
+          "stage",
+          "days_seen",
+          "days_needed",
+          "examples",
+          "first_ready_on",
+          "since"
+        ],
+        "title": "LearningOut",
         "type": "object"
       },
       "LiveActivityIn": {
@@ -11997,6 +12066,41 @@
           }
         ],
         "summary": "By Hour",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/learning": {
+      "get": {
+        "description": "How far the order of insights has learned from the person (warming up, learning, checking, personal).",
+        "operationId": "learning_status_insights_learning_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/LearningOut"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Response Learning Status Insights Learning Get"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Learning Status",
         "tags": [
           "insights"
         ]

@@ -4334,6 +4334,67 @@
       "translation"
     ]
   },
+  "lrn.checking": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.checking_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.learning": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.learning_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.personal": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.personal_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: how far the order of insights has learned the person. Never call it a model (Guy, 14 Nov 2026)."
+  },
+  "lrn.warming": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.warming_left": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.warming_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
   "meal.a1": {
     "board": "Meal",
     "review": [
@@ -5228,24 +5289,18 @@
     ],
     "note": "Lock-screen notification body; generic on purpose (no health details)"
   },
-  "nut.avg_note": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
-  },
-  "nut.done_note": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
-  },
-  "nut.done_today": {
+  "nut.auto_note": {
     "board": "Overview",
     "review": [
       "translation"
     ],
-    "note": "Shown from the evening (18:00) or once marked (Guy, 14 Nov 2026)."
+    "note": "G-74: a day reads as fully logged by itself."
+  },
+  "nut.avg_full": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
   },
   "nut.g": {
     "board": "Overview",
@@ -5253,12 +5308,11 @@
       "translation"
     ]
   },
-  "nut.l_carbs": {
+  "nut.l_carbs_today": {
     "board": "Overview",
     "review": [
       "translation"
-    ],
-    "note": "Average over full days."
+    ]
   },
   "nut.l_full": {
     "board": "Overview",
@@ -5267,18 +5321,17 @@
     ],
     "note": "Days the person marked as fully logged; today counts once it is over."
   },
-  "nut.l_meals": {
+  "nut.l_meals_today": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
-  "nut.l_protein": {
+  "nut.l_protein_today": {
     "board": "Overview",
     "review": [
       "translation"
-    ],
-    "note": "Average over full days."
+    ]
   },
   "nut.l_weighed": {
     "board": "Overview",
@@ -5292,6 +5345,18 @@
       "translation"
     ],
     "note": "Weighed items of all items."
+  },
+  "nut.of_days": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "nut.partial": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
   },
   "nut.t": {
     "board": "Overview",
@@ -10795,25 +10860,7 @@
       "translation"
     ]
   },
-  "set.dev_names": {
-    "board": "Settings",
-    "review": [
-      "translation"
-    ]
-  },
   "set.dev_planned_cap": {
-    "board": "Settings",
-    "review": [
-      "translation"
-    ]
-  },
-  "set.dev_pump": {
-    "board": "Settings",
-    "review": [
-      "translation"
-    ]
-  },
-  "set.dev_sensor": {
     "board": "Settings",
     "review": [
       "translation"
@@ -11609,12 +11656,6 @@
     ]
   },
   "set.night": {
-    "board": "Settings",
-    "review": [
-      "translation"
-    ]
-  },
-  "set.not_conn": {
     "board": "Settings",
     "review": [
       "translation"
