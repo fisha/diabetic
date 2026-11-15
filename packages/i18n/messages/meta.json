@@ -8643,6 +8643,20 @@
       "clinical"
     ]
   },
+  "ovr.stale_wu": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Instead of ovr.stale while a new sensor warms up (G-80, Guy 15 Nov 2026)."
+  },
+  "ovr.stale_wu_soon": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Instead of ovr.stale while a new sensor warms up (G-80, Guy 15 Nov 2026)."
+  },
   "ovr.sum_24h": {
     "board": "Overview",
     "review": [
