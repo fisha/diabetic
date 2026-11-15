@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+15 Nov 2026 (thread "Fix companion voice call cutting off"): Guy: in the voice call the companion still starts and
+stops. The API log of his test showed talk-over stops (`barged=1`) 0.7 s and 1.8 s into answers: the phone's talk-over
+detector learned the loudspeaker's echo level as an average, which drifted down until her own voice counted as the
+person talking (933 of 1200 simulated speech-like echo runs stopped her). Now the echo level is the loudest echo seen,
+slowly forgotten, learned from a full second of her speaking, and microphone frames are timed by the recorder's sample
+count (app 748dd26, JS only). Simulation: 0 of 1200 stops, with or without JS stalls; loud talk-over still stops her.
+App 115 tests, typecheck and lint pass. Not yet heard on a phone. Next: OTA, then Guy tries a call.
+
 15 Nov 2026 (G-77, thread "Let users mark insights as read"): a "mark as read" chip on insight cards in the carousel
 under the companion. The card leaves at once; the server keeps it per account (feedback `read`, `InsightsOut.done`), so
 it stays off the main screen on every device until the insight changes; Overview still lists it. Fed to learning (an open
