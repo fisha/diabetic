@@ -6,18 +6,24 @@ not known from the code or a decision of Guy is a highlighted placeholder `‚ü¶‚Ä
 language file (the test `apps/web/test/legal.test.ts` checks that all four have the same number of placeholders), then
 have a privacy lawyer review the whole text. None of this is legal advice.
 
+## Filled in
+
+- 15 Nov 2026 (Guy): the company is **Ming GF Ltd, Tel Aviv, Israel**. It is the controller (privacy), the provider
+  and owner (terms), the operator (accessibility statement) and the footer line. No company number is shown (not
+  needed for GDPR; add it if the lawyer wants it).
+- Governing law set to the laws of the State of Israel and the competent courts in Tel Aviv, following the company's
+  seat. Change it in the four `terms.*.ts` files if the lawyer advises otherwise.
+
 ## Guy to provide
 
 | Item | Pages |
 |---|---|
-| Legal entity name, registered address, company number | privacy, terms |
 | Privacy contact email | privacy |
 | Support email | terms |
 | Data protection officer (name and contact), if one is appointed | privacy |
 | EU representative under GDPR Article 27, if needed (needed when serving people in the EU without an EU office) | privacy |
 | Accessibility coordinator: name, phone, email, and the reply time in business days | accessibility |
 | Minimum age and the rules for a child's account and parent or guardian consent | privacy, terms |
-| Governing law and courts (Israeli law and Tel Aviv courts are the usual choice) | terms |
 
 ## To decide or confirm before production
 
