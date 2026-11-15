@@ -14,6 +14,7 @@ the companion orb (face, float, blink) in the hero, one call to action (waiting 
 safety and devices in two cards, privacy in one line, FAQ, light footer with the language links. New `web.c_*` texts in
 four languages. noindex, legal links, RTL, day/night unchanged. Web typecheck, lint, tests, build and screenshots in four
 languages pass (web 441d785). Needs a website deploy on the Mac.
+
 15 Nov 2026 (G-80, thread "Show sensor warm-up countdown"): while a new sensor warms up, the main screen shows how long
 until it reads ("Ready in about 40 min", then "Ready any moment") instead of the last reading. Known from CareLink's
 WARM_UP state, LibreLinkUp's activation time and Tandem's sensor start; lengths from the makers (Guardian 4/Simplera 2 h,
