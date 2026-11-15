@@ -16188,5 +16188,26 @@
       "translation"
     ],
     "note": "Period summary row hint (Guy, 15 Nov 2026)."
+  },
+  "ins.all_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Title of the page listing every insight, read and unread."
+  },
+  "ins.all_link": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Link under the cards on the companion screen to the page of all insights."
+  },
+  "ins.all_read": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Heading over the insights already read on the all-insights page."
   }
 }

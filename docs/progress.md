@@ -140,6 +140,11 @@ slowly forgotten, learned from a full second of her speaking, and microphone fra
 count (app 748dd26, JS only). Simulation: 0 of 1200 stops, with or without JS stalls; loud talk-over still stops her.
 App 115 tests, typecheck and lint pass. Not yet heard on a phone. Next: OTA, then Guy tries a call.
 
+15 Nov 2026 (G-77, second follow-up): Guy still saw yesterday's insights on the main screen. An insight now stays
+there only while unread and new or changed today (opening it reads it on the server, as before); small wins only on their
+day. New page "All insights" (`/insights`), linked under the cards: unread first, then "Read". App typecheck, 130 tests,
+lint (no new problems), i18n tests, web preview e2e `tools/e2e/insights-page.cjs` pass. JS only, no API change.
+
 15 Nov 2026 (G-77 follow-up, same thread): Guy did not see the button, because insight cards show under the companion
 only when they are about this time of day. Now every card that is not urgent has it (part of the day, compliments, small
 wins, weather, insights); non-insight marks go to `POST /insights/home-read` and come back the next day. API 338 tests and
