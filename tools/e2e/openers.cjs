@@ -1,5 +1,5 @@
 // Speech bubbles on the main screen (Guy, 15 Nov 2026): the companion's greeting and a question about something the
-// person logged, over the character; tapping one offers text or voice, and text opens the conversation with it.
+// person logged, one at a time over the character; tapping one offers text or voice, and text opens the conversation with it.
 // End-to-end against the test server (services/api: uvicorn tests.e2e_server:app) and its own database.
 // Usage: DB=postgresql://steady:steady@localhost:5432/steady_e2e node tools/e2e/openers.cjs <web export built with EXPO_PUBLIC_API_URL=http://localhost:8000> <screenshot dir>
 // Start from an empty database: it signs up o@example.com and logs a meal two hours ago.
@@ -67,7 +67,11 @@ const server = http.createServer((req, res) => {
       await shot('01-bubbles');
       const bubbles = page.getByRole('button', { name: new RegExp(`^${L.from}:`) });
       const n = await bubbles.count();
-      ok(`${lang} ${scheme}: two bubbles over the character`, n === 2, String(n));
+      ok(`${lang} ${scheme}: one bubble over the character`, n === 1, String(n));
+      // They take turns: the greeting first, then the question about the meal (Guy, 15 Nov 2026).
+      await page.waitForTimeout(7600);
+      ok(`${lang} ${scheme}: still one bubble after it changed`, (await bubbles.count()) === 1);
+      await shot('01b-next');
       const follow = page.getByRole('button', { name: new RegExp(`^${L.from}: ${lang === 'he' ? 'איך היה' : 'How was the'}`) }).first();
       const asked = ((await follow.getAttribute('aria-label').catch(() => '')) || '').split(': ').slice(1).join(': ');
       ok(`${lang} ${scheme}: the follow-up about the meal`, (await follow.count()) > 0);
