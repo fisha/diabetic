@@ -161,6 +161,10 @@ for the ranker; the companion hears it). API 337 tests and ruff, app typecheck, 
 web typecheck, i18n tests pass; web preview e2e `tools/e2e/mark-read.cjs` passes (hide, kept after reload, still in
 Overview), Hebrew day and night checked. JS only, no migration. Next: deploy the API, then OTA.
 
+15 Nov 2026 (G-76 follow-up, Guy approved): meal carbs are net carbs (total carbohydrate minus dietary fiber, floor 0).
+The vision schema asks for fiber per 100 g; USDA uses nutrient 291. Labels read "פחמימות נטו" with a note on the review
+screen. Only new estimates change; saved meals keep their values. API 378 tests pass. Deploy the API before the OTA.
+
 15 Nov 2026 (G-76 follow-up, Guy): each food's carbs read "פחמימות ≈ N גרם" (Guy took the number for weight), and a
 pencil on the carbs and protein chips shows they can be typed. App tests, typecheck, lint, meal e2e pass. JS only.
 

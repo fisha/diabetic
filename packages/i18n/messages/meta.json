@@ -16248,8 +16248,17 @@
   "meal.carbs_v": {
     "board": "Meal",
     "review": [
-      "translation"
+      "translation",
+      "clinical"
     ],
-    "note": "Carbs labelled as carbs on each food (Guy, 15 Nov 2026)."
+    "note": "Net carbs on each food (Guy approved, 15 Nov 2026)."
+  },
+  "meal.net_note": {
+    "board": "Meal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Net carbs, total less fiber (Guy approved, 15 Nov 2026)."
   }
 }
