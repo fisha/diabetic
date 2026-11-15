@@ -14,6 +14,13 @@ with buttons "I ate, log it" (meal logging) and "Not yet" (the companion's fixed
 tests and ruff, app typecheck, 118 tests and lint (no new problems), i18n tests pass. JS only, no migration; the API must
 be deployed before the OTA (an older API rejects `answer`). Not seen on a phone.
 
+15 Nov 2026, afternoon (same thread): Guy: better but far from ChatGPT's live voice (same engine). Research: GPT-Live has no
+VAD/turn settings; its prompting guide's turn-taking lines are the lever. New `scripts/live_e2e.py` (simulated phone, real
+relay and GPT-Live, test DB only), run twice on the Mac: a long first sentence waited 8.2 s, now 2.98 s (a part of a
+sentence up to a comma goes out early when it holds no number or unit; the rest is checked with it); meal said with a pause
+now answered whole (delegation waits 0.9 s quiet, max 2.5 s); Hebrew from the start; no cuts. API 3500efc, 348 tests.
+Remaining: gaps inside long answers (held per sentence for the dose check).
+
 15 Nov 2026, later (same thread): Guy: much better, but light noises still stop her. Log: a talk-over stop before her
 answer started playing (`barge_played_s=0.0`, noise in the jitter lead). Now nothing counts before her first sound is
 due, and a loud frame counts only if it repeats at a speaking pitch (`voicing`, 70-400 Hz after a 100 Hz high-pass);
