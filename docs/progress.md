@@ -42,6 +42,8 @@ types the phone read can be found deleted (`window_types`), a re-sent sample com
 iPhones re-read 30 days once (`readTypes` 3). API tests and ruff, app typecheck, tests and lint (no new problems), i18n
 tests, web preview e2e `tools/e2e/breakdown.cjs` pass. JS only for the app; deploy the API before the OTA (an older API
 refuses `window_types`). Itay needs no new permission.
+Follow-up the same day (app ef5a03c, JS only): the food breakdown can be edited (meal editor from a row, delete with
+confirmation, autosave when changing a saved meal); web e2e passes.
 
 15 Nov 2026 (thread "Fix companion voice call cutting off"): Guy: in the voice call the companion still starts and
 stops. The API log of his test showed talk-over stops (`barged=1`) 0.7 s and 1.8 s into answers: the phone's talk-over
