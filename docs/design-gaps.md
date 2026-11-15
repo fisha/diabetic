@@ -1402,3 +1402,13 @@ Follow-up (Guy, 15 Nov 2026, screenshot): the lock-screen card during warm-up sh
 Current builds (13) now get "New sensor warming up" in the pill and "Ready in {t}" counted by iOS (server only). The
 cut was iOS's 160 pt height limit: the next build drops the header line and uses compact sizes. The main-screen
 countdown is smaller (title1, OTA).
+
+### G-83 · Fingerstick readings entered on the pump (**Guy, 15 Nov 2026**, verified-test)
+Guy (15 Nov 2026): with the sensor warming up he measured on his blood meter and entered it on the pump; it synced to
+CareLink but did not show in Stedio as a meter reading.
+- CareLink BG_READING and CALIBRATION markers become glucose records with method "meter" (source CareLink), apart
+  from sensor readings: the same journal row, Overview dot and day-card count as a meter reading typed in the app.
+  They never count toward time in range, end a warm-up, or sound a sensor alert (those read sensor readings only).
+- The companion gets them as "Blood meter (fingerstick) readings" and the latest reading says when it was a meter.
+- No new screen or copy.
+
