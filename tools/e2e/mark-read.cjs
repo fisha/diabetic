@@ -35,9 +35,9 @@ const server = http.createServer((req, res) => {
     const ti = (await api('/auth/sign-in', { method: 'POST', body: { email: 'r@example.com', password: 'correct horse battery' } })).json;
     const answers = { ...ANSWERS, ratios: { ...ANSWERS.ratios, target: '80-140' } };
     await api('/profile', { method: 'PUT', token: ti.access_token, body: { locale: 'en', answers } });
-    // Four mornings (08:00 local) above the person's own range, and one reading today in range.
+    // Four days at this hour above the person's own range, and one reading today in range.
     for (let i = 1; i <= 4; i++) {
-      const d = new Date(); d.setDate(d.getDate() - i); d.setHours(8, 0, 0, 0);
+      const d = new Date(); d.setDate(d.getDate() - i); d.setHours(new Date().getHours(), 0, 0, 0);
       await api('/glucose', { method: 'POST', token: ti.access_token, body: { idempotency_key: `rd-e2e-${i}`, measured_at: d.toISOString(), entered_at: d.toISOString(), source: 'manual', method: 'meter', value: 200 + i, unit: 'mg/dL' } });
     }
     const today = new Date(Date.now() - 10 * 60_000);
@@ -47,20 +47,24 @@ const server = http.createServer((req, res) => {
     await page.getByLabel('Email', { exact: true }).fill('r@example.com');
     await page.getByLabel('Password', { exact: true }).fill('correct horse battery');
     await page.getByText('Sign in', { exact: true }).last().click(); await page.waitForTimeout(4000);
-    const card = () => page.getByText('Above your range in the morning').first();
-    ok('insight on the main screen', await card().isVisible().catch(() => false));
-    ok('mark as read button', await page.getByText('Mark as read', { exact: true }).first().isVisible().catch(() => false));
+    // Every card that is not urgent has the button (Guy, 15 Nov 2026): here the part of the day and the insight.
+    const card = () => page.getByText(/Above your range in the/).first();
+    const chips = () => page.getByText('Mark as read', { exact: true });
+    ok('insight on the main screen', await card().isVisible().catch(() => false) || (await page.getByText(/Above your range in the/).count()) > 0);
+    ok('two cards with the button', (await chips().count()) === 2, String(await chips().count()));
     await shot('r01-main-before');
-    await page.getByText('Mark as read', { exact: true }).first().click(); await page.waitForTimeout(1500);
-    ok('gone at once', !(await card().isVisible().catch(() => false)));
+    await chips().first().click(); await page.waitForTimeout(1500);
+    ok('part of the day gone at once', (await chips().count()) === 1);
+    await chips().first().click(); await page.waitForTimeout(1500);
+    ok('insight gone at once', (await chips().count()) === 0 && (await page.getByText(/Above your range in the/).count()) === 0);
     const ins = (await api('/insights', { token: ti.access_token })).json;
-    ok('kept on the server', (ins.done || []).some((k) => k.startsWith('above:')), JSON.stringify(ins.done));
+    const done = ins.done || [];
+    ok('kept on the server', done.some((k) => k.startsWith('above:')) && done.some((k) => k.startsWith('part:')), JSON.stringify(done));
     await shot('r02-main-after');
     await page.reload(); await page.waitForTimeout(4000);
-    ok('still gone after reload', !(await card().isVisible().catch(() => false)));
+    ok('still gone after reload', (await chips().count()) === 0);
     await page.getByText('Overview', { exact: true }).last().click(); await page.waitForTimeout(2500);
-    await page.getByText('Insights', { exact: true }).first().scrollIntoViewIfNeeded().catch(() => {});
-    ok('still in Overview', await card().isVisible().catch(() => false));
+    ok('insight still in Overview', (await page.getByText(/Above your range in the/).count()) > 0);
     await shot('r03-overview');
   } catch (e) { results.push('FAIL exception — ' + e.message); try { await shot('r99-error'); } catch {} }
   ok('no page errors', errors.length === 0, errors.join(' | '));

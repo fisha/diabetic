@@ -16,6 +16,11 @@ slowly forgotten, learned from a full second of her speaking, and microphone fra
 count (app 748dd26, JS only). Simulation: 0 of 1200 stops, with or without JS stalls; loud talk-over still stops her.
 App 115 tests, typecheck and lint pass. Not yet heard on a phone. Next: OTA, then Guy tries a call.
 
+15 Nov 2026 (G-77 follow-up, same thread): Guy did not see the button, because insight cards show under the companion
+only when they are about this time of day. Now every card that is not urgent has it (part of the day, compliments, small
+wins, weather, insights); non-insight marks go to `POST /insights/home-read` and come back the next day. API 338 tests and
+ruff, app typecheck, 116 tests and lint (no new problems), web preview e2e passes. API deploy before the OTA.
+
 15 Nov 2026 (G-77, thread "Let users mark insights as read"): a "mark as read" chip on insight cards in the carousel
 under the companion. The card leaves at once; the server keeps it per account (feedback `read`, `InsightsOut.done`), so
 it stays off the main screen on every device until the insight changes; Overview still lists it. Fed to learning (an open

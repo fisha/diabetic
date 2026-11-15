@@ -1296,3 +1296,7 @@ Guy (15 Nov 2026): "במסך הראשי שיש את התובנות צריך כפ
   mark); a periodic follow-up that says it continues does not bring it back. Overview still lists it.
 - Learning: a `feedback`/`read` event. The ranker counts it as an open (not a judgement, so labels are unchanged); the
   companion hears it was marked as read and raises it again only if it changes or the person asks.
+- Follow-up (Guy, 15 Nov 2026, after not seeing the button: insight cards show only when about this time of day): every
+  card that is not urgent has it: the part of the day, compliments, small wins, weather tips and insights. Readings out of
+  range, device alerts, reminders and the set past its days do not. Non-insight cards: `POST /insights/home-read`, listed
+  in `done` for 7 days; daily ones carry the local date (the part of the day also its 3-hour block) and return the next day.
