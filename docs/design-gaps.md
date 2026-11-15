@@ -1398,3 +1398,7 @@ collected and learned each day.
   "Learned", "How days are counted" and the four stages. Board style: Routine's day tiles, Settings cards and tags.
 - Routine day tiles: the entry count no longer breaks over two lines.
 
+Follow-up (Guy, 15 Nov 2026, screenshot): the lock-screen card during warm-up showed a dash and was cut at the top.
+Current builds (13) now get "New sensor warming up" in the pill and "Ready in {t}" counted by iOS (server only). The
+cut was iOS's 160 pt height limit: the next build drops the header line and uses compact sizes. The main-screen
+countdown is smaller (title1, OTA).
