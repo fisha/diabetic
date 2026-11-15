@@ -1386,3 +1386,15 @@ a result."
   the value, only the part of the day; a new reading brings it back. The app also leaves an old value off when it shows
   the card. A warm-up (G-80) shows a dash, not the old sensor's last value. In the next native build the card also hides
   the value by itself at that moment instead of greying it. Home widgets and the watch keep greying an old reading.
+
+### G-82 · One day count for learning, and a Learning days screen (**Guy, 15 Nov 2026**, verified-test)
+Guy (15 Nov 2026): Routine shows day 5 of about 6 and Overview says 5 days left to warm up; if both are the same clock it
+adds up to 9, not 7. And the learning bar should open a screen with the days, like the Routine tiles, saying what was
+collected and learned each day.
+- One count: day 1 is the day the account was opened, in the person's time zone, on both screens. Warming up is told as
+  the day it ends ("on day 10, 20 Nov"), a week after the first insight was shown, not as days left.
+- New screen (approved by Guy's request, not in the design board): stage card with the bar, day tiles (past days with
+  their entry count, today, the days up to the first examples, that day dashed), the chosen day's "Collected" and
+  "Learned", "How days are counted" and the four stages. Board style: Routine's day tiles, Settings cards and tags.
+- Routine day tiles: the entry count no longer breaks over two lines.
+

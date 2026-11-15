@@ -4701,6 +4701,12 @@
       "translation"
     ]
   },
+  "lrn.load_fail": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
   "lrn.personal": {
     "board": "Overview",
     "review": [
@@ -4726,13 +4732,187 @@
       "translation"
     ]
   },
-  "lrn.warming_left": {
+  "lrn.warming_none": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
-  "lrn.warming_none": {
+  "lrn.d_became": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_future": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_future_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_got": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_head": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_imp": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_learned": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_matured": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_model": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_nothing": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_routine": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_shown": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.d_will": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.days_sub": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.days_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.how_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.how_order": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.how_progress": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.how_routine": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.how_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.now": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.open": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.s_today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.st_checking": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.st_learning": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.st_personal": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.st_warming": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.stages_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.warming_on": {
     "board": "Overview",
     "review": [
       "translation"

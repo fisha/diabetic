@@ -8,6 +8,19 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+15 Nov 2026 (G-82, thread "Align the learning progress screens"): Guy: Routine said "day 5 of about 6" while Overview's
+learning bar said "5 days left to warm up", which looked like one clock adding up to 9. They were two clocks: the routine
+counts from the day the account was opened (3 days, plus the 3 Guy added), the learning bar counted down to a week after
+the first insight was shown (13 Nov, when insight listings started being kept). Now both use one day count, day 1 = the
+day the account was opened: the bar says "Today is day 5. On day 10 (20 Nov) the first insights you saw become
+examples". The bar opens a new Learning screen: day tiles from day 1 to today and on to the first examples' day, and for
+the chosen day what was collected (entries, readings, meals, insulin, insights shown) and what became known (first
+impressions of meal times, insights turning into examples, a checked order going live), plus how days are counted and
+the four stages. `GET /insights/learning/days`; `GET /insights/learning` gains `day`, `first_shown_on`,
+`first_ready_day`. API tests and ruff, app typecheck and tests, i18n tests and web e2e `tools/e2e/learning.cjs` pass.
+API 8b47eb3, app df91df5. JS only; deploy the API before the OTA (an older API has no day count; the bar then falls back to its general line and
+the new screen shows no tiles). Not seen on a phone.
+
 15 Nov 2026 (thread "Improve the today so far summary"): Guy: the summary should not repeat the A1c, drop "logged
 something on 1 of 1 days", show time in range as a share, and say more about what is worth checking, with round charts,
 "what to keep" and "what to improve", and more charts inside first-impression insights. Summary now: time-in-range donut
