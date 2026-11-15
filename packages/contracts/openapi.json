@@ -4024,6 +4024,24 @@
         "title": "HypothesisOut",
         "type": "object"
       },
+      "ImpressionOut": {
+        "properties": {
+          "slot": {
+            "title": "Slot",
+            "type": "string"
+          },
+          "time": {
+            "title": "Time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slot",
+          "time"
+        ],
+        "title": "ImpressionOut",
+        "type": "object"
+      },
       "InsightDayOut": {
         "properties": {
           "day": {
@@ -4470,8 +4488,152 @@
         "title": "LearnedOut",
         "type": "object"
       },
+      "LearningDayOut": {
+        "properties": {
+          "date": {
+            "title": "Date",
+            "type": "string"
+          },
+          "day": {
+            "title": "Day",
+            "type": "integer"
+          },
+          "entries": {
+            "title": "Entries",
+            "type": "integer"
+          },
+          "impressions": {
+            "items": {
+              "$ref": "#/components/schemas/ImpressionOut"
+            },
+            "title": "Impressions",
+            "type": "array"
+          },
+          "insulin": {
+            "title": "Insulin",
+            "type": "integer"
+          },
+          "matured": {
+            "title": "Matured",
+            "type": "integer"
+          },
+          "meals": {
+            "title": "Meals",
+            "type": "integer"
+          },
+          "model": {
+            "title": "Model",
+            "type": "boolean"
+          },
+          "readings": {
+            "title": "Readings",
+            "type": "integer"
+          },
+          "ready_on": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ready On"
+          },
+          "routine": {
+            "title": "Routine",
+            "type": "boolean"
+          },
+          "shown": {
+            "title": "Shown",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "date",
+          "day",
+          "entries",
+          "readings",
+          "meals",
+          "insulin",
+          "shown",
+          "ready_on",
+          "matured",
+          "routine",
+          "impressions",
+          "model"
+        ],
+        "title": "LearningDayOut",
+        "type": "object"
+      },
+      "LearningDaysOut": {
+        "properties": {
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/LearningDayOut"
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "first_ready_day": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Ready Day"
+          },
+          "first_ready_on": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Ready On"
+          },
+          "mature_days": {
+            "title": "Mature Days",
+            "type": "integer"
+          },
+          "routine_days": {
+            "title": "Routine Days",
+            "type": "integer"
+          },
+          "today": {
+            "title": "Today",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "today",
+          "routine_days",
+          "mature_days",
+          "first_ready_on",
+          "first_ready_day",
+          "days"
+        ],
+        "title": "LearningDaysOut",
+        "type": "object"
+      },
       "LearningOut": {
         "properties": {
+          "day": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Day"
+          },
           "days_needed": {
             "title": "Days Needed",
             "type": "integer"
@@ -4484,6 +4646,17 @@
             "title": "Examples",
             "type": "integer"
           },
+          "first_ready_day": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Ready Day"
+          },
           "first_ready_on": {
             "anyOf": [
               {
@@ -4495,6 +4668,17 @@
               }
             ],
             "title": "First Ready On"
+          },
+          "first_shown_on": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Shown On"
           },
           "since": {
             "anyOf": [
@@ -12663,6 +12847,33 @@
           }
         ],
         "summary": "Learning Status",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/learning/days": {
+      "get": {
+        "description": "The learning timeline, one entry per day since day 1: what was collected and what became known.",
+        "operationId": "get_learning_days_insights_learning_days_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningDaysOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Learning Days",
         "tags": [
           "insights"
         ]

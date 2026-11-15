@@ -1409,6 +1409,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/insights/learning/days": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Learning Days
+         * @description The learning timeline, one entry per day since day 1: what was collected and what became known.
+         */
+        get: operations["get_learning_days_insights_learning_days_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/insights/updates": {
         parameters: {
             query?: never;
@@ -3551,6 +3571,13 @@ export interface components {
             /** Text */
             text: string;
         };
+        /** ImpressionOut */
+        ImpressionOut: {
+            /** Slot */
+            slot: string;
+            /** Time */
+            time: string;
+        };
         /** InsightDayOut */
         InsightDayOut: {
             /** Day */
@@ -3724,16 +3751,64 @@ export interface components {
             /** Time */
             time: string;
         };
+        /** LearningDayOut */
+        LearningDayOut: {
+            /** Date */
+            date: string;
+            /** Day */
+            day: number;
+            /** Entries */
+            entries: number;
+            /** Impressions */
+            impressions: components["schemas"]["ImpressionOut"][];
+            /** Insulin */
+            insulin: number;
+            /** Matured */
+            matured: number;
+            /** Meals */
+            meals: number;
+            /** Model */
+            model: boolean;
+            /** Readings */
+            readings: number;
+            /** Ready On */
+            ready_on: string | null;
+            /** Routine */
+            routine: boolean;
+            /** Shown */
+            shown: number;
+        };
+        /** LearningDaysOut */
+        LearningDaysOut: {
+            /** Days */
+            days: components["schemas"]["LearningDayOut"][];
+            /** First Ready Day */
+            first_ready_day: number | null;
+            /** First Ready On */
+            first_ready_on: string | null;
+            /** Mature Days */
+            mature_days: number;
+            /** Routine Days */
+            routine_days: number;
+            /** Today */
+            today: number;
+        };
         /** LearningOut */
         LearningOut: {
+            /** Day */
+            day?: number | null;
             /** Days Needed */
             days_needed: number;
             /** Days Seen */
             days_seen: number;
             /** Examples */
             examples: number;
+            /** First Ready Day */
+            first_ready_day?: number | null;
             /** First Ready On */
             first_ready_on: string | null;
+            /** First Shown On */
+            first_shown_on?: string | null;
             /** Since */
             since: string | null;
             /** Stage */
@@ -8083,6 +8158,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["LearningOut"] | null;
+                };
+            };
+        };
+    };
+    get_learning_days_insights_learning_days_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LearningDaysOut"];
                 };
             };
         };
