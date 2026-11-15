@@ -62,6 +62,15 @@ with buttons "I ate, log it" (meal logging) and "Not yet" (the companion's fixed
 tests and ruff, app typecheck, 118 tests and lint (no new problems), i18n tests pass. JS only, no migration; the API must
 be deployed before the OTA (an older API rejects `answer`). Not seen on a phone.
 
+15 Nov 2026, ~16:00 UTC (same thread): Guy, on API 8b47eb3: "still keeps jumping". His call's log: the first socket
+ended about 5 s after a 1.4 s greeting, a second opened with a new greeting, answered one question (10.2 s of audio) and
+ended; no talk-over, cut, ignored or playback-gap keys, no warnings, no close reason logged. E2E run 6 (real model): no
+cuts from noise or echo; a meal said with a 1.2 s pause was answered after its first half (the simulated phone cannot
+talk over; on a phone the talk-over detector covers it). Merged: API #26 (nudge after 5 s of silence, "working on it"
+line for slow app answers, audio placed by the model's timeline, settle 1.3/3.0 s, the log now says who ended a session,
+the close code, the app update/runtime and why a resumed call dropped) and app #46 (sends those codes; JS only). 353 API
+tests, 129 app tests. Next: deploy the API, OTA, Guy tries; read the new "live start/resume" and "session ended" lines.
+
 15 Nov 2026, afternoon (same thread): Guy: better but far from ChatGPT's live voice (same engine). Research: GPT-Live has no
 VAD/turn settings; its prompting guide's turn-taking lines are the lever. New `scripts/live_e2e.py` (simulated phone, real
 relay and GPT-Live, test DB only), run twice on the Mac: a long first sentence waited 8.2 s, now 2.98 s (a part of a
