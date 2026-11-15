@@ -8,7 +8,7 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
-15 Nov 2026 (G-83, thread "Add conversation bubbles to home screen"): Guy: like the website's "Hi, how was your day?",
+15 Nov 2026 (G-84, thread "Add conversation bubbles to home screen"): Guy: like the website's "Hi, how was your day?",
 the main screen opens with the companion's speech bubbles, a greeting or a question about earlier conversations, and
 offers to go on in text or by voice. Up to two bubbles above the character: a fixed greeting for the time of day when
 nothing was said for an hour, and questions the model writes in the background from recent conversations, memories and
@@ -107,6 +107,16 @@ Follow-up the same day (app ef5a03c, JS only): the food breakdown can be edited 
 confirmation, autosave when changing a saved meal); web e2e passes.
 Same day: the insight's personal reading loads by itself (no button, one line on what it is, quiet on failure, 60 s
 wait); its failure for the A1c estimate was a 500 (`days` is a count there), fixed in the API with a regression test.
+
+15 Nov 2026 (G-83, thread "Show CareLink fingerstick readings"): Guy entered a blood meter reading on his pump while
+the sensor warmed up; it reached CareLink but not Stedio. Cause: the CareLink import read only `sgs` (sensor) and the
+MEAL and INSULIN markers; BG_READING and CALIBRATION markers were skipped. Now they are saved as meter readings
+(`method` "meter", source carelink, key `carelink-bg-<ts>`), once (a calibration of the same value within 2 minutes, or
+the marker re-sent a second later, is the same reading); the 30-day history import no longer skips sensor points near
+a meter reading. The companion is told fingerstick readings on their own line and the sensor list is sensor-only. The
+app already shows `method` meter as "מד דקירה" (journal, Overview dots). Field names follow the open CareLink clients
+(`unitValue`, older `value`/`bgValue`); `scripts/carelink_marker_shape.py` prints the real shape (names only) on the
+Mac. API tests and ruff pass. Next: deploy the API on the Mac, run the shape script, Guy checks his reading.
 
 15 Nov 2026 (thread "Fix companion voice call cutting off"): Guy: in the voice call the companion still starts and
 stops. The API log of his test showed talk-over stops (`barged=1`) 0.7 s and 1.8 s into answers: the phone's talk-over
