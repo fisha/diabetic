@@ -56,6 +56,8 @@ tests, web preview e2e `tools/e2e/breakdown.cjs` pass. JS only for the app; depl
 refuses `window_types`). Itay needs no new permission.
 Follow-up the same day (app ef5a03c, JS only): the food breakdown can be edited (meal editor from a row, delete with
 confirmation, autosave when changing a saved meal); web e2e passes.
+Same day: the insight's personal reading loads by itself (no button, one line on what it is, quiet on failure, 60 s
+wait); its failure for the A1c estimate was a 500 (`days` is a count there), fixed in the API with a regression test.
 
 15 Nov 2026 (thread "Fix companion voice call cutting off"): Guy: in the voice call the companion still starts and
 stops. The API log of his test showed talk-over stops (`barged=1`) 0.7 s and 1.8 s into answers: the phone's talk-over
