@@ -2599,5 +2599,6 @@
   "meal.protein_none": "חלבון לא ידוע · הוספה",
   "meal.protein_for": "חלבון בגרמים עבור {name}",
   "meal.edit_protein": "הקישו כדי להקליד את החלבון של {name}",
-  "meal.protein_l": "חלבון"
+  "meal.protein_l": "חלבון",
+  "meal.carbs_v": "פחמימות ≈ {grams} גרם"
 }

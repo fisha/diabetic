@@ -2599,5 +2599,6 @@
   "meal.protein_none": "البروتين غير معروف · إضافة",
   "meal.protein_for": "البروتين بالغرام لـ {name}",
   "meal.edit_protein": "انقر لكتابة بروتين {name}",
-  "meal.protein_l": "بروتين"
+  "meal.protein_l": "بروتين",
+  "meal.carbs_v": "كربوهيدرات ≈ {grams} غ"
 }

@@ -2599,5 +2599,6 @@
   "meal.protein_none": "Белок неизвестен · добавить",
   "meal.protein_for": "Белок в граммах для {name}",
   "meal.edit_protein": "Нажмите, чтобы ввести белок для {name}",
-  "meal.protein_l": "Белок"
+  "meal.protein_l": "Белок",
+  "meal.carbs_v": "Углеводы ≈ {grams} г"
 }
