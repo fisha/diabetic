@@ -25,7 +25,7 @@ four languages. noindex, legal links, RTL, day/night unchanged. Web typecheck, l
 languages pass (web 441d785). Needs a website deploy on the Mac. Later the same day: the companion sits inside an
 iPhone-style frame beside the words, and (Guy: "we're not only for type 1") the website eyebrow and disclaimer, the
 app's welcome title and the privacy/terms texts say "diabetes" instead of "type 1 diabetes" (web 569ab45). The app's
-onboarding note for other types (`onb.ty_note`, "designed for type 1") is unchanged, waiting on Guy.
+onboarding note for other types ("designed for type 1") is no longer shown (app 4e99447, JS only, next OTA).
 
 15 Nov 2026 (G-81, same thread): one lock-screen card only (the app keeps its card id and token in a file, updates the
 newest and ends the rest after a restart or update) and no value on the card without a recent reading (server sends it
