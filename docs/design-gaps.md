@@ -1303,6 +1303,8 @@ Guy (15 Nov 2026): "במסך הראשי שיש את התובנות צריך כפ
 - Second follow-up (Guy, 15 Nov 2026: "if I read it I don't need to see it on the main screen; maybe a page of all
   insights"): the main screen keeps an insight only while unread and new or changed today; small wins only on their day.
   No design board for the "All insights" page: a pushed screen with the Overview's insight cards, unread first, then "Read".
+- Third follow-up (Itay via Guy, 15 Nov 2026: new insights must still show on the main screen): every unread insight is
+  a candidate, whatever its age or time of day (this time of day first, at most 5); only reading or marking takes it off.
 
 ### G-78 · A push when lunch is late (**Guy, 15 Nov 2026**, implemented-unverified)
 Guy (15 Nov 2026): "אם ארוחת הצהריים מתעכבת (45 דק ומעלה), שלח פוש למשתמש ותשאל אותו אם אכל ושאפשר לכתוב אותה ולצלם
