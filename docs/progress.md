@@ -97,6 +97,16 @@ confirmation, autosave when changing a saved meal); web e2e passes.
 Same day: the insight's personal reading loads by itself (no button, one line on what it is, quiet on failure, 60 s
 wait); its failure for the A1c estimate was a 500 (`days` is a count there), fixed in the API with a regression test.
 
+15 Nov 2026 (G-83, thread "Show CareLink fingerstick readings"): Guy entered a blood meter reading on his pump while
+the sensor warmed up; it reached CareLink but not Stedio. Cause: the CareLink import read only `sgs` (sensor) and the
+MEAL and INSULIN markers; BG_READING and CALIBRATION markers were skipped. Now they are saved as meter readings
+(`method` "meter", source carelink, key `carelink-bg-<ts>`), once (a calibration of the same value within 2 minutes, or
+the marker re-sent a second later, is the same reading); the 30-day history import no longer skips sensor points near
+a meter reading. The companion is told fingerstick readings on their own line and the sensor list is sensor-only. The
+app already shows `method` meter as "מד דקירה" (journal, Overview dots). Field names follow the open CareLink clients
+(`unitValue`, older `value`/`bgValue`); `scripts/carelink_marker_shape.py` prints the real shape (names only) on the
+Mac. API tests and ruff pass. Next: deploy the API on the Mac, run the shape script, Guy checks his reading.
+
 15 Nov 2026 (thread "Fix companion voice call cutting off"): Guy: in the voice call the companion still starts and
 stops. The API log of his test showed talk-over stops (`barged=1`) 0.7 s and 1.8 s into answers: the phone's talk-over
 detector learned the loudspeaker's echo level as an average, which drifted down until her own voice counted as the

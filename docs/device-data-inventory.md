@@ -18,6 +18,7 @@ labelling before any reminder uses them (no invented thresholds).
 | `sgs[]`, `lastSG`, `lastSGTrend` | shown | Companion, Overview, Journal | The glucose record itself |
 | `markers` INSULIN (`deliveredFastAmount`, `activationType`, `bolusType`, `completed`) | shown | Journal (bolus kind, carbs) | Bolus history; meal-to-bolus timing insights |
 | `markers` MEAL (`amount`) | shown | Journal, meal linking (G-47) | Carb entries; carb mismatch insights |
+| `markers` BG_READING, CALIBRATION (`unitValue`) | shown (G-83) | Journal and Overview as meter readings, companion | Fingerstick readings entered on the pump, e.g. during a sensor warm-up |
 | `markers` AUTO_BASAL_DELIVERY (`bolusAmount`, about 150 a day) | not read | Overview: automatic insulin per day; Journal detail of a moment | How much SmartGuard adds on its own, by time of day |
 | `markers` LOW_GLUCOSE_SUSPENDED (`deliverySuspended`) | not read | Journal row "Insulin paused"; suspend insight | Suspends seen directly, not only through alerts |
 | `markers` AUTO_MODE_STATUS | not read | Journal row; Overview: time in SmartGuard | When and how often SmartGuard is off |
