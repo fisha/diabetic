@@ -511,6 +511,13 @@
     ],
     "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
   },
+  "bk.del_failed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Deleting a meal from the breakdown sheet failed (Guy, 15 Nov 2026)."
+  },
   "bk.empty": {
     "board": "Overview",
     "review": [
@@ -4809,6 +4816,34 @@
     "review": [
       "translation"
     ]
+  },
+  "meal.auto_failed": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Autosave status while changing a saved meal (Guy, 15 Nov 2026)."
+  },
+  "meal.auto_idle": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Autosave status while changing a saved meal (Guy, 15 Nov 2026)."
+  },
+  "meal.auto_saved": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Autosave status while changing a saved meal (Guy, 15 Nov 2026)."
+  },
+  "meal.auto_saving": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Autosave status while changing a saved meal (Guy, 15 Nov 2026)."
   },
   "meal.back": {
     "board": "Meal",

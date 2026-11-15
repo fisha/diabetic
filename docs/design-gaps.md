@@ -1339,6 +1339,11 @@ sheets (`(sheets)/breakdown/[item]`), the tile's icon and number at the top, iOS
   in the batch. A sample marked deleted that the phone sends again comes back, with its journal entry unless the person
   changed or deleted that entry. The iPhone reads the last 30 days once more (`readTypes` 3, no permission sheet), so
   what was lost returns by itself.
+- Follow-up (Guy, 15 Nov 2026: "אני רוצה שיהיה אפשר לערוך את המסך הזה"): a meal logged in the app opens from the food
+  breakdown in the meal editor (foods, amounts, carbs, protein, time; a new time moves it to another part of the day),
+  and a trash button deletes it after the journal's confirmation. Pump entries stay read-only. A saved meal being changed
+  (from here or the journal) saves each change by itself after a short pause and on Back, with a status line instead of
+  the Save button; a new meal keeps Save. The sheet and the food card read the day again when they come back into view.
 
 ### G-80 · A new sensor's warm-up instead of a reading (**Guy, 15 Nov 2026**, verified-test)
 Guy (15 Nov 2026): "When a sensor is connected it usually takes an hour or two until it shows a result, so instead of a

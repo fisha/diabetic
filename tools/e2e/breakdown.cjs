@@ -82,6 +82,25 @@ const server = http.createServer((req, res) => {
         if (!found) continue;
         await tile.click(); await page.waitForTimeout(2500);
         await shot(`${key}`);
+        if (key === 'protein' && lang === 'en') {
+          // Guy, 15 Nov 2026: the breakdown can be edited. A meal opens in the meal editor, which saves by itself.
+          await page.getByRole('button', { name: /^Rice, Chicken,/ }).first().click(); await page.waitForTimeout(2500);
+          ok('meal editor opens from the breakdown', await page.getByText(/Editing a saved meal/).first().isVisible().catch(() => false));
+          ok('no Save button while editing', (await page.getByText('Save correction', { exact: true }).count()) === 0);
+          await page.getByRole('button', { name: /Tap to type the carbs of Rice/ }).first().click(); await page.waitForTimeout(300);
+          await page.getByLabel(/Carbs in grams for Rice/).last().fill('60'); await page.keyboard.press('Enter'); await page.waitForTimeout(2500);
+          ok('saved by itself', await page.getByText('Saved', { exact: true }).first().isVisible().catch(() => false));
+          await shot('protein-edit');
+          await page.getByRole('button', { name: 'Back' }).first().click(); await page.waitForTimeout(2500);
+          const recs = (await api(`/records?kind=meal&since=${encodeURIComponent(at(0).toISOString())}&until=${encodeURIComponent(at(23, 59).toISOString())}`, { token: tk })).json || [];
+          ok('the change reached the server', recs.some((r) => r.data.carbs_total_g === 60), recs.map((r) => r.data.carbs_total_g).join(','));
+          ok('back on the breakdown', await page.getByRole('button', { name: 'Delete, Yogurt' }).first().isVisible().catch(() => false));
+          await page.getByRole('button', { name: 'Delete, Yogurt' }).first().click(); await page.waitForTimeout(800);
+          await shot('protein-delete-ask');
+          await page.getByText('Delete entry', { exact: true }).last().click(); await page.waitForTimeout(2500);
+          ok('deleted meal leaves the breakdown', (await page.getByText('Yogurt', { exact: true }).count()) === 0);
+          await shot('protein-after-delete');
+        }
         const closeBtn = page.getByRole('button', { name: lang === 'he' ? 'סגירה' : 'Close' }).last();
         if (await closeBtn.count()) await closeBtn.click(); else await page.goBack();
         await page.waitForTimeout(1500);
