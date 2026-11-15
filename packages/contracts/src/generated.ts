@@ -2134,6 +2134,8 @@ export interface components {
          *     reading asked, or a follow-up. The text is what the app showed them, from their own data.
          */
         AboutIn: {
+            /** Answer */
+            answer?: "not_yet" | null;
             /** Client Id */
             client_id: string;
             /**

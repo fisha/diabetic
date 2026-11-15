@@ -33,6 +33,18 @@
         "additionalProperties": false,
         "description": "What the screen showed when the person tapped \"talk about this\" (Guy, 13 Nov 2026): an insight, the question its\nreading asked, or a follow-up. The text is what the app showed them, from their own data.",
         "properties": {
+          "answer": {
+            "anyOf": [
+              {
+                "const": "not_yet",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Answer"
+          },
           "client_id": {
             "maxLength": 64,
             "minLength": 8,
