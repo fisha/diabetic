@@ -2287,11 +2287,17 @@ export interface components {
         };
         /**
          * AnalyzeIn
-         * @description `also`: a second photo of the same meal, analysed together with this one (Guy, 15 Nov 2026).
+         * @description `also`: a second photo of the same meal, analysed together with this one. `note`: what the person wrote about the
+         *     photo before analysis, optional (Guy, 15 Nov 2026).
          */
         AnalyzeIn: {
             /** Also */
             also?: string[];
+            /**
+             * Note
+             * @default
+             */
+            note: string;
         };
         /** AppVersionOut */
         AppVersionOut: {

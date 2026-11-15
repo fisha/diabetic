@@ -2457,5 +2457,7 @@
   "meal.carbs_yours": "For the amount eaten. If you change the amount later, your value changes with it.",
   "meal.type_amount": "Tap to type the amount",
   "meal.weighs": "Weighs about {grams} g",
-  "meal.rename_only": "Just rename it to “{query}”"
+  "meal.rename_only": "Just rename it to “{query}”",
+  "meal.photo_note_l": "What's in the photo? (optional)",
+  "meal.photo_note_ph": "For example: shakshuka with pita, the rice is brown"
 }

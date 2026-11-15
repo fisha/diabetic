@@ -1270,6 +1270,8 @@ Not on the Meal board, so the screens extend MEAL-02..05 in the board's style:
 - MEAL-03 with one photo has "Add another photo" (camera; the camera's library button picks the rest) and a note that
   up to two photos (another angle, or a side dish) are analysed together. With two photos they sit side by side, each
   with retake and remove buttons; the title and button read in the plural. Choosing from photos picks up to two at once.
+- Before analysis the preview has an optional "What's in the photo?" field (Guy: "לכתוב בטקסט מה הוא צילם במידה
+  והוא רוצה"); up to 300 characters, sent with the photos as the person's description (`note`), not saved.
 - The camera, when adding, reads "Another angle, or the side dish" and has no "describe" button.
 - Both photos go to one analysis (`POST /meal/photos/{id}/analyze` with `{"also": [second id]}`); the model is told
   they show one meal and to list each food once. Both stay with the saved meal (`photo_ids`, first also in

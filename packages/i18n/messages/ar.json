@@ -2457,5 +2457,7 @@
   "meal.carbs_yours": "للكمية التي أُكلت. إذا غيّرت الكمية لاحقًا، تتغير قيمتك معها.",
   "meal.type_amount": "انقر لكتابة الكمية",
   "meal.weighs": "الوزن التقريبي: {grams} غ",
-  "meal.rename_only": "غيّر الاسم فقط إلى «{query}»"
+  "meal.rename_only": "غيّر الاسم فقط إلى «{query}»",
+  "meal.photo_note_l": "ما الذي في الصورة؟ (اختياري)",
+  "meal.photo_note_ph": "مثلًا: شكشوكة مع خبز، الأرز بني"
 }

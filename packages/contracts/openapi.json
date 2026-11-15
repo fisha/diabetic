@@ -527,7 +527,7 @@
       },
       "AnalyzeIn": {
         "additionalProperties": false,
-        "description": "`also`: a second photo of the same meal, analysed together with this one (Guy, 15 Nov 2026).",
+        "description": "`also`: a second photo of the same meal, analysed together with this one. `note`: what the person wrote about the\nphoto before analysis, optional (Guy, 15 Nov 2026).",
         "properties": {
           "also": {
             "items": {
@@ -537,6 +537,12 @@
             "maxItems": 1,
             "title": "Also",
             "type": "array"
+          },
+          "note": {
+            "default": "",
+            "maxLength": 300,
+            "title": "Note",
+            "type": "string"
           }
         },
         "title": "AnalyzeIn",
