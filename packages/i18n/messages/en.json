@@ -829,7 +829,7 @@
   "meal.title": "Log a meal",
   "meal.total.estimate": "Carbs are an estimate. Check them against what you know before you use them.",
   "meal.total_est": "Estimate, not a measurement · scaled to {portion}",
-  "meal.total_t": "Estimated carbs for what you ate",
+  "meal.total_t": "Estimated net carbs for what you ate",
   "meal.total_unknown": "Some foods have no carb value and aren’t included.",
   "meal.total_wt": "Based on weights you entered · still an estimate",
   "meal.try_again": "Try again",
@@ -2600,5 +2600,6 @@
   "meal.protein_for": "Protein in grams for {name}",
   "meal.edit_protein": "Tap to type the protein of {name}",
   "meal.protein_l": "Protein",
-  "meal.carbs_v": "Carbs ≈ {grams} g"
+  "meal.carbs_v": "Net carbs ≈ {grams} g",
+  "meal.net_note": "Net carbs: total carbohydrate without dietary fiber."
 }
