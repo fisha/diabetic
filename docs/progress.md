@@ -116,7 +116,10 @@ the marker re-sent a second later, is the same reading); the 30-day history impo
 a meter reading. The companion is told fingerstick readings on their own line and the sensor list is sensor-only. The
 app already shows `method` meter as "מד דקירה" (journal, Overview dots). Field names follow the open CareLink clients
 (`unitValue`, older `value`/`bgValue`); `scripts/carelink_marker_shape.py` prints the real shape (names only) on the
-Mac. API tests and ruff pass. Next: deploy the API on the Mac, run the shape script, Guy checks his reading.
+Mac. API tests and ruff pass. Deployed and checked on Guy's real data (BG_READING with `unitValue`).
+Follow-up (Guy, same day): the character did not react to his high fingerstick. The reaction lasted 20 minutes and the
+pump-entered reading arrived later than that; now a meter reading keeps its reaction 30 minutes and fades out by 60,
+also during a warm-up (display times, not clinical). App 593d5b5, JS only; tests 129/129, typecheck pass.
 
 15 Nov 2026 (thread "Fix companion voice call cutting off"): Guy: in the voice call the companion still starts and
 stops. The API log of his test showed talk-over stops (`barged=1`) 0.7 s and 1.8 s into answers: the phone's talk-over
