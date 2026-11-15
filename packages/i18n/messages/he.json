@@ -710,6 +710,10 @@
   "meal.ate_little": "מעט (¼)",
   "meal.ate_most": "רובה (¾)",
   "meal.ate_q": "כמה אכלתם?",
+  "meal.auto_failed": "לא נשמר. כדאי לבדוק את החיבור; השינוי הבא ינסה שוב.",
+  "meal.auto_idle": "השינויים נשמרים לבד.",
+  "meal.auto_saved": "נשמר",
+  "meal.auto_saving": "שומרים…",
   "meal.back": "חזרה",
   "meal.back_conv": "חזרה לשיחה",
   "meal.blurry": "התמונה נראית מטושטשת או חשוכה, ולכן ייתכן שמאכלים יפוספסו. צלמו שוב באור טוב יותר, או השתמשו בה בכל זאת.",
@@ -2474,6 +2478,7 @@
   "meal.photo_note_l": "מה צילמתם? (לא חובה)",
   "meal.photo_note_ph": "למשל: שקשוקה עם פיתה, האורז מלא",
   "now.mark_read": "סמן כנקרא",
+  "bk.del_failed": "לא הצלחנו למחוק. כדאי לבדוק את החיבור ולנסות שוב.",
   "bk.hours": "היום לפי שעות",
   "bk.week": "7 הימים האחרונים",
   "bk.nights": "7 הלילות האחרונים",
@@ -2503,5 +2508,13 @@
   "bk.day_sum": "{meals, plural, one {ארוחה אחת} other {# ארוחות}} · {carbs} פחמימות",
   "bk.weighed": "{a} מתוך {b} נשקלו",
   "bk.times": "{n, plural, one {פעם אחת} other {# פעמים}}",
-  "bk.open": "הצגת הפירוט"
+  "bk.open": "הצגת הפירוט",
+  "com.wu_title": "חיישן חדש בחימום",
+  "com.wu_in": "זמין בעוד כ־{minutes} דק׳",
+  "com.wu_in_h": "זמין בעוד כ־{h} שע׳ ו־{m} דק׳",
+  "com.wu_soon": "יהיה זמין בכל רגע",
+  "com.wu_meta": "{source} · התחיל ב־{time}",
+  "wdg.wu_in": "זמין בעוד {t}",
+  "com.wu_at": "מוכן ב־{time}",
+  "wdg.wu_at": "מוכן ב־{t}"
 }

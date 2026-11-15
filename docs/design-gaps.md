@@ -1339,3 +1339,31 @@ sheets (`(sheets)/breakdown/[item]`), the tile's icon and number at the top, iOS
   in the batch. A sample marked deleted that the phone sends again comes back, with its journal entry unless the person
   changed or deleted that entry. The iPhone reads the last 30 days once more (`readTypes` 3, no permission sheet), so
   what was lost returns by itself.
+- Follow-up (Guy, 15 Nov 2026: "אני רוצה שיהיה אפשר לערוך את המסך הזה"): a meal logged in the app opens from the food
+  breakdown in the meal editor (foods, amounts, carbs, protein, time; a new time moves it to another part of the day),
+  and a trash button deletes it after the journal's confirmation. Pump entries stay read-only. A saved meal being changed
+  (from here or the journal) saves each change by itself after a short pause and on Back, with a status line instead of
+  the Save button; a new meal keeps Save. The sheet and the food card read the day again when they come back into view.
+
+### G-80 · A new sensor's warm-up instead of a reading (**Guy, 15 Nov 2026**, verified-test)
+Guy (15 Nov 2026): "When a sensor is connected it usually takes an hour or two until it shows a result, so instead of a
+reading show how long until it is available. The times differ by sensor, so check how long each one takes." No design
+board; the reading's own place shows it.
+- Warm-up lengths from the makers (read 15 Nov 2026): Guardian 4, Simplera and Simplera Sync two hours
+  (minimed.com/en-us/products/compare-continuous-glucose-monitors, minimed.com Simplera Sync support page: "The warm-up
+  period lasts two hours"); FreeStyle Libre 2 and 2 Plus 60 minutes (freestyle.abbott/us-en/products/freestyle-libre-2:
+  "60-minute warm-up required when starting the sensor"), Libre 3 Plus 60 minutes (freestyle.abbott compare page),
+  Libre 3 60 minutes (ADA consumer guide only); Dexcom G6 two hours (dexcom.com FAQ "fails during the 2-hour warmup
+  period"); Dexcom G7 within 30 minutes (dexcom.com G6/G7 differences FAQ). Not confirmed from a maker page: Dexcom ONE+,
+  Dexcom G7 15 Day (Abbott's comparison says 60 minutes), Guardian Sensor 3.
+- How it is known: CareLink, the pump's `sensorState` WARM_UP (start from its "sensor connected" message or the first
+  poll that saw it); LibreLinkUp, the sensor's activation time; Tandem Source, the pump's sensor start with the sensor type
+  from its CGM readings (uploads are late, so often after the warm-up). Dexcom Share has no sensor start, so a Dexcom
+  warm-up is not shown. It ends with the first sensor reading after the start; a start more than 45 minutes past its
+  warm-up with no reading is no longer shown (CareLink follows the pump's own state instead). `GET /devices/warmup`.
+- Main screen: the reading pill under the character says "Ready in about 40 min" (or "1 h 20 min", then "Ready any
+  moment"), with "New sensor warming up · CareLink · started 14:05"; the character stays calm. Not while viewing someone
+  else's account.
+- Lock screen, Dynamic Island, home widgets, Apple Watch app and complication: a countdown iOS draws ("Ready in 39:12"),
+  then "Ready any moment"; the server pushes the card when the warm-up starts and once more when its time passes. These
+  need the next native build; until then they show the last reading as old, as before (the new fields are ignored).

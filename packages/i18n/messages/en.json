@@ -710,6 +710,10 @@
   "meal.ate_little": "A little (¼)",
   "meal.ate_most": "Most (¾)",
   "meal.ate_q": "How much did you eat?",
+  "meal.auto_failed": "Not saved. Check your connection; the next change tries again.",
+  "meal.auto_idle": "Changes save by themselves.",
+  "meal.auto_saved": "Saved",
+  "meal.auto_saving": "Saving…",
   "meal.back": "Back",
   "meal.back_conv": "Back to conversation",
   "meal.blurry": "This photo looks blurry or dark, so foods may be missed. Retake it in better light, or use it anyway.",
@@ -2474,6 +2478,7 @@
   "meal.photo_note_l": "What's in the photo? (optional)",
   "meal.photo_note_ph": "For example: shakshuka with pita, the rice is brown",
   "now.mark_read": "Mark as read",
+  "bk.del_failed": "Couldn't delete it. Check your connection and try again.",
   "bk.hours": "Today by hour",
   "bk.week": "Last 7 days",
   "bk.nights": "Last 7 nights",
@@ -2503,5 +2508,13 @@
   "bk.day_sum": "{meals, plural, one {# meal} other {# meals}} · {carbs} carbs",
   "bk.weighed": "{a} of {b} weighed",
   "bk.times": "{n, plural, one {# time} other {# times}}",
-  "bk.open": "Show the breakdown"
+  "bk.open": "Show the breakdown",
+  "com.wu_title": "New sensor warming up",
+  "com.wu_in": "Ready in about {minutes} min",
+  "com.wu_in_h": "Ready in about {h} h {m} min",
+  "com.wu_soon": "Ready any moment",
+  "com.wu_meta": "{source} · started {time}",
+  "wdg.wu_in": "Ready in {t}",
+  "com.wu_at": "Ready at {time}",
+  "wdg.wu_at": "Ready at {t}"
 }

@@ -770,6 +770,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/devices/warmup": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Sensor Warmup
+         * @description Whether a new sensor is warming up now, from the connected device services (read only).
+         */
+        get: operations["sensor_warmup_devices_warmup_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/environment": {
         parameters: {
             query?: never;
@@ -4986,6 +5006,31 @@ export interface components {
             voices: string[];
         };
         /**
+         * WarmupOut
+         * @description A new sensor warming up (G-80): no reading until `ready_at`, the maker's warm-up length after `started_at`.
+         *     From CareLink the pump itself says it is warming up; after `ready_at` it is still warming up ("any moment").
+         */
+        WarmupOut: {
+            /** Minutes */
+            minutes: number;
+            /**
+             * Ready At
+             * Format: date-time
+             */
+            ready_at: string;
+            /** Source */
+            source: string;
+            /**
+             * Started At
+             * Format: date-time
+             */
+            started_at: string;
+        };
+        /** WarmupStateOut */
+        WarmupStateOut: {
+            warmup?: components["schemas"]["WarmupOut"] | null;
+        };
+        /**
          * WhyOut
          * @description "Why am I seeing this?" for one insight: what it rests on and which of the person's goals it speaks to.
          */
@@ -5040,6 +5085,14 @@ export interface components {
             lc?: ("en" | "he" | "ar" | "ru") | null;
             /** Old */
             old: string;
+            /** Wa */
+            wa?: string | null;
+            /** Wl */
+            wl?: string | null;
+            /** Wn */
+            wn?: string | null;
+            /** Wt */
+            wt?: string | null;
         };
         /** WorkoutKindOut */
         WorkoutKindOut: {
@@ -6774,6 +6827,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+        };
+    };
+    sensor_warmup_devices_warmup_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WarmupStateOut"];
                 };
             };
         };

@@ -14,6 +14,12 @@ the companion orb (face, float, blink) in the hero, one call to action (waiting 
 safety and devices in two cards, privacy in one line, FAQ, light footer with the language links. New `web.c_*` texts in
 four languages. noindex, legal links, RTL, day/night unchanged. Web typecheck, lint, tests, build and screenshots in four
 languages pass (web 441d785). Needs a website deploy on the Mac.
+15 Nov 2026 (G-80, thread "Show sensor warm-up countdown"): while a new sensor warms up, the main screen shows how long
+until it reads ("Ready in about 40 min", then "Ready any moment") instead of the last reading. Known from CareLink's
+WARM_UP state, LibreLinkUp's activation time and Tandem's sensor start; lengths from the makers (Guardian 4/Simplera 2 h,
+Libre 60 min, G6 2 h, G7 30 min). Dexcom Share gives no start, so not shown there. API tests (new `tests/test_warmup.py`)
+and ruff, app typecheck, tests and lint (no new problems), i18n tests pass. Main screen is JS only (API first, then
+OTA). Lock screen, widgets and watch need the next native build (Swift not compiled here). Not seen on a phone.
 
 15 Nov 2026 (G-78, thread "Nudge when lunch is late"): a push 45 minutes after the person's usual lunch time when no
 meal and no bolus are recorded since 11:00, once a day, within the check-in cap and quiet hours. It asks whether they ate,
@@ -42,6 +48,8 @@ types the phone read can be found deleted (`window_types`), a re-sent sample com
 iPhones re-read 30 days once (`readTypes` 3). API tests and ruff, app typecheck, tests and lint (no new problems), i18n
 tests, web preview e2e `tools/e2e/breakdown.cjs` pass. JS only for the app; deploy the API before the OTA (an older API
 refuses `window_types`). Itay needs no new permission.
+Follow-up the same day (app ef5a03c, JS only): the food breakdown can be edited (meal editor from a row, delete with
+confirmation, autosave when changing a saved meal); web e2e passes.
 
 15 Nov 2026 (thread "Fix companion voice call cutting off"): Guy: in the voice call the companion still starts and
 stops. The API log of his test showed talk-over stops (`barged=1`) 0.7 s and 1.8 s into answers: the phone's talk-over

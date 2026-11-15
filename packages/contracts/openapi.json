@@ -8134,6 +8134,53 @@
         "title": "VoiceStatusOut",
         "type": "object"
       },
+      "WarmupOut": {
+        "description": "A new sensor warming up (G-80): no reading until `ready_at`, the maker's warm-up length after `started_at`.\nFrom CareLink the pump itself says it is warming up; after `ready_at` it is still warming up (\"any moment\").",
+        "properties": {
+          "minutes": {
+            "title": "Minutes",
+            "type": "integer"
+          },
+          "ready_at": {
+            "format": "date-time",
+            "title": "Ready At",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "started_at": {
+            "format": "date-time",
+            "title": "Started At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "started_at",
+          "ready_at",
+          "minutes"
+        ],
+        "title": "WarmupOut",
+        "type": "object"
+      },
+      "WarmupStateOut": {
+        "properties": {
+          "warmup": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WarmupOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "title": "WarmupStateOut",
+        "type": "object"
+      },
       "WhyOut": {
         "description": "\"Why am I seeing this?\" for one insight: what it rests on and which of the person's goals it speaks to.",
         "properties": {
@@ -8296,6 +8343,54 @@
             "maxLength": 80,
             "title": "Old",
             "type": "string"
+          },
+          "wa": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Wa"
+          },
+          "wl": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Wl"
+          },
+          "wn": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Wn"
+          },
+          "wt": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Wt"
           }
         },
         "required": [
@@ -10624,6 +10719,33 @@
           }
         ],
         "summary": "Tandem Sync",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/warmup": {
+      "get": {
+        "description": "Whether a new sensor is warming up now, from the connected device services (read only).",
+        "operationId": "sensor_warmup_devices_warmup_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WarmupStateOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Sensor Warmup",
         "tags": [
           "devices"
         ]
