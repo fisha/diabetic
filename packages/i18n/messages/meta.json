@@ -15714,5 +15714,250 @@
     "review": [
       "translation"
     ]
+  },
+  "sum.body_1": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.keep": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.improve": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.more": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.more_n": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.check": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.chk_range": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.basis": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.parts_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.parts_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.part_night": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.part_morning": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.part_afternoon": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.part_evening": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.part_a11y": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.tir_a11y": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_meal": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_2h": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_wk_start": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_wk_end": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_tir": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_sleep_low": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_sleep_high": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_steps_low": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_steps_high": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_rhr_low": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_rhr_high": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_days": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_band": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_seen": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_ba": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_ba_a11y": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_days_a11y": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "sum.basis_hint": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Period summary row hint (Guy, 15 Nov 2026)."
   }
 }

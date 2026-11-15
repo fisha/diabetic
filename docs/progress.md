@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+15 Nov 2026 (thread "Improve the today so far summary"): Guy: the summary should not repeat the A1c, drop "logged
+something on 1 of 1 days", show time in range as a share, and say more about what is worth checking, with round charts,
+"what to keep" and "what to improve", and more charts inside first-impression insights. Summary now: time-in-range donut
+plus small donuts by part of the day; routines split into keep / improve / more patterns, each with what was seen
+(medians), what to look at and a tap into the insight. Insight screens get an "at a glance" card (how often seen, median
+per day against the range, before/after for meals and workouts, time in range on two kinds of days for body
+relations). JS only (app d4111b5). App typecheck, tests (125) and i18n tests pass; screenshots from the web preview with
+fixtures. Not seen on a phone.
+
 15 Nov 2026 (thread "Make the website calmer and inviting"): Guy: the site felt stressful, too much information,
 colours should be softer and lighter, keeping our brand colours. Home page redesigned with the brand tokens used lightly:
 the companion orb (face, float, blink) in the hero, one call to action (waiting list, free), three one-line steps,
