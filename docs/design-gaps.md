@@ -1367,3 +1367,15 @@ board; the reading's own place shows it.
 - Lock screen, Dynamic Island, home widgets, Apple Watch app and complication: a countdown iOS draws ("Ready in 39:12"),
   then "Ready any moment"; the server pushes the card when the warm-up starts and once more when its time passes. These
   need the next native build; until then they show the last reading as old, as before (the new fields are ignored).
+
+### G-81 · One lock-screen card, and no value without a recent reading (**Guy, 15 Nov 2026**, verified-test)
+Guy (15 Nov 2026): "Can only one card show, kept updated, instead of several? If there is no recent reading, don't show
+a result."
+- Several cards: the app forgot its card each time it was closed or updated, and started another on the next exit. Now
+  the card's id and push token are kept in a small file (`live-activity.json`, no health data); the next run updates the
+  newest card a previous run left and ends the others. Cards started before this update have no record and end by
+  themselves (iOS ends a card after 8 hours).
+- No recent reading: 15 minutes after the reading (the same rule as "not current"), the server sends the card without
+  the value, only the part of the day; a new reading brings it back. The app also leaves an old value off when it shows
+  the card. A warm-up (G-80) shows a dash, not the old sensor's last value. In the next native build the card also hides
+  the value by itself at that moment instead of greying it. Home widgets and the watch keep greying an old reading.

@@ -15,6 +15,11 @@ safety and devices in two cards, privacy in one line, FAQ, light footer with the
 four languages. noindex, legal links, RTL, day/night unchanged. Web typecheck, lint, tests, build and screenshots in four
 languages pass (web 441d785). Needs a website deploy on the Mac.
 
+15 Nov 2026 (G-81, same thread): one lock-screen card only (the app keeps its card id and token in a file, updates the
+newest and ends the rest after a restart or update) and no value on the card without a recent reading (server sends it
+without the value 15 min after the reading). JS and API only; Swift also hides it locally from the next build. API tests
+and app tests pass. Not seen on a phone.
+
 15 Nov 2026 (G-80, thread "Show sensor warm-up countdown"): while a new sensor warms up, the main screen shows how long
 until it reads ("Ready in about 40 min", then "Ready any moment") instead of the last reading. Known from CareLink's
 WARM_UP state, LibreLinkUp's activation time and Tandem's sensor start; lengths from the makers (Guardian 4/Simplera 2 h,
