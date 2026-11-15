@@ -525,6 +525,23 @@
         "title": "AlertLevelOut",
         "type": "object"
       },
+      "AnalyzeIn": {
+        "additionalProperties": false,
+        "description": "`also`: a second photo of the same meal, analysed together with this one (Guy, 15 Nov 2026).",
+        "properties": {
+          "also": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "maxItems": 1,
+            "title": "Also",
+            "type": "array"
+          }
+        },
+        "title": "AnalyzeIn",
+        "type": "object"
+      },
       "AppVersionOut": {
         "properties": {
           "install_url": {
@@ -4458,6 +4475,23 @@
             ],
             "default": null,
             "title": "Photo Id"
+          },
+          "photo_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "maxItems": 2,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Photo Ids"
           },
           "protein_total_g": {
             "anyOf": [
@@ -12756,6 +12790,23 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/AnalyzeIn"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {

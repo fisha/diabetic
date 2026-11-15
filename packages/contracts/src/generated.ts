@@ -2285,6 +2285,14 @@ export interface components {
              */
             sound: boolean;
         };
+        /**
+         * AnalyzeIn
+         * @description `also`: a second photo of the same meal, analysed together with this one (Guy, 15 Nov 2026).
+         */
+        AnalyzeIn: {
+            /** Also */
+            also?: string[];
+        };
         /** AppVersionOut */
         AppVersionOut: {
             /** Install Url */
@@ -3683,6 +3691,11 @@ export interface components {
              * @default null
              */
             photo_id: string | null;
+            /**
+             * Photo Ids
+             * @default null
+             */
+            photo_ids: string[] | null;
             /**
              * Protein Total G
              * @default null
@@ -8254,7 +8267,11 @@ export interface operations {
             };
             cookie?: never;
         };
-        requestBody?: never;
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["AnalyzeIn"] | null;
+            };
+        };
         responses: {
             /** @description Successful Response */
             200: {

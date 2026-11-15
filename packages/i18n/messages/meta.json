@@ -4464,6 +4464,13 @@
       "translation"
     ]
   },
+  "meal.a1_two": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
+  },
   "meal.a2": {
     "board": "Meal",
     "review": [
@@ -4494,6 +4501,20 @@
     "review": [
       "translation"
     ]
+  },
+  "meal.add_photo": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
+  },
+  "meal.add_photo_b": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
   },
   "meal.amount_of": {
     "board": "Meal",
@@ -4603,6 +4624,13 @@
       "translation"
     ]
   },
+  "meal.carbs_yours": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
+  },
   "meal.change_food": {
     "board": "Meal",
     "review": [
@@ -4620,6 +4648,13 @@
     "review": [
       "translation"
     ]
+  },
+  "meal.check_photos": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
   },
   "meal.check_t": {
     "board": "Meal",
@@ -4705,6 +4740,13 @@
       "translation"
     ]
   },
+  "meal.edit_carbs": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
+  },
   "meal.editing": {
     "board": "Meal",
     "review": [
@@ -4765,6 +4807,13 @@
     "review": [
       "translation"
     ]
+  },
+  "meal.frame_more": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
   },
   "meal.g_carbs": {
     "board": "Meal",
@@ -4910,6 +4959,13 @@
       "translation"
     ]
   },
+  "meal.photo_n_a11y": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
+  },
   "meal.photo_note": {
     "board": "Meal",
     "review": [
@@ -4928,6 +4984,20 @@
       "translation"
     ]
   },
+  "meal.remove_photo": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
+  },
+  "meal.rename_only": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
+  },
   "meal.replace": {
     "board": "Meal",
     "review": [
@@ -4939,6 +5009,13 @@
     "review": [
       "translation"
     ]
+  },
+  "meal.retake_n": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
   },
   "meal.retake_photo": {
     "board": "Meal",
@@ -5038,6 +5115,13 @@
       "translation"
     ]
   },
+  "meal.type_amount": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
+  },
   "meal.u_bowl": {
     "board": "Meal",
     "review": [
@@ -5111,6 +5195,13 @@
       "translation"
     ]
   },
+  "meal.use_photos": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
+  },
   "meal.view_jrn": {
     "board": "Meal",
     "review": [
@@ -5123,6 +5214,13 @@
       "translation"
     ],
     "note": "RU uses a (а) gender form; review."
+  },
+  "meal.weighs": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Up to two meal photos and easier editing (Guy, 15 Nov 2026)."
   },
   "meal.what": {
     "board": "Meal",
