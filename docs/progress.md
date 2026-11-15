@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+15 Nov 2026 (thread "Fix push-opened banner on main screen"): Guy tapped a check-in push ("you have a check-in from
+the companion") and the main screen opened with a banner that pushed everything down and only said "opened from the
+19:03 check, sent, not confirmed seen". Now the follow-up opened from a notification floats over the screen under the
+header (`FollowUpCard`) with "Check-in · time", the companion's question, the app's fixed reason (app-made check-ins
+only), a close button and the quick answers; a meal check-in also offers "Yes, log my meal". The push (server) and the
+phone's local notification carry the follow-up's title instead of the generic line, unless it has a digit or is over
+110 characters (api 3a57e8e, app fb5336c, JS only). API tests (377) and ruff, app typecheck, lint and tests (129) pass;
+seen in a web export against the e2e API. Deploy the API, then the testers OTA. Not seen on a phone.
+
 15 Nov 2026 (G-84, thread "Add conversation bubbles to home screen"): Guy: like the website's "Hi, how was your day?",
 the main screen opens with the companion's speech bubbles, a greeting or a question about earlier conversations, and
 offers to go on in text or by voice. Up to two bubbles above the character: a fixed greeting for the time of day when
