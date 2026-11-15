@@ -2492,5 +2492,13 @@
   "bk.day_sum": "{meals, plural, one {# meal} other {# meals}} · {carbs} carbs",
   "bk.weighed": "{a} of {b} weighed",
   "bk.times": "{n, plural, one {# time} other {# times}}",
-  "bk.open": "Show the breakdown"
+  "bk.open": "Show the breakdown",
+  "com.wu_title": "New sensor warming up",
+  "com.wu_in": "Ready in about {minutes} min",
+  "com.wu_in_h": "Ready in about {h} h {m} min",
+  "com.wu_soon": "Ready any moment",
+  "com.wu_meta": "{source} · started {time}",
+  "wdg.wu_in": "Ready in {t}",
+  "com.wu_at": "Ready at {time}",
+  "wdg.wu_at": "Ready at {t}"
 }

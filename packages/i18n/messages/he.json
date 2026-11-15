@@ -2492,5 +2492,13 @@
   "bk.day_sum": "{meals, plural, one {ארוחה אחת} other {# ארוחות}} · {carbs} פחמימות",
   "bk.weighed": "{a} מתוך {b} נשקלו",
   "bk.times": "{n, plural, one {פעם אחת} other {# פעמים}}",
-  "bk.open": "הצגת הפירוט"
+  "bk.open": "הצגת הפירוט",
+  "com.wu_title": "חיישן חדש בחימום",
+  "com.wu_in": "זמין בעוד כ־{minutes} דק׳",
+  "com.wu_in_h": "זמין בעוד כ־{h} שע׳ ו־{m} דק׳",
+  "com.wu_soon": "יהיה זמין בכל רגע",
+  "com.wu_meta": "{source} · התחיל ב־{time}",
+  "wdg.wu_in": "זמין בעוד {t}",
+  "com.wu_at": "מוכן ב־{time}",
+  "wdg.wu_at": "מוכן ב־{t}"
 }

@@ -2492,5 +2492,13 @@
   "bk.day_sum": "{meals, plural, zero {لا وجبات} one {وجبة واحدة} two {وجبتان} few {# وجبات} many {# وجبة} other {# وجبة}} · {carbs} كربوهيدرات",
   "bk.weighed": "وُزن {a} من {b}",
   "bk.times": "{n, plural, zero {ولا مرة} one {مرة واحدة} two {مرتان} few {# مرات} many {# مرة} other {# مرة}}",
-  "bk.open": "عرض التفاصيل"
+  "bk.open": "عرض التفاصيل",
+  "com.wu_title": "مستشعر جديد في مرحلة الإحماء",
+  "com.wu_in": "جاهز بعد نحو {minutes} د",
+  "com.wu_in_h": "جاهز بعد نحو {h} س و{m} د",
+  "com.wu_soon": "سيكون جاهزًا في أي لحظة",
+  "com.wu_meta": "{source} · بدأ {time}",
+  "wdg.wu_in": "جاهز بعد {t}",
+  "com.wu_at": "جاهز عند {time}",
+  "wdg.wu_at": "جاهز عند {t}"
 }

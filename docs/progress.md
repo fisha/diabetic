@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+15 Nov 2026 (G-80, thread "Show sensor warm-up countdown"): while a new sensor warms up, the main screen shows how long
+until it reads ("Ready in about 40 min", then "Ready any moment") instead of the last reading. Known from CareLink's
+WARM_UP state, LibreLinkUp's activation time and Tandem's sensor start; lengths from the makers (Guardian 4/Simplera 2 h,
+Libre 60 min, G6 2 h, G7 30 min). Dexcom Share gives no start, so not shown there. API tests (new `tests/test_warmup.py`)
+and ruff, app typecheck, tests and lint (no new problems), i18n tests pass. Main screen is JS only (API first, then
+OTA). Lock screen, widgets and watch need the next native build (Swift not compiled here). Not seen on a phone.
+
 15 Nov 2026 (G-78, thread "Nudge when lunch is late"): a push 45 minutes after the person's usual lunch time when no
 meal and no bolus are recorded since 11:00, once a day, within the check-in cap and quiet hours. It asks whether they ate,
 with buttons "I ate, log it" (meal logging) and "Not yet" (the companion's fixed line on regular meal times). API 346
