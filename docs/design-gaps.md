@@ -1300,6 +1300,9 @@ Guy (15 Nov 2026): "במסך הראשי שיש את התובנות צריך כפ
   card that is not urgent has it: the part of the day, compliments, small wins, weather tips and insights. Readings out of
   range, device alerts, reminders and the set past its days do not. Non-insight cards: `POST /insights/home-read`, listed
   in `done` for 7 days; daily ones carry the local date (the part of the day also its 3-hour block) and return the next day.
+- Second follow-up (Guy, 15 Nov 2026: "if I read it I don't need to see it on the main screen; maybe a page of all
+  insights"): the main screen keeps an insight only while unread and new or changed today; small wins only on their day.
+  No design board for the "All insights" page: a pushed screen with the Overview's insight cards, unread first, then "Read".
 
 ### G-78 · A push when lunch is late (**Guy, 15 Nov 2026**, implemented-unverified)
 Guy (15 Nov 2026): "אם ארוחת הצהריים מתעכבת (45 דק ומעלה), שלח פוש למשתמש ותשאל אותו אם אכל ושאפשר לכתוב אותה ולצלם

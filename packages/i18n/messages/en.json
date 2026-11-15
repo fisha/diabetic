@@ -2591,5 +2591,8 @@
   "ins.ch_days_a11y": "{label}: median {value}",
   "sum.basis_hint": "Opens the insight with all the details",
   "ovr.stale_wu": "No new sensor data for {minutes} minutes: a new sensor is warming up and should be ready at {time}.",
-  "ovr.stale_wu_soon": "No new sensor data for {minutes} minutes: a new sensor is warming up and should be ready any moment."
+  "ovr.stale_wu_soon": "No new sensor data for {minutes} minutes: a new sensor is warming up and should be ready any moment.",
+  "ins.all_t": "All insights",
+  "ins.all_link": "All insights",
+  "ins.all_read": "Read"
 }
