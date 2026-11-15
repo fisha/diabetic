@@ -490,6 +490,216 @@
     ],
     "note": "Card title: walking, heart rate and last night's sleep from the health app (G-72)."
   },
+  "bk.awake_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.bed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.day_sum": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.empty": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.full_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.full_part": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.full_today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.full_yes": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.hours": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.meal": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.nights": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.no_awake": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.no_meals": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.open": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.peak": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.pump": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.slot_breakfast": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.slot_dinner": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.slot_lunch": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.slot_night": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.st_asleep": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.st_awake": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.st_core": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.st_deep": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.st_in_bed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.st_rem": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.times": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.wake": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.week": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
+  "bk.weighed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
+  },
   "cmp.badge.confirmed": {
     "board": "Components",
     "review": [

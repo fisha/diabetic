@@ -1318,3 +1318,24 @@ Guy (15 Nov 2026): "אם ארוחת הצהריים מתעכבת (45 דק ומע�
   balanced and is good for the body, send a photo or a few words when you eat. Never anything about insulin.
   `POST /conversation/about` with `answer: "not_yet"` (only for this check-in).
 - The notification category is set from JS, so this ships as an OTA without a new build.
+
+### G-79 · Tile breakdowns on Overview, and workouts lost by an interrupted Health sync (**Itay via Guy, 15 Nov 2026**, verified-test)
+Itay (tester, via Guy, 15 Nov 2026): "When clicking on any of the box, I would like to see the breakdown, for example 51
+protein - I would like to see how much in breakfast, lunch, etc." No design board; a native form sheet like the log
+sheets (`(sheets)/breakdown/[item]`), the tile's icon and number at the top, iOS grouped lists under it.
+- Body tiles: steps and walk/run show today's hours as bars (midnight to now, left to right like a clock), the busiest
+  hour and the last 7 days. Heart rate: hours with mean and range. Resting: the last 7 days. Sleep: last night's stages as
+  a timeline from bedtime to waking, bedtime, waking and minutes per stage, and the last 7 nights. Times awake: each
+  awakening with its times and minutes, and the last 7 nights. All from `GET /health-data/today/details`; hours come from
+  the one source the day's total uses, so they add up to the tile.
+- Food tiles: today's meals grouped by part of the day (breakfast 4-11, lunch 11-16, dinner 16-23, late night otherwise,
+  the routine's slots), each with the group's carbs or protein, and each meal with its time and value; a pump's copy of a
+  logged meal counted once. Full days: the last 7 days, each fully logged, partly logged, nothing, or today (counts once
+  the day ends). No meal is named "snack": there is no rule for it that is not invented.
+- Itay's empty Activity filter: his iPhone did send workouts (21 since he connected), but a sync that the phone's lock
+  interrupted part way read only some types, and the server took every type missing from the batch as deleted in Apple
+  Health, his workouts among them (and with them their journal entries). Now the phone says which types it read
+  (`window_types`) and only those can be found deleted; an older app version without it counts only the types present
+  in the batch. A sample marked deleted that the phone sends again comes back, with its journal entry unless the person
+  changed or deleted that entry. The iPhone reads the last 30 days once more (`readTypes` 3, no permission sheet), so
+  what was lost returns by itself.
