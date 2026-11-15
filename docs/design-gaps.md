@@ -1261,3 +1261,22 @@ answer; the meal editor's own question did not change the carbs either. No desig
 - In a call the open cards show under the character, like profile cards (G-62).
 - Meal editor: answering a food's question re-estimates that food with the answer and keeps the amount and unit.
 
+
+### G-76 · Up to two meal photos, and easier correction of what was found (**Guy, 15 Nov 2026**, implemented-unverified)
+
+Guy: "צריך אפשרות בצילום תמונות שתהיה אפשרות לצלם עד שתי תמונות, אחר כך שיהיה נוח לערוך את הפרטים שהוא מזהה".
+Not on the Meal board, so the screens extend MEAL-02..05 in the board's style:
+
+- MEAL-03 with one photo has "Add another photo" (camera; the camera's library button picks the rest) and a note that
+  up to two photos (another angle, or a side dish) are analysed together. With two photos they sit side by side, each
+  with retake and remove buttons; the title and button read in the plural. Choosing from photos picks up to two at once.
+- The camera, when adding, reads "Another angle, or the side dish" and has no "describe" button.
+- Both photos go to one analysis (`POST /meal/photos/{id}/analyze` with `{"also": [second id]}`); the model is told
+  they show one meal and to list each food once. Both stay with the saved meal (`photo_ids`, first also in
+  `photo_id`), follow the photo-retention setting, and show side by side in the journal.
+- MEAL-05: the photos stay small at the top. The food name has a pencil; tapping it opens the change sheet with the name
+  filled in and "Just rename it to …", which keeps the amounts and carbs. The amount between − and + can be typed. The
+  carbs can be typed (for the amount eaten, as shown); every unit is scaled, so later amount changes follow, and the
+  food reads "Entered by you" (its question is no longer asked). An estimated weight shows under the amount when the
+  provider gave one, and the provider's assumption shows under the label. Changes apply as made; Save stays (saving is
+  the step that adds the meal).

@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+15 Nov 2026 (G-76, thread "Improve meal photo capture and editing"): a meal can have up to two photos (another angle,
+or a side dish), taken one after the other or picked together; both go to one analysis and stay with the saved meal
+(`photo_ids`), side by side in the journal. The review screen is easier to correct: type the amount, type the carbs
+(scaled with later amount changes), rename a food without losing its estimate, an estimated weight and the model's
+assumption under each food, the photos at the top. API 336 tests and ruff, app typecheck, 112 tests and lint (no new
+problems), i18n tests, browser e2e (`tools/e2e/meal.cjs`, two photos, typed amount, typed carbs, rename) pass; Hebrew day
+and night checked in the web preview. JS only for the app; the API must be deployed before the OTA (older API refuses
+`photo_ids`). Not run on a phone; real two-photo quality with OpenAI not checked.
+
 14 Nov 2026 (G-75, thread "Log food and readings by chat and voice"): the companion logs from the text chat and live
 voice: cards for a meal (with the food estimate), activity, insulin the person says they took (never with a connected
 pump) and a note; Save on the card or "save it" in words; a clarified meal replaces its card or updates the saved meal.
