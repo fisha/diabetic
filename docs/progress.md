@@ -27,6 +27,10 @@ iPhone-style frame beside the words, and (Guy: "we're not only for type 1") the 
 app's welcome title and the privacy/terms texts say "diabetes" instead of "type 1 diabetes" (web 569ab45). The app's
 onboarding note for other types ("designed for type 1") is no longer shown (app 4e99447, JS only, next OTA).
 
+15 Nov 2026 (G-80 follow-up, same thread): Guy saw "the app may not be updated" on Overview during his warm-up; the
+note now says a new sensor is warming up and when it is ready. A push "Sensor is reading again" when the first reading of
+a new sensor arrives (CareLink, Libre, Tandem). API and app tests pass. Not seen on a phone.
+
 15 Nov 2026 (G-81, same thread): one lock-screen card only (the app keeps its card id and token in a file, updates the
 newest and ends the rest after a restart or update) and no value on the card without a recent reading (server sends it
 without the value 15 min after the reading). JS and API only; Swift also hides it locally from the next build. API tests

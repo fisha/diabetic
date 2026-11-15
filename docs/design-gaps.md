@@ -1364,6 +1364,10 @@ board; the reading's own place shows it.
 - Guy, 15 Nov 2026 (later): the time left as a digital countdown timer. Main screen: "Ready in" above a ticking
   01:42:17 in the reading's own large digits, then "Ready at 18:42 · CareLink"; the lock screen's countdown is drawn the
   same way (next build).
+- Guy, 15 Nov 2026 (after a real warm-up): Overview's "no new sensor data for N minutes" note no longer says the app may
+  not be updated while a new sensor warms up; it says the sensor is warming up and when it should be ready. And a push
+  "Sensor is reading again" when the new sensor's first reading arrives (once per sensor, only while that reading is
+  under 30 minutes old, at least 15 minutes after the start; worker step `sensor_ready`).
 - Main screen: the reading pill under the character says "Ready in about 40 min" (or "1 h 20 min", then "Ready any
   moment"), with "New sensor warming up · CareLink · started 14:05"; the character stays calm. Not while viewing someone
   else's account.
