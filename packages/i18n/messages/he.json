@@ -2594,5 +2594,10 @@
   "ovr.stale_wu_soon": "אין נתוני חיישן חדשים כבר {minutes} דקות: חיישן חדש בחימום ויהיה זמין בכל רגע.",
   "ins.all_t": "כל התובנות",
   "ins.all_link": "כל התובנות",
-  "ins.all_read": "נקראו"
+  "ins.all_read": "נקראו",
+  "meal.protein_v": "חלבון ≈ {grams} גרם",
+  "meal.protein_none": "חלבון לא ידוע · הוספה",
+  "meal.protein_for": "חלבון בגרמים עבור {name}",
+  "meal.edit_protein": "הקישו כדי להקליד את החלבון של {name}",
+  "meal.protein_l": "חלבון"
 }

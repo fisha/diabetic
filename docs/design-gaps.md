@@ -1282,6 +1282,8 @@ Not on the Meal board, so the screens extend MEAL-02..05 in the board's style:
   food reads "Entered by you" (its question is no longer asked). An estimated weight shows under the amount when the
   provider gave one, and the provider's assumption shows under the label. Changes apply as made; Save stays (saving is
   the step that adds the meal).
+- Protein (Itay via Guy, 15 Nov): each food shows its protein for the amount eaten, tappable to type; the total and the
+  saved card show protein when every food has a value.
 
 ### G-77 · "Mark as read" on the main screen's insights (**Guy, 15 Nov 2026**, verified-test)
 Guy (15 Nov 2026): "במסך הראשי שיש את התובנות צריך כפתור של סמן כנקרא ואז אם משתמש מסמן את זה אז זה לא מופיע יותר

@@ -161,6 +161,11 @@ for the ranker; the companion hears it). API 337 tests and ruff, app typecheck, 
 web typecheck, i18n tests pass; web preview e2e `tools/e2e/mark-read.cjs` passes (hide, kept after reload, still in
 Overview), Hebrew day and night checked. JS only, no migration. Next: deploy the API, then OTA.
 
+15 Nov 2026 (G-76 follow-up, Itay via Guy): protein on the meal. Food search already brought protein per 100 g and
+stored it, but it was never shown. Each food now shows its protein (or "unknown · add") and can be typed (scaled with
+later amount changes); the total and the saved card show protein when every food has it. App typecheck, 131 tests, lint
+(no new problems), meal e2e 19/19 pass. JS only.
+
 15 Nov 2026 (G-76, thread "Improve meal photo capture and editing"): a meal can have up to two photos (another angle,
 or a side dish), taken one after the other or picked together; both go to one analysis and stay with the saved meal
 (`photo_ids`), side by side in the journal. An optional text about the photos goes with them to the analysis. The review screen is easier to correct: type the amount, type the carbs

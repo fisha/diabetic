@@ -2594,5 +2594,10 @@
   "ovr.stale_wu_soon": "لا بيانات جديدة من المستشعر منذ {minutes} دقيقة: مستشعر جديد في مرحلة الإحماء وسيكون جاهزًا في أي لحظة.",
   "ins.all_t": "كل الرؤى",
   "ins.all_link": "كل الرؤى",
-  "ins.all_read": "تمت قراءتها"
+  "ins.all_read": "تمت قراءتها",
+  "meal.protein_v": "بروتين ≈ {grams} غ",
+  "meal.protein_none": "البروتين غير معروف · إضافة",
+  "meal.protein_for": "البروتين بالغرام لـ {name}",
+  "meal.edit_protein": "انقر لكتابة بروتين {name}",
+  "meal.protein_l": "بروتين"
 }

@@ -16209,5 +16209,40 @@
       "translation"
     ],
     "note": "Heading over the insights already read on the all-insights page."
+  },
+  "meal.protein_v": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Protein shown and editable on the meal (Itay via Guy, 15 Nov 2026)."
+  },
+  "meal.protein_none": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Protein shown and editable on the meal (Itay via Guy, 15 Nov 2026)."
+  },
+  "meal.protein_for": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Protein shown and editable on the meal (Itay via Guy, 15 Nov 2026)."
+  },
+  "meal.edit_protein": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Protein shown and editable on the meal (Itay via Guy, 15 Nov 2026)."
+  },
+  "meal.protein_l": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Protein shown and editable on the meal (Itay via Guy, 15 Nov 2026)."
   }
 }

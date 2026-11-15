@@ -74,9 +74,15 @@ const server = http.createServer((req, res) => {
     await shot('m03-search');
     ok('search result', await page.getByText('Apple, raw').first().isVisible());
     await page.getByText('Apple, raw').first().click(); await page.waitForTimeout(800);
+    // Protein from the food database shows on the food and can be typed (Itay, 15 Nov 2026).
+    ok('protein from search shown', await page.getByText('Protein ≈ 10 g').first().isVisible());
+    await page.getByRole('button', { name: /Tap to type the protein of Apple, raw/ }).first().click(); await page.waitForTimeout(300);
+    await page.getByLabel(/Protein in grams for Apple, raw/).last().fill('12'); await page.keyboard.press('Enter'); await page.waitForTimeout(500);
+    ok('typed protein shown', await page.getByText('Protein ≈ 12 g').first().isVisible());
     await page.getByText('Save meal', { exact: true }).last().click(); await page.waitForTimeout(2000);
     meals = (await api(`/records?${range}&kind=meal`, { token: tf.access_token })).json;
     const text = meals.find((m) => m.source !== 'photo-estimate');
+    ok('typed protein stored', !!text && text.data.items[2].protein_g === 12, JSON.stringify(text && text.data.items[2]));
     ok('described meal stored', !!text && text.data.items.length === 3 && text.data.carbs_total_g === Math.round(30 + 30 + 20), JSON.stringify(text && text.data));
 
     // Two photos of one meal analysed together, then corrected on the review (Guy, 15 Nov 2026).
