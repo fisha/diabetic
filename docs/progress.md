@@ -16,7 +16,9 @@ logged meals, activity and notes (`GET /conversation/openers`, kept in `user_set
 `c9d0e1f2a3b7`). No numbers, doses or alarming words; such questions are dropped. Tap: "Reply in text" opens the
 conversation with the bubble; "Talk by voice" starts the live call, which opens by asking it. "Tap to talk" and the
 carousel are smaller. API tests (369) and ruff, app typecheck and tests (129), i18n tests and web e2e
-`tools/e2e/openers.cjs` (en light, he light, he dark) pass. Voice from a bubble verified in the API test only. Deploy
+`tools/e2e/openers.cjs` (en light, he light, he dark) pass. Voice from a bubble verified in the API test only. Later
+the same day (Guy): one bubble at a time, taking turns every 7 s, shaped as a speech bubble with a tail to the
+character (app 7e3b3c2, JS only). Deploy
 the API (migration, back up first) before the OTA. Not seen on a phone.
 
 15 Nov 2026 (G-82, thread "Align the learning progress screens"): Guy: Routine said "day 5 of about 6" while Overview's
