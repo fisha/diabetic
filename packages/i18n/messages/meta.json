@@ -2115,6 +2115,48 @@
       "translation"
     ]
   },
+  "com.wu_at": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "The clock time the new sensor should give its first reading (Guy, 15 Nov 2026)."
+  },
+  "com.wu_in": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Time until the new sensor's first reading, from the maker's warm-up length (about)."
+  },
+  "com.wu_in_h": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Same as com.wu_in for an hour or more."
+  },
+  "com.wu_meta": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "{source} is the device service (CareLink, FreeStyle Libre, Tandem); {time} the clock time the warm-up began."
+  },
+  "com.wu_soon": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "The expected warm-up has passed and no reading has come yet."
+  },
+  "com.wu_title": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "A new CGM sensor in its warm-up, before its first reading (G-80). Shown instead of the latest reading."
+  },
   "com.yday": {
     "board": "Companion",
     "review": [
@@ -14668,6 +14710,20 @@
       "translation"
     ],
     "note": "Apple Watch complication and app, when the iPhone has no reading to send"
+  },
+  "wdg.wu_at": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock screen, widget and watch; {t} is the clock time iOS draws."
+  },
+  "wdg.wu_in": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock screen, widget and watch; {t} is the countdown iOS draws."
   },
   "web.a1": {
     "board": "Website",
