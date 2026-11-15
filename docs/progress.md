@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+15 Nov 2026 (thread "Make the website calmer and inviting"): Guy: the site felt stressful, too much information,
+colours should be softer and lighter, keeping our brand colours. Home page redesigned with the brand tokens used lightly:
+the companion orb (face, float, blink) in the hero, one call to action (waiting list, free), three one-line steps,
+safety and devices in two cards, privacy in one line, FAQ, light footer with the language links. New `web.c_*` texts in
+four languages. noindex, legal links, RTL, day/night unchanged. Web typecheck, lint, tests, build and screenshots in four
+languages pass (web 441d785). Needs a website deploy on the Mac.
+
 15 Nov 2026 (G-80, thread "Show sensor warm-up countdown"): while a new sensor warms up, the main screen shows how long
 until it reads ("Ready in about 40 min", then "Ready any moment") instead of the last reading. Known from CareLink's
 WARM_UP state, LibreLinkUp's activation time and Tandem's sensor start; lengths from the makers (Guardian 4/Simplera 2 h,

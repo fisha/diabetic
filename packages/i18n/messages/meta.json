@@ -15413,6 +15413,84 @@
       "translation"
     ]
   },
+  "web.c_sub": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Calmer home page (Guy, 15 Nov 2026)"
+  },
+  "web.c_hi": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Calmer home page (Guy, 15 Nov 2026)"
+  },
+  "web.c_how_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Calmer home page (Guy, 15 Nov 2026)"
+  },
+  "web.c_s1": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Calmer home page (Guy, 15 Nov 2026)"
+  },
+  "web.c_s2": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Calmer home page (Guy, 15 Nov 2026)"
+  },
+  "web.c_s3": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Calmer home page (Guy, 15 Nov 2026)"
+  },
+  "web.c_safe_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Calmer home page (Guy, 15 Nov 2026)"
+  },
+  "web.c_safe_b": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Calmer home page (Guy, 15 Nov 2026)"
+  },
+  "web.c_dev_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Calmer home page (Guy, 15 Nov 2026)"
+  },
+  "web.c_dev_opt": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Calmer home page (Guy, 15 Nov 2026)"
+  },
+  "web.c_pv_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Calmer home page (Guy, 15 Nov 2026)"
+  },
   "win.basis_best": {
     "board": "Overview",
     "review": [
