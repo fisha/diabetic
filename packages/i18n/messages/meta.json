@@ -3356,6 +3356,13 @@
       "translation"
     ]
   },
+  "ins.rd_loading": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Personal reading loads by itself in the insight detail (Guy, 15 Nov 2026)."
+  },
   "ins.rd_missing": {
     "board": "Insights",
     "review": [
@@ -3373,6 +3380,13 @@
     "review": [
       "translation"
     ]
+  },
+  "ins.rd_what": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Personal reading loads by itself in the insight detail (Guy, 15 Nov 2026)."
   },
   "ins.set_cap": {
     "board": "Settings",
