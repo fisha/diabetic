@@ -127,6 +127,12 @@ days with fewer and more steps, and with a lower and higher resting heart rate (
 too; the companion hears them. API tests (new `test_body.py`) and ruff, app typecheck and tests, web typecheck, lint
 and tests, i18n tests pass. No migration, no native change (OTA). Not run on a phone. Next: deploy the API, then OTA.
 
+15 Nov 2026 (G-71 follow-up): company details from Guy (Ming GF Ltd, Tel Aviv, Israel) in the privacy policy,
+terms and accessibility statement in all four languages and on the website footer; governing law Israel, courts in
+Tel Aviv. The app's Privacy policy button opens the website's policy when `EXPO_PUBLIC_WEBSITE_URL` is set (the web
+build uses its own origin); without it the old "not published yet" note stays. Remaining placeholders are in
+`docs/legal-open-items.md`.
+
 14 Nov 2026 (G-71, thread "Write privacy and terms pages"): the website's footer links open real pages: privacy
 policy (GDPR and Israeli Amendment 13: controller, data, legal bases with explicit consent for health data, processors,
 read-only devices, transfers, retention, rights, security), terms of use (mentor, no treatment instructions or doses,

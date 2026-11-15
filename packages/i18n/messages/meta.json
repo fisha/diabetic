@@ -15072,6 +15072,13 @@
       "translation"
     ]
   },
+  "web.foot_co": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website footer: company line (Guy, 15 Nov 2026). {year} is the current year."
+  },
   "web.foot_nav": {
     "board": "Website",
     "review": [
