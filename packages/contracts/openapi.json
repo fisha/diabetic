@@ -1797,7 +1797,8 @@
               "known",
               "not_relevant",
               "other",
-              "mute"
+              "mute",
+              "read"
             ],
             "title": "Verdict",
             "type": "string"
@@ -3958,6 +3959,14 @@
                 "type": "null"
               }
             ]
+          },
+          "done": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Done",
+            "type": "array"
           },
           "findings": {
             "default": [],

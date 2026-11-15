@@ -2459,5 +2459,6 @@
   "meal.weighs": "Weighs about {grams} g",
   "meal.rename_only": "Just rename it to “{query}”",
   "meal.photo_note_l": "What's in the photo? (optional)",
-  "meal.photo_note_ph": "For example: shakshuka with pita, the rice is brown"
+  "meal.photo_note_ph": "For example: shakshuka with pita, the rice is brown",
+  "now.mark_read": "Mark as read"
 }

@@ -2459,5 +2459,6 @@
   "meal.weighs": "משקל משוער: {grams} גרם",
   "meal.rename_only": "רק לשנות את השם ל„{query}”",
   "meal.photo_note_l": "מה צילמתם? (לא חובה)",
-  "meal.photo_note_ph": "למשל: שקשוקה עם פיתה, האורז מלא"
+  "meal.photo_note_ph": "למשל: שקשוקה עם פיתה, האורז מלא",
+  "now.mark_read": "סמן כנקרא"
 }

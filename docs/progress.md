@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+15 Nov 2026 (G-77, thread "Let users mark insights as read"): a "mark as read" chip on insight cards in the carousel
+under the companion. The card leaves at once; the server keeps it per account (feedback `read`, `InsightsOut.done`), so
+it stays off the main screen on every device until the insight changes; Overview still lists it. Fed to learning (an open
+for the ranker; the companion hears it). API 337 tests and ruff, app typecheck, 110 tests and lint (no new problems),
+web typecheck, i18n tests pass; web preview e2e `tools/e2e/mark-read.cjs` passes (hide, kept after reload, still in
+Overview), Hebrew day and night checked. JS only, no migration. Next: deploy the API, then OTA.
+
 15 Nov 2026 (G-76, thread "Improve meal photo capture and editing"): a meal can have up to two photos (another angle,
 or a side dish), taken one after the other or picked together; both go to one analysis and stay with the saved meal
 (`photo_ids`), side by side in the journal. An optional text about the photos goes with them to the analysis. The review screen is easier to correct: type the amount, type the carbs

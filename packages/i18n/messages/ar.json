@@ -2459,5 +2459,6 @@
   "meal.weighs": "الوزن التقريبي: {grams} غ",
   "meal.rename_only": "غيّر الاسم فقط إلى «{query}»",
   "meal.photo_note_l": "ما الذي في الصورة؟ (اختياري)",
-  "meal.photo_note_ph": "مثلًا: شكشوكة مع خبز، الأرز بني"
+  "meal.photo_note_ph": "مثلًا: شكشوكة مع خبز، الأرز بني",
+  "now.mark_read": "وضع علامة كمقروء"
 }
