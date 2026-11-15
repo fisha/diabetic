@@ -35,9 +35,9 @@ const server = http.createServer((req, res) => {
     const ti = (await api('/auth/sign-in', { method: 'POST', body: { email: 'p@example.com', password: 'correct horse battery' } })).json;
     const answers = { ...ANSWERS, ratios: { ...ANSWERS.ratios, target: '80-140' } };
     await api('/profile', { method: 'PUT', token: ti.access_token, body: { locale: 'en', answers } });
-    // Four days at this hour above the person's own range, and one reading today in range.
+    // Four days twelve hours from now above (not about this time of day: unread insights show anyway) the person's own range, and one reading today in range.
     for (let i = 1; i <= 4; i++) {
-      const d = new Date(); d.setDate(d.getDate() - i); d.setHours(new Date().getHours(), 0, 0, 0);
+      const d = new Date(); d.setDate(d.getDate() - i); d.setHours((new Date().getHours() + 12) % 24, 0, 0, 0);
       await api('/glucose', { method: 'POST', token: ti.access_token, body: { idempotency_key: `pg-e2e-${i}`, measured_at: d.toISOString(), entered_at: d.toISOString(), source: 'manual', method: 'meter', value: 200 + i, unit: 'mg/dL' } });
     }
     const today = new Date(Date.now() - 10 * 60_000);

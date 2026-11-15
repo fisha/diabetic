@@ -140,6 +140,10 @@ slowly forgotten, learned from a full second of her speaking, and microphone fra
 count (app 748dd26, JS only). Simulation: 0 of 1200 stops, with or without JS stalls; loud talk-over still stops her.
 App 115 tests, typecheck and lint pass. Not yet heard on a phone. Next: OTA, then Guy tries a call.
 
+15 Nov 2026 (G-77, third follow-up): Itay's main screen had no insights left. Every unread insight now shows there
+whatever its age or time of day (this time of day first, at most 5); reading or marking takes it off. App typecheck, 130
+tests, web preview e2e (`insights-page.cjs`, `mark-read.cjs`) pass. JS only.
+
 15 Nov 2026 (G-77, second follow-up): Guy still saw yesterday's insights on the main screen. An insight now stays
 there only while unread and new or changed today (opening it reads it on the server, as before); small wins only on their
 day. New page "All insights" (`/insights`), linked under the cards: unread first, then "Read". App typecheck, 130 tests,
