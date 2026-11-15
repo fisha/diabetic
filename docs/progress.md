@@ -10,7 +10,7 @@ verified only against test stand-ins or not at all. See `docs/integration-status
 
 15 Nov 2026 (G-76, thread "Improve meal photo capture and editing"): a meal can have up to two photos (another angle,
 or a side dish), taken one after the other or picked together; both go to one analysis and stay with the saved meal
-(`photo_ids`), side by side in the journal. The review screen is easier to correct: type the amount, type the carbs
+(`photo_ids`), side by side in the journal. An optional text about the photos goes with them to the analysis. The review screen is easier to correct: type the amount, type the carbs
 (scaled with later amount changes), rename a food without losing its estimate, an estimated weight and the model's
 assumption under each food, the photos at the top. API 336 tests and ruff, app typecheck, 112 tests and lint (no new
 problems), i18n tests, browser e2e (`tools/e2e/meal.cjs`, two photos, typed amount, typed carbs, rename) pass; Hebrew day

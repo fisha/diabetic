@@ -4972,6 +4972,20 @@
       "translation"
     ]
   },
+  "meal.photo_note_l": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Optional text with the meal photos before analysis (Guy, 15 Nov 2026)."
+  },
+  "meal.photo_note_ph": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Optional text with the meal photos before analysis (Guy, 15 Nov 2026)."
+  },
   "meal.recent": {
     "board": "Meal",
     "review": [

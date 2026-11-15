@@ -84,6 +84,7 @@ const server = http.createServer((req, res) => {
     const [two] = await Promise.all([page.waitForEvent('filechooser'), page.getByText('Choose from photos', { exact: true }).click()]);
     await two.setFiles(['/tmp/meal.png', '/tmp/meal2.png']); await page.waitForTimeout(1500);
     ok('both photos in the preview', await page.getByText('Check your photos').first().isVisible() && await page.getByRole('img', { name: 'Meal photo 2 of 2' }).first().isVisible());
+    await page.getByLabel("What's in the photo? (optional)", { exact: true }).fill('Rice and a bowl of soup');
     await shot('m04-two-photos');
     await page.getByText('Use these photos', { exact: true }).click(); await page.waitForTimeout(3000);
     await shot('m05-review-two');
