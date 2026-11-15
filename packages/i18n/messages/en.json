@@ -2594,5 +2594,10 @@
   "ovr.stale_wu_soon": "No new sensor data for {minutes} minutes: a new sensor is warming up and should be ready any moment.",
   "ins.all_t": "All insights",
   "ins.all_link": "All insights",
-  "ins.all_read": "Read"
+  "ins.all_read": "Read",
+  "meal.protein_v": "Protein ≈ {grams} g",
+  "meal.protein_none": "Protein unknown · add",
+  "meal.protein_for": "Protein in grams for {name}",
+  "meal.edit_protein": "Tap to type the protein of {name}",
+  "meal.protein_l": "Protein"
 }

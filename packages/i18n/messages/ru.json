@@ -2594,5 +2594,10 @@
   "ovr.stale_wu_soon": "Новых данных сенсора нет уже {minutes} мин: новый сенсор прогревается и будет готов с минуты на минуту.",
   "ins.all_t": "Все наблюдения",
   "ins.all_link": "Все наблюдения",
-  "ins.all_read": "Прочитанные"
+  "ins.all_read": "Прочитанные",
+  "meal.protein_v": "Белок ≈ {grams} г",
+  "meal.protein_none": "Белок неизвестен · добавить",
+  "meal.protein_for": "Белок в граммах для {name}",
+  "meal.edit_protein": "Нажмите, чтобы ввести белок для {name}",
+  "meal.protein_l": "Белок"
 }
