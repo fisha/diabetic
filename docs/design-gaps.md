@@ -1412,3 +1412,21 @@ CareLink but did not show in Stedio as a meter reading.
 - The companion gets them as "Blood meter (fingerstick) readings" and the latest reading says when it was a meter.
 - No new screen or copy.
 
+### G-84 · Speech bubbles over the companion on the main screen (**Guy, 15 Nov 2026**, verified-test)
+
+Guy: like the website's "Hi, how was your day?", the main screen should open with the companion's speech bubbles, a
+greeting or something tied to earlier conversations, offering to go on in text or by voice. Not on the board; approved
+by his request.
+
+- Up to two bubbles above the character: a greeting for the time of day (fixed words in four languages, shown when
+  nothing was said in the last hour) and questions the language model writes from the person's recent conversations,
+  memories and logged meals, activity and notes (`GET /conversation/openers`, `services/api/steady_api/openers.py`).
+- Follow-ups never hold a number (no readings, units, carbs, insulin or times), never a dose or advice, nothing
+  alarming; anything that breaks this is dropped. Memory off: only logged entries are used. No model: greeting only.
+  Not shown while viewing someone else's data, during a call or for five minutes after one.
+- Tapping a bubble shows "Reply in text" and "Talk by voice". Text opens the conversation with the bubble as the
+  companion's first line; voice stores it the same way and the call opens by asking it (`start` with the message id;
+  the phone never sends the words).
+- Style: website bubble (rounded, hairline border, card colour; raised card at night), fade in, `callout` text.
+- Same request: "Tap to talk" is now `headline` with a `footnote` line, and the carousel under the character is smaller
+  (`callout` body up to three lines, tighter padding, compact chips with a 44 pt touch area).

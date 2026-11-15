@@ -60,7 +60,8 @@
               "reading",
               "alert",
               "win",
-              "weather"
+              "weather",
+              "opener"
             ],
             "title": "Kind",
             "type": "string"
@@ -5710,6 +5711,54 @@
         "title": "OnboardingAnswers",
         "type": "object"
       },
+      "OpenerOut": {
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "greeting",
+              "follow_up"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "text"
+        ],
+        "title": "OpenerOut",
+        "type": "object"
+      },
+      "OpenersOut": {
+        "properties": {
+          "openers": {
+            "items": {
+              "$ref": "#/components/schemas/OpenerOut"
+            },
+            "title": "Openers",
+            "type": "array"
+          },
+          "refreshing": {
+            "title": "Refreshing",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "openers",
+          "refreshing"
+        ],
+        "title": "OpenersOut",
+        "type": "object"
+      },
       "ParseIn": {
         "additionalProperties": false,
         "properties": {
@@ -9940,6 +9989,33 @@
           }
         ],
         "summary": "Save Proposal",
+        "tags": [
+          "conversation"
+        ]
+      }
+    },
+    "/conversation/openers": {
+      "get": {
+        "description": "The companion's speech bubbles on the main screen: a greeting and follow-ups from the person's own recent\nconversations and logs. Answers at once with what is kept; stale follow-ups are written again after the answer.",
+        "operationId": "conversation_openers_conversation_openers_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenersOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Conversation Openers",
         "tags": [
           "conversation"
         ]

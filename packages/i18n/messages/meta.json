@@ -1543,6 +1543,34 @@
     ],
     "note": "Arguments replace the sample values drawn in the design."
   },
+  "com.op_text": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Speech bubbles above the companion on the main screen (Guy, 15 Nov 2026); not on the board."
+  },
+  "com.op_voice": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Speech bubbles above the companion on the main screen (Guy, 15 Nov 2026); not on the board."
+  },
+  "com.op_label": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Speech bubbles above the companion on the main screen (Guy, 15 Nov 2026); not on the board."
+  },
+  "com.op_hint": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Speech bubbles above the companion on the main screen (Guy, 15 Nov 2026); not on the board."
+  },
   "com.now": {
     "board": "Companion",
     "review": [
