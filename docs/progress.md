@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+15 Nov 2026, later (same thread): Guy: much better, but light noises still stop her. Log: a talk-over stop before her
+answer started playing (`barge_played_s=0.0`, noise in the jitter lead). Now nothing counts before her first sound is
+due, and a loud frame counts only if it repeats at a speaking pitch (`voicing`, 70-400 Hz after a 100 Hz high-pass);
+synthetic noise, hum and clicks give 0, voices 0.8-0.93 (app 8399a8d, JS only). 118 app tests pass. Next: OTA, Guy tries.
+
 15 Nov 2026 (thread "Fix companion voice call cutting off"): Guy: in the voice call the companion still starts and
 stops. The API log of his test showed talk-over stops (`barged=1`) 0.7 s and 1.8 s into answers: the phone's talk-over
 detector learned the loudspeaker's echo level as an average, which drifted down until her own voice counted as the
