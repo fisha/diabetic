@@ -1282,3 +1282,17 @@ Not on the Meal board, so the screens extend MEAL-02..05 in the board's style:
   food reads "Entered by you" (its question is no longer asked). An estimated weight shows under the amount when the
   provider gave one, and the provider's assumption shows under the label. Changes apply as made; Save stays (saving is
   the step that adds the meal).
+
+### G-77 · "Mark as read" on the main screen's insights (**Guy, 15 Nov 2026**, verified-test)
+Guy (15 Nov 2026): "במסך הראשי שיש את התובנות צריך כפתור של סמן כנקרא ואז אם משתמש מסמן את זה אז זה לא מופיע יותר
+במסך הראשי". No design board; the button is a chip next to "Talk about this" on the carousel card under the companion.
+- Shown on insight cards (including "sensors end early"), not on "set past its days" (it has its own "I changed my set")
+  and not while viewing someone else's account.
+- Tapping hides the card at once and sends feedback `read` (`POST /insights/{key}/feedback`). If saving fails the card
+  comes back with "Not saved, try again".
+- The server keeps it per account (`insight_feedback`, no migration) and lists the keys in `InsightsOut.done`, so every
+  device leaves them out of the main screen. It also marks the insight read (`read_at`), like opening it.
+- It comes back when the insight changes meaningfully (new, changed, corrected: `insight_topics.changed_at` after the
+  mark); a periodic follow-up that says it continues does not bring it back. Overview still lists it.
+- Learning: a `feedback`/`read` event. The ranker counts it as an open (not a judgement, so labels are unchanged); the
+  companion hears it was marked as read and raises it again only if it changes or the person asks.

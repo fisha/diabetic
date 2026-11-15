@@ -2753,7 +2753,7 @@ export interface components {
              * Verdict
              * @enum {string}
              */
-            verdict: "useful" | "wrong_data" | "known" | "not_relevant" | "other" | "mute";
+            verdict: "useful" | "wrong_data" | "known" | "not_relevant" | "other" | "mute" | "read";
         };
         /** FindingOut */
         FindingOut: {
@@ -3488,6 +3488,11 @@ export interface components {
             /** Analyzed At */
             analyzed_at?: string | null;
             band: components["schemas"]["BandOut"] | null;
+            /**
+             * Done
+             * @default []
+             */
+            done: string[];
             /**
              * Findings
              * @default []

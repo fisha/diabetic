@@ -5302,6 +5302,13 @@
       "translation"
     ]
   },
+  "now.mark_read": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Button on an insight card under the companion: the person has read it, and it leaves the main screen (it stays in Overview) until it changes."
+  },
   "now.move_b": {
     "board": "Companion",
     "review": [
