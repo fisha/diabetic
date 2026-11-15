@@ -140,6 +140,8 @@ slowly forgotten, learned from a full second of her speaking, and microphone fra
 count (app 748dd26, JS only). Simulation: 0 of 1200 stops, with or without JS stalls; loud talk-over still stops her.
 App 115 tests, typecheck and lint pass. Not yet heard on a phone. Next: OTA, then Guy tries a call.
 
+15 Nov 2026 (G-77, fourth follow-up): steps and energy personal bests are now detected during the day on every health-data sync (a later, higher sync raises the same win). A small win shows on its own day, or the next day only if it was found then, never later (`winShownNow`). API 812ecbe, app eb386c1. Needs an API restart, then a JS-only OTA.
+
 15 Nov 2026 (G-77, third follow-up): Itay's main screen had no insights left. Every unread insight now shows there
 whatever its age or time of day (this time of day first, at most 5); reading or marking takes it off. App typecheck, 130
 tests, web preview e2e (`insights-page.cjs`, `mark-read.cjs`) pass. JS only.
