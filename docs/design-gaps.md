@@ -1300,3 +1300,21 @@ Guy (15 Nov 2026): "במסך הראשי שיש את התובנות צריך כפ
   card that is not urgent has it: the part of the day, compliments, small wins, weather tips and insights. Readings out of
   range, device alerts, reminders and the set past its days do not. Non-insight cards: `POST /insights/home-read`, listed
   in `done` for 7 days; daily ones carry the local date (the part of the day also its 3-hour block) and return the next day.
+
+### G-78 · A push when lunch is late (**Guy, 15 Nov 2026**, implemented-unverified)
+Guy (15 Nov 2026): "אם ארוחת הצהריים מתעכבת (45 דק ומעלה), שלח פוש למשתמש ותשאל אותו אם אכל ושאפשר לכתוב אותה ולצלם
+אותה בשביל הפחמימות, במידה ולא אכל אז תגיד לו ששמירה על זמנים קבועים טובה לאיזון הסכרת ולבריאות הגוף". No design board.
+- Replaces the general lunch check-in (`routine.suggest`, G-34; breakfast and dinner keep theirs at 60 minutes). Due 45
+  minutes after the person's usual lunch time (learned from their records, at least 3 days in 14), until 3 hours after.
+- Not sent when a meal was logged since 11:00 (carbs entered on the pump are meals too), or when the person gave a bolus
+  since then (the pump's own automatic corrections do not count). Once a day (key `app-meal-late-lunch-<date>`), within
+  the daily check-in cap of the person's frequency choice, not while check-ins are paused. In quiet hours it is let go,
+  not moved to their end.
+- Push (kind `meal_late`, category `meal_late`): the companion's name and "Had lunch yet? You can photograph or
+  describe it, and I'll log the carbs", in the person's language. Buttons: "I ate, log it" (opens meal logging, the
+  check-in is done) and "Not yet" (opens the text conversation). Tapping the push opens the companion with the same two
+  answers on the banner.
+- "Not yet": the companion's fixed line, no model call: no problem, eating at fairly regular times helps keep diabetes
+  balanced and is good for the body, send a photo or a few words when you eat. Never anything about insulin.
+  `POST /conversation/about` with `answer: "not_yet"` (only for this check-in).
+- The notification category is set from JS, so this ships as an OTA without a new build.

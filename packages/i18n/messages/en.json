@@ -840,6 +840,8 @@
   "now.w_hot_b": "Drink plenty of water and go easy on alcohol and caffeine. Heat can make insulin act faster, so keep an eye on lows, and keep insulin and your sensor out of the sun.",
   "now.w_hot_t": "Hot day ☀️",
   "ntf.a_answer": "Answer",
+  "ntf.a_ate_log": "I ate, log it",
+  "ntf.a_not_yet": "Not yet",
   "ntf.a_dismiss": "Dismiss",
   "ntf.a_not_today": "Not today",
   "ntf.check_in": "You have a check-in",

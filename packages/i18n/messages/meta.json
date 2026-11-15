@@ -5443,6 +5443,13 @@
     ],
     "note": "Notification button: opens the companion"
   },
+  "ntf.a_ate_log": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Late-lunch notification button (G-78, Guy 15 Nov 2026)"
+  },
   "ntf.a_dismiss": {
     "board": "Companion",
     "review": [
@@ -5456,6 +5463,13 @@
       "translation"
     ],
     "note": "Notification button: a daily one moves to tomorrow"
+  },
+  "ntf.a_not_yet": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Late-lunch notification button (G-78, Guy 15 Nov 2026)"
   },
   "ntf.check_in": {
     "board": "Companion",
