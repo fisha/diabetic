@@ -1361,6 +1361,9 @@ board; the reading's own place shows it.
   from its CGM readings (uploads are late, so often after the warm-up). Dexcom Share has no sensor start, so a Dexcom
   warm-up is not shown. It ends with the first sensor reading after the start; a start more than 45 minutes past its
   warm-up with no reading is no longer shown (CareLink follows the pump's own state instead). `GET /devices/warmup`.
+- Guy, 15 Nov 2026 (later): the time left as a digital countdown timer. Main screen: "Ready in" above a ticking
+  01:42:17 in the reading's own large digits, then "Ready at 18:42 · CareLink"; the lock screen's countdown is drawn the
+  same way (next build).
 - Main screen: the reading pill under the character says "Ready in about 40 min" (or "1 h 20 min", then "Ready any
   moment"), with "New sensor warming up · CareLink · started 14:05"; the character stays calm. Not while viewing someone
   else's account.
