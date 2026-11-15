@@ -2518,5 +2518,6 @@
   "com.wu_meta": "{source} · התחיל ב־{time}",
   "wdg.wu_in": "זמין בעוד {t}",
   "com.wu_at": "מוכן ב־{time}",
-  "wdg.wu_at": "מוכן ב־{t}"
+  "wdg.wu_at": "מוכן ב־{t}",
+  "com.wu_left": "זמין בעוד"
 }

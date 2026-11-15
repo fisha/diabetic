@@ -2518,5 +2518,6 @@
   "com.wu_meta": "{source} · started {time}",
   "wdg.wu_in": "Ready in {t}",
   "com.wu_at": "Ready at {time}",
-  "wdg.wu_at": "Ready at {t}"
+  "wdg.wu_at": "Ready at {t}",
+  "com.wu_left": "Ready in"
 }

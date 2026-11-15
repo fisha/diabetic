@@ -2518,5 +2518,6 @@
   "com.wu_meta": "{source} · بدأ {time}",
   "wdg.wu_in": "جاهز بعد {t}",
   "com.wu_at": "جاهز عند {time}",
-  "wdg.wu_at": "جاهز عند {t}"
+  "wdg.wu_at": "جاهز عند {t}",
+  "com.wu_left": "جاهز بعد"
 }
