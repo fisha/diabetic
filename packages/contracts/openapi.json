@@ -759,6 +759,124 @@
         "title": "BestOut",
         "type": "object"
       },
+      "BodyDetailsOut": {
+        "description": "What is behind each \"Body today\" tile (Itay, 15 Nov 2026): today by hour, the last week by day, last night's stages.",
+        "properties": {
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "distance_days": {
+            "items": {
+              "$ref": "#/components/schemas/DayValueOut"
+            },
+            "title": "Distance Days",
+            "type": "array"
+          },
+          "distance_hours": {
+            "items": {
+              "$ref": "#/components/schemas/BodyHourOut"
+            },
+            "title": "Distance Hours",
+            "type": "array"
+          },
+          "heart_hours": {
+            "items": {
+              "$ref": "#/components/schemas/BodyHourOut"
+            },
+            "title": "Heart Hours",
+            "type": "array"
+          },
+          "nights": {
+            "items": {
+              "$ref": "#/components/schemas/NightDayOut"
+            },
+            "title": "Nights",
+            "type": "array"
+          },
+          "resting_days": {
+            "items": {
+              "$ref": "#/components/schemas/DayValueOut"
+            },
+            "title": "Resting Days",
+            "type": "array"
+          },
+          "segments": {
+            "items": {
+              "$ref": "#/components/schemas/SegmentOut"
+            },
+            "title": "Segments",
+            "type": "array"
+          },
+          "steps_days": {
+            "items": {
+              "$ref": "#/components/schemas/DayValueOut"
+            },
+            "title": "Steps Days",
+            "type": "array"
+          },
+          "steps_hours": {
+            "items": {
+              "$ref": "#/components/schemas/BodyHourOut"
+            },
+            "title": "Steps Hours",
+            "type": "array"
+          }
+        },
+        "required": [
+          "day",
+          "steps_hours",
+          "distance_hours",
+          "heart_hours",
+          "steps_days",
+          "distance_days",
+          "resting_days",
+          "nights",
+          "segments"
+        ],
+        "title": "BodyDetailsOut",
+        "type": "object"
+      },
+      "BodyHourOut": {
+        "properties": {
+          "high": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "High"
+          },
+          "hour": {
+            "title": "Hour",
+            "type": "integer"
+          },
+          "low": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Low"
+          },
+          "value": {
+            "title": "Value",
+            "type": "number"
+          }
+        },
+        "required": [
+          "hour",
+          "value"
+        ],
+        "title": "BodyHourOut",
+        "type": "object"
+      },
       "Body_transcribe_voice_transcribe_post": {
         "properties": {
           "file": {
@@ -1305,6 +1423,24 @@
           "complete"
         ],
         "title": "DayIn",
+        "type": "object"
+      },
+      "DayValueOut": {
+        "properties": {
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "value": {
+            "title": "Value",
+            "type": "number"
+          }
+        },
+        "required": [
+          "day",
+          "value"
+        ],
+        "title": "DayValueOut",
         "type": "object"
       },
       "DeleteIn": {
@@ -3338,6 +3474,37 @@
               }
             ],
             "title": "Window To"
+          },
+          "window_types": {
+            "anyOf": [
+              {
+                "items": {
+                  "enum": [
+                    "heart_rate",
+                    "resting_heart_rate",
+                    "hrv",
+                    "steps",
+                    "active_energy",
+                    "distance",
+                    "weight",
+                    "carbs",
+                    "insulin",
+                    "spo2",
+                    "sleep",
+                    "workout",
+                    "exercise_time",
+                    "stand_hour"
+                  ],
+                  "type": "string"
+                },
+                "maxItems": 32,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Window Types"
           }
         },
         "required": [
@@ -4935,6 +5102,48 @@
           "created_at"
         ],
         "title": "MessageOut",
+        "type": "object"
+      },
+      "NightDayOut": {
+        "properties": {
+          "asleep_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Asleep Min"
+          },
+          "awake": {
+            "title": "Awake",
+            "type": "integer"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "in_bed_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "In Bed Min"
+          }
+        },
+        "required": [
+          "day",
+          "asleep_min",
+          "in_bed_min",
+          "awake"
+        ],
+        "title": "NightDayOut",
         "type": "object"
       },
       "NightOut": {
@@ -6604,6 +6813,31 @@
           "meal_id"
         ],
         "title": "SameAsIn",
+        "type": "object"
+      },
+      "SegmentOut": {
+        "properties": {
+          "end": {
+            "format": "date-time",
+            "title": "End",
+            "type": "string"
+          },
+          "stage": {
+            "title": "Stage",
+            "type": "string"
+          },
+          "start": {
+            "format": "date-time",
+            "title": "Start",
+            "type": "string"
+          }
+        },
+        "required": [
+          "start",
+          "end",
+          "stage"
+        ],
+        "title": "SegmentOut",
         "type": "object"
       },
       "SendIn": {
@@ -11939,6 +12173,32 @@
           }
         ],
         "summary": "Get Today",
+        "tags": [
+          "health-data"
+        ]
+      }
+    },
+    "/health-data/today/details": {
+      "get": {
+        "operationId": "get_today_details_health_data_today_details_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyDetailsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Today Details",
         "tags": [
           "health-data"
         ]

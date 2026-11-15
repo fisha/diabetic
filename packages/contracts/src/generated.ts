@@ -1210,6 +1210,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/health-data/today/details": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Today Details */
+        get: operations["get_today_details_health_data_today_details_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/insights": {
         parameters: {
             query?: never;
@@ -2400,6 +2417,41 @@ export interface components {
             /** Value */
             value: number;
         };
+        /**
+         * BodyDetailsOut
+         * @description What is behind each "Body today" tile (Itay, 15 Nov 2026): today by hour, the last week by day, last night's stages.
+         */
+        BodyDetailsOut: {
+            /** Day */
+            day: string;
+            /** Distance Days */
+            distance_days: components["schemas"]["DayValueOut"][];
+            /** Distance Hours */
+            distance_hours: components["schemas"]["BodyHourOut"][];
+            /** Heart Hours */
+            heart_hours: components["schemas"]["BodyHourOut"][];
+            /** Nights */
+            nights: components["schemas"]["NightDayOut"][];
+            /** Resting Days */
+            resting_days: components["schemas"]["DayValueOut"][];
+            /** Segments */
+            segments: components["schemas"]["SegmentOut"][];
+            /** Steps Days */
+            steps_days: components["schemas"]["DayValueOut"][];
+            /** Steps Hours */
+            steps_hours: components["schemas"]["BodyHourOut"][];
+        };
+        /** BodyHourOut */
+        BodyHourOut: {
+            /** High */
+            high?: number | null;
+            /** Hour */
+            hour: number;
+            /** Low */
+            low?: number | null;
+            /** Value */
+            value: number;
+        };
         /** Body_transcribe_voice_transcribe_post */
         Body_transcribe_voice_transcribe_post: {
             /** File */
@@ -2589,6 +2641,13 @@ export interface components {
         DayIn: {
             /** Complete */
             complete: boolean;
+        };
+        /** DayValueOut */
+        DayValueOut: {
+            /** Day */
+            day: string;
+            /** Value */
+            value: number;
         };
         /** DeleteIn */
         DeleteIn: {
@@ -3292,6 +3351,8 @@ export interface components {
             window_from?: string | null;
             /** Window To */
             window_to?: string | null;
+            /** Window Types */
+            window_types?: ("heart_rate" | "resting_heart_rate" | "hrv" | "steps" | "active_energy" | "distance" | "weight" | "carbs" | "insulin" | "spo2" | "sleep" | "workout" | "exercise_time" | "stand_hour")[] | null;
         };
         /** HealthExtraIn */
         HealthExtraIn: {
@@ -3901,6 +3962,17 @@ export interface components {
             /** Via */
             via: string;
         };
+        /** NightDayOut */
+        NightDayOut: {
+            /** Asleep Min */
+            asleep_min: number | null;
+            /** Awake */
+            awake: number;
+            /** Day */
+            day: string;
+            /** In Bed Min */
+            in_bed_min: number | null;
+        };
         /** NightOut */
         NightOut: {
             /** Asleep Min */
@@ -4489,6 +4561,21 @@ export interface components {
         SameAsIn: {
             /** Meal Id */
             meal_id: string | null;
+        };
+        /** SegmentOut */
+        SegmentOut: {
+            /**
+             * End
+             * Format: date-time
+             */
+            end: string;
+            /** Stage */
+            stage: string;
+            /**
+             * Start
+             * Format: date-time
+             */
+            start: string;
         };
         /** SendIn */
         SendIn: {
@@ -7694,6 +7781,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["TodayOut"];
+                };
+            };
+        };
+    };
+    get_today_details_health_data_today_details_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BodyDetailsOut"];
                 };
             };
         };

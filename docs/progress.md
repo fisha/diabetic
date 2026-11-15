@@ -19,6 +19,16 @@ answer started playing (`barge_played_s=0.0`, noise in the jitter lead). Now not
 due, and a loud frame counts only if it repeats at a speaking pitch (`voicing`, 70-400 Hz after a 100 Hz high-pass);
 synthetic noise, hum and clicks give 0, voices 0.8-0.93 (app 8399a8d, JS only). 118 app tests pass. Next: OTA, Guy tries.
 
+15 Nov 2026 (G-79, thread "Show breakdowns and Itay's workouts"): tester Itay asked to tap Overview's body and food
+tiles for a breakdown (protein per meal, etc.): each tile opens a sheet (today by hour or by meal, the last week, last
+night's stages and awakenings; `GET /health-data/today/details`). His empty Activity filter: workouts did arrive (21), but
+a Health sync interrupted by the phone locking made the server mark missing types deleted, workouts and their journal
+entries among them (DB: 128 of 177 exercise-minute samples, 23 of 52 stand hours, 1 of 2 recent workouts). Now only the
+types the phone read can be found deleted (`window_types`), a re-sent sample comes back with its journal entry, and
+iPhones re-read 30 days once (`readTypes` 3). API tests and ruff, app typecheck, tests and lint (no new problems), i18n
+tests, web preview e2e `tools/e2e/breakdown.cjs` pass. JS only for the app; deploy the API before the OTA (an older API
+refuses `window_types`). Itay needs no new permission.
+
 15 Nov 2026 (thread "Fix companion voice call cutting off"): Guy: in the voice call the companion still starts and
 stops. The API log of his test showed talk-over stops (`barged=1`) 0.7 s and 1.8 s into answers: the phone's talk-over
 detector learned the loudspeaker's echo level as an average, which drifted down until her own voice counted as the
