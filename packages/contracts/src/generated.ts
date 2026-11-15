@@ -1310,6 +1310,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/insights/home-read": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Home Read
+         * @description A card under the companion that is not an insight, marked as read: left out of the main screen on every device.
+         */
+        post: operations["home_read_insights_home_read_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/insights/hours": {
         parameters: {
             query?: never;
@@ -3410,6 +3430,11 @@ export interface components {
         HideIn: {
             /** Hidden */
             hidden: boolean;
+        };
+        /** HomeReadIn */
+        HomeReadIn: {
+            /** Key */
+            key: string;
         };
         /** HourOut */
         HourOut: {
@@ -7786,6 +7811,37 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["FirstDaysOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    home_read_insights_home_read_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["HomeReadIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {

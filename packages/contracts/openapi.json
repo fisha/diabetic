@@ -3727,6 +3727,21 @@
         "title": "HideIn",
         "type": "object"
       },
+      "HomeReadIn": {
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "maxLength": 40,
+            "title": "Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key"
+        ],
+        "title": "HomeReadIn",
+        "type": "object"
+      },
       "HourOut": {
         "properties": {
           "above": {
@@ -12130,6 +12145,46 @@
           }
         ],
         "summary": "First Days Feedback",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/home-read": {
+      "post": {
+        "description": "A card under the companion that is not an insight, marked as read: left out of the main screen on every device.",
+        "operationId": "home_read_insights_home_read_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HomeReadIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Home Read",
         "tags": [
           "insights"
         ]
