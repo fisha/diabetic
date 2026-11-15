@@ -161,6 +161,9 @@ for the ranker; the companion hears it). API 337 tests and ruff, app typecheck, 
 web typecheck, i18n tests pass; web preview e2e `tools/e2e/mark-read.cjs` passes (hide, kept after reload, still in
 Overview), Hebrew day and night checked. JS only, no migration. Next: deploy the API, then OTA.
 
+15 Nov 2026 (G-76 follow-up, Guy): each food's carbs read "פחמימות ≈ N גרם" (Guy took the number for weight), and a
+pencil on the carbs and protein chips shows they can be typed. App tests, typecheck, lint, meal e2e pass. JS only.
+
 15 Nov 2026 (G-76 follow-up, Itay via Guy): protein on the meal. Food search already brought protein per 100 g and
 stored it, but it was never shown. Each food now shows its protein (or "unknown · add") and can be typed (scaled with
 later amount changes); the total and the saved card show protein when every food has it. App typecheck, 131 tests, lint

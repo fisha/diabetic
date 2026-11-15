@@ -16244,5 +16244,12 @@
       "translation"
     ],
     "note": "Protein shown and editable on the meal (Itay via Guy, 15 Nov 2026)."
+  },
+  "meal.carbs_v": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Carbs labelled as carbs on each food (Guy, 15 Nov 2026)."
   }
 }
