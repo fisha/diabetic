@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+15 Nov 2026 (thread "Make the website calmer and inviting"): Guy: the site felt stressful, too much information,
+colours should be softer and lighter, keeping our brand colours. Home page redesigned with the brand tokens used lightly:
+the companion orb (face, float, blink) in the hero, one call to action (waiting list, free), three one-line steps,
+safety and devices in two cards, privacy in one line, FAQ, light footer with the language links. New `web.c_*` texts in
+four languages. noindex, legal links, RTL, day/night unchanged. Web typecheck, lint, tests, build and screenshots in four
+languages pass (web 441d785). Needs a website deploy on the Mac.
+
 15 Nov 2026 (G-78, thread "Nudge when lunch is late"): a push 45 minutes after the person's usual lunch time when no
 meal and no bolus are recorded since 11:00, once a day, within the check-in cap and quiet hours. It asks whether they ate,
 with buttons "I ate, log it" (meal logging) and "Not yet" (the companion's fixed line on regular meal times). API 346
