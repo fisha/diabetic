@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+15 Nov 2026 (G-83, thread "Add conversation bubbles to home screen"): Guy: like the website's "Hi, how was your day?",
+the main screen opens with the companion's speech bubbles, a greeting or a question about earlier conversations, and
+offers to go on in text or by voice. Up to two bubbles above the character: a fixed greeting for the time of day when
+nothing was said for an hour, and questions the model writes in the background from recent conversations, memories and
+logged meals, activity and notes (`GET /conversation/openers`, kept in `user_settings.openers`, migration
+`c9d0e1f2a3b7`). No numbers, doses or alarming words; such questions are dropped. Tap: "Reply in text" opens the
+conversation with the bubble; "Talk by voice" starts the live call, which opens by asking it. "Tap to talk" and the
+carousel are smaller. API tests (369) and ruff, app typecheck and tests (129), i18n tests and web e2e
+`tools/e2e/openers.cjs` (en light, he light, he dark) pass. Voice from a bubble verified in the API test only. Deploy
+the API (migration, back up first) before the OTA. Not seen on a phone.
+
 15 Nov 2026 (G-82, thread "Align the learning progress screens"): Guy: Routine said "day 5 of about 6" while Overview's
 learning bar said "5 days left to warm up", which looked like one clock adding up to 9. They were two clocks: the routine
 counts from the day the account was opened (3 days, plus the 3 Guy added), the learning bar counted down to a week after

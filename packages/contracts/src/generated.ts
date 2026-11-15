@@ -463,6 +463,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversation/openers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Conversation Openers
+         * @description The companion's speech bubbles on the main screen: a greeting and follow-ups from the person's own recent
+         *     conversations and logs. Answers at once with what is kept; stale follow-ups are written again after the answer.
+         */
+        get: operations["conversation_openers_conversation_openers_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/conversations": {
         parameters: {
             query?: never;
@@ -2199,7 +2220,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "insight" | "insight_question" | "follow_up" | "reading" | "alert" | "win" | "weather";
+            kind: "insight" | "insight_question" | "follow_up" | "reading" | "alert" | "win" | "weather" | "opener";
             /** Question */
             question?: string | null;
             /** Ref */
@@ -4196,6 +4217,25 @@ export interface components {
              */
             version: 1;
         };
+        /** OpenerOut */
+        OpenerOut: {
+            /** Id */
+            id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "greeting" | "follow_up";
+            /** Text */
+            text: string;
+        };
+        /** OpenersOut */
+        OpenersOut: {
+            /** Openers */
+            openers: components["schemas"]["OpenerOut"][];
+            /** Refreshing */
+            refreshing: boolean;
+        };
         /** ParseIn */
         ParseIn: {
             /** Text */
@@ -6145,6 +6185,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    conversation_openers_conversation_openers_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OpenersOut"];
                 };
             };
         };
