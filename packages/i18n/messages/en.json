@@ -2775,5 +2775,13 @@
   "meal.usual_remove": "Remove {name} from usual meals",
   "com.in_call": "In a call with {name}",
   "com.back_to_call": "Back to the call",
-  "com.end_call": "End the call"
+  "com.end_call": "End the call",
+  "avg.title": "Average by time of day",
+  "avg.period": "Days to average",
+  "avg.p": "{days} days",
+  "avg.mean": "Average: {value}",
+  "avg.days": "Readings on {have} of {days} days",
+  "avg.none": "No glucose readings in the last {days} days.",
+  "avg.a11y": "{span}: average {value}",
+  "avg.a11y_none": "{span}: no readings"
 }

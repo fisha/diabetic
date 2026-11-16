@@ -2775,5 +2775,13 @@
   "meal.usual_remove": "הסרת {name} מהארוחות הקבועות",
   "com.in_call": "בשיחה עם {name}",
   "com.back_to_call": "חזרה לשיחה",
-  "com.end_call": "סיום השיחה"
+  "com.end_call": "סיום השיחה",
+  "avg.title": "ממוצע לפי שעות היום",
+  "avg.period": "ימים לממוצע",
+  "avg.p": "{days} ימים",
+  "avg.mean": "ממוצע: {value}",
+  "avg.days": "יש קריאות ב־{have} מתוך {days} ימים",
+  "avg.none": "אין קריאות גלוקוז ב־{days} הימים האחרונים.",
+  "avg.a11y": "{span}: ממוצע {value}",
+  "avg.a11y_none": "{span}: אין קריאות"
 }
