@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (same thread, Guy: "תדאג גם שאנחנו מייצרים פה skills של compliance ו regulatory ובכל פיתוח שלנו אנחנו
+בודקים את זה"): two project skills, `.claude/skills/regulatory-check` (medical-device boundaries) and
+`.claude/skills/privacy-compliance` (health-data privacy), a CLAUDE.md rule in all four repositories, and a "Regulatory
+and privacy check" section in every repository's PR template. Every PR runs both. Tasks are tracked in Jira (PM-114).
+
 16 Nov 2026 (thread "Check app against medical-device rules"): Guy shared SaMD guidance (FDA / EU MDR) and asked for an
 audit; the findings are in the Claude Doc "Stedio vs medical device rules - audit" (22 items). He then asked to fix the
 two non-compliant ones now: (1) the 10-minute "insulin before eating" win and timing insight are removed; (2) glucose

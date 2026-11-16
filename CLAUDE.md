@@ -18,6 +18,19 @@ Key rules from the brief:
   separately.
 - No dose recommendations, invented clinical thresholds or escalation text.
 - Update `docs/progress.md` and `docs/integration-status.md` at the end of each work session.
+- Track tasks in Jira (project PM on stedio.atlassian.net, in English), not in GitHub issues or projects.
+
+## Regulatory and privacy check (every change)
+
+Guy, 16 Nov 2026: every piece of development is checked for medical-device and privacy compliance. Before opening or
+merging any PR, in any of the four repositories, run the two skills in `.claude/skills/`:
+
+- `regulatory-check`: no dosing or treatment instructions, no app-set clinical thresholds, no real-time glucose
+  alarms, read-only devices, no medical claims in any language.
+- `privacy-compliance`: health data minimisation, consent, processors, need-to-know access, logs, export and deletion.
+
+Fill in the "Regulatory and privacy check" section of the PR template with the result. A fail blocks the merge; an
+at-risk item goes into the PR and, if not fixed, into Jira as an `open-item` task under PM-12.
 
 ## Repository layout
 
