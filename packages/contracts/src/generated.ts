@@ -2364,7 +2364,7 @@ export interface components {
             on: boolean;
             /**
              * Sound
-             * @default true
+             * @default false
              */
             sound: boolean;
         };
@@ -2381,7 +2381,7 @@ export interface components {
             on: boolean;
             /**
              * Sound
-             * @default true
+             * @default false
              */
             sound: boolean;
         };
@@ -3221,7 +3221,7 @@ export interface components {
              * @enum {integer}
              */
             repeat_min: 15 | 30 | 60 | 120 | 240;
-            urgent_low: components["schemas"]["AlertLevel"];
+            urgent_low?: components["schemas"]["AlertLevel"];
         };
         /** GlucoseAlertsOut */
         GlucoseAlertsOut: {

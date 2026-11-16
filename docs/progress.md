@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (thread "Check app against medical-device rules"): Guy shared SaMD guidance (FDA / EU MDR) and asked for an
+audit; the findings are in the Claude Doc "Stedio vs medical device rules - audit" (22 items). He then asked to fix the
+two non-compliant ones now: (1) the 10-minute "insulin before eating" win and timing insight are removed; (2) glucose
+alerts with sound became a quiet "out-of-range look-back" (no sound, no urgent low, only after a whole hour out of
+range). API tests, i18n tests and app typecheck/tests pass. JS and API only, no native build. The at-risk items wait for
+Guy's choice.
+
 16 Nov 2026 (thread "Move the server to Fly.io"): Guy opened a Fly.io org `stedio` and asked to move the server there
 on the smallest machines, as close to Israel as possible. Fly has no Middle East region; Frankfurt (fra) is the closest.
 Three apps: `stedio-api` (512 MB, always on: the worker does the device syncs, alerts, pushes and the retrain; volume

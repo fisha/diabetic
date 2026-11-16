@@ -1221,10 +1221,19 @@ Guardian and the 780G, which are treatment, not integrations. No design boards.
 - Devices & connections lists only data connections (Apple Health / Health Connect, CareLink, Dexcom, LibreLinkUp,
   Tandem). The pump and sensor from the profile stay in the profile.
 
-## Glucose alerts with sound (13 Nov 2026, Guy asked)
-Profile › Notifications has a "Glucose alerts with sound" card with no design board: on/off, urgent low / low / high
-levels (steppers, low and high from the person's range, urgent low default 54 mg/dL), sound per level, repeat interval,
-daily cap, and a note that the alerts are not real time and don't replace the sensor's or pump's alarms.
+## Glucose alerts with sound (13 Nov 2026, Guy asked), reworked 16 Nov 2026
+Profile › Notifications had a "Glucose alerts with sound" card with no design board. On 16 Nov 2026 Guy asked to fix
+the items the medical-device review marked non-compliant ("תתקן כרגע את כל מה שאסור ומופיע ב x אדום"): real-time
+high/low alarms compete with the cleared CGM alarms. The card is now "Out-of-range look-back": on/off, below / above
+levels (steppers, from the person's range), repeat interval, daily cap. A quiet notice (no sound, quiet channel, iOS
+passive) only when every sensor reading of the past hour was on the same side of a level (at least 3 readings spanning
+45 minutes, newest within 15 minutes). No urgent-low level, no 54 mg/dL default, no Critical Alerts path. The text
+names the side only, never the value, says "a look back, not an alarm" and to rely on the device alarms.
+
+## No insulin-timing threshold (16 Nov 2026, medical-device review)
+The "insulin before eating" win (timing_good) and the timing:<meal> insight compared meals by insulin at least 10
+minutes before eating. That is a treatment threshold of the app's own, so both are gone, and the companion's context no
+longer gets them. The descriptive "insulin is usually recorded N minutes before eating" line stays.
 
 ## "I changed my set" (14 Nov 2026, Guy's report)
 No design board: a chip on the carousel's set-past-its-days card and a button on that insight say the set was changed

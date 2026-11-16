@@ -489,7 +489,7 @@
             "type": "boolean"
           },
           "sound": {
-            "default": true,
+            "default": false,
             "title": "Sound",
             "type": "boolean"
           }
@@ -530,7 +530,7 @@
             "type": "boolean"
           },
           "sound": {
-            "default": true,
+            "default": false,
             "title": "Sound",
             "type": "boolean"
           }
@@ -3018,7 +3018,6 @@
         },
         "required": [
           "on",
-          "urgent_low",
           "low",
           "high"
         ],
