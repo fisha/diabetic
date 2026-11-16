@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-128, thread "Make the website English only for now"): Guy asked to remove Hebrew, Arabic and
+Russian from the website for now and keep the app's languages as they are. The website routes English only
+(`SITE_LOCALES` in `apps/web/src/i18n/routing.ts`); `/he`, `/ar`, `/ru` and the pages under them redirect (307) to the
+same page in English; the language links are hidden. Translations are kept, so a language comes back by adding it to
+that list. Typecheck, lint, website tests and a production build checked with curl (redirects, `/en` pages, dashboard,
+admin, `/app`, noindex) pass. The legal pages now show in English only: open item PM-129. Deploy the website.
+
 16 Nov 2026 (DAP-19, Jira PM-121, thread "Share a simple view with a trusted person"): Guy asked to move DAP-19
 forward around the existing sharing code, and added that a person with diabetes who follows their son needs a simple
 switch, that viewing is always view only, and that each person's chat about it is their own. Built (G-91): parts chosen
