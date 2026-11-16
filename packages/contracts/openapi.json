@@ -1368,6 +1368,64 @@
         "title": "ClientErrorIn",
         "type": "object"
       },
+      "ConnectionOut": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "carelink",
+              "dexcom",
+              "libre",
+              "tandem"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "last_reading_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Reading At"
+          },
+          "last_sync_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Sync At"
+          },
+          "lost": {
+            "title": "Lost",
+            "type": "boolean"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "name",
+          "status",
+          "lost"
+        ],
+        "title": "ConnectionOut",
+        "type": "object"
+      },
       "ConsentIn": {
         "additionalProperties": false,
         "properties": {
@@ -10724,6 +10782,37 @@
           }
         ],
         "summary": "Sync Now",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/connections": {
+      "get": {
+        "description": "The person's device connections and whether each still brings data, for the \"connection lost\" banner.",
+        "operationId": "connections_devices_connections_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ConnectionOut"
+                  },
+                  "title": "Response Connections Devices Connections Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Connections",
         "tags": [
           "devices"
         ]

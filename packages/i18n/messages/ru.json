@@ -2617,5 +2617,12 @@
   "meal.carbs_v": "Чистые углеводы ≈ {grams} г",
   "meal.net_note": "Чистые углеводы: все углеводы без пищевых волокон.",
   "set.pf_from": "С",
-  "set.pf_to": "До"
+  "set.pf_to": "До",
+  "com.age_h": "{hours} ч назад",
+  "com.age_d": "{days} дн. назад",
+  "com.not_current": "Неактуально",
+  "com.conn_lost": "Связь с {name} потеряна",
+  "com.conn_lost_since": "Нет новых данных с {time}. Значения на экране могут быть неактуальны.",
+  "com.conn_lost_signin": "Нужно снова войти в {name}.",
+  "com.conn_check": "Проверить подключение"
 }

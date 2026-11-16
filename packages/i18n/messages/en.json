@@ -2617,5 +2617,12 @@
   "meal.carbs_v": "Net carbs ≈ {grams} g",
   "meal.net_note": "Net carbs: total carbohydrate without dietary fiber.",
   "set.pf_from": "From",
-  "set.pf_to": "To"
+  "set.pf_to": "To",
+  "com.age_h": "{hours} h ago",
+  "com.age_d": "{days, plural, one {# day} other {# days}} ago",
+  "com.not_current": "Not current",
+  "com.conn_lost": "Connection to {name} lost",
+  "com.conn_lost_since": "No new data since {time}. Values on screen may not be current.",
+  "com.conn_lost_signin": "{name} needs you to sign in again.",
+  "com.conn_check": "Check connection"
 }

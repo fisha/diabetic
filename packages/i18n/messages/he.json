@@ -2617,5 +2617,12 @@
   "meal.carbs_v": "פחמימות נטו ≈ {grams} גרם",
   "meal.net_note": "פחמימות נטו: סך הפחמימות בלי הסיבים התזונתיים.",
   "set.pf_from": "משעה",
-  "set.pf_to": "עד שעה"
+  "set.pf_to": "עד שעה",
+  "com.age_h": "לפני {hours} שע׳",
+  "com.age_d": "לפני {days, plural, one {יום} two {יומיים} other {# ימים}}",
+  "com.not_current": "לא עדכני",
+  "com.conn_lost": "החיבור ל-{name} נותק",
+  "com.conn_lost_since": "אין נתונים חדשים מאז {time}. ייתכן שהערכים במסך לא עדכניים.",
+  "com.conn_lost_signin": "צריך להתחבר מחדש ל-{name}.",
+  "com.conn_check": "לבדיקת החיבור"
 }

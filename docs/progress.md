@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (PM-117, idea DAP-14 from Itay's plan, thread "Show data age on every glucose value"): every glucose value
+shows its age ("25 min ago"), also the one-line reading above a conversation, and past 15 minutes says "Not current"
+with a clock. A device connection (CareLink, Dexcom, LibreLinkUp, Tandem Source) is "lost" when the service refused the
+saved sign-in or no fetch worked for 30 minutes (technical sync interval); the main screen and Overview then show a
+banner with the service, the time of its last good fetch and "Check connection", and the worker sends one push per lost
+episode after quiet hours (`steady_api/link_watch.py`, `GET /devices/connections`, no migration: the marker is kept in
+`device_links.device`). Nothing is retried or signed in again. API tests and ruff, app typecheck and tests (142), i18n
+tests and web e2e `tools/e2e/data-age.cjs` (en light, he light, he dark) pass. JS only (OTA); deploy the API first. Not
+seen on a phone.
+
 16 Nov 2026 (same thread, Guy: "תדאג גם שאנחנו מייצרים פה skills של compliance ו regulatory ובכל פיתוח שלנו אנחנו
 בודקים את זה"): two project skills, `.claude/skills/regulatory-check` (medical-device boundaries) and
 `.claude/skills/privacy-compliance` (health-data privacy), a CLAUDE.md rule in all four repositories, and a "Regulatory

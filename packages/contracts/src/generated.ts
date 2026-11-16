@@ -586,6 +586,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/devices/connections": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Connections
+         * @description The person's device connections and whether each still brings data, for the "connection lost" banner.
+         */
+        get: operations["connections_devices_connections_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/devices/dexcom": {
         parameters: {
             query?: never;
@@ -2774,6 +2794,24 @@ export interface components {
             message: string;
             /** Where */
             where: string;
+        };
+        /** ConnectionOut */
+        ConnectionOut: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "carelink" | "dexcom" | "libre" | "tandem";
+            /** Last Reading At */
+            last_reading_at?: string | null;
+            /** Last Sync At */
+            last_sync_at?: string | null;
+            /** Lost */
+            lost: boolean;
+            /** Name */
+            name: string;
+            /** Status */
+            status: string;
         };
         /** ConsentIn */
         ConsentIn: {
@@ -6700,6 +6738,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CareLinkOut"];
+                };
+            };
+        };
+    };
+    connections_devices_connections_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConnectionOut"][];
                 };
             };
         };

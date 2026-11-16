@@ -16363,5 +16363,47 @@
     "review": [
       "translation"
     ]
+  },
+  "com.age_h": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.age_d": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.not_current": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.conn_lost": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.conn_lost_since": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.conn_lost_signin": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.conn_check": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
   }
 }
