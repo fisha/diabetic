@@ -105,22 +105,6 @@
         "title": "AboutIn",
         "type": "object"
       },
-      "AcceptIn": {
-        "additionalProperties": false,
-        "properties": {
-          "code": {
-            "maxLength": 16,
-            "minLength": 6,
-            "title": "Code",
-            "type": "string"
-          }
-        },
-        "required": [
-          "code"
-        ],
-        "title": "AcceptIn",
-        "type": "object"
-      },
       "AchievementOut": {
         "properties": {
           "celebrated_at": {
@@ -1517,6 +1501,17 @@
             "title": "At",
             "type": "string"
           },
+          "legal": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Legal"
+          },
           "service": {
             "title": "Service",
             "type": "boolean"
@@ -1539,10 +1534,31 @@
           "ai": {
             "title": "Ai",
             "type": "boolean"
+          },
+          "documents": {
+            "items": {
+              "$ref": "#/components/schemas/DocumentOut"
+            },
+            "title": "Documents",
+            "type": "array"
+          },
+          "pending": {
+            "items": {
+              "enum": [
+                "terms",
+                "privacy",
+                "ai"
+              ],
+              "type": "string"
+            },
+            "title": "Pending",
+            "type": "array"
           }
         },
         "required": [
-          "ai"
+          "ai",
+          "documents",
+          "pending"
         ],
         "title": "ConsentOut",
         "type": "object"
@@ -1759,6 +1775,41 @@
           "source"
         ],
         "title": "DeviceTargetOut",
+        "type": "object"
+      },
+      "DocumentOut": {
+        "properties": {
+          "accepted": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Accepted"
+          },
+          "kind": {
+            "enum": [
+              "terms",
+              "privacy",
+              "ai"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "version",
+          "accepted"
+        ],
+        "title": "DocumentOut",
         "type": "object"
       },
       "EnvironmentOut": {
@@ -5099,6 +5150,11 @@
             "title": "Dose",
             "type": "string"
           },
+          "goodbye": {
+            "default": "The person is ending the call. Say one short, warm goodbye in their language and nothing more: no question and no new topic. The app then ends the call.",
+            "title": "Goodbye",
+            "type": "string"
+          },
           "stop": {
             "default": "Stop speaking now and wait for the person to finish.",
             "title": "Stop",
@@ -7902,6 +7958,7 @@
             "$ref": "#/components/schemas/LinesOut",
             "default": {
               "dose": "The app does not give insulin doses. Say so briefly and suggest the person follows their care team's plan.",
+              "goodbye": "The person is ending the call. Say one short, warm goodbye in their language and nothing more: no question and no new topic. The app then ends the call.",
               "stop": "Stop speaking now and wait for the person to finish.",
               "unavailable": "The app could not answer just now. Say so briefly and ask the person to try again in a moment.",
               "unheard": "The app did not catch the person's words. Ask them briefly to say it again.",
@@ -9839,6 +9896,37 @@
         "title": "WorkoutsOut",
         "type": "object"
       },
+      "steady_api__routers__consent__AcceptIn": {
+        "additionalProperties": false,
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "versions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "minProperties": 1,
+            "propertyNames": {
+              "enum": [
+                "terms",
+                "privacy",
+                "ai"
+              ]
+            },
+            "title": "Versions",
+            "type": "object"
+          }
+        },
+        "required": [
+          "versions",
+          "at"
+        ],
+        "title": "AcceptIn",
+        "type": "object"
+      },
       "steady_api__routers__insights__StateIn": {
         "additionalProperties": false,
         "properties": {
@@ -9972,6 +10060,22 @@
           "via"
         ],
         "title": "StateIn",
+        "type": "object"
+      },
+      "steady_api__routers__sharing__AcceptIn": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "maxLength": 16,
+            "minLength": 6,
+            "title": "Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "title": "AcceptIn",
         "type": "object"
       }
     },
@@ -10897,9 +11001,59 @@
         ]
       }
     },
+    "/consent/accept": {
+      "post": {
+        "description": "The person read and agreed to these versions. Refused as a whole when any of them is no longer the one in force,\nso a record always names the text the person saw. Recorded once per version (append-only history); to stop, the\naccount is deleted.",
+        "operationId": "accept_consent_accept_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/steady_api__routers__consent__AcceptIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "version_changed: a newer version came out; ask again"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Accept",
+        "tags": [
+          "profile"
+        ]
+      }
+    },
     "/consent/ai": {
       "post": {
-        "description": "The person agreed to send their data to the external AI engine. Recorded once (append-only history); to stop,\nthe account is deleted, as with the consent to the service itself.",
+        "description": "The person agreed to send their data to the external AI engine, from an app build of PM-149. Those builds show the\nfirst text of the consent and send no version, so the record is for that text only: once the consent has a newer\ntext, this does not open the AI engine, and the person is asked again by a newer app (`/consent/accept`).",
         "operationId": "give_ai_consent_consent_ai_post",
         "requestBody": {
           "content": {
@@ -16569,7 +16723,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AcceptIn"
+                "$ref": "#/components/schemas/steady_api__routers__sharing__AcceptIn"
               }
             }
           },

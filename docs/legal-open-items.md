@@ -51,6 +51,9 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 - Explicit, separate consent before anything goes to the external AI engine (PM-149): `steady_api/ai_consent.py` refuses
   every engine route without the latest "ai" consent record (and the shared person's, for a viewer's chat);
   `tests/test_ai_consent.py`.
+- Re-acceptance when a document changes (PM-156): `steady_api/legal.py` versions the Terms, the Privacy Policy and the AI
+  consent; each acceptance is a `consents` row with the version; the app blocks until the current versions are
+  accepted; the "Changes" sections of both texts say so. `tests/test_legal.py`.
 - Meal photo retention choices: `routers/settings.py` `photo_retention`. Exports expire after 7 days
   (`EXPORT_DAYS`), invite codes after 7 days (`CODE_DAYS`), refresh tokens after 30 days.
 - OpenAI requests with `store=False`: `ai/provider.py`, `ai/food.py`. No voice recordings are written to disk.

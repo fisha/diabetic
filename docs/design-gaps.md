@@ -1623,3 +1623,21 @@ Not on the boards; built in the boards' own style:
   an insight with 403 `ai_consent_required` until the latest "ai" consent record is granted; a viewer's chat about
   someone also needs that person's consent (`subject_ai_consent_required`).
 
+### G-93 · Read and accept again when the Terms, the Privacy Policy or a required consent change (**PM-156, Guy 16 Nov 2026**, verified-test)
+
+Guy: when the privacy policy, the terms or a consent like the AI engine one changes, the app must show a message that
+the person reads and accepts before they keep using it. Not on the boards; built in the boards' own style, extending
+G-92:
+
+- Each of the Terms of Use, the Privacy Policy and the AI engine consent has a version, its "Last updated" date
+  (`steady_api/legal.py` `CURRENT`, the same dates on the website's legal pages).
+- The one-time screen from the main tabs is now general ("Please review the updates"): one block per changed item, the
+  documents with their date and a "Read the Terms of Use" / "Read the Privacy Policy" link to the website, the AI
+  consent with its text and "Which AI engine?"; "Agree and continue" or "Delete my account instead". When only the AI
+  consent is new it keeps G-92's "One more consent" text. Asked when the tabs open and whenever the app comes back to
+  the front.
+- Onboarding consent (ONB-01) gets a first required checkbox, "I've read and agree to the Terms of Use and the Privacy
+  Policy", with the two read links. They replace "Read the privacy summary", which only said it was unavailable.
+- If a version changes while the screen is open, agreeing is refused and the screen shows the latest one
+  ("It was just updated again...").
+
