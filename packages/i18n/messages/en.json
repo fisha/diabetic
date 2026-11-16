@@ -2757,5 +2757,8 @@
   "meal.usual_saved": "Saved to your usual meals",
   "meal.usual_full": "You have 30 usual meals. Remove one on Log a meal to add another.",
   "meal.usual_failed": "Couldn’t save it. Try again.",
-  "meal.usual_remove": "Remove {name} from usual meals"
+  "meal.usual_remove": "Remove {name} from usual meals",
+  "com.in_call": "In a call with {name}",
+  "com.back_to_call": "Back to the call",
+  "com.end_call": "End the call"
 }

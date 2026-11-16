@@ -2757,5 +2757,8 @@
   "meal.usual_saved": "נשמרה בארוחות הקבועות",
   "meal.usual_full": "יש לך 30 ארוחות קבועות. אפשר להסיר אחת במסך תיעוד ארוחה כדי להוסיף.",
   "meal.usual_failed": "לא הצלחנו לשמור. אפשר לנסות שוב.",
-  "meal.usual_remove": "הסרת {name} מהארוחות הקבועות"
+  "meal.usual_remove": "הסרת {name} מהארוחות הקבועות",
+  "com.in_call": "בשיחה עם {name}",
+  "com.back_to_call": "חזרה לשיחה",
+  "com.end_call": "סיום השיחה"
 }

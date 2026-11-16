@@ -17340,5 +17340,26 @@
       "translation"
     ],
     "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "com.in_call": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Call bar on other screens during a voice call (Guy, 16 Nov 2026)."
+  },
+  "com.back_to_call": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Call bar on other screens during a voice call (Guy, 16 Nov 2026)."
+  },
+  "com.end_call": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Call bar on other screens during a voice call (Guy, 16 Nov 2026)."
   }
 }
