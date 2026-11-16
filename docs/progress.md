@@ -33,6 +33,15 @@ and whole model replies. Built: the app shows the answer kept on the phone at on
 over 1 KB, /insights about 2x faster with identical output, a log line for requests over 1 s (route template only).
 API 471 tests, app 163 tests and typecheck, `tools/e2e/offline.cjs` 36/36 pass; not yet on a phone. Deploy the API (no
 migration) and an OTA (JS only). Streaming replies (PM-162) on hold by Guy's choice; next items PM-163 and follow-ups.
+Follow-ups the same day (Guy: "open Jira tasks and work through all of them"): PM-163 /insights answers from an
+in-process cache keyed by a per-person data version (table `data_versions`, raised by triggers on every write insights
+read; 5 minute cap, same local day), about 18 ms on repeat; PM-165 composite indexes (user_id, measured_at) and (user_id,
+type, start_at) (api #66, migrations d8e2f4a6c913 and e9f3a5b7d024). PM-164 the worker runs as its own niced process
+next to uvicorn (`steady_api.supervise`, exactly one worker, SIGTERM reaches both, `STEADY_WORKER_PROCESS=false` goes
+back to the thread) (api #67). PM-166 the main screen reads the last 3 hours and widens to 24 only when empty; PM-167
+the 15-minute access token is kept sealed so a cold start skips a refresh round-trip (app #90). API 480 tests, app 164
+tests, e2e `offline.cjs` 36/36. Next: deploy the API with both migrations (backup first, no open voice call), watch
+memory with two processes, OTA, then check on a phone and rerun the bench.
 
 16 Nov 2026 (Jira PM-156, thread "Check app against App Store review rules"): Guy asked that a change to the privacy
 policy, the terms or a consent like the AI one makes the app ask the person to read and accept before they keep using
