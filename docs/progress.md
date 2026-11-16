@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (DAP-16, Jira PM-119, thread "Add Israeli Hebrew food list with portions"): Itay's plan asks for local
+dishes in Hebrew with typical portions. The source is the Ministry of Health national nutrient database "Tzameret"
+(data.gov.il `nutrition-database`, licence `other-open`: copy, adapt and commercial use allowed, the source must be
+stated, no implied endorsement). The official CSVs were downloaded on the Mac (data.gov.il is blocked from the cloud)
+and built into `services/api/steady_api/data/tzameret.json` by `scripts/build_tzameret.py` (4,508 foods, 3,815 with
+portions; questionnaire "FFQ" rows left out). Its carbohydrate field is "available carbohydrate", already net of fiber,
+so it is taken as published. `GET /meal/foods` answers Hebrew from this list (spelling variants: vowel letters, ט/ת,
+ק/כ, geresh, niqqud) and adds up to five of its foods after USDA for Latin queries; it works without the USDA key. The
+app's search sheet shows the typical portion and the source line, and a picked food starts at that portion. API tests
+(392) and ruff, app typecheck and tests (141), i18n tests, and web e2e `tools/e2e/israeli-foods.cjs` pass. JS and API
+only: deploy the API before the OTA. Lawyer sign-off DAP-67 is still open. Not seen on a phone.
+
 16 Nov 2026 (same thread, Guy: "תדאג גם שאנחנו מייצרים פה skills של compliance ו regulatory ובכל פיתוח שלנו אנחנו
 בודקים את זה"): two project skills, `.claude/skills/regulatory-check` (medical-device boundaries) and
 `.claude/skills/privacy-compliance` (health-data privacy), a CLAUDE.md rule in all four repositories, and a "Regulatory

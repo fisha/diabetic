@@ -5659,6 +5659,20 @@
       "translation"
     ]
   },
+  "meal.portion": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Israeli food list from the Ministry of Health Tzameret database (DAP-16, 16 Nov 2026)."
+  },
+  "meal.src_moh": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Israeli food list from the Ministry of Health Tzameret database (DAP-16, 16 Nov 2026)."
+  },
   "meal.shoot": {
     "board": "Meal",
     "review": [

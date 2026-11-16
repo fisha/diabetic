@@ -835,6 +835,8 @@
   "meal.search": "Search foods",
   "meal.search_down": "The food database isn’t answering right now. Try again in a minute, or add your own food and enter its carbs.",
   "meal.serving": "Typical serving: {amount}",
+  "meal.portion": "{label} · {grams} g",
+  "meal.src_moh": "Source: Israeli Ministry of Health, Tzameret database. Values are estimates.",
   "meal.shoot": "Take photo",
   "meal.title": "Log a meal",
   "meal.total.estimate": "Carbs are an estimate. Check them against what you know before you use them.",

@@ -1468,3 +1468,13 @@ his request.
   next to it, clear space of a tenth of its height, and never as a button or in place of the name. So the header shows
   the icon followed by "Apple Health", not the icon alone. Android keeps "From Health Connect" as text until Health
   Connect's own icon is added (no Android build now).
+
+## Israeli food list in the food search (DAP-16, PM-119, 16 Nov 2026)
+
+The Meal board's search sheet shows "Typical serving: 100 g" under each result. Foods from the Israeli list (Ministry of
+Health, Tzameret) now show their typical household portion there instead ("Typical serving: יחידה · 100 g"), and the
+food starts at that portion (one piece, slice, cup or tablespoon, or a serving's weight in grams). One footnote under
+the results names the source, as the data licence asks ("Source: Israeli Ministry of Health, Tzameret database.
+Values are estimates."). Neither is drawn on the board. Dishes the database does not have (sabich, malawach) are not
+invented; they fall back to "add as your own food". An admin tool to add foods (named in DAP-16) is not built.
+
