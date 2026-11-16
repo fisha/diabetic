@@ -13653,6 +13653,27 @@
     ],
     "note": "Regulatory wording depends on classification"
   },
+  "sys.off_b": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Offline banner (Components 12.7 Banner: offline / stale data), 16 Nov 2026: past data kept on the phone is shown. {day} is today/yesterday/weekday (mid-sentence), {time} the clock time of the last server answer."
+  },
+  "sys.off_none": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Offline banner body when nothing kept on the phone was needed yet."
+  },
+  "sys.off_t": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Offline banner title (16 Nov 2026): the server can't be reached."
+  },
   "sys.offline": {
     "board": "Localization",
     "review": [
@@ -16374,6 +16395,86 @@
   },
   "set.pf_to": {
     "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.title": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.body": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ],
+    "note": "{name}: the companion's name"
+  },
+  "ndg.pick": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.p_1w": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.p_2w": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.p_on": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.on_until": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ],
+    "note": "{until}: a day and time, e.g. 'Fri 07:00'"
+  },
+  "ndg.on_off": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.turn_off": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.offer_t": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.offer_b": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.offer_yes": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.offer_no": {
+    "board": "Routine",
     "review": [
       "translation"
     ]

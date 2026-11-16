@@ -908,6 +908,50 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/follow-ups/fewer-nudges": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Fewer Nudges */
+        get: operations["get_fewer_nudges_follow_ups_fewer_nudges_get"];
+        /**
+         * Fewer Nudges
+         * @description Fewer nudges (burnout mode, DAP-18, 16 Nov 2026): for a while, or until turned off, the app starts at most one
+         *     check-in a day, pushes no insights, wins or compliments, and the companion keeps it short. Reminders the person set
+         *     and their devices' alerts are unchanged.
+         */
+        put: operations["fewer_nudges_follow_ups_fewer_nudges_put"];
+        post?: never;
+        /** End Fewer Nudges */
+        delete: operations["end_fewer_nudges_follow_ups_fewer_nudges_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/follow-ups/fewer-nudges/no-thanks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * No Thanks
+         * @description The offer was turned down: it stays away for a month.
+         */
+        post: operations["no_thanks_follow_ups_fewer_nudges_no_thanks_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/follow-ups/pause": {
         parameters: {
             query?: never;
@@ -4295,6 +4339,22 @@ export interface components {
              */
             text: string;
         };
+        /** NudgesIn */
+        NudgesIn: {
+            /** Until */
+            until?: string | null;
+        };
+        /** NudgesOut */
+        NudgesOut: {
+            /** Offer */
+            offer: boolean;
+            /** On */
+            on: boolean;
+            /** Since */
+            since: string | null;
+            /** Until */
+            until: string | null;
+        };
         /**
          * OnboardingAnswers
          * @description The onboarding draft from the app (version 1). Free text stays as typed; extra keys are rejected.
@@ -7503,6 +7563,99 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_fewer_nudges_follow_ups_fewer_nudges_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NudgesOut"];
+                };
+            };
+        };
+    };
+    fewer_nudges_follow_ups_fewer_nudges_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NudgesIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NudgesOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    end_fewer_nudges_follow_ups_fewer_nudges_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NudgesOut"];
+                };
+            };
+        };
+    };
+    no_thanks_follow_ups_fewer_nudges_no_thanks_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NudgesOut"];
                 };
             };
         };

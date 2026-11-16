@@ -5547,6 +5547,69 @@
         "title": "NoteData",
         "type": "object"
       },
+      "NudgesIn": {
+        "additionalProperties": false,
+        "properties": {
+          "until": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Until"
+          }
+        },
+        "title": "NudgesIn",
+        "type": "object"
+      },
+      "NudgesOut": {
+        "properties": {
+          "offer": {
+            "title": "Offer",
+            "type": "boolean"
+          },
+          "on": {
+            "title": "On",
+            "type": "boolean"
+          },
+          "since": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Since"
+          },
+          "until": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Until"
+          }
+        },
+        "required": [
+          "on",
+          "until",
+          "since",
+          "offer"
+        ],
+        "title": "NudgesOut",
+        "type": "object"
+      },
       "OnboardingAnswers": {
         "additionalProperties": false,
         "description": "The onboarding draft from the app (version 1). Free text stays as typed; extra keys are rejected.",
@@ -11801,6 +11864,128 @@
           }
         ],
         "summary": "Create",
+        "tags": [
+          "follow-ups"
+        ]
+      }
+    },
+    "/follow-ups/fewer-nudges": {
+      "delete": {
+        "operationId": "end_fewer_nudges_follow_ups_fewer_nudges_delete",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NudgesOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "End Fewer Nudges",
+        "tags": [
+          "follow-ups"
+        ]
+      },
+      "get": {
+        "operationId": "get_fewer_nudges_follow_ups_fewer_nudges_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NudgesOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Fewer Nudges",
+        "tags": [
+          "follow-ups"
+        ]
+      },
+      "put": {
+        "description": "Fewer nudges (burnout mode, DAP-18, 16 Nov 2026): for a while, or until turned off, the app starts at most one\ncheck-in a day, pushes no insights, wins or compliments, and the companion keeps it short. Reminders the person set\nand their devices' alerts are unchanged.",
+        "operationId": "fewer_nudges_follow_ups_fewer_nudges_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NudgesIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NudgesOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Fewer Nudges",
+        "tags": [
+          "follow-ups"
+        ]
+      }
+    },
+    "/follow-ups/fewer-nudges/no-thanks": {
+      "post": {
+        "description": "The offer was turned down: it stays away for a month.",
+        "operationId": "no_thanks_follow_ups_fewer_nudges_no_thanks_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NudgesOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "No Thanks",
         "tags": [
           "follow-ups"
         ]
