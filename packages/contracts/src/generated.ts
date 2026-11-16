@@ -1743,6 +1743,41 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/meal/usual": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Usual */
+        get: operations["list_usual_meal_usual_get"];
+        put?: never;
+        /** Add Usual */
+        post: operations["add_usual_meal_usual_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/meal/usual/{usual_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Delete Usual */
+        delete: operations["delete_usual_meal_usual__usual_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/membership": {
         parameters: {
             query?: never;
@@ -3383,6 +3418,8 @@ export interface components {
             assumption?: string | null;
             /** Carbs Per 100G */
             carbs_per_100g?: number | null;
+            /** Confidence */
+            confidence?: ("high" | "medium" | "low") | null;
             /** Fat Per 100G */
             fat_per_100g?: number | null;
             /** Fiber Per 100G */
@@ -3396,6 +3433,10 @@ export interface components {
             /** Qty */
             qty: number;
             question?: components["schemas"]["FoodQuestion"] | null;
+            /** Served High G */
+            served_high_g?: number | null;
+            /** Served Low G */
+            served_low_g?: number | null;
             /**
              * Unit
              * @enum {string}
@@ -4218,8 +4259,23 @@ export interface components {
              * @enum {string}
              */
             ate: "all" | "most" | "half" | "little";
+            /**
+             * Carbs High Total G
+             * @default null
+             */
+            carbs_high_total_g: number | null;
+            /**
+             * Carbs Low Total G
+             * @default null
+             */
+            carbs_low_total_g: number | null;
             /** Carbs Total G */
             carbs_total_g: number;
+            /**
+             * Confidence
+             * @default null
+             */
+            confidence: ("high" | "medium" | "low") | null;
             /**
              * Fat Total G
              * @default null
@@ -4255,6 +4311,26 @@ export interface components {
              * @default null
              */
             carbs_g: number | null;
+            /**
+             * Carbs High G
+             * @default null
+             */
+            carbs_high_g: number | null;
+            /**
+             * Carbs Low G
+             * @default null
+             */
+            carbs_low_g: number | null;
+            /**
+             * Confidence
+             * @default null
+             */
+            confidence: ("high" | "medium" | "low") | null;
+            /**
+             * Est Carbs G
+             * @default null
+             */
+            est_carbs_g: number | null;
             /**
              * Fat G
              * @default null
@@ -5456,6 +5532,29 @@ export interface components {
             push_state: string;
             /** Pushed At */
             pushed_at: string | null;
+        };
+        /**
+         * UsualMealIn
+         * @description The foods as a saved meal stores them, for the whole served amount. A usual meal is the person's own, so it keeps
+         *     no estimate range or confidence: the app logs it again with its values as they were saved.
+         */
+        UsualMealIn: {
+            /** Items */
+            items: components["schemas"]["MealItemData"][];
+            /** Name */
+            name: string;
+        };
+        /** UsualMealOut */
+        UsualMealOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Items */
+            items: components["schemas"]["MealItemData"][];
+            /** Name */
+            name: string;
         };
         /**
          * UsualOut
@@ -9322,6 +9421,95 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    list_usual_meal_usual_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UsualMealOut"][];
+                };
+            };
+        };
+    };
+    add_usual_meal_usual_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UsualMealIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UsualMealOut"];
+                };
+            };
+            /** @description too_many */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_usual_meal_usual__usual_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                usual_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
             };
         };
     };

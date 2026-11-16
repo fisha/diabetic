@@ -2790,6 +2790,22 @@
             ],
             "title": "Carbs Per 100G"
           },
+          "confidence": {
+            "anyOf": [
+              {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confidence"
+          },
           "fat_per_100g": {
             "anyOf": [
               {
@@ -2863,6 +2879,32 @@
                 "type": "null"
               }
             ]
+          },
+          "served_high_g": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0.0,
+                "maximum": 20000.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Served High G"
+          },
+          "served_low_g": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0.0,
+                "maximum": 20000.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Served Low G"
           },
           "unit": {
             "enum": [
@@ -5065,11 +5107,56 @@
             "title": "Ate",
             "type": "string"
           },
+          "carbs_high_total_g": {
+            "anyOf": [
+              {
+                "maximum": 2000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Carbs High Total G"
+          },
+          "carbs_low_total_g": {
+            "anyOf": [
+              {
+                "maximum": 2000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Carbs Low Total G"
+          },
           "carbs_total_g": {
             "maximum": 2000,
             "minimum": 0,
             "title": "Carbs Total G",
             "type": "number"
+          },
+          "confidence": {
+            "anyOf": [
+              {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Confidence"
           },
           "fat_total_g": {
             "anyOf": [
@@ -5176,6 +5263,65 @@
             ],
             "default": null,
             "title": "Carbs G"
+          },
+          "carbs_high_g": {
+            "anyOf": [
+              {
+                "maximum": 1000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Carbs High G"
+          },
+          "carbs_low_g": {
+            "anyOf": [
+              {
+                "maximum": 1000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Carbs Low G"
+          },
+          "confidence": {
+            "anyOf": [
+              {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Confidence"
+          },
+          "est_carbs_g": {
+            "anyOf": [
+              {
+                "maximum": 1000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Est Carbs G"
           },
           "fat_g": {
             "anyOf": [
@@ -8668,6 +8814,60 @@
           "pushed_at"
         ],
         "title": "UpdateOut",
+        "type": "object"
+      },
+      "UsualMealIn": {
+        "additionalProperties": false,
+        "description": "The foods as a saved meal stores them, for the whole served amount. A usual meal is the person's own, so it keeps\nno estimate range or confidence: the app logs it again with its values as they were saved.",
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MealItemData"
+            },
+            "maxItems": 40,
+            "minItems": 1,
+            "title": "Items",
+            "type": "array"
+          },
+          "name": {
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "items"
+        ],
+        "title": "UsualMealIn",
+        "type": "object"
+      },
+      "UsualMealOut": {
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MealItemData"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "items"
+        ],
+        "title": "UsualMealOut",
         "type": "object"
       },
       "UsualOut": {
@@ -14453,6 +14653,124 @@
           }
         ],
         "summary": "Analyze",
+        "tags": [
+          "meal"
+        ]
+      }
+    },
+    "/meal/usual": {
+      "get": {
+        "operationId": "list_usual_meal_usual_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/UsualMealOut"
+                  },
+                  "title": "Response List Usual Meal Usual Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Usual",
+        "tags": [
+          "meal"
+        ]
+      },
+      "post": {
+        "operationId": "add_usual_meal_usual_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsualMealIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsualMealOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "too_many"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Add Usual",
+        "tags": [
+          "meal"
+        ]
+      }
+    },
+    "/meal/usual/{usual_id}": {
+      "delete": {
+        "operationId": "delete_usual_meal_usual__usual_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "usual_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Usual Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete Usual",
         "tags": [
           "meal"
         ]
