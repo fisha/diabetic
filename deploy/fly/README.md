@@ -38,6 +38,12 @@ writes it back to a file. `STEADY_JWT_SECRET` must stay the Mac's: it also unloc
    the EAS `preview` environment and in `apps/mobile/eas.json` (testers), and publish the testers OTA (both runtimes).
 4. Keep the Mac's database untouched until Guy agrees everything works; then stop the Mac services and tunnels.
 
+## Status
+
+16 Nov 2026: trial running on Fly (worker off), data copied from the Mac at 11:19 UTC, counts match. Waiting for
+Guy's go-ahead for the cutover. Learned in the trial: uvicorn `--host ::` is IPv6-only (start.sh binds a dual-stack
+socket); `grep -q` after a pipe fails under pipefail; ssh is not ready right after a deploy.
+
 ## Cost (Fly list prices, Nov 2026, before any regional markup)
 
 About $3.19 (API 512 MB) + $1.94 (database 256 MB) + volumes 2 x $0.15 + website only while running (cents) +

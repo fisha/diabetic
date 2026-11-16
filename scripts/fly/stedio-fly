@@ -15,6 +15,7 @@
 # Cutover (once the trial looks right): stop the Mac's API, `copy-data`, `deploy-api` (worker on), then switch the app (OTA).
 
 set -euo pipefail
+# No `grep -q` after a pipe: it exits early, the writer gets SIGPIPE and pipefail turns a match into a failure.
 
 REPO="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/../.." && pwd)"
 ORG="stedio"
@@ -33,9 +34,9 @@ say() { printf '==> %s\n' "$*"; }
 die() { printf 'stedio-fly: %s\n' "$*" >&2; exit 1; }
 command -v fly >/dev/null || die "flyctl is not installed"
 
-app_exists() { fly status -a "$1" >/dev/null 2>&1 || fly apps list --org "$ORG" 2>/dev/null | awk '{print $1}' | grep -qx "$1"; }
-has_secret() { fly secrets list -a "$1" --json 2>/dev/null | grep -q "\"$2\""; }
-has_volume() { fly volumes list -a "$1" --json 2>/dev/null | grep -q "\"name\": *\"$2\""; }
+app_exists() { fly status -a "$1" >/dev/null 2>&1 || fly apps list --org "$ORG" 2>/dev/null | awk '{print $1}' | grep -x "$1" >/dev/null; }
+has_secret() { fly secrets list -a "$1" --json 2>/dev/null | grep "\"$2\"" >/dev/null; }
+has_volume() { fly volumes list -a "$1" --json 2>/dev/null | grep "\"name\": *\"$2\"" >/dev/null; }
 
 dotenv_get() { # <key>: the value from services/api/.env, unquoted; fails when unset or empty
   local line val
@@ -114,11 +115,12 @@ cmd_deploy_api() {
   local extra=()
   if [ "${1:-}" = "--trial" ]; then extra=(-e STEADY_RUN_WORKER=false); say "trial: the worker is off"; fi
   # A backup before every deploy: the release command runs migrations.
-  if fly status -a "$DB_APP" 2>/dev/null | grep -q started; then say "database backup first"; cmd_backup; fi
+  if fly status -a "$DB_APP" 2>/dev/null | grep started >/dev/null; then say "database backup first"; cmd_backup; fi
   fly deploy "$REPO/services/api" -c "$REPO/deploy/fly/api/fly.toml" --dockerfile "$REPO/services/api/Dockerfile" \
     --ignorefile "$REPO/services/api/.dockerignore" --ha=false --remote-only ${extra[@]+"${extra[@]}"}
-  echo "worker setting on the running Machine: $(fly ssh console -a "$API_APP" -C 'printenv STEADY_RUN_WORKER' 2>/dev/null | tr -d '\r')"
-  curl -fsS -m 15 "https://$API_APP.fly.dev/health" && echo
+  # Read from the Machine config (ssh is often not ready right after a deploy).
+  echo "worker setting on the running Machine: $(fly machines list -a "$API_APP" --json | python3 -c 'import json,sys; print(",".join(m["config"].get("env",{}).get("STEADY_RUN_WORKER","unset") for m in json.load(sys.stdin)))')"
+  curl -fsS -m 15 --retry 8 --retry-delay 5 --retry-all-errors "https://$API_APP.fly.dev/health" && echo
 }
 
 cmd_deploy_web() {
@@ -155,7 +157,7 @@ cmd_copy_data() {
   if [ -d "$media" ]; then
     local tgz="$BACKUPS/media-to-fly-$stamp.tgz"
     say "copying meal photos and exports ($(du -sh "$media" | cut -f1))"
-    tar -C "$REPO/services/api" -czf "$tgz" media
+    COPYFILE_DISABLE=1 tar --no-xattrs -C "$REPO/services/api" -czf "$tgz" media
     fly ssh sftp put "$tgz" /data/media-incoming.tgz -a "$API_APP"
     fly ssh console -a "$API_APP" -C 'sh -c "rm -rf /data/media && tar -xzf /data/media-incoming.tgz -C /data && chown -R steady:steady /data/media && rm /data/media-incoming.tgz"'
     rm -f "$tgz"
