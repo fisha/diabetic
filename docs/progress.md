@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-159, thread "Support right-to-left across the app"): Guy asked that Hebrew and Arabic be right to
+left everywhere, text direction too, not only alignment. The layout was already RTL; text took its paragraph direction
+from its first strong character, so Hebrew sentences starting with "Stedio", "AI" or a number (180 in he.json) were
+laid out LTR. Fixed in AppText for the whole app (iOS writingDirection, web dir, Android direction marks), with
+"auto" for the person's own words and "ltr" for numbers; guard test `apps/mobile/test/rtl.test.ts`. JS only (0.5.0
+OTA). App tests, typecheck, i18n tests and a web export check (he, ar) pass; not yet seen on a phone.
+
 16 Nov 2026 (Jira PM-158, thread "Add classic Stedio mode without games"): Guy asked for a switch at the top of
 Profile > Companion that releases the person from the games ("Stedio הקלאסי", no wardrobe). Built: "Classic Stedio"
 (`companion.classic` in the profile answers, off by default, shared by app and website). While on, the accessories
