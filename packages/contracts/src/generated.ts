@@ -1616,7 +1616,12 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Search */
+        /**
+         * Search
+         * @description A Hebrew query searches the Israeli food list (Ministry of Health, Tzameret; DAP-16) with typical portions. A Latin
+         *     query searches USDA FoodData Central as before, followed by up to five foods of the Israeli list by their English
+         *     names. The Israeli list is part of the server, so it answers when USDA is not configured or does not answer.
+         */
         get: operations["search_meal_foods_get"];
         put?: never;
         post?: never;
@@ -3293,8 +3298,15 @@ export interface components {
             fiber_per_100g?: number | null;
             /** Name */
             name: string;
+            /** Portions */
+            portions?: components["schemas"]["Portion"][];
             /** Protein Per 100G */
             protein_per_100g?: number | null;
+            /**
+             * Source
+             * @default usda-fdc
+             */
+            source: string;
             /** Source Id */
             source_id: string;
         };
@@ -4502,6 +4514,21 @@ export interface components {
             lat: number;
             /** Lon */
             lon: number;
+        };
+        /**
+         * Portion
+         * @description One household measure of a food: the app unit it fills, its weight, and the database's Hebrew name for it.
+         */
+        Portion: {
+            /** Grams */
+            grams: number;
+            /** Label */
+            label: string;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "piece" | "slice" | "serving" | "cup" | "tbsp";
         };
         /** ProfileChangeOut */
         ProfileChangeOut: {
