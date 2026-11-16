@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (PM-118, thread "Add burnout mode with fewer nudges"): Guy approved idea DAP-18 from Itay's plan. A
+"Fewer nudges" switch on Routine > Check-ins (a week, two weeks or until turned off): the app starts at most one
+check-in a day and no late-lunch question, pushes no insights, wins or move compliments, shows only the greeting bubble
+and no insight cards on the main screen, and the companion keeps it short and stops nudging. Reminders the person set
+and device alerts are unchanged. A gentle offer card appears when most recent check-ins went unanswered (G-86). API
+tests (397) and ruff, app typecheck and tests (140), i18n tests and web e2e `tools/e2e/fewer-nudges.cjs` (en light,
+he light, he dark) pass. JS and API only; deploy the API before the OTA. Not seen on a phone.
+
 16 Nov 2026 (same thread, Guy: "תדאג גם שאנחנו מייצרים פה skills של compliance ו regulatory ובכל פיתוח שלנו אנחנו
 בודקים את זה"): two project skills, `.claude/skills/regulatory-check` (medical-device boundaries) and
 `.claude/skills/privacy-compliance` (health-data privacy), a CLAUDE.md rule in all four repositories, and a "Regulatory

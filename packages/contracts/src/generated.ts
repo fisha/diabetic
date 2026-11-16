@@ -908,6 +908,50 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/follow-ups/fewer-nudges": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Fewer Nudges */
+        get: operations["get_fewer_nudges_follow_ups_fewer_nudges_get"];
+        /**
+         * Fewer Nudges
+         * @description Fewer nudges (burnout mode, DAP-18, 16 Nov 2026): for a while, or until turned off, the app starts at most one
+         *     check-in a day, pushes no insights, wins or compliments, and the companion keeps it short. Reminders the person set
+         *     and their devices' alerts are unchanged.
+         */
+        put: operations["fewer_nudges_follow_ups_fewer_nudges_put"];
+        post?: never;
+        /** End Fewer Nudges */
+        delete: operations["end_fewer_nudges_follow_ups_fewer_nudges_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/follow-ups/fewer-nudges/no-thanks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * No Thanks
+         * @description The offer was turned down: it stays away for a month.
+         */
+        post: operations["no_thanks_follow_ups_fewer_nudges_no_thanks_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/follow-ups/pause": {
         parameters: {
             query?: never;
@@ -2134,6 +2178,83 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/voice/live/rtc/check": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Check
+         * @description Whether the companion's words so far read as a dose instruction; the phone then stops her at once.
+         */
+        post: operations["check_voice_live_rtc_check_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/voice/live/rtc/said": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Said
+         * @description Keeps a turn the companion answered by herself in the conversation, like text (checked by the dose rule).
+         */
+        post: operations["said_voice_live_rtc_said_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/voice/live/rtc/session": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Open Session */
+        post: operations["open_session_voice_live_rtc_session_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/voice/live/rtc/turn": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Turn
+         * @description Answers one delegation: the text companion with its tools, on what the person just said.
+         */
+        post: operations["turn_voice_live_rtc_turn_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/voice/messages/{message_id}/speech": {
         parameters: {
             query?: never;
@@ -2651,18 +2772,10 @@ export interface components {
             /** Source */
             source: string;
         };
-        /** CheckOut */
-        CheckOut: {
-            /** Coverage */
-            coverage: {
-                [key: string]: unknown;
-            };
-            /** Day */
-            day: string;
-            /** Eligible */
-            eligible: boolean;
-            /** Improved */
-            improved: boolean;
+        /** CheckIn */
+        CheckIn: {
+            /** Text */
+            text: string;
         };
         /**
          * ClientErrorIn
@@ -3859,6 +3972,37 @@ export interface components {
             /** Stage */
             stage: string;
         };
+        /**
+         * LinesOut
+         * @description The app's lines the phone hands the model, kept here with the rest of the companion's words.
+         */
+        LinesOut: {
+            /**
+             * Dose
+             * @default The app does not give insulin doses. Say so briefly and suggest the person follows their care team's plan.
+             */
+            dose: string;
+            /**
+             * Stop
+             * @default Stop speaking now and wait for the person to finish.
+             */
+            stop: string;
+            /**
+             * Unavailable
+             * @default The app could not answer just now. Say so briefly and ask the person to try again in a moment.
+             */
+            unavailable: string;
+            /**
+             * Unheard
+             * @default The app did not catch the person's words. Ask them briefly to say it again.
+             */
+            unheard: string;
+            /**
+             * Working
+             * @default The app is still working on what the person just told you (for example estimating a meal). Tell them in a few words that you're on it. Don't guess the result.
+             */
+            working: string;
+        };
         /** LiveActivityIn */
         LiveActivityIn: {
             band?: components["schemas"]["BandIn"] | null;
@@ -4148,6 +4292,22 @@ export interface components {
              */
             text: string;
         };
+        /** NudgesIn */
+        NudgesIn: {
+            /** Until */
+            until?: string | null;
+        };
+        /** NudgesOut */
+        NudgesOut: {
+            /** Offer */
+            offer: boolean;
+            /** On */
+            on: boolean;
+            /** Since */
+            since: string | null;
+            /** Until */
+            until: string | null;
+        };
         /**
          * OnboardingAnswers
          * @description The onboarding draft from the app (version 1). Free text stays as typed; extra keys are rejected.
@@ -4383,7 +4543,7 @@ export interface components {
             achievements: components["schemas"]["AchievementOut"][];
             /** Celebrate */
             celebrate: boolean;
-            last_check: components["schemas"]["CheckOut"] | null;
+            last_check: components["schemas"]["steady_api__routers__progress__CheckOut"] | null;
         };
         /** ProposalIn */
         ProposalIn: {
@@ -4713,6 +4873,18 @@ export interface components {
             /** Target */
             target: number;
         };
+        /** SaidIn */
+        SaidIn: {
+            /** Heard */
+            heard?: string | null;
+            /** Said */
+            said: string;
+        };
+        /** SaidOut */
+        SaidOut: {
+            heard?: components["schemas"]["MessageOut"] | null;
+            reply: components["schemas"]["MessageOut"];
+        };
         /**
          * SameAsIn
          * @description The meal this entry is the same meal as, or null for "a separate meal".
@@ -4758,6 +4930,35 @@ export interface components {
             conversation_id: string;
             message: components["schemas"]["MessageOut"];
             reply: components["schemas"]["MessageOut"];
+        };
+        /** SessionIn */
+        SessionIn: {
+            /** Opener */
+            opener?: string | null;
+            /**
+             * Resume
+             * @default false
+             */
+            resume: boolean;
+            /** Sdp */
+            sdp: string;
+        };
+        /** SessionOut */
+        SessionOut: {
+            /**
+             * @default {
+             *       "dose": "The app does not give insulin doses. Say so briefly and suggest the person follows their care team's plan.",
+             *       "stop": "Stop speaking now and wait for the person to finish.",
+             *       "unavailable": "The app could not answer just now. Say so briefly and ask the person to try again in a moment.",
+             *       "unheard": "The app did not catch the person's words. Ask them briefly to say it again.",
+             *       "working": "The app is still working on what the person just told you (for example estimating a meal). Tell them in a few words that you're on it. Don't guess the result."
+             *     }
+             */
+            lines: components["schemas"]["LinesOut"];
+            /** Open */
+            open?: string | null;
+            /** Sdp */
+            sdp: string;
         };
         /** SetChangeIn */
         SetChangeIn: {
@@ -5029,6 +5230,18 @@ export interface components {
         TranscriptOut: {
             /** Text */
             text: string;
+        };
+        /** TurnIn */
+        TurnIn: {
+            /** Heard */
+            heard: string;
+        };
+        /** TurnOut */
+        TurnOut: {
+            heard: components["schemas"]["MessageOut"];
+            reply?: components["schemas"]["MessageOut"] | null;
+            /** Say */
+            say: string;
         };
         /** UpdateOut */
         UpdateOut: {
@@ -5312,6 +5525,24 @@ export interface components {
              * @enum {string}
              */
             via: "app" | "web" | "push";
+        };
+        /** CheckOut */
+        steady_api__routers__live_rtc__CheckOut: {
+            /** Dose */
+            dose: boolean;
+        };
+        /** CheckOut */
+        steady_api__routers__progress__CheckOut: {
+            /** Coverage */
+            coverage: {
+                [key: string]: unknown;
+            };
+            /** Day */
+            day: string;
+            /** Eligible */
+            eligible: boolean;
+            /** Improved */
+            improved: boolean;
         };
         /** StateIn */
         steady_api__routers__progress__StateIn: {
@@ -7270,6 +7501,99 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_fewer_nudges_follow_ups_fewer_nudges_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NudgesOut"];
+                };
+            };
+        };
+    };
+    fewer_nudges_follow_ups_fewer_nudges_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NudgesIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NudgesOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    end_fewer_nudges_follow_ups_fewer_nudges_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NudgesOut"];
+                };
+            };
+        };
+    };
+    no_thanks_follow_ups_fewer_nudges_no_thanks_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NudgesOut"];
                 };
             };
         };
@@ -9721,6 +10045,138 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["VoiceStatusOut"];
+                };
+            };
+        };
+    };
+    check_voice_live_rtc_check_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CheckIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["steady_api__routers__live_rtc__CheckOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    said_voice_live_rtc_said_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SaidIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SaidOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    open_session_voice_live_rtc_session_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SessionIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SessionOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    turn_voice_live_rtc_turn_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TurnIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TurnOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
