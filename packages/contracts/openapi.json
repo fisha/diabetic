@@ -2810,6 +2810,13 @@
             "title": "Name",
             "type": "string"
           },
+          "portions": {
+            "items": {
+              "$ref": "#/components/schemas/Portion"
+            },
+            "title": "Portions",
+            "type": "array"
+          },
           "protein_per_100g": {
             "anyOf": [
               {
@@ -2820,6 +2827,11 @@
               }
             ],
             "title": "Protein Per 100G"
+          },
+          "source": {
+            "default": "usda-fdc",
+            "title": "Source",
+            "type": "string"
           },
           "source_id": {
             "title": "Source Id",
@@ -6075,6 +6087,37 @@
         "title": "PlaceIn",
         "type": "object"
       },
+      "Portion": {
+        "description": "One household measure of a food: the app unit it fills, its weight, and the database's Hebrew name for it.",
+        "properties": {
+          "grams": {
+            "title": "Grams",
+            "type": "number"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "unit": {
+            "enum": [
+              "piece",
+              "slice",
+              "serving",
+              "cup",
+              "tbsp"
+            ],
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "unit",
+          "grams",
+          "label"
+        ],
+        "title": "Portion",
+        "type": "object"
+      },
       "ProfileChangeOut": {
         "properties": {
           "after": {
@@ -8768,6 +8811,11 @@
           "live": {
             "default": false,
             "title": "Live",
+            "type": "boolean"
+          },
+          "rtc": {
+            "default": false,
+            "title": "Rtc",
             "type": "boolean"
           },
           "voices": {
@@ -13866,6 +13914,7 @@
     },
     "/meal/foods": {
       "get": {
+        "description": "A Hebrew query searches the Israeli food list (Ministry of Health, Tzameret; DAP-16) with typical portions. A Latin\nquery searches USDA FoodData Central as before, followed by up to five foods of the Israeli list by their English\nnames. The Israeli list is part of the server, so it answers when USDA is not configured or does not answer.",
         "operationId": "search_meal_foods_get",
         "parameters": [
           {
@@ -15726,7 +15775,7 @@
     },
     "/voice": {
       "get": {
-        "description": "Whether a voice provider is configured, so the app can show the unavailable state before anyone talks.",
+        "description": "Whether a voice provider is configured, so the app can show the unavailable state before anyone talks. The\nvoice screen asks this when it opens, so the slow part of the companion's context is built now, ahead of a call.",
         "operationId": "status_voice_get",
         "responses": {
           "200": {

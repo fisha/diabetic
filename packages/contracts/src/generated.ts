@@ -1616,7 +1616,12 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Search */
+        /**
+         * Search
+         * @description A Hebrew query searches the Israeli food list (Ministry of Health, Tzameret; DAP-16) with typical portions. A Latin
+         *     query searches USDA FoodData Central as before, followed by up to five foods of the Israeli list by their English
+         *     names. The Israeli list is part of the server, so it answers when USDA is not configured or does not answer.
+         */
         get: operations["search_meal_foods_get"];
         put?: never;
         post?: never;
@@ -2189,7 +2194,8 @@ export interface paths {
         };
         /**
          * Status
-         * @description Whether a voice provider is configured, so the app can show the unavailable state before anyone talks.
+         * @description Whether a voice provider is configured, so the app can show the unavailable state before anyone talks. The
+         *     voice screen asks this when it opens, so the slow part of the companion's context is built now, ahead of a call.
          */
         get: operations["status_voice_get"];
         put?: never;
@@ -3293,8 +3299,15 @@ export interface components {
             fiber_per_100g?: number | null;
             /** Name */
             name: string;
+            /** Portions */
+            portions?: components["schemas"]["Portion"][];
             /** Protein Per 100G */
             protein_per_100g?: number | null;
+            /**
+             * Source
+             * @default usda-fdc
+             */
+            source: string;
             /** Source Id */
             source_id: string;
         };
@@ -4503,6 +4516,21 @@ export interface components {
             /** Lon */
             lon: number;
         };
+        /**
+         * Portion
+         * @description One household measure of a food: the app unit it fills, its weight, and the database's Hebrew name for it.
+         */
+        Portion: {
+            /** Grams */
+            grams: number;
+            /** Label */
+            label: string;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "piece" | "slice" | "serving" | "cup" | "tbsp";
+        };
         /** ProfileChangeOut */
         ProfileChangeOut: {
             /** After */
@@ -5408,6 +5436,11 @@ export interface components {
              * @default false
              */
             live: boolean;
+            /**
+             * Rtc
+             * @default false
+             */
+            rtc: boolean;
             /**
              * Voices
              * @default []

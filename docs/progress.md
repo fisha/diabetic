@@ -150,6 +150,18 @@ with buttons "I ate, log it" (meal logging) and "Not yet" (the companion's fixed
 tests and ruff, app typecheck, 118 tests and lint (no new problems), i18n tests pass. JS only, no migration; the API must
 be deployed before the OTA (an older API rejects `answer`). Not seen on a phone.
 
+16 Nov 2026, ~14:30 UTC (same thread, PM-111): the first sim run of the direct path took the production API down twice
+(13:53-13:58 and ~14:00-14:07 UTC): opening a session built the companion's context on Fly's one shared CPU for minutes,
+the app timed out at 30 s and asked again, the builds ran at once and could not be cancelled, and each waiting request
+held a pooled DB connection (QueuePool exhausted, health check failing). API #45: the direct path is OFF unless
+`STEADY_LIVE_RTC_ENABLED` is set (GET /voice reports `rtc`, phones use the relay otherwise); no pooled connection while
+waiting (`BriefUser`); one open per person, two on the server, six per person per 10 min (429); preparation on its own
+two threads, answered within 22 s, the build stops at 20 s and each query at 10 s; the slow context parts (routine,
+findings, Overview order) cached 5 min per person (also for delegations), purged on account deletion. App #69: direct
+path only when the server says `rtc`, opens never overlap, backoff 2 s/6 s (10 s when busy), session wait 60 s, leaving
+the screen ends a call still opening. Next: a controlled test of the direct path with the switch on, timing lines
+`live rtc session … queued/prepare/openai` and `companion slow context ms`, before build 15 and before switching it on.
+
 16 Nov 2026 (thread "Fix companion voice call cutting off"): on Fly, the relay still cut the greeting ("איך הו"): the
 server sent only 2.2 s of it (its hold-and-slice of the model's audio), with no mic or network cause (Fly CPU/memory fine,
 Fly to OpenAI 0.7 s). Guy chose (decision card) the mixmaster-pro way: the phone connects to GPT-Live directly over
