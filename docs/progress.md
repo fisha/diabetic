@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-161, thread "Speed up the app and API"): Guy asked for a full speed review of the app and the API
+and what may be cached on the phone. Review and plan: Claude Doc "Stedio performance review: app and API". Measured
+with `services/api/scripts/perf_bench.py` (synthetic, local `_perf` database): the server answers most reads in under
+35 ms; the slowness was screens waiting for the network, /insights recomputing (0.4 to 0.6 s), uncompressed answers
+and whole model replies. Built: the app shows the answer kept on the phone at once and then the server's
+(`session.kept`, `useRange`, insights, conversation; rows outside the window dropped, never while viewing); API gzip
+over 1 KB, /insights about 2x faster with identical output, a log line for requests over 1 s (route template only).
+API 471 tests, app 163 tests and typecheck, `tools/e2e/offline.cjs` 36/36 pass; not yet on a phone. Deploy the API (no
+migration) and an OTA (JS only). Streaming replies (PM-162) on hold by Guy's choice; next items PM-163 and follow-ups.
+
 16 Nov 2026 (Jira PM-156, thread "Check app against App Store review rules"): Guy asked that a change to the privacy
 policy, the terms or a consent like the AI one makes the app ask the person to read and accept before they keep using
 it. Built (G-93): versions per document in `steady_api/legal.py` (Terms and Privacy 2026-11-16, AI consent
