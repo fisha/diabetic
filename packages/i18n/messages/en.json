@@ -2723,5 +2723,20 @@
   "per.w_b": "You're on the waiting list for it. Until then there's nothing to set up here.",
   "per.w_code": "Has someone with diabetes shared their data with you? Enter the invite code they sent you.",
   "per.change": "Change my answer",
-  "per.out": "Sign out"
+  "per.out": "Sign out",
+  "meal.range_v": "Likely {range} g · {conf}",
+  "meal.range_a11y": "Likely between {low} and {high} grams, {conf}",
+  "meal.range_only": "Likely {range} g",
+  "meal.conf_high": "high confidence",
+  "meal.conf_medium": "medium confidence",
+  "meal.conf_low": "low confidence",
+  "meal.range_note": "The range shows how far the estimate may be off. Confirming or weighing the amount, or typing the carbs, replaces the estimate with your value.",
+  "meal.usual": "Usual meals",
+  "meal.usual_save": "Save as a usual meal",
+  "meal.usual_name": "Name of the meal",
+  "meal.usual_add": "Save",
+  "meal.usual_saved": "Saved to your usual meals",
+  "meal.usual_full": "You have 30 usual meals. Remove one on Log a meal to add another.",
+  "meal.usual_failed": "Couldn’t save it. Try again.",
+  "meal.usual_remove": "Remove {name} from usual meals"
 }

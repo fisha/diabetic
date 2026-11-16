@@ -17089,5 +17089,117 @@
       "translation"
     ],
     "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "meal.range_v": {
+    "board": "Meal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Carb estimate range with the provider's confidence (DAP-15, Guy approved 16 Nov 2026). Accuracy wording: sign-off register #8."
+  },
+  "meal.range_a11y": {
+    "board": "Meal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "meal.range_only": {
+    "board": "Meal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "meal.conf_high": {
+    "board": "Meal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "meal.conf_medium": {
+    "board": "Meal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "meal.conf_low": {
+    "board": "Meal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "meal.range_note": {
+    "board": "Meal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Explains the range; no accuracy claim (DAP-15, register #8)."
+  },
+  "meal.usual": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "meal.usual_save": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "meal.usual_name": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "meal.usual_add": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "meal.usual_saved": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "meal.usual_full": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "meal.usual_failed": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+  },
+  "meal.usual_remove": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
   }
 }
