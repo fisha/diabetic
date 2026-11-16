@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (DAP-16, Jira PM-119, thread "Add Israeli Hebrew food list with portions"): Itay's plan asks for local
+dishes in Hebrew with typical portions. The source is the Ministry of Health national nutrient database "Tzameret"
+(data.gov.il `nutrition-database`, licence `other-open`: copy, adapt and commercial use allowed, the source must be
+stated, no implied endorsement). The official CSVs were downloaded on the Mac (data.gov.il is blocked from the cloud)
+and built into `services/api/steady_api/data/tzameret.json` by `scripts/build_tzameret.py` (4,508 foods, 3,815 with
+portions; questionnaire "FFQ" rows left out). Its carbohydrate field is "available carbohydrate", already net of fiber,
+so it is taken as published. `GET /meal/foods` answers Hebrew from this list (spelling variants: vowel letters, ט/ת,
+ק/כ, geresh, niqqud) and adds up to five of its foods after USDA for Latin queries; it works without the USDA key. The
+app's search sheet shows the typical portion and the source line, and a picked food starts at that portion. API tests
+(392) and ruff, app typecheck and tests (141), i18n tests, and web e2e `tools/e2e/israeli-foods.cjs` pass. JS and API
+only: deploy the API before the OTA. Lawyer sign-off DAP-67 is still open. Not seen on a phone.
+
 16 Nov 2026 (PM-118, thread "Add burnout mode with fewer nudges"): Guy approved idea DAP-18 from Itay's plan. A
 "Fewer nudges" switch on Routine > Check-ins (a week, two weeks or until turned off): the app starts at most one
 check-in a day and no late-lunch question, pushes no insights, wins or move compliments, shows only the greeting bubble
@@ -157,6 +169,18 @@ meal and no bolus are recorded since 11:00, once a day, within the check-in cap 
 with buttons "I ate, log it" (meal logging) and "Not yet" (the companion's fixed line on regular meal times). API 346
 tests and ruff, app typecheck, 118 tests and lint (no new problems), i18n tests pass. JS only, no migration; the API must
 be deployed before the OTA (an older API rejects `answer`). Not seen on a phone.
+
+16 Nov 2026, ~14:30 UTC (same thread, PM-111): the first sim run of the direct path took the production API down twice
+(13:53-13:58 and ~14:00-14:07 UTC): opening a session built the companion's context on Fly's one shared CPU for minutes,
+the app timed out at 30 s and asked again, the builds ran at once and could not be cancelled, and each waiting request
+held a pooled DB connection (QueuePool exhausted, health check failing). API #45: the direct path is OFF unless
+`STEADY_LIVE_RTC_ENABLED` is set (GET /voice reports `rtc`, phones use the relay otherwise); no pooled connection while
+waiting (`BriefUser`); one open per person, two on the server, six per person per 10 min (429); preparation on its own
+two threads, answered within 22 s, the build stops at 20 s and each query at 10 s; the slow context parts (routine,
+findings, Overview order) cached 5 min per person (also for delegations), purged on account deletion. App #69: direct
+path only when the server says `rtc`, opens never overlap, backoff 2 s/6 s (10 s when busy), session wait 60 s, leaving
+the screen ends a call still opening. Next: a controlled test of the direct path with the switch on, timing lines
+`live rtc session … queued/prepare/openai` and `companion slow context ms`, before build 15 and before switching it on.
 
 16 Nov 2026 (thread "Fix companion voice call cutting off"): on Fly, the relay still cut the greeting ("איך הו"): the
 server sent only 2.2 s of it (its hold-and-slice of the model's audio), with no mic or network cause (Fly CPU/memory fine,
