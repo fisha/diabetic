@@ -109,6 +109,16 @@ with buttons "I ate, log it" (meal logging) and "Not yet" (the companion's fixed
 tests and ruff, app typecheck, 118 tests and lint (no new problems), i18n tests pass. JS only, no migration; the API must
 be deployed before the OTA (an older API rejects `answer`). Not seen on a phone.
 
+16 Nov 2026 (thread "Fix companion voice call cutting off"): on Fly, the relay still cut the greeting ("איך הו"): the
+server sent only 2.2 s of it (its hold-and-slice of the model's audio), with no mic or network cause (Fly CPU/memory fine,
+Fly to OpenAI 0.7 s). Guy chose (decision card) the mixmaster-pro way: the phone connects to GPT-Live directly over
+WebRTC (react-native-webrtc, call-mode echo cancellation, loudspeaker by react-native-incall-manager); the server opens
+the session with its key (`/voice/live/rtc/session`), answers delegations dose-checked (`/turn`), keeps her own turns
+(`/said`) and checks her words as she speaks (`/check`; a dose sentence mutes and stops her, a failed check fails
+closed). API #42, app #65 (version 0.5.0, native). Real WebRTC probe from the Mac passed (greeting audio 0.9 s after the
+channel opened, input transcript and delegation work). Builds without the module keep the relay. Next: one testers
+build (with the warm-up/Live Activity Swift changes), Guy tries a call.
+
 15 Nov 2026, ~16:00 UTC (same thread): Guy, on API 8b47eb3: "still keeps jumping". His call's log: the first socket
 ended about 5 s after a 1.4 s greeting, a second opened with a new greeting, answered one question (10.2 s of audio) and
 ended; no talk-over, cut, ignored or playback-gap keys, no warnings, no close reason logged. E2E run 6 (real model): no
