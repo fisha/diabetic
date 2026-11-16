@@ -1521,3 +1521,16 @@ the results names the source, as the data licence asks ("Source: Israeli Ministr
 Values are estimates."). Neither is drawn on the board. Dishes the database does not have (sabich, malawach) are not
 invented; they fall back to "add as your own food". An admin tool to add foods (named in DAP-16) is not built.
 
+## Carb estimate ranges and usual meals (DAP-15, 16 Nov 2026)
+
+Guy approved Itay's idea DAP-15 for development: show a carb estimate as a range with confidence, never one hard
+number, and saved "usual meals". Not on the Meal board; added in the board's own style:
+
+- Each estimated food keeps "Net carbs ≈ X g" with its pencil, and a footnote under the provenance pill: "Likely
+  34–62 g · medium confidence". The total card shows the meal's range under the total. The note at the bottom adds one
+  line on what the range means. A food whose amount, weight or carbs the person gave has no range.
+- The saved screen has "Save as a usual meal" (a secondary button that opens a name field and Save). Log a meal lists
+  "Usual meals" above "Recent meals"; a row opens the meal in the review with the time set to now, and a bin button
+  removes it. At most 30 usual meals.
+- No range, confidence or usual meal is shown next to insulin logging (DAP-61).
+

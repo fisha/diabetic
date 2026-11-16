@@ -72,6 +72,7 @@ export type GlucoseAlertsIn = S['GlucoseAlertsIn'];
 export type GlucoseAlertsOut = S['GlucoseAlertsOut'];
 export type FoodItem = S['FoodItem'];
 export type FoodResult = S['FoodResult'];
+export type UsualMealOut = S['UsualMealOut'];
 export type FoodMatch = S['FoodMatch'];
 export type PhotoOut = S['PhotoOut'];
 export type CareLinkIn = S['CareLinkIn'];

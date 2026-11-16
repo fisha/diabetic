@@ -46,6 +46,18 @@ not seen on a phone.
 `.claude/skills/privacy-compliance` (health-data privacy), a CLAUDE.md rule in all four repositories, and a "Regulatory
 and privacy check" section in every repository's PR template. Every PR runs both. Tasks are tracked in Jira (PM-114).
 
+16 Nov 2026 (PM-120, DAP-15 from Itay's plan, thread "Show carb estimates as ranges, save usual meals"): Guy approved
+taking DAP-15 into development. Photo and description analysis now asks the food provider for the lowest and highest
+plausible weight of each food's served amount and its own confidence (high, medium, low); the server keeps a range only
+when it holds the estimate. The meal review shows "Likely 34–62 g · medium confidence" under each estimated food and
+the meal's range under the total; once the person changes the amount, weighs it or types the carbs, that food's range
+goes away. Saved meals keep the range and confidence, and the first estimate next to a correction (`est_carbs_g`, for
+the carb accuracy evaluation PM-72). Usual meals: "Save as a usual meal" on the saved screen (name field), a "Usual
+meals" list on Log a meal to log one again or remove it (`/meal/usual`, table `usual_meals`, migration `d0e1f2a3b4c8`,
+max 30, in the meals export, deleted with the account). Meal cards from the conversation store the same range. Nothing
+is shown next to insulin (DAP-61). API tests, app typecheck and tests, i18n tests and web e2e `tools/e2e/carb-range.cjs`
+(en light, he light, he dark) pass. API and JS only: deploy the API (migration) before the OTA. Not seen on a phone.
+
 16 Nov 2026 (PM-113, thread "Fix diabetes profile change history labels"): Guy saw saved field names and raw values in
 Profile > Diabetes profile > Change history. Each row now shows the profile question's label in the app language and the
 values as the questions show them (choices by label, times and dates formatted, glucose and body values with units, ratio

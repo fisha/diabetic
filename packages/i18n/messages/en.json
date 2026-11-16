@@ -2635,5 +2635,20 @@
   "ndg.offer_t": "Want a quieter week?",
   "ndg.offer_b": "I can step back for a while: fewer check-ins and notifications. You can turn it off any time.",
   "ndg.offer_yes": "Yes, for a week",
-  "ndg.offer_no": "No thanks"
+  "ndg.offer_no": "No thanks",
+  "meal.range_v": "Likely {range} g · {conf}",
+  "meal.range_a11y": "Likely between {low} and {high} grams, {conf}",
+  "meal.range_only": "Likely {range} g",
+  "meal.conf_high": "high confidence",
+  "meal.conf_medium": "medium confidence",
+  "meal.conf_low": "low confidence",
+  "meal.range_note": "The range shows how far the estimate may be off. Confirming or weighing the amount, or typing the carbs, replaces the estimate with your value.",
+  "meal.usual": "Usual meals",
+  "meal.usual_save": "Save as a usual meal",
+  "meal.usual_name": "Name of the meal",
+  "meal.usual_add": "Save",
+  "meal.usual_saved": "Saved to your usual meals",
+  "meal.usual_full": "You have 30 usual meals. Remove one on Log a meal to add another.",
+  "meal.usual_failed": "Couldn’t save it. Try again.",
+  "meal.usual_remove": "Remove {name} from usual meals"
 }
