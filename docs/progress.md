@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (same thread, Guy: "תדאג גם שאנחנו מייצרים פה skills של compliance ו regulatory ובכל פיתוח שלנו אנחנו
+בודקים את זה"): two project skills, `.claude/skills/regulatory-check` (medical-device boundaries) and
+`.claude/skills/privacy-compliance` (health-data privacy), a CLAUDE.md rule in all four repositories, and a "Regulatory
+and privacy check" section in every repository's PR template. Every PR runs both. Tasks are tracked in Jira (PM-114).
+
 16 Nov 2026 (PM-113, thread "Fix diabetes profile change history labels"): Guy saw saved field names and raw values in
 Profile > Diabetes profile > Change history. Each row now shows the profile question's label in the app language and the
 values as the questions show them (choices by label, times and dates formatted, glucose and body values with units, ratio
