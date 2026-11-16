@@ -39,6 +39,7 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 | Sharing with a trusted person (DAP-19): consent text, the viewer's chat about shared data, and older shares without a consent record | privacy, terms | Lawyer (PM-127); texts in `packages/i18n` `shr.consent_*` and privacy "Sharing" |
 | Cancellation and refund terms under consumer protection law | terms | When billing opens |
 | Liability wording | terms | Lawyer |
+| Consent to the external AI engine (PM-149) required for using Stedio, withdrawn only by deleting the account; whether an optional version (journal without the companion) is needed for consent to count as freely given | privacy | Lawyer (PM-99); texts `onb.c3`, `onb.c3b`, `ai.*`, `set.pv_ai*`; privacy policy "Who we share it with" names OpenAI |
 
 ## Facts the texts state, with their source
 
@@ -47,6 +48,9 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 - Account deletion removes rows (cascade) and files at once, and revokes training data: `routers/account.py`
   `delete_account`, `learning.revoke_training`.
 - Training consent separate and off by default: G-61, onboarding consent.
+- Explicit, separate consent before anything goes to the external AI engine (PM-149): `steady_api/ai_consent.py` refuses
+  every engine route without the latest "ai" consent record (and the shared person's, for a viewer's chat);
+  `tests/test_ai_consent.py`.
 - Meal photo retention choices: `routers/settings.py` `photo_retention`. Exports expire after 7 days
   (`EXPORT_DAYS`), invite codes after 7 days (`CODE_DAYS`), refresh tokens after 30 days.
 - OpenAI requests with `store=False`: `ai/provider.py`, `ai/food.py`. No voice recordings are written to disk.

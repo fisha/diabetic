@@ -6469,6 +6469,97 @@
       "translation"
     ]
   },
+  "onb.c3": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
+  "onb.c3b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
+  "onb.c_err_req": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
+  "ai.more": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
+  "ai.d_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
+  "ai.d_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
+  "ai.g_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
+  "ai.g_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
+  "ai.g_ok": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
+  "ai.g_del": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
+  "ai.g_fail": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
+  "set.pv_ai": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
+  "set.pv_ai_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
+  },
   "onb.c_agree": {
     "board": "Onboarding",
     "review": [

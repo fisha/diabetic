@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-149, thread "Check app against App Store review rules"): Guy approved explicit consent before
+data goes to the AI engine (App Store 5.1.2(i)), in generic words ("external AI engine"; OpenAI named in a details
+dialog and the privacy policy). Built (G-92): third, required onboarding checkbox, a one-time screen for existing
+accounts and viewers, a locked row in Privacy, and server refusal of every engine route without the consent record.
+API tests, app tests, typecheck and the i18n catalogue pass; not yet run on a phone. Deploy the API together with the
+OTA (an app without the screen can't give the consent). The other App Store items (PM-147, PM-148, PM-150 to PM-153)
+are on hold by Guy's choice.
+
 16 Nov 2026 (Jira PM-154, thread "Add weather-based glucose insights"): Guy asked about location and weather insights.
 Location (opt-in, coarse, rounded on the phone) and today's weather tips existed since 13 Nov; what was missing was a
 link to his own data. Built, after Guy's go-ahead: `POST /environment` now also keeps a daily weather summary per local
