@@ -1491,3 +1491,24 @@ designed Banner's "offline / stale data" variant (Components 12.7, tone info) si
 shown data was last updated. It goes away with the first answer from the server. Screens show the kept answers as
 they were; actions that need the server (saving, the companion's replies) keep their own error states.
 
+### G-88 · Fewer nudges (burnout mode) (**Guy, 16 Nov 2026**, verified-test)
+
+Idea DAP-18 from Itay's plan (Persona 1: check-ins and burnout mode), approved by Guy for development on 16 Nov 2026.
+Jira PM-118. Not on the board; the switch and the offer card follow the existing Routine and carousel patterns.
+
+- Routine > Check-ins has a "Fewer nudges" switch under "Pause check-ins". Turning it on asks for how long: a week,
+  two weeks, or until turned off (at most 31 days when timed). While on, a banner says until when, with "Turn off".
+- While on: the app starts at most one check-in a day and no late-lunch question; insight and small-win updates are
+  not pushed (they wait in the app); no "keep moving" compliments; the main screen shows only the greeting bubble and
+  no insight cards in the carousel (they stay on the all-insights page); the companion keeps replies short, does not
+  ask the person to log anything, does not bring up open profile questions or unanswered check-ins, and does not
+  schedule check-ins on its own.
+- Never changed: reminders the person set, the pump's and sensor's alerts, the sensor-ready push and the out-of-range
+  look-back.
+- The offer: when, in the last 7 days, at least 3 check-ins started by the app or the companion were not answered or
+  were dismissed and at most 1 was answered, the carousel shows "Want a quieter week?" with "Yes, for a week" and
+  "No thanks". "No thanks", or the mode ending, keeps it away for 30 days. It looks only at how check-ins were answered,
+  never at health values.
+- Kept in `user_settings.routine_state` (`nudges_until`, `nudges_since`, `nudges_offer_hidden`), no migration.
+  API: `GET/PUT/DELETE /follow-ups/fewer-nudges`, `POST /follow-ups/fewer-nudges/no-thanks`.
+

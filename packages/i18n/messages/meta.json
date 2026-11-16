@@ -16384,5 +16384,85 @@
     "review": [
       "translation"
     ]
+  },
+  "ndg.title": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.body": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ],
+    "note": "{name}: the companion's name"
+  },
+  "ndg.pick": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.p_1w": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.p_2w": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.p_on": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.on_until": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ],
+    "note": "{until}: a day and time, e.g. 'Fri 07:00'"
+  },
+  "ndg.on_off": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.turn_off": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.offer_t": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.offer_b": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.offer_yes": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
+  },
+  "ndg.offer_no": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ]
   }
 }
