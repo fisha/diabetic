@@ -1512,3 +1512,12 @@ Jira PM-118. Not on the board; the switch and the offer card follow the existing
 - Kept in `user_settings.routine_state` (`nudges_until`, `nudges_since`, `nudges_offer_hidden`), no migration.
   API: `GET/PUT/DELETE /follow-ups/fewer-nudges`, `POST /follow-ups/fewer-nudges/no-thanks`.
 
+## Israeli food list in the food search (DAP-16, PM-119, 16 Nov 2026)
+
+The Meal board's search sheet shows "Typical serving: 100 g" under each result. Foods from the Israeli list (Ministry of
+Health, Tzameret) now show their typical household portion there instead ("Typical serving: יחידה · 100 g"), and the
+food starts at that portion (one piece, slice, cup or tablespoon, or a serving's weight in grams). One footnote under
+the results names the source, as the data licence asks ("Source: Israeli Ministry of Health, Tzameret database.
+Values are estimates."). Neither is drawn on the board. Dishes the database does not have (sabich, malawach) are not
+invented; they fall back to "add as your own food". An admin tool to add foods (named in DAP-16) is not built.
+
