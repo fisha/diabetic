@@ -1,0 +1,39 @@
+# Stedio website (apps/web) on Fly.io (16 Nov 2026). Deploy with scripts/fly/stedio-fly web (never `fly launch`).
+# Cheapest setup: the Machine stops when nobody is on the site and starts on the next visit (a second or two).
+# Nothing in the background depends on it: the app talks to stedio-api directly.
+app = 'stedio-web'
+# Frankfurt: Fly has no region in Israel or the Middle East; fra is the closest.
+primary_region = 'fra'
+
+[build]
+  dockerfile = 'Dockerfile'
+  [build.args]
+    API_PUBLIC_URL = 'https://stedio-api.fly.dev'
+    API_INTERNAL_URL = 'http://stedio-api.internal:8080'
+    GOOGLE_WEB_CLIENT_ID = '281551574433-16agcvukeaikpa1b88n5tfa9qcmqe4uu.apps.googleusercontent.com'
+    APPLE_SERVICES_ID = 'com.fisha.steady.web'
+    EAS_PROJECT_ID = 'cf1df890-5cdd-44b7-8661-29475dd7ce60'
+    APP_BUNDLE_ID = 'com.fisha.steady.dev'
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type = 'requests'
+    soft_limit = 100
+    hard_limit = 150
+
+  [[http_service.checks]]
+    interval = '60s'
+    timeout = '5s'
+    grace_period = '20s'
+    method = 'GET'
+    path = '/robots.txt'
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '256mb'

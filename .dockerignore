@@ -1,0 +1,20 @@
+# For deploy/fly/web/Dockerfile (context: this repository root). The API image uses services/api/.dockerignore.
+**/node_modules
+**/.next
+**/.expo
+**/dist
+.git
+**/.git
+services
+design
+evals
+docs
+tools
+apps/mobile/ios
+apps/mobile/android
+apps/web/public/app
+apps/web/public/install
+**/.env
+**/.env*.local
+**/*.ipa
+!deploy/fly/web/.install/*.ipa

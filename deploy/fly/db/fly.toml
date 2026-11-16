@@ -1,0 +1,38 @@
+# Stedio PostgreSQL 16 (16 Nov 2026). Deploy with scripts/fly/stedio-fly (never `fly launch`).
+# No [http_service]/[[services]] on purpose: the database is reachable only on Fly's private network
+# (stedio-db.internal:5432, IPv6), never from the internet, and the proxy can never stop this Machine.
+app = 'stedio-db'
+# Frankfurt: Fly has no region in Israel or the Middle East; fra is the closest (Guy: as close to Israel as possible).
+primary_region = 'fra'
+# Swap so a burst (restore, vacuum) slows down instead of being killed at 256 MB.
+swap_size_mb = 512
+
+[build]
+  dockerfile = 'Dockerfile'
+
+[env]
+  POSTGRES_USER = 'steady'
+  POSTGRES_DB = 'steady'
+  PGDATA = '/data/pgdata'
+  BACKUP_HOUR_UTC = '1'
+  BACKUP_KEEP_DAYS = '14'
+  # POSTGRES_PASSWORD is a Fly secret.
+
+[mounts]
+  source = 'stedio_db'
+  destination = '/data'
+
+[checks]
+  [checks.pg]
+    type = 'tcp'
+    port = 5432
+    interval = '30s'
+    timeout = '5s'
+    grace_period = '60s'
+
+[[restart]]
+  policy = 'always'
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '256mb'
