@@ -16764,6 +16764,13 @@
     ],
     "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
   },
+  "sum.basis_today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary lists only routines whose time already came today (Guy, 16 Nov 2026)."
+  },
   "sum.parts_t": {
     "board": "Overview",
     "review": [

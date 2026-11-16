@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-168, thread "Show only today's items in Today so far"): Guy said "What to keep" in today's summary
+showed "two hours after dinner" before dinner had happened. Today's summary now lists a routine only when its time already
+came today, from today's own records (`apps/mobile/src/features/overview/looks.ts`): meal routines after a meal in that
+slot today plus two hours, workouts an hour after today's ended, part-of-day routines once today has readings there
+("Ahead of ..." rows for high/low/pump kept). New basis line in four languages. App 164 and i18n 19 tests pass; JS only
+(0.5.0 OTA); not yet seen on a phone.
+
 16 Nov 2026 (Jira PM-161, thread "Speed up the app and API"): Guy asked for a full speed review of the app and the API
 and what may be cached on the phone. Review and plan: Claude Doc "Stedio performance review: app and API". Measured
 with `services/api/scripts/perf_bench.py` (synthetic, local `_perf` database): the server answers most reads in under
