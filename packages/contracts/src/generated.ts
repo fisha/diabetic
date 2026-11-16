@@ -2073,6 +2073,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/reports/clinic": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Create Clinic Report
+         * @description A clinic report (DAP-10) for the last `days` local days, made in the background like an export and kept as one for
+         *     EXPORT_DAYS. The person shares it themselves; nothing is sent from here.
+         */
+        post: operations["create_clinic_report_reports_clinic_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/rewards": {
         parameters: {
             query?: never;
@@ -2844,6 +2865,38 @@ export interface components {
             message: string;
             /** Where */
             where: string;
+        };
+        /**
+         * ClinicReportIn
+         * @description DAP-10: the period, the report's language (its own, not the app's), and what the person adds for this visit.
+         */
+        ClinicReportIn: {
+            /**
+             * Days
+             * @default 14
+             * @enum {integer}
+             */
+            days: 14 | 30 | 90;
+            /**
+             * Details
+             * @default false
+             */
+            details: boolean;
+            /**
+             * Lang
+             * @enum {string}
+             */
+            lang: "he" | "en";
+            /**
+             * Name
+             * @default
+             */
+            name: string;
+            /**
+             * Questions
+             * @default
+             */
+            questions: string;
         };
         /** ConnectionOut */
         ConnectionOut: {
@@ -5388,7 +5441,7 @@ export interface components {
             /** Median */
             median: number | null;
             /** Part */
-            part: ("night" | "morning" | "afternoon" | "evening") | null;
+            part: ("morning" | "afternoon" | "evening" | "night") | null;
             /** Today */
             today: number | null;
             /** Weekday */
@@ -5617,7 +5670,7 @@ export interface components {
             /** Minutes */
             minutes: number | null;
             /** Part */
-            part: ("night" | "morning" | "afternoon" | "evening") | null;
+            part: ("morning" | "afternoon" | "evening" | "night") | null;
         };
         /** StateIn */
         steady_api__routers__insights__StateIn: {
@@ -9966,6 +10019,39 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_clinic_report_reports_clinic_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClinicReportIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExportOut"];
+                };
             };
             /** @description Validation Error */
             422: {

@@ -55,6 +55,14 @@ not seen on a phone.
 `.claude/skills/privacy-compliance` (health-data privacy), a CLAUDE.md rule in all four repositories, and a "Regulatory
 and privacy check" section in every repository's PR template. Every PR runs both. Tasks are tracked in Jira (PM-114).
 
+16 Nov 2026 (DAP-10 / PM-116, thread "Build one-tap clinic report"; Guy approved the five "Now" items): a clinic
+report the person makes in one tap and shares themselves (G-89). Privacy > "Share with my care team" (was "Planned") and
+Profile > Account open it: 14, 30 or 90 days, Hebrew or English, optional name and questions, optional full meal and
+insulin lists. The server makes the PDF (`steady_api/clinic_report.py`, `POST /reports/clinic`): consensus time in
+ranges, mean, GMI, CV, SD, the person's own range, an AGP-style profile by hour, a day-by-day table, the questions and a
+"record, not advice" footer. API tests (414) and ruff, app typecheck and tests (150), i18n tests and web e2e
+`tools/e2e/clinic-report.cjs` pass. JS and API only; deploy the API before the OTA. Not seen on a phone.
+
 16 Nov 2026 (PM-113, thread "Fix diabetes profile change history labels"): Guy saw saved field names and raw values in
 Profile > Diabetes profile > Change history. Each row now shows the profile question's label in the app language and the
 values as the questions show them (choices by label, times and dates formatted, glucose and body values with units, ratio

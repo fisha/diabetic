@@ -59,6 +59,7 @@ export type ActivityDetailsOut = S['ActivityDetailsOut'];
 export type UpdateOut = S['UpdateOut'];
 export type ExportIn = S['ExportIn'];
 export type ExportOut = S['ExportOut'];
+export type ClinicReportIn = S['ClinicReportIn'];
 export type FollowUpIn = S['FollowUpIn'];
 export type FollowUpOut = S['FollowUpOut'];
 export type PauseOut = S['PauseOut'];

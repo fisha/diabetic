@@ -1368,6 +1368,52 @@
         "title": "ClientErrorIn",
         "type": "object"
       },
+      "ClinicReportIn": {
+        "additionalProperties": false,
+        "description": "DAP-10: the period, the report's language (its own, not the app's), and what the person adds for this visit.",
+        "properties": {
+          "days": {
+            "default": 14,
+            "enum": [
+              14,
+              30,
+              90
+            ],
+            "title": "Days",
+            "type": "integer"
+          },
+          "details": {
+            "default": false,
+            "title": "Details",
+            "type": "boolean"
+          },
+          "lang": {
+            "enum": [
+              "he",
+              "en"
+            ],
+            "title": "Lang",
+            "type": "string"
+          },
+          "name": {
+            "default": "",
+            "maxLength": 80,
+            "title": "Name",
+            "type": "string"
+          },
+          "questions": {
+            "default": "",
+            "maxLength": 1500,
+            "title": "Questions",
+            "type": "string"
+          }
+        },
+        "required": [
+          "lang"
+        ],
+        "title": "ClinicReportIn",
+        "type": "object"
+      },
       "ConnectionOut": {
         "properties": {
           "kind": {
@@ -8618,10 +8664,10 @@
             "anyOf": [
               {
                 "enum": [
-                  "night",
                   "morning",
                   "afternoon",
-                  "evening"
+                  "evening",
+                  "night"
                 ],
                 "type": "string"
               },
@@ -9281,10 +9327,10 @@
             "anyOf": [
               {
                 "enum": [
-                  "night",
                   "morning",
                   "afternoon",
-                  "evening"
+                  "evening",
+                  "night"
                 ],
                 "type": "string"
               },
@@ -15561,6 +15607,53 @@
         "summary": "Same As",
         "tags": [
           "records"
+        ]
+      }
+    },
+    "/reports/clinic": {
+      "post": {
+        "description": "A clinic report (DAP-10) for the last `days` local days, made in the background like an export and kept as one for\nEXPORT_DAYS. The person shares it themselves; nothing is sent from here.",
+        "operationId": "create_clinic_report_reports_clinic_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClinicReportIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExportOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Create Clinic Report",
+        "tags": [
+          "account"
         ]
       }
     },
