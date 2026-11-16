@@ -1,0 +1,55 @@
+# Stedio API (FastAPI, services/api) on Fly.io (16 Nov 2026). Deploy with scripts/fly/stedio-fly (never `fly launch`).
+# ONE always-on Machine: the follow-up worker runs inside the API process and does the hourly CareLink / LibreLinkUp /
+# Tandem syncs, glucose alerts, Live Activity pushes and the daily ranker retrain, and voice calls hold a websocket.
+# Auto-stop would stop all of that, so it is off. The volume keeps meal photos and exports (STEADY_MEDIA_DIR).
+app = 'stedio-api'
+# Frankfurt: Fly has no region in Israel or the Middle East; fra is the closest (Guy: as close to Israel as possible).
+primary_region = 'fra'
+swap_size_mb = 512
+
+[build]
+  dockerfile = 'Dockerfile'
+
+[deploy]
+  # Schema migrations before the new version takes traffic, in a temporary Machine with the app's secrets.
+  # scripts/fly/stedio-fly takes a database backup first.
+  release_command = 'alembic upgrade head'
+  # One Machine with a volume: replace it in place.
+  strategy = 'immediate'
+
+[env]
+  STEADY_MEDIA_DIR = '/data/media'
+  STEADY_RUN_WORKER = 'true'
+  # The website (and its /app web build) calls the API from the browser at this origin; the app does not need CORS.
+  STEADY_CORS_ORIGINS = '["https://stedio-web.fly.dev","http://localhost:8081","http://localhost:3000"]'
+  STEADY_APNS_BUNDLE_ID = 'com.fisha.steady.dev'
+  STEADY_APNS_TEAM_ID = 'S6L7799Q36'
+  # Every other setting is a Fly secret, filled from services/api/.env by scripts/fly/stedio-fly secrets
+  # (STEADY_DATABASE_URL points at stedio-db.internal).
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'off'
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [http_service.concurrency]
+    type = 'connections'
+    soft_limit = 200
+    hard_limit = 250
+
+  [[http_service.checks]]
+    interval = '30s'
+    timeout = '5s'
+    grace_period = '30s'
+    method = 'GET'
+    path = '/health'
+
+[mounts]
+  source = 'stedio_media'
+  destination = '/data'
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '512mb'

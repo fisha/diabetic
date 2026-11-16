@@ -1,0 +1,182 @@
+#!/usr/bin/env bash
+# Stedio on Fly.io (org "stedio", region fra; Guy, 16 Nov 2026). Run on Guy's Mac from the repository clone.
+# Never prints a secret value. Never touches any other Fly org or app (mixmaster's are left alone).
+#
+#   stedio-fly setup        Create the three apps and their volumes (idempotent), and the database password
+#   stedio-fly secrets      Fill missing API secrets on stedio-api from services/api/.env (never overwrites one)
+#   stedio-fly deploy-db    Deploy PostgreSQL (stedio-db)
+#   stedio-fly deploy-api [--trial]   Back up the database, then deploy the API. --trial: the background worker is OFF
+#                           (no CareLink/Libre/Tandem syncs, pushes or alerts), so it can run beside the Mac safely
+#   stedio-fly deploy-web   Stage the tester install files with the new address, then deploy the website
+#   stedio-fly copy-data    Copy the Mac's database and meal photos/exports to Fly (overwrites Fly's copy)
+#   stedio-fly backup       Take a database backup now (on the database volume)
+#   stedio-fly status       Machines, volumes and health of the three apps
+#
+# Cutover (once the trial looks right): stop the Mac's API, `copy-data`, `deploy-api` (worker on), then switch the app (OTA).
+
+set -euo pipefail
+
+REPO="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/../.." && pwd)"
+ORG="stedio"
+REGION="fra"
+DB_APP="stedio-db"
+API_APP="stedio-api"
+WEB_APP="stedio-web"
+WEB_URL="https://${WEB_APP}.fly.dev"
+API_ENV="$REPO/services/api/.env"
+BUILDS_INSTALL="${STEDIO_INSTALL_DIR:-/Volumes/Studio SSD/Workspace/steady-builds/install}"
+BACKUPS="${STEDIO_BACKUP_DIR:-/Volumes/Studio SSD/Workspace/steady-db-backups}"
+MAC_DB_CONTAINER="steady-db-1"
+OLD_WEB_HOST="stedio.ngrok.dev"
+
+say() { printf '==> %s\n' "$*"; }
+die() { printf 'stedio-fly: %s\n' "$*" >&2; exit 1; }
+command -v fly >/dev/null || die "flyctl is not installed"
+
+app_exists() { fly status -a "$1" >/dev/null 2>&1 || fly apps list --org "$ORG" 2>/dev/null | awk '{print $1}' | grep -qx "$1"; }
+has_secret() { fly secrets list -a "$1" --json 2>/dev/null | grep -q "\"$2\""; }
+has_volume() { fly volumes list -a "$1" --json 2>/dev/null | grep -q "\"name\": *\"$2\""; }
+
+dotenv_get() { # <key>: the value from services/api/.env, unquoted; fails when unset or empty
+  local line val
+  [ -f "$API_ENV" ] || return 1
+  line="$(grep -E "^[[:space:]]*$1=" "$API_ENV" | tail -n 1 || true)"
+  [ -n "$line" ] || return 1
+  val="${line#*=}"
+  val="${val#"${val%%[![:space:]]*}"}"; val="${val%"${val##*[![:space:]]}"}"
+  if [ "${#val}" -ge 2 ]; then case "$val" in \"*\") val="${val:1:${#val}-2}" ;; \'*\') val="${val:1:${#val}-2}" ;; esac; fi
+  [ -n "$val" ] || return 1
+  printf '%s' "$val"
+}
+
+cmd_setup() {
+  for app in "$DB_APP" "$API_APP" "$WEB_APP"; do
+    if app_exists "$app"; then say "$app exists"; else say "creating $app in org $ORG"; fly apps create "$app" --org "$ORG"; fi
+  done
+  # Daily volume snapshots are on by default; keep 30 days of them for the database (health data), 14 for photos.
+  has_volume "$DB_APP" stedio_db || fly volumes create stedio_db -a "$DB_APP" -r "$REGION" -s 1 --snapshot-retention 30 -y
+  has_volume "$API_APP" stedio_media || fly volumes create stedio_media -a "$API_APP" -r "$REGION" -s 1 --snapshot-retention 14 -y
+  if has_secret "$DB_APP" POSTGRES_PASSWORD; then
+    say "database password already set (left as is)"
+  else
+    say "creating the database password (not shown) on $DB_APP and the matching STEADY_DATABASE_URL on $API_APP"
+    local pw; pw="$(openssl rand -hex 24)"
+    printf 'POSTGRES_PASSWORD=%s\n' "$pw" | fly secrets import -a "$DB_APP" --stage >/dev/null
+    printf 'STEADY_DATABASE_URL=postgresql+psycopg://steady:%s@%s.internal:5432/steady\n' "$pw" "$DB_APP" | fly secrets import -a "$API_APP" --stage >/dev/null
+    unset pw
+  fi
+}
+
+cmd_secrets() {
+  [ -f "$API_ENV" ] || die "no $API_ENV"
+  local lines="" name value staged=0
+  # Copied as they are. STEADY_JWT_SECRET must be the Mac's own: it also unlocks sealed data (CareLink sign-ins, photos).
+  for name in STEADY_JWT_SECRET STEADY_SEALING_KEY STEADY_OPENAI_API_KEY STEADY_USDA_API_KEY STEADY_ADMIN_EMAILS \
+              STEADY_GOOGLE_CLIENT_IDS STEADY_APPLE_AUDIENCES STEADY_SMTP_HOST STEADY_SMTP_PORT STEADY_SMTP_USER \
+              STEADY_SMTP_PASSWORD STEADY_SMTP_FROM STEADY_APP_LATEST_BUILD STEADY_APNS_KEY_ID STEADY_APNS_SANDBOX \
+              STEADY_OPENAI_MODEL STEADY_OPENAI_REASONING_EFFORT STEADY_RANKER_MODE STEADY_RANKER_TESTERS STEADY_REQUIRE_APPROVAL \
+              STEADY_ALLOW_EMAIL_SIGN_UP STEADY_REQUIRE_EMAIL_VERIFICATION; do
+    value="$(dotenv_get "$name" || true)"
+    [ -n "$value" ] || continue
+    if has_secret "$API_APP" "$name"; then echo "OK     $name already on $API_APP (left as is)"; continue; fi
+    lines+="$name=$value"$'\n'; staged=$((staged + 1)); echo "STAGE  $name"
+  done
+  # The APNs key file becomes one base64 line (services/api/deploy/start.sh writes it back to a file).
+  if ! has_secret "$API_APP" STEADY_APNS_KEY_P8_B64; then
+    local keypath; keypath="$(dotenv_get STEADY_APNS_KEY_PATH || true)"
+    case "$keypath" in /*) ;; ?*) keypath="$REPO/services/api/$keypath" ;; esac
+    if [ -n "$keypath" ] && [ -f "$keypath" ]; then
+      lines+="STEADY_APNS_KEY_P8_B64=$(base64 < "$keypath" | tr -d '\n')"$'\n'; staged=$((staged + 1)); echo "STAGE  STEADY_APNS_KEY_P8_B64 (from the APNs key file)"
+    else
+      echo "WARN   no APNs key file: Live Activity pushes stay off"
+    fi
+  fi
+  # The tester install page moves with the website.
+  if ! has_secret "$API_APP" STEADY_APP_INSTALL_URL; then
+    lines+="STEADY_APP_INSTALL_URL=$WEB_URL/install/index.html"$'\n'; staged=$((staged + 1)); echo "STAGE  STEADY_APP_INSTALL_URL"
+  fi
+  if [ "$staged" -gt 0 ]; then printf '%s' "$lines" | fly secrets import -a "$API_APP" --stage >/dev/null; fi
+  unset lines value
+  echo "Skipped on purpose: STEADY_DATABASE_URL (setup), STEADY_CORS_ORIGINS and STEADY_APNS_TEAM_ID (deploy/fly/api/fly.toml), STEADY_APNS_KEY_PATH (start.sh)."
+  say "$staged secret(s) staged; they apply on the next deploy-api"
+}
+
+cmd_deploy_db() {
+  fly deploy "$REPO/deploy/fly/db" -c "$REPO/deploy/fly/db/fly.toml" --dockerfile "$REPO/deploy/fly/db/Dockerfile" --ha=false --remote-only
+}
+
+cmd_backup() {
+  app_exists "$DB_APP" || die "$DB_APP does not exist"
+  fly ssh console -a "$DB_APP" -C stedio-backup
+}
+
+cmd_deploy_api() {
+  local extra=()
+  if [ "${1:-}" = "--trial" ]; then extra=(-e STEADY_RUN_WORKER=false); say "trial: the worker is off"; fi
+  # A backup before every deploy: the release command runs migrations.
+  if fly status -a "$DB_APP" 2>/dev/null | grep -q started; then say "database backup first"; cmd_backup; fi
+  fly deploy "$REPO/services/api" -c "$REPO/deploy/fly/api/fly.toml" --dockerfile "$REPO/services/api/Dockerfile" \
+    --ignorefile "$REPO/services/api/.dockerignore" --ha=false --remote-only ${extra[@]+"${extra[@]}"}
+  echo "worker setting on the running Machine: $(fly ssh console -a "$API_APP" -C 'printenv STEADY_RUN_WORKER' 2>/dev/null | tr -d '\r')"
+  curl -fsS -m 15 "https://$API_APP.fly.dev/health" && echo
+}
+
+cmd_deploy_web() {
+  local stage="$REPO/deploy/fly/web/.install"
+  rm -rf "$stage"; mkdir -p "$stage"
+  if [ -d "$BUILDS_INSTALL" ]; then
+    # Only the newest IPA and its page; the address inside them becomes this site's.
+    cp -L "$BUILDS_INSTALL"/index.html "$BUILDS_INSTALL"/manifest.plist "$stage"/
+    local ipa; ipa="$(grep -o '[^/]*\.ipa' "$stage/manifest.plist" | head -1)"
+    [ -n "$ipa" ] && cp -L "$BUILDS_INSTALL/$ipa" "$stage"/
+    sed -i '' "s#https://$OLD_WEB_HOST#$WEB_URL#g" "$stage/index.html" "$stage/manifest.plist"
+    say "install files staged: $(ls "$stage" | tr '\n' ' ')"
+  else
+    echo "WARN   $BUILDS_INSTALL not found: the website goes up without the tester install page"
+  fi
+  fly deploy "$REPO" -c "$REPO/deploy/fly/web/fly.toml" --dockerfile "$REPO/deploy/fly/web/Dockerfile" \
+    --ignorefile "$REPO/.dockerignore" --ha=false --remote-only
+}
+
+cmd_copy_data() {
+  docker inspect "$MAC_DB_CONTAINER" >/dev/null 2>&1 || die "the Mac database container $MAC_DB_CONTAINER is not running"
+  mkdir -p "$BACKUPS"
+  local stamp; stamp="$(date -u +%Y%m%dT%H%MZ)"
+  local dump="$BACKUPS/steady-to-fly-$stamp.dump"
+  say "dumping the Mac database to $dump"
+  docker exec "$MAC_DB_CONTAINER" pg_dump -U steady -d steady -Fc -Z 6 > "$dump"
+  docker exec -i "$MAC_DB_CONTAINER" pg_restore -l < "$dump" > /dev/null
+  say "backing up whatever Fly has now, then replacing it"
+  cmd_backup
+  fly ssh sftp put "$dump" /data/backups/incoming.dump -a "$DB_APP"
+  # POSTGRES_USER (steady) is the superuser in the official image. --force closes the API's open connections.
+  fly ssh console -a "$DB_APP" -C 'sh -c "chown postgres /data/backups/incoming.dump && su postgres -c \"dropdb -U steady -h /var/run/postgresql --if-exists --force steady && createdb -U steady -h /var/run/postgresql steady && pg_restore -U steady -h /var/run/postgresql -d steady --no-owner --exit-on-error /data/backups/incoming.dump\" && rm /data/backups/incoming.dump"'
+  local media="$REPO/services/api/media"
+  if [ -d "$media" ]; then
+    local tgz="$BACKUPS/media-to-fly-$stamp.tgz"
+    say "copying meal photos and exports ($(du -sh "$media" | cut -f1))"
+    tar -C "$REPO/services/api" -czf "$tgz" media
+    fly ssh sftp put "$tgz" /data/media-incoming.tgz -a "$API_APP"
+    fly ssh console -a "$API_APP" -C 'sh -c "rm -rf /data/media && tar -xzf /data/media-incoming.tgz -C /data && chown -R steady:steady /data/media && rm /data/media-incoming.tgz"'
+    rm -f "$tgz"
+  fi
+  say "copied. Restart the API so it starts clean: fly machine restart -a $API_APP"
+}
+
+cmd_status() {
+  for app in "$DB_APP" "$API_APP" "$WEB_APP"; do echo "--- $app"; fly status -a "$app" 2>&1 | sed -n '1,20p'; done
+  echo "--- volumes"; fly volumes list -a "$DB_APP"; fly volumes list -a "$API_APP"
+  echo "--- health"; curl -s -m 10 -o /dev/null -w "api %{http_code}\n" "https://$API_APP.fly.dev/health"; curl -s -m 20 -o /dev/null -w "web %{http_code}\n" "$WEB_URL/he"
+}
+
+case "${1:-help}" in
+  setup) cmd_setup ;;
+  secrets) cmd_secrets ;;
+  deploy-db) cmd_deploy_db ;;
+  deploy-api) shift; cmd_deploy_api "$@" ;;
+  deploy-web) cmd_deploy_web ;;
+  copy-data) cmd_copy_data ;;
+  backup) cmd_backup ;;
+  status) cmd_status ;;
+  *) sed -n '2,17p' "$0" ;;
+esac

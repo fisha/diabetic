@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (thread "Move the server to Fly.io"): Guy opened a Fly.io org `stedio` and asked to move the server there
+on the smallest machines, as close to Israel as possible. Fly has no Middle East region; Frankfurt (fra) is the closest.
+Three apps: `stedio-api` (512 MB, always on: the worker does the device syncs, alerts, pushes and the retrain; volume
+for photos and exports), `stedio-db` (Postgres 16 on a 256 MB machine with a volume, daily volume snapshots kept 30
+days and a nightly pg_dump kept 14 days; private network only), `stedio-web` (256 MB, stops when idle). About $6 a
+month. Images built and run in the container (API health, migrations on an empty DB, website pages, noindex, restore
+of a dump). Nothing created on Fly yet. Runbook: `deploy/fly/README.md`; script `scripts/fly/stedio-fly` on the Mac.
+The trial runs the API with the worker off so it never signs in to CareLink/LibreLinkUp/Tandem beside the Mac.
+
 16 Nov 2026 (G-85, thread "Let users choose Body today tiles"): Itay asked to replace "Times awake" with resting heart
 rate; Guy: let each person choose what the "Body today" card shows, and show the official Apple Health logo instead of
 "From Apple Health". A pencil in the card header opens a list of switches (steps, walk and run, average and resting heart
