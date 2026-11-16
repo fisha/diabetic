@@ -8,6 +8,20 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (G-87, Jira PM-112, thread "Show past data when offline"): Guy: "we need an internal memory or cache in the
+app so past data shows even without a connection to the server". The app now keeps the last answer of its main reads
+(glucose, records and heart rate of the shown window, insights, today's part of day, Body today, learning, food summary,
+labs and habits, progress, the conversation and past conversations) in the existing protected store (sealed files, key
+in the Keychain / Keystore, this device only; in the browser memory only). When the server can't be reached, the same
+read returns the kept answer and an offline banner (designed Banner, Components 12.7) shows on the main screen,
+Overview and Journal: "No connection to Stedio - showing what was saved on this phone, last updated today at 14:02".
+"Today" reads are not shown on another day; nothing older than 30 days, at most 60 entries; everything is removed when
+the session ends (sign-out, expiry, account deletion); nothing is kept while viewing someone else's data; the widgets
+and Live Activity ignore kept readings. Privacy policy (4 languages) says so. App typecheck and tests (incl.
+`test/offline-cache.test.ts`), i18n and web tests, and web e2e `tools/e2e/offline.cjs` (en light, he light, he dark,
+server cut with the page open) pass. JS only (OTA). Keeping across an app restart is verified with a stand-in store only;
+not seen on a phone.
+
 16 Nov 2026 (same thread, Guy: "תדאג גם שאנחנו מייצרים פה skills של compliance ו regulatory ובכל פיתוח שלנו אנחנו
 בודקים את זה"): two project skills, `.claude/skills/regulatory-check` (medical-device boundaries) and
 `.claude/skills/privacy-compliance` (health-data privacy), a CLAUDE.md rule in all four repositories, and a "Regulatory

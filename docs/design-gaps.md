@@ -1483,3 +1483,11 @@ by his request (Jira PM-110).
   meal, and it is in the meals export. While viewing someone else's data it shows read-only.
 - Open: food-based insights still use only foods logged in the app, not these notes.
 
+### G-87 · Past data when the server can't be reached (**Guy, 16 Nov 2026**, verified-test)
+
+Guy: keep past data in the app so it shows without a connection to the server (Jira PM-112). No new screen: the
+designed Banner's "offline / stale data" variant (Components 12.7, tone info) sits at the top of the main screen
+(under the header), Overview (first in the page) and Journal (above the list): "No connection to Stedio" and when the
+shown data was last updated. It goes away with the first answer from the server. Screens show the kept answers as
+they were; actions that need the server (saving, the companion's replies) keep their own error states.
+
