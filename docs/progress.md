@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-146, thread "Show glucose on CarPlay"): Guy asked for glucose on CarPlay. A CarPlay app is not
+allowed for health, but iOS 26 shows Live Activities and small widgets on the CarPlay Dashboard. The glucose Live
+Activity now declares the `small` supplemental family on iOS 18+ (diabetic-app #79, merged): CarPlay and the Watch Smart
+Stack draw a compact card (value, unit, range label, age; no number once not current; warm-up ready time), no buttons,
+sound or alert look. iOS 17 keeps the old configuration (one Widget with an `if #available` branch; WidgetBundleBuilder
+has no if/else). Widget target compiled for the simulator on the Mac (Xcode 27.2). Next: the next native build (Guy's
+go-ahead), then a look in a car or the CarPlay simulator.
+
 16 Nov 2026 (Jira PM-145, thread "Fix worker CPU overload on Fly"): with the worker on, stedio-api (shared-cpu-1x)
 went to ~100% CPU minutes after each start and the app timed out. Measured with per-step timing on a local copy of the
 schema (6 people, 60 days of readings): the meal check-in step `routine.suggest` computed every person's full routine
