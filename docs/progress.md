@@ -31,6 +31,15 @@ values as the questions show them (choices by label, times and dates formatted, 
 periods in words). New strings `set.pf_from` / `set.pf_to` (from/to, for sleep and quiet hours). App typecheck and tests
 (140) and i18n tests pass. JS only (OTA). Not seen on a phone.
 
+16 Nov 2026 (G-86, Jira PM-110, thread "Let users note food on pump carb entries"): Guy: when the pump shows carbs
+were entered, let the person write what they ate. A meal the pump recorded (CareLink or Tandem) has a "What did you
+eat?" field in its journal detail that saves itself as it is typed (`PUT /records/{id}/food-note`, max 300 characters,
+stored as `note` in the meal's data, no migration). The pump's carbs and time are never changed, nothing is written to
+the device, and no revision is made. The note is the meal's line in the journal row, goes to the companion with the
+meal ("what they ate, in their words"; pump carbs are now told as entered on the pump, not as an estimate), and is in
+the meals CSV export. API tests (391) and ruff, app typecheck and tests (140), i18n tests and web e2e
+`tools/e2e/pump-food-note.cjs` (en light, he light, he dark) pass. Deploy the API before the OTA. Not seen on a phone.
+
 16 Nov 2026 (thread "Check app against medical-device rules"): Guy shared SaMD guidance (FDA / EU MDR) and asked for an
 audit; the findings are in the Claude Doc "Stedio vs medical device rules - audit" (22 items). He then asked to fix the
 two non-compliant ones now: (1) the 10-minute "insulin before eating" win and timing insight are removed; (2) glucose

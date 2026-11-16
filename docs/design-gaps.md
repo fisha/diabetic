@@ -1469,6 +1469,20 @@ his request.
   the icon followed by "Apple Health", not the icon alone. Android keeps "From Health Connect" as text until Health
   Connect's own icon is added (no Android build now).
 
+### G-86 · "What did you eat?" on carbs entered on the pump (**Guy, 16 Nov 2026**, verified-test)
+
+Guy: when the pump shows carbs were entered, give the person a way to write what they ate. Not on the board; approved
+by his request (Jira PM-110).
+
+- The journal detail of a meal recorded by the pump (CareLink or Tandem, not linked to a meal logged in the app) has a
+  "What did you eat?" text field under the title, with a hint that the pump records only the carbs. It saves itself
+  as the person types (no save button) and says "Saved"; an error shows under the field. Up to 300 characters.
+- Only the note is saved (`PUT /records/{id}/food-note`). The pump's carbs, time and source stay as recorded; nothing
+  is sent to the pump or CareLink; it is not a correction, so no "edited" badge or history line.
+- The note becomes the meal's line in the journal (beside its carbs in the bolus row), the companion reads it with the
+  meal, and it is in the meals export. While viewing someone else's data it shows read-only.
+- Open: food-based insights still use only foods logged in the app, not these notes.
+
 ## Israeli food list in the food search (DAP-16, PM-119, 16 Nov 2026)
 
 The Meal board's search sheet shows "Typical serving: 100 g" under each result. Foods from the Israeli list (Ministry of

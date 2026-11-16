@@ -3977,6 +3977,34 @@
       "translation"
     ]
   },
+  "jrn.food_help": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump carb entry: the person's note on what they ate (Guy, 16 Nov 2026)."
+  },
+  "jrn.food_ph": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump carb entry: the person's note on what they ate (Guy, 16 Nov 2026)."
+  },
+  "jrn.food_saved": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump carb entry: the person's note on what they ate (Guy, 16 Nov 2026)."
+  },
+  "jrn.food_t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump carb entry: the person's note on what they ate (Guy, 16 Nov 2026)."
+  },
   "jrn.edit": {
     "board": "Journal",
     "review": [

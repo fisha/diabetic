@@ -1931,6 +1931,28 @@ export interface paths {
         patch: operations["edit_records__record_id__patch"];
         trace?: never;
     };
+    "/records/{record_id}/food-note": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Food Note
+         * @description What the person ate, in their own words, on a meal entry (Guy, 16 Nov 2026: the pump records only the carbs that were
+         *     entered, so let the person write what they ate). Only the note changes: the carbs, time and source stay as the pump
+         *     recorded them, nothing is sent back to the device, and no revision is made (the note saves itself as it is typed).
+         */
+        put: operations["food_note_records__record_id__food_note_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/records/{record_id}/hide": {
         parameters: {
             query?: never;
@@ -3244,6 +3266,14 @@ export interface components {
             /** Source Id */
             source_id: string;
         };
+        /**
+         * FoodNoteIn
+         * @description What the person ate with this meal entry, in their words; empty or null removes it.
+         */
+        FoodNoteIn: {
+            /** Text */
+            text?: string | null;
+        };
         /** FoodQuestion */
         FoodQuestion: {
             /** Options */
@@ -4037,6 +4067,11 @@ export interface components {
             fat_total_g: number | null;
             /** Items */
             items: components["schemas"]["MealItemData"][];
+            /**
+             * Note
+             * @default null
+             */
+            note: string | null;
             /**
              * Photo Id
              * @default null
@@ -9564,6 +9599,48 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["RecordOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    food_note_records__record_id__food_note_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FoodNoteIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecordOut"];
+                };
+            };
+            /** @description not_a_meal */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
