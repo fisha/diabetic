@@ -398,7 +398,7 @@ The device detail board shows a vendor sign-in. The health store connection uses
 | Text size | 3 fixed steps (16/20/24 base) | `allowFontScaling` with Dynamic Type / font scale up to 200 %. Layouts are checked at 100, 130, 160 and 200 %. |
 | Bottom sheets | CSS slide-up, scrim tap to close, "Discard this entry?" | `@gorhom/bottom-sheet` with keyboard handling via `react-native-keyboard-controller`, Android back closes, the same discard dialog |
 | Charts | SVG with absolute-positioned hit areas | `react-native-svg` paths. Scrub uses a gesture-handler pan plus accessibility hourly focus points. Time axis is always left to right. |
-| RTL | `dir` attribute per board | `I18nManager.forceRTL` requires an app reload when the direction changes. The language screen warns before reloading. |
+| RTL | `dir` attribute per board | `I18nManager.forceRTL` requires an app reload when the direction changes. The language screen warns before reloading. Paragraph direction is set per text by AppText (PM-159): the app language's by default, `auto` for the person's own words, `ltr` for numbers. |
 | Day / Night | CSS variables switched by `data-theme` | `useColorScheme` plus the user override, through a ThemeProvider of tokens |
 | Fonts | System stack with web fallbacks | The platform system font in the app (no bundled fonts). Web: system stack with Inter, Rubik and IBM Plex Sans Arabic from Google Fonts (OFL). |
 | Font weight 650 | Variable-font weight 650 for titles | React Native accepts only the standard weights, so 650 renders as semibold (600) natively. The web keeps 650. |
