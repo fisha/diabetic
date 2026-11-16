@@ -79,6 +79,7 @@ export type CareLinkOut = S['CareLinkOut'];
 export type PumpStatusOut = S['PumpStatusOut'];
 export type WarmupOut = S['WarmupOut'];
 export type WarmupStateOut = S['WarmupStateOut'];
+export type ConnectionOut = S['ConnectionOut'];
 export type PumpDayOut = S['PumpDayOut'];
 export type CareLinkNotification = S['CareLinkNotification'];
 export type CareLinkRemovedOut = S['RemovedOut'];

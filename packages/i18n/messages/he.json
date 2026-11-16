@@ -2635,5 +2635,12 @@
   "ndg.offer_t": "רוצה שבוע רגוע יותר?",
   "ndg.offer_b": "אפשר שאפנה אליך פחות לזמן מה: פחות בדיקות והתראות. אפשר לכבות בכל רגע.",
   "ndg.offer_yes": "כן, לשבוע",
-  "ndg.offer_no": "לא תודה"
+  "ndg.offer_no": "לא תודה",
+  "com.age_h": "לפני {hours} שע׳",
+  "com.age_d": "לפני {days, plural, one {יום} two {יומיים} other {# ימים}}",
+  "com.not_current": "לא עדכני",
+  "com.conn_lost": "החיבור ל-{name} נותק",
+  "com.conn_lost_since": "אין נתונים חדשים מאז {time}. ייתכן שהערכים במסך לא עדכניים.",
+  "com.conn_lost_signin": "צריך להתחבר מחדש ל-{name}.",
+  "com.conn_check": "לבדיקת החיבור"
 }
