@@ -863,12 +863,12 @@ export interface paths {
         put?: never;
         /**
          * Post Environment
-         * @description Coordinates are rounded and used once for the lookup; only the derived state is kept.
+         * @description Coordinates are rounded and used once for the lookup; only the derived state and a daily summary are kept.
          */
         post: operations["post_environment_environment_post"];
         /**
          * Delete Environment
-         * @description Turning the weather off forgets the kept state.
+         * @description Turning the weather off forgets the kept state and the daily summary.
          */
         delete: operations["delete_environment_environment_delete"];
         options?: never;
@@ -3238,6 +3238,10 @@ export interface components {
              * @default []
              */
             advice: ("carbs" | "team" | "timing" | "move")[];
+            /** Below High */
+            below_high?: number | null;
+            /** Below Low */
+            below_low?: number | null;
             /** Count */
             count: number;
             /** Daily Steps */
@@ -3258,7 +3262,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time" | "late_rise" | "workout" | "set_interval" | "set_overdue" | "sensor_short" | "sleep_glucose" | "steps_glucose" | "rhr_glucose";
+            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time" | "late_rise" | "workout" | "set_interval" | "set_overdue" | "sensor_short" | "sleep_glucose" | "steps_glucose" | "rhr_glucose" | "heat_glucose";
             /** Label */
             label?: string | null;
             /** Lows */
@@ -3284,6 +3288,10 @@ export interface components {
             slot?: ("breakfast" | "lunch" | "dinner") | null;
             /** Start Mgdl */
             start_mgdl?: number | null;
+            /** Steps High */
+            steps_high?: number | null;
+            /** Steps Low */
+            steps_low?: number | null;
             /**
              * Tone
              * @enum {string}

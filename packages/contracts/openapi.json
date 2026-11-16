@@ -2107,6 +2107,28 @@
             "title": "Advice",
             "type": "array"
           },
+          "below_high": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Below High"
+          },
+          "below_low": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Below Low"
+          },
           "count": {
             "title": "Count",
             "type": "integer"
@@ -2205,7 +2227,8 @@
               "sensor_short",
               "sleep_glucose",
               "steps_glucose",
-              "rhr_glucose"
+              "rhr_glucose",
+              "heat_glucose"
             ],
             "title": "Kind",
             "type": "string"
@@ -2331,6 +2354,28 @@
               }
             ],
             "title": "Start Mgdl"
+          },
+          "steps_high": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steps High"
+          },
+          "steps_low": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steps Low"
           },
           "tone": {
             "enum": [
@@ -12107,7 +12152,7 @@
     },
     "/environment": {
       "delete": {
-        "description": "Turning the weather off forgets the kept state.",
+        "description": "Turning the weather off forgets the kept state and the daily summary.",
         "operationId": "delete_environment_environment_delete",
         "responses": {
           "204": {
@@ -12149,7 +12194,7 @@
         ]
       },
       "post": {
-        "description": "Coordinates are rounded and used once for the lookup; only the derived state is kept.",
+        "description": "Coordinates are rounded and used once for the lookup; only the derived state and a daily summary are kept.",
         "operationId": "post_environment_environment_post",
         "requestBody": {
           "content": {
