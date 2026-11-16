@@ -8,7 +8,8 @@ primary_region = 'fra'
 swap_size_mb = 512
 
 [build]
-  dockerfile = 'Dockerfile'
+  # Relative to this file: services/api/Dockerfile (the build context is services/api).
+  dockerfile = '../../../services/api/Dockerfile'
 
 [deploy]
   # Schema migrations before the new version takes traffic, in a temporary Machine with the app's secrets.
