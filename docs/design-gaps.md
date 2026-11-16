@@ -1539,3 +1539,19 @@ the results names the source, as the data licence asks ("Source: Israeli Ministr
 Values are estimates."). Neither is drawn on the board. Dishes the database does not have (sabich, malawach) are not
 invented; they fall back to "add as your own food". An admin tool to add foods (named in DAP-16) is not built.
 
+
+### G-90 · "Who are you here for?" at sign-up (**DAP-7, Guy 16 Nov 2026**, verified-test)
+
+Itay's plan (DAP-7) puts a persona question first at sign-up; Guy asked to build it ("תקדם את dap-7"). Not on the
+board; approved by his request. Jira PM-125.
+
+- After sign-in, an account with no diabetes profile that hasn't answered "for myself" sees "Who are you here for?"
+  (app `(auth)/persona.tsx`, website `Gate`): for myself (I live with diabetes), for myself with pre-diabetes, for my
+  child, for someone close to me (a parent, partner or friend). Layout uses the onboarding option rows.
+- "For myself" goes on exactly as before (waitlist, then setup). The other three are not built: the answer is kept and
+  the person sees "Thanks, we saved your answer", one line saying that part isn't ready yet and that they're on the
+  waiting list for it, with "Change my answer" and "Sign out". Nothing promises an email.
+- Kept on the server as `users.persona` (`PUT /auth/persona`, open to waitlisted accounts like the rest of `/auth/`).
+  Only the category, nothing about the other person. Accounts with a profile are never asked. The admin list shows a
+  non-self answer next to the email.
+- The answer does not change the companion, insights or advice rules (that is DAP-11, which needs regulatory review).

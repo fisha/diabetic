@@ -106,4 +106,3 @@ export type FoodDayOut = S['FoodDayOut'];
 export type SimilarOut = S['SimilarOut'];
 export type WorkoutOut = S['WorkoutOut'];
 export type GoalsIn = S['GoalsIn'];
-export type ConnectionOut = S['ConnectionOut'];

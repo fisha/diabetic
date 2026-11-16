@@ -276,6 +276,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/persona": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Persona
+         * @description DAP-7: who the person is here for. Under /auth/ so an account on the waitlist can answer it too.
+         */
+        put: operations["set_persona_auth_persona_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/refresh": {
         parameters: {
             query?: never;
@@ -2538,6 +2558,8 @@ export interface components {
             id: string;
             /** Last Reading At */
             last_reading_at: string | null;
+            /** Persona */
+            persona?: string | null;
             /** Readings 14D */
             readings_14d: number;
             /** Via Google */
@@ -4184,6 +4206,8 @@ export interface components {
              * @default false
              */
             is_admin: boolean;
+            /** Persona */
+            persona?: ("self" | "prediabetes" | "child" | "family") | null;
         };
         /** MealData */
         MealData: {
@@ -4591,6 +4615,14 @@ export interface components {
             paused: boolean;
             /** Until */
             until: string | null;
+        };
+        /** PersonaIn */
+        PersonaIn: {
+            /**
+             * Persona
+             * @enum {string}
+             */
+            persona: "self" | "prediabetes" | "child" | "family";
         };
         /** PhotoOut */
         PhotoOut: {
@@ -6179,6 +6211,39 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_persona_auth_persona_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PersonaIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Me"];
+                };
             };
             /** @description Validation Error */
             422: {

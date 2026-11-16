@@ -16683,5 +16683,138 @@
     "review": [
       "translation"
     ]
+  },
+  "per.t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.self": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.self_s": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.pre": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.pre_s": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.child": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.child_s": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.family": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.family_s": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.cont": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.fail": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.w_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.w_pre": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.w_child": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.w_family": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.w_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.change": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.out": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
   }
 }

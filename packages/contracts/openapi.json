@@ -444,6 +444,17 @@
             ],
             "title": "Last Reading At"
           },
+          "persona": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Persona"
+          },
           "readings_14d": {
             "title": "Readings 14D",
             "type": "integer"
@@ -5010,6 +5021,23 @@
             "default": false,
             "title": "Is Admin",
             "type": "boolean"
+          },
+          "persona": {
+            "anyOf": [
+              {
+                "enum": [
+                  "self",
+                  "prediabetes",
+                  "child",
+                  "family"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Persona"
           }
         },
         "required": [
@@ -6152,6 +6180,26 @@
           "until"
         ],
         "title": "PauseOut",
+        "type": "object"
+      },
+      "PersonaIn": {
+        "additionalProperties": false,
+        "properties": {
+          "persona": {
+            "enum": [
+              "self",
+              "prediabetes",
+              "child",
+              "family"
+            ],
+            "title": "Persona",
+            "type": "string"
+          }
+        },
+        "required": [
+          "persona"
+        ],
+        "title": "PersonaIn",
         "type": "object"
       },
       "PhotoOut": {
@@ -10061,6 +10109,53 @@
           }
         },
         "summary": "Reset Password",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/persona": {
+      "put": {
+        "description": "DAP-7: who the person is here for. Under /auth/ so an account on the waitlist can answer it too.",
+        "operationId": "set_persona_auth_persona_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonaIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Me"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Persona",
         "tags": [
           "auth"
         ]
