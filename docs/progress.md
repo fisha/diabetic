@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (DAP-7, Jira PM-125, thread "Ask who the user is here for at sign-up"): Guy asked to move Itay's
+"Who are you here for?" forward. New accounts are asked first, in the app and on the website: for myself, for myself
+with pre-diabetes, for my child, or for someone close. Only "for myself" continues (waitlist, setup); the others are
+saved and see a "not ready yet, you're on the waiting list" note with "Change my answer". `users.persona` (migration
+d0e1f2a3b4c8), `PUT /auth/persona`, admin list shows it, privacy policy updated in four languages (G-89). API tests,
+i18n, app and web tests, and e2e `tools/e2e/persona.cjs` (app web export, en light, he light, he dark) and
+`tools/e2e/persona-web.cjs` (website) pass. JS and API only: deploy the API (migration) and the website, then the
+testers OTA. Not seen on a phone.
+
 16 Nov 2026 (DAP-16, Jira PM-119, thread "Add Israeli Hebrew food list with portions"): Itay's plan asks for local
 dishes in Hebrew with typical portions. The source is the Ministry of Health national nutrient database "Tzameret"
 (data.gov.il `nutrition-database`, licence `other-open`: copy, adapt and commercial use allowed, the source must be
