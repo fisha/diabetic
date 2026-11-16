@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-145, thread "Fix worker CPU overload on Fly"): with the worker on, stedio-api (shared-cpu-1x)
+went to ~100% CPU minutes after each start and the app timed out. Measured with per-step timing on a local copy of the
+schema (6 people, 60 days of readings): the meal check-in step `routine.suggest` computed every person's full routine
+(two weeks of readings scanned per meal) on every 20-second pass, ~0.7 s of a ~0.95 s pass. Fixed (diabetic-api #57,
+merged): it reads only meal times; `_nearest` is a binary search; the worker logs a warning for a step over 2 s and a
+per-step CPU summary every 10 minutes; `tests/test_worker_cost.py` bounds the rows a quiet pass reads. Pass now ~0.12 s.
+Next: deploy the API from the Mac with the worker on and read the first "worker cost" log line.
+
 16 Nov 2026 (Jira PM-131, thread "Host the Streamlit research tool on Fly"): Guy asked to put the research tool on
 Fly, smallest machine, not running all the time. Built (diabetic-api #56): own Fly app `stedio-research`
 (`deploy/fly/research/`), shared-cpu-1x 256 MB + swap, auto-stop with no Machine kept running; Google sign-in limited
