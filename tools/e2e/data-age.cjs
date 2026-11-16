@@ -80,5 +80,6 @@ const server = http.createServer((req, res) => {
   }
   ok('no page errors', errors.length === 0, errors.slice(0, 3).join(' | '));
   console.log(results.join('\n'));
+  if (results.some((r) => r.startsWith('FAIL'))) process.exitCode = 1;
   await browser.close(); server.close();
 });
