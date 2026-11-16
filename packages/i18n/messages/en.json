@@ -1657,6 +1657,8 @@
   "set.a11y": "Accessibility",
   "set.a11y_sub": "Text {size} · motion {motion}",
   "set.acc": "Accessories",
+  "set.classic": "Classic Stedio",
+  "set.classic_b": "No games, outfits or unlocks. {name} keeps its original look.",
   "set.acc_aviator": "Aviators",
   "set.acc_beanie": "Beanie",
   "set.acc_bowtie": "Bow tie",

@@ -10833,6 +10833,20 @@
     ],
     "note": "Profile > Companion: accessories the person puts on the companion character (Guy, 13 Nov 2026). Not in the design boards."
   },
+  "set.classic": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Profile > Companion: switch at the top that turns off the character games (outfits, costumes, unlocks) and keeps the plain look (Guy, 16 Nov 2026). Not in the design boards."
+  },
+  "set.classic_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Helper under set.classic. {name} is the companion's name."
+  },
   "set.acc_aviator": {
     "board": "Settings",
     "review": [
