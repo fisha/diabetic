@@ -36,6 +36,7 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 | Email provider for sign-in codes and account emails | privacy | SMTP sender in `services/api/.env` |
 | Data processing agreement with OpenAI and its retention setting (zero data retention or 30 days) | privacy | The API sends `store=false` |
 | Transfer mechanism per processor (SCCs or Data Privacy Framework) | privacy | OpenAI, Expo, ngrok, email provider |
+| Sharing with a trusted person (DAP-19): consent text, the viewer's chat about shared data, and older shares without a consent record | privacy, terms | Lawyer (PM-127); texts in `packages/i18n` `shr.consent_*` and privacy "Sharing" |
 | Cancellation and refund terms under consumer protection law | terms | When billing opens |
 | Liability wording | terms | Lawyer |
 

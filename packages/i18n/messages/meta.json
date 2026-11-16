@@ -8547,6 +8547,13 @@
       "translation"
     ]
   },
+  "ovr.coverage_only": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "When the journal is not shared (DAP-19, 16 Nov 2026)."
+  },
   "ovr.day_empty": {
     "board": "Overview",
     "review": [
@@ -13363,6 +13370,265 @@
       "translation"
     ]
   },
+  "shr.send_link_text": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.rel_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.rel_partner": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.rel_friend": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.rel_family": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.rel_other": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.what_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.sc_glucose": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.sc_glucose_s": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.sc_insights": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.sc_journal": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.sc_profile": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.next": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.consent_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.consent_1": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.consent_2": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.consent_3": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.consent_4": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.consent_ok": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.consent_back": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.last_seen": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.never_seen": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.shares_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.sw_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.sw_me": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.sw_btn": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.sw_hint": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.inv_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.inv_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.inv_ok": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.inv_no": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.inv_signin": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.chat_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.chat_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.chat_ph": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.chat_empty": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
+  "shr.sw_view_only": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
+  },
   "sub.annual": {
     "board": "Subscription",
     "review": [
@@ -16802,6 +17068,13 @@
       "translation"
     ],
     "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.w_code": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-19: someone close enters an invite code a person with diabetes sent them (16 Nov 2026)."
   },
   "per.change": {
     "board": "Onboarding",

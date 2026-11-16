@@ -2261,6 +2261,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sharing/invites/{code}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Preview
+         * @description An invite link opened by someone signed in: whose data and which parts, before they accept.
+         */
+        get: operations["preview_sharing_invites__code__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sharing/{share_id}": {
         parameters: {
             query?: never;
@@ -2273,12 +2293,17 @@ export interface paths {
         post?: never;
         /**
          * End
-         * @description The owner removes a viewer or cancels an invite; the viewer stops viewing. Takes effect on the next request.
+         * @description The owner removes a viewer or cancels an invite; the viewer stops viewing. Takes effect on the next request. The
+         *     viewer's conversations about the owner's data go too (DAP-19): consent withdrawn means nothing from it is kept.
          */
         delete: operations["end_sharing__share_id__delete"];
         options?: never;
         head?: never;
-        patch?: never;
+        /**
+         * Change Scopes
+         * @description The owner changes what one person sees, an invite or an accepted share. Takes effect on the next request.
+         */
+        patch: operations["change_scopes_sharing__share_id__patch"];
         trace?: never;
     };
     "/voice": {
@@ -4052,10 +4077,34 @@ export interface components {
             /** Question */
             question: string | null;
         };
-        /** InviteIn */
+        /**
+         * InviteIn
+         * @description An invite. Since DAP-19 the owner says what is shared and confirms the consent screen; `consent` must be true.
+         */
         InviteIn: {
+            /** Consent */
+            consent: boolean;
             /** Label */
             label?: string | null;
+            /** Relation */
+            relation?: ("partner" | "friend" | "family" | "other") | null;
+            /** Scopes */
+            scopes: ("glucose" | "insights" | "journal" | "profile")[];
+        };
+        /**
+         * InvitePreviewOut
+         * @description What an invite link shows before accepting: whose data and which parts. Nothing else about the owner.
+         */
+        InvitePreviewOut: {
+            /**
+             * Code Expires At
+             * Format: date-time
+             */
+            code_expires_at: string;
+            /** Name */
+            name: string;
+            /** Scopes */
+            scopes: string[];
         };
         /**
          * LabData
@@ -5155,6 +5204,14 @@ export interface components {
             /** Meal Id */
             meal_id: string | null;
         };
+        /**
+         * ScopesIn
+         * @description The owner changes what one person sees (permission settings).
+         */
+        ScopesIn: {
+            /** Scopes */
+            scopes: ("glucose" | "insights" | "journal" | "profile")[];
+        };
         /** SegmentOut */
         SegmentOut: {
             /**
@@ -5616,6 +5673,8 @@ export interface components {
             code: string | null;
             /** Code Expires At */
             code_expires_at: string | null;
+            /** Consent At */
+            consent_at?: string | null;
             /**
              * Id
              * Format: uuid
@@ -5623,12 +5682,26 @@ export interface components {
             id: string;
             /** Label */
             label: string | null;
+            /** Last Viewed At */
+            last_viewed_at?: string | null;
+            /** Relation */
+            relation?: string | null;
+            /**
+             * Scopes
+             * @default [
+             *       "glucose",
+             *       "insights",
+             *       "journal",
+             *       "profile"
+             *     ]
+             */
+            scopes: string[];
             /** Viewer Email */
             viewer_email: string | null;
         };
         /**
          * ViewingOut
-         * @description A share as the viewer sees it: whose data they can see.
+         * @description A share as the viewer sees it: whose data they can see, and which parts.
          */
         ViewingOut: {
             /**
@@ -5648,6 +5721,16 @@ export interface components {
              * Format: uuid
              */
             owner_id: string;
+            /**
+             * Scopes
+             * @default [
+             *       "glucose",
+             *       "insights",
+             *       "journal",
+             *       "profile"
+             *     ]
+             */
+            scopes: string[];
         };
         /** VoiceStatusOut */
         VoiceStatusOut: {
@@ -10507,6 +10590,37 @@ export interface operations {
             };
         };
     };
+    preview_sharing_invites__code__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InvitePreviewOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     end_sharing__share_id__delete: {
         parameters: {
             query?: never;
@@ -10524,6 +10638,41 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    change_scopes_sharing__share_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ScopesIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ViewerOut"];
+                };
             };
             /** @description Validation Error */
             422: {

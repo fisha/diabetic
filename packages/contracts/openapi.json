@@ -4593,7 +4593,12 @@
       },
       "InviteIn": {
         "additionalProperties": false,
+        "description": "An invite. Since DAP-19 the owner says what is shared and confirms the consent screen; `consent` must be true.",
         "properties": {
+          "consent": {
+            "title": "Consent",
+            "type": "boolean"
+          },
           "label": {
             "anyOf": [
               {
@@ -4605,9 +4610,73 @@
               }
             ],
             "title": "Label"
+          },
+          "relation": {
+            "anyOf": [
+              {
+                "enum": [
+                  "partner",
+                  "friend",
+                  "family",
+                  "other"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relation"
+          },
+          "scopes": {
+            "items": {
+              "enum": [
+                "glucose",
+                "insights",
+                "journal",
+                "profile"
+              ],
+              "type": "string"
+            },
+            "maxItems": 4,
+            "minItems": 1,
+            "title": "Scopes",
+            "type": "array"
           }
         },
+        "required": [
+          "scopes",
+          "consent"
+        ],
         "title": "InviteIn",
+        "type": "object"
+      },
+      "InvitePreviewOut": {
+        "description": "What an invite link shows before accepting: whose data and which parts. Nothing else about the owner.",
+        "properties": {
+          "code_expires_at": {
+            "format": "date-time",
+            "title": "Code Expires At",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "scopes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scopes",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "scopes",
+          "code_expires_at"
+        ],
+        "title": "InvitePreviewOut",
         "type": "object"
       },
       "LabData": {
@@ -7606,6 +7675,32 @@
         "title": "SameAsIn",
         "type": "object"
       },
+      "ScopesIn": {
+        "additionalProperties": false,
+        "description": "The owner changes what one person sees (permission settings).",
+        "properties": {
+          "scopes": {
+            "items": {
+              "enum": [
+                "glucose",
+                "insights",
+                "journal",
+                "profile"
+              ],
+              "type": "string"
+            },
+            "maxItems": 4,
+            "minItems": 1,
+            "title": "Scopes",
+            "type": "array"
+          }
+        },
+        "required": [
+          "scopes"
+        ],
+        "title": "ScopesIn",
+        "type": "object"
+      },
       "SegmentOut": {
         "properties": {
           "end": {
@@ -9083,6 +9178,18 @@
             ],
             "title": "Code Expires At"
           },
+          "consent_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Consent At"
+          },
           "id": {
             "format": "uuid",
             "title": "Id",
@@ -9098,6 +9205,42 @@
               }
             ],
             "title": "Label"
+          },
+          "last_viewed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Viewed At"
+          },
+          "relation": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relation"
+          },
+          "scopes": {
+            "default": [
+              "glucose",
+              "insights",
+              "journal",
+              "profile"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "Scopes",
+            "type": "array"
           },
           "viewer_email": {
             "anyOf": [
@@ -9123,7 +9266,7 @@
         "type": "object"
       },
       "ViewingOut": {
-        "description": "A share as the viewer sees it: whose data they can see.",
+        "description": "A share as the viewer sees it: whose data they can see, and which parts.",
         "properties": {
           "accepted_at": {
             "format": "date-time",
@@ -9143,6 +9286,19 @@
             "format": "uuid",
             "title": "Owner Id",
             "type": "string"
+          },
+          "scopes": {
+            "default": [
+              "glucose",
+              "insights",
+              "journal",
+              "profile"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "Scopes",
+            "type": "array"
           }
         },
         "required": [
@@ -16326,9 +16482,57 @@
         ]
       }
     },
+    "/sharing/invites/{code}": {
+      "get": {
+        "description": "An invite link opened by someone signed in: whose data and which parts, before they accept.",
+        "operationId": "preview_sharing_invites__code__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "schema": {
+              "title": "Code",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvitePreviewOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Preview",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
     "/sharing/{share_id}": {
       "delete": {
-        "description": "The owner removes a viewer or cancels an invite; the viewer stops viewing. Takes effect on the next request.",
+        "description": "The owner removes a viewer or cancels an invite; the viewer stops viewing. Takes effect on the next request. The\nviewer's conversations about the owner's data go too (DAP-19): consent withdrawn means nothing from it is kept.",
         "operationId": "end_sharing__share_id__delete",
         "parameters": [
           {
@@ -16363,6 +16567,63 @@
           }
         ],
         "summary": "End",
+        "tags": [
+          "sharing"
+        ]
+      },
+      "patch": {
+        "description": "The owner changes what one person sees, an invite or an accepted share. Takes effect on the next request.",
+        "operationId": "change_scopes_sharing__share_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScopesIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ViewerOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Change Scopes",
         "tags": [
           "sharing"
         ]
