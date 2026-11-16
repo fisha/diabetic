@@ -1320,33 +1320,18 @@
         "title": "ChangeMetaOut",
         "type": "object"
       },
-      "CheckOut": {
+      "CheckIn": {
         "properties": {
-          "coverage": {
-            "additionalProperties": true,
-            "title": "Coverage",
-            "type": "object"
-          },
-          "day": {
-            "title": "Day",
+          "text": {
+            "maxLength": 4000,
+            "title": "Text",
             "type": "string"
-          },
-          "eligible": {
-            "title": "Eligible",
-            "type": "boolean"
-          },
-          "improved": {
-            "title": "Improved",
-            "type": "boolean"
           }
         },
         "required": [
-          "day",
-          "eligible",
-          "improved",
-          "coverage"
+          "text"
         ],
-        "title": "CheckOut",
+        "title": "CheckIn",
         "type": "object"
       },
       "ClientErrorIn": {
@@ -2847,6 +2832,26 @@
           "carbs_per_100g"
         ],
         "title": "FoodMatch",
+        "type": "object"
+      },
+      "FoodNoteIn": {
+        "additionalProperties": false,
+        "description": "What the person ate with this meal entry, in their words; empty or null removes it.",
+        "properties": {
+          "text": {
+            "anyOf": [
+              {
+                "maxLength": 300,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text"
+          }
+        },
+        "title": "FoodNoteIn",
         "type": "object"
       },
       "FoodQuestion": {
@@ -4764,6 +4769,38 @@
         "title": "LearningOut",
         "type": "object"
       },
+      "LinesOut": {
+        "description": "The app's lines the phone hands the model, kept here with the rest of the companion's words.",
+        "properties": {
+          "dose": {
+            "default": "The app does not give insulin doses. Say so briefly and suggest the person follows their care team's plan.",
+            "title": "Dose",
+            "type": "string"
+          },
+          "stop": {
+            "default": "Stop speaking now and wait for the person to finish.",
+            "title": "Stop",
+            "type": "string"
+          },
+          "unavailable": {
+            "default": "The app could not answer just now. Say so briefly and ask the person to try again in a moment.",
+            "title": "Unavailable",
+            "type": "string"
+          },
+          "unheard": {
+            "default": "The app did not catch the person's words. Ask them briefly to say it again.",
+            "title": "Unheard",
+            "type": "string"
+          },
+          "working": {
+            "default": "The app is still working on what the person just told you (for example estimating a meal). Tell them in a few words that you're on it. Don't guess the result.",
+            "title": "Working",
+            "type": "string"
+          }
+        },
+        "title": "LinesOut",
+        "type": "object"
+      },
       "LiveActivityIn": {
         "additionalProperties": false,
         "properties": {
@@ -4911,6 +4948,19 @@
             "maxItems": 40,
             "title": "Items",
             "type": "array"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "maxLength": 300,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Note"
           },
           "photo_id": {
             "anyOf": [
@@ -6148,7 +6198,7 @@
           "last_check": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/CheckOut"
+                "$ref": "#/components/schemas/steady_api__routers__progress__CheckOut"
               },
               {
                 "type": "null"
@@ -7081,6 +7131,55 @@
         "title": "RuleOut",
         "type": "object"
       },
+      "SaidIn": {
+        "properties": {
+          "heard": {
+            "anyOf": [
+              {
+                "maxLength": 4000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Heard"
+          },
+          "said": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Said",
+            "type": "string"
+          }
+        },
+        "required": [
+          "said"
+        ],
+        "title": "SaidIn",
+        "type": "object"
+      },
+      "SaidOut": {
+        "properties": {
+          "heard": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MessageOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reply": {
+            "$ref": "#/components/schemas/MessageOut"
+          }
+        },
+        "required": [
+          "reply"
+        ],
+        "title": "SaidOut",
+        "type": "object"
+      },
       "SameAsIn": {
         "description": "The meal this entry is the same meal as, or null for \"a separate meal\".",
         "properties": {
@@ -7181,6 +7280,71 @@
           "reply"
         ],
         "title": "SendOut",
+        "type": "object"
+      },
+      "SessionIn": {
+        "properties": {
+          "opener": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Opener"
+          },
+          "resume": {
+            "default": false,
+            "title": "Resume",
+            "type": "boolean"
+          },
+          "sdp": {
+            "maxLength": 60000,
+            "minLength": 10,
+            "title": "Sdp",
+            "type": "string"
+          }
+        },
+        "required": [
+          "sdp"
+        ],
+        "title": "SessionIn",
+        "type": "object"
+      },
+      "SessionOut": {
+        "properties": {
+          "lines": {
+            "$ref": "#/components/schemas/LinesOut",
+            "default": {
+              "dose": "The app does not give insulin doses. Say so briefly and suggest the person follows their care team's plan.",
+              "stop": "Stop speaking now and wait for the person to finish.",
+              "unavailable": "The app could not answer just now. Say so briefly and ask the person to try again in a moment.",
+              "unheard": "The app did not catch the person's words. Ask them briefly to say it again.",
+              "working": "The app is still working on what the person just told you (for example estimating a meal). Tell them in a few words that you're on it. Don't guess the result."
+            }
+          },
+          "open": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Open"
+          },
+          "sdp": {
+            "title": "Sdp",
+            "type": "string"
+          }
+        },
+        "required": [
+          "sdp"
+        ],
+        "title": "SessionOut",
         "type": "object"
       },
       "SetChangeIn": {
@@ -8145,6 +8309,48 @@
         "title": "TranscriptOut",
         "type": "object"
       },
+      "TurnIn": {
+        "properties": {
+          "heard": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Heard",
+            "type": "string"
+          }
+        },
+        "required": [
+          "heard"
+        ],
+        "title": "TurnIn",
+        "type": "object"
+      },
+      "TurnOut": {
+        "properties": {
+          "heard": {
+            "$ref": "#/components/schemas/MessageOut"
+          },
+          "reply": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MessageOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "say": {
+            "title": "Say",
+            "type": "string"
+          }
+        },
+        "required": [
+          "say",
+          "heard"
+        ],
+        "title": "TurnOut",
+        "type": "object"
+      },
       "UpdateOut": {
         "properties": {
           "created_at": {
@@ -8956,6 +9162,48 @@
           "via"
         ],
         "title": "StateIn",
+        "type": "object"
+      },
+      "steady_api__routers__live_rtc__CheckOut": {
+        "properties": {
+          "dose": {
+            "title": "Dose",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "dose"
+        ],
+        "title": "CheckOut",
+        "type": "object"
+      },
+      "steady_api__routers__progress__CheckOut": {
+        "properties": {
+          "coverage": {
+            "additionalProperties": true,
+            "title": "Coverage",
+            "type": "object"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "eligible": {
+            "title": "Eligible",
+            "type": "boolean"
+          },
+          "improved": {
+            "title": "Improved",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "day",
+          "eligible",
+          "improved",
+          "coverage"
+        ],
+        "title": "CheckOut",
         "type": "object"
       },
       "steady_api__routers__progress__StateIn": {
@@ -14759,6 +15007,68 @@
         ]
       }
     },
+    "/records/{record_id}/food-note": {
+      "put": {
+        "description": "What the person ate, in their own words, on a meal entry (Guy, 16 Nov 2026: the pump records only the carbs that were\nentered, so let the person write what they ate). Only the note changes: the carbs, time and source stay as the pump\nrecorded them, nothing is sent back to the device, and no revision is made (the note saves itself as it is typed).",
+        "operationId": "food_note_records__record_id__food_note_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "record_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Record Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FoodNoteIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "not_a_meal"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Food Note",
+        "tags": [
+          "records"
+        ]
+      }
+    },
     "/records/{record_id}/hide": {
       "post": {
         "operationId": "hide_records__record_id__hide_post",
@@ -15251,6 +15561,193 @@
           }
         ],
         "summary": "Status",
+        "tags": [
+          "voice"
+        ]
+      }
+    },
+    "/voice/live/rtc/check": {
+      "post": {
+        "description": "Whether the companion's words so far read as a dose instruction; the phone then stops her at once.",
+        "operationId": "check_voice_live_rtc_check_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/steady_api__routers__live_rtc__CheckOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Check",
+        "tags": [
+          "voice"
+        ]
+      }
+    },
+    "/voice/live/rtc/said": {
+      "post": {
+        "description": "Keeps a turn the companion answered by herself in the conversation, like text (checked by the dose rule).",
+        "operationId": "said_voice_live_rtc_said_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaidIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaidOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Said",
+        "tags": [
+          "voice"
+        ]
+      }
+    },
+    "/voice/live/rtc/session": {
+      "post": {
+        "operationId": "open_session_voice_live_rtc_session_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Open Session",
+        "tags": [
+          "voice"
+        ]
+      }
+    },
+    "/voice/live/rtc/turn": {
+      "post": {
+        "description": "Answers one delegation: the text companion with its tools, on what the person just said.",
+        "operationId": "turn_voice_live_rtc_turn_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TurnIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TurnOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Turn",
         "tags": [
           "voice"
         ]
