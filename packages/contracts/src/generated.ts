@@ -451,8 +451,9 @@ export interface paths {
         put?: never;
         /**
          * Give Ai Consent
-         * @description The person agreed to send their data to the external AI engine (app builds from PM-149, which show the one text
-         *     there is so far). Recorded once per version.
+         * @description The person agreed to send their data to the external AI engine, from an app build of PM-149. Those builds show the
+         *     first text of the consent and send no version, so the record is for that text only: once the consent has a newer
+         *     text, this does not open the AI engine, and the person is asked again by a newer app (`/consent/accept`).
          */
         post: operations["give_ai_consent_consent_ai_post"];
         delete?: never;

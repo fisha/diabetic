@@ -11047,7 +11047,7 @@
     },
     "/consent/ai": {
       "post": {
-        "description": "The person agreed to send their data to the external AI engine (app builds from PM-149, which show the one text\nthere is so far). Recorded once per version.",
+        "description": "The person agreed to send their data to the external AI engine, from an app build of PM-149. Those builds show the\nfirst text of the consent and send no version, so the record is for that text only: once the consent has a newer\ntext, this does not open the AI engine, and the person is asked again by a newer app (`/consent/accept`).",
         "operationId": "give_ai_consent_consent_ai_post",
         "requestBody": {
           "content": {
