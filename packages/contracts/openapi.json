@@ -781,6 +781,38 @@
             "title": "Distance Hours",
             "type": "array"
           },
+          "energy_days": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/DayValueOut"
+            },
+            "title": "Energy Days",
+            "type": "array"
+          },
+          "energy_hours": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/BodyHourOut"
+            },
+            "title": "Energy Hours",
+            "type": "array"
+          },
+          "exercise_days": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/DayValueOut"
+            },
+            "title": "Exercise Days",
+            "type": "array"
+          },
+          "exercise_hours": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/BodyHourOut"
+            },
+            "title": "Exercise Hours",
+            "type": "array"
+          },
           "heart_hours": {
             "items": {
               "$ref": "#/components/schemas/BodyHourOut"
@@ -2671,6 +2703,19 @@
             ],
             "title": "Fat Per 100G"
           },
+          "fiber_per_100g": {
+            "anyOf": [
+              {
+                "maximum": 100.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fiber Per 100G"
+          },
           "grams_per_unit": {
             "anyOf": [
               {
@@ -2764,6 +2809,17 @@
               }
             ],
             "title": "Fat Per 100G"
+          },
+          "fiber_per_100g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fiber Per 100G"
           },
           "name": {
             "title": "Name",
@@ -7148,6 +7204,31 @@
       },
       "SettingsOut": {
         "properties": {
+          "body_tiles": {
+            "default": [
+              "steps",
+              "dist",
+              "hr",
+              "rest",
+              "sleep",
+              "awake"
+            ],
+            "items": {
+              "enum": [
+                "steps",
+                "dist",
+                "hr",
+                "rest",
+                "sleep",
+                "awake",
+                "exercise",
+                "energy"
+              ],
+              "type": "string"
+            },
+            "title": "Body Tiles",
+            "type": "array"
+          },
           "celebrate": {
             "default": true,
             "title": "Celebrate",
@@ -7225,6 +7306,31 @@
       "SettingsPatch": {
         "additionalProperties": false,
         "properties": {
+          "body_tiles": {
+            "anyOf": [
+              {
+                "items": {
+                  "enum": [
+                    "steps",
+                    "dist",
+                    "hr",
+                    "rest",
+                    "sleep",
+                    "awake",
+                    "exercise",
+                    "energy"
+                  ],
+                  "type": "string"
+                },
+                "maxItems": 8,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Body Tiles"
+          },
           "celebrate": {
             "anyOf": [
               {
@@ -7746,6 +7852,50 @@
               }
             ],
             "title": "Distance Km"
+          },
+          "energy_kcal": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Energy Kcal"
+          },
+          "energy_usual": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Energy Usual"
+          },
+          "exercise_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Exercise Min"
+          },
+          "exercise_usual": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Exercise Usual"
           },
           "heart": {
             "anyOf": [

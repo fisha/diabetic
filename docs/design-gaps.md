@@ -1440,3 +1440,22 @@ by his request.
   pointing at the character; the text/voice choices sit above the bubble.
 - Same request: "Tap to talk" is now `headline` with a `footnote` line, and the carousel under the character is smaller
   (`callout` body up to three lines, tighter padding, compact chips with a 44 pt touch area).
+
+### G-85 · The person chooses what the "Body today" card shows (**Guy, 16 Nov 2026**, verified-test)
+
+Itay asked to drop "Times awake" for resting heart rate. Guy: rather than removing it, let each person decide what
+the card shows; and show the health store's official logo instead of "From Apple Health". Not on the board; approved by
+his request.
+
+- A pencil in the card's header opens "Body today: what to show" (`/body-tiles`): one switch per tile (steps, walk and
+  run, average heart rate, resting heart rate, sleep, times awake, and two new ones, exercise minutes and active
+  energy). Saved as it changes, no save button. A tile with nothing from the health app today says "No data today".
+- Kept on the server (`PATCH /settings` `body_tiles`, stored in `user_settings.routine_state`, no migration), so it
+  follows the person between phones. Until changed: the six tiles the card had before. A chosen tile with no data
+  today is left out of the card; nothing chosen shows a one-line note under the header.
+- Exercise minutes and active energy come from the health app (one source a day, never added across sources, usual =
+  median of the 14 days before with at least 5 days), with the same breakdown sheet as steps.
+- Apple Health icon: Apple's HealthKit guidelines allow only Apple's own icon, unaltered, with the name "Apple Health"
+  next to it, clear space of a tenth of its height, and never as a button or in place of the name. So the header shows
+  the icon followed by "Apple Health", not the icon alone. Android keeps "From Health Connect" as text until Health
+  Connect's own icon is added (no Android build now).

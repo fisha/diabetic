@@ -490,6 +490,69 @@
     ],
     "note": "Card title: walking, heart rate and last night's sleep from the health app (G-72)."
   },
+  "bd.l_ex": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.min": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Minutes, short."
+  },
+  "bd.l_energy": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.kcal": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Kilocalories, short."
+  },
+  "bd.pick": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Accessibility label of the pencil button in the Body today card header."
+  },
+  "bd.pick_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.pick_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.pick_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.pick_empty": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bd.pick_fail": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
   "bk.awake_t": {
     "board": "Overview",
     "review": [

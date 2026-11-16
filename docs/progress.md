@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (G-85, thread "Let users choose Body today tiles"): Itay asked to replace "Times awake" with resting heart
+rate; Guy: let each person choose what the "Body today" card shows, and show the official Apple Health logo instead of
+"From Apple Health". A pencil in the card header opens a list of switches (steps, walk and run, average and resting heart
+rate, sleep, times awake, and new: exercise minutes and active energy, each with a breakdown), saved as it changes on
+the server (`body_tiles` in settings; no migration). API tests (381) and ruff, app typecheck and tests, i18n tests and
+web e2e `tools/e2e/body-tiles.cjs` (en light, he light, he dark) pass. JS only; deploy the API before the OTA. The Apple
+Health icon follows once Apple's file is downloaded on the Mac (Apple's CDN is blocked from the cloud). Not seen on a
+phone.
+
 15 Nov 2026 (thread "Fix push-opened banner on main screen"): Guy tapped a check-in push ("you have a check-in from
 the companion") and the main screen opened with a banner that pushed everything down and only said "opened from the
 19:03 check, sent, not confirmed seen". Now the follow-up opened from a notification floats over the screen under the
