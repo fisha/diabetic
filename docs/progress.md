@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-130, thread "Show data age on every glucose value"): device syncs stopped in production after
+the 14:07 deploy. A replaced API process died mid-transaction, stayed "idle in transaction" with a row lock on
+`device_links`, and every worker pass blocked on it. Permanent prevention (diabetic-api #55): every database connection
+has `idle_in_transaction_session_timeout` 120 s and TCP keepalives; the worker has its own pool with `lock_timeout` 15 s
+and `statement_timeout` 5 min; each link syncs on its own and a locked one waits for the next pass; `last_attempt_at` is
+committed before any vendor call; shutdown joins the worker and disposes the pools. API tests (445) pass. No migration.
+Deploy the API. DAP-14 (data age, connection-lost banner) reached the app in build 15 and the 0.5.0 OTA.
+
 16 Nov 2026 (Jira PM-128, thread "Make the website English only for now"): Guy asked to remove Hebrew, Arabic and
 Russian from the website for now and keep the app's languages as they are. The website routes English only
 (`SITE_LOCALES` in `apps/web/src/i18n/routing.ts`); `/he`, `/ar`, `/ru` and the pages under them redirect (307) to the
