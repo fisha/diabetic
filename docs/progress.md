@@ -13,6 +13,12 @@ verified only against test stand-ins or not at all. See `docs/integration-status
 `.claude/skills/privacy-compliance` (health-data privacy), a CLAUDE.md rule in all four repositories, and a "Regulatory
 and privacy check" section in every repository's PR template. Every PR runs both. Tasks are tracked in Jira (PM-114).
 
+16 Nov 2026 (PM-113, thread "Fix diabetes profile change history labels"): Guy saw saved field names and raw values in
+Profile > Diabetes profile > Change history. Each row now shows the profile question's label in the app language and the
+values as the questions show them (choices by label, times and dates formatted, glucose and body values with units, ratio
+periods in words). New strings `set.pf_from` / `set.pf_to` (from/to, for sleep and quiet hours). App typecheck and tests
+(140) and i18n tests pass. JS only (OTA). Not seen on a phone.
+
 16 Nov 2026 (thread "Check app against medical-device rules"): Guy shared SaMD guidance (FDA / EU MDR) and asked for an
 audit; the findings are in the Claude Doc "Stedio vs medical device rules - audit" (22 items). He then asked to fix the
 two non-compliant ones now: (1) the 10-minute "insulin before eating" win and timing insight are removed; (2) glucose
