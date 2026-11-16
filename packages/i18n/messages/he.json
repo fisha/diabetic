@@ -1669,6 +1669,8 @@
   "set.a11y": "נגישות",
   "set.a11y_sub": "טקסט {size} · תנועה {motion}",
   "set.acc": "אקססוריז",
+  "set.classic": "Stedio קלאסי",
+  "set.classic_b": "בלי משחקים, בגדים ופריטים שנפתחים. המראה של {name} נשאר כמו שהיה.",
   "set.acc_aviator": "טייסים",
   "set.acc_beanie": "גרב",
   "set.acc_bowtie": "פפיון",
@@ -2769,5 +2771,8 @@
   "meal.usual_saved": "נשמרה בארוחות הקבועות",
   "meal.usual_full": "יש לך 30 ארוחות קבועות. אפשר להסיר אחת במסך תיעוד ארוחה כדי להוסיף.",
   "meal.usual_failed": "לא הצלחנו לשמור. אפשר לנסות שוב.",
-  "meal.usual_remove": "הסרת {name} מהארוחות הקבועות"
+  "meal.usual_remove": "הסרת {name} מהארוחות הקבועות",
+  "com.in_call": "בשיחה עם {name}",
+  "com.back_to_call": "חזרה לשיחה",
+  "com.end_call": "סיום השיחה"
 }

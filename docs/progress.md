@@ -19,6 +19,22 @@ of both texts now say the app asks again. API 467 tests, app 153 tests and typec
 phone. Deploy the API (with its migration) and the OTA together: every account will see the screen once. To change a
 document later: edit the text, then set the same new date in `legal.py` and the website's `LEGAL_UPDATED`.
 
+16 Nov 2026 (Jira PM-159, thread "Support right-to-left across the app"): Guy asked that Hebrew and Arabic be right to
+left everywhere, text direction too, not only alignment. The layout was already RTL; text took its paragraph direction
+from its first strong character, so Hebrew sentences starting with "Stedio", "AI" or a number (180 in he.json) were
+laid out LTR. Fixed in AppText for the whole app (iOS writingDirection, web dir, Android direction marks), with
+"auto" for the person's own words and "ltr" for numbers; guard test `apps/mobile/test/rtl.test.ts`. JS only (0.5.0
+OTA). App tests, typecheck, i18n tests and a web export check (he, ar) pass; not yet seen on a phone.
+
+16 Nov 2026 (Jira PM-158, thread "Add classic Stedio mode without games"): Guy asked for a switch at the top of
+Profile > Companion that releases the person from the games ("Stedio הקלאסי", no wardrobe). Built: "Classic Stedio"
+(`companion.classic` in the profile answers, off by default, shared by app and website). While on, the accessories
+card and locked picker are hidden, the companion shows the plain character (no accessories, weather wear, seasonal
+crown, moment props, nightcap or costume morphs), and no unlock dialog or Unlocks card shows (nothing is marked
+celebrated). The saved accessories come back when it is turned off. JS only (0.5.0 OTA), no API change. App tests,
+i18n, web checks and e2e `tools/e2e/classic-mode.cjs` (en light, he light, he dark; 18/18) pass; not yet seen on a
+phone. Guy asked to turn it on for Itay's account after the deploy.
+
 16 Nov 2026 (Jira PM-149, thread "Check app against App Store review rules"): Guy approved explicit consent before
 data goes to the AI engine (App Store 5.1.2(i)), in generic words ("external AI engine"; OpenAI named in a details
 dialog and the privacy policy). Built (G-92): third, required onboarding checkbox, a one-time screen for existing
@@ -278,6 +294,14 @@ meal and no bolus are recorded since 11:00, once a day, within the check-in cap 
 with buttons "I ate, log it" (meal logging) and "Not yet" (the companion's fixed line on regular meal times). API 346
 tests and ruff, app typecheck, 118 tests and lint (no new problems), i18n tests pass. JS only, no migration; the API must
 be deployed before the OTA (an older API rejects `answer`). Not seen on a phone.
+
+16 Nov 2026, ~16:50 UTC (same thread, PM-157): Guy on build 15 with the direct path on: "the voice talk sounds great
+now". Two asks, both JS only (0.5.0 OTA): the call is now one for the whole app (`liveCall.ts`), so leaving the
+companion screen keeps it and coming back shows it; a small accent bar above the tabs ("In a call with {name}") taps
+back to the call or ends it; signing out ends a call. Saying goodbye (bye, goodbye, להתראות, ביי, مع السلامة, пока...
+at the end of a short utterance, judged once the words settle) makes her say one short goodbye, then the call ends
+(direct path only; the relay keeps going). App #82, API #61 (the goodbye instruction), call-bar strings in four
+languages. Next: deploy the API (not during an open call), OTA for 0.5.0, Guy tries.
 
 16 Nov 2026, ~14:30 UTC (same thread, PM-111): the first sim run of the direct path took the production API down twice
 (13:53-13:58 and ~14:00-14:07 UTC): opening a session built the companion's context on Fly's one shared CPU for minutes,

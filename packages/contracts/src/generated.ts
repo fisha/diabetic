@@ -4326,6 +4326,11 @@ export interface components {
              */
             dose: string;
             /**
+             * Goodbye
+             * @default The person is ending the call. Say one short, warm goodbye in their language and nothing more: no question and no new topic. The app then ends the call.
+             */
+            goodbye: string;
+            /**
              * Stop
              * @default Stop speaking now and wait for the person to finish.
              */
@@ -5364,6 +5369,7 @@ export interface components {
             /**
              * @default {
              *       "dose": "The app does not give insulin doses. Say so briefly and suggest the person follows their care team's plan.",
+             *       "goodbye": "The person is ending the call. Say one short, warm goodbye in their language and nothing more: no question and no new topic. The app then ends the call.",
              *       "stop": "Stop speaking now and wait for the person to finish.",
              *       "unavailable": "The app could not answer just now. Say so briefly and ask the person to try again in a moment.",
              *       "unheard": "The app did not catch the person's words. Ask them briefly to say it again.",

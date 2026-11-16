@@ -1669,6 +1669,8 @@
   "set.a11y": "إمكانية الوصول",
   "set.a11y_sub": "النص {size} · الحركة {motion}",
   "set.acc": "الإكسسوارات",
+  "set.classic": "Stedio الكلاسيكي",
+  "set.classic_b": "بلا ألعاب ولا ملابس ولا عناصر تُفتح. يبقى مظهر {name} كما هو.",
   "set.acc_aviator": "طيار",
   "set.acc_beanie": "صوف",
   "set.acc_bowtie": "ربطة فراشة",
@@ -2769,5 +2771,8 @@
   "meal.usual_saved": "حُفظت في وجباتك المعتادة",
   "meal.usual_full": "لديك 30 وجبة معتادة. احذف واحدة من شاشة تسجيل وجبة لإضافة أخرى.",
   "meal.usual_failed": "تعذّر الحفظ. حاول مرة أخرى.",
-  "meal.usual_remove": "إزالة {name} من الوجبات المعتادة"
+  "meal.usual_remove": "إزالة {name} من الوجبات المعتادة",
+  "com.in_call": "في مكالمة مع {name}",
+  "com.back_to_call": "العودة إلى المكالمة",
+  "com.end_call": "إنهاء المكالمة"
 }
