@@ -791,6 +791,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/devices/modes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Device Modes
+         * @description Pump modes that overlap a period (Guy, 16 Nov 2026: Sport mode), oldest first, so the journal can show each
+         *     mode and badge the readings and insulin inside it.
+         */
+        get: operations["device_modes_devices_modes_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/devices/push-token": {
         parameters: {
             query?: never;
@@ -1890,6 +1911,27 @@ export interface paths {
         head?: never;
         /** Edit Memory */
         patch: operations["edit_memory_memories__memory_id__patch"];
+        trace?: never;
+    };
+    "/metrics/averages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Averages
+         * @description Average glucose by 3-hour part of the day. With from/to: over that shown period (at most 92 days; the part after now
+         *     has no data yet, and "days" counts the whole period). Without: the last 7, 14, 30 or 90 local days, today included.
+         */
+        get: operations["get_averages_metrics_averages_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/metrics/progress": {
@@ -3152,6 +3194,29 @@ export interface components {
             occurred_at: string;
             /** Source */
             source: string;
+        };
+        /** DeviceModeOut */
+        DeviceModeOut: {
+            /** Ended At */
+            ended_at: string | null;
+            /** Exact */
+            exact: boolean;
+            /** Expected End */
+            expected_end: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Mode */
+            mode: string;
+            /** Source */
+            source: string;
+            /**
+             * Started At
+             * Format: date-time
+             */
+            started_at: string;
         };
         /** DeviceRatioPeriodOut */
         DeviceRatioPeriodOut: {
@@ -5070,6 +5135,12 @@ export interface components {
             smartguard?: ("auto" | "safe_basal" | "manual") | null;
             /** Suspended */
             suspended?: boolean | null;
+            /** Temp Basal */
+            temp_basal?: boolean | null;
+            /** Temp Target */
+            temp_target?: boolean | null;
+            /** Temp Target Min Left */
+            temp_target_min_left?: number | null;
             /** Transmitter Battery Percent */
             transmitter_battery_percent?: number | null;
         };
@@ -7660,6 +7731,38 @@ export interface operations {
             };
         };
     };
+    device_modes_devices_modes_get: {
+        parameters: {
+            query: {
+                since: string;
+                until: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DeviceModeOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     put_push_token_devices_push_token_put: {
         parameters: {
             query?: never;
@@ -9953,6 +10056,41 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["MemoryOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_averages_metrics_averages_get: {
+        parameters: {
+            query?: {
+                days?: number;
+                from?: string | null;
+                to?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
                 };
             };
             /** @description Validation Error */

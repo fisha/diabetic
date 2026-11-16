@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-171, thread "Capture every pump and sensor event"): Guy was in Sport mode on the pump and the app
+did not show it; every reading and insulin dose during the mode should carry a "Sport mode" badge, and everything the
+device sources expose should come in and be shown. Inspection of Guy's real CareLink data (names and enums only): a
+Temp Target exists only as the live `pumpBannerState` entry `{TEMP_TARGET, timeRemaining}`, never as a marker or in the
+history, so today's mode could not be recovered. Built: pump modes as windows from each CareLink poll (Temp Target, temp
+basal, SmartGuard off, Safe Basal) and from Tandem's pump log (Control-IQ exercise and sleep, exact times); `GET
+/devices/modes`; journal mode rows and a badge on every reading and insulin row inside a window; the pump card shows
+Sport mode and minutes left; modes and device events in the insulin export. API 505 tests, app 165, e2e
+`tools/e2e/pump-modes.cjs` 10/10 (en light, he light, he dark). Audit and remaining gaps: `docs/device-data-inventory.md`
+("Audit, 16 Nov 2026"). Next: deploy the API with migration a1d7c3e5f902, OTA, then the next audit item.
+
 16 Nov 2026 (Jira PM-169, thread "Add average glucose by time of day"): Guy asked for an averages view in Overview, like
 a CGM report screenshot he shared, in Stedio's own design. Built: `GET /metrics/averages?days=7|14|30|90`
 (`metrics.average_by_time`: time-weighted means per local 3-hour part of the day and over the period, today included,

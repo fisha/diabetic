@@ -66,6 +66,7 @@ export type PauseOut = S['PauseOut'];
 export type NudgesOut = S['NudgesOut'];
 export type FirstDaysOut = S['FirstDaysOut'];
 export type DeviceEventOut = S['DeviceEventOut'];
+export type DeviceModeOut = S['DeviceModeOut'];
 export type MemoryOut = S['MemoryOut'];
 export type SettingsOut = S['SettingsOut'];
 export type EnvironmentOut = S['EnvironmentOut'];

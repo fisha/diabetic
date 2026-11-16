@@ -20,8 +20,12 @@ labelling before any reminder uses them (no invented thresholds).
 | `markers` MEAL (`amount`) | shown | Journal, meal linking (G-47) | Carb entries; carb mismatch insights |
 | `markers` BG_READING, CALIBRATION (`unitValue`) | shown (G-83) | Journal and Overview as meter readings, companion | Fingerstick readings entered on the pump, e.g. during a sensor warm-up |
 | `markers` AUTO_BASAL_DELIVERY (`bolusAmount`, about 150 a day) | not read | Overview: automatic insulin per day; Journal detail of a moment | How much SmartGuard adds on its own, by time of day |
-| `markers` LOW_GLUCOSE_SUSPENDED (`deliverySuspended`) | not read | Journal row "Insulin paused"; suspend insight | Suspends seen directly, not only through alerts |
-| `markers` AUTO_MODE_STATUS | not read | Journal row; Overview: time in SmartGuard | When and how often SmartGuard is off |
+| `markers` LOW_GLUCOSE_SUSPENDED (`deliverySuspended`) | shown (14 Nov) | Journal row "Insulin paused"; suspend insight | Suspends seen directly, not only through alerts |
+| `markers` AUTO_MODE_STATUS | not read (SmartGuard on/off is taken from `autoModeShieldState` each poll instead, PM-171) | Journal row | Exact time SmartGuard went off or on |
+| `markers` BG_READING, CALIBRATION | shown (G-83) | Journal as meter readings | Fingersticks entered on the pump |
+| `pumpBannerState[]` (`type`, `timeRemaining`): TEMP_TARGET, TEMP_BASAL | shown (PM-171) | Journal mode row; badge on readings and insulin in the window; pump card "N min left" | Sport mode (Temp Target) and temp basal. Only visible while running: no marker or history keeps it |
+| `therapyAlgorithmState.autoModeShieldState` changes (FEATURE_OFF, SAFE_BASAL) | shown (PM-171) | Journal mode rows "SmartGuard off", "Safe Basal" with badges | When SmartGuard was off or in Safe Basal, as windows |
+| `systemStatusTimeRemaining`, `therapyAlgorithmState.safeBasalDuration`, `waitToCalibrateDuration` | not read | Pump card | Time left in a state |
 | `notificationHistory`, `lastAlarm` (`faultId`, `type`, `additionalInfo.unitsRemaining`, `alertSilenced`) | shown (G-57) | Journal "Alerts" filter | Every pump alert, named; alert insights |
 | `activeInsulin.amount` | shown (G-59) | Companion header beside the latest reading, read-only "from the pump" | The pump's own active insulin when the person looks at glucose |
 | `reservoirRemainingUnits`, `reservoirLevelPercent` | shown (G-59) | Devices > CareLink status card | Reservoir state without the pump in hand; refill pattern |
@@ -65,6 +69,19 @@ labelling before any reminder uses them (no invented thresholds).
 | `sensor` (`sn`, `a` activation time, `pt`), `activeSensors[]` | not read | Devices status card; sensor change insight | Sensor start: life left, and sensors ending early (*verify* rated days per model) |
 | `ticket` (refreshed token) | not used | Kept with the sign-in | Fewer sign-ins (less lockout risk) |
 
+## Tandem Source (t:slim X2, Mobi)
+
+| Field | Status | Where it shows | How it helps |
+|---|---|---|---|
+| CGM readings (events 256, 399, 372, 480) | shown | All glucose views | The glucose record |
+| Bolus request/complete (64, 20, 21) | shown | Journal (bolus, carbs, auto correction) | Bolus history |
+| Alarms, alerts, malfunctions, CGM alerts (5, 4, 6, 171/369/460) | shown | Journal Alerts | Every pump alert, named |
+| Suspend / resume (11, 12) | shown | Journal | Insulin paused |
+| Cartridge, cannula fill, sensor start | shown | Journal, set/sensor insights | Supplies |
+| Control-IQ activity (229, `currentUserMode` sleep/exercise) | shown (PM-171) | Journal mode row, badges | Exercise and Sleep windows with the pump's own times |
+| Control-IQ on/off (230), basal rate changes (3), temp rate | not read | Journal mode rows | When closed loop was off; temp rates |
+| Daily basal (90), basal delivery (279/280) | not read | Overview insulin per day | Automatic insulin |
+
 ## Dexcom Share
 
 Readings and trend only (`Value`, `Trend`, `WT`). No alerts, sensor or settings fields.
@@ -95,3 +112,20 @@ beverages. Each new type needs a new permission on the phone.
 4. Overview: insulin per day, automatic insulin, time in SmartGuard, sensor wear.
 5. SmartGuard and suspend rows in the journal from the markers.
 6. Libre targets and alarm limits as read-only settings.
+
+## Audit, 16 Nov 2026 (PM-171)
+
+Guy: "every piece of information the device sources have must come in and be shown". Checked against Guy's real
+CareLink data the same day (names and enums only, `services/api/scripts/carelink_full_shape.py`). Built now: pump modes
+as windows (CareLink Temp Target, temp basal, SmartGuard off, Safe Basal; Tandem exercise and sleep), badges on readings
+and insulin inside them, the pump card's Sport mode row, export of modes and device events. Still not read, in the
+order proposed:
+
+1. CareLink `AUTO_BASAL_DELIVERY` (~170 a day) and Tandem daily basal: automatic insulin per day in Overview.
+2. Tandem Control-IQ on/off (230) and temp rates: mode windows like CareLink's.
+3. LibreLinkUp targets and alarm limits (read-only settings) and sensor activation on the status card.
+4. CareLink history extras: `hypoPattern`/`hyperPattern`, `sensorOverlay`, `tirTrend`, `sg.sd`.
+5. CareLink `systemStatusTimeRemaining`, `calibStatus`/`timeToNextCalib*` on the pump card.
+6. Apple Health additions (menstrual flow, protein, fat, exercise minutes, VO2 max, respiratory rate, wrist
+   temperature, alcohol): new phone permissions, so a native build.
+Dexcom Share gives readings and trend only: nothing more to read.
