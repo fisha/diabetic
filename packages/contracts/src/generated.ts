@@ -2489,6 +2489,26 @@ export interface components {
             distance_days: components["schemas"]["DayValueOut"][];
             /** Distance Hours */
             distance_hours: components["schemas"]["BodyHourOut"][];
+            /**
+             * Energy Days
+             * @default []
+             */
+            energy_days: components["schemas"]["DayValueOut"][];
+            /**
+             * Energy Hours
+             * @default []
+             */
+            energy_hours: components["schemas"]["BodyHourOut"][];
+            /**
+             * Exercise Days
+             * @default []
+             */
+            exercise_days: components["schemas"]["DayValueOut"][];
+            /**
+             * Exercise Hours
+             * @default []
+             */
+            exercise_hours: components["schemas"]["BodyHourOut"][];
             /** Heart Hours */
             heart_hours: components["schemas"]["BodyHourOut"][];
             /** Nights */
@@ -3111,6 +3131,8 @@ export interface components {
             carbs_per_100g?: number | null;
             /** Fat Per 100G */
             fat_per_100g?: number | null;
+            /** Fiber Per 100G */
+            fiber_per_100g?: number | null;
             /** Grams Per Unit */
             grams_per_unit?: number | null;
             /** Name */
@@ -3132,6 +3154,8 @@ export interface components {
             carbs_per_100g: number | null;
             /** Fat Per 100G */
             fat_per_100g?: number | null;
+            /** Fiber Per 100G */
+            fiber_per_100g?: number | null;
             /** Name */
             name: string;
             /** Protein Per 100G */
@@ -4743,6 +4767,18 @@ export interface components {
         /** SettingsOut */
         SettingsOut: {
             /**
+             * Body Tiles
+             * @default [
+             *       "steps",
+             *       "dist",
+             *       "hr",
+             *       "rest",
+             *       "sleep",
+             *       "awake"
+             *     ]
+             */
+            body_tiles: ("steps" | "dist" | "hr" | "rest" | "sleep" | "awake" | "exercise" | "energy")[];
+            /**
              * Celebrate
              * @default true
              */
@@ -4780,6 +4816,8 @@ export interface components {
         };
         /** SettingsPatch */
         SettingsPatch: {
+            /** Body Tiles */
+            body_tiles?: ("steps" | "dist" | "hr" | "rest" | "sleep" | "awake" | "exercise" | "energy")[] | null;
             /** Celebrate */
             celebrate?: boolean | null;
             /** Device Alert Push */
@@ -4917,6 +4955,14 @@ export interface components {
             day: string;
             /** Distance Km */
             distance_km: number | null;
+            /** Energy Kcal */
+            energy_kcal?: number | null;
+            /** Energy Usual */
+            energy_usual?: number | null;
+            /** Exercise Min */
+            exercise_min?: number | null;
+            /** Exercise Usual */
+            exercise_usual?: number | null;
             heart: components["schemas"]["HeartOut"] | null;
             night: components["schemas"]["NightOut"] | null;
             /** Night Usual Min */
