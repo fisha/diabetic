@@ -16,6 +16,10 @@ and the number of days with readings; a part without readings has no mean, nothi
 person's own range shaded when set, the period average and "Readings on X of Y days" (four languages, day and night,
 RTL). API 469 tests, app typecheck and 163 tests, i18n tests and e2e `tools/e2e/averages.cjs` (en light, he light, he
 dark; 15/15) pass; not yet seen on a phone. Next: deploy the API (no migration), then OTA (JS only).
+Same day, Guy's follow-up: the averages became a second view of Overview's own graph ("Over time" / "Averages"),
+over the shown period (24h, day, week, 2 weeks, month and a new 90-day period), and the separate card with its own
+tabs was removed. `GET /metrics/averages` also takes `from`/`to` (at most 92 days). Checked on Guy's real data before
+the change: the 7-day slots matched a plain SQL mean within 1 mg/dL. e2e `tools/e2e/averages.cjs` 19/19.
 
 16 Nov 2026 (Jira PM-168, thread "Show only today's items in Today so far"): Guy said "What to keep" in today's summary
 showed "two hours after dinner" before dinner had happened. Today's summary now lists a routine only when its time already

@@ -1,4 +1,5 @@
-// Average glucose by time of day in Overview (Guy, 16 Nov 2026), end to end against the test server
+// Overview's graph with two views, over time and averages by time of day, and the 90-day period (Guy, 16 Nov 2026),
+// end to end against the test server
 // (services/api: uvicorn tests.e2e_server:app). Synthetic readings for this check only.
 // Usage: node tools/e2e/averages.cjs <web export built with EXPO_PUBLIC_API_URL=http://localhost:8000> <screenshot dir>
 // Start from an empty database: it signs up avg@example.com.
@@ -44,6 +45,9 @@ const server = http.createServer((req, res) => {
     ok('server 7 days', a7.days === 7 && a7.days_with_data === 7 && a7.slots.length === 8 && a7.slots.every((x) => x.mean != null), JSON.stringify({ d: a7.days_with_data, m: a7.mean }));
     const a30 = (await api('/metrics/averages?days=30', { token: tk })).json;
     ok('server 30 days counts days with readings', a30.days_with_data === 19, String(a30.days_with_data));
+    const end = new Date(); end.setHours(24, 0, 0, 0);
+    const a90 = (await api(`/metrics/averages?from=${encodeURIComponent(new Date(end - 90 * 86400000).toISOString())}&to=${encodeURIComponent(end.toISOString())}`, { token: tk })).json;
+    ok('server shown period of 90 days', a90.days === 90 && a90.days_with_data === 19, JSON.stringify({ d: a90.days, w: a90.days_with_data }));
 
     for (const [lang, scheme] of (process.env.ONLY ? [process.env.ONLY.split(':')] : [['en', 'light'], ['he', 'light'], ['he', 'dark']])) {
       await api('/profile', { method: 'PUT', token: tk, body: { locale: lang, answers: ANSWERS } });
@@ -54,7 +58,7 @@ const server = http.createServer((req, res) => {
       page.setDefaultTimeout(6000);
       const he = lang === 'he';
       const L = he ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון' } : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account' };
-      const T = he ? { title: 'ממוצע לפי שעות היום', d30: '30 ימים', mean: /^ממוצע: /, of30: 'יש קריאות ב־19 מתוך 30 ימים', of7: 'יש קריאות ב־7 מתוך 7 ימים' } : { title: 'Average by time of day', d30: '30 days', mean: /^Average: /, of30: 'Readings on 19 of 30 days', of7: 'Readings on 7 of 7 days' };
+      const T = he ? { title: 'ממוצע לפי שעות היום', avg: 'ממוצעים', time: 'לאורך הזמן', week: 'שבוע', d90: '90 יום', mean: /^ממוצע: /, of90: 'יש קריאות ב־19 מתוך 90 ימים', of7: 'יש קריאות ב־7 מתוך 7 ימים', graph: 'גלוקוז' } : { title: 'Average by time of day', avg: 'Averages', time: 'Over time', week: 'Week', d90: '90d', mean: /^Average: /, of90: 'Readings on 19 of 90 days', of7: 'Readings on 7 of 7 days', graph: 'Glucose' };
       await page.goto(base); await page.waitForTimeout(2000);
       if (he) { await page.getByText('עברית', { exact: true }).first().click(); await page.waitForTimeout(800); }
       await page.getByText(L.have, { exact: true }).last().click(); await page.waitForTimeout(1500);
@@ -62,16 +66,26 @@ const server = http.createServer((req, res) => {
       await page.getByLabel(L.pw, { exact: true }).fill('correct horse battery');
       await page.getByText(L.go, { exact: true }).last().click(); await page.waitForTimeout(5000);
       await page.getByText(he ? 'סקירה' : 'Overview', { exact: true }).last().click(); await page.waitForTimeout(5000);
+      const radio = (name) => page.getByRole('radio', { name, exact: true }).first();
+      const top = async (loc) => { await loc.evaluate((el) => el.scrollIntoView({ block: 'start' })); await page.mouse.wheel(0, -60); await page.waitForTimeout(600); };
+      ok(`${lang} ${scheme}: separate card gone`, (await page.getByText(T.title, { exact: true }).count()) === 0);
+      await radio(T.week).click(); await page.waitForTimeout(3000);
+      await top(radio(T.time));
+      await shot('01-week-over-time');
+      await radio(T.avg).click(); await page.waitForTimeout(2500);
       const title = page.getByText(T.title, { exact: true }).first();
-      await title.evaluate((el) => el.scrollIntoView({ block: 'start' }));
-      await page.mouse.wheel(0, -24); await page.waitForTimeout(600);
-      ok(`${lang} ${scheme}: card shown`, await title.isVisible());
-      ok(`${lang} ${scheme}: 7 of 7 days`, await page.getByText(T.of7, { exact: true }).first().isVisible());
+      ok(`${lang} ${scheme}: averages in place of the graph`, await title.isVisible());
+      ok(`${lang} ${scheme}: week 7 of 7 days`, await page.getByText(T.of7, { exact: true }).first().isVisible());
       ok(`${lang} ${scheme}: overall average`, await page.getByText(T.mean).first().isVisible());
-      await shot('01-7-days');
-      await page.getByRole('radio', { name: T.d30 }).first().click(); await page.waitForTimeout(2500);
-      ok(`${lang} ${scheme}: 30 days counts 19`, await page.getByText(T.of30, { exact: true }).first().isVisible());
-      await shot('02-30-days');
+      await top(radio(T.avg));
+      await shot('02-week-averages');
+      await radio(T.d90).click(); await page.waitForTimeout(5000);
+      ok(`${lang} ${scheme}: 90 days counts 19`, await page.getByText(T.of90, { exact: true }).first().isVisible());
+      await top(radio(T.avg));
+      await shot('03-90-days-averages');
+      await radio(T.time).click(); await page.waitForTimeout(2000);
+      await top(radio(T.d90));
+      await shot('04-90-days-over-time');
       await ctx.close();
     }
   } catch (e) {
