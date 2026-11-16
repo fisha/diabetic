@@ -27,6 +27,9 @@ const server = http.createServer((req, res) => {
   try {
     await api('/auth/sign-up', { method: 'POST', body: { email: 'o@example.com', password: 'correct horse battery' } });
     const tk = (await api('/auth/sign-in', { method: 'POST', body: { email: 'o@example.com', password: 'correct horse battery' } })).json.access_token;
+    // The current Terms, Privacy and AI consent (PM-156), so the read-and-accept screen does not stand in front of the tabs.
+    const pending = (await api('/consent', { token: tk })).json;
+    await api('/consent/accept', { method: 'POST', token: tk, body: { versions: Object.fromEntries(pending.documents.map((d) => [d.kind, d.version])), at: new Date().toISOString() } });
     const langs = process.env.ONLY ? [process.env.ONLY.split(':')] : [['en', 'light'], ['he', 'light'], ['he', 'dark']];
     // Sensor readings every 5 minutes for the last three hours, the last one 3 minutes ago at 137.
     const now = Date.now();
