@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (DAP-19, Jira PM-121, thread "Share a simple view with a trusted person"): Guy asked to move DAP-19
+forward around the existing sharing code, and added that a person with diabetes who follows their son needs a simple
+switch, that viewing is always view only, and that each person's chat about it is their own. Built (G-91): parts chosen
+per person and enforced by the server, consent before an invite, relation and last viewed, an invite link with a preview,
+the switcher bar, a private text chat about the followed person's shared data, and an invite code field for "someone
+close" (G-90). Migration `5a8e3c1f9b27`. API (439), app (153), website (8), i18n tests and the browser run (28 checks,
+he/en, light/dark) pass. JS and API only (OTA), no native build. Not seen on a phone.
+
 16 Nov 2026 (DAP-7, Jira PM-125, thread "Ask who the user is here for at sign-up"): Guy asked to move Itay's
 "Who are you here for?" forward. New accounts are asked first, in the app and on the website: for myself, for myself
 with pre-diabetes, for my child, or for someone close. Only "for myself" continues (waitlist, setup); the others are

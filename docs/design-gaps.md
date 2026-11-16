@@ -1555,3 +1555,40 @@ board; approved by his request. Jira PM-125.
   Only the category, nothing about the other person. Accounts with a profile are never asked. The admin list shows a
   non-self answer next to the email.
 - The answer does not change the companion, insights or advice rules (that is DAP-11, which needs regulatory review).
+
+### G-91 · Trusted person and following (**DAP-19, Guy 16 Nov 2026**, verified-test)
+
+Guy: "תקדם את dap-7, dap-19 … כבר התחלנו לעשות קוד שיתוף אז זה צריך להיות סביב זה", and: someone with diabetes who
+also follows their son needs a simple switch between their own data and his; viewing someone else's data is always view
+only; the viewer can talk about it in chat, but each person's chat is their own. Built on G-44 (invite codes,
+`X-View-As`). Jira PM-121, linked to DAP-19.
+
+- What is shared: the owner chooses per person. Readings and time in range always; insights and small wins, journal
+  (meals, insulin, activity, notes) and profile (treatment settings, routine, food) are optional. The server enforces it
+  (`deps.SCOPE_PATHS`; a refused part answers 403 `not_shared_part`). Without "profile" the viewer gets only the target
+  range, unit and name, so readings can be drawn. Changing the parts (`PATCH /sharing/{id}`) takes effect at once.
+- Consent: before an invite is made the owner sees what the person will see, that it is view only, that there are no
+  alerts and it is not monitoring, that it can be changed or stopped at any time, and that the person can talk with
+  their own companion about it. "I agree" stores `consent_at` and `consent_version` (`share-2026-11-16`). Shares made
+  before this have no consent record and default to all parts.
+- Relation (partner, friend, family, other) is optional and only labels the row. The owner sees when each person last
+  viewed (written at most every 5 minutes).
+- Invite link: `{website}/app/share?code=…` (website build of the app; the phone opens the same path). It shows whose
+  data and which parts before accepting. Opened signed out: sign in, then it opens again (code kept in memory only).
+- Switcher: a bar above the tab bar whenever the person follows anyone: "Viewing Itay · view only · Switch" or "My
+  data · Switch". It opens a list (My data, then each person followed). If a share ends, the app returns to the
+  person's own data. Tabs the share doesn't cover (journal) are hidden.
+- Chat about someone's data: the Companion tab, while viewing, is a text chat of the viewer's own (`Conversation.
+  subject_id`). It uses a separate prompt (`ai/prompt.viewer_prompt`): only the shared parts, no tools, no memories, no
+  logging, no doses, no thresholds, no emergency guidance (contact the person, their care plan, or emergency services).
+  The dose filter applies. The owner never sees it; it is left out of openers and exports and deleted when sharing
+  ends. Voice is not offered in this mode. Admins viewing an account get no chat.
+- "Someone close" (G-90 persona `family`) with no data of their own: the "not ready yet" note becomes an invite code
+  field once the account is approved; accepting opens that person's data with no setup. Waitlisted accounts keep the
+  note (they can only reach `/auth/*`).
+- Website: Settings > Sharing has the same choices, consent and last viewed; a limited share opens in the app's web
+  build.
+- Tests: API (`test_sharing.py`, `test_conversation.py`, 439), app (153), website (8), i18n, browser
+  `tools/e2e/sharing.cjs` (he light, en light, he dark: 28 checks). Screenshots in the Library under steady/sharing/.
+- Open (PM-127): legal review of the sharing texts (DAP-19 asks for it), the owner's data export doesn't list shares (G-44,
+  older), and care circles (DAP-8) can build on the same scopes.
