@@ -401,6 +401,44 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/consent": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Consent */
+        get: operations["get_consent_consent_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/consent/ai": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Give Ai Consent
+         * @description The person agreed to send their data to the external AI engine. Recorded once (append-only history); to stop,
+         *     the account is deleted, as with the consent to the service itself.
+         */
+        post: operations["give_ai_consent_consent_ai_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/conversation/about": {
         parameters: {
             query?: never;
@@ -2625,6 +2663,14 @@ export interface components {
             /** Via Google */
             via_google: boolean;
         };
+        /** AiConsentIn */
+        AiConsentIn: {
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+        };
         /** AlertLevel */
         AlertLevel: {
             /** Mgdl */
@@ -3000,6 +3046,8 @@ export interface components {
         };
         /** ConsentIn */
         ConsentIn: {
+            /** Ai */
+            ai?: boolean | null;
             /**
              * At
              * Format: date-time
@@ -3009,6 +3057,11 @@ export interface components {
             service: boolean;
             /** Training */
             training: boolean;
+        };
+        /** ConsentOut */
+        ConsentOut: {
+            /** Ai */
+            ai: boolean;
         };
         /** ConversationOut */
         ConversationOut: {
@@ -6674,6 +6727,59 @@ export interface operations {
             };
         };
     };
+    get_consent_consent_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConsentOut"];
+                };
+            };
+        };
+    };
+    give_ai_consent_consent_ai_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AiConsentIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConsentOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     open_about_conversation_about_post: {
         parameters: {
             query?: never;
@@ -6695,6 +6801,13 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["MessageOut"];
                 };
+            };
+            /** @description ai_consent_required */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -6773,6 +6886,13 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["SendOut"];
                 };
+            };
+            /** @description ai_consent_required or subject_ai_consent_required */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -9159,6 +9279,13 @@ export interface operations {
                     "application/json": components["schemas"]["InterpretationOut"];
                 };
             };
+            /** @description ai_consent_required */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
             /** @description not_found */
             404: {
                 headers: {
@@ -9333,6 +9460,13 @@ export interface operations {
                     "application/json": components["schemas"]["FoodResult"];
                 };
             };
+            /** @description ai_consent_required */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
             /** @description Validation Error */
             422: {
                 headers: {
@@ -9481,6 +9615,13 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["FoodResult"];
                 };
+            };
+            /** @description ai_consent_required */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -10857,6 +10998,13 @@ export interface operations {
                     "audio/mpeg": unknown;
                 };
             };
+            /** @description ai_consent_required */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
             /** @description not_found */
             404: {
                 headers: {
@@ -10943,6 +11091,13 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["TranscriptOut"];
                 };
+            };
+            /** @description ai_consent_required */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {

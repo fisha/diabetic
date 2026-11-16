@@ -1606,3 +1606,20 @@ number, and saved "usual meals". Not on the Meal board; added in the board's own
   removes it. At most 30 usual meals.
 - No range, confidence or usual meal is shown next to insulin logging (DAP-61).
 
+### G-92 · Consent to the external AI engine (**PM-149, Guy 16 Nov 2026**, verified-test)
+
+App Store guideline 5.1.2(i) asks for clear disclosure and explicit permission before personal data goes to a
+third-party AI. Guy asked for full, explicit consent, worded as an "external AI engine" rather than the provider's name.
+Not on the boards; built in the boards' own style:
+
+- Onboarding consent (ONB-01) has a third checkbox between the service and training ones: "Send my data to an external
+  AI engine", required like the service consent ("Please agree to both required items to continue."), with a
+  tertiary "Which AI engine?" that opens a dialog naming OpenAI (United States) and pointing to the privacy policy.
+- Accounts made before it, and people who only view someone's data, see a one-time screen from the main tabs ("One more
+  consent"): "Agree and continue", or "Delete my account instead". Nothing is recorded unless the server confirms.
+- Privacy settings show it locked on under the service consent, with the same details dialog; to stop, the account is
+  deleted (as for the service consent).
+- The server refuses the companion, voice (one-turn and live), meal photo and description analysis and the reading of
+  an insight with 403 `ai_consent_required` until the latest "ai" consent record is granted; a viewer's chat about
+  someone also needs that person's consent (`subject_ai_consent_required`).
+

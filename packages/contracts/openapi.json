@@ -478,6 +478,21 @@
         "title": "AdminUserOut",
         "type": "object"
       },
+      "AiConsentIn": {
+        "additionalProperties": false,
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "at"
+        ],
+        "title": "AiConsentIn",
+        "type": "object"
+      },
       "AlertLevel": {
         "additionalProperties": false,
         "properties": {
@@ -1486,6 +1501,17 @@
       "ConsentIn": {
         "additionalProperties": false,
         "properties": {
+          "ai": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ai"
+          },
           "at": {
             "format": "date-time",
             "title": "At",
@@ -1506,6 +1532,19 @@
           "at"
         ],
         "title": "ConsentIn",
+        "type": "object"
+      },
+      "ConsentOut": {
+        "properties": {
+          "ai": {
+            "title": "Ai",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "ai"
+        ],
+        "title": "ConsentOut",
         "type": "object"
       },
       "ConversationOut": {
@@ -10787,6 +10826,79 @@
         ]
       }
     },
+    "/consent": {
+      "get": {
+        "operationId": "get_consent_consent_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Consent",
+        "tags": [
+          "profile"
+        ]
+      }
+    },
+    "/consent/ai": {
+      "post": {
+        "description": "The person agreed to send their data to the external AI engine. Recorded once (append-only history); to stop,\nthe account is deleted, as with the consent to the service itself.",
+        "operationId": "give_ai_consent_consent_ai_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AiConsentIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Give Ai Consent",
+        "tags": [
+          "profile"
+        ]
+      }
+    },
     "/conversation/about": {
       "post": {
         "description": "The companion opens about the item the person was looking at, already knowing it, with a short first line.",
@@ -10811,6 +10923,9 @@
               }
             },
             "description": "Successful Response"
+          },
+          "403": {
+            "description": "ai_consent_required"
           },
           "422": {
             "content": {
@@ -10917,6 +11032,9 @@
               }
             },
             "description": "Successful Response"
+          },
+          "403": {
+            "description": "ai_consent_required or subject_ai_consent_required"
           },
           "422": {
             "content": {
@@ -14363,6 +14481,9 @@
             },
             "description": "Successful Response"
           },
+          "403": {
+            "description": "ai_consent_required"
+          },
           "404": {
             "description": "not_found"
           },
@@ -14582,6 +14703,9 @@
             },
             "description": "Successful Response"
           },
+          "403": {
+            "description": "ai_consent_required"
+          },
           "422": {
             "content": {
               "application/json": {
@@ -14785,6 +14909,9 @@
               }
             },
             "description": "Successful Response"
+          },
+          "403": {
+            "description": "ai_consent_required"
           },
           "422": {
             "content": {
@@ -16866,6 +16993,9 @@
             },
             "description": "Successful Response"
           },
+          "403": {
+            "description": "ai_consent_required"
+          },
           "404": {
             "description": "not_found"
           },
@@ -16987,6 +17117,9 @@
               }
             },
             "description": "Successful Response"
+          },
+          "403": {
+            "description": "ai_consent_required"
           },
           "422": {
             "content": {
