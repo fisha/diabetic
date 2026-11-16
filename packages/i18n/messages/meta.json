@@ -3197,6 +3197,38 @@
     ],
     "note": "G-72 finding steps_glucose."
   },
+  "ins.f_heat_t": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "PM-154 finding heat_glucose: hot days (felt 30 °C or more) against other days; observation only."
+  },
+  "ins.f_heat_b": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "PM-154 finding heat_glucose: hot days (felt 30 °C or more) against other days; observation only."
+  },
+  "ins.f_heat_steps": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "PM-154 finding heat_glucose: hot days (felt 30 °C or more) against other days; observation only."
+  },
+  "ins.f_heat_basis": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "PM-154 finding heat_glucose: hot days (felt 30 °C or more) against other days; observation only."
+  },
   "ins.f_sub": {
     "board": "OVR-04",
     "review": [
@@ -16771,6 +16803,22 @@
       "translation"
     ],
     "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_heat_low": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "PM-154 chart labels for heat_glucose."
+  },
+  "ins.ch_heat_high": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "PM-154 chart labels for heat_glucose."
   },
   "ins.ch_rhr_low": {
     "board": "Overview",

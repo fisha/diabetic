@@ -16,6 +16,19 @@ API tests, app tests, typecheck and the i18n catalogue pass; not yet run on a ph
 OTA (an app without the screen can't give the consent). The other App Store items (PM-147, PM-148, PM-150 to PM-153)
 are on hold by Guy's choice.
 
+16 Nov 2026 (Jira PM-154, thread "Add weather-based glucose insights"): Guy asked about location and weather insights.
+Location (opt-in, coarse, rounded on the phone) and today's weather tips existed since 13 Nov; what was missing was a
+link to his own data. Built, after Guy's go-ahead: `POST /environment` now also keeps a daily weather summary per local
+day (highest and lowest felt temperature, highest air quality index; never a place) for 90 days; turning weather off
+deletes it; it is in the activity export (`weather_days.csv`) and goes with the account. New finding `heat_glucose`
+(`environment.heat_relation`, clients sending `kinds=5`): over the last 56 full days, hot days (felt 30 °C or more, the
+existing weather band) against other days on time in range, time below range (the person's own range) and, when the
+health app has steps for both, middle daily steps. Shown with at least 4 days per side and a 5-point difference; worded
+as a pattern, never advice. App and website show it with a two-bar chart; privacy policy updated in four languages. The
+summary only sees the hours the app was open, so the comparison needs a few weeks of use before it can show. API tests
+and ruff, app typecheck and tests, web typecheck and tests (new `heat-insight.test.ts`), i18n tests pass. Next: deploy
+the API, then OTA (JS only, no migration).
+
 16 Nov 2026 (Jira PM-146, thread "Show glucose on CarPlay"): Guy asked for glucose on CarPlay. A CarPlay app is not
 allowed for health, but iOS 26 shows Live Activities and small widgets on the CarPlay Dashboard. The glucose Live
 Activity now declares the `small` supplemental family on iOS 18+ (diabetic-app #79, merged): CarPlay and the Watch Smart

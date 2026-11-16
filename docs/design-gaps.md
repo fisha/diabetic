@@ -1083,7 +1083,7 @@ the same for Health Connect.
   up (last two hours, own data only); a menorah crown on Hanukkah (dates listed 2026-2030); a hug over the
   conversation when the reply carries `flags.support` (API tool `show_support`, no migration). Each recent thing plays
   once per app run, only the newest. Reactions are drawn in `character/Reactions.tsx` and `Hug.tsx`, never in
-  ACCESSORIES. Not built: sunglasses in hot weather (no weather or location source).
+  ACCESSORIES. Sunglasses in hot weather came with the weather feature (13 Nov 2026, `weatherWear` in `character/catalog.ts`).
 
 
 ### G-69 · Apple Fitness and Health Connect activity: exercise minutes, stood hours, workouts, lows after workouts (**Guy, 13 Nov 2026**, implemented-unverified)
