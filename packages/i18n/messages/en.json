@@ -1371,7 +1371,7 @@
   "ovr.not_right": "Not quite right",
   "ovr.open_jrn": "Open journal",
   "ovr.p_24h": "24h",
-  "ovr.p_2w": "2 weeks",
+  "ovr.p_2w": "2 wks",
   "ovr.p_day": "Day",
   "ovr.p_month": "Month",
   "ovr.p_week": "Week",
@@ -2777,11 +2777,15 @@
   "com.back_to_call": "Back to the call",
   "com.end_call": "End the call",
   "avg.title": "Average by time of day",
-  "avg.period": "Days to average",
-  "avg.p": "{days} days",
   "avg.mean": "Average: {value}",
   "avg.days": "Readings on {have} of {days} days",
-  "avg.none": "No glucose readings in the last {days} days.",
+  "avg.none": "No glucose readings in this period.",
   "avg.a11y": "{span}: average {value}",
-  "avg.a11y_none": "{span}: no readings"
+  "avg.a11y_none": "{span}: no readings",
+  "ovr.p_90d": "90d",
+  "ovr.sum_90d": "Last 90 days",
+  "ovr.view": "How the period is shown",
+  "ovr.v_time": "Over time",
+  "ovr.v_avg": "Averages",
+  "avg.failed": "Couldn't load the averages. Pull down to try again."
 }

@@ -17462,20 +17462,6 @@
     ],
     "note": "Overview: average glucose by 3-hour part of the day for 7/14/30/90 days (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
   },
-  "avg.period": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ],
-    "note": "Overview: average glucose by 3-hour part of the day for 7/14/30/90 days (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
-  },
-  "avg.p": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ],
-    "note": "Overview: average glucose by 3-hour part of the day for 7/14/30/90 days (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
-  },
   "avg.mean": {
     "board": "Overview",
     "review": [
@@ -17510,5 +17496,47 @@
       "translation"
     ],
     "note": "Overview: average glucose by 3-hour part of the day for 7/14/30/90 days (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "ovr.p_90d": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: one graph with two views (over time, averages by time of day) and a 90-day period (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "ovr.sum_90d": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: one graph with two views (over time, averages by time of day) and a 90-day period (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "ovr.view": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: one graph with two views (over time, averages by time of day) and a 90-day period (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "ovr.v_time": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: one graph with two views (over time, averages by time of day) and a 90-day period (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "ovr.v_avg": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: one graph with two views (over time, averages by time of day) and a 90-day period (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "avg.failed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: one graph with two views (over time, averages by time of day) and a 90-day period (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
   }
 }
