@@ -11,6 +11,9 @@
 #   stedio-fly copy-data    Copy the Mac's database and meal photos/exports to Fly (overwrites Fly's copy)
 #   stedio-fly backup       Take a database backup now (on the database volume)
 #   stedio-fly status       Machines, volumes and health of the three apps
+#   stedio-fly research-setup   Create stedio-research, its read-only database login (new password each run) and its
+#                           secrets; then run deploy-research
+#   stedio-fly deploy-research  Deploy the research tool (Streamlit; stops when idle) and check it is closed and noindex
 #
 # Cutover (once the trial looks right): stop the Mac's API, `copy-data`, `deploy-api` (worker on), then switch the app (OTA).
 
@@ -23,6 +26,7 @@ REGION="fra"
 DB_APP="stedio-db"
 API_APP="stedio-api"
 WEB_APP="stedio-web"
+RESEARCH_APP="stedio-research"
 WEB_URL="https://${WEB_APP}.fly.dev"
 API_ENV="$REPO/services/api/.env"
 BUILDS_INSTALL="${STEDIO_INSTALL_DIR:-/Volumes/Studio SSD/Workspace/steady-builds/install}"
@@ -171,6 +175,49 @@ cmd_status() {
   echo "--- health"; curl -s -m 10 -o /dev/null -w "api %{http_code}\n" "https://$API_APP.fly.dev/health"; curl -s -m 20 -o /dev/null -w "web %{http_code}\n" "$WEB_URL/he"
 }
 
+cmd_research_setup() {
+  app_exists "$DB_APP" || die "$DB_APP does not exist"
+  [ -f "$API_ENV" ] || die "no $API_ENV"
+  if app_exists "$RESEARCH_APP"; then say "$RESEARCH_APP exists"; else say "creating $RESEARCH_APP in org $ORG"; fly apps create "$RESEARCH_APP" --org "$ORG"; fi
+  # Its own database login (deploy/fly/research/role.sql): a new password every run, so it is never needed again.
+  # The SQL goes over as a file (not on a command line) and is removed right after.
+  local pw tmp; pw="$(openssl rand -hex 24)"; tmp="$(mktemp)"
+  ( umask 077; { printf "\\set pw '%s'\n" "$pw"; cat "$REPO/deploy/fly/research/role.sql"; } > "$tmp" )
+  say "creating or updating the stedio_research database login (read-only, need-to-know tables)"
+  fly ssh sftp put "$tmp" /data/backups/.research-role.sql -a "$DB_APP" >/dev/null
+  rm -f "$tmp"
+  fly ssh console -a "$DB_APP" -C 'sh -c "chown postgres /data/backups/.research-role.sql && su postgres -c \"psql -q -U steady -h /var/run/postgresql -d steady -f /data/backups/.research-role.sql\"; rc=\$?; rm -f /data/backups/.research-role.sql; exit \$rc"'
+  local lines="" value name
+  lines+="STEADY_DATABASE_URL=postgresql+psycopg://stedio_research:$pw@$DB_APP.internal:5432/steady"$'\n'
+  unset pw
+  # Pseudonyms must match the API's, without giving this server the sealing key or the JWT secret: only the derived key.
+  value="$(dotenv_get STEADY_SEALING_KEY || dotenv_get STEADY_JWT_SECRET || true)"
+  [ -n "$value" ] || die "no STEADY_SEALING_KEY or STEADY_JWT_SECRET in $API_ENV"
+  lines+="STEADY_ML_SUBJECT_KEY=$(K="$value" python3 -c 'import hashlib, os; print(hashlib.sha256(b"steady-ml-subject-v1" + os.environ["K"].encode()).hexdigest())')"$'\n'
+  # The API's settings require a JWT secret; this one is the tool's own and signs nothing the API accepts.
+  has_secret "$RESEARCH_APP" STEADY_JWT_SECRET || lines+="STEADY_JWT_SECRET=$(openssl rand -hex 32)"$'\n'
+  has_secret "$RESEARCH_APP" STEADY_RESEARCH_COOKIE_SECRET || lines+="STEADY_RESEARCH_COOKIE_SECRET=$(openssl rand -hex 32)"$'\n'
+  # The same access token as the Mac's local tool; the Google settings once they are in .env.
+  for name in STEADY_RESEARCH_TOKEN STEADY_RESEARCH_EMAILS STEADY_RESEARCH_GOOGLE_CLIENT_ID STEADY_RESEARCH_GOOGLE_CLIENT_SECRET \
+              STEADY_ADMIN_EMAILS STEADY_RANKER_MODE STEADY_RANKER_TESTERS; do
+    value="$(dotenv_get "$name" || true)"
+    if [ -n "$value" ]; then lines+="$name=$value"$'\n'; echo "STAGE  $name"; else echo "SKIP   $name (not in .env)"; fi
+  done
+  printf '%s' "$lines" | fly secrets import -a "$RESEARCH_APP" --stage >/dev/null
+  unset lines value
+  say "secrets staged on $RESEARCH_APP; run: scripts/fly/stedio-fly deploy-research"
+}
+
+cmd_deploy_research() {
+  app_exists "$RESEARCH_APP" || die "$RESEARCH_APP does not exist: run research-setup first"
+  fly deploy "$REPO/services/api" -c "$REPO/deploy/fly/research/fly.toml" --dockerfile "$REPO/services/api/steady_research/Dockerfile" \
+    --ignorefile "$REPO/services/api/steady_research/Dockerfile.dockerignore" --ha=false --remote-only
+  local url="https://$RESEARCH_APP.fly.dev"
+  curl -fsS -m 30 --retry 8 --retry-delay 5 --retry-all-errors -o /dev/null "$url/_stcore/health"
+  curl -fsS -m 30 -D - -o /dev/null "$url/" | grep -i '^x-robots-tag: noindex' >/dev/null || die "the noindex header is missing"
+  say "up at $url (stops when idle). Sign-in: $(fly secrets list -a "$RESEARCH_APP" --json | grep STEADY_RESEARCH_GOOGLE_CLIENT_ID >/dev/null && echo Google || echo 'access token')"
+}
+
 case "${1:-help}" in
   setup) cmd_setup ;;
   secrets) cmd_secrets ;;
@@ -180,5 +227,7 @@ case "${1:-help}" in
   copy-data) cmd_copy_data ;;
   backup) cmd_backup ;;
   status) cmd_status ;;
-  *) sed -n '2,17p' "$0" ;;
+  research-setup) cmd_research_setup ;;
+  deploy-research) cmd_deploy_research ;;
+  *) sed -n '2,19p' "$0" ;;
 esac

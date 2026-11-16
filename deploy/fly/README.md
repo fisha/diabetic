@@ -8,6 +8,7 @@ Israel as possible. Fly has no region in Israel or the Middle East; **fra (Frank
 | `stedio-db` | PostgreSQL 16, volume `stedio_db` (1 GB) | shared-cpu-1x, 256 MB + 512 MB swap | yes | `stedio-db.internal:5432` (private network only) |
 | `stedio-api` | FastAPI + the in-process worker, volume `stedio_media` (1 GB, meal photos and exports) | shared-cpu-1x, 512 MB + 512 MB swap | yes (syncs, alerts, pushes, retrain, voice) | https://stedio-api.fly.dev |
 | `stedio-web` | Next.js website, the app's web build at `/app`, tester install page at `/install` | shared-cpu-1x, 256 MB | no: stops when idle, starts on the next visit | https://stedio-web.fly.dev |
+| `stedio-research` | Internal research tool (Streamlit), see below | shared-cpu-1x, 256 MB + 512 MB swap | no: stops when idle, starts on the next visit | https://stedio-research.fly.dev |
 
 Files: `deploy/fly/{db,api,web}/fly.toml`, `deploy/fly/db/*` (image, start and backup scripts),
 `deploy/fly/web/Dockerfile` (context: repository root, `.dockerignore` at the root), `services/api/Dockerfile` and
@@ -44,7 +45,32 @@ writes it back to a file. `STEADY_JWT_SECRET` must stay the Mac's: it also unloc
 Guy's go-ahead for the cutover. Learned in the trial: uvicorn `--host ::` is IPv6-only (start.sh binds a dual-stack
 socket); `grep -q` after a pipe fails under pipefail; ssh is not ready right after a deploy.
 
+## Research tool (`stedio-research`)
+
+Guy, 16 Nov 2026: host the research tool on Fly, smallest machine, not running all the time. It shows people's data,
+so it is closed to everyone else:
+
+- **Sign-in**: Google, only the accounts in `STEADY_RESEARCH_EMAILS` (verified email), once
+  `STEADY_RESEARCH_GOOGLE_CLIENT_ID` and `STEADY_RESEARCH_GOOGLE_CLIENT_SECRET` are in `services/api/.env`. The Google
+  OAuth client (Web application) needs the redirect URI `https://stedio-research.fly.dev/oauth2callback`; creating it
+  is a Google console change and needs Guy's OK. Until then the gate is the access token (`STEADY_RESEARCH_TOKEN`, the
+  same as the Mac's local tool). Neither set: the page stays closed.
+- **Database**: its own login `stedio_research` (`deploy/fly/research/role.sql`): only the tables the tool shows
+  (`users`: id, email, created_at only), insert on `ml_jobs` only, 5 connections, 60 s statement timeout. No chat,
+  meals, notes or photos. It holds only the derived pseudonym key (`STEADY_ML_SUBJECT_KEY`), never the sealing key or
+  the API's JWT secret.
+- **Not indexed**: `X-Robots-Tag: noindex` on every response, a robots meta tag in the page, `robots.txt` allows
+  crawling so the header is seen. Streamlit usage statistics are off.
+- **Running**: the Machine stops when no tab is open and starts on the next visit (a few seconds).
+
+```
+scripts/fly/stedio-fly research-setup    # app, database login (new password each run), secrets
+scripts/fly/stedio-fly deploy-research   # deploy, then checks health and the noindex header
+```
+
+After adding the Google settings to `.env`, run both again.
+
 ## Cost (Fly list prices, Nov 2026, before any regional markup)
 
-About $3.19 (API 512 MB) + $1.94 (database 256 MB) + volumes 2 x $0.15 + website only while running (cents) +
+About $3.19 (API 512 MB) + $1.94 (database 256 MB) + volumes 2 x $0.15 + website and research tool only while running (cents) +
 snapshots (first 10 GB free) ≈ **$5.5–6 a month**. Shared IPv4 and the fly.dev addresses are free.

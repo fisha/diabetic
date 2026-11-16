@@ -139,7 +139,9 @@ cd services/api
 STEADY_RESEARCH_TOKEN=<any long secret> uv run --group research streamlit run steady_research/app.py --server.address 127.0.0.1
 ```
 
-- It runs locally only. A public tunnel needs Guy's explicit approval.
+- Locally as above, or hosted on Fly as `stedio-research` (Guy, 16 Nov 2026): Google sign-in for the accounts in
+  `STEADY_RESEARCH_EMAILS` (else the token), a read-only need-to-know database login, noindex, stops when idle.
+  See `deploy/fly/README.md`. Any other public tunnel still needs Guy's explicit approval.
 - Tabs:
   - Data quality: sources and rhythm, duplicates, overlaps, gaps, coverage per day.
   - Progress: weekly time in range, time below, CV, coverage and consensus time in range, against the baseline.
