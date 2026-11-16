@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-158, thread "Add classic Stedio mode without games"): Guy asked for a switch at the top of
+Profile > Companion that releases the person from the games ("Stedio הקלאסי", no wardrobe). Built: "Classic Stedio"
+(`companion.classic` in the profile answers, off by default, shared by app and website). While on, the accessories
+card and locked picker are hidden, the companion shows the plain character (no accessories, weather wear, seasonal
+crown, moment props, nightcap or costume morphs), and no unlock dialog or Unlocks card shows (nothing is marked
+celebrated). The saved accessories come back when it is turned off. JS only (0.5.0 OTA), no API change. App tests,
+i18n, web checks and e2e `tools/e2e/classic-mode.cjs` (en light, he light, he dark; 18/18) pass; not yet seen on a
+phone. Guy asked to turn it on for Itay's account after the deploy.
+
 16 Nov 2026 (Jira PM-149, thread "Check app against App Store review rules"): Guy approved explicit consent before
 data goes to the AI engine (App Store 5.1.2(i)), in generic words ("external AI engine"; OpenAI named in a details
 dialog and the privacy policy). Built (G-92): third, required onboarding checkbox, a one-time screen for existing
