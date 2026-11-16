@@ -1691,6 +1691,67 @@
         "title": "DeviceEventOut",
         "type": "object"
       },
+      "DeviceModeOut": {
+        "properties": {
+          "ended_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ended At"
+          },
+          "exact": {
+            "title": "Exact",
+            "type": "boolean"
+          },
+          "expected_end": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected End"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "mode": {
+            "title": "Mode",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "started_at": {
+            "format": "date-time",
+            "title": "Started At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "source",
+          "mode",
+          "started_at",
+          "ended_at",
+          "expected_end",
+          "exact"
+        ],
+        "title": "DeviceModeOut",
+        "type": "object"
+      },
       "DeviceRatioPeriodOut": {
         "properties": {
           "from": {
@@ -7169,6 +7230,39 @@
             ],
             "title": "Suspended"
           },
+          "temp_basal": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Temp Basal"
+          },
+          "temp_target": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Temp Target"
+          },
+          "temp_target_min_left": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Temp Target Min Left"
+          },
           "transmitter_battery_percent": {
             "anyOf": [
               {
@@ -12098,6 +12192,69 @@
         ]
       }
     },
+    "/devices/modes": {
+      "get": {
+        "description": "Pump modes that overlap a period (Guy, 16 Nov 2026: Sport mode), oldest first, so the journal can show each\nmode and badge the readings and insulin inside it.",
+        "operationId": "device_modes_devices_modes_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "since",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Since",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "until",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Until",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceModeOut"
+                  },
+                  "title": "Response Device Modes Devices Modes Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Device Modes",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
     "/devices/push-token": {
       "delete": {
         "operationId": "delete_push_token_devices_push_token_delete",
@@ -15425,6 +15582,91 @@
         "summary": "Edit Memory",
         "tags": [
           "memories"
+        ]
+      }
+    },
+    "/metrics/averages": {
+      "get": {
+        "description": "Average glucose by 3-hour part of the day. With from/to: over that shown period (at most 92 days; the part after now\nhas no data yet, and \"days\" counts the whole period). Without: the last 7, 14, 30 or 90 local days, today included.",
+        "operationId": "get_averages_metrics_averages_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "days",
+            "required": false,
+            "schema": {
+              "default": 7,
+              "title": "Days",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "From"
+            }
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "To"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Get Averages Metrics Averages Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Averages",
+        "tags": [
+          "metrics"
         ]
       }
     },

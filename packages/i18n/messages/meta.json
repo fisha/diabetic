@@ -17538,5 +17538,152 @@
       "translation"
     ],
     "note": "Overview: one graph with two views (over time, averages by time of day) and a 90-day period (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "mode.temp_target": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.temp_basal": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.manual": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.safe_basal": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.exercise": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.sleep": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.other": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.b_temp_target": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.b_temp_basal": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.b_manual": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.b_safe_basal": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.b_exercise": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.b_sleep": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.b_other": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "jrn.mode_span": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal/pump card: a pump mode's time and state, no advice."
+  },
+  "jrn.mode_on": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal/pump card: a pump mode's time and state, no advice."
+  },
+  "jrn.mode_on_until": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal/pump card: a pump mode's time and state, no advice."
+  },
+  "jrn.mode_k_time": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal/pump card: a pump mode's time and state, no advice."
+  },
+  "jrn.mode_k_note": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal/pump card: a pump mode's time and state, no advice."
+  },
+  "jrn.mode_approx": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal/pump card: a pump mode's time and state, no advice."
+  },
+  "set.cl_tt_left": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal/pump card: a pump mode's time and state, no advice."
   }
 }
