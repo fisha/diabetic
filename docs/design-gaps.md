@@ -1511,6 +1511,24 @@ Jira PM-118. Not on the board; the switch and the offer card follow the existing
   never at health values.
 - Kept in `user_settings.routine_state` (`nudges_until`, `nudges_since`, `nudges_offer_hidden`), no migration.
   API: `GET/PUT/DELETE /follow-ups/fewer-nudges`, `POST /follow-ups/fewer-nudges/no-thanks`.
+### G-89 · Clinic report the person shares themselves (**Guy, 16 Nov 2026**, verified-test)
+
+Itay's plan, idea DAP-10 ("Clinic report: one-tap summary for the endocrinologist, Hebrew and English"); Guy approved it
+as one of the five "Now" items (Jira PM-116). The board shows "Share with my care team · Read-only summaries for a
+clinician" as **Planned** in Privacy; that row now opens the report. The screen itself is not on the board.
+
+- Privacy > "Share with my care team" and Profile > Account > "Report for my clinic" open `/settings/clinic-report`:
+  period (14, 30 or 90 days, 14 by default), report language (Hebrew or English, the app's language by default), an
+  optional name and questions for the visit, and a switch to add every logged meal and insulin entry. One button
+  ("Create and share") makes the PDF on the server and opens the phone's share sheet as soon as it is ready.
+- The PDF (`steady_api/clinic_report.py`): data coverage and sources, mean glucose, GMI (only with 14 days and 70 %
+  data), CV and SD, time in the five consensus ranges with the standard AGP colours and in the person's own range
+  (labelled with where it comes from), the glucose spread by hour (10/25/50/75/90 percentiles), a day-by-day table of
+  time in range, sensor coverage, logged carbs, meals, logged insulin and activity, the optional full lists, the
+  questions, and a footer: a record, no advice, not a medical device, metric sources.
+- Nothing is sent to a clinic or HMO by Stedio (legal sign-off in DAP-10). The file is kept sealed for 7 days like an
+  export; name and questions are only printed in it.
+- Not shown: anything the app would conclude from the figures. GMI is on the open decision list (audit item 9, PM-109).
 
 ## Israeli food list in the food search (DAP-16, PM-119, 16 Nov 2026)
 
@@ -1521,6 +1539,22 @@ the results names the source, as the data licence asks ("Source: Israeli Ministr
 Values are estimates."). Neither is drawn on the board. Dishes the database does not have (sabich, malawach) are not
 invented; they fall back to "add as your own food". An admin tool to add foods (named in DAP-16) is not built.
 
+
+### G-90 · "Who are you here for?" at sign-up (**DAP-7, Guy 16 Nov 2026**, verified-test)
+
+Itay's plan (DAP-7) puts a persona question first at sign-up; Guy asked to build it ("תקדם את dap-7"). Not on the
+board; approved by his request. Jira PM-125.
+
+- After sign-in, an account with no diabetes profile that hasn't answered "for myself" sees "Who are you here for?"
+  (app `(auth)/persona.tsx`, website `Gate`): for myself (I live with diabetes), for myself with pre-diabetes, for my
+  child, for someone close to me (a parent, partner or friend). Layout uses the onboarding option rows.
+- "For myself" goes on exactly as before (waitlist, then setup). The other three are not built: the answer is kept and
+  the person sees "Thanks, we saved your answer", one line saying that part isn't ready yet and that they're on the
+  waiting list for it, with "Change my answer" and "Sign out". Nothing promises an email.
+- Kept on the server as `users.persona` (`PUT /auth/persona`, open to waitlisted accounts like the rest of `/auth/`).
+  Only the category, nothing about the other person. Accounts with a profile are never asked. The admin list shows a
+  non-self answer next to the email.
+- The answer does not change the companion, insights or advice rules (that is DAP-11, which needs regulatory review).
 ## Carb estimate ranges and usual meals (DAP-15, 16 Nov 2026)
 
 Guy approved Itay's idea DAP-15 for development: show a carb estimate as a range with confidence, never one hard

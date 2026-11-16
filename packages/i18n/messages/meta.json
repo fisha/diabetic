@@ -9463,6 +9463,169 @@
       "translation"
     ]
   },
+  "rep.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.row_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.intro": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.period": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.d14": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.d30": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.d90": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.lang": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.lang_he": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.lang_en": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.name": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.questions": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.questions_h": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.details": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.details_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.create": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.running": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.ready": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.share": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.again": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.note": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.failed": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.unavail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
   "rtn.act": {
     "board": "RTN-01",
     "review": [
@@ -16478,6 +16641,181 @@
     "review": [
       "translation"
     ]
+  },
+  "com.age_h": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.age_d": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.not_current": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.conn_lost": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.conn_lost_since": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.conn_lost_signin": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.conn_check": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ]
+  },
+  "per.t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.self": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.self_s": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.pre": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.pre_s": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.child": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.child_s": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.family": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.family_s": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.cont": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.fail": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.w_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.w_pre": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.w_child": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.w_family": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.w_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.change": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
+  },
+  "per.out": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "DAP-7: who the person is here for, asked after sign-up (16 Nov 2026)."
   },
   "meal.range_v": {
     "board": "Meal",
