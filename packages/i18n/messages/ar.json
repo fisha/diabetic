@@ -2775,5 +2775,13 @@
   "meal.usual_remove": "إزالة {name} من الوجبات المعتادة",
   "com.in_call": "في مكالمة مع {name}",
   "com.back_to_call": "العودة إلى المكالمة",
-  "com.end_call": "إنهاء المكالمة"
+  "com.end_call": "إنهاء المكالمة",
+  "avg.title": "المتوسط حسب وقت اليوم",
+  "avg.period": "الأيام المحسوبة في المتوسط",
+  "avg.p": "{days, plural, zero {# يوم} one {يوم واحد} two {يومان} few {# أيام} many {# يومًا} other {# يوم}}",
+  "avg.mean": "المتوسط: {value}",
+  "avg.days": "قراءات في {have} من {days, plural, zero {# يوم} one {يوم واحد} two {يومين} few {# أيام} many {# يومًا} other {# يوم}}",
+  "avg.none": "لا توجد قراءات غلوكوز في آخر {days, plural, zero {# يوم} one {يوم} two {يومين} few {# أيام} many {# يومًا} other {# يوم}}.",
+  "avg.a11y": "{span}: المتوسط {value}",
+  "avg.a11y_none": "{span}: لا قراءات"
 }

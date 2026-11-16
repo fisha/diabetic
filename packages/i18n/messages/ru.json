@@ -2775,5 +2775,13 @@
   "meal.usual_remove": "Убрать {name} из обычных блюд",
   "com.in_call": "Разговор: {name}",
   "com.back_to_call": "Вернуться к разговору",
-  "com.end_call": "Завершить разговор"
+  "com.end_call": "Завершить разговор",
+  "avg.title": "Среднее по времени суток",
+  "avg.period": "Дни для среднего",
+  "avg.p": "{days, plural, one {# день} few {# дня} many {# дней} other {# дня}}",
+  "avg.mean": "Среднее: {value}",
+  "avg.days": "Показания за {have} из {days, plural, one {# дня} few {# дней} many {# дней} other {# дня}}",
+  "avg.none": "Нет показаний глюкозы за последние {days, plural, one {# день} few {# дня} many {# дней} other {# дня}}.",
+  "avg.a11y": "{span}: среднее {value}",
+  "avg.a11y_none": "{span}: нет показаний"
 }

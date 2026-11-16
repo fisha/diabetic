@@ -17454,5 +17454,61 @@
       "translation"
     ],
     "note": "Call bar on other screens during a voice call (Guy, 16 Nov 2026)."
+  },
+  "avg.title": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: average glucose by 3-hour part of the day for 7/14/30/90 days (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "avg.period": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: average glucose by 3-hour part of the day for 7/14/30/90 days (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "avg.p": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: average glucose by 3-hour part of the day for 7/14/30/90 days (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "avg.mean": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: average glucose by 3-hour part of the day for 7/14/30/90 days (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "avg.days": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: average glucose by 3-hour part of the day for 7/14/30/90 days (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "avg.none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: average glucose by 3-hour part of the day for 7/14/30/90 days (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "avg.a11y": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: average glucose by 3-hour part of the day for 7/14/30/90 days (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
+  },
+  "avg.a11y_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview: average glucose by 3-hour part of the day for 7/14/30/90 days (Guy, 16 Nov 2026; not in the design boards, Guy asked for it)."
   }
 }

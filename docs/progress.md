@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-169, thread "Add average glucose by time of day"): Guy asked for an averages view in Overview, like
+a CGM report screenshot he shared, in Stedio's own design. Built: `GET /metrics/averages?days=7|14|30|90`
+(`metrics.average_by_time`: time-weighted means per local 3-hour part of the day and over the period, today included,
+and the number of days with readings; a part without readings has no mean, nothing is filled in, no threshold). App:
+"Average by time of day" card under the day/days card for every period, with 7/14/30/90-day tabs, bars from zero, the
+person's own range shaded when set, the period average and "Readings on X of Y days" (four languages, day and night,
+RTL). API 469 tests, app typecheck and 163 tests, i18n tests and e2e `tools/e2e/averages.cjs` (en light, he light, he
+dark; 15/15) pass; not yet seen on a phone. Next: deploy the API (no migration), then OTA (JS only).
+
 16 Nov 2026 (Jira PM-168, thread "Show only today's items in Today so far"): Guy said "What to keep" in today's summary
 showed "two hours after dinner" before dinner had happened. Today's summary now lists a routine only when its time already
 came today, from today's own records (`apps/mobile/src/features/overview/looks.ts`): meal routines after a meal in that
