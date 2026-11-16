@@ -46,6 +46,12 @@ back to the thread) (api #67). PM-166 the main screen reads the last 3 hours and
 the 15-minute access token is kept sealed so a cold start skips a refresh round-trip (app #90). API 480 tests, app 164
 tests, e2e `offline.cjs` 36/36. Next: deploy the API with both migrations (backup first, no open voice call), watch
 memory with two processes, OTA, then check on a phone and rerun the bench.
+Evening: deployed (v24..v28), memory stable (~315 MB of 473, no swap), Fly CPU not throttled. Found and fixed: the app
+asks /insights with `until` a minute ahead, which skipped the kept answer (api #70); a slow /insights now logs its phases
+(api #69). Opening the app sent ~33 reads at once and the single API process answers a burst together (1-3 s each), so
+PM-170: identical GETs in flight share one answer and insights ask up to the whole minute (app #92, OTA; e2e GETs
+121 -> 103, /insights 13 -> 5), and /metrics/progress is kept per day while its readings are unchanged (api #71, 122 ->
+17 ms). Next: confirm on a real open after the deploy and OTA.
 
 16 Nov 2026 (Jira PM-156, thread "Check app against App Store review rules"): Guy asked that a change to the privacy
 policy, the terms or a consent like the AI one makes the app ask the person to read and accept before they keep using
