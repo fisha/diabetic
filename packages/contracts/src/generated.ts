@@ -1616,7 +1616,12 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Search */
+        /**
+         * Search
+         * @description A Hebrew query searches the Israeli food list (Ministry of Health, Tzameret; DAP-16) with typical portions. A Latin
+         *     query searches USDA FoodData Central as before, followed by up to five foods of the Israeli list by their English
+         *     names. The Israeli list is part of the server, so it answers when USDA is not configured or does not answer.
+         */
         get: operations["search_meal_foods_get"];
         put?: never;
         post?: never;
@@ -2042,6 +2047,27 @@ export interface paths {
          */
         put: operations["same_as_records__record_id__same_as_put"];
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/reports/clinic": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Create Clinic Report
+         * @description A clinic report (DAP-10) for the last `days` local days, made in the background like an export and kept as one for
+         *     EXPORT_DAYS. The person shares it themselves; nothing is sent from here.
+         */
+        post: operations["create_clinic_report_reports_clinic_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2819,6 +2845,38 @@ export interface components {
             /** Where */
             where: string;
         };
+        /**
+         * ClinicReportIn
+         * @description DAP-10: the period, the report's language (its own, not the app's), and what the person adds for this visit.
+         */
+        ClinicReportIn: {
+            /**
+             * Days
+             * @default 14
+             * @enum {integer}
+             */
+            days: 14 | 30 | 90;
+            /**
+             * Details
+             * @default false
+             */
+            details: boolean;
+            /**
+             * Lang
+             * @enum {string}
+             */
+            lang: "he" | "en";
+            /**
+             * Name
+             * @default
+             */
+            name: string;
+            /**
+             * Questions
+             * @default
+             */
+            questions: string;
+        };
         /** ConsentIn */
         ConsentIn: {
             /**
@@ -3293,8 +3351,15 @@ export interface components {
             fiber_per_100g?: number | null;
             /** Name */
             name: string;
+            /** Portions */
+            portions?: components["schemas"]["Portion"][];
             /** Protein Per 100G */
             protein_per_100g?: number | null;
+            /**
+             * Source
+             * @default usda-fdc
+             */
+            source: string;
             /** Source Id */
             source_id: string;
         };
@@ -4503,6 +4568,21 @@ export interface components {
             /** Lon */
             lon: number;
         };
+        /**
+         * Portion
+         * @description One household measure of a food: the app unit it fills, its weight, and the database's Hebrew name for it.
+         */
+        Portion: {
+            /** Grams */
+            grams: number;
+            /** Label */
+            label: string;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "piece" | "slice" | "serving" | "cup" | "tbsp";
+        };
         /** ProfileChangeOut */
         ProfileChangeOut: {
             /** After */
@@ -5322,7 +5402,7 @@ export interface components {
             /** Median */
             median: number | null;
             /** Part */
-            part: ("night" | "morning" | "afternoon" | "evening") | null;
+            part: ("morning" | "afternoon" | "evening" | "night") | null;
             /** Today */
             today: number | null;
             /** Weekday */
@@ -5546,7 +5626,7 @@ export interface components {
             /** Minutes */
             minutes: number | null;
             /** Part */
-            part: ("night" | "morning" | "afternoon" | "evening") | null;
+            part: ("morning" | "afternoon" | "evening" | "night") | null;
         };
         /** StateIn */
         steady_api__routers__insights__StateIn: {
@@ -9875,6 +9955,39 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_clinic_report_reports_clinic_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClinicReportIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExportOut"];
+                };
             };
             /** @description Validation Error */
             422: {

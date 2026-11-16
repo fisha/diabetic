@@ -9449,6 +9449,169 @@
       "translation"
     ]
   },
+  "rep.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.row_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.intro": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.period": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.d14": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.d30": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.d90": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.lang": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.lang_he": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.lang_en": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.name": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.questions": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.questions_h": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.details": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.details_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.create": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.running": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.ready": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.share": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.again": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.note": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.failed": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
+  "rep.unavail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
+  },
   "rtn.act": {
     "board": "RTN-01",
     "review": [
