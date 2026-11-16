@@ -16323,5 +16323,17 @@
       "clinical"
     ],
     "note": "Net carbs, total less fiber (Guy approved, 15 Nov 2026)."
+  },
+  "set.pf_from": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.pf_to": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
   }
 }

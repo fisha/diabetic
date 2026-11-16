@@ -2611,5 +2611,7 @@
   "meal.edit_protein": "Tap to type the protein of {name}",
   "meal.protein_l": "Protein",
   "meal.carbs_v": "Net carbs ≈ {grams} g",
-  "meal.net_note": "Net carbs: total carbohydrate without dietary fiber."
+  "meal.net_note": "Net carbs: total carbohydrate without dietary fiber.",
+  "set.pf_from": "From",
+  "set.pf_to": "To"
 }
