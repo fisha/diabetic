@@ -12,11 +12,20 @@ verified only against test stand-ins or not at all. See `docs/integration-status
 "Who are you here for?" forward. New accounts are asked first, in the app and on the website: for myself, for myself
 with pre-diabetes, for my child, or for someone close. Only "for myself" continues (waitlist, setup); the others are
 saved and see a "not ready yet, you're on the waiting list" note with "Change my answer". `users.persona` (migration
-d0e1f2a3b4c8), `PUT /auth/persona`, admin list shows it, privacy policy updated in four languages (G-89). API tests,
+d0e1f2a3b4c8), `PUT /auth/persona`, admin list shows it, privacy policy updated in four languages (G-90). API tests,
 i18n, app and web tests, and e2e `tools/e2e/persona.cjs` (app web export, en light, he light, he dark) and
 `tools/e2e/persona-web.cjs` (website) pass. JS and API only: deploy the API (migration) and the website, then the
 testers OTA. Not seen on a phone.
 
+16 Nov 2026 (PM-117, idea DAP-14 from Itay's plan, thread "Show data age on every glucose value"): every glucose value
+shows its age ("25 min ago"), also the one-line reading above a conversation, and past 15 minutes says "Not current"
+with a clock. A device connection (CareLink, Dexcom, LibreLinkUp, Tandem Source) is "lost" when the service refused the
+saved sign-in or no fetch worked for 30 minutes (technical sync interval); the main screen and Overview then show a
+banner with the service, the time of its last good fetch and "Check connection", and the worker sends one push per lost
+episode after quiet hours (`steady_api/link_watch.py`, `GET /devices/connections`, no migration: the marker is kept in
+`device_links.device`). Nothing is retried or signed in again. API tests and ruff, app typecheck and tests (142), i18n
+tests and web e2e `tools/e2e/data-age.cjs` (en light, he light, he dark) pass. JS only (OTA); deploy the API first. Not
+seen on a phone.
 16 Nov 2026 (DAP-16, Jira PM-119, thread "Add Israeli Hebrew food list with portions"): Itay's plan asks for local
 dishes in Hebrew with typical portions. The source is the Ministry of Health national nutrient database "Tzameret"
 (data.gov.il `nutrition-database`, licence `other-open`: copy, adapt and commercial use allowed, the source must be
@@ -54,6 +63,14 @@ not seen on a phone.
 בודקים את זה"): two project skills, `.claude/skills/regulatory-check` (medical-device boundaries) and
 `.claude/skills/privacy-compliance` (health-data privacy), a CLAUDE.md rule in all four repositories, and a "Regulatory
 and privacy check" section in every repository's PR template. Every PR runs both. Tasks are tracked in Jira (PM-114).
+
+16 Nov 2026 (DAP-10 / PM-116, thread "Build one-tap clinic report"; Guy approved the five "Now" items): a clinic
+report the person makes in one tap and shares themselves (G-89). Privacy > "Share with my care team" (was "Planned") and
+Profile > Account open it: 14, 30 or 90 days, Hebrew or English, optional name and questions, optional full meal and
+insulin lists. The server makes the PDF (`steady_api/clinic_report.py`, `POST /reports/clinic`): consensus time in
+ranges, mean, GMI, CV, SD, the person's own range, an AGP-style profile by hour, a day-by-day table, the questions and a
+"record, not advice" footer. API tests (414) and ruff, app typecheck and tests (150), i18n tests and web e2e
+`tools/e2e/clinic-report.cjs` pass. JS and API only; deploy the API before the OTA. Not seen on a phone.
 
 16 Nov 2026 (PM-113, thread "Fix diabetes profile change history labels"): Guy saw saved field names and raw values in
 Profile > Diabetes profile > Change history. Each row now shows the profile question's label in the app language and the
