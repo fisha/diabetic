@@ -6546,6 +6546,78 @@
     ],
     "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
   },
+  "onb.c0": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.c0b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "lg.t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "lg.b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "lg.terms": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "lg.privacy": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "lg.updated": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "lg.read": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "lg.read_terms": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "lg.read_privacy": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "lg.unavail": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
+  "lg.changed": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ]
+  },
   "set.pv_ai": {
     "board": "Settings",
     "review": [

@@ -418,6 +418,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/consent/accept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Accept
+         * @description The person read and agreed to these versions. Refused as a whole when any of them is no longer the one in force,
+         *     so a record always names the text the person saw. Recorded once per version (append-only history); to stop, the
+         *     account is deleted.
+         */
+        post: operations["accept_consent_accept_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/consent/ai": {
         parameters: {
             query?: never;
@@ -429,8 +451,8 @@ export interface paths {
         put?: never;
         /**
          * Give Ai Consent
-         * @description The person agreed to send their data to the external AI engine. Recorded once (append-only history); to stop,
-         *     the account is deleted, as with the consent to the service itself.
+         * @description The person agreed to send their data to the external AI engine (app builds from PM-149, which show the one text
+         *     there is so far). Recorded once per version.
          */
         post: operations["give_ai_consent_consent_ai_post"];
         delete?: never;
@@ -2544,11 +2566,6 @@ export interface components {
              */
             title: string;
         };
-        /** AcceptIn */
-        AcceptIn: {
-            /** Code */
-            code: string;
-        };
         /** AchievementOut */
         AchievementOut: {
             /** Celebrated At */
@@ -3053,6 +3070,8 @@ export interface components {
              * Format: date-time
              */
             at: string;
+            /** Legal */
+            legal?: boolean | null;
             /** Service */
             service: boolean;
             /** Training */
@@ -3062,6 +3081,10 @@ export interface components {
         ConsentOut: {
             /** Ai */
             ai: boolean;
+            /** Documents */
+            documents: components["schemas"]["DocumentOut"][];
+            /** Pending */
+            pending: ("terms" | "privacy" | "ai")[];
         };
         /** ConversationOut */
         ConversationOut: {
@@ -3164,6 +3187,18 @@ export interface components {
              * @enum {string}
              */
             source: "pump" | "carelink" | "tandem";
+        };
+        /** DocumentOut */
+        DocumentOut: {
+            /** Accepted */
+            accepted: string | null;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "terms" | "privacy" | "ai";
+            /** Version */
+            version: string;
         };
         /** EnvironmentOut */
         EnvironmentOut: {
@@ -5947,6 +5982,18 @@ export interface components {
             /** Part */
             part: ("morning" | "afternoon" | "evening" | "night") | null;
         };
+        /** AcceptIn */
+        steady_api__routers__consent__AcceptIn: {
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /** Versions */
+            versions: {
+                [key: string]: string;
+            };
+        };
         /** StateIn */
         steady_api__routers__insights__StateIn: {
             /**
@@ -6005,6 +6052,11 @@ export interface components {
              * @enum {string}
              */
             via: "app" | "web";
+        };
+        /** AcceptIn */
+        steady_api__routers__sharing__AcceptIn: {
+            /** Code */
+            code: string;
         };
     };
     responses: never;
@@ -6751,6 +6803,46 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ConsentOut"];
+                };
+            };
+        };
+    };
+    accept_consent_accept_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["steady_api__routers__consent__AcceptIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConsentOut"];
+                };
+            };
+            /** @description version_changed: a newer version came out; ask again */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
@@ -10682,7 +10774,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["AcceptIn"];
+                "application/json": components["schemas"]["steady_api__routers__sharing__AcceptIn"];
             };
         };
         responses: {

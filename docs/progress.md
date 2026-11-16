@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-156, thread "Check app against App Store review rules"): Guy asked that a change to the privacy
+policy, the terms or a consent like the AI one makes the app ask the person to read and accept before they keep using
+it. Built (G-93): versions per document in `steady_api/legal.py` (Terms and Privacy 2026-11-16, AI consent
+2026-11-16), a `version` on each consent row (migration c3d9e1a7b456, existing "ai" rows set to the first version),
+`GET /consent` lists what is pending and `POST /consent/accept` records the versions shown (409 if one changed); the AI
+engine works only with the current AI consent. The app's one-time AI screen became a general update screen with read
+links; onboarding asks for the Terms and Privacy explicitly. Website shows a date per document; the "Changes" sections
+of both texts now say the app asks again. API 467 tests, app 153 tests and typecheck, web 9 tests pass; not yet on a
+phone. Deploy the API (with its migration) and the OTA together: every account will see the screen once. To change a
+document later: edit the text, then set the same new date in `legal.py` and the website's `LEGAL_UPDATED`.
+
 16 Nov 2026 (Jira PM-149, thread "Check app against App Store review rules"): Guy approved explicit consent before
 data goes to the AI engine (App Store 5.1.2(i)), in generic words ("external AI engine"; OpenAI named in a details
 dialog and the privacy policy). Built (G-92): third, required onboarding checkbox, a one-time screen for existing
