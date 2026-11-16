@@ -268,6 +268,14 @@ with buttons "I ate, log it" (meal logging) and "Not yet" (the companion's fixed
 tests and ruff, app typecheck, 118 tests and lint (no new problems), i18n tests pass. JS only, no migration; the API must
 be deployed before the OTA (an older API rejects `answer`). Not seen on a phone.
 
+16 Nov 2026, ~16:50 UTC (same thread, PM-157): Guy on build 15 with the direct path on: "the voice talk sounds great
+now". Two asks, both JS only (0.5.0 OTA): the call is now one for the whole app (`liveCall.ts`), so leaving the
+companion screen keeps it and coming back shows it; a small accent bar above the tabs ("In a call with {name}") taps
+back to the call or ends it; signing out ends a call. Saying goodbye (bye, goodbye, להתראות, ביי, مع السلامة, пока...
+at the end of a short utterance, judged once the words settle) makes her say one short goodbye, then the call ends
+(direct path only; the relay keeps going). App #82, API #61 (the goodbye instruction), call-bar strings in four
+languages. Next: deploy the API (not during an open call), OTA for 0.5.0, Guy tries.
+
 16 Nov 2026, ~14:30 UTC (same thread, PM-111): the first sim run of the direct path took the production API down twice
 (13:53-13:58 and ~14:00-14:07 UTC): opening a session built the companion's context on Fly's one shared CPU for minutes,
 the app timed out at 30 s and asked again, the builds ran at once and could not be cancelled, and each waiting request
