@@ -11,6 +11,7 @@ Visual implementation is tracked separately in `docs/design-inventory.md`. Updat
 | Integration | Status | What exists | Blocker for the next status |
 |---|---|---|---|
 | Fly.io hosting (org stedio, fra): stedio-api, stedio-db, stedio-web | implemented-unverified | `deploy/fly/`, `scripts/fly/stedio-fly`; API and website images and the database image with nightly pg_dump built and run in the container (16 Nov 2026) | Apps not created yet; trial deploy from the Mac, then cutover |
+| Website English only (PM-128) | verified-test | `SITE_LOCALES = ['en']` in `apps/web/src/i18n/routing.ts`, redirect of `/he`, `/ar`, `/ru` in `apps/web/src/proxy.ts`, language links hidden. Production build checked with curl (16 Nov 2026). App keeps four languages. | Deploy stedio-web and check `/he` on Fly |
 | Persona at sign-up (DAP-7) | verified-test | `users.persona`, `PUT /auth/persona`, app and website question, admin list. E2E in the app's web export and the website. | Run on Fly and on a phone |
 | Accounts (email and password) | verified-test | FastAPI auth with argon2id, rotating refresh tokens, sign-out revokes the family. App and dashboard sign in against it. | Run on the Mac; password reset needs an email provider |
 | Backend API and PostgreSQL | verified-test | `services/api`, 86 tests. Alembic migrations. Runs locally only (decision of 11 Nov 2026). | Docker Desktop and uv on the Mac; hosting is not decided |
