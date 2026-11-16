@@ -3977,6 +3977,34 @@
       "translation"
     ]
   },
+  "jrn.food_help": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump carb entry: the person's note on what they ate (Guy, 16 Nov 2026)."
+  },
+  "jrn.food_ph": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump carb entry: the person's note on what they ate (Guy, 16 Nov 2026)."
+  },
+  "jrn.food_saved": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump carb entry: the person's note on what they ate (Guy, 16 Nov 2026)."
+  },
+  "jrn.food_t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump carb entry: the person's note on what they ate (Guy, 16 Nov 2026)."
+  },
   "jrn.edit": {
     "board": "Journal",
     "review": [
@@ -13610,6 +13638,27 @@
       "clinical"
     ],
     "note": "Regulatory wording depends on classification"
+  },
+  "sys.off_b": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Offline banner (Components 12.7 Banner: offline / stale data), 16 Nov 2026: past data kept on the phone is shown. {day} is today/yesterday/weekday (mid-sentence), {time} the clock time of the last server answer."
+  },
+  "sys.off_none": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Offline banner body when nothing kept on the phone was needed yet."
+  },
+  "sys.off_t": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Offline banner title (16 Nov 2026): the server can't be reached."
   },
   "sys.offline": {
     "board": "Localization",

@@ -2834,6 +2834,26 @@
         "title": "FoodMatch",
         "type": "object"
       },
+      "FoodNoteIn": {
+        "additionalProperties": false,
+        "description": "What the person ate with this meal entry, in their words; empty or null removes it.",
+        "properties": {
+          "text": {
+            "anyOf": [
+              {
+                "maxLength": 300,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text"
+          }
+        },
+        "title": "FoodNoteIn",
+        "type": "object"
+      },
       "FoodQuestion": {
         "properties": {
           "options": {
@@ -4928,6 +4948,19 @@
             "maxItems": 40,
             "title": "Items",
             "type": "array"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "maxLength": 300,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Note"
           },
           "photo_id": {
             "anyOf": [
@@ -15154,6 +15187,68 @@
           }
         ],
         "summary": "Edit",
+        "tags": [
+          "records"
+        ]
+      }
+    },
+    "/records/{record_id}/food-note": {
+      "put": {
+        "description": "What the person ate, in their own words, on a meal entry (Guy, 16 Nov 2026: the pump records only the carbs that were\nentered, so let the person write what they ate). Only the note changes: the carbs, time and source stay as the pump\nrecorded them, nothing is sent back to the device, and no revision is made (the note saves itself as it is typed).",
+        "operationId": "food_note_records__record_id__food_note_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "record_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Record Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FoodNoteIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "not_a_meal"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Food Note",
         "tags": [
           "records"
         ]
