@@ -62,6 +62,7 @@ export type ExportOut = S['ExportOut'];
 export type FollowUpIn = S['FollowUpIn'];
 export type FollowUpOut = S['FollowUpOut'];
 export type PauseOut = S['PauseOut'];
+export type NudgesOut = S['NudgesOut'];
 export type FirstDaysOut = S['FirstDaysOut'];
 export type DeviceEventOut = S['DeviceEventOut'];
 export type MemoryOut = S['MemoryOut'];

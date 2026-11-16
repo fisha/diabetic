@@ -17,6 +17,38 @@ episode after quiet hours (`steady_api/link_watch.py`, `GET /devices/connections
 `device_links.device`). Nothing is retried or signed in again. API tests and ruff, app typecheck and tests (142), i18n
 tests and web e2e `tools/e2e/data-age.cjs` (en light, he light, he dark) pass. JS only (OTA); deploy the API first. Not
 seen on a phone.
+16 Nov 2026 (DAP-16, Jira PM-119, thread "Add Israeli Hebrew food list with portions"): Itay's plan asks for local
+dishes in Hebrew with typical portions. The source is the Ministry of Health national nutrient database "Tzameret"
+(data.gov.il `nutrition-database`, licence `other-open`: copy, adapt and commercial use allowed, the source must be
+stated, no implied endorsement). The official CSVs were downloaded on the Mac (data.gov.il is blocked from the cloud)
+and built into `services/api/steady_api/data/tzameret.json` by `scripts/build_tzameret.py` (4,508 foods, 3,815 with
+portions; questionnaire "FFQ" rows left out). Its carbohydrate field is "available carbohydrate", already net of fiber,
+so it is taken as published. `GET /meal/foods` answers Hebrew from this list (spelling variants: vowel letters, ט/ת,
+ק/כ, geresh, niqqud) and adds up to five of its foods after USDA for Latin queries; it works without the USDA key. The
+app's search sheet shows the typical portion and the source line, and a picked food starts at that portion. API tests
+(392) and ruff, app typecheck and tests (141), i18n tests, and web e2e `tools/e2e/israeli-foods.cjs` pass. JS and API
+only: deploy the API before the OTA. Lawyer sign-off DAP-67 is still open. Not seen on a phone.
+
+16 Nov 2026 (PM-118, thread "Add burnout mode with fewer nudges"): Guy approved idea DAP-18 from Itay's plan. A
+"Fewer nudges" switch on Routine > Check-ins (a week, two weeks or until turned off): the app starts at most one
+check-in a day and no late-lunch question, pushes no insights, wins or move compliments, shows only the greeting bubble
+and no insight cards on the main screen, and the companion keeps it short and stops nudging. Reminders the person set
+and device alerts are unchanged. A gentle offer card appears when most recent check-ins went unanswered (G-88). API
+tests (397) and ruff, app typecheck and tests (140), i18n tests and web e2e `tools/e2e/fewer-nudges.cjs` (en light,
+he light, he dark) pass. JS and API only; deploy the API before the OTA. Not seen on a phone.
+16 Nov 2026 (G-87, Jira PM-112, thread "Show past data when offline"): Guy: "we need an internal memory or cache in the
+app so past data shows even without a connection to the server". The app now keeps the last answer of its main reads
+(glucose, records and heart rate of the shown window, insights, today's part of day, Body today, learning, food summary,
+labs and habits, progress, the conversation and past conversations) in the existing protected store (sealed files, key
+in the Keychain / Keystore, this device only; in the browser memory only). When the server can't be reached, the same
+read returns the kept answer and an offline banner (designed Banner, Components 12.7) shows on the main screen,
+Overview and Journal: "No connection to Stedio - showing what was saved on this phone, last updated today at 14:02".
+"Today" reads are not shown on another day; nothing older than 30 days, at most 60 entries; everything is removed when
+the session ends (sign-out, expiry, account deletion); nothing is kept while viewing someone else's data; the widgets
+and Live Activity ignore kept readings. Privacy policy (4 languages) says so. App typecheck and tests (incl.
+`test/offline-cache.test.ts`), i18n and web tests, and web e2e `tools/e2e/offline.cjs` (en light, he light, he dark,
+server cut with the page open) pass. JS only (OTA). Keeping across an app restart is verified with a stand-in store only;
+not seen on a phone.
 
 16 Nov 2026 (same thread, Guy: "תדאג גם שאנחנו מייצרים פה skills של compliance ו regulatory ובכל פיתוח שלנו אנחנו
 בודקים את זה"): two project skills, `.claude/skills/regulatory-check` (medical-device boundaries) and

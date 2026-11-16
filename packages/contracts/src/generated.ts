@@ -928,6 +928,50 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/follow-ups/fewer-nudges": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Fewer Nudges */
+        get: operations["get_fewer_nudges_follow_ups_fewer_nudges_get"];
+        /**
+         * Fewer Nudges
+         * @description Fewer nudges (burnout mode, DAP-18, 16 Nov 2026): for a while, or until turned off, the app starts at most one
+         *     check-in a day, pushes no insights, wins or compliments, and the companion keeps it short. Reminders the person set
+         *     and their devices' alerts are unchanged.
+         */
+        put: operations["fewer_nudges_follow_ups_fewer_nudges_put"];
+        post?: never;
+        /** End Fewer Nudges */
+        delete: operations["end_fewer_nudges_follow_ups_fewer_nudges_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/follow-ups/fewer-nudges/no-thanks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * No Thanks
+         * @description The offer was turned down: it stays away for a month.
+         */
+        post: operations["no_thanks_follow_ups_fewer_nudges_no_thanks_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/follow-ups/pause": {
         parameters: {
             query?: never;
@@ -1592,7 +1636,12 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Search */
+        /**
+         * Search
+         * @description A Hebrew query searches the Israeli food list (Ministry of Health, Tzameret; DAP-16) with typical portions. A Latin
+         *     query searches USDA FoodData Central as before, followed by up to five foods of the Israeli list by their English
+         *     names. The Israeli list is part of the server, so it answers when USDA is not configured or does not answer.
+         */
         get: operations["search_meal_foods_get"];
         put?: never;
         post?: never;
@@ -2165,7 +2214,8 @@ export interface paths {
         };
         /**
          * Status
-         * @description Whether a voice provider is configured, so the app can show the unavailable state before anyone talks.
+         * @description Whether a voice provider is configured, so the app can show the unavailable state before anyone talks. The
+         *     voice screen asks this when it opens, so the slow part of the companion's context is built now, ahead of a call.
          */
         get: operations["status_voice_get"];
         put?: never;
@@ -3287,8 +3337,15 @@ export interface components {
             fiber_per_100g?: number | null;
             /** Name */
             name: string;
+            /** Portions */
+            portions?: components["schemas"]["Portion"][];
             /** Protein Per 100G */
             protein_per_100g?: number | null;
+            /**
+             * Source
+             * @default usda-fdc
+             */
+            source: string;
             /** Source Id */
             source_id: string;
         };
@@ -4321,6 +4378,22 @@ export interface components {
              */
             text: string;
         };
+        /** NudgesIn */
+        NudgesIn: {
+            /** Until */
+            until?: string | null;
+        };
+        /** NudgesOut */
+        NudgesOut: {
+            /** Offer */
+            offer: boolean;
+            /** On */
+            on: boolean;
+            /** Since */
+            since: string | null;
+            /** Until */
+            until: string | null;
+        };
         /**
          * OnboardingAnswers
          * @description The onboarding draft from the app (version 1). Free text stays as typed; extra keys are rejected.
@@ -4480,6 +4553,21 @@ export interface components {
             lat: number;
             /** Lon */
             lon: number;
+        };
+        /**
+         * Portion
+         * @description One household measure of a food: the app unit it fills, its weight, and the database's Hebrew name for it.
+         */
+        Portion: {
+            /** Grams */
+            grams: number;
+            /** Label */
+            label: string;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "piece" | "slice" | "serving" | "cup" | "tbsp";
         };
         /** ProfileChangeOut */
         ProfileChangeOut: {
@@ -5386,6 +5474,11 @@ export interface components {
              * @default false
              */
             live: boolean;
+            /**
+             * Rtc
+             * @default false
+             */
+            rtc: boolean;
             /**
              * Voices
              * @default []
@@ -7534,6 +7627,99 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_fewer_nudges_follow_ups_fewer_nudges_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NudgesOut"];
+                };
+            };
+        };
+    };
+    fewer_nudges_follow_ups_fewer_nudges_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NudgesIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NudgesOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    end_fewer_nudges_follow_ups_fewer_nudges_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NudgesOut"];
+                };
+            };
+        };
+    };
+    no_thanks_follow_ups_fewer_nudges_no_thanks_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NudgesOut"];
                 };
             };
         };
