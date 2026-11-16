@@ -1,0 +1,45 @@
+# Stedio research tool (Streamlit, services/api/steady_research) on Fly.io (Guy, 16 Nov 2026). Internal only: Google
+# sign-in limited to STEADY_RESEARCH_EMAILS (else the access token), noindex, and a read-only database login
+# (role.sql). Set up with `scripts/fly/stedio-fly research-setup`, deploy with `scripts/fly/stedio-fly deploy-research`
+# (never `fly launch`).
+# Guy: the smallest machine, not running all the time. The Machine stops when nobody has the page open and starts
+# on the next visit (a few seconds). An open browser tab keeps its websocket, so close the tab when done.
+app = 'stedio-research'
+primary_region = 'fra'
+# About 170 MB in use after a full click-through; swap covers a heavier person/period without an out-of-memory stop.
+swap_size_mb = 512
+
+[build]
+  # Relative to this file: services/api/steady_research/Dockerfile (the build context is services/api).
+  dockerfile = '../../../services/api/steady_research/Dockerfile'
+
+[env]
+  # Google's redirect after sign-in is <this>/oauth2callback (only used when the Google settings are present).
+  STEADY_RESEARCH_URL = 'https://stedio-research.fly.dev'
+  # Everything else is a Fly secret set by `stedio-fly research-setup`: STEADY_DATABASE_URL (the stedio_research login
+  # at stedio-db.internal), STEADY_ML_SUBJECT_KEY (pseudonyms, without the sealing key), STEADY_RESEARCH_TOKEN,
+  # STEADY_RESEARCH_EMAILS, STEADY_RESEARCH_COOKIE_SECRET and, once Guy creates them, the Google client id and secret.
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    # The page talks over one websocket per open tab.
+    type = 'connections'
+    soft_limit = 20
+    hard_limit = 25
+
+  [[http_service.checks]]
+    interval = '60s'
+    timeout = '5s'
+    grace_period = '30s'
+    method = 'GET'
+    path = '/_stcore/health'
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '256mb'

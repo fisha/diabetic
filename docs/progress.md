@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+16 Nov 2026 (Jira PM-131, thread "Host the Streamlit research tool on Fly"): Guy asked to put the research tool on
+Fly, smallest machine, not running all the time. Built (diabetic-api #56): own Fly app `stedio-research`
+(`deploy/fly/research/`), shared-cpu-1x 256 MB + swap, auto-stop with no Machine kept running; Google sign-in limited
+to `STEADY_RESEARCH_EMAILS` once a Google OAuth client exists, until then the access token; its own database login
+`stedio_research` with SELECT on the tables it shows only and INSERT on `ml_jobs`; noindex header and meta; only the
+derived pseudonym key on that server. API tests (444) pass; the image ran locally against Postgres with that role.
+Next: `scripts/fly/stedio-fly research-setup` and `deploy-research` on the Mac; Google client needs Guy's OK. Privacy
+open item: no view log yet (PM-138).
+
 16 Nov 2026 (Jira PM-130, thread "Show data age on every glucose value"): device syncs stopped in production after
 the 14:07 deploy. A replaced API process died mid-transaction, stayed "idle in transaction" with a row lock on
 `device_links`, and every worker pass blocked on it. Permanent prevention (diabetic-api #55): every database connection
