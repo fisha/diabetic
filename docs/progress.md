@@ -16,6 +16,13 @@ and when the keyboard starts to open, pads by the true overlap and scrolls to th
 conversation, `AboutChat` and the quick-log sheets. JS only. `pnpm check` passes; web export builds. Not yet seen on a
 phone: next is the testers OTA (0.6.0 and 0.5.0) and Guy's check on iPhone.
 
+17 Nov 2026 (Jira PM-210, thread "Fix cut-off insight card on main screen"): Guy's screenshot showed the insight card
+under "Tap to talk" cut off, only its bottom and "Talk about this" visible. The voice-mode box under the character
+scrolled to its end on every content change, also in the idle state, and on iOS kept the offset left by a
+conversation. It now remounts between insight and captions and shows the insight from its top (app #117, a06222e).
+`pnpm check` passes; `tools/e2e/insight-card.cjs` 10/10 (the old build fails on small phones). Next: OTA to testers
+for 0.6.0 and 0.5.0, then Guy checks on his phone.
+
 17 Nov 2026 (Jira PM-207, PM-208, PM-209, thread "Strengthen ML for diabetes mentor"): Guy approved releasing the
 next legal version now and fixing the eval weaknesses ("אתה יכול להוציא גרסה משפטית חדשה. לגבי החולשות - תקן אותן
 עכשיו"). Privacy version `2026-11-17T21:30:00Z` adds the real-conversation quality review and the group priors lines
