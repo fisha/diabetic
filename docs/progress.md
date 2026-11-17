@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-144, thread "Close open items from background agent"): Guy approved closing the PM-139 open
+items. The insight reading prompt (`interpret.py`) no longer names 250 mg/dL; for very high readings it defers to the
+person's own care plan on ketones and sets no number (the companion prompt's `KETONE_MGDL` stays, PM-109 #5). Insight
+readings are in the account export with conversations (`insight_readings.csv`). The privacy policy (4 languages) says
+explanations may be prepared in the background with the same engine, consent and settings; privacy version
+`2026-11-17` in API and website, so everyone gets the blocking read-and-accept screen. API PR #76 (514 tests pass), web
+PR #25 (typecheck, lint, 9 tests) merged. Open item PM-177: withdraw AI consent without deleting the account. Next:
+deploy API and web together.
+
 17 Nov 2026 (Jira PM-174, thread "Move time in range above the chart"): Guy asked for the time-in-range card ("Today
 so far") to appear right after the latest reading and before the graph. Built (app only, JS): Overview renders the
 period summary card under the latest reading card, above the period picker and the Over time / Averages graph; the
