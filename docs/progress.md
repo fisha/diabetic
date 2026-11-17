@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-174, thread "Move time in range above the chart"): Guy asked for the time-in-range card ("Today
+so far") to appear right after the latest reading and before the graph. Built (app only, JS): Overview renders the
+period summary card under the latest reading card, above the period picker and the Over time / Averages graph; the
+cards that followed it (body, pump days, nutrition, labs) stay after the graph. App typecheck and 165 tests pass; e2e
+`tools/e2e/tir-first.cjs` 10/10 (en light, he light, he dark), `tools/e2e/averages.cjs` 19/19. Next: OTA to testers.
+
 17 Nov 2026 (Jira PM-173, thread "Clear chat meal cards from main screen"): Guy's screenshot showed meal cards from a
 companion conversation ("Not saved") still under the insights on the main screen after returning to it. The voice view
 showed the conversation's cards for 5 minutes after the last message. Now they show under the character only while a
