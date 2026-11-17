@@ -2817,5 +2817,19 @@
   "jrn.mode_k_time": "זמן",
   "jrn.mode_k_note": "הערה",
   "jrn.mode_approx": "CareLink מציג את המצב הזה רק בזמן שהוא פעיל, ולכן ההתחלה והסיום מדויקים בערך ל-5 דקות.",
-  "set.cl_tt_left": "נותרו {min} דק׳"
+  "set.cl_tt_left": "נותרו {min} דק׳",
+  "com.bk_title": "קביעת תור",
+  "com.bk_k_family_doctor": "רופא משפחה",
+  "com.bk_k_diabetes_doctor": "רופא סוכרת",
+  "com.bk_k_dietitian": "דיאטנית",
+  "com.bk_k_diabetes_nurse": "אחות סוכרת",
+  "com.bk_how": "קובעים את התור באפליקציה או באתר של קופת החולים, או בטלפון. Stedio לא קובע ולא שולח שום דבר בשמך.",
+  "com.bk_which": "מה קופת החולים שלך?",
+  "com.bk_phone": "מוקד {fund}: {phone}",
+  "com.bk_open": "פתיחת {fund}",
+  "com.bk_change": "החלפת קופה",
+  "com.bk_f_clalit": "כללית",
+  "com.bk_f_maccabi": "מכבי",
+  "com.bk_f_meuhedet": "מאוחדת",
+  "com.bk_f_leumit": "לאומית"
 }

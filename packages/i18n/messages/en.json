@@ -2817,5 +2817,19 @@
   "jrn.mode_k_time": "Time",
   "jrn.mode_k_note": "Note",
   "jrn.mode_approx": "CareLink shows this mode only while it runs, so its start and end are accurate to about 5 minutes.",
-  "set.cl_tt_left": "{min} min left"
+  "set.cl_tt_left": "{min} min left",
+  "com.bk_title": "Booking an appointment",
+  "com.bk_k_family_doctor": "Family doctor",
+  "com.bk_k_diabetes_doctor": "Diabetes doctor",
+  "com.bk_k_dietitian": "Dietitian",
+  "com.bk_k_diabetes_nurse": "Diabetes nurse",
+  "com.bk_how": "You book it in your health fund's app or website, or by phone. Stedio doesn't book or send anything for you.",
+  "com.bk_which": "Which health fund are you with?",
+  "com.bk_phone": "{fund} phone line: {phone}",
+  "com.bk_open": "Open {fund}",
+  "com.bk_change": "Change fund",
+  "com.bk_f_clalit": "Clalit",
+  "com.bk_f_maccabi": "Maccabi",
+  "com.bk_f_meuhedet": "Meuhedet",
+  "com.bk_f_leumit": "Leumit"
 }
