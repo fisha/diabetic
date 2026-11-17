@@ -27,6 +27,15 @@ not for someone else; the app card shows the fund's own booking page and phone l
 booked or sent for the person. API PR #77 and app PR #100 merged; API 514 tests (1 unrelated timestamp flake passes on
 re-run), app 169, e2e `tools/e2e/booking.cjs` 16/16. Next: API deploy (no migration), OTA.
 
+17 Nov 2026 (Jira PM-177 and PM-109 #5, thread "Close open items from background agent"): Guy approved an AI
+features off switch and removing the last 250 mg/dL. API: `POST /consent/ai/off` (withdrawal record; every AI route
+and the background readings already check the consent), `ai_off` in `GET /consent`, the AI consent left out of
+`pending` while off, profile saves never turn it on again; the companion prompt has no ketone number and defers to the
+person's care plan. App: the Privacy switch, AI-off states on the companion, meal photo and description, and insight
+reading; "Continue without AI features" on the consent screen (G-94). API PR #80 (520 tests), app PR #102 (169 tests),
+e2e `tools/e2e/ai-off.cjs` 31/31 (en light, he light, he dark). Policy text (4 languages, version 2026-11-18) is web
+PR #26, to merge with the API version bump on 18 Nov. Next: deploy API, OTA to testers.
+
 17 Nov 2026 (Jira PM-144, thread "Close open items from background agent"): Guy approved closing the PM-139 open
 items. The insight reading prompt (`interpret.py`) no longer names 250 mg/dL; for very high readings it defers to the
 person's own care plan on ketones and sets no number (the companion prompt's `KETONE_MGDL` stays, PM-109 #5). Insight

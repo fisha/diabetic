@@ -967,7 +967,7 @@
   "ai.d_t": "The external AI engine",
   "ai.d_b": "Today the AI engine is OpenAI, in the United States. Stedio sends it only what each answer needs, and nothing before you agree. The privacy policy lists every provider we use.",
   "ai.g_t": "One more consent",
-  "ai.g_b": "Stedio now asks separately before sending your data to an external AI engine. It’s needed for your companion, voice conversations, meal photo estimates and insight explanations, and nothing is sent to it until you agree. To keep using Stedio, agree below, or delete your account and data instead.",
+  "ai.g_b": "Stedio now asks separately before sending your data to an external AI engine. It’s needed for your companion, voice conversations, meal photo estimates and insight explanations, and nothing is sent to it until you agree. You can also continue without these features and turn them on later in Settings > Privacy.",
   "ai.g_ok": "Agree and continue",
   "ai.g_del": "Delete my account instead",
   "ai.g_fail": "Your answer wasn’t saved. Check your connection and try again.",
@@ -984,7 +984,7 @@
   "lg.unavail": "This document can’t be opened right now.",
   "lg.changed": "It was just updated again. Please look at the latest version and agree.",
   "set.pv_ai": "Send data to an external AI engine",
-  "set.pv_ai_b": "Required for the companion, voice, meal photo estimates and insight explanations. To stop, delete your account.",
+  "set.pv_ai_b": "Needed for the companion, voice, meal photo estimates and insight explanations. Turn it off to stop sending your data; the rest of Stedio keeps working.",
   "onb.c_agree": "Agree and continue",
   "onb.c_b": "You can change these anytime in Privacy settings.",
   "onb.c_err": "Please agree to the first item to continue.",
@@ -2831,5 +2831,11 @@
   "com.bk_f_clalit": "Clalit",
   "com.bk_f_maccabi": "Maccabi",
   "com.bk_f_meuhedet": "Meuhedet",
-  "com.bk_f_leumit": "Leumit"
+  "com.bk_f_leumit": "Leumit",
+  "set.pv_ai_on": "AI features are on.",
+  "set.pv_ai_off": "AI features are off. Nothing more is sent to the AI engine.",
+  "ai.g_skip": "Continue without AI features",
+  "ai.off_t": "AI features are off",
+  "ai.off_b": "Your companion, voice, meal photo estimates and insight explanations use an external AI engine, and you turned it off. Everything else keeps working. You can turn it on in Settings > Privacy.",
+  "ai.off_go": "Open privacy settings"
 }

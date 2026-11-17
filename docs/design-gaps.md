@@ -1641,3 +1641,19 @@ G-92:
 - If a version changes while the screen is open, agreeing is refused and the screen shows the latest one
   ("It was just updated again...").
 
+
+### G-94 · Turn the AI features off and on without deleting the account (**PM-177, Guy 17 Nov 2026**, verified-test)
+
+Guy approved an off switch for the consent to the external AI engine. Not on the boards; built in the boards' own
+style, extending G-92 and G-93:
+
+- Settings > Privacy: the "Send data to an external AI engine" row (locked on in G-92) is a switch. Off records a
+  withdrawal (`POST /consent/ai/off`); on accepts the AI consent in its current version (`POST /consent/accept`). A
+  toast says which; nothing changes on screen unless the server confirmed it.
+- While off: the companion screen shows "AI features are off" with "Open privacy settings" instead of the orb and the
+  message box; a meal photo is not uploaded and a description is not sent (they offer manual entry); an insight does
+  not offer its reading. The server refuses all of them anyway (403 `ai_consent_required`) and the background readings
+  skip the person.
+- The one-time consent screen (G-92, G-93) gets "Continue without AI features" when the AI consent is among the items:
+  it accepts the documents and turns the AI features off. A new AI consent text is not asked for while they are off.
+- Onboarding still requires the AI consent (ONB-01); a person can turn it off in Settings right after.

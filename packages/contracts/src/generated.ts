@@ -3124,6 +3124,11 @@ export interface components {
         ConsentOut: {
             /** Ai */
             ai: boolean;
+            /**
+             * Ai Off
+             * @default false
+             */
+            ai_off: boolean;
             /** Documents */
             documents: components["schemas"]["DocumentOut"][];
             /** Pending */
