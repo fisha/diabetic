@@ -2997,5 +2997,6 @@
   "lab.empty_b": "Photograph a lab report, or add a result by hand.",
   "lab.add": "Add by hand",
   "lab.load_fail": "Lab results couldn’t be loaded.",
-  "lab.retry": "Try again"
+  "lab.retry": "Try again",
+  "lab.scan_file": "Upload a PDF"
 }

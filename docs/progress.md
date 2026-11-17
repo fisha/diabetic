@@ -17,8 +17,9 @@ printed `range_text`. App: "Read a lab report" (camera or up to 4 photos) on the
 screen, a review with checkboxes, and the results table with explanations for 45 tests in English and Hebrew. Privacy
 policy (en/he) and `legal.CURRENT` / `LEGAL_UPDATED` moved to `2026-11-17T23:45:00Z` with a forced re-accept. API 611
 tests pass; app typecheck, lint, 183 tests; root i18n and web tests; e2e `tools/e2e/labs.cjs` 16/16 on the web export
-(en light, he light, he dark). Not done: picking a PDF in the app needs `expo-document-picker` and a native build
-(Guy's go-ahead); the camera and photo permission texts still name meals until the next native build. Next: API and web
+(en light, he light, he dark). Then Guy chose PDF upload for the next native build: `expo-document-picker`
+(~58.0.5) and an "Upload a PDF" button shown only where the module exists; camera and photo permission texts now
+name lab reports too. e2e 17/17 with a PDF. Needs the next native build (Guy approved it after the current deploy). Next: API and web
 deploy, then the OTA to 0.6.0 and 0.5.0.
 
 17 Nov 2026 (Jira PM-212, thread "Show every selected Body today tile"): Guy had all 8 "Body today" tiles switched on
