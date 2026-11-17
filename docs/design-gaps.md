@@ -1780,3 +1780,24 @@ Not in the design; Guy asked for it. When the person describes symptoms of a low
 NZ 111, otherwise 112), never from the model. The reply may give the general 15 g / 15 minutes rule as general
 information, with the care plan first; legal review is open (PM-206). The live voice path does not show the button yet.
 
+### G-102 · Read a lab report and the lab results table (**PM-213, Guy 17 Nov 2026**, verified-test)
+
+Not in the design; Guy asked for it ("להעלות בדיקות ע״י צילום של מסמך או העלאת קובץ… תצוגת הבדיקות צריכה להיות
+בטבלה כולל האפשרות לקרוא הסבר קצר מה זה כל בדיקה"). Built from existing parts (pushed screen, settings card, banner,
+note, numeric and date fields):
+- "Read a lab report" card on the Add lab result sheet and on the new Lab results screen: "Take a photo" (system camera
+  through `expo-image-picker`) or "Choose photos" (up to 4). The server reads them with the external AI engine and
+  returns rows; nothing is saved and the photos are not kept.
+- Check the results: one card per row with a checkbox, the test's name in the app's language and as printed, the value
+  (editable) and unit, the range the lab printed; one date for all (the report's date when printed, else today).
+  Results without a number are left out and counted ("2 results without a number weren't copied").
+- Lab results (`/labs`, from "All lab results" on the Overview's Labs and habits card): a table of Test, Result, Date,
+  one row per test with its latest result. Tapping a row shows what the test is (45 tests have a short explanation in
+  English and Hebrew; any other test says there is none yet), the printed range, earlier results, and the note that
+  this is general information, not about the person's result.
+- Nothing is graded or coloured by value. The printed range is the lab's own text.
+- Dates follow Guy's rule (dd.mm in Hebrew, mm.dd in English); a result from another year adds the year (`.25`),
+  because lab results span years.
+- Picking a PDF file is not in the app yet: it needs a new native module (`expo-document-picker`) and so a native
+  build (Guy's go-ahead). The server already reads PDFs.
+- The explanations (`lab.x_*`) are tagged for clinical review (G-05).
