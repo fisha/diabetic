@@ -9862,6 +9862,13 @@
     ],
     "note": "Clinic report (DAP-10, Guy 16 Nov 2026)."
   },
+  "rep.view": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "PDF preview before sharing (Guy 17 Nov 2026)."
+  },
   "rep.again": {
     "board": "Settings",
     "review": [
@@ -12457,6 +12464,13 @@
     "review": [
       "translation"
     ]
+  },
+  "set.ex_view": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "PDF preview before sharing (Guy 17 Nov 2026)."
   },
   "set.export": {
     "board": "Settings",
