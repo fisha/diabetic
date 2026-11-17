@@ -174,10 +174,14 @@ cmd_evals() {
   done
   case "$state" in stopped|destroyed|failed) ;; *) die "evals: the Machine did not finish in 90 minutes" ;; esac
   sleep 10 # let the last log lines ship
-  local log; log="$(fly logs -a "$API_APP" --machine "$id" --no-tail 2>/dev/null)"
+  # Plain text: no colour codes in what is parsed and saved.
+  local log; log="$(NO_COLOR=1 fly logs -a "$API_APP" --machine "$id" --no-tail 2>/dev/null | sed $'s/\x1b\\[[0-9;]*m//g')"
   mkdir -p "$EVALS_DIR"
   local out="$EVALS_DIR/$stamp-$tag.json"
   printf '%s\n' "$log" | sed -n '/EVALS_VERDICT_BEGIN/,/EVALS_VERDICT_END/p' | sed -e '1d' -e '$d' -e "$LOGPREFIX" > "$out"
+  local fails="$EVALS_DIR/$stamp-$tag.failures.jsonl"
+  printf '%s\n' "$log" | sed -n '/EVALS_FAILURES_BEGIN/,/EVALS_FAILURES_END/p' | sed -e '1d' -e '$d' -e "$LOGPREFIX" > "$fails"
+  [ -s "$fails" ] && say "failing turns (synthetic cases): ${fails#"$REPO"/}" || rm -f "$fails"
   local code; code="$(printf '%s\n' "$log" | grep -o 'EVALS_EXIT=[0-9]*' | tail -1 | cut -d= -f2)"
   printf '%s\n' "$log" | grep -E 'EVALS_(START|ERROR|STDERR)' | sed -e "$LOGPREFIX" || true
   [ -s "$out" ] && cat "$out" || rm -f "$out"

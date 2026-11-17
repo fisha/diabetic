@@ -15,7 +15,7 @@ from steady_api.ai import context as prod_context
 from steady_api.ai import judge as prod_judge
 from steady_api.ai import tools as prod_tools
 from steady_api.ai.prompt import system_prompt
-from steady_api.ai.safety import about_someone_else, reads_as_dose_instruction, reads_as_forecast
+from steady_api.ai.safety import about_someone_else, reads_as_dose_instruction, reads_as_forecast, second_look
 from steady_api.clinical import GLUCOSE_ENTRY_MGDL_MAX, GLUCOSE_ENTRY_MGDL_MIN, MGDL_PER_MMOL, to_mgdl
 from steady_api.models import DeviceLink, GlucoseRecord, HealthSample, Memory, Profile, Record, User
 
@@ -42,6 +42,7 @@ __all__ = [
     "prod_tools",
     "reads_as_dose_instruction",
     "reads_as_forecast",
+    "second_look",
     "system_prompt",
     "to_mgdl",
 ]

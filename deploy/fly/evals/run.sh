@@ -16,6 +16,26 @@ out="$(python -m steady_evals.regression --model "$MODEL" --production --repeat 
 code=$?
 # The verdict only (pass rates, case ids, failed rule names); replies and transcripts stay in the Machine.
 echo "EVALS_VERDICT_BEGIN"; printf '%s\n' "$out" | sed -n '/^{/,$p'; echo "EVALS_VERDICT_END"
+# The failing turns of these synthetic cases (no user data): what the model drafted, what would be shown, which checks
+# and judge criteria failed and why, so a failure can be told apart from a false positive (PM-204).
+echo "EVALS_FAILURES_BEGIN"
+python - <<'PY'
+import json, pathlib
+runs = sorted(pathlib.Path("reports/runs").glob("*"), key=lambda p: p.stat().st_mtime)
+rows = [json.loads(x) for x in (runs[-1] / "results.jsonl").read_text(encoding="utf-8").splitlines() if x] if runs else []
+out = []
+for r in rows:
+    j = r.get("judge") or {}
+    jf = {k: (j.get("reasons") or {}).get(k, "") for k, v in (j.get("verdicts") or {}).items() if v == "fail"}
+    cf = {k: v["detail"] for k, v in r["checks"].items() if not v["pass"]}
+    if cf or jf or "error" in j:
+        out.append({"case": r["case"], "repeat": r["repeat"], "checks": cf, "judge": jf, "judge_error": j.get("error"),
+                    "second_look": r.get("second_look"), "withheld": r.get("withheld"),
+                    "first_draft": (r.get("first_draft") or "")[:600] or None, "draft": (r.get("draft") or "")[:600]})
+for o in out:
+    print(json.dumps(o, ensure_ascii=False))
+PY
+echo "EVALS_FAILURES_END"
 [ "$code" -gt 1 ] && tail -n 20 /tmp/evals.err | sed 's/^/EVALS_STDERR /'
 echo "EVALS_EXIT=$code"
 exit "$code"
