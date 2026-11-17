@@ -79,6 +79,8 @@ def run(args: argparse.Namespace) -> Path:
                 "draft": res.draft,
                 "shown": res.shown,
                 "withheld": res.withheld,
+                "first_draft": res.first_draft,
+                "second_look": res.second_look,
                 "error": res.error,
                 "tool_calls": res.state.calls,
                 "rounds": res.rounds,

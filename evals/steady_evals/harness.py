@@ -21,6 +21,7 @@ from .production import (
     prod_context,
     prod_mentor,
     reads_as_dose_instruction,
+    second_look,
     system_prompt,
 )
 from .providers import Provider, ProviderError
@@ -30,7 +31,7 @@ from .providers import Provider, ProviderError
 class TurnResult:
     case_id: str
     model: str
-    draft: str | None  # what the model wrote
+    draft: str | None  # what the model wrote (after the production second look, PM-204)
     shown: str | None  # what the person would see after the production dose filter (None when withheld)
     withheld: bool
     state: sim_tools.SimState
@@ -40,6 +41,8 @@ class TurnResult:
     usage: list[dict] = field(default_factory=list)
     transcript: list[dict] = field(default_factory=list)
     system_prompt: str = ""
+    first_draft: str | None = None  # the draft before the second look, when it was sent back
+    second_look: str | None = None  # why it was sent back: "dose" or "forecast"
 
 
 def build_profile(case: Case) -> Profile:
@@ -155,6 +158,12 @@ def run_case(case: Case, provider: Provider) -> TurnResult:
             res.error = "too_many_tool_rounds"
     except ProviderError as exc:
         res.error = str(exc)
+    if res.draft and not res.error:
+        # The production second look (PM-204): one rewrite with the reason, or the fixed look-back line for a forecast.
+        first = res.draft
+        res.draft, res.second_look = second_look(provider, messages, first, case.lang)
+        if res.second_look is not None:
+            res.first_draft = first
     res.transcript = messages[1:]
     res.system_prompt = messages[0]["content"]
     if res.draft and reads_as_dose_instruction(res.draft):
