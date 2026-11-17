@@ -2883,5 +2883,8 @@
   "visit.remove": "Remove visit",
   "visit.change": "Change",
   "visit.ai_off": "The AI features are off, so no preparation is written. You can turn them on in Settings > Privacy.",
-  "visit.fail": "The visit couldn't be saved. Try again."
+  "visit.fail": "The visit couldn't be saved. Try again.",
+  "com.em_title": "Emergency",
+  "com.em_call": "Call {number}",
+  "com.em_note": "Calls the emergency number for where your phone is."
 }

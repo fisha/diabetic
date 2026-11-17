@@ -18220,5 +18220,26 @@
       "translation"
     ],
     "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "com.em_title": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Emergency call button on a companion reply about acute symptoms (Guy, 17 Nov 2026); the number comes from the phone's region, never from the model."
+  },
+  "com.em_call": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Emergency call button on a companion reply about acute symptoms (Guy, 17 Nov 2026); the number comes from the phone's region, never from the model."
+  },
+  "com.em_note": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Emergency call button on a companion reply about acute symptoms (Guy, 17 Nov 2026); the number comes from the phone's region, never from the model."
   }
 }

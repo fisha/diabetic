@@ -1768,3 +1768,12 @@ clinical thresholds.
 - **Group priors (PM-199).** With few days, how sure a comparison is called is pulled towards people with a similar
   setup (diabetes type, treatment, sensor; groups of at least 5, training consent only). Shown numbers stay the
   person's own.
+
+### G-101 · Emergency call button on companion replies about symptoms (**PM-205, Guy 17 Nov 2026**, verified-test)
+
+Not in the design; Guy asked for it. When the person describes symptoms of a low or a high right now, the companion calls
+`show_emergency_call`, so the reply carries `flags.emergency`. The app then shows a card in the booking-card style with a
+"Call {number}" button that opens `tel:`. The number comes from the phone's region (IL 101, US/CA/MX 911, GB 999, AU 000,
+NZ 111, otherwise 112), never from the model. The reply may give the general 15 g / 15 minutes rule as general
+information, with the care plan first; legal review is open (PM-206). The live voice path does not show the button yet.
+
