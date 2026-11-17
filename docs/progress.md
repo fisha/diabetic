@@ -21,6 +21,17 @@ call is going; an unanswered card stays in the conversation, where it can still 
 check passes (app 165); e2e `tools/e2e/logging.cjs` 15/15 (it now also accepts the current legal documents up front).
 Next: OTA to testers.
 
+17 Nov 2026 (Jira PM-175, thread "Make companion aware of live glucose"): Guy asked that the companion always know the
+current sensor reading during a conversation and, when glucose rises fast (double arrow), bring it up anyway and ask
+whether he saw it and is handling it; and that it look up past glucose itself instead of asking (it may ask which time).
+Built: `steady_api/glucose_now.py` (newest sensor reading with the sensor service's arrow and its age; older than 15 min
+is told as not current and never raised; raised only below/above the person's own range or on a double arrow up/down,
+once per episode; fewer nudges: low side only, once per 3 h; state in `routine_state`, no migration). Text gets it in
+every turn's prompt; WebRTC calls poll `POST /voice/live/rtc/glucose` and hand the note/check-in to the model at a
+quiet moment; the relay does the same server-side. New tool `glucose_history` (a local day and times, 90 days back).
+API 513 tests, app 166; not yet on a phone. Regulatory: at risk (a conversational mention of a current reading, only
+inside a conversation the person opened). Next: deploy the API (no migration), OTA.
+
 17 Nov 2026 (Jira PM-172, thread "Show daily protein in Full days"): Guy asked for grams of protein per day in the
 Overview "Full days" sheet, and for each day row to open more about that day's protein, carbs and insulin. Built (app
 only, no API change): rows read "N meals · X g carbs · Y g protein" ("≥ Y g" when some meals have no protein value);
