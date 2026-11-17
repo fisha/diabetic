@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-197..201, thread "Strengthen ML for diabetes mentor"): Guy approved the ML consultant plan,
+items 2 and 5 first, then 1, 3 and 4 (G-100, `docs/ml-ranker.md` 4 and 5a). Built: logged place probabilities with a
+shuffle on 10% of days, SNIPS and Doubly Robust off-policy evaluation with people-bootstrap intervals, and a shadow step
+before a model becomes current (PM-197); the companion quality track: hard-case regression set and gate
+(`evals/steady_evals/regression.py`), no-forecast hard rule, a shared judge rubric, calibration against Guy's and Itay's
+labels, and a production review of sampled replies that stays off until the privacy policy names it (PM-198); sensor
+noise flags (PM-201); effect size, 90% interval and a weekday/weekend check on every day comparison (PM-200); group
+priors by diabetes type, treatment and sensor for certainty (PM-199). API: 595 tests pass, lint clean, migration
+`c4e8a1f2b6d9` round-trips. Evals harness tests pass; the regression set was not run against the model (no key in the
+container). Needs the API deploy (migration). No app change.
+
 17 Nov 2026 (Jira PM-195, thread "Strengthen the ML for the companion"): Guy asked to build items 1 to 9 of the ML
 proposal, "patterns in hindsight and inside a conversation only". Built (G-98): per-person statistics with
 Benjamini-Hochberg on every pattern insight; companion tools `similar_meals` and `recall_conversations` (embeddings of
