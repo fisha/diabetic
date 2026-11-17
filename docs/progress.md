@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-141, thread "Book doctor, dietitian and nurse appointments"): Guy approved phase A of
+appointment booking: Stedio gathers the information and gives the person the link or phone, for all four health funds
+(Clalit, Maccabi, Meuhedet, Leumit); no partner or fund integration for now. None of the funds has a booking API for
+outside apps (research in the PM-141 comment). Built: companion tool `show_booking_help` (family doctor, diabetes
+doctor, dietitian, diabetes nurse), shown only when the person's own message asks for an appointment (en/he/ru/ar) and
+not for someone else; the app card shows the fund's own booking page and phone line (fixed in
+`apps/mobile/src/features/companion/booking.ts`, sources listed there), fund kept sealed on the device. Nothing is
+booked or sent for the person. API PR #77 and app PR #100 merged; API 514 tests (1 unrelated timestamp flake passes on
+re-run), app 169, e2e `tools/e2e/booking.cjs` 16/16. Next: API deploy (no migration), OTA.
+
 17 Nov 2026 (Jira PM-144, thread "Close open items from background agent"): Guy approved closing the PM-139 open
 items. The insight reading prompt (`interpret.py`) no longer names 250 mg/dL; for very high readings it defers to the
 person's own care plan on ketones and sets no number (the companion prompt's `KETONE_MGDL` stays, PM-109 #5). Insight

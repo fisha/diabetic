@@ -2817,5 +2817,19 @@
   "jrn.mode_k_time": "الوقت",
   "jrn.mode_k_note": "ملاحظة",
   "jrn.mode_approx": "لا يعرض CareLink هذا الوضع إلا أثناء عمله، لذا فإن البداية والنهاية دقيقتان بنحو 5 دقائق.",
-  "set.cl_tt_left": "متبقٍ {min} دقيقة"
+  "set.cl_tt_left": "متبقٍ {min} دقيقة",
+  "com.bk_title": "حجز موعد",
+  "com.bk_k_family_doctor": "طبيب العائلة",
+  "com.bk_k_diabetes_doctor": "طبيب السكري",
+  "com.bk_k_dietitian": "أخصائي التغذية",
+  "com.bk_k_diabetes_nurse": "ممرضة السكري",
+  "com.bk_how": "تحجز الموعد في تطبيق صندوق المرضى أو موقعه أو عبر الهاتف. لا يحجز Stedio ولا يرسل أي شيء نيابة عنك.",
+  "com.bk_which": "ما هو صندوق المرضى الخاص بك؟",
+  "com.bk_phone": "هاتف {fund}: {phone}",
+  "com.bk_open": "فتح {fund}",
+  "com.bk_change": "تغيير الصندوق",
+  "com.bk_f_clalit": "كلاليت",
+  "com.bk_f_maccabi": "مكابي",
+  "com.bk_f_meuhedet": "مئوحيدت",
+  "com.bk_f_leumit": "لئوميت"
 }

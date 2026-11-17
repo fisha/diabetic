@@ -2817,5 +2817,19 @@
   "jrn.mode_k_time": "Время",
   "jrn.mode_k_note": "Примечание",
   "jrn.mode_approx": "CareLink показывает этот режим только пока он работает, поэтому начало и конец точны примерно до 5 минут.",
-  "set.cl_tt_left": "Осталось {min} мин"
+  "set.cl_tt_left": "Осталось {min} мин",
+  "com.bk_title": "Запись на приём",
+  "com.bk_k_family_doctor": "Семейный врач",
+  "com.bk_k_diabetes_doctor": "Врач-диабетолог",
+  "com.bk_k_dietitian": "Диетолог",
+  "com.bk_k_diabetes_nurse": "Медсестра по диабету",
+  "com.bk_how": "Запишитесь в приложении или на сайте своей больничной кассы или по телефону. Stedio ничего не записывает и не отправляет за вас.",
+  "com.bk_which": "В какой больничной кассе вы состоите?",
+  "com.bk_phone": "Телефон {fund}: {phone}",
+  "com.bk_open": "Открыть {fund}",
+  "com.bk_change": "Сменить кассу",
+  "com.bk_f_clalit": "Клалит",
+  "com.bk_f_maccabi": "Маккаби",
+  "com.bk_f_meuhedet": "Меухедет",
+  "com.bk_f_leumit": "Леумит"
 }

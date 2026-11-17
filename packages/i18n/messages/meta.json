@@ -17748,5 +17748,103 @@
       "translation"
     ],
     "note": "Journal/pump card: a pump mode's time and state, no advice."
+  },
+  "com.bk_title": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_k_family_doctor": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_k_diabetes_doctor": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_k_dietitian": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_k_diabetes_nurse": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_how": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_which": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_phone": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_open": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_change": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_f_clalit": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_f_maccabi": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_f_meuhedet": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
+  },
+  "com.bk_f_leumit": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Booking help card (PM-141, Guy 17 Nov 2026)."
   }
 }
