@@ -1,9 +1,10 @@
 # Legal pages: open items
 
 The privacy policy, terms of use and accessibility statement (G-71, 14 Nov 2026) are on the website at `/privacy`,
-`/terms` and `/accessibility` in four languages. Their texts are in `apps/web/src/legal/texts`. Every detail that is
+`/terms` and `/accessibility` (texts in English and Hebrew; the website shows English only, and Arabic and Russian were
+removed on 17 Nov 2026, PM-194). Their texts are in `apps/web/src/legal/texts`. Every detail that is
 not known from the code or a decision of Guy is a highlighted placeholder `⟦…⟧` on the page. Fill these in every
-language file (the test `apps/web/test/legal.test.ts` checks that all four have the same number of placeholders), then
+language file (the test `apps/web/test/legal.test.ts` checks that both have the same number of placeholders), then
 have a privacy lawyer review the whole text. None of this is legal advice.
 
 ## Filled in

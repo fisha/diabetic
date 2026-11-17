@@ -10,7 +10,7 @@ import vm from 'node:vm';
 const here = dirname(fileURLToPath(import.meta.url));
 const boards = join(here, '../../../design/claude-design/boards');
 const out = join(here, '../messages');
-const LOCALES = ['en', 'he', 'ar', 'ru'];
+const LOCALES = ['en', 'he'];
 const dry = process.argv.includes('--dry-run');
 
 const read = (f) => readFileSync(join(boards, f), 'utf8');

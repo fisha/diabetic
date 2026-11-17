@@ -2,7 +2,7 @@
   "name": "@steady/i18n",
   "version": "0.1.0",
   "private": true,
-  "description": "Message catalog (ICU, en/he/ar/ru) and locale helpers shared by the app and the website.",
+  "description": "Message catalog (ICU, en/he) and locale helpers shared by the app and the website.",
   "type": "module",
   "main": "src/index.ts",
   "types": "src/index.ts",

@@ -20,7 +20,7 @@ diabetic/
     api/               Python 3.12+, FastAPI, SQLAlchemy 2, Alembic, PostgreSQL
   packages/
     tokens/            tokens.json -> tokens.ts (RN) + tokens.css (web), day/night
-    i18n/              ICU messages en/he/ar/ru, ids shared by app and web
+    i18n/              ICU messages en/he (ar/ru removed 17 Nov 2026, PM-194), ids shared by app and web
     contracts/         TypeScript types generated from the FastAPI OpenAPI schema
     clinical-config/   reviewed thresholds and units (G-06); unreviewed values flagged
   design/

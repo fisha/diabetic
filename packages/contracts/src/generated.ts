@@ -4320,7 +4320,7 @@ export interface components {
              * @default en
              * @enum {string}
              */
-            locale: "en" | "he" | "ar" | "ru";
+            locale: "en" | "he";
         };
         /**
          * InterpretationOut
@@ -5119,7 +5119,7 @@ export interface components {
              * Locale
              * @enum {string}
              */
-            locale: "en" | "he" | "ar" | "ru";
+            locale: "en" | "he";
             /** Source */
             source?: ("onboarding" | "settings" | "companion" | "website") | null;
         };
@@ -5149,7 +5149,7 @@ export interface components {
              * Locale
              * @enum {string}
              */
-            locale: "en" | "he" | "ar" | "ru";
+            locale: "en" | "he";
             /**
              * Updated At
              * Format: date-time
@@ -6166,7 +6166,7 @@ export interface components {
             /** In */
             in: string;
             /** Lc */
-            lc?: ("en" | "he" | "ar" | "ru") | null;
+            lc?: ("en" | "he") | null;
             /** Old */
             old: string;
             /** Wa */

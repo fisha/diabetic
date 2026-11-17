@@ -20,8 +20,9 @@ Status columns:
 Every screen is **Visual: not started, Functional: unconfigured** at the end of Stage 1.
 
 Cross-cutting variants that apply to every phone screen and must be implemented with it: Day and Night theme,
-text size 100 / 130 / 160 % (native: up to 200 %), reduced motion, RTL (he, ar) and LTR (en, ru).
-In the design only Onboarding and Companion carry all four languages; see G-08.
+text size 100 / 130 / 160 % (native: up to 200 %), reduced motion, RTL (he) and LTR (en).
+In the design only Onboarding and Companion carry all four languages; the app has English and Hebrew only since 17 Nov
+2026 (Guy, PM-194; G-99). See G-08.
 
 ## AUTH · Account (board 01, Onboarding.dc.html)
 
