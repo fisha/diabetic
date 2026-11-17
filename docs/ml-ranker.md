@@ -95,6 +95,17 @@ The API, the research tool and the outcome windows all use the same functions.
   - Gate: at least 200 training rows, 50 test rows, 2 unseen people and 10 test lists with a relevant item; AUC of
     at least 0.6; NDCG@3 at least 0.02 above the rules.
   - A model that fails is kept as `failed_gate`, with its reasons.
+- **Off-policy evaluation (PM-197, 17 Nov 2026, `steady_ml/ope.py`).**
+  - Every listing keeps the probability that each insight was shown at each place (`insight_exposures.positions`,
+    from `ranking.position_probs`) and whether that day was explored. Dataset rows keep these, the place it was
+    actually shown (`logged_rank`), and listings with no signal (label -1, used only here, never for training).
+  - On the later period, the rules order, the candidate and the current model are each judged against what was
+    served, with an item-position model and DCG weights 1/log2(k+2) for the first 3 places: IPS, self-normalised IPS
+    (SNIPS) and Doubly Robust (a cross-fitted reward model per insight family and place, shrunk to the place's mean).
+  - Reported: support (share of the policy's top 3 the logging could have shown), effective sample size, and 95%
+    intervals from a bootstrap over people. Verdicts: `too_few_lists` (under 30), `insufficient_support` (under 0.95),
+    `better_than_served`, `worse_than_served` (DR interval wholly below), `no_clear_difference`.
+  - Rows from before propensities were logged are left out and counted.
 - **Jobs.**
   - `uv run python -m steady_ml.jobs enqueue train` (or the research tool) only queues a job. The worker runs one
     job per tick.
@@ -106,7 +117,12 @@ The API, the research tool and the outcome windows all use the same functions.
   - With too little data the run is still kept, as `failed_gate` with its reasons (for example too few rows), and the
     server keeps serving the rules' order.
   - A model that passes its gate becomes current on its own while the ranker is in shadow or off
-    (`STEADY_ML_AUTO_PROMOTE`, on by default). In active mode it stays a candidate until a person promotes it.
+    (`STEADY_ML_AUTO_PROMOTE`, on by default), unless off-policy evaluation says it is worse than the served order.
+  - In active mode (PM-197): not worse by off-policy evaluation, then better than the current model by NDCG@3 on its
+    own held-out rows, then **shadow**: its order is logged beside every served order
+    (`ranking_decisions.shadow_version`, `shadow_order`) for `STEADY_ML_SHADOW_DAYS` (3) and at least
+    `STEADY_ML_SHADOW_MIN_DECISIONS` (20) decisions; then the next training job graduates it to current
+    (`registry.graduate`). `steady_ml.registry shadow <version>` puts a model there by hand.
 - **Health check.** `uv run python -m steady_ml.status` prints counts, statuses and times only: listings, events,
   outcomes, decisions, jobs, datasets, models, the current model and the last training run.
 - **Registry.** `uv run python -m steady_ml.registry list | promote <version> | rollback`.
@@ -124,9 +140,11 @@ The API, the research tool and the outcome windows all use the same functions.
   - Auto-promotion: in shadow, a scheduled model that passes its gate becomes current. In active (17 Nov 2026) it
     must also rank its own held-out rows (unseen people, later period) better by NDCG@3 than the current model does
     on the same rows; otherwise it stays a candidate for `steady_ml.registry promote`.
-  - Exploration (G-98, 17 Nov 2026): when a model's order is served, on `STEADY_RANKER_EXPLORE` (0.1) of a person's
-    days, chosen by a hash of person and day, one lower insight moves to the third place. Pinned safety insights stay
-    first. The reason is logged as `explore`, so later models can be evaluated off-policy on those days.
+  - Exploration (G-98, changed by PM-197 on 17 Nov 2026): on `STEADY_RANKER_EXPLORE` (0.1) of a person's days, chosen
+    by a hash of person and local day, the unpinned insights of whatever order is served (rules or model) are
+    shuffled. Pinned safety insights stay first. The day is logged as `explored` and each listing keeps its exact
+    place probabilities, which is what makes off-policy evaluation possible. `reason` is `explore` only when the
+    model's order was served.
   - `off`.
 - `ranking.reason` says why the rules order was served: `no_model`, `model_invalid`, `feature_mismatch`,
   `insufficient_user_data`, `not_a_tester`, `shadow`, `mode_off` or `model_error`.
@@ -138,6 +156,23 @@ The API, the research tool and the outcome windows all use the same functions.
   said about each insight in the last 90 days (useful, talked over, already known, not relevant, wrong data), so it
   starts from the same insights and doesn't raise the ones waved away (`learning.describe_for_companion`, 14 Nov 2026).
 - Insight pushes keep the rules' policy and are not reordered by the model.
+
+## 5a. Day comparisons: size, the day of the week, group priors (PM-199, PM-200, PM-201)
+
+- Pattern statistics leave out sensor artefacts (`steady_api/sensor_quality.py`): single readings that jump more than
+  5 mg/dL per minute and come back, the first 24 hours after a sensor start, and night dips that look like lying on the
+  sensor. Range metrics (time in range, time below) drop only the jumps, so a possible real low is never hidden.
+- Each day comparison (sleep, steps, resting heart rate, the day after more steps, weekends, hot days) carries its
+  size, standard error and 90% interval (`steady_api/effects.py`). Except for the weekend comparison itself, the
+  difference is recomputed within weekdays and within weekend days; if that keeps less than half of it, flips sign, or
+  can't be computed, the pattern is not shown. The companion hears the interval and is told it is a rough picture.
+- Group priors (`steady_ml/priors.py`, table `ml_priors`): with each training job, for people with the training
+  consent only, the per-person differences are pooled per kind and group (diabetes type, treatment, sensor; then
+  coarser levels; then everyone) by DerSimonian-Laird random effects, kept only for groups of at least 5 people. Only
+  the mean, tau^2 and the count are stored. Serving (`steady_api/priors.py`) shrinks the person's difference towards
+  the most specific group prior; the posterior decides only how sure the insight may be called (`tracking._certainty`,
+  `p_sign` under 0.95 is at most medium, under 0.8 low). The numbers shown stay the person's own. Withdrawing the
+  training consent clears all priors; the next job rebuilds them without that person.
 
 ## 6. Research tool (`services/api/steady_research/app.py`, Streamlit)
 
@@ -154,7 +189,8 @@ STEADY_RESEARCH_TOKEN=<any long secret> uv run --group research streamlit run st
   - Progress: weekly time in range, time below, CV, coverage and consensus time in range, against the baseline.
   - Typical day.
   - Insight to action to outcome: clicks, actions and outcomes in separate columns.
-  - Model vs rules: versions, gate, unseen-people metrics, why the rules were served, top-1 agreement.
+  - Model vs rules: versions, gate, unseen-people metrics, off-policy evaluation (DR value, interval, support,
+    verdict), why the rules were served, top-1 agreement.
   - Jobs: queue a dataset or a training run.
 
 ## 7. Verified so far

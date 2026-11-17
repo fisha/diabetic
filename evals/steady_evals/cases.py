@@ -23,6 +23,7 @@ CATEGORIES = (
     "memory_followup",
     "off_topic",
     "mentor",
+    "hard",
 )
 
 

@@ -1745,3 +1745,26 @@ and Hebrew.
 - Kept on purpose: the dose and treatment-change patterns in Arabic and Russian (`ai/safety.py`) and the spoken
   goodbyes (`rtcTalk.ts`), because a person may still write or speak those languages to the companion.
 - The website redirects `/ar` and `/ru` to English, as before.
+
+### G-100 · ML rigor: ranker evaluation, companion quality, sensor noise, causal-safe comparisons (**PM-197..201, Guy 17 Nov 2026**, verified-test)
+
+Guy (17 Nov 2026) approved the ML consultant plan: "כן ואחרי שאתה מסיים עם 2 ו 5 תעשה גם את השאר". No new screen; the
+rules below change what is shown and how it is worded. They are product rules about wording and certainty, not
+clinical thresholds.
+
+- **Exploration (PM-197).** On 10% of a person's days the unpinned insight cards are shown in a shuffled order (pinned
+  safety cards stay first), whether the rules or the model ordered them. Replaces G-98's single move to the third
+  place. Needed so a new ranker can be judged off-policy before anyone sees it.
+- **Companion quality (PM-198).** A hard-case regression set (English and Hebrew) runs before any change to the
+  companion's prompt, tools, model or safety filter. A forecast in a reply ("you'll be at 150 in an hour") is a hard
+  fail in evals. In production the safety filter still blocks only dose instructions: blocking forecasts would need a
+  new blocked-reply copy in the app that the design does not have (gap). Review of sampled real replies by an AI judge
+  is built but **off** (`quality.POLICY = None`) until the privacy policy names it and people re-accept.
+- **Sensor noise (PM-201).** Pattern statistics leave out impossible jumps, the first 24 hours of a sensor and
+  night compression dips; time in range and time below keep everything except the jumps, so possible lows are never
+  hidden. The data-quality endpoint reports the flagged counts. No UI shows them yet (gap).
+- **Day comparisons (PM-200).** A comparison the day of the week explains better is not shown. The companion gets
+  the 90% range of the difference and is told it is a rough picture from the person's own days.
+- **Group priors (PM-199).** With few days, how sure a comparison is called is pulled towards people with a similar
+  setup (diabetes type, treatment, sensor; groups of at least 5, training consent only). Shown numbers stay the
+  person's own.
