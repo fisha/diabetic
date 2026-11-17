@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-62, thread "Show official Apple Health logo"): Guy accepted Apple's HealthKit Developer Artwork
+License. On iPhone the Body card and the tile chooser show Apple's own Apple Health icon (unaltered file from Apple's
+DMG, `assets/health/apple-health.png`) next to the name "Apple Health" (`HealthStoreMark.ios.tsx`); Android and the web
+keep the text. App #112 merged; typecheck, test typecheck and 173 tests pass, lint unchanged from main. Not seen on a
+phone yet: needs the OTA to 0.6.0 and 0.5.0, then the install page's known-issue line comes off.
+
 17 Nov 2026 (Jira PM-192, same thread): Guy approved the dark-mode finding. Website declares `color-scheme: light dark`
 in a meta tag (Next viewport) and the primary button's day/night colours are `.w` tokens with `light-dark()` and a
 media/data-theme fallback; manual night hover now matches system night. Web #29 merged; typecheck, lint, 9 tests,
