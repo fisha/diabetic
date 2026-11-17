@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-192, same thread): Guy approved the dark-mode finding. Website declares `color-scheme: light dark`
+in a meta tag (Next viewport) and the primary button's day/night colours are `.w` tokens with `light-dark()` and a
+media/data-theme fallback; manual night hover now matches system night. Web #29 merged; typecheck, lint, 9 tests,
+build pass, legacy-scan 0. Screenshots in project files `steady/pm192/`. Needs a web deploy.
+
 17 Nov 2026 (Jira PM-191, thread "Add modern guidance skills for web and app"): Guy approved adding agent skills for
 modern practice. Website: Google Chrome's Modern Web Guidance skill in `apps/web/.claude/skills` (telemetry off);
 its `legacy-scan` found 3 items, 2 fixed (`toSorted`, lib es2023; web #28 merged, typecheck, lint, 9 tests and build
