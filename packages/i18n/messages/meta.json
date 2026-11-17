@@ -18472,5 +18472,835 @@
       "translation"
     ],
     "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "lab.t_glucose": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_c_peptide": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_insulin": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_gad_antibodies": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_ketones": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_non_hdl": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_urea": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_uric_acid": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_urine_albumin": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_sodium": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_potassium": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_calcium": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_magnesium": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_phosphorus": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_alt": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_ast": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_ggt": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_alk_phos": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_bilirubin": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_albumin": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_hemoglobin": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_hematocrit": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_rbc": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_mcv": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_wbc": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_platelets": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_ferritin": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_iron": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_b12": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_folate": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_vitamin_d": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_ft4": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_crp": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.t_ttg_iga": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_a1c": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_fasting_glucose": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_glucose": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_ogtt": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_c_peptide": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_insulin": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_gad_antibodies": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_ketones": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_ldl": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_hdl": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_non_hdl": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_triglycerides": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_cholesterol": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_egfr": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_creatinine": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_urea": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_uric_acid": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_uacr": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_urine_albumin": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_sodium": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_potassium": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_calcium": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_magnesium": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_phosphorus": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_alt": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_ast": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_ggt": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_alk_phos": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_bilirubin": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_albumin": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_hemoglobin": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_hematocrit": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_rbc": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_mcv": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_wbc": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_platelets": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_ferritin": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_iron": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_b12": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_folate": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_vitamin_d": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_tsh": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_ft4": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_crp": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_ttg_iga": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.scan_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.scan_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.scan_camera": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.scan_library": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.scan_reading": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.scan_fail": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.scan_not": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.scan_unavail": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.scan_offline": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.scan_camera_denied": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.rv_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.rv_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.rv_none": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.rv_skipped": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.rv_save": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.rv_saved": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.rv_value": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.all": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.tbl_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.col_test": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.col_result": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.col_date": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.range": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.earlier": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.what": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.no_x": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.x_note": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.empty": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.empty_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.add": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.load_fail": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.retry": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
+  },
+  "lab.scan_file": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Lab report PDF upload (PM-213, Guy 17 Nov 2026, native build)."
   }
 }

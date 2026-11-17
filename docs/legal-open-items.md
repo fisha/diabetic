@@ -94,3 +94,9 @@ approved lines here.
 - Conversation embeddings (G-98, PM-196): the person's own messages go to OpenAI's embeddings endpoint (same processor,
   same AI consent, request storage off) for recall in the companion; table `message_embeddings`, deleted with memory
   off, AI off, the message or the account; not exported (derived). Privacy policy sentence pending.
+- Lab report reading (PM-213, privacy version `2026-11-17T23:45:00Z`): photos or a PDF of a lab report go to OpenAI
+  (same processor, same AI consent, `store=False`) only after the person accepted that privacy version
+  (`routers/labs.py` `POLICY`). The document is read in memory and never written to disk, the database or a log; only
+  the rows the person checks are saved, as `lab` records (covered by export and deletion). To confirm with the lawyer:
+  the photo itself carries the person's name and ID number to the processor (the model is told to leave them out of
+  its answer, but it sees them), and whether lab reports need a consent of their own beyond the AI consent.

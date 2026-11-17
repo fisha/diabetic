@@ -16,6 +16,19 @@ A visit can be with several people; questions are ticked (suggested and the pers
 person's own summary and the PDFs made are kept on the phone only, sealed (Guy chose "only on the phone"; no privacy
 policy change). No migration. API tests 605 passed; `pnpm check` passes; new web e2e `tools/e2e/visit-report.cjs`
 24/24 (en light, he light, he dark). Next: deploy the API, OTA to testers (0.6.0 and 0.5.0), Guy checks on his phone.
+17 Nov 2026 (Jira PM-213, thread "Upload and explain medical test results"): Guy asked to upload lab tests by photo or
+file, have them read into Stedio's own view, and show them in a table with a short explanation of each test. Built
+(G-102): API `POST /labs/scan` (up to 4 photos or one PDF, read by the external AI engine with `store=false`, held in
+memory only, never stored; needs the AI consent and privacy version `2026-11-17T23:45:00Z`) and `GET /labs` (every
+saved lab result, no 92-day window, readable by a viewer with the journal shared); `LabData` gains 34 tests and the
+printed `range_text`. App: "Read a lab report" (camera or up to 4 photos) on the lab sheet and the new Lab results
+screen, a review with checkboxes, and the results table with explanations for 45 tests in English and Hebrew. Privacy
+policy (en/he) and `legal.CURRENT` / `LEGAL_UPDATED` moved to `2026-11-17T23:45:00Z` with a forced re-accept. API 611
+tests pass; app typecheck, lint, 183 tests; root i18n and web tests; e2e `tools/e2e/labs.cjs` 16/16 on the web export
+(en light, he light, he dark). Then Guy chose PDF upload for the next native build: `expo-document-picker`
+(~58.0.5) and an "Upload a PDF" button shown only where the module exists; camera and photo permission texts now
+name lab reports too. e2e 17/17 with a PDF. Needs the next native build (Guy approved it after the current deploy). Next: API and web
+deploy, then the OTA to 0.6.0 and 0.5.0.
 
 17 Nov 2026 (Jira PM-212, thread "Show every selected Body today tile"): Guy had all 8 "Body today" tiles switched on
 but the card showed 4 ("כולם מסומנים אבל לא כולם מוצגים"). The card dropped a chosen tile with no data today, and at

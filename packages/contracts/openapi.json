@@ -920,6 +920,23 @@
         "title": "BodyHourOut",
         "type": "object"
       },
+      "Body_scan_labs_scan_post": {
+        "properties": {
+          "files": {
+            "items": {
+              "contentMediaType": "application/octet-stream",
+              "type": "string"
+            },
+            "title": "Files",
+            "type": "array"
+          }
+        },
+        "required": [
+          "files"
+        ],
+        "title": "Body_scan_labs_scan_post",
+        "type": "object"
+      },
       "Body_transcribe_voice_transcribe_post": {
         "properties": {
           "file": {
@@ -4944,6 +4961,19 @@
             "title": "Name",
             "type": "string"
           },
+          "range_text": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Range Text"
+          },
           "source": {
             "enum": [
               "lab_report",
@@ -4963,15 +4993,49 @@
             "enum": [
               "a1c",
               "fasting_glucose",
+              "glucose",
               "ogtt",
+              "c_peptide",
+              "insulin",
+              "gad_antibodies",
+              "ketones",
               "ldl",
               "hdl",
+              "non_hdl",
               "triglycerides",
               "cholesterol",
               "egfr",
               "creatinine",
+              "urea",
+              "uric_acid",
               "uacr",
+              "urine_albumin",
+              "sodium",
+              "potassium",
+              "calcium",
+              "magnesium",
+              "phosphorus",
+              "alt",
+              "ast",
+              "ggt",
+              "alk_phos",
+              "bilirubin",
+              "albumin",
+              "hemoglobin",
+              "hematocrit",
+              "rbc",
+              "mcv",
+              "wbc",
+              "platelets",
+              "ferritin",
+              "iron",
+              "b12",
+              "folate",
+              "vitamin_d",
               "tsh",
+              "ft4",
+              "crp",
+              "ttg_iga",
               "other"
             ],
             "title": "Test",
@@ -4997,6 +5061,139 @@
           "source"
         ],
         "title": "LabData",
+        "type": "object"
+      },
+      "LabRow": {
+        "properties": {
+          "name": {
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "range_text": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Range Text"
+          },
+          "test": {
+            "enum": [
+              "a1c",
+              "fasting_glucose",
+              "glucose",
+              "ogtt",
+              "c_peptide",
+              "insulin",
+              "gad_antibodies",
+              "ketones",
+              "ldl",
+              "hdl",
+              "non_hdl",
+              "triglycerides",
+              "cholesterol",
+              "egfr",
+              "creatinine",
+              "urea",
+              "uric_acid",
+              "uacr",
+              "urine_albumin",
+              "sodium",
+              "potassium",
+              "calcium",
+              "magnesium",
+              "phosphorus",
+              "alt",
+              "ast",
+              "ggt",
+              "alk_phos",
+              "bilirubin",
+              "albumin",
+              "hemoglobin",
+              "hematocrit",
+              "rbc",
+              "mcv",
+              "wbc",
+              "platelets",
+              "ferritin",
+              "iron",
+              "b12",
+              "folate",
+              "vitamin_d",
+              "tsh",
+              "ft4",
+              "crp",
+              "ttg_iga",
+              "other"
+            ],
+            "title": "Test",
+            "type": "string"
+          },
+          "unit": {
+            "default": "",
+            "maxLength": 16,
+            "title": "Unit",
+            "type": "string"
+          },
+          "value": {
+            "maximum": 100000.0,
+            "minimum": 0.0,
+            "title": "Value",
+            "type": "number"
+          }
+        },
+        "required": [
+          "test",
+          "name",
+          "value"
+        ],
+        "title": "LabRow",
+        "type": "object"
+      },
+      "LabScan": {
+        "properties": {
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/LabRow"
+            },
+            "maxItems": 60,
+            "title": "Rows",
+            "type": "array"
+          },
+          "skipped": {
+            "default": 0,
+            "minimum": 0.0,
+            "title": "Skipped",
+            "type": "integer"
+          },
+          "taken_on": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Taken On"
+          }
+        },
+        "required": [
+          "rows",
+          "provider"
+        ],
+        "title": "LabScan",
         "type": "object"
       },
       "LearnedOut": {
@@ -15259,6 +15456,91 @@
         "summary": "Set State",
         "tags": [
           "insights"
+        ]
+      }
+    },
+    "/labs": {
+      "get": {
+        "description": "Every lab result the person saved, newest first, for the results table (PM-213). Lab results matter over years, so\nunlike /records this has no 92-day window. A viewer with the journal shared sees them too (deps.VIEW_PATHS).",
+        "operationId": "list_labs_labs_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RecordOut"
+                  },
+                  "title": "Response List Labs Labs Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Labs",
+        "tags": [
+          "labs"
+        ]
+      }
+    },
+    "/labs/scan": {
+      "post": {
+        "operationId": "scan_labs_scan_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_scan_labs_scan_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LabScan"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "403": {
+            "description": "ai_consent_required or privacy_update_required"
+          },
+          "413": {
+            "description": "too_large"
+          },
+          "415": {
+            "description": "unsupported_type"
+          },
+          "422": {
+            "description": "not_a_lab_report"
+          },
+          "502": {
+            "description": "analysis_failed"
+          },
+          "503": {
+            "description": "labs_provider_unconfigured"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Scan",
+        "tags": [
+          "labs"
         ]
       }
     },
