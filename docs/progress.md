@@ -16,9 +16,28 @@ weekly comparison of the 4 complete weeks before, visit preparation from 3 days 
 screen). Only for people active in the last 7 days, with data in the window, the AI consent and the privacy policy
 version 2026-11-18 (web PR #27 rides on the PM-177 bump; until it is accepted nothing is prepared). Notes kept 35 days in
 `agent_notes` (migration `b7e2c4a9d351`), in the export (`prepared_notes.csv`, `saved_visit.csv`). App: "In words" card
-in the summary (G-96) and "Next visit" on the clinic report. API 549 tests (1 pre-existing date-dependent failure in
+in the summary (G-97) and "Next visit" on the clinic report. API 549 tests (1 pre-existing date-dependent failure in
 `test_tracking.py`, also on main), app 173, e2e `tools/e2e/agents.cjs` 22/22 (en light, he light, he dark, AI off).
-Next: Guy's review of the screenshots, deploy API (migration) after the 18 Nov policy bump, OTA.
+Dates on these screens are digits without the year (Guy 17 Nov: dd.mm, mm.dd in English; api#85). Guy approved the
+screens 17 Nov; app #107 merged. Next: deploy API (migration), OTA.
+
+17 Nov 2026 (Jira PM-186, thread "Return to main screen after meal entry"): Guy: the "back to conversation" button
+after logging a meal should go to the main screen. The Meal saved button is now "Back to main screen" (4 languages,
+`meal.back_conv`) and opens the companion's voice view via `/companion?home=1` instead of the text conversation (app
+JS + strings only). E2E `tools/e2e/meal-back-home.cjs` 5/5; typecheck, lint and 173 tests pass. App PR #108 merged.
+Not yet seen on a phone. Next: OTA.
+
+17 Nov 2026 (thread "Fix speech bubble tail over character"): Guy's screenshot showed the main-screen bubble's tail
+detached at the bubble's side in Hebrew. The tail was placed with `left: 50%` and a negative margin; it now sits in a
+full-width row pinned to both sides of the bubble, so it is centred in RTL and LTR (app JS only, OpenerBubbles.tsx).
+App PR #106 merged; typecheck, 173 tests and lint pass. Not yet seen on a phone. Next: OTA.
+
+17 Nov 2026 (Jira PM-181, thread "Highlight the active tab in the footer"): Guy: "the relevant tab should be
+highlighted so a user can tell where he is at". Before, the active tab only changed colour and the companion orb only
+its opacity. Now (G-96, app JS only): a soft accent capsule behind the active icon with a heavier line and bold label,
+an accent ring around the companion orb when it is active (the inactive orb fades to 50%), the accent fill in the wide
+window side bar, and `aria-selected` on web (never set before). E2E `tools/e2e/tab-bar.cjs` 16/16 (en/he, light/dark);
+before/after in project files `steady/tab-highlight/`. App PR #105 merged; 173 tests. Next: OTA.
 
 17 Nov 2026 (Jira PM-179, thread "Stop companion repeating answered questions"): the main-screen bubble re-asked
 a question Guy had already answered. The follow-ups were rewritten from scratch with no record of what was asked, and a
