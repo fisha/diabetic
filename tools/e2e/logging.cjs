@@ -11,6 +11,11 @@ const api = async (p, { method = 'GET', body, token } = {}) => {
   const r = await fetch(API + p, { method, headers: { 'content-type': 'application/json', ...(token ? { authorization: `Bearer ${token}` } : {}) }, body: body && JSON.stringify(body) });
   return { status: r.status, json: await r.json().catch(() => null) };
 };
+// The current legal documents are accepted up front, so the blocking read-and-accept screen does not open.
+const acceptDocs = async (token) => {
+  const docs = (await api('/consent', { token })).json;
+  await api('/consent/accept', { method: 'POST', token, body: { versions: Object.fromEntries(docs.documents.map((d) => [d.kind, d.version])), at: new Date().toISOString() } });
+};
 const ANSWERS = { version: 1, consent: { service: true, training: false, at: new Date().toISOString() }, ageGate: 'adult', diabetesType: 'type1', birth: { day: '', month: '', year: '' }, units: 'mgdl', body: { height: '', heightUnit: 'cm', weight: '', weightUnit: 'kg', measured: 'today' }, rapid: [], basal: [], insulinOther: false, insulinUnknown: false, pumpOther: '', sensorOther: '', ratios: { unknown: true, periods: [], correction: '', target: '' }, history: { notes: '' }, routine: { checkInTimes: [] }, companion: { avatar: 'sage', name: 'Noa', style: 'warm' }, checkIns: { frequency: 'moreAtFirst' } };
 
 const server = http.createServer((req, res) => {
@@ -34,6 +39,7 @@ const server = http.createServer((req, res) => {
     await api('/auth/sign-up', { method: 'POST', body: { email: 'd@example.com', password: 'correct horse battery' } });
     const td = (await api('/auth/sign-in', { method: 'POST', body: { email: 'd@example.com', password: 'correct horse battery' } })).json;
     await api('/profile', { method: 'PUT', token: td.access_token, body: { locale: 'en', answers: ANSWERS } });
+    await acceptDocs(td.access_token);
     await page.goto(`${base}/sign-in`); await page.waitForTimeout(1500);
     await page.getByLabel('Email', { exact: true }).fill('d@example.com');
     await page.getByLabel('Password', { exact: true }).fill('correct horse battery');
@@ -63,10 +69,12 @@ const server = http.createServer((req, res) => {
     ok('both cards show saved', (await page.getByText('Saved to your journal').count()) >= 2);
     await shot('l03-activity-saved');
 
-    // A card proposed during a call shows under the character in voice mode, with Save, Edit and Not now.
+    // A card from a finished conversation does not stay under the character on the main screen (Guy, 17 Nov 2026);
+    // an unanswered one is still in the conversation, with Save, Edit and Not now.
     await api('/auth/sign-up', { method: 'POST', body: { email: 'h@example.com', password: 'correct horse battery' } });
     const th = (await api('/auth/sign-in', { method: 'POST', body: { email: 'h@example.com', password: 'correct horse battery' } })).json;
     await api('/profile', { method: 'PUT', token: th.access_token, body: { locale: 'en', answers: ANSWERS } });
+    await acceptDocs(th.access_token);
     await api('/conversation/messages', { method: 'POST', token: th.access_token, body: { client_id: 'he-meal-0001', text: 'I ate rice and soup' } });
     const ctx2 = await browser.newContext({ viewport: { width: 390, height: 844 } });
     const p2 = await ctx2.newPage();
@@ -74,8 +82,11 @@ const server = http.createServer((req, res) => {
     await p2.getByLabel('Email', { exact: true }).fill('h@example.com');
     await p2.getByLabel('Password', { exact: true }).fill('correct horse battery');
     await p2.getByText('Sign in', { exact: true }).last().click(); await p2.waitForTimeout(3000);
-    await p2.screenshot({ path: path.join(out, 'l04-voice-card.png') });
-    ok('open card shown in voice mode', await p2.getByText('Add to your journal?').first().isVisible() && await p2.getByText('Edit', { exact: true }).first().isVisible());
+    await p2.screenshot({ path: path.join(out, 'l04-main-no-card.png') });
+    ok('no card on the main screen after the conversation', (await p2.getByText('Add to your journal?').count()) === 0);
+    await p2.getByLabel('Switch to text', { exact: true }).first().click(); await p2.waitForTimeout(800);
+    await p2.screenshot({ path: path.join(out, 'l04-card-in-conversation.png') });
+    ok('open card still in the conversation', await p2.getByText('Add to your journal?').first().isVisible() && await p2.getByText('Edit', { exact: true }).first().isVisible());
     // Edit opens the foods in the meal editor; saving there marks the card saved.
     await p2.getByText('Edit', { exact: true }).first().click(); await p2.waitForTimeout(2500);
     ok('meal editor opens with the foods', await p2.getByText('Soup').last().isVisible());
