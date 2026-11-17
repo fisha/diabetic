@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-186, thread "Return to main screen after meal entry"): Guy: the "back to conversation" button
+after logging a meal should go to the main screen. The Meal saved button is now "Back to main screen" (4 languages,
+`meal.back_conv`) and opens the companion's voice view via `/companion?home=1` instead of the text conversation (app
+JS + strings only). E2E `tools/e2e/meal-back-home.cjs` 5/5; typecheck, lint and 173 tests pass. App PR #108 merged.
+Not yet seen on a phone. Next: OTA.
+
 17 Nov 2026 (thread "Fix speech bubble tail over character"): Guy's screenshot showed the main-screen bubble's tail
 detached at the bubble's side in Hebrew. The tail was placed with `left: 50%` and a negative margin; it now sits in a
 full-width row pinned to both sides of the bubble, so it is centred in RTL and LTR (app JS only, OpenerBubbles.tsx).
