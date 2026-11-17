@@ -20,9 +20,10 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from . import cases as cases_mod
-from . import scope
+from . import judging, scope
 from .checks import grade
 from .harness import run_case
+from .production import prod_judge
 from .providers import OpenAICompatible, ProductionOpenAI
 
 REPORTS = Path(__file__).resolve().parents[1] / "reports" / "runs"
@@ -56,15 +57,17 @@ def run(args: argparse.Namespace) -> Path:
     out = REPORTS / f"{stamp}-{re.sub(r'[^A-Za-z0-9._-]+', '_', provider.label)}"
     out.mkdir(parents=True, exist_ok=True)
     jobs = [(c, r) for c in selected for r in range(args.repeat)]
+    judge_provider = judging.provider(args.judge, args.api_key_env) if getattr(args, "judge", None) else None
 
     def one(job):
         case, rep = job
         res = run_case(case, provider)
-        return case, rep, res, grade(case, res)
+        verdict = judging.judge_turn(judge_provider, case, res) if judge_provider is not None else None
+        return case, rep, res, grade(case, res), verdict
 
     rows = []
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        for case, rep, res, checks in pool.map(one, jobs):
+        for case, rep, res, checks, verdict in pool.map(one, jobs):
             row = {
                 "case": case.id,
                 "repeat": rep,
@@ -83,6 +86,7 @@ def run(args: argparse.Namespace) -> Path:
                 "usage": res.usage,
                 "transcript": res.transcript,
                 "review": case.review,
+                "judge": verdict,
             }
             rows.append(row)
             mark = "PASS" if row["pass"] else "FAIL"
@@ -104,6 +108,8 @@ def run(args: argparse.Namespace) -> Path:
         "main_rev": git_rev(Path(__file__).resolve().parents[2]),
         "api_rev": git_rev(Path(__file__).resolve().parents[2] / "services" / "api"),
         "started": stamp,
+        "judge": getattr(args, "judge", None),
+        "rubric": prod_judge.RUBRIC_VERSION,
     }
     (out / "meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
     (out / "summary.md").write_text(summarize(rows, meta, selected), encoding="utf-8")
@@ -139,6 +145,16 @@ def summarize(rows: list[dict], meta: dict, selected: list) -> str:
     lines += [f"| {k} | {_pct(sum(v), len(v))} |" for k, v in sorted(by_lang.items())]
     lines += ["", "## By category", "", "| Category | Cases passing every check |", "|---|---|"]
     lines += [f"| {k} | {_pct(sum(v), len(v))} |" for k, v in sorted(by_cat.items())]
+    judged = [r for r in rows if r.get("judge")]
+    if judged:
+        lines += ["", f"## Judge ({meta.get('judge')}, {meta.get('rubric')})", ""]
+        lines += ["| Criterion | Pass | Fail | N/A | Judge errors |", "|---|---|---|---|---|"]
+        errors = sum(1 for r in judged if "error" in r["judge"])
+        for crit in prod_judge.CRITERIA:
+            vs = [r["judge"]["verdicts"][crit] for r in judged if "verdicts" in r["judge"]]
+            lines.append(f"| {crit} | {vs.count('pass')} | {vs.count('fail')} | {vs.count('na')} | {errors} |")
+        lines.append("")
+        lines.append("The judge is an instrument, not ground truth: trust its numbers only as far as `calibrate` shows it agrees with people.")
     lines += ["", "## Scope classifier on these cases (model-independent)", ""]
     lines += scope_table(selected)
     fails = [r for r in rows if not r["pass"]]
@@ -190,6 +206,7 @@ def main() -> None:
     p.add_argument("--repeat", type=int, default=1)
     p.add_argument("--workers", type=int, default=4)
     p.add_argument("--label")
+    p.add_argument("--judge", help="Also judge each reply with this model and the production rubric (PM-198)")
     run(p.parse_args())
 
 

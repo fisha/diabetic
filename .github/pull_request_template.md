@@ -4,7 +4,8 @@
 
 ## Checks run
 
-<!-- Tests, type checks, lint, screenshots. Only what you actually ran. -->
+<!-- Tests, type checks, lint, screenshots. Only what you actually ran. A companion change (prompt, tools, model,
+safety filter) also lists the regression set result (evals/steady_evals/regression.py), or "not run" and why. -->
 
 ## Regulatory and privacy check
 

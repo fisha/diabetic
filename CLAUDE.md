@@ -32,6 +32,11 @@ merging any PR, in any of the four repositories, run the two skills in `.claude/
 Fill in the "Regulatory and privacy check" section of the PR template with the result. A fail blocks the merge; an
 at-risk item goes into the PR and, if not fixed, into Jira as an `open-item` task under PM-12.
 
+Companion changes (Guy, 17 Nov 2026, PM-198): a change to the companion's prompt, tools, model or safety filter also
+runs the fixed regression set (`evals/steady_evals/regression.py`, see `evals/README.md`) with a key before it is
+merged, and the PR says whether its hard rules passed. Without a key, the PR says it was not run; it is never reported
+as passed.
+
 ## Repository layout
 
 `fisha/diabetic` is the main repository. Three parts are separate repositories, linked as git submodules:
