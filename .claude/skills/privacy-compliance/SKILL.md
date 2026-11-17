@@ -19,7 +19,7 @@ Guy's rule (16 Nov 2026): every piece of development is checked against this ski
 2. Go through the rules below and mark each **pass**, **at risk** or **fail** with the file and line.
 3. A **fail** blocks the merge. An **at risk** item goes into the PR description and, if not fixed now, into Jira as an
    `open-item` task under PM-12 (Privacy and legal).
-4. If the change adds a data type, a processor or a purpose, update the privacy policy texts in all four languages
+4. If the change adds a data type, a processor or a purpose, update the privacy policy texts in English and Hebrew
    (`apps/web/src/legal/texts/privacy.*.ts`) and `docs/legal-open-items.md`.
 
 ## Rules
@@ -59,8 +59,8 @@ Guy's rule (16 Nov 2026): every piece of development is checked against this ski
 - Deleting a test account never touches a real account.
 
 ### Pages and notices
-- Privacy policy, terms and accessibility statement exist in four languages with the same placeholders
-  (`apps/web/test/legal.test.ts`). Changes go to all four.
+- Privacy policy, terms and accessibility statement exist in English and Hebrew with the same placeholders
+  (`apps/web/test/legal.test.ts`). Changes go to both.
 - The website stays noindex until Guy says otherwise.
 
 ## Quick searches

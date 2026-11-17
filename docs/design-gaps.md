@@ -139,7 +139,7 @@ Board 13 marks all of it "Clinical review". The brief (§10) says not to invent 
 ### G-08 · Only part of the copy is translated (decision needed on who translates)
 
 **Current state**
-- Onboarding and Companion are in EN, HE, AR and RU.
+- Onboarding and Companion are in EN, HE, AR and RU in the design. The app has EN and HE only since 17 Nov 2026 (G-99).
 - Meal, Overview, Journal, Routine, Settings, Membership and the web dashboard are English only.
 
 **Proposal**
@@ -1730,3 +1730,18 @@ clinical thresholds.
   judgement, dropped on a no; no cause, rule or amount).
 
 Screenshots: project files `steady/g98/`.
+
+### G-99 · The app has English and Hebrew only (**PM-194, Guy 17 Nov 2026**, verified-test)
+
+Guy (17 Nov 2026): "תוריד את ערבית ורוסית מהאפליקציה". The boards still show four languages; the app now offers English
+and Hebrew.
+
+- The language picker (welcome, Settings, onboarding companion step) lists English and Hebrew. A phone set to Arabic,
+  Russian or any other language opens in English.
+- Anyone whose saved app or conversation language was Arabic or Russian moves to English: on the phone when the app
+  starts, on the server by migration `a1d3e5f7b902`, and an older app that still sends `ar` or `ru` is read as English.
+- `packages/i18n/messages/ar.json` and `ru.json` and the website's Arabic and Russian legal texts are deleted (in git
+  history before this change). Pushes, emails, greetings and voice samples in Arabic and Russian are gone from the API.
+- Kept on purpose: the dose and treatment-change patterns in Arabic and Russian (`ai/safety.py`) and the spoken
+  goodbyes (`rtcTalk.ts`), because a person may still write or speak those languages to the companion.
+- The website redirects `/ar` and `/ru` to English, as before.

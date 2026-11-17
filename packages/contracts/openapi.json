@@ -4747,9 +4747,7 @@
             "default": "en",
             "enum": [
               "en",
-              "he",
-              "ar",
-              "ru"
+              "he"
             ],
             "title": "Locale",
             "type": "string"
@@ -6900,9 +6898,7 @@
           "locale": {
             "enum": [
               "en",
-              "he",
-              "ar",
-              "ru"
+              "he"
             ],
             "title": "Locale",
             "type": "string"
@@ -6982,9 +6978,7 @@
           "locale": {
             "enum": [
               "en",
-              "he",
-              "ar",
-              "ru"
+              "he"
             ],
             "title": "Locale",
             "type": "string"
@@ -10010,9 +10004,7 @@
               {
                 "enum": [
                   "en",
-                  "he",
-                  "ar",
-                  "ru"
+                  "he"
                 ],
                 "type": "string"
               },

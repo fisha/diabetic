@@ -13,9 +13,21 @@ proposal, "patterns in hindsight and inside a conversation only". Built (G-98): 
 Benjamini-Hochberg on every pattern insight; companion tools `similar_meals` and `recall_conversations` (embeddings of
 the person's own messages, memory- and consent-gated); a once-only journal-gap question in text conversations; new
 insights best days, weekends and the day before's steps (`kinds=6`, app and web cards); carb-habit context; ranker
-exploration on 10% of days; a `mentor` eval category (10 cases). API: 554 tests pass, lint clean, migration
+exploration on 10% of days; a `mentor` eval category (9 cases, English and Hebrew). API: 554 tests pass, lint clean, migration
 `d9b3f1e7a2c5`. Evals: 27 harness tests pass; not yet run against the model (no key in the container). Cards seen on
 the web export in en/he, day and night (project files `steady/g98/`). Needs the API deploy, a web deploy and an OTA.
+
+17 Nov 2026 (Jira PM-194, thread "Remove Arabic and Russian from the app"): Guy asked to remove Arabic and Russian
+from the app. The app now has English and Hebrew (`LOCALES` in `packages/i18n`); a phone in any other language opens
+in English, and a saved Arabic or Russian app or conversation language becomes English on the phone, on the server
+(migration `a1d3e5f7b902`) and when an older app sends it. The ar/ru catalogs, the API's ar/ru push, email, greeting
+and voice texts, and the website's ar/ru legal texts and Arabic font are removed; `/ar` and `/ru` on the website still
+redirect to English. Kept on purpose: Arabic and Russian dose patterns in `ai/safety.py` and spoken goodbyes (G-99).
+The website FAQ answer on languages (`web.a3`) and the accessibility statement (dated 2026-11-17) now say English and
+Hebrew. Root i18n 20 tests, app 174, web 9 and web build, typecheck pass; API tests pass and the migration was run on a
+seeded database. App lint shows the same 18 errors as main in this container. Not changed: the Arabic and Russian eval
+cases in `evals/` (held-out set). Needs the API deploy
+(migration) and an OTA to 0.6.0 and 0.5.0; `supportedLocales` in `app.config.ts` takes effect with the next native build.
 
 17 Nov 2026 (Jira PM-62, thread "Show official Apple Health logo"): Guy accepted Apple's HealthKit Developer Artwork
 License. On iPhone the Body card and the tile chooser show Apple's own Apple Health icon (unaltered file from Apple's

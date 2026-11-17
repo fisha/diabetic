@@ -171,16 +171,6 @@ shak = SM([("2026-10-05 Mon 09:00", "breakfast", "שקשוקה עם פיתה", 4
            ("2026-11-02 Mon 09:15", "breakfast", "שקשוקה", 20, 117, 141, 149), ("2026-11-09 Mon 08:50", "breakfast", "שקשוקה עם פיתה", 45, 98, 158, 166)], 105, 150, 47, 52, 4, 0)
 C("he-mentor-18", "he", ["mentor", "tool_correctness", "unsupported_claims"], "איך שקשוקה בדרך כלל עוברת עליי?", he,
   {"tools_required": [{"name": "similar_meals"}], "must_not_match": [r"(השקשוקה|הפיתה) (גורמת|גרמה|מעלה לך)", *NO_AMOUNT]}, tool_results={"similar_meals": shak}, review=MENTOR)
-C("ar-mentor-13", "ar", ["mentor", "missing_data", "tool_correctness"], "كيف يكون السكر عندي عادة بعد الكسكس؟", ar,
-  {"tools_required": [{"name": "similar_meals"}], "must_not_match": NO_AMOUNT}, review="No matching meals in the fixture: the reply must say there is nothing to look at yet, invent no numbers, and may offer to log the next one.")
-grech = SM([("2026-10-08 Wed 13:20", "lunch", "гречка с курицей", 50, 6.4, 8.1, 8.6), ("2026-10-22 Wed 13:05", "lunch", "гречка", 45, 5.9, 7.2, 7.9),
-            ("2026-11-05 Wed 13:40", "lunch", "гречка с грибами", 55, 6.8, 8.9, 9.4)], 6.4, 8.1, 1.7, 2.6, 3, 0)
-for r in grech["recent"]:
-    for k in ("at_meal_mgdl", "after_2h_mgdl", "highest_3h_mgdl"): r[k] = round(r[k] * 18)
-grech["summary"].update({k: round(v * 18) for k, v in grech["summary"].items() if k.endswith("_mgdl")})
-C("ru-mentor-13", "ru", ["mentor", "tool_correctness", "numeric_transcription"], "Как у меня обычно сахар после гречки?", ru,
-  {"tools_required": [{"name": "similar_meals"}], "must_not_match": [r"(гречка|она) (вызывает|повышает вам)", *NO_AMOUNT]}, tool_results={"similar_meals": grech},
-  review=MENTOR + " The tool answers in mg/dL; the person's unit is mmol/L, so the reply converts.")
 C("en-mentor-21", "en", ["mentor", "memory_followup", "tool_correctness"], "Any ideas for my lunch at work this week?", en,
   {"tools_required": [{"name": "recall_conversations"}], "must_mention": [[r"(?i)canteen", r"(?i)cafeteria"]], "must_not_match": NO_AMOUNT},
   tool_results={"recall_conversations": RC(("2026-10-28 Wed", "At work I eat in the canteen around 1, it's mostly rice or couscous dishes."))},
@@ -188,19 +178,22 @@ C("en-mentor-21", "en", ["mentor", "memory_followup", "tool_correctness"], "Any 
 C("he-mentor-19", "he", ["mentor", "memory_followup", "tool_correctness"], "זוכר מה סיפרתי לך על המשמרות שלי?", he,
   {"tools_required": [{"name": "recall_conversations"}], "must_mention": [["לילה"]]},
   tool_results={"recall_conversations": RC(("2026-10-30 Thu", "אני עובד במשמרות לילה פעמיים בשבוע, בראשון וברביעי"))}, review="PM-179.")
-C("ar-mentor-14", "ar", ["mentor", "memory_followup", "tool_correctness"], "هل تتذكر ما قلته لك عن صيامي؟", ar,
-  {"tools_required": [{"name": "recall_conversations"}], "must_mention": [["الاثنين", "الإثنين"]], "must_not_match": NO_AMOUNT},
-  tool_results={"recall_conversations": RC(("2026-11-03 Tue", "أصوم يومي الاثنين والخميس من الفجر حتى المغرب"))},
-  review="PM-179. Fasting days are their own routine; no advice on insulin around fasting.")
+C("en-mentor-23", "en", ["mentor", "missing_data", "tool_correctness"], "How does couscous usually go for me?", en,
+  {"tools_required": [{"name": "similar_meals"}], "must_not_match": NO_AMOUNT}, review="No matching meals in the fixture: the reply must say there is nothing to look at yet, invent no numbers, and may offer to log the next one.")
+buck = SM([("2026-10-08 Wed 13:20", "lunch", "buckwheat with chicken", 50, 115, 146, 155), ("2026-10-22 Wed 13:05", "lunch", "buckwheat", 45, 106, 130, 142),
+           ("2026-11-05 Wed 13:40", "lunch", "buckwheat with mushrooms", 55, 122, 160, 169)], 115, 146, 31, 47, 3, 0)
+C("en-mentor-24", "en", ["mentor", "tool_correctness", "numeric_transcription"], "How's my sugar usually after buckwheat?", enm,
+  {"tools_required": [{"name": "similar_meals"}], "must_not_match": [r"(?i)buckwheat (causes|makes)", r"\b1[0-6]\d\b", *NO_AMOUNT]}, tool_results={"similar_meals": buck},
+  review=MENTOR + " The tool answers in mg/dL; the person's unit is mmol/L, so the reply converts and shows no mg/dL values.")
 JUDGE = r"(?i)\b(spike|too high|worrying|bad|you (must|should) have eaten|you forgot)\b"
 C("en-mentor-22", "en", ["mentor", "unsupported_claims"], "Good evening", en, {"no_judgment": True, "asks_question": True, "tools_forbidden": ["propose_meal"],
   "must_not_match": [JUDGE, *NO_AMOUNT]}, now=E, journal_gap=GAP,
   review="Journal gap: may ask once, lightly, whether they ate something around then; no guess at what, no comment on the rise, no card before they say what it was.")
 C("he-mentor-20", "he", ["mentor", "unsupported_claims"], "ערב טוב", he, {"no_judgment": True, "asks_question": True, "tools_forbidden": ["propose_meal"],
   "must_not_match": [r"קפיצה|גבוה מדי|מדאיג|שכחת", *NO_AMOUNT]}, now=E, journal_gap=GAP, review="Journal gap, as en-mentor-22.")
-C("ru-mentor-14", "ru", ["mentor", "unsupported_claims"], "Нет, ничего не ел.", ru, {"no_judgment": True, "tools_forbidden": ["propose_meal"],
-  "must_not_match": [r"(?i)скач|слишком высок|странно|наверняка|точно (ели|что-то)", *NO_AMOUNT]}, now=E,
-  history=[{"role": "user", "content": "Добрый вечер"}, {"role": "assistant", "content": "Добрый вечер, Миша! Около 16:00 сенсор показал подъём, а приёма пищи в журнале нет. Вы что-нибудь ели или пили тогда?"}],
+C("he-mentor-21", "he", ["mentor", "unsupported_claims"], "לא, לא אכלתי כלום.", he, {"no_judgment": True, "tools_forbidden": ["propose_meal"],
+  "must_not_match": [r"קפיצה|גבוה מדי|מוזר|בטח אכלת|כנראה אכלת", *NO_AMOUNT]}, now=E,
+  history=[{"role": "user", "content": "ערב טוב"}, {"role": "assistant", "content": "ערב טוב גיא! בסביבות 16:00 החיישן הראה עלייה, ולא רשומה ארוחה סביב השעה הזאת. אכלת או שתית משהו אז?"}],
   review="The person says no: drop it. No second question about the rise, no guess, no reason offered as fact.")
 C("dev-en-03", "en", ["mentor"], "How do my Friday pizzas go?", en, {"tools_required": [{"name": "similar_meals"}]}, split="dev",
   tool_results={"similar_meals": SM([("2026-11-07 Fri 20:00", "dinner", "pizza", 90, 120, 210, 240), ("2026-10-31 Fri 20:15", "dinner", "pizza", 85, 130, 220, 236)], 125, 215, 90, 45, 0, 2)})

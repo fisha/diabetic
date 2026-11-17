@@ -103,10 +103,10 @@ missing, and the Open column says what. **open** means it was not built.
 | Facts, hypotheses, preferences, treatment settings, tasks stored apart | done-test | G-37, memory kinds, profile, follow-ups | None |
 | Treatment settings stored as given, unknown allowed, no defaults | done-test | Profile ratios with unknown | Per-value source and update dates not re-checked against the brief |
 | No dose recommendations | done-test | `ai/safety.py`, `test_safety.py`, dose check on every reply including voice | Clinical review of the refusal text |
-| RTL for Hebrew and Arabic, LTR for English and Russian | done-test | e2e in he/ar, `packages/i18n` tests | Device run with forced RTL reload |
-| Complete localization | partial | 4 catalogues, every new string has all four | Translation review (meta `review: translation`) |
+| RTL for Hebrew, LTR for English (Arabic and Russian removed 17 Nov 2026, PM-194) | done-test | e2e in he, `packages/i18n` tests | Device run with forced RTL reload |
+| Complete localization | partial | 2 catalogues (en, he), every new string has both | Translation review (meta `review: translation`) |
 | Accessibility and reduced motion | built | Roles and labels, reduce-motion paths, contrast test in tokens | Screen reader and 200 % text on a device |
-| Multilingual voice quality | open | None | Real tries in all four languages |
+| Multilingual voice quality | open | None | Real tries in English and Hebrew |
 | One membership, monthly and annual; no sales in conversations | partial | Screens and "not set up yet" | Price, trial and billing provider (G-19) |
 | Website and web dashboard with the same account | done-test | `apps/web`, web e2e | Hosting |
 
