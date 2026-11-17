@@ -45,9 +45,10 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 
 ## Queued for the next legal version
 
-Lines Guy approved that go into the privacy policy with the next legal version (not released on their own, so they
-ride on the next re-consent). When that version is released, add them in English and Hebrew, then switch the feature
-on as noted.
+**Released 17 Nov 2026 as privacy `2026-11-17T21:30:00Z` (PM-208, Guy: "אתה יכול להוציא גרסה משפטית חדשה").** Both
+lines below are in the policy in English and Hebrew (plus a retention line for the verdicts), `quality.POLICY` names that
+version, and `STEADY_QUALITY_SAMPLE_SHARE=0.05` is set in `deploy/fly/api/fly.toml`. Nothing is queued now; add new
+approved lines here.
 
 - **Quality review of real companion replies (PM-198, PM-202; Guy 17 Nov 2026: "כן, בגרסה המשפטית הבאה").** Under
   "How the AI uses your data":

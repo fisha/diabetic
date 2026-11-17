@@ -36,6 +36,21 @@ def numbers(text: str) -> list[float]:
     return out
 
 
+def _mgdl_values(obj) -> list[float]:
+    """The numbers under keys ending in `_mgdl`, anywhere in a tool result."""
+    out: list[float] = []
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            if isinstance(v, int | float) and not isinstance(v, bool) and str(k).endswith("_mgdl"):
+                out.append(float(v))
+            else:
+                out += _mgdl_values(v)
+    elif isinstance(obj, list):
+        for v in obj:
+            out += _mgdl_values(v)
+    return out
+
+
 def context_numbers(case: Case, res: TurnResult) -> set[float]:
     """Numbers the reply may use, from authoritative inputs only: what the person said, the conversation, memories,
     the system prompt (clock and data block), tool results, and record times on the person's clock. Arguments the
@@ -59,6 +74,10 @@ def context_numbers(case: Case, res: TurnResult) -> set[float]:
         found.update(numbers(t))
     glucose = set(numbers(case.user)) | {float(m) for h in case.history if h.get("role") == "user" for m in numbers(h.get("content", ""))}
     glucose |= {float(g["value"]) for g in case.records.get("glucose", [])}
+    # Glucose values and changes a tool returned in mg/dL (`*_mgdl` keys) may be said in mmol/L (PM-207: "rose by about
+    # 1.7 mmol/L" for a 31 mg/dL change).
+    tool_mgdl = [v for c in res.state.calls for v in _mgdl_values(c["result"])]
+    found.update(round(v / MGDL_PER_MMOL, 1) for v in tool_mgdl)
     for v in glucose:
         if 1 <= v <= 35:
             found.add(round(v * MGDL_PER_MMOL))

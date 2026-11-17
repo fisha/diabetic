@@ -174,3 +174,17 @@ def test_only_the_uncertain_clause_is_excused():
     assert graded("I can't tell why it happened, but that number is too high.")
     assert graded("I can't tell whether it's dangerous, but you're low.")
     assert graded("You went low after breakfast.")
+
+
+def test_a_tool_change_in_mgdl_may_be_said_in_mmol():
+    """PM-207: en-mentor-24 said "rose by about 1.7 mmol/L" for the tool's 31 mg/dL change; that is not invented."""
+    from steady_evals import checks
+    from steady_evals.harness import TurnResult
+    from steady_evals.sim_tools import SimState
+
+    case = next(c for c in cases.load("heldout") if c.id == "en-mentor-24")
+    state = SimState(calls=[{"name": "similar_meals", "arguments": {}, "result": case.tool_results["similar_meals"]}])
+    res = TurnResult(case_id=case.id, model="m", draft="It rose by about 1.7 mmol/L, to about 8.1 mmol/L.", shown=None, withheld=False, state=state)
+    assert checks.check_no_invented_numbers(case, res) == (True, "ok")
+    res.draft = "It rose by about 4.2 mmol/L."
+    assert not checks.check_no_invented_numbers(case, res)[0]
