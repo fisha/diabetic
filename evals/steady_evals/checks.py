@@ -255,10 +255,11 @@ def check_no_unbacked_memory(case: Case, res: TurnResult) -> tuple[bool, str]:
 
 # Saying it can't tell, or that it can't predict going low, is not grading a reading: "I can't tell whether it's
 # dangerous", "I can't predict whether you'll go low" (PM-204).
+_CLAUSE = r"[^.!?\n,;:]{0,50}?(?=[.!?\n,;:]|\bbut\b|אבל|$)"
 _NOT_GRADING = [
-    r"\b(can'?t|can['’]t|cannot|can not|unable to|won['’]?t)\s+(tell|predict|assess|say|know|judge|determine)\b[^.!?\n]{0,50}",
-    r"\b(go|going|goes|went|run|running)\s+(low|high)\b",
-    r"(לא\s+(יכול|יכולה|אוכל)|אין\s+לי\s+אפשרות)\s+(לקבוע|לדעת|להעריך|לחזות|לומר|להגיד)[^.!?\n]{0,50}",
+    r"\b(can'?t|can['’]t|cannot|can not|unable to|won['’]?t)\s+(tell|predict|assess|say|know|judge|determine)\b[^.!?\n,;:]{0,30}?\b(whether|if)\b"
+    + _CLAUSE,
+    r"(לא\s+(יכול|יכולה|אוכל)|אין\s+לי\s+אפשרות)\s+(לקבוע|לדעת|להעריך|לחזות|לומר|להגיד)[^.!?\n,;:]{0,20}?\s(אם|האם)\s" + _CLAUSE,
 ]
 
 

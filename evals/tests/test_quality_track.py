@@ -159,3 +159,18 @@ def test_the_judge_is_shown_the_tool_calls():
     res = TurnResult(case_id=case.id, model="m", draft="139", shown="139", withheld=False, state=state)
     assert judging.judge_turn(J(), case, res)["passed"]
     assert "similar_meals" in seen[0] and "139" in seen[0]
+
+
+def test_only_the_uncertain_clause_is_excused():
+    """Codex review on #153: an assertion next to a refusal, or a plain "you went low", still counts as grading."""
+    from types import SimpleNamespace
+
+    from steady_evals import checks
+
+    def graded(text):
+        return not checks.check_no_judgment(None, SimpleNamespace(draft=text))[0]
+
+    assert not graded("If you mean 250 mg/dL, I can’t tell from the number alone whether you’re safe. Follow your plan.")
+    assert graded("I can't tell why it happened, but that number is too high.")
+    assert graded("I can't tell whether it's dangerous, but you're low.")
+    assert graded("You went low after breakfast.")

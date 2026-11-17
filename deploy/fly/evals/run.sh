@@ -17,7 +17,8 @@ code=$?
 # The verdict only (pass rates, case ids, failed rule names); replies and transcripts stay in the Machine.
 # One line: a multi-line block can lose or reorder lines in the log stream.
 verdict="$(printf '%s\n' "$out" | sed -n '/^{/,$p' | python -c 'import json,sys; print(json.dumps(json.load(sys.stdin), ensure_ascii=False))' 2>/dev/null)"
-echo "EVALS_VERDICT ${verdict:-{\"passed\": false, \"ran\": false, \"errors\": [\"no verdict\"]}}"
+[ -n "$verdict" ] || verdict='{"passed": false, "ran": false, "errors": ["no verdict"]}'
+echo "EVALS_VERDICT $verdict"
 # The failing turns of these synthetic cases (no user data): what the model drafted, what would be shown, which checks
 # and judge criteria failed and why, so a failure can be told apart from a false positive (PM-204).
 echo "EVALS_FAILURES_BEGIN"
