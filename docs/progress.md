@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-179, thread "Stop companion repeating answered questions"): the main-screen bubble re-asked
+a question Guy had already answered. The follow-ups were rewritten from scratch with no record of what was asked, and a
+kept question stayed after it was answered in a conversation. Now every question written is kept 21 days
+(`user_settings.openers.asked`, no migration) and given to the model as never to ask again nor its topic, a reworded
+repeat is dropped in code (`openers.same_question`), kept questions hide once the person says anything after them, and
+the text and voice prompt says never to ask about what the person already told it and gets the asked list. Asked
+questions are in the export with conversations (`companion_questions.csv`). API PR #79 merged; API 521 tests. Next:
+API deploy (no migration, no OTA needed).
+
 17 Nov 2026 (Jira PM-141, thread "Book doctor, dietitian and nurse appointments"): Guy approved phase A of
 appointment booking: Stedio gathers the information and gives the person the link or phone, for all four health funds
 (Clalit, Maccabi, Meuhedet, Leumit); no partner or fund integration for now. None of the funds has a booking API for
