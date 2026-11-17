@@ -36,7 +36,7 @@ def judge_turn(judge_provider, case: Case, res: TurnResult) -> dict:
     if not res.draft:
         return {"error": "no reply to judge"}
     try:
-        r = prod_judge.judge(judge_provider, turns(case, res), context=res.system_prompt or None)
+        r = prod_judge.judge(judge_provider, turns(case, res), context=res.system_prompt or None, tools=list(res.state.calls))
     except ProviderFailed as exc:
         return {"error": f"judge failed: {exc}"}
     return {"verdicts": r.verdicts, "reasons": r.reasons, "hard": r.hard, "passed": r.passed, "rubric": r.rubric_version}

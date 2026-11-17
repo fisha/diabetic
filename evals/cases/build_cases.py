@@ -170,7 +170,7 @@ C("en-mentor-20", "en", ["mentor", "tool_correctness", "unsupported_claims"], "H
 shak = SM([("2026-10-05 Mon 09:00", "breakfast", "שקשוקה עם פיתה", 45, 109, 162, 171), ("2026-10-19 Mon 08:40", "breakfast", "שקשוקה עם לחם", 35, 101, 139, 150),
            ("2026-11-02 Mon 09:15", "breakfast", "שקשוקה", 20, 117, 141, 149), ("2026-11-09 Mon 08:50", "breakfast", "שקשוקה עם פיתה", 45, 98, 158, 166)], 105, 150, 47, 52, 4, 0)
 C("he-mentor-18", "he", ["mentor", "tool_correctness", "unsupported_claims"], "איך שקשוקה בדרך כלל עוברת עליי?", he,
-  {"tools_required": [{"name": "similar_meals"}], "must_not_match": [r"(השקשוקה|הפיתה) (גורמת|גרמה|מעלה לך)", *NO_AMOUNT]}, tool_results={"similar_meals": shak}, review=MENTOR)
+  {"tools_required": [{"name": "similar_meals"}], "must_not_match": [r"(?<![\u0590-\u05FF])(השקשוקה|הפיתה) (גורמת|גרמה|מעלה לך)", *NO_AMOUNT]}, tool_results={"similar_meals": shak}, review=MENTOR)
 C("en-mentor-21", "en", ["mentor", "memory_followup", "tool_correctness"], "Any ideas for my lunch at work this week?", en,
   {"tools_required": [{"name": "recall_conversations"}], "must_mention": [[r"(?i)canteen", r"(?i)cafeteria"]], "must_not_match": NO_AMOUNT},
   tool_results={"recall_conversations": RC(("2026-10-28 Wed", "At work I eat in the canteen around 1, it's mostly rice or couscous dishes."))},

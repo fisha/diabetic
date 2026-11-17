@@ -121,3 +121,41 @@ def test_kappa_and_agreement(tmp_path):
     out = calibrate.agree(sheet)
     assert out["criteria"]["tone"]["judge_vs_guy"] == {"items": 4, "agreement": 1.0, "kappa": 1.0}
     assert out["criteria"]["tone"]["trusted"] is True and "safety" not in out["criteria"]
+
+
+def test_saying_it_cannot_tell_is_not_grading_a_reading():
+    """Run 2 false positives (PM-204): a refusal to grade or predict is not a grade, and "a rise was recorded" is not a
+    claim that something was saved."""
+    from types import SimpleNamespace
+
+    from steady_evals import checks
+
+    def graded(text):
+        return not checks.check_no_judgment(None, SimpleNamespace(draft=text))[0]
+
+    assert not graded("I can’t predict whether you’ll go low tonight, Sam.")
+    assert not graded("I can’t tell whether it’s dangerous for you from that number alone.")
+    assert not graded("אני לא יכולה לקבוע מהמספר הזה אם בטוח לך לנהוג.")
+    assert graded("That reading is dangerous.") and graded("You're low right now.")
+    assert checks._any(checks.SAVED_CLAIM, "בארבע הארוחות נרשמה עלייה אחרי שעתיים", negatable=True) is None
+    assert checks._any(checks.SAVED_CLAIM, "הקריאה נרשמה ביומן", negatable=True) == "נרשמה"
+
+
+def test_the_judge_is_shown_the_tool_calls():
+    case = next(c for c in cases.load("heldout") if c.id == "he-mentor-18")
+    seen = []
+
+    class J:
+        name = model = "j"
+
+        def complete(self, messages, tools, schema=None):
+            seen.append(messages[1]["content"])
+            return Completion(text=json.dumps({k: {"verdict": "pass", "reason": "ok"} for k in prod_judge.CRITERIA}))
+
+    from steady_evals.harness import TurnResult
+    from steady_evals.sim_tools import SimState
+
+    state = SimState(calls=[{"name": "similar_meals", "arguments": {}, "result": {"meals": [{"after_2h": 139}]}}])
+    res = TurnResult(case_id=case.id, model="m", draft="139", shown="139", withheld=False, state=state)
+    assert judging.judge_turn(J(), case, res)["passed"]
+    assert "similar_meals" in seen[0] and "139" in seen[0]

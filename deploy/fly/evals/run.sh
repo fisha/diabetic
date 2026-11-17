@@ -33,6 +33,8 @@ for r in rows:
     if cf or jf or "error" in j:
         out.append({"case": r["case"], "repeat": r["repeat"], "checks": cf, "judge": jf, "judge_error": j.get("error"),
                     "second_look": r.get("second_look"), "withheld": r.get("withheld"),
+                    "tools": [{"name": c.get("name"), "status": (c.get("result") or {}).get("status") if isinstance(c.get("result"), dict) else None}
+                              for c in r.get("tool_calls") or []],
                     "first_draft": (r.get("first_draft") or "")[:600] or None, "draft": (r.get("draft") or "")[:600]})
 for o in out:
     print(json.dumps(o, ensure_ascii=False))
