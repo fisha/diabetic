@@ -430,8 +430,8 @@ export interface paths {
         /**
          * Accept
          * @description The person read and agreed to these versions. Refused as a whole when any of them is no longer the one in force,
-         *     so a record always names the text the person saw. Recorded once per version (append-only history); to stop, the
-         *     account is deleted.
+         *     so a record always names the text the person saw. Recorded once per version (append-only history). The AI consent
+         *     can be withdrawn with `POST /consent/ai/off` and given again here; the others end by deleting the account.
          */
         post: operations["accept_consent_accept_post"];
         delete?: never;
@@ -456,6 +456,29 @@ export interface paths {
          *     text, this does not open the AI engine, and the person is asked again by a newer app (`/consent/accept`).
          */
         post: operations["give_ai_consent_consent_ai_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/consent/ai/off": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Turn Ai Off
+         * @description The person turned the AI features off in Settings > Privacy (PM-177): a withdrawal record, so from now on nothing
+         *     about them is sent to the external AI engine (every AI route and the background readings check `ai_consent`), and
+         *     the AI consent is not asked for again. Turning it on again is `POST /consent/accept` with the current AI version.
+         *     What the AI engine already wrote (conversations, insight readings) stays until the person deletes it.
+         */
+        post: operations["turn_ai_off_consent_ai_off_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2450,6 +2473,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/voice/live/rtc/glucose": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Glucose
+         * @description What the call should know about glucose now, polled by the phone during a call; marks a check-in as raised.
+         */
+        post: operations["glucose_voice_live_rtc_glucose_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/voice/live/rtc/said": {
         parameters: {
             query?: never;
@@ -4434,6 +4477,15 @@ export interface components {
              */
             unit: "mgdl" | "mmol";
             words: components["schemas"]["WordsIn"];
+        };
+        /** LiveGlucoseOut */
+        LiveGlucoseOut: {
+            /** Note */
+            note?: string | null;
+            /** Reading At */
+            reading_at?: string | null;
+            /** Say */
+            say?: string | null;
         };
         /** Me */
         Me: {
@@ -6931,6 +6983,39 @@ export interface operations {
         };
     };
     give_ai_consent_consent_ai_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AiConsentIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConsentOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    turn_ai_off_consent_ai_off_post: {
         parameters: {
             query?: never;
             header?: never;
@@ -11078,7 +11163,9 @@ export interface operations {
     };
     status_voice_get: {
         parameters: {
-            query?: never;
+            query?: {
+                lang?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -11092,6 +11179,15 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["VoiceStatusOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
@@ -11125,6 +11221,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    glucose_voice_live_rtc_glucose_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LiveGlucoseOut"];
                 };
             };
         };

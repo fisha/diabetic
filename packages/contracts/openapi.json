@@ -5293,6 +5293,45 @@
         "title": "LiveActivityIn",
         "type": "object"
       },
+      "LiveGlucoseOut": {
+        "properties": {
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "reading_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reading At"
+          },
+          "say": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Say"
+          }
+        },
+        "title": "LiveGlucoseOut",
+        "type": "object"
+      },
       "Me": {
         "properties": {
           "approved": {
@@ -11102,7 +11141,7 @@
     },
     "/consent/accept": {
       "post": {
-        "description": "The person read and agreed to these versions. Refused as a whole when any of them is no longer the one in force,\nso a record always names the text the person saw. Recorded once per version (append-only history); to stop, the\naccount is deleted.",
+        "description": "The person read and agreed to these versions. Refused as a whole when any of them is no longer the one in force,\nso a record always names the text the person saw. Recorded once per version (append-only history). The AI consent\ncan be withdrawn with `POST /consent/ai/off` and given again here; the others end by deleting the account.",
         "operationId": "accept_consent_accept_post",
         "requestBody": {
           "content": {
@@ -11192,6 +11231,53 @@
           }
         ],
         "summary": "Give Ai Consent",
+        "tags": [
+          "profile"
+        ]
+      }
+    },
+    "/consent/ai/off": {
+      "post": {
+        "description": "The person turned the AI features off in Settings > Privacy (PM-177): a withdrawal record, so from now on nothing\nabout them is sent to the external AI engine (every AI route and the background readings check `ai_consent`), and\nthe AI consent is not asked for again. Turning it on again is `POST /consent/accept` with the current AI version.\nWhat the AI engine already wrote (conversations, insight readings) stays until the person deletes it.",
+        "operationId": "turn_ai_off_consent_ai_off_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AiConsentIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Turn Ai Off",
         "tags": [
           "profile"
         ]
@@ -17206,6 +17292,25 @@
       "get": {
         "description": "Whether a voice provider is configured, so the app can show the unavailable state before anyone talks. The\nvoice screen asks this when it opens, so the slow part of the companion's context is built now, ahead of a call.",
         "operationId": "status_voice_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "lang",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "pattern": "^(en|he|ar|ru)$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Lang"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -17216,6 +17321,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "security": [
@@ -17271,6 +17386,33 @@
           }
         ],
         "summary": "Check",
+        "tags": [
+          "voice"
+        ]
+      }
+    },
+    "/voice/live/rtc/glucose": {
+      "post": {
+        "description": "What the call should know about glucose now, polled by the phone during a call; marks a check-in as raised.",
+        "operationId": "glucose_voice_live_rtc_glucose_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LiveGlucoseOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Glucose",
         "tags": [
           "voice"
         ]
