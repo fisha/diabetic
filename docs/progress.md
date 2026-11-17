@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-172, thread "Show daily protein in Full days"): Guy asked for grams of protein per day in the
+Overview "Full days" sheet, and for each day row to open more about that day's protein, carbs and insulin. Built (app
+only, no API change): rows read "N meals · X g carbs · Y g protein" ("≥ Y g" when some meals have no protein value);
+a day with meals opens `/breakdown/day?day=` with carbs, protein and recorded insulin totals, meals by part of the day
+(time, carbs, protein) and the insulin entries. Nothing graded or advised. pnpm check passes (app 165), e2e
+`tools/e2e/full-days.cjs` all PASS (en light, he light, he dark). Next: OTA to testers.
+
 16 Nov 2026 (Jira PM-171, thread "Capture every pump and sensor event"): Guy was in Sport mode on the pump and the app
 did not show it; every reading and insulin dose during the mode should carry a "Sport mode" badge, and everything the
 device sources expose should come in and be shown. Inspection of Guy's real CareLink data (names and enums only): a

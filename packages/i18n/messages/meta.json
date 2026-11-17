@@ -574,6 +574,69 @@
     ],
     "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
   },
+  "bk.day_sum_p": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Full days sheet row with the day's protein; protein may read '≥ X g' when some meals lack it (Guy, 17 Nov 2026)."
+  },
+  "bk.d_carbs": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Day detail opened from a Full days row (Guy, 17 Nov 2026)."
+  },
+  "bk.d_protein": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Day detail opened from a Full days row (Guy, 17 Nov 2026)."
+  },
+  "bk.d_insulin": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Day detail opened from a Full days row (Guy, 17 Nov 2026)."
+  },
+  "bk.d_meals": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Day detail opened from a Full days row (Guy, 17 Nov 2026)."
+  },
+  "bk.d_ins_sum": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Day detail opened from a Full days row (Guy, 17 Nov 2026)."
+  },
+  "bk.meal_cp": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Day detail opened from a Full days row (Guy, 17 Nov 2026)."
+  },
+  "bk.meal_c": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Day detail opened from a Full days row (Guy, 17 Nov 2026)."
+  },
+  "bk.d_note": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Day detail opened from a Full days row (Guy, 17 Nov 2026)."
+  },
   "bk.del_failed": {
     "board": "Overview",
     "review": [
