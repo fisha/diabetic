@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-214, thread "Upgrade the visit report"): Guy asked for a much richer visit report. The PDF is
+redesigned (logo band, the person's name, the visit day and everyone it is with, KPI tiles, ranges bar, AGP, daily
+in-range bars, carbs and insulin bars, an optional Apple Health page with steps and sleep, and a log where meal,
+insulin and reading share one row like the journal, with optional small meal photos that link to full-size copies).
+A visit can be with several people; questions are ticked (suggested and the person's own). Earlier visits, the
+person's own summary and the PDFs made are kept on the phone only, sealed (Guy chose "only on the phone"; no privacy
+policy change). No migration. API tests 605 passed; `pnpm check` passes; new web e2e `tools/e2e/visit-report.cjs`
+24/24 (en light, he light, he dark). Next: deploy the API, OTA to testers (0.6.0 and 0.5.0), Guy checks on his phone.
+
 17 Nov 2026 (Jira PM-212, thread "Show every selected Body today tile"): Guy had all 8 "Body today" tiles switched on
 but the card showed 4 ("כולם מסומנים אבל לא כולם מוצגים"). The card dropped a chosen tile with no data today, and at
 00:38 the new day has no night, resting heart rate or exercise yet (not a sync failure). Now every chosen tile shows;

@@ -1780,3 +1780,15 @@ Not in the design; Guy asked for it. When the person describes symptoms of a low
 NZ 111, otherwise 112), never from the model. The reply may give the general 15 g / 15 minutes rule as general
 information, with the care plan first; legal review is open (PM-206). The live voice path does not show the button yet.
 
+### G-102 · Visit report upgrade and visits kept on the phone (**PM-214, Guy 17 Nov 2026**, verified-test)
+
+Not in the design; Guy asked for it. The report form gains the person's name, ticked questions (suggested from the
+visit preparation and the person's own), and switches for meal photos and an Apple Health summary. "Visit with" takes
+several people. Under the form, "My visits" lists the saved visit and earlier ones; a visit opens to its reports (view,
+share, delete) and a box for the person's own summary. Guy chose to keep these only on the phone (17 Nov): sealed in
+the protected store, deleted with the account, not in the server export. Open states:
+- A report is kept with a visit only when there is a saved visit that has not passed and the screen stays open until
+  the report is ready.
+- In the web preview visits are kept in memory only and the PDF is not stored (the server copy lasts 7 days).
+- A new phone or reinstall starts with no earlier visits (no backup by design).
+
