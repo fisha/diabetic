@@ -113,8 +113,10 @@ and the background readings already check the consent), `ai_off` in `GET /consen
 `pending` while off, profile saves never turn it on again; the companion prompt has no ketone number and defers to the
 person's care plan. App: the Privacy switch, AI-off states on the companion, meal photo and description, and insight
 reading; "Continue without AI features" on the consent screen (G-94). API PR #80 (520 tests), app PR #102 (169 tests),
-e2e `tools/e2e/ai-off.cjs` 31/31 (en light, he light, he dark). Policy text (4 languages, version 2026-11-18) is web
-PR #26, to merge with the API version bump on 18 Nov. Next: deploy API, OTA to testers.
+e2e `tools/e2e/ai-off.cjs` 31/31 (en light, he light, he dark). Guy chose to release the policy tonight instead of
+18 Nov: web #26 (AI switch) and #33 (carries #27 background texts and #31 recall; English and Hebrew only after PM-194)
+and API #89 set privacy version `2026-11-17T18:00:00Z` (second version of the day; it shows 17 November). API suite
+557 passed. Next: joint deploy of stedio-api and stedio-web; everyone gets the read-and-accept screen once.
 
 17 Nov 2026 (Jira PM-144, thread "Close open items from background agent"): Guy approved closing the PM-139 open
 items. The insight reading prompt (`interpret.py`) no longer names 250 mg/dL; for very high readings it defers to the
