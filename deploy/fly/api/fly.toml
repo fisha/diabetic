@@ -25,6 +25,9 @@ swap_size_mb = 512
   STEADY_CORS_ORIGINS = '["https://stedio-web.fly.dev","http://localhost:8081","http://localhost:3000"]'
   STEADY_APNS_BUNDLE_ID = 'com.fisha.steady.dev'
   STEADY_APNS_TEAM_ID = 'S6L7799Q36'
+  # Share of eligible companion replies the quality review samples (PM-198; only people with the consent to improve
+  # models who accepted privacy 2026-11-17T21:30:00Z). The judge model defaults to STEADY_OPENAI_MODEL.
+  STEADY_QUALITY_SAMPLE_SHARE = '0.05'
   # Every other setting is a Fly secret, filled from services/api/.env by scripts/fly/stedio-fly secrets
   # (STEADY_DATABASE_URL points at stedio-db.internal).
 
