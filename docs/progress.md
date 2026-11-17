@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-211, thread "Show the text field above the keyboard in chat"): Guy's screenshot showed the
+keyboard covering the companion's message box. The library `KeyboardAvoidingView` took the view's position inside its
+parent as its place on the window, so inside a sheet the padding came up short by the sheet's offset. New
+`KeyboardAvoider` (app #116) measures the real window position (`viewPositionInWindow`, already in build 16) on layout
+and when the keyboard starts to open, pads by the true overlap and scrolls to the latest message; used by the companion
+conversation, `AboutChat` and the quick-log sheets. JS only. `pnpm check` passes; web export builds. Not yet seen on a
+phone: next is the testers OTA (0.6.0 and 0.5.0) and Guy's check on iPhone.
+
 17 Nov 2026 (Jira PM-207, PM-208, PM-209, thread "Strengthen ML for diabetes mentor"): Guy approved releasing the
 next legal version now and fixing the eval weaknesses ("אתה יכול להוציא גרסה משפטית חדשה. לגבי החולשות - תקן אותן
 עכשיו"). Privacy version `2026-11-17T21:30:00Z` adds the real-conversation quality review and the group priors lines
