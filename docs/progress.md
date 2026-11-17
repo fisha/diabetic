@@ -8,6 +8,19 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-182, PM-183, PM-184, thread "Build daily summary, pattern and visit-prep agents"): Guy approved
+three more background agents on the PM-139 LangGraph infrastructure. Built: `agents/notes.py` (one graph, read-only
+tools limited to the run's window, code checks: evidence, no cause, no dose or treatment, no escalation or "safe /
+dangerous", visit questions never about treatment) and `agents/prepare.py` (daily summary of yesterday from 06:00 local,
+weekly comparison of the 4 complete weeks before, visit preparation from 3 days before a visit saved on the clinic report
+screen). Only for people active in the last 7 days, with data in the window, the AI consent and the privacy policy
+version 2026-11-18 (web PR #27 rides on the PM-177 bump; until it is accepted nothing is prepared). Notes kept 35 days in
+`agent_notes` (migration `b7e2c4a9d351`), in the export (`prepared_notes.csv`, `saved_visit.csv`). App: "In words" card
+in the summary (G-97) and "Next visit" on the clinic report. API 549 tests (1 pre-existing date-dependent failure in
+`test_tracking.py`, also on main), app 173, e2e `tools/e2e/agents.cjs` 22/22 (en light, he light, he dark, AI off).
+Dates on these screens are digits without the year (Guy 17 Nov: dd.mm, mm.dd in English; api#85). Guy approved the
+screens 17 Nov; app #107 merged. Next: deploy API (migration), OTA.
+
 17 Nov 2026 (Jira PM-186, thread "Return to main screen after meal entry"): Guy: the "back to conversation" button
 after logging a meal should go to the main screen. The Meal saved button is now "Back to main screen" (4 languages,
 `meal.back_conv`) and opens the companion's voice view via `/companion?home=1` instead of the text conversation (app

@@ -108,3 +108,7 @@ export type FoodDayOut = S['FoodDayOut'];
 export type SimilarOut = S['SimilarOut'];
 export type WorkoutOut = S['WorkoutOut'];
 export type GoalsIn = S['GoalsIn'];
+// Preparing agents (PM-182..184): what they wrote, and the visit the person saved.
+export type NoteOut = S['NoteOut'];
+export type VisitIn = S['VisitIn'];
+export type VisitOut = S['VisitOut'];

@@ -17902,5 +17902,159 @@
       "translation"
     ],
     "note": "AI features switch (PM-177, Guy 17 Nov 2026)."
+  },
+  "note.day_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "note.day_other_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "note.week_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "note.visit_t": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "note.questions": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "note.add_q": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "note.added": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.date": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.with": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.w_diabetes_doctor": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.w_family_doctor": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.w_dietitian": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.w_nurse": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.save": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.saved": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.preparing": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.remove": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.change": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.ai_off": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "visit.fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
   }
 }
