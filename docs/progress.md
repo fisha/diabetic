@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-182, PM-183, PM-184, thread "Build daily summary, pattern and visit-prep agents"): Guy approved
+three more background agents on the PM-139 LangGraph infrastructure. Built: `agents/notes.py` (one graph, read-only
+tools limited to the run's window, code checks: evidence, no cause, no dose or treatment, no escalation or "safe /
+dangerous", visit questions never about treatment) and `agents/prepare.py` (daily summary of yesterday from 06:00 local,
+weekly comparison of the 4 complete weeks before, visit preparation from 3 days before a visit saved on the clinic report
+screen). Only for people active in the last 7 days, with data in the window, the AI consent and the privacy policy
+version 2026-11-18 (web PR #27 rides on the PM-177 bump; until it is accepted nothing is prepared). Notes kept 35 days in
+`agent_notes` (migration `b7e2c4a9d351`), in the export (`prepared_notes.csv`, `saved_visit.csv`). App: "In words" card
+in the summary (G-96) and "Next visit" on the clinic report. API 549 tests (1 pre-existing date-dependent failure in
+`test_tracking.py`, also on main), app 173, e2e `tools/e2e/agents.cjs` 22/22 (en light, he light, he dark, AI off).
+Next: Guy's review of the screenshots, deploy API (migration) after the 18 Nov policy bump, OTA.
+
 17 Nov 2026 (Jira PM-179, thread "Stop companion repeating answered questions"): the main-screen bubble re-asked
 a question Guy had already answered. The follow-ups were rewritten from scratch with no record of what was asked, and a
 kept question stayed after it was answered in a conversation. Now every question written is kept 21 days

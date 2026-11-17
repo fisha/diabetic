@@ -5208,6 +5208,27 @@
         "title": "LearningOut",
         "type": "object"
       },
+      "Line": {
+        "properties": {
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Evidence",
+            "type": "array"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "evidence"
+        ],
+        "title": "Line",
+        "type": "object"
+      },
       "LinesOut": {
         "description": "The app's lines the phone hands the model, kept here with the rest of the companion's words.",
         "properties": {
@@ -6137,6 +6158,68 @@
           }
         },
         "title": "NoteData",
+        "type": "object"
+      },
+      "NoteOut": {
+        "properties": {
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "facts": {
+            "items": {
+              "$ref": "#/components/schemas/Line"
+            },
+            "title": "Facts",
+            "type": "array"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "locale": {
+            "title": "Locale",
+            "type": "string"
+          },
+          "missing": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing",
+            "type": "array"
+          },
+          "questions": {
+            "items": {
+              "$ref": "#/components/schemas/Line"
+            },
+            "title": "Questions",
+            "type": "array"
+          },
+          "seen": {
+            "title": "Seen",
+            "type": "boolean"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "subject",
+          "locale",
+          "facts",
+          "questions",
+          "missing",
+          "created_at",
+          "seen"
+        ],
+        "title": "NoteOut",
         "type": "object"
       },
       "NudgesIn": {
@@ -9587,6 +9670,55 @@
           "accepted_at"
         ],
         "title": "ViewingOut",
+        "type": "object"
+      },
+      "VisitIn": {
+        "additionalProperties": false,
+        "properties": {
+          "date": {
+            "format": "date",
+            "title": "Date",
+            "type": "string"
+          },
+          "with": {
+            "enum": [
+              "diabetes_doctor",
+              "family_doctor",
+              "dietitian",
+              "nurse"
+            ],
+            "title": "With",
+            "type": "string"
+          }
+        },
+        "required": [
+          "date",
+          "with"
+        ],
+        "title": "VisitIn",
+        "type": "object"
+      },
+      "VisitOut": {
+        "properties": {
+          "date": {
+            "title": "Date",
+            "type": "string"
+          },
+          "prepares_from": {
+            "title": "Prepares From",
+            "type": "string"
+          },
+          "with": {
+            "title": "With",
+            "type": "string"
+          }
+        },
+        "required": [
+          "date",
+          "with",
+          "prepares_from"
+        ],
+        "title": "VisitOut",
         "type": "object"
       },
       "VoiceStatusOut": {
@@ -15952,6 +16084,123 @@
         ]
       }
     },
+    "/notes/{kind}": {
+      "get": {
+        "description": "The note for a subject (a local date, a week's Monday, a visit date), or the latest of that kind. None when none.",
+        "operationId": "get_note_notes__kind__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "kind",
+            "required": true,
+            "schema": {
+              "enum": [
+                "daily_summary",
+                "pattern_watch",
+                "visit_prep"
+              ],
+              "title": "Kind",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "subject",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Subject"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/NoteOut"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Response Get Note Notes  Kind  Get"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Note",
+        "tags": [
+          "notes"
+        ]
+      }
+    },
+    "/notes/{note_id}/seen": {
+      "post": {
+        "operationId": "note_seen_notes__note_id__seen_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "note_id",
+            "required": true,
+            "schema": {
+              "title": "Note Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Note Seen",
+        "tags": [
+          "notes"
+        ]
+      }
+    },
     "/nutrition/days/{day}": {
       "put": {
         "description": "The person says the day's meals are all logged (or not). Only today and earlier.",
@@ -17285,6 +17534,101 @@
         "summary": "Change Scopes",
         "tags": [
           "sharing"
+        ]
+      }
+    },
+    "/visit": {
+      "delete": {
+        "operationId": "delete_visit_visit_delete",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete Visit",
+        "tags": [
+          "notes"
+        ]
+      },
+      "get": {
+        "operationId": "get_visit_visit_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/VisitOut"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Response Get Visit Visit Get"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Visit",
+        "tags": [
+          "notes"
+        ]
+      },
+      "put": {
+        "operationId": "put_visit_visit_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisitIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VisitOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Put Visit",
+        "tags": [
+          "notes"
         ]
       }
     },

@@ -1667,3 +1667,21 @@ by the first screen's real steps (session, profile draft, latest reading, conver
 loader fades out as soon as they are done, or after 3 s at most. Any first screen other than the companion ends it at
 once. Reduced motion: static, no fade. Not shown when the app comes back from the background.
 
+
+### G-96 · Prepared notes: yesterday in words, last weeks compared, next visit (**PM-182..184, Guy 17 Nov 2026**, verified-test)
+
+Guy (17 Nov 2026) approved three background agents ("כן את שלושתם"): a daily summary, patterns over time and preparing
+for a doctor visit. No board covers their output. Built in the style of the insight reading (G-62), only on existing
+screens, with no push:
+
+- OVR-05 summary: a card under the time-in-range card. Today's (and the 24 h) summary shows "Yesterday in words"
+  (written each morning from 06:00 local); an earlier day shows "This day in words"; week, 2 weeks and month show "Your
+  last weeks compared" (written once a week over the 4 complete weeks before). Facts, what is missing, and the AI note.
+- Clinic report (G-89): a "Next visit" card above the form: a date (today to a year ahead) and who it is with (diabetes
+  doctor, family doctor, dietitian, diabetes nurse). Saved: "Visit on {date}. Your preparation will be here from {date}"
+  with Change and Remove. From 3 days before, "Before your visit": facts over the last 30 days, questions the person may
+  want to ask (never about treatment), what is missing, and "Add to my questions", which appends them to the report's
+  questions field for editing. Nothing is booked or sent.
+- Hidden while viewing someone else's data; with the AI features off (G-94) nothing is shown and the visit card says why.
+
+Awaiting Guy's review of the screenshots (project files `steady/agents/`).

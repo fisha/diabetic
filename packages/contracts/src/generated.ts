@@ -2017,6 +2017,43 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/notes/{kind}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Note
+         * @description The note for a subject (a local date, a week's Monday, a visit date), or the latest of that kind. None when none.
+         */
+        get: operations["get_note_notes__kind__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/notes/{note_id}/seen": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Note Seen */
+        post: operations["note_seen_notes__note_id__seen_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/nutrition/days/{day}": {
         parameters: {
             query?: never;
@@ -2430,6 +2467,25 @@ export interface paths {
          * @description The owner changes what one person sees, an invite or an accepted share. Takes effect on the next request.
          */
         patch: operations["change_scopes_sharing__share_id__patch"];
+        trace?: never;
+    };
+    "/visit": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Visit */
+        get: operations["get_visit_visit_get"];
+        /** Put Visit */
+        put: operations["put_visit_visit_put"];
+        post?: never;
+        /** Delete Visit */
+        delete: operations["delete_visit_visit_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/voice": {
@@ -4428,6 +4484,13 @@ export interface components {
             /** Stage */
             stage: string;
         };
+        /** Line */
+        Line: {
+            /** Evidence */
+            evidence: string[];
+            /** Text */
+            text: string;
+        };
         /**
          * LinesOut
          * @description The app's lines the phone hands the model, kept here with the rest of the companion's words.
@@ -4803,6 +4866,27 @@ export interface components {
              * @default
              */
             text: string;
+        };
+        /** NoteOut */
+        NoteOut: {
+            /** Created At */
+            created_at: string;
+            /** Facts */
+            facts: components["schemas"]["Line"][];
+            /** Id */
+            id: string;
+            /** Kind */
+            kind: string;
+            /** Locale */
+            locale: string;
+            /** Missing */
+            missing: string[];
+            /** Questions */
+            questions: components["schemas"]["Line"][];
+            /** Seen */
+            seen: boolean;
+            /** Subject */
+            subject: string;
         };
         /** NudgesIn */
         NudgesIn: {
@@ -5962,6 +6046,28 @@ export interface components {
              *     ]
              */
             scopes: string[];
+        };
+        /** VisitIn */
+        VisitIn: {
+            /**
+             * Date
+             * Format: date
+             */
+            date: string;
+            /**
+             * With
+             * @enum {string}
+             */
+            with: "diabetes_doctor" | "family_doctor" | "dietitian" | "nurse";
+        };
+        /** VisitOut */
+        VisitOut: {
+            /** Date */
+            date: string;
+            /** Prepares From */
+            prepares_from: string;
+            /** With */
+            with: string;
         };
         /** VoiceStatusOut */
         VoiceStatusOut: {
@@ -10295,6 +10401,68 @@ export interface operations {
             };
         };
     };
+    get_note_notes__kind__get: {
+        parameters: {
+            query?: {
+                subject?: string | null;
+            };
+            header?: never;
+            path: {
+                kind: "daily_summary" | "pattern_watch" | "visit_prep";
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NoteOut"] | null;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    note_seen_notes__note_id__seen_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                note_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     mark_day_nutrition_days__day__put: {
         parameters: {
             query?: never;
@@ -11158,6 +11326,77 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
                 };
+            };
+        };
+    };
+    get_visit_visit_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VisitOut"] | null;
+                };
+            };
+        };
+    };
+    put_visit_visit_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VisitIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VisitOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_visit_visit_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
