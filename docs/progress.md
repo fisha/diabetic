@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-207, PM-208, PM-209, thread "Strengthen ML for diabetes mentor"): Guy approved releasing the
+next legal version now and fixing the eval weaknesses ("אתה יכול להוציא גרסה משפטית חדשה. לגבי החולשות - תקן אותן
+עכשיו"). Privacy version `2026-11-17T21:30:00Z` adds the real-conversation quality review and the group priors lines
+(en/he, api `legal.CURRENT`, web `LEGAL_UPDATED`), with a forced re-accept. `quality.POLICY` is set to that version, so
+sampled replies are reviewed only for people who allow model improvement, allow AI and accepted it
+(`STEADY_QUALITY_SAMPLE_SHARE=0.05`). en-mentor-21 (recall before giving routine ideas, PM-207) and en-mentor-24
+(no invented numbers, PM-208) pass on Fly. Live API v54, web v37 (root fe3ac6a). PM-209 (web #35): Hebrew speakers'
+re-consent link `/he/privacy` redirected to English because the site is English only; now `/he/privacy`, `/he/terms`
+and `/he/accessibility` show the Hebrew text, and every other `/he` page still redirects. Next: web deploy of #35.
+
 17 Nov 2026 (Jira PM-203, same thread): Guy asked to run the hard-case set on Fly.io. `scripts/fly/stedio-fly evals`
 builds an evals image (companion code plus synthetic cases) and runs it as a one-off Machine in stedio-api with the
 app's own key, saves the verdict on the Mac and removes the Machine; `deploy-api` runs it first when the companion
