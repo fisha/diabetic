@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-212, thread "Show every selected Body today tile"): Guy had all 8 "Body today" tiles switched on
+but the card showed 4 ("כולם מסומנים אבל לא כולם מוצגים"). The card dropped a chosen tile with no data today, and at
+00:38 the new day has no night, resting heart rate or exercise yet (not a sync failure). Now every chosen tile shows;
+an empty one shows "—" and "No data today" and still opens its breakdown. JS only. `pnpm check` passes; new web e2e
+`tools/e2e/body-tiles-all.cjs` passes its tile checks (the old build shows 4 of 8). Next: OTA to testers for 0.6.0
+and 0.5.0, then Guy checks on his phone.
+
 17 Nov 2026 (Jira PM-211, thread "Show the text field above the keyboard in chat"): Guy's screenshot showed the
 keyboard covering the companion's message box. The library `KeyboardAvoidingView` took the view's position inside its
 parent as its place on the window, so inside a sheet the padding came up short by the sheet's offset. New

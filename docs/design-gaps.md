@@ -1460,8 +1460,11 @@ his request.
   run, average heart rate, resting heart rate, sleep, times awake, and two new ones, exercise minutes and active
   energy). Saved as it changes, no save button. A tile with nothing from the health app today says "No data today".
 - Kept on the server (`PATCH /settings` `body_tiles`, stored in `user_settings.routine_state`, no migration), so it
-  follows the person between phones. Until changed: the six tiles the card had before. A chosen tile with no data
-  today is left out of the card; nothing chosen shows a one-line note under the header.
+  follows the person between phones. Until changed: the six tiles the card had before. Every chosen tile shows (Guy,
+  17 Nov 2026, PM-212: "כולם מסומנים אבל לא כולם מוצגים"); one with no data today shows "—" and "No data today" (the
+  chooser's words) and still opens its breakdown. Right after midnight that is usual for sleep, times awake, resting
+  heart rate and exercise. The card stays hidden only when the health app gave nothing today; nothing chosen shows a
+  one-line note under the header.
 - Exercise minutes and active energy come from the health app (one source a day, never added across sources, usual =
   median of the 14 days before with at least 5 days), with the same breakdown sheet as steps.
 - Apple Health icon: Apple's HealthKit guidelines allow only Apple's own icon, unaltered, with the name "Apple Health"
