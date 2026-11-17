@@ -118,8 +118,12 @@ The API, the research tool and the outcome windows all use the same functions.
 - Insights about time below range and about pump suspensions always stay first.
 - `STEADY_RANKER_MODE`:
   - `shadow` (the default): the rules order is served, and the current model's order is logged beside it.
-  - `active`: the model's order is served only to the emails in `STEADY_RANKER_TESTERS`, only if the model passed
-    its gate, and only if the person has at least `STEADY_RANKER_MIN_USER_DAYS` (5) days of listings.
+  - `active`: the model's order is served only to the emails in `STEADY_RANKER_TESTERS` (`*` means every account;
+    Guy, 17 Nov 2026, while only testers use the app), only if the model passed its gate, and only if the person has
+    at least `STEADY_RANKER_MIN_USER_DAYS` (5) days of listings.
+  - Auto-promotion: in shadow, a scheduled model that passes its gate becomes current. In active (17 Nov 2026) it
+    must also rank its own held-out rows (unseen people, later period) better by NDCG@3 than the current model does
+    on the same rows; otherwise it stays a candidate for `steady_ml.registry promote`.
   - `off`.
 - `ranking.reason` says why the rules order was served: `no_model`, `model_invalid`, `feature_mismatch`,
   `insufficient_user_data`, `not_a_tester`, `shadow`, `mode_off` or `model_error`.
