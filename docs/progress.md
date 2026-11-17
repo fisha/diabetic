@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (thread "Fix speech bubble tail over character"): Guy's screenshot showed the main-screen bubble's tail
+detached at the bubble's side in Hebrew. The tail was placed with `left: 50%` and a negative margin; it now sits in a
+full-width row pinned to both sides of the bubble, so it is centred in RTL and LTR (app JS only, OpenerBubbles.tsx).
+App PR #106 merged; typecheck, 173 tests and lint pass. Not yet seen on a phone. Next: OTA.
+
 17 Nov 2026 (Jira PM-181, thread "Highlight the active tab in the footer"): Guy: "the relevant tab should be
 highlighted so a user can tell where he is at". Before, the active tab only changed colour and the companion orb only
 its opacity. Now (G-96, app JS only): a soft accent capsule behind the active icon with a heavier line and bold label,
