@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-203, same thread): Guy asked to run the hard-case set on Fly.io. `scripts/fly/stedio-fly evals`
+builds an evals image (companion code plus synthetic cases) and runs it as a one-off Machine in stedio-api with the
+app's own key, saves the verdict on the Mac and removes the Machine; `deploy-api` runs it first when the companion
+changed since the last passing run. Image built and run in the container with Docker (no network: exit 2, "did not
+run", as intended); evals 32 tests pass. Not yet run on Fly.
+
 17 Nov 2026 (Jira PM-197..201, thread "Strengthen ML for diabetes mentor"): Guy approved the ML consultant plan,
 items 2 and 5 first, then 1, 3 and 4 (G-100, `docs/ml-ranker.md` 4 and 5a). Built: logged place probabilities with a
 shuffle on 10% of days, SNIPS and Doubly Robust off-policy evaluation with people-bootstrap intervals, and a shadow step

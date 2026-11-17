@@ -19,3 +19,4 @@ __pycache__/
 
 # Next.js generates this file
 next-env.d.ts
+evals/reports/fly/

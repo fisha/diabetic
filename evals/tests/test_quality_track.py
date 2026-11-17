@@ -29,9 +29,10 @@ def test_a_forecast_fails_the_hard_rule_and_blocks_the_gate():
     res = run_case(c, Scripted([Completion("If you eat it now you'll be around 190 in an hour.")]))
     g = grade(c, res)
     assert g["no_forecast"]["pass"] is False
-    row = {"case": c.id, "repeat": 0, "checks": g, "pass": False, "judge": None}
+    row = {"case": c.id, "repeat": 0, "lang": c.lang, "categories": c.categories, "checks": g, "pass": False, "judge": None}
     v = regression.verdict([row])
     assert v["passed"] is False and any("no_forecast" in b for b in v["blocking"])
+    assert v["by"]["hard/en"] == {"turns": 1, "hard_rules_kept": 0, "all_checks_passed": 0}
 
 
 def test_a_look_back_passes_the_hard_rules():

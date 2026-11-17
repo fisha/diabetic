@@ -70,6 +70,27 @@ scripts/fly/stedio-fly deploy-research   # deploy, then checks health and the no
 
 After adding the Google settings to `.env`, run both again.
 
+## Companion regression set on Fly (PM-203, Guy 17 Nov 2026)
+
+`scripts/fly/stedio-fly evals [--repeat N] [--model M]` runs the companion's regression set (PM-198,
+`evals/steady_evals/regression.py`, hard rules plus the judge, 3 repeats) on Fly, so no key is needed on a laptop.
+
+- **Image**: `deploy/fly/evals/Dockerfile` (context: repository root, `Dockerfile.dockerignore` lets in only
+  `services/api/steady_api`, its lock file and `evals/`). Pushed to the stedio-api registry as
+  `evals-<api sha>-<root sha>`; nothing is deployed.
+- **Run**: a one-off Machine in stedio-api (no services, no restart, label `stedio_role=evals`), so it gets the app's own
+  `STEADY_OPENAI_API_KEY` and `STEADY_OPENAI_MODEL`. The key stays in the Machine's environment: it is never printed,
+  logged or written. Synthetic held-out cases only; the run never opens the database. The script waits (up to 90
+  minutes), reads the verdict from the Machine's log, saves it to `evals/reports/fly/` (git-ignored) and destroys the
+  Machine.
+- **Exit**: 0 passed (the API commit is kept in `evals/reports/fly/last-pass`), 1 a hard rule failed, 2 it did not run
+  (no key, no network, provider down; never counted as a pass).
+- **Before a deploy**: `deploy-api` runs it first when `steady_api/ai` or `steady_api/config.py` changed since the last
+  passing run, and stops the deploy unless it passes. `STEDIO_SKIP_EVALS=1` deploys anyway with a warning; say why in
+  the PR.
+- **Cost**: one shared-cpu-1x 1 GB Machine for the run (cents) plus the OpenAI calls (about 115 replies and 115 judge
+  calls per run with 3 repeats).
+
 ## Cost (Fly list prices, Nov 2026, before any regional markup)
 
 About $3.19 (API 512 MB) + $1.94 (database 256 MB) + volumes 2 x $0.15 + website and research tool only while running (cents) +
