@@ -8,6 +8,19 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-213, thread "Upload and explain medical test results"): Guy asked to upload lab tests by photo or
+file, have them read into Stedio's own view, and show them in a table with a short explanation of each test. Built
+(G-102): API `POST /labs/scan` (up to 4 photos or one PDF, read by the external AI engine with `store=false`, held in
+memory only, never stored; needs the AI consent and privacy version `2026-11-17T23:45:00Z`) and `GET /labs` (every
+saved lab result, no 92-day window, readable by a viewer with the journal shared); `LabData` gains 34 tests and the
+printed `range_text`. App: "Read a lab report" (camera or up to 4 photos) on the lab sheet and the new Lab results
+screen, a review with checkboxes, and the results table with explanations for 45 tests in English and Hebrew. Privacy
+policy (en/he) and `legal.CURRENT` / `LEGAL_UPDATED` moved to `2026-11-17T23:45:00Z` with a forced re-accept. API 611
+tests pass; app typecheck, lint, 183 tests; root i18n and web tests; e2e `tools/e2e/labs.cjs` 16/16 on the web export
+(en light, he light, he dark). Not done: picking a PDF in the app needs `expo-document-picker` and a native build
+(Guy's go-ahead); the camera and photo permission texts still name meals until the next native build. Next: API and web
+deploy, then the OTA to 0.6.0 and 0.5.0.
+
 17 Nov 2026 (Jira PM-212, thread "Show every selected Body today tile"): Guy had all 8 "Body today" tiles switched on
 but the card showed 4 ("כולם מסומנים אבל לא כולם מוצגים"). The card dropped a chosen tile with no data today, and at
 00:38 the new day has no night, resting heart rate or exercise yet (not a sync failure). Now every chosen tile shows;

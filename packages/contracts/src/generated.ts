@@ -1736,6 +1736,44 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/labs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Labs
+         * @description Every lab result the person saved, newest first, for the results table (PM-213). Lab results matter over years, so
+         *     unlike /records this has no 92-day window. A viewer with the journal shared sees them too (deps.VIEW_PATHS).
+         */
+        get: operations["list_labs_labs_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/labs/scan": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Scan */
+        post: operations["scan_labs_scan_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/live-activity": {
         parameters: {
             query?: never;
@@ -3010,6 +3048,11 @@ export interface components {
             /** Value */
             value: number;
         };
+        /** Body_scan_labs_scan_post */
+        Body_scan_labs_scan_post: {
+            /** Files */
+            files: string[];
+        };
         /** Body_transcribe_voice_transcribe_post */
         Body_transcribe_voice_transcribe_post: {
             /** File */
@@ -3506,6 +3549,10 @@ export interface components {
             daily_steps?: number | null;
             /** Days */
             days?: number | null;
+            /** Effect */
+            effect?: {
+                [key: string]: unknown;
+            } | null;
             /** End Mgdl */
             end_mgdl?: number | null;
             /** Factor High */
@@ -4391,6 +4438,11 @@ export interface components {
              */
             name: string;
             /**
+             * Range Text
+             * @default null
+             */
+            range_text: string | null;
+            /**
              * Source
              * @enum {string}
              */
@@ -4404,11 +4456,44 @@ export interface components {
              * Test
              * @enum {string}
              */
-            test: "a1c" | "fasting_glucose" | "ogtt" | "ldl" | "hdl" | "triglycerides" | "cholesterol" | "egfr" | "creatinine" | "uacr" | "tsh" | "other";
+            test: "a1c" | "fasting_glucose" | "glucose" | "ogtt" | "c_peptide" | "insulin" | "gad_antibodies" | "ketones" | "ldl" | "hdl" | "non_hdl" | "triglycerides" | "cholesterol" | "egfr" | "creatinine" | "urea" | "uric_acid" | "uacr" | "urine_albumin" | "sodium" | "potassium" | "calcium" | "magnesium" | "phosphorus" | "alt" | "ast" | "ggt" | "alk_phos" | "bilirubin" | "albumin" | "hemoglobin" | "hematocrit" | "rbc" | "mcv" | "wbc" | "platelets" | "ferritin" | "iron" | "b12" | "folate" | "vitamin_d" | "tsh" | "ft4" | "crp" | "ttg_iga" | "other";
             /** Unit */
             unit: string;
             /** Value */
             value: number;
+        };
+        /** LabRow */
+        LabRow: {
+            /** Name */
+            name: string;
+            /** Range Text */
+            range_text?: string | null;
+            /**
+             * Test
+             * @enum {string}
+             */
+            test: "a1c" | "fasting_glucose" | "glucose" | "ogtt" | "c_peptide" | "insulin" | "gad_antibodies" | "ketones" | "ldl" | "hdl" | "non_hdl" | "triglycerides" | "cholesterol" | "egfr" | "creatinine" | "urea" | "uric_acid" | "uacr" | "urine_albumin" | "sodium" | "potassium" | "calcium" | "magnesium" | "phosphorus" | "alt" | "ast" | "ggt" | "alk_phos" | "bilirubin" | "albumin" | "hemoglobin" | "hematocrit" | "rbc" | "mcv" | "wbc" | "platelets" | "ferritin" | "iron" | "b12" | "folate" | "vitamin_d" | "tsh" | "ft4" | "crp" | "ttg_iga" | "other";
+            /**
+             * Unit
+             * @default
+             */
+            unit: string;
+            /** Value */
+            value: number;
+        };
+        /** LabScan */
+        LabScan: {
+            /** Provider */
+            provider: string;
+            /** Rows */
+            rows: components["schemas"]["LabRow"][];
+            /**
+             * Skipped
+             * @default 0
+             */
+            skipped: number;
+            /** Taken On */
+            taken_on?: string | null;
         };
         /** LearnedOut */
         LearnedOut: {
@@ -5304,6 +5389,11 @@ export interface components {
         };
         /** RankingOut */
         RankingOut: {
+            /**
+             * Explored
+             * @default false
+             */
+            explored: boolean;
             /** Mode */
             mode: string;
             /** Model Version */
@@ -6150,7 +6240,7 @@ export interface components {
              */
             basis: number;
             /** Certainty */
-            certainty?: ("low" | "medium" | "high") | null;
+            certainty?: ("high" | "medium" | "low") | null;
             /** Coverage Pct */
             coverage_pct?: number | null;
             /**
@@ -9770,6 +9860,92 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
                 };
+            };
+        };
+    };
+    list_labs_labs_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecordOut"][];
+                };
+            };
+        };
+    };
+    scan_labs_scan_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["Body_scan_labs_scan_post"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LabScan"];
+                };
+            };
+            /** @description ai_consent_required or privacy_update_required */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description too_large */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description unsupported_type */
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description not_a_lab_report */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description analysis_failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description labs_provider_unconfigured */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
