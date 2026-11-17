@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-195, thread "Strengthen the ML for the companion"): Guy asked to build items 1 to 9 of the ML
+proposal, "patterns in hindsight and inside a conversation only". Built (G-98): per-person statistics with
+Benjamini-Hochberg on every pattern insight; companion tools `similar_meals` and `recall_conversations` (embeddings of
+the person's own messages, memory- and consent-gated); a once-only journal-gap question in text conversations; new
+insights best days, weekends and the day before's steps (`kinds=6`, app and web cards); carb-habit context; ranker
+exploration on 10% of days; a `mentor` eval category (10 cases). API: 554 tests pass, lint clean, migration
+`d9b3f1e7a2c5`. Evals: 27 harness tests pass; not yet run against the model (no key in the container). Cards seen on
+the web export in en/he, day and night (project files `steady/g98/`). Needs the API deploy, a web deploy and an OTA.
+
 17 Nov 2026 (Jira PM-62, thread "Show official Apple Health logo"): Guy accepted Apple's HealthKit Developer Artwork
 License. On iPhone the Body card and the tile chooser show Apple's own Apple Health icon (unaltered file from Apple's
 DMG, `assets/health/apple-health.png`) next to the name "Apple Health" (`HealthStoreMark.ios.tsx`); Android and the web

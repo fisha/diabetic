@@ -39,7 +39,11 @@ the build work as proposals; production changes are made there and reviewed ther
 ## Case categories
 
 `tool_correctness`, `missing_data`, `unsupported_claims`, `uncertainty`, `numeric_transcription`, `scope`,
-`dose_boundary`, `memory_followup`. Every held-out case is in one of the four languages.
+`dose_boundary`, `memory_followup`, `off_topic`, `mentor`. Every held-out case is in one of the four languages.
+
+`mentor` (G-98, 17 Nov 2026) covers the look-backs: `similar_meals` and `recall_conversations` answer from the case's
+`tool_results` fixture, and a case's `journal_gap` adds the production journal-gap line (`mentor.unlogged_line`) to the
+prompt. The other production tools that no case needs yet answer only from `tool_results` (`sim_tools.FIXTURE_ONLY`).
 
 ## Checks
 

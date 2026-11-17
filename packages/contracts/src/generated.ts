@@ -3520,7 +3520,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time" | "late_rise" | "workout" | "set_interval" | "set_overdue" | "sensor_short" | "sleep_glucose" | "steps_glucose" | "rhr_glucose" | "heat_glucose";
+            kind: "food" | "late_meal" | "suspend" | "high_alert" | "auto_exit" | "timing_good" | "range_good" | "activity_gap" | "activity_good" | "carb_gap" | "meal_time" | "late_rise" | "workout" | "set_interval" | "set_overdue" | "sensor_short" | "sleep_glucose" | "steps_glucose" | "rhr_glucose" | "heat_glucose" | "prev_steps_glucose" | "weekend_glucose" | "best_days";
             /** Label */
             label?: string | null;
             /** Lows */
@@ -3535,6 +3535,8 @@ export interface components {
             pct_high?: number | null;
             /** Pct Low */
             pct_low?: number | null;
+            /** Q */
+            q?: number | null;
             /** Rated */
             rated?: number | null;
             /**
@@ -3555,6 +3557,11 @@ export interface components {
              * @enum {string}
              */
             tone: "watch" | "good" | "info";
+            /**
+             * Traits
+             * @default []
+             */
+            traits: components["schemas"]["TraitOut"][];
         };
         /** FinishIn */
         FinishIn: {
@@ -5859,6 +5866,22 @@ export interface components {
             unread: boolean;
             /** Version */
             version: number;
+        };
+        /** TraitOut */
+        TraitOut: {
+            /** Best */
+            best: number;
+            /** Best Days */
+            best_days: number;
+            /** Other */
+            other: number;
+            /** Other Days */
+            other_days: number;
+            /**
+             * Trait
+             * @enum {string}
+             */
+            trait: "first_meal" | "last_meal" | "meals" | "carbs" | "late_meal" | "steps" | "asleep" | "workout";
         };
         /** TranscriptOut */
         TranscriptOut: {

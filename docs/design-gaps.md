@@ -1693,3 +1693,40 @@ screens, with no push:
 - Hidden while viewing someone else's data; with the AI features off (G-94) nothing is shown and the visit card says why.
 
 Awaiting Guy's review of the screenshots (project files `steady/agents/`).
+
+### G-98 · Mentor look-backs: similar meals, journal gaps, best days, rigor, recall (**PM-195, Guy 17 Nov 2026**, verified-test)
+
+Guy (17 Nov 2026) asked to build items 1 to 9 of the ML proposal, "patterns in hindsight and inside a conversation
+only" ("דפוסים בדיעבד ובתוך שיחה בלבד"): no glucose forecasting, no alerts, no dosing. No board covers these; they
+use the existing insight cards (G-62) and the companion. All numbers below are product rules for what is shown, not
+clinical thresholds.
+
+- **Statistics (`steady_api/stats.py`).** Every pattern insight carries a p-value (Mann-Whitney rank test, exact
+  binomial, or Bonferroni over two outcomes for hot days), adjusted per person with Benjamini-Hochberg. q > 0.25
+  (`KEEP_Q`) is dropped as chance; certainty "high" needs q ≤ 0.05 (`SURE_Q`), otherwise at most "medium".
+- **a. Similar meals** (companion tool `similar_meals`): the person's own meals matching all query words, last 90 days:
+  reading at the meal, at 2 h, highest in 3 h, another meal within 2 h flagged, pump carbs beside the app's. A summary
+  (median change, middle half, in or above their own range, compared with their other meals) from 2 meals. Spoken
+  calls delegate to the app. The result says "a pattern, not a cause; never an amount".
+- **b. Journal gaps:** a rise of at least 50 mg/dL within 90 min, no meal (app or pump) from 60 min before to 45 min
+  after the rise began, in the last 8 h, at least 20 min old. Added to the text conversation's prompt once per rise
+  (`routine_state.unlogged_asked`), never in fewer-nudges mode or when the live glucose line is raised. The companion
+  asks once, lightly, whether they ate or drank something, offers to log it, and drops it on a no.
+- **c. Best days** (insight `best_days`, `kinds=6`): of the last 28 days with readings in at least 18 hours, the top
+  quarter by time in range (at least 4 days a side, ties left out) against the rest. Traits: first and last meal time,
+  meals, carbs, late meals, steps, sleep, workout; q ≤ 0.1 (`BEST_Q`), at most 3 shown. Worded as "on your best days",
+  never as a cause or a rule.
+- **d. Day before and weekends** (insights `prev_steps_glucose`, `weekend_glucose`): the previous day's steps against
+  the next day's time in range; weekend against weekdays (Fri-Sat for Asia/Jerusalem and Asia/Tel_Aviv, else Sat-Sun).
+- **e. Recall** (companion tool `recall_conversations`, text only): embeddings (`text-embedding-3-small`, the existing
+  OpenAI processor) of the person's own messages of 12 characters or more, in their own conversations only (not about
+  someone they follow). Only with memory on and AI consent; deleted when memory or the AI features are turned off, and
+  with the message or the account. Top 5 above similarity 0.35, older than 1 hour. Not exported (derived data).
+- **f. Carb habit:** from 60 days and at least 5 meals linked to a pump entry, the companion knows whether the app's
+  estimate tends to be above or below the pump's. Information for the conversation only; estimates are never changed.
+- **g. Ranker exploration:** on 10% of days (`ranker_explore`) one lower insight moves to the third place, logged as
+  reason `explore`, so later models can be evaluated off-policy. Pinned safety insights stay first.
+- **h. Evals:** `evals/` gains the `mentor` category (similar meals, recall before re-asking, journal gap asked without
+  judgement, dropped on a no; no cause, rule or amount).
+
+Screenshots: project files `steady/g98/`.

@@ -124,6 +124,9 @@ The API, the research tool and the outcome windows all use the same functions.
   - Auto-promotion: in shadow, a scheduled model that passes its gate becomes current. In active (17 Nov 2026) it
     must also rank its own held-out rows (unseen people, later period) better by NDCG@3 than the current model does
     on the same rows; otherwise it stays a candidate for `steady_ml.registry promote`.
+  - Exploration (G-98, 17 Nov 2026): when a model's order is served, on `STEADY_RANKER_EXPLORE` (0.1) of a person's
+    days, chosen by a hash of person and day, one lower insight moves to the third place. Pinned safety insights stay
+    first. The reason is logged as `explore`, so later models can be evaluated off-policy on those days.
   - `off`.
 - `ranking.reason` says why the rules order was served: `no_model`, `model_invalid`, `feature_mismatch`,
   `insufficient_user_data`, `not_a_tester`, `shadow`, `mode_off` or `model_error`.

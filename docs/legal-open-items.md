@@ -63,3 +63,6 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 - Admin read-only access during testing, no change to another person's treatment settings: G-44 and Guy's admin rule.
 - Clinical wording (ADA, ketones when high, not a medical device, no doses): Guy's rules; needs the clinical review
   (G-05) like the rest of the copy.
+- Conversation embeddings (G-98, PM-196): the person's own messages go to OpenAI's embeddings endpoint (same processor,
+  same AI consent, request storage off) for recall in the companion; table `message_embeddings`, deleted with memory
+  off, AI off, the message or the account; not exported (derived). Privacy policy sentence pending.

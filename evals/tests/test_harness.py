@@ -264,3 +264,19 @@ def test_specific_bolus_timing_and_dose_changes_are_flagged():
     c = case("ru-tool-01")
     r = run_case(c, Scripted([Completion("Записал — полчаса назад было 7,8.")]))
     assert not grade(c, r)["no_saved_claim"]["pass"]
+
+
+def test_journal_gap_line_is_the_production_text():
+    msgs = build_messages(case("en-mentor-22"))
+    assert "Journal gap noticed by the app" in msgs[0]["content"] and "112 mg/dL at 15:50" in msgs[0]["content"]
+    assert "Journal gap" not in build_messages(case("ru-mentor-14"))[0]["content"]
+
+
+def test_look_back_tools_answer_from_fixtures():
+    st = sim_tools.SimState()
+    r = sim_tools.run(case("en-mentor-20"), "similar_meals", {"food": "pasta"}, st)
+    assert r["meals"] == 5 and r["summary"]["middle_change_2h_mgdl"] == 80 and r["query"] == "pasta"
+    assert sim_tools.run(case("ar-mentor-13"), "similar_meals", {"food": "كسكس"}, st)["meals"] == 0
+    assert sim_tools.run(case("he-mentor-19"), "recall_conversations", {"about": "משמרות"}, st)["found"][0]["they_said"].startswith("אני עובד")
+    assert sim_tools.run(case("en-mem-14"), "recall_conversations", {"about": "swim"}, st)["status"] == "off"
+    assert sim_tools.run(case("en-tool-01"), "glucose_history", {"day": "2026-11-10"}, st) == {"error": "not_simulated"}

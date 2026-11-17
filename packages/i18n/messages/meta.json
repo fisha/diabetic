@@ -3284,6 +3284,134 @@
     ],
     "note": "PM-154 finding heat_glucose: hot days (felt 30 °C or more) against other days; observation only."
   },
+  "ins.f_prev_steps_t": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_prev_steps_b": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_weekend_t": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_weekend_b": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_weekend_basis": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_best_t": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_best_b": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_best_first_meal": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_best_last_meal": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_best_meals": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_best_carbs": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_best_late_meal": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_best_steps": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_best_asleep": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_best_workout": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_best_basis": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
   "ins.f_heat_basis": {
     "board": "Insights",
     "review": [
@@ -16973,6 +17101,42 @@
       "translation"
     ],
     "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_prev_low": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.ch_prev_high": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.ch_weekend_low": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.ch_weekend_high": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.ch_best_low": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "ins.ch_best_high": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
   },
   "ins.ch_heat_low": {
     "board": "Insights",
