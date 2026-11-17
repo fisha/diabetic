@@ -15,7 +15,10 @@ out="$(python -m steady_evals.regression --model "$MODEL" --production --repeat 
   --label "$LABEL" --api-key-env STEADY_OPENAI_API_KEY 2>/tmp/evals.err)"
 code=$?
 # The verdict only (pass rates, case ids, failed rule names); replies and transcripts stay in the Machine.
-echo "EVALS_VERDICT_BEGIN"; printf '%s\n' "$out" | sed -n '/^{/,$p'; echo "EVALS_VERDICT_END"
+# One line: a multi-line block can lose or reorder lines in the log stream.
+verdict="$(printf '%s\n' "$out" | sed -n '/^{/,$p' | python -c 'import json,sys; print(json.dumps(json.load(sys.stdin), ensure_ascii=False))' 2>/dev/null)"
+[ -n "$verdict" ] || verdict='{"passed": false, "ran": false, "errors": ["no verdict"]}'
+echo "EVALS_VERDICT $verdict"
 # The failing turns of these synthetic cases (no user data): what the model drafted, what would be shown, which checks
 # and judge criteria failed and why, so a failure can be told apart from a false positive (PM-204).
 echo "EVALS_FAILURES_BEGIN"
@@ -31,6 +34,8 @@ for r in rows:
     if cf or jf or "error" in j:
         out.append({"case": r["case"], "repeat": r["repeat"], "checks": cf, "judge": jf, "judge_error": j.get("error"),
                     "second_look": r.get("second_look"), "withheld": r.get("withheld"),
+                    "tools": [{"name": c.get("name"), "status": (c.get("result") or {}).get("status") if isinstance(c.get("result"), dict) else None}
+                              for c in r.get("tool_calls") or []],
                     "first_draft": (r.get("first_draft") or "")[:600] or None, "draft": (r.get("draft") or "")[:600]})
 for o in out:
     print(json.dumps(o, ensure_ascii=False))

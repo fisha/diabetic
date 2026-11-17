@@ -164,8 +164,9 @@ cmd_evals() {
     echo "WARN   the Machine did not start (try $try of 6); retrying in $((try * 15)) s"
     sleep $((try * 15)); try=$((try + 1))
   done
-  id="$(fly machines list -a "$API_APP" --json | python3 -c 'import json,sys; n=sys.argv[1]; print(next(m["id"] for m in json.load(sys.stdin) if m.get("name")==n))' "$name")"
-  trap 'fly machine destroy "$id" -a "$API_APP" --force >/dev/null 2>&1 || true' EXIT
+  EVALS_MACHINE="$(fly machines list -a "$API_APP" --json | python3 -c 'import json,sys; n=sys.argv[1]; print(next(m["id"] for m in json.load(sys.stdin) if m.get("name")==n))' "$name")"
+  id="$EVALS_MACHINE" # global, so the EXIT trap still sees it after this function returns
+  trap 'fly machine destroy "$EVALS_MACHINE" -a "$API_APP" --force >/dev/null 2>&1 || true' EXIT
   local state="" waited=0
   while [ "$waited" -lt 5400 ]; do
     state="$(fly machines list -a "$API_APP" --json | python3 -c 'import json,sys; i=sys.argv[1]; print(next((m["state"] for m in json.load(sys.stdin) if m["id"]==i), "destroyed"))' "$id")"
@@ -178,7 +179,8 @@ cmd_evals() {
   local log; log="$(NO_COLOR=1 fly logs -a "$API_APP" --machine "$id" --no-tail 2>/dev/null | sed $'s/\x1b\\[[0-9;]*m//g')"
   mkdir -p "$EVALS_DIR"
   local out="$EVALS_DIR/$stamp-$tag.json"
-  printf '%s\n' "$log" | sed -n '/EVALS_VERDICT_BEGIN/,/EVALS_VERDICT_END/p' | sed -e '1d' -e '$d' -e "$LOGPREFIX" > "$out"
+  printf '%s\n' "$log" | grep 'EVALS_VERDICT ' | tail -1 | sed -e "$LOGPREFIX" -e 's/^.*EVALS_VERDICT //' | python3 -m json.tool > "$out" 2>/dev/null || true
+  fly machine destroy "$id" -a "$API_APP" --force >/dev/null 2>&1 || true
   local fails="$EVALS_DIR/$stamp-$tag.failures.jsonl"
   printf '%s\n' "$log" | sed -n '/EVALS_FAILURES_BEGIN/,/EVALS_FAILURES_END/p' | sed -e '1d' -e '$d' -e "$LOGPREFIX" > "$fails"
   [ -s "$fails" ] && say "failing turns (synthetic cases): ${fails#"$REPO"/}" || rm -f "$fails"
