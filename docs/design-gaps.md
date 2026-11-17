@@ -1667,3 +1667,11 @@ by the first screen's real steps (session, profile draft, latest reading, conver
 loader fades out as soon as they are done, or after 3 s at most. Any first screen other than the companion ends it at
 once. Reduced motion: static, no fade. Not shown when the app comes back from the background.
 
+### G-96 · Active tab clearly highlighted in the tab bar (**PM-181, Guy 17 Nov 2026**, verified-test)
+
+Guy (17 Nov 2026): "when navigating on the footer, the relevant tab should be highlighted so a user can tell where he
+is at". The boards show the active tab by colour only (`.tab.on{color:var(--act)}`), which users could not see. Built:
+the active line-icon tab sits on a 56 × 32 `accentSoft` capsule with a 2.4 stroke and a bold `accentText` label; the
+companion orb gets a 2.5 pt `accent` ring with a 1.5 pt gap when active, and fades to 50% when not (it keeps breathing,
+G-33). The wide-window side bar uses `accentSoft` for the active row. Selection is never shown by colour only, as the
+Components board asks for chips.

@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-181, thread "Highlight the active tab in the footer"): Guy: "the relevant tab should be
+highlighted so a user can tell where he is at". Before, the active tab only changed colour and the companion orb only
+its opacity. Now (G-96, app JS only): a soft accent capsule behind the active icon with a heavier line and bold label,
+an accent ring around the companion orb when it is active (the inactive orb fades to 50%), the accent fill in the wide
+window side bar, and `aria-selected` on web (never set before). E2E `tools/e2e/tab-bar.cjs` 16/16 (en/he, light/dark);
+before/after in project files `steady/tab-highlight/`. App PR #105 merged; 173 tests. Next: OTA.
+
 17 Nov 2026 (Jira PM-179, thread "Stop companion repeating answered questions"): the main-screen bubble re-asked
 a question Guy had already answered. The follow-ups were rewritten from scratch with no record of what was asked, and a
 kept question stayed after it was answered in a conversation. Now every question written is kept 21 days
