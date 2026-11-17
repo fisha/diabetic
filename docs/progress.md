@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-194, thread "Remove Arabic and Russian from the app"): Guy asked to remove Arabic and Russian
+from the app. The app now has English and Hebrew (`LOCALES` in `packages/i18n`); a phone in any other language opens
+in English, and a saved Arabic or Russian app or conversation language becomes English on the phone, on the server
+(migration `a1d3e5f7b902`) and when an older app sends it. The ar/ru catalogs, the API's ar/ru push, email, greeting
+and voice texts, and the website's ar/ru legal texts and Arabic font are removed; `/ar` and `/ru` on the website still
+redirect to English. Kept on purpose: Arabic and Russian dose patterns in `ai/safety.py` and spoken goodbyes (G-99).
+The website FAQ answer on languages (`web.a3`) and the accessibility statement (dated 2026-11-17) now say English and
+Hebrew. Root i18n 20 tests, app 174, web 9 and web build, typecheck pass; API tests pass and the migration was run on a
+seeded database. App lint shows the same 18 errors as main in this container. Not changed: the Arabic and Russian eval
+cases in `evals/` (held-out set). Needs the API deploy
+(migration) and an OTA to 0.6.0 and 0.5.0; `supportedLocales` in `app.config.ts` takes effect with the next native build.
+
 17 Nov 2026 (Jira PM-62, thread "Show official Apple Health logo"): Guy accepted Apple's HealthKit Developer Artwork
 License. On iPhone the Body card and the tile chooser show Apple's own Apple Health icon (unaltered file from Apple's
 DMG, `assets/health/apple-health.png`) next to the name "Apple Health" (`HealthStoreMark.ios.tsx`); Android and the web

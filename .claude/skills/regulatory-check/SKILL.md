@@ -21,7 +21,7 @@ diagnose, give dosing advice or provide treatment.
 
 ## How to run the check
 
-1. List what the change touches: code paths, strings (all four languages in `packages/i18n/messages`), prompts
+1. List what the change touches: code paths, strings (English and Hebrew in `packages/i18n/messages`), prompts
    (`services/api/steady_api/ai/prompt.py`, `interpret.py`), pushes, website and legal texts.
 2. Go through every rule below. For each one, mark **pass**, **at risk** or **fail**, and name the file and line.
 3. A **fail** blocks the merge. Fix it, or stop and ask Guy (a decision card) if the change is something he asked for.
@@ -72,7 +72,7 @@ diagnose, give dosing advice or provide treatment.
 - Goals and onboarding options describe understanding, not outcomes ("Understand my lows", not "Fewer lows").
 - The companion is a routine and reflection companion, not a mentor for treatment success.
 - The "not a medical device" notice stays visible: website footer, onboarding, Settings/FAQ, terms.
-- Check all four languages (en, he, ar, ru), not only English.
+- Check both app languages (en, he), not only English. Arabic and Russian left the app on 17 Nov 2026 (PM-194).
 
 ## Quick searches
 
