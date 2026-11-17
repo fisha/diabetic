@@ -19,6 +19,7 @@ from .production import (
     Record,
     User,
     prod_context,
+    prod_mentor,
     reads_as_dose_instruction,
     system_prompt,
 )
@@ -109,7 +110,17 @@ def build_messages(case: Case) -> list[dict]:
     mems = [Memory(group=m["group"], text=m["text"]) for m in case.memories] if case.memory_on else []
     profile = build_profile(case)
     cgm = any(g.get("method") == "sensor" and g["minutes_ago"] <= 24 * 60 for g in case.records.get("glucose", []))
-    sp = system_prompt(profile, mems, case.now, case.memory_on, None, data=data_block(case, profile), cgm=cgm)
+    data = data_block(case, profile)
+    if (g := case.journal_gap) is not None:  # as routers.conversation.instructions adds it
+        utc_now = case.now.astimezone(UTC)
+        rise = prod_mentor.Rise(
+            start=utc_now - timedelta(minutes=g["start_minutes_ago"]),
+            peak_at=utc_now - timedelta(minutes=g["peak_minutes_ago"]),
+            from_mgdl=g["from_mgdl"],
+            to_mgdl=g["to_mgdl"],
+        )
+        data += ["", prod_mentor.unlogged_line(rise, case.now.tzinfo, case.profile.get("glucose_unit", "mgdl"))]  # type: ignore[arg-type]
+    sp = system_prompt(profile, mems, case.now, case.memory_on, None, data=data, cgm=cgm)
     return [{"role": "system", "content": sp}, *case.history, {"role": "user", "content": case.user}]
 
 

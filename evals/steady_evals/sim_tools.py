@@ -15,7 +15,28 @@ from pydantic import ValidationError
 from .cases import Case
 from .production import GLUCOSE_ENTRY_MGDL_MAX, GLUCOSE_ENTRY_MGDL_MIN, about_someone_else, prod_tools, to_mgdl
 
-KNOWN = {"propose_glucose", "recent_records", "remember", "schedule_follow_up", "propose_profile_update", "note_profile_question"}
+SIMULATED = {
+    "propose_glucose",
+    "recent_records",
+    "remember",
+    "schedule_follow_up",
+    "propose_profile_update",
+    "note_profile_question",
+    "similar_meals",
+    "recall_conversations",
+}
+# Tools answered only from a case's `tool_results` fixture (no case needs their logic yet).
+FIXTURE_ONLY = {
+    "propose_meal",
+    "propose_activity",
+    "propose_insulin",
+    "propose_note",
+    "save_proposal",
+    "glucose_history",
+    "show_support",
+    "show_booking_help",
+}
+KNOWN = SIMULATED | FIXTURE_ONLY
 MAX_MEMORIES = prod_tools.MAX_MEMORIES
 
 
@@ -97,6 +118,18 @@ def _dispatch(case: Case, name: str, args: dict, state: SimState) -> dict:
                 due += timedelta(days=1)
         state.follow_ups.append({"title": a.title, "due": due.isoformat(), "repeat": a.repeat})
         return {"status": "scheduled", "due_local": due.strftime("%a %H:%M"), "repeat": a.repeat}
+    if name == "similar_meals":
+        a = prod_tools.SimilarMeals.model_validate(args)
+        if "similar_meals" in case.tool_results:
+            return {**case.tool_results["similar_meals"], "query": a.food}
+        return {"query": a.food, "meals": 0, "detail": "No meals matching this in the last 90 days."}
+    if name == "recall_conversations":
+        prod_tools.RecallConversations.model_validate(args)
+        if not case.memory_on:
+            return {"status": "off", "detail": "The person turned memory off: earlier conversations are not used."}
+        return case.tool_results.get("recall_conversations", {"status": "nothing_yet", "detail": "No earlier conversations to look in yet."})
+    if name in FIXTURE_ONLY:
+        return case.tool_results.get(name, {"error": "not_simulated"})
     return {"error": "unknown_tool"}
 
 

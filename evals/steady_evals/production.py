@@ -10,6 +10,7 @@ API = Path(__file__).resolve().parents[2] / "services" / "api"
 if str(API) not in sys.path:
     sys.path.insert(0, str(API))
 
+from steady_api import mentor as prod_mentor
 from steady_api.ai import context as prod_context
 from steady_api.ai import tools as prod_tools
 from steady_api.ai.prompt import system_prompt
@@ -34,6 +35,7 @@ __all__ = [
     "Record",
     "User",
     "prod_context",
+    "prod_mentor",
     "Profile",
     "prod_tools",
     "reads_as_dose_instruction",

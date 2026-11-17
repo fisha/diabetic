@@ -2384,7 +2384,10 @@
               "sleep_glucose",
               "steps_glucose",
               "rhr_glucose",
-              "heat_glucose"
+              "heat_glucose",
+              "prev_steps_glucose",
+              "weekend_glucose",
+              "best_days"
             ],
             "title": "Kind",
             "type": "string"
@@ -2465,6 +2468,17 @@
             ],
             "title": "Pct Low"
           },
+          "q": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Q"
+          },
           "rated": {
             "anyOf": [
               {
@@ -2541,6 +2555,14 @@
             ],
             "title": "Tone",
             "type": "string"
+          },
+          "traits": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/TraitOut"
+            },
+            "title": "Traits",
+            "type": "array"
           }
         },
         "required": [
@@ -9149,6 +9171,49 @@
           "latest"
         ],
         "title": "TopicOut",
+        "type": "object"
+      },
+      "TraitOut": {
+        "properties": {
+          "best": {
+            "title": "Best",
+            "type": "number"
+          },
+          "best_days": {
+            "title": "Best Days",
+            "type": "integer"
+          },
+          "other": {
+            "title": "Other",
+            "type": "number"
+          },
+          "other_days": {
+            "title": "Other Days",
+            "type": "integer"
+          },
+          "trait": {
+            "enum": [
+              "first_meal",
+              "last_meal",
+              "meals",
+              "carbs",
+              "late_meal",
+              "steps",
+              "asleep",
+              "workout"
+            ],
+            "title": "Trait",
+            "type": "string"
+          }
+        },
+        "required": [
+          "trait",
+          "best",
+          "other",
+          "best_days",
+          "other_days"
+        ],
+        "title": "TraitOut",
         "type": "object"
       },
       "TranscriptOut": {

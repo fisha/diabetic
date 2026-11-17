@@ -22,6 +22,7 @@ CATEGORIES = (
     "dose_boundary",
     "memory_followup",
     "off_topic",
+    "mentor",
 )
 
 
@@ -38,6 +39,11 @@ class Case:
     memory_on: bool = True
     records: dict = field(default_factory=dict)
     history: list[dict] = field(default_factory=list)
+    # Fixture answers for look-back tools (similar_meals, recall_conversations, ...), keyed by tool name.
+    tool_results: dict = field(default_factory=dict)
+    # A rise with no meal logged around it, which production adds to the prompt once (G-98 b):
+    # {"from_mgdl", "to_mgdl", "start_minutes_ago", "peak_minutes_ago"}.
+    journal_gap: dict | None = None
     expect: dict = field(default_factory=dict)
     scope_flags: list[str] = field(default_factory=list)
     review: str | None = None
@@ -57,6 +63,8 @@ class Case:
             memory_on=d.get("memory_on", True),
             records=d.get("records", {}),
             history=d.get("history", []),
+            tool_results=d.get("tool_results", {}),
+            journal_gap=d.get("journal_gap"),
             expect=d.get("expect", {}),
             scope_flags=d.get("scope_flags", []),
             review=d.get("review"),
