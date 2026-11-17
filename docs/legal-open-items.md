@@ -42,6 +42,31 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 | Liability wording | terms | Lawyer |
 | Consent to the external AI engine (PM-149) required for using Stedio, withdrawn only by deleting the account; whether an optional version (journal without the companion) is needed for consent to count as freely given | privacy | Lawyer (PM-99); texts `onb.c3`, `onb.c3b`, `ai.*`, `set.pv_ai*`; privacy policy "Who we share it with" names OpenAI |
 
+## Queued for the next legal version
+
+Lines Guy approved that go into the privacy policy with the next legal version (not released on their own, so they
+ride on the next re-consent). When that version is released, add them in English and Hebrew, then switch the feature
+on as noted.
+
+- **Quality review of real companion replies (PM-198, PM-202; Guy 17 Nov 2026: "כן, בגרסה המשפטית הבאה").** Under
+  "How the AI uses your data":
+  - en: "If you turned on the optional consent to improve our models, we may check a small random share of the
+    companion's replies to you for safety and quality. An external AI engine reads the reply and the messages just
+    before it and records only a verdict (for example, whether the reply stayed within safe, general information).
+    The verdict is kept for 90 days and is deleted with the conversation, your account, or when you turn that consent
+    off. It is never used to decide anything about you."
+  - he: "אם הפעלת את ההסכמה האופציונלית לשיפור המודלים שלנו, אנחנו עשויים לבדוק חלק קטן ואקראי מהתשובות של
+    המלווה אלייך, לבטיחות ואיכות. מנוע בינה מלאכותית חיצוני קורא את התשובה ואת ההודעות שלפניה ושומר רק הערכה (למשל,
+    אם התשובה נשארה במסגרת מידע כללי ובטוח). ההערכה נשמרת 90 יום ונמחקת עם השיחה, עם החשבון, או כשמכבים את ההסכמה. היא
+    אף פעם לא משמשת להחליט משהו לגביך."
+  - Then: set `quality.POLICY` in `services/api/steady_api/quality.py` to that legal version (it must be <= the
+    released privacy version), and set `STEADY_QUALITY_SAMPLE_SHARE` and `STEADY_QUALITY_JUDGE_MODEL` on Fly.
+- **Group priors (PM-199, PM-202), suggested with the same version.** en: "How sure an insight is called may also take
+  into account averages from people with a similar setup who turned on the consent to improve our models (groups of
+  at least five; no one's own data is shown to anyone else). The numbers you see are always from your own records."
+  he: "כמה תובנה נחשבת ודאית עשוי להתחשב גם בממוצעים של אנשים עם הגדרות דומות שהפעילו את ההסכמה לשיפור המודלים
+  (קבוצות של חמישה לפחות; אף אחד לא רואה נתונים של מישהו אחר). המספרים שמוצגים לך הם תמיד מהרשומות שלך."
+
 ## Facts the texts state, with their source
 
 - Read-only device connections: standing rule (Guy); `services/api/steady_api/carelink.py`, `cgm.py`, `tandem.py`.
