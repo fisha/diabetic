@@ -17,6 +17,15 @@ the text and voice prompt says never to ask about what the person already told i
 questions are in the export with conversations (`companion_questions.csv`). API PR #79 merged; API 521 tests. Next:
 API deploy (no migration, no OTA needed).
 
+17 Nov 2026 (Jira PM-180, thread "Speed up app launch with character loader"): Guy asked for a loader with the
+character and a progress bar for the second of "building all the data" when the app opens, and a faster launch. Built
+(app only, JS): `features/launch` (G-95), a loader over the first screen whose bar fills by real steps (session,
+profile draft, latest reading, conversation; 3 s ceiling); widgets, health sync, push token, follow-up sync and the
+update check now start after the first screen has its data instead of competing with its ~27 opening reads. Measured in
+the container (web export, 4x CPU throttle, local test API): sign-in to latest reading ~1.1 s; sealing the kept answers
+(XChaCha20 in plain JS) costs ~0.5 ms per KB without JIT, so not the main cost. Native cold start not timed on a phone
+yet. App PRs #103, #104 merged; 173 tests. Next: OTA, time a cold start on the phone.
+
 17 Nov 2026 (Jira PM-141, thread "Book doctor, dietitian and nurse appointments"): Guy approved phase A of
 appointment booking: Stedio gathers the information and gives the person the link or phone, for all four health funds
 (Clalit, Maccabi, Meuhedet, Leumit); no partner or fund integration for now. None of the funds has a booking API for

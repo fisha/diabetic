@@ -1657,3 +1657,13 @@ style, extending G-92 and G-93:
 - The one-time consent screen (G-92, G-93) gets "Continue without AI features" when the AI consent is among the items:
   it accepts the documents and turns the AI features off. A new AI consent text is not asked for while they are off.
 - Onboarding still requires the AI consent (ONB-01); a person can turn it off in Settings right after.
+
+### G-95 · Launch loader with the character (**PM-180, Guy 17 Nov 2026**, verified-test)
+
+Guy (17 Nov 2026): "שפותחים את האפליקציה יש איזו שניה של בניית כל הנתונים ויהיה מחמד לראות loader עם הדמות שלנו ואיזה
+פס טעינה". No board covers it. Built: on a cold start the plain character (nothing worn, so Classic Stedio looks the
+same) breathes on the native splash background (day `#FAF9F6`, night `#102C2B`) above a 148 pt accent bar. The bar fills
+by the first screen's real steps (session, profile draft, latest reading, conversation), never by a timer, and the
+loader fades out as soon as they are done, or after 3 s at most. Any first screen other than the companion ends it at
+once. Reduced motion: static, no fade. Not shown when the app comes back from the background.
+
