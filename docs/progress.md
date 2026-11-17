@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-191, thread "Add modern guidance skills for web and app"): Guy approved adding agent skills for
+modern practice. Website: Google Chrome's Modern Web Guidance skill in `apps/web/.claude/skills` (telemetry off);
+its `legacy-scan` found 3 items, 2 fixed (`toSorted`, lib es2023; web #28 merged, typecheck, lint, 9 tests and build
+pass), the dark-mode `color-scheme` / `light-dark()` item left for a visual review. App: Expo's official expo-router,
+expo-native-ui, expo-animation, expo-module, expo-upgrade and Callstack's react-native-best-practices in
+`apps/mobile/.claude/skills` (Expo's outbound feedback step removed; eas-* and expo-ui left out; app #111 merged).
+Markdown only, no OTA or build needed.
+
 17 Nov 2026 (Jira PM-182, PM-183, PM-184, thread "Build daily summary, pattern and visit-prep agents"): Guy approved
 three more background agents on the PM-139 LangGraph infrastructure. Built: `agents/notes.py` (one graph, read-only
 tools limited to the run's window, code checks: evidence, no cause, no dose or treatment, no escalation or "safe /
