@@ -95,6 +95,9 @@ agreement and Cohen's kappa per criterion (trusted from 0.6). Labelled sheets ho
 uv run --project ../services/api python -m steady_evals.regression --model gpt-6.1-sol --production --repeat 3 --judge gpt-6.1-sol
 ```
 
+On Fly, with the production key and model and no key on the laptop (PM-203): `scripts/fly/stedio-fly evals`
+(see `deploy/fly/README.md`). Exit 2 means the set did not run (no reply came back at all), never a pass.
+
 ## Running
 
 Runs use the API's Python environment, from this folder:

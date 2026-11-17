@@ -1,0 +1,11 @@
+# deploy/fly/evals/Dockerfile (context: repository root): only services/api and evals are needed.
+**
+!services/api/pyproject.toml
+!services/api/uv.lock
+!services/api/steady_api/**
+!evals/steady_evals/**
+!evals/cases/**
+!deploy/fly/evals/run.sh
+**/__pycache__
+**/.env
+**/.env*

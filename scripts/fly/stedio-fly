@@ -14,6 +14,10 @@
 #   stedio-fly research-setup   Create stedio-research, its read-only database login (new password each run) and its
 #                           secrets; then run deploy-research
 #   stedio-fly deploy-research  Deploy the research tool (Streamlit; stops when idle) and check it is closed and noindex
+#   stedio-fly evals [--repeat N] [--model M]   Run the companion's regression set (PM-198) on Fly: a one-off Machine
+#                           in stedio-api with the app's own OpenAI key, synthetic cases only; prints and saves the
+#                           verdict, then removes the Machine (PM-203). deploy-api runs it first when the companion's
+#                           code changed since the last passing run (STEDIO_SKIP_EVALS=1 skips it, with a warning)
 #
 # Cutover (once the trial looks right): stop the Mac's API, `copy-data`, `deploy-api` (worker on), then switch the app (OTA).
 
@@ -115,9 +119,81 @@ cmd_backup() {
   fly ssh console -a "$DB_APP" -C stedio-backup
 }
 
+# The companion (PM-198): its prompt, tools, safety filter and judge, and the settings that pick the model.
+COMPANION_PATHS=(steady_api/ai steady_api/config.py)
+EVALS_DIR="$REPO/evals/reports/fly"
+LOGPREFIX='s/^[^ ]* app\[[^]]*\] [a-z0-9]* \[[a-z]*\] *//' # fly logs: "<time> app[<machine>] <region> [info]"
+
+companion_changed() { # true when the companion changed since the last passing evals run (or none is recorded)
+  local last; last="$(cat "$EVALS_DIR/last-pass" 2>/dev/null || true)"
+  [ -z "$last" ] && return 0
+  git -C "$REPO/services/api" cat-file -e "$last^{commit}" 2>/dev/null || return 0
+  ! git -C "$REPO/services/api" diff --quiet "$last" HEAD -- "${COMPANION_PATHS[@]}"
+}
+
+cmd_evals() {
+  local repeat=3 model=""
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --repeat) repeat="$2"; shift 2 ;;
+      --model) model="$2"; shift 2 ;;
+      *) die "evals: unknown option $1" ;;
+    esac
+  done
+  app_exists "$API_APP" || die "$API_APP does not exist"
+  has_secret "$API_APP" STEADY_OPENAI_API_KEY || die "$API_APP has no STEADY_OPENAI_API_KEY secret"
+  [ -z "$(git -C "$REPO" status --porcelain -- evals services/api/steady_api)" ] || die "evals: commit or stash local changes to evals/ and services/api first (the run must match a commit)"
+  local api_sha root_sha tag stamp name id
+  api_sha="$(git -C "$REPO/services/api" rev-parse HEAD)"
+  root_sha="$(git -C "$REPO" rev-parse --short HEAD)"
+  tag="evals-${api_sha:0:7}-$root_sha"
+  stamp="$(date -u +%Y%m%dT%H%M%SZ)"
+  name="evals-$stamp"
+  say "building the evals image $tag (synthetic cases + the companion at api ${api_sha:0:7})"
+  fly deploy "$REPO" -a "$API_APP" -c "$REPO/deploy/fly/api/fly.toml" --dockerfile "$REPO/deploy/fly/evals/Dockerfile" \
+    --ignorefile "$REPO/deploy/fly/evals/Dockerfile.dockerignore" --build-only --push --image-label "$tag" --remote-only
+  say "running the regression set on a one-off Machine ($name); this takes a while"
+  local env=(-e "EVAL_REPEAT=$repeat" -e "EVAL_LABEL=fly-$tag")
+  [ -n "$model" ] && env+=(-e "EVAL_MODEL=$model" -e "EVAL_JUDGE=$model")
+  # No services and no restart: nothing routes to it, and it stops when the run ends.
+  fly machine run "registry.fly.io/$API_APP:$tag" -a "$API_APP" --region "$REGION" --name "$name" \
+    --vm-size shared-cpu-1x --vm-memory 1024 --restart no --metadata stedio_role=evals --detach "${env[@]}" >/dev/null
+  id="$(fly machines list -a "$API_APP" --json | python3 -c 'import json,sys; n=sys.argv[1]; print(next(m["id"] for m in json.load(sys.stdin) if m.get("name")==n))' "$name")"
+  trap 'fly machine destroy "$id" -a "$API_APP" --force >/dev/null 2>&1 || true' EXIT
+  local state="" waited=0
+  while [ "$waited" -lt 5400 ]; do
+    state="$(fly machines list -a "$API_APP" --json | python3 -c 'import json,sys; i=sys.argv[1]; print(next((m["state"] for m in json.load(sys.stdin) if m["id"]==i), "destroyed"))' "$id")"
+    case "$state" in stopped|destroyed|failed) break ;; esac
+    sleep 30; waited=$((waited + 30))
+  done
+  case "$state" in stopped|destroyed|failed) ;; *) die "evals: the Machine did not finish in 90 minutes" ;; esac
+  sleep 10 # let the last log lines ship
+  local log; log="$(fly logs -a "$API_APP" --machine "$id" --no-tail 2>/dev/null)"
+  mkdir -p "$EVALS_DIR"
+  local out="$EVALS_DIR/$stamp-$tag.json"
+  printf '%s\n' "$log" | sed -n '/EVALS_VERDICT_BEGIN/,/EVALS_VERDICT_END/p' | sed -e '1d' -e '$d' -e "$LOGPREFIX" > "$out"
+  local code; code="$(printf '%s\n' "$log" | grep -o 'EVALS_EXIT=[0-9]*' | tail -1 | cut -d= -f2)"
+  printf '%s\n' "$log" | grep -E 'EVALS_(START|ERROR|STDERR)' | sed -e "$LOGPREFIX" || true
+  [ -s "$out" ] && cat "$out" || rm -f "$out"
+  case "$code" in
+    0) echo "$api_sha" > "$EVALS_DIR/last-pass"; say "regression set PASSED (verdict: ${out#"$REPO"/})" ;;
+    1) say "regression set FAILED a hard rule (verdict: ${out#"$REPO"/})"; return 1 ;;
+    *) say "regression set did not run (exit ${code:-unknown}); see above"; return 2 ;;
+  esac
+}
+
 cmd_deploy_api() {
   local extra=()
   if [ "${1:-}" = "--trial" ]; then extra=(-e STEADY_RUN_WORKER=false); say "trial: the worker is off"; fi
+  # The companion's regression set first, when its code changed since the last passing run (PM-198, PM-203).
+  if companion_changed; then
+    if [ "${STEDIO_SKIP_EVALS:-}" = "1" ]; then
+      echo "WARN   the companion changed and STEDIO_SKIP_EVALS=1: deploying without the regression set"
+    else
+      say "the companion changed since the last passing regression run: running it first"
+      cmd_evals || die "deploy stopped: the regression set did not pass (STEDIO_SKIP_EVALS=1 overrides, say why in the PR)"
+    fi
+  fi
   # A backup before every deploy: the release command runs migrations.
   if fly status -a "$DB_APP" 2>/dev/null | grep started >/dev/null; then say "database backup first"; cmd_backup; fi
   fly deploy "$REPO/services/api" -c "$REPO/deploy/fly/api/fly.toml" --dockerfile "$REPO/services/api/Dockerfile" \
@@ -229,5 +305,6 @@ case "${1:-help}" in
   status) cmd_status ;;
   research-setup) cmd_research_setup ;;
   deploy-research) cmd_deploy_research ;;
-  *) sed -n '2,19p' "$0" ;;
+  evals) shift; cmd_evals "$@" ;;
+  *) sed -n '2,23p' "$0" ;;
 esac
