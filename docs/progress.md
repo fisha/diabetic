@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+17 Nov 2026 (Jira PM-173, thread "Clear chat meal cards from main screen"): Guy's screenshot showed meal cards from a
+companion conversation ("Not saved") still under the insights on the main screen after returning to it. The voice view
+showed the conversation's cards for 5 minutes after the last message. Now they show under the character only while a
+call is going; an unanswered card stays in the conversation, where it can still be saved. App PR #97 merged; pnpm
+check passes (app 165); e2e `tools/e2e/logging.cjs` 15/15 (it now also accepts the current legal documents up front).
+Next: OTA to testers.
+
 17 Nov 2026 (Jira PM-172, thread "Show daily protein in Full days"): Guy asked for grams of protein per day in the
 Overview "Full days" sheet, and for each day row to open more about that day's protein, carbs and insulin. Built (app
 only, no API change): rows read "N meals · X g carbs · Y g protein" ("≥ Y g" when some meals have no protein value);
