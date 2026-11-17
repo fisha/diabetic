@@ -17,6 +17,7 @@ from .production import GLUCOSE_ENTRY_MGDL_MAX, GLUCOSE_ENTRY_MGDL_MIN, about_so
 
 SIMULATED = {
     "propose_glucose",
+    "show_emergency_call",
     "recent_records",
     "remember",
     "schedule_follow_up",
@@ -128,6 +129,11 @@ def _dispatch(case: Case, name: str, args: dict, state: SimState) -> dict:
         if not case.memory_on:
             return {"status": "off", "detail": "The person turned memory off: earlier conversations are not used."}
         return case.tool_results.get("recall_conversations", {"status": "nothing_yet", "detail": "No earlier conversations to look in yet."})
+    if name == "show_emergency_call":
+        # Same answer as production: a call button, never a number from the model (Guy, 17 Nov 2026).
+        if any(c["name"] == name for c in state.calls):
+            return {"status": "already_shown"}
+        return {"status": "shown", "detail": "A call button for the local emergency number is on screen. Don't write a phone number."}
     if name in FIXTURE_ONLY:
         return case.tool_results.get(name, {"error": "not_simulated"})
     return {"error": "unknown_tool"}

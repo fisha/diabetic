@@ -40,6 +40,7 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 | Sharing with a trusted person (DAP-19): consent text, the viewer's chat about shared data, and older shares without a consent record | privacy, terms | Lawyer (PM-127); texts in `packages/i18n` `shr.consent_*` and privacy "Sharing" |
 | Cancellation and refund terms under consumer protection law | terms | When billing opens |
 | Liability wording | terms | Lawyer |
+| General 15 g / 15 minutes low rule in companion replies, given as general information with the person's own care plan first, plus an emergency call button (Guy, 17 Nov 2026) | none (product behaviour) | Lawyer and clinical advisor (PM-206): is it general information or treatment guidance? If it is guidance, remove it or replace it with a fixed text a clinician approved (G-05). |
 | Consent to the external AI engine (PM-149) required for using Stedio, withdrawn only by deleting the account; whether an optional version (journal without the companion) is needed for consent to count as freely given | privacy | Lawyer (PM-99); texts `onb.c3`, `onb.c3b`, `ai.*`, `set.pv_ai*`; privacy policy "Who we share it with" names OpenAI |
 
 ## Queued for the next legal version
