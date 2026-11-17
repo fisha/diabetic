@@ -75,7 +75,7 @@ After adding the Google settings to `.env`, run both again.
 `scripts/fly/stedio-fly evals [--repeat N] [--model M]` runs the companion's regression set (PM-198,
 `evals/steady_evals/regression.py`, hard rules plus the judge, 3 repeats) on Fly, so no key is needed on a laptop.
 
-- **Image**: `deploy/fly/evals/Dockerfile` (context: repository root, `Dockerfile.dockerignore` lets in only
+- **Image**: `deploy/fly/evals/Dockerfile` with the build-only `deploy/fly/evals/fly.toml` (context: repository root, `Dockerfile.dockerignore` lets in only
   `services/api/steady_api`, its lock file and `evals/`). Pushed to the stedio-api registry as
   `evals-<api sha>-<root sha>`; nothing is deployed.
 - **Run**: a one-off Machine in stedio-api (no services, no restart, label `stedio_role=evals`), so it gets the app's own

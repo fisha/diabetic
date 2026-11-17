@@ -150,14 +150,20 @@ cmd_evals() {
   stamp="$(date -u +%Y%m%dT%H%M%SZ)"
   name="evals-$stamp"
   say "building the evals image $tag (synthetic cases + the companion at api ${api_sha:0:7})"
-  fly deploy "$REPO" -a "$API_APP" -c "$REPO/deploy/fly/api/fly.toml" --dockerfile "$REPO/deploy/fly/evals/Dockerfile" \
+  fly deploy "$REPO" -a "$API_APP" -c "$REPO/deploy/fly/evals/fly.toml" --dockerfile "$REPO/deploy/fly/evals/Dockerfile" \
     --ignorefile "$REPO/deploy/fly/evals/Dockerfile.dockerignore" --build-only --push --image-label "$tag" --remote-only
   say "running the regression set on a one-off Machine ($name); this takes a while"
   local env=(-e "EVAL_REPEAT=$repeat" -e "EVAL_LABEL=fly-$tag")
   [ -n "$model" ] && env+=(-e "EVAL_MODEL=$model" -e "EVAL_JUDGE=$model")
   # No services and no restart: nothing routes to it, and it stops when the run ends.
-  fly machine run "registry.fly.io/$API_APP:$tag" -a "$API_APP" --region "$REGION" --name "$name" \
-    --vm-size shared-cpu-1x --vm-memory 1024 --restart no --metadata stedio_role=evals --detach "${env[@]}" >/dev/null
+  # A just-pushed image can take a moment to be visible to the Machines API (manifest 404): retry a few times.
+  local try=1
+  until fly machine run "registry.fly.io/$API_APP:$tag" -a "$API_APP" --region "$REGION" --name "$name" \
+    --vm-size shared-cpu-1x --vm-memory 1024 --restart no --metadata stedio_role=evals --detach "${env[@]}" >/dev/null; do
+    [ "$try" -ge 6 ] && die "evals: could not start the Machine (image registry.fly.io/$API_APP:$tag)"
+    echo "WARN   the Machine did not start (try $try of 6); retrying in $((try * 15)) s"
+    sleep $((try * 15)); try=$((try + 1))
+  done
   id="$(fly machines list -a "$API_APP" --json | python3 -c 'import json,sys; n=sys.argv[1]; print(next(m["id"] for m in json.load(sys.stdin) if m.get("name")==n))' "$name")"
   trap 'fly machine destroy "$id" -a "$API_APP" --force >/dev/null 2>&1 || true' EXIT
   local state="" waited=0

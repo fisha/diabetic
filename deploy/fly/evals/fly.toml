@@ -1,0 +1,9 @@
+# Build-only config for the companion's regression set image (PM-203). Used by `scripts/fly/stedio-fly evals` with
+# `fly deploy --build-only --push`: it pushes an image to the stedio-api registry and deploys nothing. A separate file
+# because deploy/fly/api/fly.toml's [build] dockerfile would win over --dockerfile.
+app = 'stedio-api'
+primary_region = 'fra'
+
+[build]
+  # Relative to this file; the build context is the repository root (passed by stedio-fly).
+  dockerfile = 'Dockerfile'
