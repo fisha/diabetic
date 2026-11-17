@@ -1798,6 +1798,7 @@ note, numeric and date fields):
 - Nothing is graded or coloured by value. The printed range is the lab's own text.
 - Dates follow Guy's rule (dd.mm in Hebrew, mm.dd in English); a result from another year adds the year (`.25`),
   because lab results span years.
-- Picking a PDF file is not in the app yet: it needs a new native module (`expo-document-picker`) and so a native
-  build (Guy's go-ahead). The server already reads PDFs.
+- "Upload a PDF" (Guy chose it for the next native build, 17 Nov 2026): one PDF from Files through
+  `expo-document-picker`. The button shows only in builds that have the module (and on the web), so an OTA to an older
+  build keeps camera and photos only.
 - The explanations (`lab.x_*`) are tagged for clinical review (G-05).

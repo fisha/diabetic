@@ -17,6 +17,7 @@ const ANSWERS = { version: 1, consent: { service: true, training: false, at: new
 // A tiny valid PNG (1x1), standing in for a photo of a report.
 const PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==', 'base64');
 const photo = path.join(out, 'report.png'); fs.writeFileSync(photo, PNG);
+const pdf = path.join(out, 'report.pdf'); fs.writeFileSync(pdf, Buffer.from('%PDF-1.4\n1 0 obj<<>>endobj\ntrailer<<>>\n%%EOF\n'));
 
 const server = http.createServer((req, res) => {
   let p = path.join(root, decodeURIComponent(req.url.split('?')[0]));
@@ -77,6 +78,15 @@ const server = http.createServer((req, res) => {
       await page.waitForTimeout(800);
       await page.screenshot({ path: path.join(out, `${lang}-${scheme}-04-explained.png`) });
       ok(`${lang} ${scheme}: tapping a row shows what the test is`, (await page.getByText(T.what, { exact: true }).count()) > 0);
+      if (!he) {
+        // A PDF from Files (PM-213, native build from 18 Nov 2026; the web has a file input).
+        const pick = page.waitForEvent('filechooser');
+        await page.getByRole('button', { name: 'Upload a PDF' }).first().click();
+        await (await pick).setFiles(pdf);
+        await page.getByText(T.review, { exact: true }).first().waitFor({ timeout: 15000 });
+        ok('en: a PDF opens the review too', (await page.getByText(T.zinc).count()) > 0);
+        await page.screenshot({ path: path.join(out, `${lang}-${scheme}-05-pdf-review.png`) });
+      }
       await ctx.close();
     }
   } catch (e) {
