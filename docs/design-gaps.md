@@ -1872,12 +1872,12 @@ Continue always move on. Open states:
 Not in the design; Guy asked for it from two Stelo screenshots and approved the screenshots. The insights carousel under
 the character becomes one line at the top with a count; tapping opens one card at a time with back and next, "N/M" and a
 fold. Under it, time in range so far today and the latest reading side by side. The tab bar becomes a floating pill with
-labels (the companion orb too, which the board draws unlabelled) and a round plus beside it; the header keeps its plus.
+labels (the companion orb too, which the board draws unlabelled) and a round plus beside it; the header's plus went
+(Guy, 18 Nov 2026), history and text stay. The open insights card lies over the tiles instead of pushing them down.
 Open states:
 - With an urgent card first, the line turns red and shows that card's title instead of "Insights".
 - Without enough sensor coverage today, the time-in-range tile is hidden and the reading tile takes the row.
 - With no card, the line says "All insights" and opens that page.
-- On a small phone with the card open, the character moves down and part of "Tap to talk" can be hidden until it folds.
 - In a conversation and in text, the old one-line reading stays and the top half is not shown.
 
 ## G-109 Under 18 with a parent following (PM-248, 18 Nov 2026, Guy asked)
