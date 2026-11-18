@@ -29,6 +29,14 @@ Only in Fly (`fly secrets list -a stedio-api` shows names). `stedio-fly secrets`
 `stedio-fly setup` and never shown. The APNs key file travels as `STEADY_APNS_KEY_P8_B64` (base64) and `start.sh`
 writes it back to a file. `STEADY_JWT_SECRET` must stay the Mac's: it also unlocks sealed CareLink sign-ins and photos.
 
+## A new native build
+
+`stedio-fly deploy-web` stages the newest IPA and writes `install/latest.json` (`{"build": 17, "version": "0.6.0"}`)
+from the IPA name (`stedio-<version>-<build>.ipa`), else from `release.json` in the install folder. The API reads it
+(`STEADY_APP_LATEST_BUILD_URL` in `api/fly.toml`) at most every 10 minutes, so older installs are offered the new build
+without `fly secrets set` (PM-217, 18 Nov 2026). `STEADY_APP_LATEST_BUILD` is only the fallback when the file can't
+be read.
+
 ## Moving from the Mac
 
 1. `stedio-fly setup`, `stedio-fly deploy-db`, `stedio-fly secrets`.

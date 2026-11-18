@@ -762,7 +762,8 @@ Not in the design; built as a banner over the top of any screen (the existing Ba
   the fingerprint policy, so an update never reaches a build whose native code differs. The app checks at launch and
   when it comes back to the front (at most every 30 minutes) and never downloads without the button.
 - A newer native build is offered as "New version to install" with the install link from `GET /app/version`
-  (`STEADY_APP_LATEST_BUILD` and `STEADY_APP_INSTALL_URL` in the API's `.env`; unset shows nothing).
+  (`STEADY_APP_INSTALL_URL`; unset shows nothing). The build number comes from `install/latest.json`, which
+  `stedio-fly deploy-web` publishes with each new IPA (PM-217, 18 Nov 2026); `STEADY_APP_LATEST_BUILD` is the fallback.
 - "Not now" hides it until the next check. Development builds (code from Metro) and the web show nothing.
 - Publishing: `eas update` does not apply a build profile's `env` from `eas.json`; it bundles only the EAS environment
   named by `--environment` (plus local `.env`). Every `EXPO_PUBLIC_*` the app needs (API address, variant, Google

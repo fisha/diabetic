@@ -7,7 +7,8 @@
 #   stedio-fly deploy-db    Deploy PostgreSQL (stedio-db)
 #   stedio-fly deploy-api [--trial]   Back up the database, then deploy the API. --trial: the background worker is OFF
 #                           (no CareLink/Libre/Tandem syncs, pushes or alerts), so it can run beside the Mac safely
-#   stedio-fly deploy-web   Stage the tester install files with the new address, then deploy the website
+#   stedio-fly deploy-web   Stage the tester install files with the new address and install/latest.json (the newest
+#                           build number the API offers to older installs, PM-217), then deploy the website
 #   stedio-fly copy-data    Copy the Mac's database and meal photos/exports to Fly (overwrites Fly's copy)
 #   stedio-fly backup       Take a database backup now (on the database volume)
 #   stedio-fly status       Machines, volumes and health of the three apps
@@ -215,6 +216,38 @@ cmd_deploy_api() {
   curl -fsS -m 15 --retry 8 --retry-delay 5 --retry-all-errors "https://$API_APP.fly.dev/health" && echo
 }
 
+# install/latest.json: the newest build number, read by the API's GET /app/version so an older install offers the new
+# one without a `fly secrets set` per build (PM-217). From the IPA name (stedio-<version>-<build>.ipa), else from the
+# install folder's release.json ("build"). Without a number no file is written and the API uses STEADY_APP_LATEST_BUILD.
+write_latest_json() { # <stage dir> <ipa name>
+  python3 - "$1" "${2:-}" "$BUILDS_INSTALL/release.json" <<'PY'
+import json, re, sys
+stage, ipa, release = sys.argv[1:4]
+build = version = None
+m = re.fullmatch(r"stedio-(\d+\.\d+\.\d+)-(\d+)\.ipa", ipa)
+if m:
+    version, build = m.group(1), int(m.group(2))
+else:
+    try:
+        with open(release) as f:
+            r = json.load(f)
+        b = r.get("build")
+        if isinstance(b, str) and b.isdigit():
+            b = int(b)
+        if isinstance(b, int) and not isinstance(b, bool) and b > 0:
+            build, version = b, r.get("version") if isinstance(r.get("version"), str) else None
+    except (OSError, ValueError, AttributeError):
+        pass
+if build is None:
+    print("WARN   no build number in the IPA name or release.json: no latest.json, the API uses STEADY_APP_LATEST_BUILD")
+    sys.exit(0)
+with open(f"{stage}/latest.json", "w") as f:
+    json.dump({"build": build, "version": version}, f)
+    f.write("\n")
+print(f"latest build published: {build} ({version or 'version unknown'})")
+PY
+}
+
 cmd_deploy_web() {
   local stage="$REPO/deploy/fly/web/.install"
   rm -rf "$stage"; mkdir -p "$stage"
@@ -224,6 +257,7 @@ cmd_deploy_web() {
     local ipa; ipa="$(grep -o '[^/]*\.ipa' "$stage/manifest.plist" | head -1)"
     [ -n "$ipa" ] && cp -L "$BUILDS_INSTALL/$ipa" "$stage"/
     sed -i '' "s#https://$OLD_WEB_HOST#$WEB_URL#g" "$stage/index.html" "$stage/manifest.plist"
+    write_latest_json "$stage" "$ipa"
     say "install files staged: $(ls "$stage" | tr '\n' ' ')"
   else
     echo "WARN   $BUILDS_INSTALL not found: the website goes up without the tester install page"
