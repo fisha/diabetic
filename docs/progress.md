@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-217, thread "Detect new app builds automatically"): Guy approved ending the
+`fly secrets set STEADY_APP_LATEST_BUILD=N` step after each native build. `stedio-fly deploy-web` now writes
+`install/latest.json` (build and version, from the IPA name or `release.json`) next to the manifest, and the API's
+`GET /app/version` reads it (`STEADY_APP_LATEST_BUILD_URL` in `deploy/fly/api/fly.toml`) with a 10 minute cache and a
+3 s timeout, keeps the last good number through a website outage, and falls back to `STEADY_APP_LATEST_BUILD`. No
+migration, no app change. API tests pass. Next: deploy-web (publishes build 17), then deploy-api; check
+`/app/version` says 17.
 17 Nov 2026 (Jira PM-214, thread "Upgrade the visit report"): Guy asked for a much richer visit report. The PDF is
 redesigned (logo band, the person's name, the visit day and everyone it is with, KPI tiles, ranges bar, AGP, daily
 in-range bars, carbs and insulin bars, an optional Apple Health page with steps and sleep, and a log where meal,
