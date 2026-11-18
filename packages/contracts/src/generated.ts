@@ -597,11 +597,55 @@ export interface paths {
         };
         /**
          * Conversations
-         * @description Past conversations for the history sheet. Title and preview are the conversation's own words, not a summary.
+         * @description Past conversations for the history sheet: a short title the AI engine wrote (the first message until then), the
+         *     companion's last reply as one line, and when. Missing titles are written in the background (PM-220).
          */
         get: operations["conversations_conversations_get"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/conversations/{conversation_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Delete Conversation
+         * @description The person deletes a conversation from the list (Guy, 18 Nov 2026, PM-220): its messages, their recall vectors,
+         *     tool logs and quality reviews go with it (cascade). What they asked the companion to remember stays in Memories,
+         *     where it is deleted on its own. The main screen's follow-up bubbles are written again, so none comes from it.
+         */
+        delete: operations["delete_conversation_conversations__conversation_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/conversations/{conversation_id}/resume": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Resume
+         * @description A past conversation opened from the list goes on (PM-220): it becomes the current one, so voice and "talk about
+         *     this" continue it too. The app calls this when the person starts talking in it, not when they only read it.
+         */
+        post: operations["resume_conversations__conversation_id__resume_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -3290,6 +3334,10 @@ export interface components {
         };
         /** ConversationOut */
         ConversationOut: {
+            /** Current */
+            current: boolean;
+            /** First */
+            first: string;
             /**
              * Id
              * Format: uuid
@@ -5654,6 +5702,8 @@ export interface components {
         SendIn: {
             /** Client Id */
             client_id: string;
+            /** Conversation Id */
+            conversation_id?: string | null;
             /** Text */
             text: string;
             /**
@@ -7528,6 +7578,66 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ConversationOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_conversation_conversations__conversation_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                conversation_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    resume_conversations__conversation_id__resume_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                conversation_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ThreadOut"];
                 };
             };
             /** @description Validation Error */

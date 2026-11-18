@@ -1620,6 +1620,14 @@
       },
       "ConversationOut": {
         "properties": {
+          "current": {
+            "title": "Current",
+            "type": "boolean"
+          },
+          "first": {
+            "title": "First",
+            "type": "string"
+          },
           "id": {
             "format": "uuid",
             "title": "Id",
@@ -1649,7 +1657,9 @@
           "started_at",
           "last_message_at",
           "title",
-          "preview"
+          "preview",
+          "first",
+          "current"
         ],
         "title": "ConversationOut",
         "type": "object"
@@ -8360,6 +8370,18 @@
             "title": "Client Id",
             "type": "string"
           },
+          "conversation_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conversation Id"
+          },
           "text": {
             "maxLength": 4000,
             "minLength": 1,
@@ -12048,7 +12070,7 @@
     },
     "/conversations": {
       "get": {
-        "description": "Past conversations for the history sheet. Title and preview are the conversation's own words, not a summary.",
+        "description": "Past conversations for the history sheet: a short title the AI engine wrote (the first message until then), the\ncompanion's last reply as one line, and when. Missing titles are written in the background (PM-220).",
         "operationId": "conversations_conversations_get",
         "parameters": [
           {
@@ -12096,6 +12118,97 @@
           }
         ],
         "summary": "Conversations",
+        "tags": [
+          "conversation"
+        ]
+      }
+    },
+    "/conversations/{conversation_id}": {
+      "delete": {
+        "description": "The person deletes a conversation from the list (Guy, 18 Nov 2026, PM-220): its messages, their recall vectors,\ntool logs and quality reviews go with it (cascade). What they asked the companion to remember stays in Memories,\nwhere it is deleted on its own. The main screen's follow-up bubbles are written again, so none comes from it.",
+        "operationId": "delete_conversation_conversations__conversation_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "conversation_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Conversation Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete Conversation",
+        "tags": [
+          "conversation"
+        ]
+      }
+    },
+    "/conversations/{conversation_id}/resume": {
+      "post": {
+        "description": "A past conversation opened from the list goes on (PM-220): it becomes the current one, so voice and \"talk about\nthis\" continue it too. The app calls this when the person starts talking in it, not when they only read it.",
+        "operationId": "resume_conversations__conversation_id__resume_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "conversation_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Conversation Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThreadOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Resume",
         "tags": [
           "conversation"
         ]

@@ -1386,6 +1386,27 @@
     ],
     "note": "G-03 approved empty state for COM-11"
   },
+  "com.hist_delete": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-220: delete a conversation by swiping (Guy, 18 Nov 2026); not in the design"
+  },
+  "com.hist_delete_q": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-220: delete a conversation by swiping (Guy, 18 Nov 2026); not in the design"
+  },
+  "com.hist_delete_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-220: delete a conversation by swiping (Guy, 18 Nov 2026); not in the design"
+  },
   "com.history": {
     "board": "Companion",
     "review": [
