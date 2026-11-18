@@ -1904,6 +1904,29 @@
             ],
             "title": "Last Used At"
           },
+          "mail_error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mail Error"
+          },
+          "mailed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mailed At"
+          },
           "message": {
             "anyOf": [
               {
