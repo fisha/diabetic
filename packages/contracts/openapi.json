@@ -9169,9 +9169,34 @@
             "title": "Photo Retention",
             "type": "string"
           },
+          "sensor_end_options": {
+            "additionalProperties": {
+              "items": {
+                "enum": [
+                  168,
+                  72,
+                  24,
+                  5
+                ],
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "default": {},
+            "propertyNames": {
+              "enum": [
+                "guardian4",
+                "dexcomG7",
+                "libre3"
+              ]
+            },
+            "title": "Sensor End Options",
+            "type": "object"
+          },
           "sensor_end_reminder": {
             "additionalProperties": {
               "enum": [
+                168,
                 72,
                 24,
                 5
@@ -9360,6 +9385,7 @@
                   "anyOf": [
                     {
                       "enum": [
+                        168,
                         72,
                         24,
                         5
