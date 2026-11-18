@@ -25,6 +25,7 @@ photos, incl. a woman in a hijab and an African-American man) with parallax, and
 photos carry no caption (Guy). Built on the demo branch (PM-233, "Ask for a
 demo"). Typecheck clean for these files, lint and web tests pass; checked in Chromium at desktop and phone widths.
 Next: Guy's look on his Mac, then PR and deploy-web.
+Round 2 (Guy, 18 Nov evening, web #48): on phones "How it works" is tabs, one chapter open at a time; the mosaic keeps four photos and three moved into the chapters. Under-18 with a parent following is its own thread; the site stays 18+ until the terms change.
 
 18 Nov 2026 (Jira PM-239 to PM-244, thread "Stelo adopt-first items", from the Dexcom Stelo research PM-237): Guy asked
 to build the "Adopt first" list. Built, all retrospective and descriptive, no score and no threshold of the app's own:
