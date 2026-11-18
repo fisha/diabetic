@@ -1866,3 +1866,16 @@ Continue always move on. Open states:
 - The consent step's answers are recorded on the server before the first connection opens; if that fails, a banner
   says nothing was connected and the person can retry or skip.
 - On the website the health store row shows "On your phone", as in Settings.
+
+### G-108 · Main screen in two halves, insights line, floating tab bar (**PM-238, Guy 18 Nov 2026**, verified-test)
+
+Not in the design; Guy asked for it from two Stelo screenshots and approved the screenshots. The insights carousel under
+the character becomes one line at the top with a count; tapping opens one card at a time with back and next, "N/M" and a
+fold. Under it, time in range so far today and the latest reading side by side. The tab bar becomes a floating pill with
+labels (the companion orb too, which the board draws unlabelled) and a round plus beside it; the header keeps its plus.
+Open states:
+- With an urgent card first, the line turns red and shows that card's title instead of "Insights".
+- Without enough sensor coverage today, the time-in-range tile is hidden and the reading tile takes the row.
+- With no card, the line says "All insights" and opens that page.
+- On a small phone with the card open, the character moves down and part of "Tap to talk" can be hidden until it folds.
+- In a conversation and in text, the old one-line reading stays and the top half is not shown.
