@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-245, thread "Connect data sources during onboarding"): Guy asked for real device connections inside
+onboarding, early, with onboarding going on afterwards. New step `connect` after `sensor` (G-106): the connection that
+fits the chosen pump and sensor first, then Apple Health / Health Connect and the rest, each opening the existing
+connection screen; skippable. API: `POST /consent/onboarding` records the consent step's answers before the first
+connection (the profile save used to be the first record, so a device could sync with no consent on the server), with
+the same rules as the profile save (`record_consents`); `GET /profile/device` gives a connected pump's range and ratios
+before a profile exists. No privacy text change (consent is still given at sign-up). Screenshots en/he, day/night, from
+the web export against a local API. Next: Guy's OK on the screenshots, then deploy API, OTA to testers.
+
 18 Nov 2026 (Jira PM-233, thread "Add investor demo to the website"): Guy asked for an "Ask for a demo" button next to
 "Join the waiting list", admin approval, and the real app shown in a phone frame on the website (web only) with a side
 panel of scenarios and talking points for investors, pharma, insurers, hospitals and health funds. Demo data never trains

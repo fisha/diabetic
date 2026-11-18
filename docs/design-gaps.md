@@ -1847,3 +1847,15 @@ over". Built in the website's own brand tokens. Open states:
 - The app hides Devices, Privacy, Sharing, Admin, Sign out and Delete in the demo; the API also refuses those writes.
 - Voice in the demo uses the same provider as the app; where it is off, the app's own "Not available" state shows.
 
+
+## G-106 Connect data sources during onboarding (PM-245, 18 Nov 2026, Guy asked)
+
+Not on the onboarding board; Guy asked for it ("put it in onboarding, even in the early steps, and then continue").
+A step "Connect your data" right after the sensor step (before ratios, so a connected pump's range and ratios show
+there). "Suggested for you" lists the service that fits the chosen pump and sensor (MiniMed/Guardian: CareLink;
+t:slim/Mobi: Tandem Source; Dexcom: Dexcom Share; Libre: LibreLinkUp) and the phone's health store; "Other connections"
+lists the rest. Rows are the Settings > Devices rows and open the same connection screens. Skip, "Complete later" and
+Continue always move on. Open states:
+- The consent step's answers are recorded on the server before the first connection opens; if that fails, a banner
+  says nothing was connected and the person can retry or skip.
+- On the website the health store row shows "On your phone", as in Settings.
