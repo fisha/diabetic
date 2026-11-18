@@ -22,6 +22,10 @@ Sharing, Admin, Sign out and Delete hidden); web `/demo` page, home buttons, adm
 requests. Privacy `2026-11-18T14:00:00Z` adds demo request data, demo retention and the stored link. API 21 demo tests,
 e2e 13/13 in Chromium against a local API. Lawyer review PM-235 (`needs-lawyer`). Next: deploy API (migration
 e5d1a7c3b9f2) and web together, OTA.
+Later the same day: admin invite by email (api #109, web #43), and two family scenarios through the existing sharing
+(api #110, web #44): a parent without diabetes, and a parent with type 2 and their own data, each following Maya, a
+child with type 1 whose demo account resets nightly and never trains. The app in the frame opens viewing Maya. No
+migration. Chromium check 5/5.
 
 18 Nov 2026 (Jira PM-234, same thread): Guy asked for no placeholders on the legal pages. Every `⟦…⟧` in privacy,
 terms and accessibility (en and he) is filled: support and accessibility contact guy@mi-ng.com, hosting on Fly.io in
