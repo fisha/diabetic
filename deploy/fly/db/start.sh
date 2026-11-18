@@ -2,7 +2,8 @@
 # Starts PostgreSQL and, beside it, the nightly logical backup loop.
 # Backups, two layers (health data):
 #   1. Fly takes a snapshot of the whole volume every day (kept STEDIO_SNAPSHOT_DAYS, set when the volume is created).
-#   2. This loop writes a pg_dump to /data/backups once a day (after BACKUP_HOUR_UTC) and keeps BACKUP_KEEP_DAYS of them.
+#   2. This loop writes a pg_dump to /data/backups once a day (after BACKUP_HOUR_UTC); backup.sh keeps the newest BACKUP_KEEP_COUNT,
+#      none older than BACKUP_KEEP_DAYS.
 #      The dumps are on the volume, so the daily snapshots carry them too; `stedio-backup` also runs on demand
 #      (scripts/fly/stedio-fly backup) before every migration.
 set -euo pipefail
