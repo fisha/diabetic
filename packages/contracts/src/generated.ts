@@ -1331,6 +1331,29 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/follow-ups/break": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Break */
+        get: operations["get_break_follow_ups_break_get"];
+        /**
+         * Take Break
+         * @description Take a break (PM-257, Guy 18 Nov 2026): until turned off, the app is one screen with the latest reading and no push
+         *     goes out but the out-of-range look-back the person turned on. Check-ins wait as in a pause; the app starts none.
+         */
+        put: operations["take_break_follow_ups_break_put"];
+        post?: never;
+        /** End Break */
+        delete: operations["end_break_follow_ups_break_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/follow-ups/fewer-nudges": {
         parameters: {
             query?: never;
@@ -3420,6 +3443,13 @@ export interface components {
         Body_upload_meal_photos_post: {
             /** File */
             file: string;
+        };
+        /** BreakOut */
+        BreakOut: {
+            /** On */
+            on: boolean;
+            /** Since */
+            since: string | null;
         };
         /** CareLinkIn */
         CareLinkIn: {
@@ -9586,6 +9616,66 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_break_follow_ups_break_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BreakOut"];
+                };
+            };
+        };
+    };
+    take_break_follow_ups_break_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BreakOut"];
+                };
+            };
+        };
+    };
+    end_break_follow_ups_break_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BreakOut"];
                 };
             };
         };

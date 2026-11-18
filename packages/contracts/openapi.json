@@ -994,6 +994,32 @@
         "title": "Body_upload_meal_photos_post",
         "type": "object"
       },
+      "BreakOut": {
+        "properties": {
+          "on": {
+            "title": "On",
+            "type": "boolean"
+          },
+          "since": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Since"
+          }
+        },
+        "required": [
+          "on",
+          "since"
+        ],
+        "title": "BreakOut",
+        "type": "object"
+      },
       "CareLinkIn": {
         "additionalProperties": false,
         "properties": {
@@ -14678,6 +14704,81 @@
           }
         ],
         "summary": "Create",
+        "tags": [
+          "follow-ups"
+        ]
+      }
+    },
+    "/follow-ups/break": {
+      "delete": {
+        "operationId": "end_break_follow_ups_break_delete",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BreakOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "End Break",
+        "tags": [
+          "follow-ups"
+        ]
+      },
+      "get": {
+        "operationId": "get_break_follow_ups_break_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BreakOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Break",
+        "tags": [
+          "follow-ups"
+        ]
+      },
+      "put": {
+        "description": "Take a break (PM-257, Guy 18 Nov 2026): until turned off, the app is one screen with the latest reading and no push\ngoes out but the out-of-range look-back the person turned on. Check-ins wait as in a pause; the app starts none.",
+        "operationId": "take_break_follow_ups_break_put",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BreakOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Take Break",
         "tags": [
           "follow-ups"
         ]

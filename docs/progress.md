@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-257, thread "Add a take a break glucose-only mode"): Guy asked for a quick "Take a break" switch in
+Profile: no pushes from the app except high and low glucose, no insights, and the whole app becomes one clean screen with
+the sensor reading in big (iPhone StandBy style, upright) and a small icon that ends it; also from the iPhone Action
+Button. Built: Profile switch card; `BreakScreen` over every tab (black, value huge in the person's own range tint, unit,
+fresh trend arrow, time and age; "Not current" with the time and no value past 15 minutes); the server keeps
+`routine_state.break_since` (`/follow-ups/break`) and `push.send` withholds every kind but `glucose_alert` (the quiet
+look-back the person turned on), check-ins are held as in a pause and the app starts none, insight and compliment pushes
+stay in the app; the phone cancels its local reminder notifications and hides foreground banners. Action Button: the
+"Take a break" App Intent (native, next local build) and, for current builds, a Shortcut that opens `steady://break`.
+API 681 tests pass; app tests and typecheck pass; e2e `tools/e2e/take-a-break.cjs` 61/61 (en/he, light/dark, small/large).
+Not yet seen on a phone. Next: deploy API, OTA (0.6.0 and 0.5.0), then a local native build for the App Intent.
+
 18 Nov 2026 (Jira PM-256, thread "Upgrade the visit report"): Guy said the next-visit date ("05.10") was unclear and
 not like other dates, and there was no hour. The date field now shows the weekday with the date (dd.mm in Hebrew,
 mm.dd in English, the year only when it is not this year) and a time field sits next to it (native picker, optional;
