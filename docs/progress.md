@@ -13,7 +13,7 @@ Stelo's how-it-works page: scroll motion, photos of people using the app (AI-gen
 screens. Built in apps/web: the hero keeps only the phone (Guy: the photo did not belong there), a full-width photo that opens on scroll, "How it works" as a
 sticky phone that swaps four real app screens (e2e captures with sample data) per chapter (`Story.tsx`), a photo
 mosaic with parallax, and rising reveals. CSS scroll-driven animations only; nothing moves with reduced motion; the
-page says the people are AI-generated and the screens show sample data. Built on the demo branch (PM-233, "Ask for a
+photos carry no caption (Guy). Built on the demo branch (PM-233, "Ask for a
 demo"). Typecheck clean for these files, lint and web tests pass; checked in Chromium at desktop and phone widths.
 Next: Guy's look on his Mac, then PR and deploy-web.
 
