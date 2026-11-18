@@ -20677,13 +20677,6 @@
     ],
     "note": "Folds the open insights card back to one line."
   },
-  "now.so_far": {
-    "board": "Companion",
-    "review": [
-      "translation"
-    ],
-    "note": "Under the time-in-range figure on the main screen: today until now."
-  },
   "now.glucose": {
     "board": "Companion",
     "review": [

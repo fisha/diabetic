@@ -47,8 +47,8 @@ const server = http.createServer((req, res) => {
       page.setDefaultTimeout(6000);
       const he = lang === 'he';
       const L = he
-        ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', ins: 'תובנות', tir: 'זמן בטווח', glu: 'סוכר', next: 'התובנה הבאה', fold: 'סגירת התובנות', add: 'תיעוד מהיר', so: 'עד עכשיו היום', health: 'בריאות', comp: 'מלווה', talk: 'שיחה', hist: 'שיחות', text: 'מעבר לטקסט', report: 'דוח לביקור במרפאה' }
-        : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', ins: 'Insights', tir: 'Time in range', glu: 'Glucose', next: 'Next insight', fold: 'Close insights', add: 'Quick log', so: 'So far today', health: 'Health', comp: 'Companion', talk: 'Talk', hist: 'Conversations', text: 'Switch to text', report: 'Report for my clinic' };
+        ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', ins: 'תובנות', tir: 'זמן בטווח', glu: 'סוכר', next: 'התובנה הבאה', fold: 'סגירת התובנות', add: 'תיעוד מהיר', so: '24 השעות האחרונות', health: 'בריאות', comp: 'מלווה', talk: 'שיחה', hist: 'שיחות', text: 'מעבר לטקסט', report: 'מרפאה ובדיקות' }
+        : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', ins: 'Insights', tir: 'Time in range', glu: 'Glucose', next: 'Next insight', fold: 'Close insights', add: 'Quick log', so: 'Last 24 hours', health: 'Health', comp: 'Companion', talk: 'Talk', hist: 'Conversations', text: 'Switch to text', report: 'Clinic & tests' };
       const tag = `${lang} ${scheme} ${size}`;
       await page.goto(base); await page.waitForTimeout(2000);
       if (he) { await page.getByText('עברית', { exact: true }).first().click(); await page.waitForTimeout(800); }
@@ -119,11 +119,11 @@ const server = http.createServer((req, res) => {
         await page.getByText(he ? 'אחר כך' : 'Later', { exact: true }).first().click({ timeout: 1500 }).catch(() => {});
         ok(`${tag}: ${tabPath} has one plus`, (await page.getByRole('button', { name: L.add, exact: true }).count()) === 1);
       }
-      // The clinic visit report is in the Health group of Profile (Guy, 18 Nov 2026).
+      // The clinic report is in the Health group of Profile (Guy, 18 Nov 2026), since PM-263 inside "Clinic & tests".
       await page.goto(`${base}/profile`); await page.waitForTimeout(4000);
       const y = async (txt) => (await page.getByText(txt, { exact: true }).first().boundingBox())?.y ?? -1;
       const [h, r, c] = [await y(L.health.toUpperCase()), await y(L.report), await y(L.comp.toUpperCase())];
-      ok(`${tag}: clinic report under Health`, h > 0 && r > h && (c < 0 || r < c), `${h} ${r} ${c}`);
+      ok(`${tag}: clinic row under Health`, h > 0 && r > h && (c < 0 || r < c), `${h} ${r} ${c}`);
       await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-04-profile.png`) });
       await ctx.close();
     }
