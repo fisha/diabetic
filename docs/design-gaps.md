@@ -1888,3 +1888,12 @@ invite code with Send code, "My parent accepted, continue" and "Edit date of bir
 (`/share`) gets a confirmation tick ("I am {name}'s parent or legal guardian…"). Neither is on the board; built from
 the existing onboarding and sharing components. The same screen opens for an account under 18 whose parent stopped
 following. Screenshots: `/mnt/project-files/steady/minors/` (en light, he light, he dark).
+
+## G-110 Viewer companion screen and top viewing strip (PM-251, 18 Nov 2026, Guy asked)
+
+The design has no screen for a follower's own conversation about someone's data, nor a place for the "viewing" line.
+Guy (18 Nov 2026) asked for the regular main-screen look with the character in the middle, and the viewing line as a
+prominent strip on top. Built: top glow and header as on the main screen, the privacy note kept, the idle character
+(not a button, no voice) with "Ask me about {name}" until the first message; while viewing, a strip in the accent colour
+across the top of every tab (white text, darker accent at night) with a Switch pill. The "My data" switch line for
+followers who are not viewing stays above the tab bar.

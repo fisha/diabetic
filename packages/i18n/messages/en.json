@@ -2194,6 +2194,7 @@
   "shr.chat_note": "This conversation is yours only. {name} won't see it, and nothing is logged or changed for them.",
   "shr.chat_ph": "Ask about {name}'s data…",
   "shr.chat_empty": "Ask what you'd like to understand about {name}'s data. For anything urgent, contact {name} directly.",
+  "shr.chat_orb": "Ask me about {name}",
   "shr.sw_view_only": "View only",
   "sub.annual": "Annual",
   "sub.annual_b": "Billed once a year",

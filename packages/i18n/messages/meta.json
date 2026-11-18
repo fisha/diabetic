@@ -14303,6 +14303,13 @@
     ],
     "note": "Trusted person and following (DAP-19, Guy 16 Nov 2026)."
   },
+  "shr.chat_orb": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer companion screen, under the character (PM-251, Guy 18 Nov 2026)."
+  },
   "shr.sw_view_only": {
     "board": "Settings",
     "review": [
