@@ -19393,5 +19393,47 @@
       "translation"
     ],
     "note": "Confirm after swiping the next visit card (PM-222)"
+  },
+  "now.pill": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "The insights line at the top of the main screen; tapping it opens the cards (Guy, 18 Nov 2026)."
+  },
+  "now.prev": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Back button in the open insights card."
+  },
+  "now.next": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Next button in the open insights card."
+  },
+  "now.fold": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Folds the open insights card back to one line."
+  },
+  "now.so_far": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Under the time-in-range figure on the main screen: today until now."
+  },
+  "now.glucose": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Title of the latest-reading tile on the main screen."
   }
 }

@@ -3044,5 +3044,11 @@
   "meal.again_log": "לתעד שוב",
   "cmp.swipe_delete": "מחיקה",
   "shr.remove_q": "להפסיק לשתף עם {name}?",
-  "visit.remove_q": "להסיר את הביקור?"
+  "visit.remove_q": "להסיר את הביקור?",
+  "now.pill": "תובנות",
+  "now.prev": "התובנה הקודמת",
+  "now.next": "התובנה הבאה",
+  "now.fold": "סגירת התובנות",
+  "now.so_far": "עד עכשיו היום",
+  "now.glucose": "סוכר"
 }
