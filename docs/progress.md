@@ -8,6 +8,20 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-239 to PM-244, thread "Stelo adopt-first items", from the Dexcom Stelo research PM-237): Guy asked
+to build the "Adopt first" list. Built, all retrospective and descriptive, no score and no threshold of the app's own:
+meal glucose curve from the meal to +3 h (at the meal, highest, rise, back to start; the person's own range drawn when
+set) in the meal sheet and the journal (`features/meal/curve.ts`, `MealCurveCard.tsx`); the morning recap holds at most
+one fact per topic (glucose, activity, food, sleep) plus one "went well" or none, with a new sleep tool
+(`agents/notes.py`); the week view lists the biggest rises after logged meals and workouts, each opening its journal
+entry (`overview/rises.ts`, `RisesCard.tsx`); fat and fiber per meal end to end (`fiber_g`, `fiber_total_g`); workout and
+sleep icons on the day graph with their own sheets (`GET /health-data/nights`); barcode scan on Log a meal with
+expo-camera (no new native module) and `GET /meal/barcode/{code}` from Open Food Facts (Guy chose it; only the number is
+sent; Israeli and EU label carbs taken as already net of fiber, North American labels have fiber subtracted). Privacy
+`2026-11-18T15:00:00Z` adds the Open Food Facts line. API tests, app 200 tests, e2e `tools/e2e/meal-impact.cjs` 31/31 (en
+light, he light, he dark). Open Food Facts is not reachable from the container, so a real lookup is first tried on Fly.
+Next: deploy API (before the OTA: the app sends `fiber_g`), web, OTA; try a real scan on a phone.
+
 18 Nov 2026 (Jira PM-233, thread "Add investor demo to the website"): Guy asked for an "Ask for a demo" button next to
 "Join the waiting list", admin approval, and the real app shown in a phone frame on the website (web only) with a side
 panel of scenarios and talking points for investors, pharma, insurers, hospitals and health funds. Demo data never trains
