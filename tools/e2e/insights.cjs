@@ -33,6 +33,8 @@ const server = http.createServer((req, res) => {
   try {
     await api('/auth/sign-up', { method: 'POST', body: { email: 'i@example.com', password: 'correct horse battery' } });
     const ti = (await api('/auth/sign-in', { method: 'POST', body: { email: 'i@example.com', password: 'correct horse battery' } })).json;
+    // Accept the current legal documents, so sign-in doesn't stop at the re-consent screen.
+    { const docs = (await api('/consent', { token: ti.access_token })).json; await api('/consent/accept', { method: 'POST', token: ti.access_token, body: { versions: Object.fromEntries(docs.documents.map((d) => [d.kind, d.version])), at: new Date().toISOString() } }); }
     const answers = { ...ANSWERS, ratios: { ...ANSWERS.ratios, target: '80-140' } };
     await api('/profile', { method: 'PUT', token: ti.access_token, body: { locale: 'en', answers } });
     // Four mornings (08:00 local) above the person's own range, and one reading today in range.
@@ -49,7 +51,10 @@ const server = http.createServer((req, res) => {
     await page.getByText('Sign in', { exact: true }).last().click(); await page.waitForTimeout(2500);
     await page.getByText('Overview', { exact: true }).last().click(); await page.waitForTimeout(2500);
     ok('range legend', await page.getByText(/Your range .*80–140 mg\/dL/).first().isVisible().catch(() => false));
-    await page.getByText('Insights', { exact: true }).first().scrollIntoViewIfNeeded();
+    ok('no insights section on Overview', (await page.getByText('Above your range in the morning').count()) === 0);
+    // The insights left Overview for the main screen and All insights (Guy, 18 Nov 2026).
+    await page.goto(`${base}/insights`); await page.waitForTimeout(2500);
+    ok('last analysis on All insights', (await page.getByText(/Last analysed/).count()) > 0);
     ok('insight card', await page.getByText('Above your range in the morning').first().isVisible());
     await shot('i01-overview');
 
@@ -63,7 +68,7 @@ const server = http.createServer((req, res) => {
     const after = (await api('/insights', { token: ti.access_token })).json;
     ok('server hides muted insight', after.insights.length === 0, JSON.stringify(after.insights.map((x) => x.key)));
     await shot('i03-feedback');
-    await page.getByLabel('Back to overview').first().click(); await page.waitForTimeout(1500);
+    await page.goto(`${base}/overview`); await page.waitForTimeout(2500);
 
     // Week summary: counts and plain facts from the records.
     await page.getByText('Week', { exact: true }).first().click(); await page.waitForTimeout(2500);

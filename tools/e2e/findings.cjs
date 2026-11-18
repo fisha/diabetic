@@ -33,6 +33,8 @@ const server = http.createServer((req, res) => {
   try {
     await api('/auth/sign-up', { method: 'POST', body: { email: 'r@example.com', password: 'correct horse battery' } });
     const tk = (await api('/auth/sign-in', { method: 'POST', body: { email: 'r@example.com', password: 'correct horse battery' } })).json.access_token;
+    // Accept the current legal documents, so sign-in doesn't stop at the re-consent screen.
+    { const docs = (await api('/consent', { token: tk })).json; await api('/consent/accept', { method: 'POST', token: tk, body: { versions: Object.fromEntries(docs.documents.map((d) => [d.kind, d.version])), at: new Date().toISOString() } }); }
     await api('/profile', { method: 'PUT', token: tk, body: { locale: 'en', answers: { ...ANSWERS, ratios: { ...ANSWERS.ratios, target: '80-140' } } } });
     // Pasta lunch on four days: 160 before, 230 two hours later.
     for (let i = 1; i <= 4; i++) {
@@ -52,7 +54,8 @@ const server = http.createServer((req, res) => {
     await page.getByLabel('Password', { exact: true }).fill('correct horse battery');
     await page.getByText('Sign in', { exact: true }).last().click(); await page.waitForTimeout(2500);
     await page.getByRole('tab', { name: 'Overview', exact: true }).click(); await page.waitForTimeout(2500);
-    await page.getByText('Insights', { exact: true }).first().scrollIntoViewIfNeeded();
+    // The insights left Overview for the main screen and All insights (Guy, 18 Nov 2026).
+    await page.goto(`${base}/insights`); await page.waitForTimeout(2500);
     ok('food card', await page.getByText('After Pasta: usually above your range').first().isVisible());
     await shot('r01-overview');
     await page.getByText('After Pasta: usually above your range').first().click(); await page.waitForTimeout(1500);

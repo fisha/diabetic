@@ -1393,8 +1393,6 @@
   "ovr.sleep_awake": "{count, plural, one {Woke once} other {Woke # times}}",
   "ovr.sleep_src": "From the health app",
   "ovr.ins_none": "Not enough records yet. Observations appear after several days of logging, and they’ll be labelled as first impressions until they repeat.",
-  "ovr.ins_src": "From your records",
-  "ovr.ins_t": "Insights",
   "ovr.insight": "Insight",
   "ovr.insight.disclaimer": "This is a pattern in your logs, not medical advice. Talk to your care team before changing treatment.",
   "ovr.insight.recurring": "Seen on {count} of the last {total} mornings",
