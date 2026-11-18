@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-228, thread "Fix slow API requests and sensor insight errors"): API logs 00:00-11:16 UTC showed
+2x 500 on the "sensors ending early" reading (a finding's `days` is a number, the interpret route iterated it), /insights
+computing ~950 ms on almost every poll, and health uploads of 1000 samples cut off after the 15 s timeout (the app then
+says "No connection to Stedio"). Fixed: the 500 (test), readings for the 28-day comparisons loaded once, A1c skips
+windows the readings can't cover, uploads insert rows as parameters (compiled once), app uploads in batches of 400
+with a 60 s wait. api #104, app #130 merged. Next: deploy-api, OTA, then check the logs again.
+
 18 Nov 2026 (Jira PM-220, thread "Improve the conversations list"): Guy's screenshot of the Conversations sheet
 (first message as title, three lines of reply, no time, tap did nothing). Each row now has a short title the AI engine
 writes in the background (`conversation_titles.py`: AI consent only, no digits or dose wording, else the first
