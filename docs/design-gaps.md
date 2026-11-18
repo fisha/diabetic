@@ -1928,3 +1928,10 @@ Guy 18 Nov 21:07) that save as picked; without such a service the card says whic
 the end, about how long is left, and whether it comes from the pump or from the start plus the maker's rated days) is
 sent once per sensor; 3-day and 24-hour reminders wait for 08:00 at night. Dexcom Share gives no sensor start, so no
 reminder there. Screenshots: `/mnt/project-files/steady/sensor-end/`.
+
+### G-113 · Clinic & tests screen (**PM-263, Guy 18 Nov 2026**, verified-test)
+
+Not in the design; Guy asked for it. Profile > "Clinic & tests" groups the person's test results (PM-213), the clinic
+report with their visits (PM-214) and the "Read a lab report" card. When viewing someone else's data, only the results
+row shows. Privacy > "Share with my care team" still opens the clinic report directly.
+

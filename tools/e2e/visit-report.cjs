@@ -93,8 +93,15 @@ const server = http.createServer((req, res) => {
       if (await later.count()) { await later.last().click(); await page.waitForTimeout(1000); }
       await page.getByRole('tab', { name: L.prof }).first().click().catch(async () => page.getByText(L.prof, { exact: true }).last().click());
       await page.waitForTimeout(2500);
-      await page.getByText(L.priv, { exact: true }).first().click(); await page.waitForTimeout(2500);
-      await page.getByText(L.care, { exact: true }).first().click(); await page.waitForTimeout(4500);
+      // PM-263: Profile > Clinic & tests holds the test results, the clinic report and reading a lab report.
+      const C = he ? { t: 'מרפאה ובדיקות', res: 'הבדיקות שלי', rep: 'דוח לביקור במרפאה', scan: 'קריאת מסמך בדיקות', lab: 'תוצאות בדיקות' } : { t: 'Clinic & tests', res: 'My test results', rep: 'Report for my clinic', scan: 'Read a lab report', lab: 'Lab results' };
+      await page.getByText(C.t, { exact: true }).first().click(); await page.waitForTimeout(2500);
+      ok(`${lang} ${scheme}: clinic & tests shows results, report and upload`, (await page.getByText(C.res, { exact: true }).count()) > 0 && (await page.getByText(C.rep, { exact: true }).count()) > 0 && (await page.getByText(C.scan, { exact: true }).count()) > 0);
+      await shot('00-clinic');
+      await page.getByText(C.res, { exact: true }).first().click(); await page.waitForTimeout(2500);
+      ok(`${lang} ${scheme}: test results open`, (await page.getByText(C.lab, { exact: true }).count()) > 0);
+      await page.goBack(); await page.waitForTimeout(1500);
+      await page.getByText(C.rep, { exact: true }).first().click(); await page.waitForTimeout(4500);
       ok(`${lang} ${scheme}: the visit shows both people`, (await page.getByText(new RegExp(L.who.replace(/[/()]/g, '.'))).count()) > 0);
       const boxes = page.getByRole('checkbox');
       ok(`${lang} ${scheme}: suggested questions offered as boxes`, (await boxes.count()) > 0, String(await boxes.count()));
