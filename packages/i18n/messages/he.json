@@ -1386,9 +1386,7 @@
   "ovr.sleep_sheet_t": "שינה",
   "ovr.event_sheet_t": "{count, plural, one {אירוע} other {# אירועים}}",
   "ovr.rises_t": "העליות הגדולות השבוע",
-  "ovr.rises_lead": "אחרי מה שתיעדת: מהגלוקוז בהתחלה עד הגבוה ביותר ב־3 השעות שאחרי.",
   "ovr.rises_when": "{day} {time}",
-  "ovr.rises_a11y": "{when}, {what}: מ-{start} עד {peak}, עלייה של {rise}. פתיחה ביומן",
   "ovr.sleep_span": "{start} – {end}",
   "ovr.sleep_asleep": "שינה בפועל {time}",
   "ovr.sleep_in_bed": "במיטה {time}",
@@ -3235,5 +3233,12 @@
   "shr.gd_confirm": "אני ההורה או האפוטרופוס של {name}, ואני מסכים או מסכימה לשימוש שלו ב-Stedio כמתואר בתנאי השימוש ובמדיניות הפרטיות.",
   "shr.gd_ok": "לאשר ולעקוב",
   "shr.gd_need": "סמנו את האישור כדי להמשיך.",
-  "shr.gd_minor": "רק מי שמלאו לו 18 יכול לאשר הזמנת הורה."
+  "shr.gd_minor": "רק מי שמלאו לו 18 יכול לאשר הזמנת הורה.",
+  "ovr.rises_lead": "אחרי מה שתיעדת: מהגלוקוז בהתחלה עד הגבוה ביותר ב־3 השעות שאחרי, ומתי חזר להתחלה. אפשר להקיש כדי לראות את העקומה.",
+  "ovr.rises_a11y": "{when}, {what}: מ-{start} עד {peak}, עלייה של {rise}. {back}. הצגת העקומה",
+  "ovr.rises_back": "חזר להתחלה {time} אחרי השיא",
+  "ovr.rises_not_back": "לא חזר להתחלה בתוך 3 שעות",
+  "meal.curve_t_act": "הגלוקוז אחרי האימון",
+  "meal.curve_axis_act": "אימון",
+  "meal.curve_from_peak": "{time} אחרי השיא"
 }

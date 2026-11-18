@@ -9181,21 +9181,7 @@
     ],
     "note": "Weekly roundup of the largest rises after logged meals and workouts, no threshold (Guy, 18 Nov 2026, PM-241)."
   },
-  "ovr.rises_lead": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ],
-    "note": "Weekly roundup of the largest rises after logged meals and workouts, no threshold (Guy, 18 Nov 2026, PM-241)."
-  },
   "ovr.rises_when": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ],
-    "note": "Weekly roundup of the largest rises after logged meals and workouts, no threshold (Guy, 18 Nov 2026, PM-241)."
-  },
-  "ovr.rises_a11y": {
     "board": "Overview",
     "review": [
       "translation"
@@ -20668,5 +20654,54 @@
       "legal"
     ],
     "note": "PM-248: under 18 with a parent following."
+  },
+  "ovr.rises_lead": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "How quickly glucose came back after a rise; descriptive, the person's own start value only."
+  },
+  "ovr.rises_a11y": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "How quickly glucose came back after a rise; descriptive, the person's own start value only."
+  },
+  "ovr.rises_back": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "How quickly glucose came back after a rise; descriptive, the person's own start value only."
+  },
+  "ovr.rises_not_back": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "How quickly glucose came back after a rise; descriptive, the person's own start value only."
+  },
+  "meal.curve_t_act": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "How quickly glucose came back after a rise; descriptive, the person's own start value only."
+  },
+  "meal.curve_axis_act": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "How quickly glucose came back after a rise; descriptive, the person's own start value only."
+  },
+  "meal.curve_from_peak": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "How quickly glucose came back after a rise; descriptive, the person's own start value only."
   }
 }
