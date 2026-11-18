@@ -1847,8 +1847,15 @@ over". Built in the website's own brand tokens. Open states:
 - The app hides Devices, Privacy, Sharing, Admin, Sign out and Delete in the demo; the API also refuses those writes.
 - Voice in the demo uses the same provider as the app; where it is off, the app's own "Not available" state shows.
 
+## G-106 Stelo adopt-first screens (PM-239 to PM-244, 18 Nov 2026, Guy asked)
 
-## G-106 Connect data sources during onboarding (PM-245, 18 Nov 2026, Guy asked)
+Not on the boards; drawn in the existing card, tile and sheet styles. Meal glucose curve card (meal sheet and journal
+meal entry), "Biggest rises this week" card on Overview > Week, workout and sleep sheets from the graph icons, the
+"went well" box and topic icons on the morning recap, fat and fiber rows, and the barcode scan screen (same dark camera
+frame as MEAL-02, a wide frame, Open Food Facts credit). Status: verified-test on the web export; screenshots shown to
+Guy before the OTA.
+
+## G-107 Connect data sources during onboarding (PM-245, 18 Nov 2026, Guy asked)
 
 Not on the onboarding board; Guy asked for it ("put it in onboarding, even in the early steps, and then continue").
 A step "Connect your data" right after the sensor step (before ratios, so a connected pump's range and ratios show

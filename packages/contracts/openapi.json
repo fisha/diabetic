@@ -1711,6 +1711,50 @@
         "title": "DeleteIn",
         "type": "object"
       },
+      "DemoInviteIn": {
+        "properties": {
+          "audience": {
+            "default": "other",
+            "pattern": "^(investor|pharma|insurer|hospital|health_fund|other)$",
+            "title": "Audience",
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "title": "Email",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "organization": {
+            "anyOf": [
+              {
+                "maxLength": 160,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Organization"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "title": "DemoInviteIn",
+        "type": "object"
+      },
       "DemoLinkOut": {
         "properties": {
           "access_until": {
@@ -1900,6 +1944,11 @@
             "title": "Diabetes Type",
             "type": "string"
           },
+          "follows": {
+            "default": false,
+            "title": "Follows",
+            "type": "boolean"
+          },
           "id": {
             "title": "Id",
             "type": "string"
@@ -1992,6 +2041,10 @@
             "title": "Expires In",
             "type": "integer"
           },
+          "has_profile": {
+            "title": "Has Profile",
+            "type": "boolean"
+          },
           "refresh_token": {
             "title": "Refresh Token",
             "type": "string"
@@ -2005,6 +2058,16 @@
             "default": "bearer",
             "title": "Token Type",
             "type": "string"
+          },
+          "viewing": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DemoViewingOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
@@ -2012,9 +2075,37 @@
           "refresh_token",
           "expires_in",
           "scenario",
+          "has_profile",
           "email"
         ],
         "title": "DemoSessionOut",
+        "type": "object"
+      },
+      "DemoViewingOut": {
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "owner_id": {
+            "format": "uuid",
+            "title": "Owner Id",
+            "type": "string"
+          },
+          "scopes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scopes",
+            "type": "array"
+          }
+        },
+        "required": [
+          "owner_id",
+          "name",
+          "scopes"
+        ],
+        "title": "DemoViewingOut",
         "type": "object"
       },
       "DeviceEventOut": {
@@ -5824,6 +5915,17 @@
           "text": {
             "title": "Text",
             "type": "string"
+          },
+          "topic": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Topic"
           }
         },
         "required": [
@@ -6122,6 +6224,20 @@
             "default": null,
             "title": "Fat Total G"
           },
+          "fiber_total_g": {
+            "anyOf": [
+              {
+                "maximum": 2000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Fiber Total G"
+          },
           "items": {
             "items": {
               "$ref": "#/components/schemas/MealItemData"
@@ -6286,6 +6402,20 @@
             ],
             "default": null,
             "title": "Fat G"
+          },
+          "fiber_g": {
+            "anyOf": [
+              {
+                "maximum": 1000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Fiber G"
           },
           "name": {
             "maxLength": 120,
@@ -6821,6 +6951,16 @@
           "subject": {
             "title": "Subject",
             "type": "string"
+          },
+          "win": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Line"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
@@ -11219,6 +11359,53 @@
         ]
       }
     },
+    "/admin/demo-requests/invite": {
+      "post": {
+        "description": "An admin invites someone by email (Guy, 18 Nov 2026): an approved request is made, or the person's open one is\nused, and the personal link is emailed (shown once when no email can be sent).",
+        "operationId": "invite_admin_demo_requests_invite_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoInviteIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemoLinkOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Invite",
+        "tags": [
+          "demo"
+        ]
+      }
+    },
     "/admin/demo-requests/{request_id}": {
       "delete": {
         "description": "Deletes the request and its details (its sessions go with it).",
@@ -11263,7 +11450,6 @@
     },
     "/admin/demo-requests/{request_id}/approve": {
       "post": {
-        "description": "Approves a request (or renews an approved one's link) and emails the link. The link is shown here once.",
         "operationId": "approve_admin_demo_requests__request_id__approve_post",
         "parameters": [
           {
@@ -15491,6 +15677,69 @@
         ]
       }
     },
+    "/health-data/nights": {
+      "get": {
+        "description": "The nights that overlap [since, until), as \"Body today\" builds them (one source per night, the one that saw most of\nit), for the sleep icons under the glucose graph (Guy, 18 Nov 2026, PM-244). Only what the health store recorded.",
+        "operationId": "list_nights_health_data_nights_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "since",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Since",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "until",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Until",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/NightOut"
+                  },
+                  "title": "Response List Nights Health Data Nights Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Nights",
+        "tags": [
+          "health-data"
+        ]
+      }
+    },
     "/health-data/samples": {
       "get": {
         "operationId": "list_samples_health_data_samples_get",
@@ -16462,6 +16711,53 @@
         "summary": "Register",
         "tags": [
           "live-activity"
+        ]
+      }
+    },
+    "/meal/barcode/{code}": {
+      "get": {
+        "description": "A packaged food by its barcode (PM-242), from Open Food Facts: carbs, fiber, protein and fat per 100 g as on the\nlabel, and the label's serving when it has one. Only the barcode number leaves the server. 404 when the database\ndoesn't have the product or its label has no carbohydrate value; the app then offers a photo or a search.",
+        "operationId": "barcode_meal_barcode__code__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "schema": {
+              "title": "Code",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FoodMatch"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_found"
+          },
+          "422": {
+            "description": "invalid_barcode"
+          },
+          "502": {
+            "description": "lookup_failed"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Barcode",
+        "tags": [
+          "meal"
         ]
       }
     },
