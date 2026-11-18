@@ -1931,7 +1931,8 @@ reminder there. Screenshots: `/mnt/project-files/steady/sensor-end/`.
 
 ### G-113 · Clinic & tests screen (**PM-263, Guy 18 Nov 2026**, verified-test)
 
-Not in the design; Guy asked for it. Profile > "Clinic & tests" groups the person's test results (PM-213), the clinic
-report with their visits (PM-214) and the "Read a lab report" card. When viewing someone else's data, only the results
-row shows. Privacy > "Share with my care team" still opens the clinic report directly.
+Not in the design; Guy asked for it. Profile > "Clinic & tests" holds the person's test results (PM-213) and the
+clinic report with their visits (PM-214). When viewing someone else's data, only the results row shows. Guy, 18 Nov
+2026: reading a new lab report sits only inside "My test results", and earlier tests are listed one row per test date
+(weekday and date, the number of results and the first test names); a date opens that day's results. Privacy > "Share with my care team" still opens the clinic report directly.
 
