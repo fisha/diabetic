@@ -55,6 +55,12 @@ async function setup(email, locale) {
   const m = await api('/records', { method: 'POST', token: tk, body: { idempotency_key: `vr-meal-${locale}`, kind: 'meal', occurred_at: y.toISOString(), entered_at: y.toISOString(), source: 'photo-estimate', data: meal } });
   ok(`${locale}: meal with photo saved`, m.status === 201 || m.status === 200, String(m.status));
   await api('/records', { method: 'POST', token: tk, body: { idempotency_key: `vr-ins-${locale}`, kind: 'insulin', occurred_at: new Date(y.getTime() + 6 * 60000).toISOString(), entered_at: y.toISOString(), source: 'manual', data: { insulin: 'Fiasp', units: 5 } } });
+  // Lab results on two test dates (PM-263): the list shows one row per date.
+  for (const [i, [test, value, unit, on]] of [['a1c', 7.1, '%', '2026-03-10'], ['a1c', 6.6, '%', '2026-11-02'], ['ldl', 90, 'mg/dL', '2026-11-02']].entries()) {
+    const at = `${on}T09:00:00.000Z`;
+    const r = await api('/records', { method: 'POST', token: tk, body: { idempotency_key: `vr-lab-${locale}-${i}`, kind: 'lab', occurred_at: at, entered_at: at, source: 'manual', data: { test, name: '', value, unit, taken_on: on, source: 'lab_report' } } });
+    ok(`${locale}: lab result ${i + 1} saved`, r.status === 201 || r.status === 200, `${r.status} ${JSON.stringify(r.json).slice(0, 200)}`);
+  }
   const visit = await api('/visit', { method: 'PUT', token: tk, body: { date: day(Date.now() + 2 * 86400000), time: '16:30', with: ['diabetes_doctor', 'dietitian'] } });
   ok(`${locale}: visit with two people saved`, visit.status === 200 && visit.json.with_all.length === 2 && visit.json.time === '16:30', JSON.stringify(visit.json));
   return tk;
@@ -94,12 +100,17 @@ const server = http.createServer((req, res) => {
       await page.getByRole('tab', { name: L.prof }).first().click().catch(async () => page.getByText(L.prof, { exact: true }).last().click());
       await page.waitForTimeout(2500);
       // PM-263: Profile > Clinic & tests holds the test results, the clinic report and reading a lab report.
-      const C = he ? { t: 'מרפאה ובדיקות', res: 'הבדיקות שלי', rep: 'דוח לביקור במרפאה', scan: 'קריאת מסמך בדיקות', lab: 'תוצאות בדיקות' } : { t: 'Clinic & tests', res: 'My test results', rep: 'Report for my clinic', scan: 'Read a lab report', lab: 'Lab results' };
+      const C = he ? { t: 'מרפאה ובדיקות', res: 'הבדיקות שלי', rep: 'דוח לביקור במרפאה', scan: 'קריאת מסמך בדיקות', day1: /10\.03\.26|10\.03/, day2: /02\.11/, a1c: 'HbA1c (המוגלובין מסוכרר)', ldl: 'כולסטרול LDL' } : { t: 'Clinic & tests', res: 'My test results', rep: 'Report for my clinic', scan: 'Read a lab report', day1: /03\.10/, day2: /11\.02/, a1c: 'HbA1c', ldl: 'LDL cholesterol' };
       await page.getByText(C.t, { exact: true }).first().click(); await page.waitForTimeout(2500);
-      ok(`${lang} ${scheme}: clinic & tests shows results, report and upload`, (await page.getByText(C.res, { exact: true }).count()) > 0 && (await page.getByText(C.rep, { exact: true }).count()) > 0 && (await page.getByText(C.scan, { exact: true }).count()) > 0);
+      ok(`${lang} ${scheme}: clinic & tests shows results and report, upload only inside results`, (await page.getByText(C.res, { exact: true }).count()) > 0 && (await page.getByText(C.rep, { exact: true }).count()) > 0 && (await page.getByText(C.scan, { exact: true }).count()) === 0);
       await shot('00-clinic');
       await page.getByText(C.res, { exact: true }).first().click(); await page.waitForTimeout(2500);
-      ok(`${lang} ${scheme}: test results open`, (await page.getByText(C.lab, { exact: true }).count()) > 0);
+      ok(`${lang} ${scheme}: my test results hold the upload and one row per test date`, (await page.getByText(C.scan, { exact: true }).count()) > 0 && (await page.getByText(C.day2).count()) > 0 && (await page.getByText(C.day1).count()) > 0);
+      await shot('00b-results');
+      await page.getByText(C.day2).first().click(); await page.waitForTimeout(2500);
+      ok(`${lang} ${scheme}: a test date opens its results`, (await page.getByText(C.a1c, { exact: true }).count()) > 0 && (await page.getByText(C.ldl, { exact: true }).count()) > 0);
+      await shot('00c-test-day');
+      await page.goBack(); await page.waitForTimeout(1500);
       await page.goBack(); await page.waitForTimeout(1500);
       await page.getByText(C.rep, { exact: true }).first().click(); await page.waitForTimeout(4500);
       ok(`${lang} ${scheme}: the visit shows both people`, (await page.getByText(new RegExp(L.who.replace(/[/()]/g, '.'))).count()) > 0);

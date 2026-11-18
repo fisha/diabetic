@@ -20953,6 +20953,13 @@
     ],
     "note": "Clinic & tests area (PM-263, Guy 18 Nov 2026)."
   },
+  "lab.day_n": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "My test results by test date (PM-263, Guy 18 Nov 2026)."
+  },
   "set.auto": {
     "board": "Settings",
     "review": [

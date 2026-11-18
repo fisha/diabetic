@@ -18,7 +18,9 @@ App #156 merged; `pnpm check` passes (app 208). Not yet seen on a phone. Next: t
 tests" ("מרפאה ובדיקות"). Profile now opens a Clinic & tests screen with "My test results" (the PM-213 lab results),
 "Report for my clinic" (the PM-214 report and visits) and the "Read a lab report" card for new tests. JS only, no API
 change. `pnpm check` passes; `tools/e2e/visit-report.cjs` now enters through Clinic & tests and passes in en light, he
-light and he dark. Next: testers OTA (0.6.0 and 0.5.0).
+light and he dark. Follow-up the same evening (Guy): reading a lab report moved inside "My test results" only, and the
+results list one row per test date that opens that day's results (`labDays`, `labsOn`, route `/labs/[date]`). Next:
+testers OTA (0.6.0 and 0.5.0).
 
 18 Nov 2026 (Jira PM-260, thread "Choose sensor expiry reminder timing"): Guy asked that Notifications let the person
 choose how long before a sensor ends to be reminded, per sensor type: 3 days, 24 hours or 5 hours. There was no app
