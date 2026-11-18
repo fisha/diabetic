@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-236, thread "Redesign website with scroll motion"): Guy asked for a home page that feels like
+Stelo's how-it-works page: scroll motion, photos of people using the app (AI-generated, approved by Guy) and real app
+screens. Built in apps/web: the hero keeps only the phone (Guy: the photo did not belong there), a full-width photo that opens on scroll, "How it works" as a
+sticky phone that swaps four real app screens (e2e captures with sample data) per chapter (`Story.tsx`), a mosaic of people using the app (real screens warped onto generated green-screen
+photos, incl. a woman in a hijab and an African-American man) with parallax, and rising reveals. CSS scroll-driven animations only; nothing moves with reduced motion; the
+photos carry no caption (Guy). Built on the demo branch (PM-233, "Ask for a
+demo"). Typecheck clean for these files, lint and web tests pass; checked in Chromium at desktop and phone widths.
+Next: Guy's look on his Mac, then PR and deploy-web.
+
 18 Nov 2026 (Jira PM-239 to PM-244, thread "Stelo adopt-first items", from the Dexcom Stelo research PM-237): Guy asked
 to build the "Adopt first" list. Built, all retrospective and descriptive, no score and no threshold of the app's own:
 meal glucose curve from the meal to +3 h (at the meal, highest, rise, back to start; the person's own range drawn when
