@@ -1880,6 +1880,11 @@ Open states:
 - With no card, the line says "All insights" and opens that page.
 - In a conversation and in text, the old one-line reading stays and the top half is not shown.
 
+Second version (Guy approved 18 Nov 2026 evening): the top row holds only the insights line, without the character and
+name; the opened card covers the tiles. History and text are plain icons (no round background) under "Tap to talk".
+The floating bar's companion tab is a line sound wave named "Talk" instead of the orb (the board's unlabelled orb);
+the side bar in a wide window keeps the orb.
+
 ## G-109 Under 18 with a parent following (PM-248, 18 Nov 2026, Guy asked)
 
 Guy: the app can be used under 18, but only with a parent invited to follow. The board's adults-only stop screen

@@ -42,7 +42,7 @@ const server = http.createServer((req, res) => {
     ok('time zone reported', (await api('/settings', { token: te.access_token })).json.timezone !== '');
 
     // Reminder sheet.
-    await tab('Companion');
+    await tab('Talk');
     await page.getByText('Reminder', { exact: true }).first().click(); await page.waitForTimeout(1200);
     await page.getByLabel('What', { exact: true }).fill('Check glucose after lunch');
     await page.getByText('In 2 hours', { exact: true }).click();

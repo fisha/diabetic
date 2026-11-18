@@ -47,8 +47,8 @@ const server = http.createServer((req, res) => {
       page.setDefaultTimeout(6000);
       const he = lang === 'he';
       const L = he
-        ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', ins: 'תובנות', tir: 'זמן בטווח', glu: 'סוכר', next: 'התובנה הבאה', fold: 'סגירת התובנות', add: 'תיעוד מהיר', so: 'עד עכשיו היום', health: 'בריאות', comp: 'מלווה', report: 'דוח לביקור במרפאה' }
-        : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', ins: 'Insights', tir: 'Time in range', glu: 'Glucose', next: 'Next insight', fold: 'Close insights', add: 'Quick log', so: 'So far today', health: 'Health', comp: 'Companion', report: 'Report for my clinic' };
+        ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', ins: 'תובנות', tir: 'זמן בטווח', glu: 'סוכר', next: 'התובנה הבאה', fold: 'סגירת התובנות', add: 'תיעוד מהיר', so: 'עד עכשיו היום', health: 'בריאות', comp: 'מלווה', talk: 'שיחה', hist: 'שיחות', text: 'מעבר לטקסט', report: 'דוח לביקור במרפאה' }
+        : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', ins: 'Insights', tir: 'Time in range', glu: 'Glucose', next: 'Next insight', fold: 'Close insights', add: 'Quick log', so: 'So far today', health: 'Health', comp: 'Companion', talk: 'Talk', hist: 'Conversations', text: 'Switch to text', report: 'Report for my clinic' };
       const tag = `${lang} ${scheme} ${size}`;
       await page.goto(base); await page.waitForTimeout(2000);
       if (he) { await page.getByText('עברית', { exact: true }).first().click(); await page.waitForTimeout(800); }
@@ -69,6 +69,18 @@ const server = http.createServer((req, res) => {
       const plus = page.getByRole('button', { name: L.add, exact: true });
       // One plus, the round one beside the tab bar (Guy, 18 Nov 2026: the header's plus went).
       ok(`${tag}: plus only beside the tab bar`, (await plus.count()) === 1);
+      // Only the insights line on top: no character name in a header (Guy, 18 Nov 2026).
+      ok(`${tag}: no name header on the main screen`, (await page.getByRole('heading', { name: /Noa/ }).count()) === 0);
+      // History and text as icons under "Tap to talk", whole and above the tab bar, also on a small phone.
+      const bar = await page.getByRole('tablist').first().boundingBox();
+      for (const name of [L.hist, L.text]) {
+        const bx = await page.getByRole('button', { name, exact: true }).first().boundingBox().catch(() => null);
+        ok(`${tag}: ${name} icon clear of the tab bar`, !!bx && !!bar && bx.y >= 0 && bx.y + bx.height <= bar.y, bx && bar ? `${Math.round(bx.y + bx.height)} <= ${Math.round(bar.y)}` : 'missing');
+      }
+      // The Talk tab: a sound wave with its name, no orb (Guy, 18 Nov 2026: too many circles).
+      const talk = page.getByRole('tab', { name: L.talk, exact: true });
+      ok(`${tag}: Talk tab named and selected`, (await talk.count()) === 1 && (await talk.getAttribute('aria-selected')) === 'true');
+      ok(`${tag}: Talk tab shows its label`, (await talk.getByText(L.talk, { exact: true }).count()) === 1);
       await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-01-main.png`) });
       if (has) {
         const before = (await page.getByText(L.tir, { exact: true }).first().boundingBox())?.y;
