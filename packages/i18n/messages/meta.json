@@ -20801,5 +20801,47 @@
       "translation"
     ],
     "note": "How quickly glucose came back after a rise; descriptive, the person's own start value only."
+  },
+  "brk.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
+  },
+  "brk.helper": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
+  },
+  "brk.end": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
+  },
+  "brk.none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
+  },
+  "brk.last": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
+  },
+  "brk.on": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
   }
 }

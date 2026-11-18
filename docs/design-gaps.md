@@ -1906,3 +1906,15 @@ prominent strip on top. Built: top glow and header as on the main screen, the pr
 (not a button, no voice) with "Ask me about {name}" until the first message; while viewing, a strip in the accent colour
 across the top of every tab (white text, darker accent at night) with a Switch pill. The "My data" switch line for
 followers who are not viewing stays above the tab bar.
+
+## G-111 Take a break screen (PM-257, 18 Nov 2026, Guy asked)
+
+The design has no glucose-only mode. Guy (18 Nov 2026) asked for a quick "Take a break" switch in Profile that turns the
+whole app into one clean screen with the sensor reading in big, like iPhone StandBy but upright, with a small icon that
+ends it, and that can also be turned on from the iPhone Action Button. Built: a switch card under the account card in
+Profile; a black full-screen view over every tab with the latest value huge in the widget's night tint for where it sits
+against the person's own range (white without a range), its unit, the trend arrow while fresh, the clock time and age;
+past 15 minutes "Not current" with the last reading's time and no value (PM-226 rule); "Taking a break" and a small round
+X in the top corners. Never over sign-in, onboarding or the blocking re-consent screen. Screenshots:
+`/mnt/project-files/steady/take-a-break/` (en light, en dark, he light, he dark; small and large).
+

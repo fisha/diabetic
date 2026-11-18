@@ -3256,5 +3256,11 @@
   "ovr.rises_not_back": "Not back at start within 3 h",
   "meal.curve_t_act": "Glucose after this workout",
   "meal.curve_axis_act": "Workout",
-  "meal.curve_from_peak": "{time} after the highest"
+  "meal.curve_from_peak": "{time} after the highest",
+  "brk.title": "Take a break",
+  "brk.helper": "One screen with your latest reading. No insights and no notifications, except high and low glucose if you turned them on.",
+  "brk.end": "End break",
+  "brk.none": "No recent reading",
+  "brk.last": "Last reading {time}",
+  "brk.on": "Taking a break"
 }
