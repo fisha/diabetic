@@ -1944,6 +1944,11 @@
             "title": "Diabetes Type",
             "type": "string"
           },
+          "follows": {
+            "default": false,
+            "title": "Follows",
+            "type": "boolean"
+          },
           "id": {
             "title": "Id",
             "type": "string"
@@ -2036,6 +2041,10 @@
             "title": "Expires In",
             "type": "integer"
           },
+          "has_profile": {
+            "title": "Has Profile",
+            "type": "boolean"
+          },
           "refresh_token": {
             "title": "Refresh Token",
             "type": "string"
@@ -2049,6 +2058,16 @@
             "default": "bearer",
             "title": "Token Type",
             "type": "string"
+          },
+          "viewing": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DemoViewingOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
@@ -2056,9 +2075,37 @@
           "refresh_token",
           "expires_in",
           "scenario",
+          "has_profile",
           "email"
         ],
         "title": "DemoSessionOut",
+        "type": "object"
+      },
+      "DemoViewingOut": {
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "owner_id": {
+            "format": "uuid",
+            "title": "Owner Id",
+            "type": "string"
+          },
+          "scopes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scopes",
+            "type": "array"
+          }
+        },
+        "required": [
+          "owner_id",
+          "name",
+          "scopes"
+        ],
+        "title": "DemoViewingOut",
         "type": "object"
       },
       "DeviceEventOut": {

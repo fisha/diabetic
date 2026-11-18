@@ -3655,6 +3655,11 @@ export interface components {
             };
             /** Diabetes Type */
             diabetes_type: string;
+            /**
+             * Follows
+             * @default false
+             */
+            follows: boolean;
             /** Id */
             id: string;
             /** Pump */
@@ -3692,6 +3697,8 @@ export interface components {
             email: string;
             /** Expires In */
             expires_in: number;
+            /** Has Profile */
+            has_profile: boolean;
             /** Refresh Token */
             refresh_token: string;
             /** Scenario */
@@ -3702,6 +3709,19 @@ export interface components {
              * @constant
              */
             token_type: "bearer";
+            viewing?: components["schemas"]["DemoViewingOut"] | null;
+        };
+        /** DemoViewingOut */
+        DemoViewingOut: {
+            /** Name */
+            name: string;
+            /**
+             * Owner Id
+             * Format: uuid
+             */
+            owner_id: string;
+            /** Scopes */
+            scopes: string[];
         };
         /** DeviceEventOut */
         DeviceEventOut: {
