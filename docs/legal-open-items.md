@@ -96,7 +96,7 @@ approved lines here.
 - Meal photo retention choices: `routers/settings.py` `photo_retention`. Exports expire after 7 days
   (`EXPORT_DAYS`), invite codes after 7 days (`CODE_DAYS`), refresh tokens after 30 days.
 - OpenAI requests with `store=False`: `ai/provider.py`, `ai/food.py`. No voice recordings are written to disk.
-- Location rounded to 0.1 degree before Open-Meteo: `environment.py`. USDA gets the search text only: `nutrition.py`.
+- Location rounded to 0.1 degree before Open-Meteo: `environment.py`. USDA gets the search text only: `nutrition.py`. Open Food Facts gets the barcode number only, from the server, with a generic user agent and no account (`barcodes.py`, PM-242); its data is ODbL, so the scan screen credits it.
 - Website: sign-in kept in page memory only (`apps/web/src/lib/api.ts`), one cookie `NEXT_LOCALE` (next-intl), no
   analytics, fonts self-hosted.
 - Admin read-only access during testing, no change to another person's treatment settings: G-44 and Guy's admin rule.

@@ -75,6 +75,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/admin/demo-requests/invite": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Invite
+         * @description An admin invites someone by email (Guy, 18 Nov 2026): an approved request is made, or the person's open one is
+         *     used, and the personal link is emailed (shown once when no email can be sent).
+         */
+        post: operations["invite_admin_demo_requests_invite_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/admin/demo-requests/{request_id}": {
         parameters: {
             query?: never;
@@ -104,10 +125,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /**
-         * Approve
-         * @description Approves a request (or renews an approved one's link) and emails the link. The link is shown here once.
-         */
+        /** Approve */
         post: operations["approve_admin_demo_requests__request_id__approve_post"];
         delete?: never;
         options?: never;
@@ -1620,6 +1638,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/health-data/nights": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Nights
+         * @description The nights that overlap [since, until), as "Body today" builds them (one source per night, the one that saw most of
+         *     it), for the sleep icons under the glucose graph (Guy, 18 Nov 2026, PM-244). Only what the health store recorded.
+         */
+        get: operations["list_nights_health_data_nights_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/health-data/samples": {
         parameters: {
             query?: never;
@@ -2002,6 +2041,28 @@ export interface paths {
         post?: never;
         /** Unregister */
         delete: operations["unregister_live_activity_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/meal/barcode/{code}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Barcode
+         * @description A packaged food by its barcode (PM-242), from Open Food Facts: carbs, fiber, protein and fat per 100 g as on the
+         *     label, and the label's serving when it has one. Only the barcode number leaves the server. 404 when the database
+         *     doesn't have the product or its label has no carbohydrate value; the app then offers a photo or a search.
+         */
+        get: operations["barcode_meal_barcode__code__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -3549,6 +3610,23 @@ export interface components {
              */
             confirm: "DELETE";
         };
+        /** DemoInviteIn */
+        DemoInviteIn: {
+            /**
+             * Audience
+             * @default other
+             */
+            audience: string;
+            /**
+             * Email
+             * Format: email
+             */
+            email: string;
+            /** Name */
+            name?: string | null;
+            /** Organization */
+            organization?: string | null;
+        };
         /** DemoLinkOut */
         DemoLinkOut: {
             /**
@@ -3620,6 +3698,11 @@ export interface components {
             };
             /** Diabetes Type */
             diabetes_type: string;
+            /**
+             * Follows
+             * @default false
+             */
+            follows: boolean;
             /** Id */
             id: string;
             /** Pump */
@@ -3657,6 +3740,8 @@ export interface components {
             email: string;
             /** Expires In */
             expires_in: number;
+            /** Has Profile */
+            has_profile: boolean;
             /** Refresh Token */
             refresh_token: string;
             /** Scenario */
@@ -3667,6 +3752,19 @@ export interface components {
              * @constant
              */
             token_type: "bearer";
+            viewing?: components["schemas"]["DemoViewingOut"] | null;
+        };
+        /** DemoViewingOut */
+        DemoViewingOut: {
+            /** Name */
+            name: string;
+            /**
+             * Owner Id
+             * Format: uuid
+             */
+            owner_id: string;
+            /** Scopes */
+            scopes: string[];
         };
         /** DeviceEventOut */
         DeviceEventOut: {
@@ -4932,6 +5030,8 @@ export interface components {
             evidence: string[];
             /** Text */
             text: string;
+            /** Topic */
+            topic?: string | null;
         };
         /**
          * LinesOut
@@ -5061,6 +5161,11 @@ export interface components {
              * @default null
              */
             fat_total_g: number | null;
+            /**
+             * Fiber Total G
+             * @default null
+             */
+            fiber_total_g: number | null;
             /** Items */
             items: components["schemas"]["MealItemData"][];
             /**
@@ -5116,6 +5221,11 @@ export interface components {
              * @default null
              */
             fat_g: number | null;
+            /**
+             * Fiber G
+             * @default null
+             */
+            fiber_g: number | null;
             /** Name */
             name: string;
             /**
@@ -5331,6 +5441,7 @@ export interface components {
             seen: boolean;
             /** Subject */
             subject: string;
+            win?: components["schemas"]["Line"] | null;
         };
         /** NudgesIn */
         NudgesIn: {
@@ -6883,6 +6994,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["DemoRequestOut"][];
+                };
+            };
+        };
+    };
+    invite_admin_demo_requests_invite_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DemoInviteIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DemoLinkOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
@@ -10024,6 +10168,38 @@ export interface operations {
             };
         };
     };
+    list_nights_health_data_nights_get: {
+        parameters: {
+            query: {
+                since: string;
+                until: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NightOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     list_samples_health_data_samples_get: {
         parameters: {
             query: {
@@ -10673,6 +10849,49 @@ export interface operations {
         responses: {
             /** @description Successful Response */
             204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    barcode_meal_barcode__code__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FoodMatch"];
+                };
+            };
+            /** @description not_found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description invalid_barcode */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description lookup_failed */
+            502: {
                 headers: {
                     [name: string]: unknown;
                 };

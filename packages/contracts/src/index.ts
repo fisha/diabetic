@@ -39,6 +39,7 @@ export type A1cOut = S['A1cOut'];
 export type HealthExtraIn = S['HealthExtraIn'];
 export type HealthExtraOut = S['HealthExtraOut'];
 export type HealthSampleOut = S['HealthSampleOut'];
+export type NightOut = S['NightOut'];
 export type HoursOut = S['HoursOut'];
 export type HealthImportOut = S['HealthImportOut'];
 export type HealthRemovedOut = S['HealthRemovedOut'];
