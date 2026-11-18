@@ -19330,5 +19330,26 @@
       "translation"
     ],
     "note": "Lab report PDF upload (PM-213, Guy 17 Nov 2026, native build)."
+  },
+  "meal.again_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Log yesterday's meal again at about the same time (PM-223, Guy 18 Nov 2026)."
+  },
+  "meal.again_at": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Log yesterday's meal again at about the same time (PM-223, Guy 18 Nov 2026)."
+  },
+  "meal.again_log": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Log yesterday's meal again at about the same time (PM-223, Guy 18 Nov 2026)."
   }
 }
