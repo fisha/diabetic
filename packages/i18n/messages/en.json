@@ -1386,9 +1386,7 @@
   "ovr.sleep_sheet_t": "Sleep",
   "ovr.event_sheet_t": "{count, plural, one {Event} other {# events}}",
   "ovr.rises_t": "Biggest rises this week",
-  "ovr.rises_lead": "After what you logged: from glucose at the start to the highest in the 3 hours after.",
   "ovr.rises_when": "{day} {time}",
-  "ovr.rises_a11y": "{when}, {what}: from {start} to {peak}, up {rise}. Open in journal",
   "ovr.sleep_span": "{start} – {end}",
   "ovr.sleep_asleep": "Asleep {time}",
   "ovr.sleep_in_bed": "In bed {time}",
@@ -3235,5 +3233,12 @@
   "shr.gd_confirm": "I am {name}'s parent or legal guardian, and I agree to them using Stedio as described in the Terms of Use and the Privacy Policy.",
   "shr.gd_ok": "Confirm and follow",
   "shr.gd_need": "Tick the confirmation to continue.",
-  "shr.gd_minor": "A parent invite can only be accepted by someone aged 18 or over."
+  "shr.gd_minor": "A parent invite can only be accepted by someone aged 18 or over.",
+  "ovr.rises_lead": "After what you logged: from glucose at the start to the highest in the 3 hours after, and when it was back at the start. Tap one to see its curve.",
+  "ovr.rises_a11y": "{when}, {what}: from {start} to {peak}, up {rise}. {back}. Show the curve",
+  "ovr.rises_back": "Back at start {time} after the highest",
+  "ovr.rises_not_back": "Not back at start within 3 h",
+  "meal.curve_t_act": "Glucose after this workout",
+  "meal.curve_axis_act": "Workout",
+  "meal.curve_from_peak": "{time} after the highest"
 }

@@ -67,8 +67,8 @@ const server = http.createServer((req, res) => {
       const shot = (name) => page.screenshot({ path: path.join(out, `${lang}-${scheme}-${name}.png`) });
       const he = lang === 'he';
       const L = he
-        ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', meal: /^ארוחה ב־08:00/, walk: /^אימון ב־11:00/, sleep: /^שינה, .*הצגת פרטים$/, curve: 'הגלוקוז אחרי הארוחה', macros: 'חלבון ≈ 18 גרם · שומן ≈ 12 גרם · סיבים ≈ 4 גרם', rise: 'עלייה', close: 'סגירה', tab: 'סקירה', open: 'פתיחה ביומן', fat: 'שומן', asleep: /שינה בפועל/, workout: 'אימון', week: 'שבוע', rises: 'העליות הגדולות השבוע', scan: 'סריקת ברקוד', aim: 'כוונו אל הברקוד', src: /Open Food Facts/ }
-        : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', meal: /^Meal at 08:00/, walk: /^Workout at 11:00/, sleep: /^Sleep, .*Show details$/, curve: 'Glucose after this meal', macros: 'Protein ≈ 18 g · Fat ≈ 12 g · Fiber ≈ 4 g', rise: 'Rise', close: 'Close', tab: 'Overview', open: 'Open in journal', fat: 'Fat', asleep: /Asleep/, workout: 'Workout', week: 'Week', rises: 'Biggest rises this week', scan: 'Scan a barcode', aim: 'Point at the barcode', src: /Open Food Facts/ };
+        ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', meal: /^ארוחה ב־08:00/, walk: /^אימון ב־11:00/, sleep: /^שינה, .*הצגת פרטים$/, curve: 'הגלוקוז אחרי הארוחה', macros: 'חלבון ≈ 18 גרם · שומן ≈ 12 גרם · סיבים ≈ 4 גרם', rise: 'עלייה', close: 'סגירה', tab: 'סקירה', open: 'פתיחה ביומן', fat: 'שומן', asleep: /שינה בפועל/, workout: 'אימון', week: 'שבוע', rises: 'העליות הגדולות השבוע', back: 'חזר להתחלה 1:30 ש׳ אחרי השיא', scan: 'סריקת ברקוד', aim: 'כוונו אל הברקוד', src: /Open Food Facts/ }
+        : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', meal: /^Meal at 08:00/, walk: /^Workout at 11:00/, sleep: /^Sleep, .*Show details$/, curve: 'Glucose after this meal', macros: 'Protein ≈ 18 g · Fat ≈ 12 g · Fiber ≈ 4 g', rise: 'Rise', close: 'Close', tab: 'Overview', open: 'Open in journal', fat: 'Fat', asleep: /Asleep/, workout: 'Workout', week: 'Week', rises: 'Biggest rises this week', back: 'Back at start 1h 30m after the highest', scan: 'Scan a barcode', aim: 'Point at the barcode', src: /Open Food Facts/ };
       await page.goto(base); await page.waitForTimeout(2000);
       if (he) { await page.getByText('עברית', { exact: true }).first().click(); await page.waitForTimeout(800); }
       await page.getByText(L.have, { exact: true }).last().click(); await page.waitForTimeout(1500);
@@ -105,6 +105,12 @@ const server = http.createServer((req, res) => {
       await rises.scrollIntoViewIfNeeded(); await page.waitForTimeout(800);
       await shot('07-week-rises');
       ok(`${lang}-${scheme} week lists breakfast's rise, 110 → 170, and not the walk (no rise)`, (await page.getByText('110 → 170').isVisible()) && (await page.getByText('Oatmeal, Greek yogurt').first().isVisible()));
+      // How quickly it came back (PM-253): on the row, and a tap opens the curve.
+      ok(`${lang}-${scheme} the rise says it was back at start 1:30 after the highest`, await page.getByText(L.back, { exact: true }).isVisible());
+      await page.getByText(L.back, { exact: true }).click(); await page.waitForTimeout(2500);
+      await shot('07b-rise-curve');
+      ok(`${lang}-${scheme} tapping the rise opens its curve`, (await page.getByText(L.curve).last().isVisible()) && (await page.getByRole('button', { name: L.open }).first().isVisible()));
+      await page.getByRole('button', { name: L.close, exact: true }).last().click(); await page.waitForTimeout(800);
       // Barcode scan (PM-242): the entry on Log a meal and the scan screen with the (fake) camera.
       await page.goto(base + '/meal'); await page.getByRole('button', { name: L.scan }).waitFor({ timeout: 15000 }); await page.waitForTimeout(5000);
       await page.getByRole('button', { name: L.scan }).scrollIntoViewIfNeeded(); await shot('08-log-meal');
