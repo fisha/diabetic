@@ -67,11 +67,15 @@ const server = http.createServer((req, res) => {
       const a = await page.getByText(L.tir, { exact: true }).first().boundingBox(); const b = await page.getByText(L.glu, { exact: true }).first().boundingBox();
       ok(`${tag}: tiles on one row`, !!a && !!b && Math.abs(a.y - b.y) < 30 && Math.abs(a.x - b.x) > 100);
       const plus = page.getByRole('button', { name: L.add, exact: true });
-      // Two pluses (Guy, 18 Nov 2026): the header's, and the round one beside the tab bar (drawn last).
-      ok(`${tag}: plus in the header and beside the tab bar`, (await plus.count()) === 2);
+      // One plus, the round one beside the tab bar (Guy, 18 Nov 2026: the header's plus went).
+      ok(`${tag}: plus only beside the tab bar`, (await plus.count()) === 1);
       await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-01-main.png`) });
       if (has) {
+        const before = (await page.getByText(L.tir, { exact: true }).first().boundingBox())?.y;
         await pill.first().click(); await page.waitForTimeout(800);
+        // The open card lies over the tiles (Guy, 18 Nov 2026): nothing under it moves.
+        const after = (await page.getByText(L.tir, { exact: true }).first().boundingBox())?.y;
+        ok(`${tag}: open card does not push the tiles`, before != null && after != null && Math.abs(before - after) < 1, `${before} -> ${after}`);
         ok(`${tag}: opens on 1/${count}`, (await page.getByText(`1/${count}`).count()) > 0);
         await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-02-open.png`) });
         if (count > 1) {
@@ -82,8 +86,8 @@ const server = http.createServer((req, res) => {
         await page.getByRole('button', { name: L.fold, exact: true }).click(); await page.waitForTimeout(500);
         ok(`${tag}: folds back to the line`, (await pill.count()) > 0);
       }
-      if ((await plus.count()) === 2) {
-        await plus.last().click(); await page.waitForTimeout(1500);
+      if ((await plus.count()) === 1) {
+        await plus.click(); await page.waitForTimeout(1500);
         ok(`${tag}: plus opens Quick log`, page.url().includes('/log'), page.url());
       }
       // The clinic visit report is in the Health group of Profile (Guy, 18 Nov 2026).
