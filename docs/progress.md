@@ -8,6 +8,10 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-221, thread "Rename sport mode to temporary target"): Guy asked that the label "מצב ספורט" read
+"יעד זמני" (MiniMed 780G Temp Target). `mode.temp_target` and `mode.b_temp_target` now read "יעד זמני" in Hebrew and
+"Temp target" in English (row and badge alike). Strings only: no companion, API or data change, so no eval run is
+needed. `pnpm check` and `tools/e2e/pump-modes.cjs` (7/7, updated for the shared label) pass. Next: OTA.
 18 Nov 2026 (Jira PM-217, thread "Detect new app builds automatically"): Guy approved ending the
 `fly secrets set STEADY_APP_LATEST_BUILD=N` step after each native build. `stedio-fly deploy-web` now writes
 `install/latest.json` (build and version, from the IPA name or `release.json`) next to the manifest, and the API's
