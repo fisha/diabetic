@@ -80,6 +80,13 @@ set PASSED (api d6cb4f9, 114 turns, 0 blocking). Next: deploy-api (also ships PM
 3 s timeout, keeps the last good number through a website outage, and falls back to `STEADY_APP_LATEST_BUILD`. No
 migration, no app change. API tests pass. Next: deploy-web (publishes build 17), then deploy-api; check
 `/app/version` says 17.
+18 Nov 2026 (Jira PM-218, later the same day): APK build 6 is on the install page (local Mac build; the cloud build ran out
+of memory in release lint: app #128 turns release lint off, gives Gradle 4 GB and builds 64-bit only; app #131 keeps
+WebRTC's classes in R8). On Guy's emulator Overview and Journal were empty: on Android the scroll view puts itself inside
+its refresh control, and our control dropped it (app #132, JS only, OTA). Guy created the Android OAuth client; app #133
+turns on Google sign-in on Android (needs the same variable in the EAS "preview" environment for OTAs). Guy asked for
+short tester install guides on the website: web #37 adds `/get`, `/get/iphone` and `/get/android` (English, noindex).
+
 18 Nov 2026 (Jira PM-218, thread "Ship an Android build for testers"): a new tester has an Android phone and Guy
 approved a native Android build. The testers and preview profiles build a sideloadable APK. `expo prebuild` for Android
 showed CAMERA and RECORD_AUDIO blocked in the manifest (the camera and image-picker plugins' `false` options block a
