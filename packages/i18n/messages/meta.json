@@ -8977,6 +8977,34 @@
       "translation"
     ]
   },
+  "ovr.meal_hit": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: tap a meal icon to see what was eaten (Guy, 18 Nov 2026, PM-224)."
+  },
+  "ovr.meals_hit": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: tap a meal icon to see what was eaten (Guy, 18 Nov 2026, PM-224)."
+  },
+  "ovr.meal_sheet_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: tap a meal icon to see what was eaten (Guy, 18 Nov 2026, PM-224)."
+  },
+  "ovr.meal_open": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: tap a meal icon to see what was eaten (Guy, 18 Nov 2026, PM-224)."
+  },
   "ovr.ins_none": {
     "board": "Overview",
     "review": [
@@ -19302,6 +19330,27 @@
       "translation"
     ],
     "note": "Lab report PDF upload (PM-213, Guy 17 Nov 2026, native build)."
+  },
+  "meal.again_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Log yesterday's meal again at about the same time (PM-223, Guy 18 Nov 2026)."
+  },
+  "meal.again_at": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Log yesterday's meal again at about the same time (PM-223, Guy 18 Nov 2026)."
+  },
+  "meal.again_log": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Log yesterday's meal again at about the same time (PM-223, Guy 18 Nov 2026)."
   },
   "cmp.swipe_delete": {
     "board": "Components",

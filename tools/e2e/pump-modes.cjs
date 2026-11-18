@@ -1,5 +1,5 @@
 // Pump modes in the journal (Guy, 16 Nov 2026: Sport mode on the pump was missing; every reading and insulin dose during
-// it gets a "Sport mode" badge), end-to-end against the test server (services/api: uvicorn tests.e2e_server:app on port
+// it gets a "Temp target" badge, renamed 18 Nov 2026), end-to-end against the test server (services/api: uvicorn tests.e2e_server:app on port
 // 8000). Synthetic pump readings, a bolus and two Temp Target windows (one ended, one still on) are put in the e2e
 // database with psql, as the CareLink sync stores them.
 // Usage: PGURL=postgresql://steady:steady@localhost:5432/steady_e2e node tools/e2e/pump-modes.cjs <web export built with EXPO_PUBLIC_API_URL=http://localhost:8000> <screenshot dir>
@@ -59,8 +59,8 @@ const server = http.createServer((req, res) => {
       const shot = (name) => page.screenshot({ path: path.join(out, `${lang}-${scheme}-${name}.png`) });
       const he = lang === 'he';
       const L = he
-        ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', tab: 'יומן', title: 'מצב ספורט (יעד זמני)', badge: 'מצב ספורט', alerts: 'התראות', approx: 'CareLink מציג את המצב הזה רק בזמן שהוא פעיל' }
-        : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', tab: 'Journal', title: 'Temp Target (Sport mode)', badge: 'Sport mode', alerts: 'Alerts', approx: 'CareLink shows this mode only while it runs' };
+        ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', tab: 'יומן', title: 'יעד זמני', badge: 'יעד זמני', alerts: 'התראות', approx: 'CareLink מציג את המצב הזה רק בזמן שהוא פעיל', onUntil: 'פעיל עד בערך' }
+        : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', tab: 'Journal', title: 'Temp target', badge: 'Temp target', alerts: 'Alerts', approx: 'CareLink shows this mode only while it runs', onUntil: 'On until about' };
       await page.goto(base); await page.waitForTimeout(2000);
       if (he) { await page.getByText('עברית', { exact: true }).first().click(); await page.waitForTimeout(800); }
       await page.getByText(L.have, { exact: true }).last().click(); await page.waitForTimeout(1500);
@@ -69,15 +69,15 @@ const server = http.createServer((req, res) => {
       await page.getByText(L.go, { exact: true }).last().click(); await page.waitForTimeout(4000);
       await page.getByRole('tab', { name: L.tab, exact: true }).click(); await page.waitForTimeout(3000);
       await shot('01-journal');
-      const rows = await page.getByText(L.title, { exact: true }).count();
-      ok(`${lang}-${scheme} two mode rows`, rows === 2, String(rows));
-      const badges = await page.getByText(L.badge, { exact: true }).count();
-      // Readings 120, 105, 90 (with the bolus merged in) and 75 minutes ago in the first window, 15 minutes ago in the
-      // second: 5 badges; 135 and 60 minutes ago are outside.
-      ok(`${lang}-${scheme} readings and insulin in the windows carry the badge`, badges === 5, String(badges));
+      // The mode row and its badge read the same since 18 Nov 2026 (Guy: "Temp target", not "Sport mode"; PM-221).
+      // Two mode rows, plus badges on readings 120, 105, 90 (with the bolus merged in) and 75 minutes ago in the first
+      // window and 15 minutes ago in the second: 2 + 5; 135 and 60 minutes ago are outside.
+      const labels = await page.getByText(L.title, { exact: true }).count();
+      ok(`${lang}-${scheme} two mode rows and five badges`, labels === 7, String(labels));
       await page.getByText(L.title, { exact: true }).last().scrollIntoViewIfNeeded();
       await shot('02-journal-earlier');
-      await page.getByText(L.title, { exact: true }).first().click(); await page.waitForTimeout(1200);
+      // Open the running mode's row by its "on until" line, since a badge now shares the row's title.
+      await page.getByText(new RegExp(L.onUntil)).first().click(); await page.waitForTimeout(1200);
       ok(`${lang}-${scheme} detail says the times are from the polls`, await page.getByText(new RegExp(L.approx)).first().isVisible());
       await shot('03-mode-detail');
       await page.goto(base); await page.waitForTimeout(1000);
