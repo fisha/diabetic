@@ -38,7 +38,7 @@ const server = http.createServer((req, res) => {
   // On the web the session lives in memory, so navigate inside the app (tab bar, Companion chips), never reload.
   const tab = async (page, name) => { await page.getByRole('tab', { name, exact: true }).click(); await page.waitForTimeout(2000); };
   const logGlucose = async (page, v) => {
-    await tab(page, 'Companion');
+    await tab(page, 'Talk');
     await page.getByText('Glucose', { exact: true }).first().click(); await page.waitForTimeout(1500);
 
     await page.getByLabel('Reading, mg/dL', { exact: true }).fill(v);
