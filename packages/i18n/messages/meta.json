@@ -16218,6 +16218,20 @@
       "translation"
     ]
   },
+  "wd.dr_mailed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Status line under a demo request (PM-258): when the link email was handed to the mail server"
+  },
+  "wd.dr_mail_failed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Status line under a demo request (PM-258): the link email could not be sent"
+  },
   "wd.dr_link": {
     "board": "WebDashboard",
     "review": [

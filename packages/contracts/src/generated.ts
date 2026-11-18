@@ -3789,6 +3789,10 @@ export interface components {
             id: string;
             /** Last Used At */
             last_used_at: string | null;
+            /** Mail Error */
+            mail_error?: string | null;
+            /** Mailed At */
+            mailed_at?: string | null;
             /** Message */
             message: string | null;
             /** Name */
