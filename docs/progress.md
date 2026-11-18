@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-224, thread "Open meal details from the glucose chart"): Guy asked to tap the meal icons under
+the Overview glucose graph to see what he ate. On 24h and Day, a meal icon opens a sheet with that meal's journal row
+(foods or pump note, carbs, the pump bolus in the same row), protein, photos, and "Open in journal", which opens the
+meal's own entry (also on older days). Overlapping icons open together. App only, no API change, no companion change
+(no eval run needed). `pnpm check` passes; e2e `tools/e2e/meal-graph.cjs` 21/21 (en light, he light, he dark). Next:
+OTA (0.6.0 and 0.5.0), then Guy checks on his phone.
 18 Nov 2026 (Jira PM-221, thread "Rename sport mode to temporary target"): Guy asked that the label "מצב ספורט" read
 "יעד זמני" (MiniMed 780G Temp Target). `mode.temp_target` and `mode.b_temp_target` now read "יעד זמני" in Hebrew and
 "Temp target" in English (row and badge alike). Strings only: no companion, API or data change, so no eval run is
