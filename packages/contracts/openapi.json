@@ -1711,6 +1711,312 @@
         "title": "DeleteIn",
         "type": "object"
       },
+      "DemoLinkOut": {
+        "properties": {
+          "access_until": {
+            "format": "date-time",
+            "title": "Access Until",
+            "type": "string"
+          },
+          "emailed": {
+            "title": "Emailed",
+            "type": "boolean"
+          },
+          "link": {
+            "title": "Link",
+            "type": "string"
+          }
+        },
+        "required": [
+          "link",
+          "access_until",
+          "emailed"
+        ],
+        "title": "DemoLinkOut",
+        "type": "object"
+      },
+      "DemoRequestIn": {
+        "properties": {
+          "agreed": {
+            "title": "Agreed",
+            "type": "boolean"
+          },
+          "audience": {
+            "pattern": "^(investor|pharma|insurer|hospital|health_fund|other)$",
+            "title": "Audience",
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "title": "Email",
+            "type": "string"
+          },
+          "message": {
+            "anyOf": [
+              {
+                "maxLength": 1000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Message"
+          },
+          "name": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "organization": {
+            "maxLength": 160,
+            "minLength": 1,
+            "title": "Organization",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "organization",
+          "audience",
+          "agreed"
+        ],
+        "title": "DemoRequestIn",
+        "type": "object"
+      },
+      "DemoRequestOut": {
+        "properties": {
+          "access_until": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Access Until"
+          },
+          "audience": {
+            "title": "Audience",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "decided_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decided At"
+          },
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "last_used_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Used At"
+          },
+          "message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Message"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "opens": {
+            "title": "Opens",
+            "type": "integer"
+          },
+          "organization": {
+            "title": "Organization",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email",
+          "organization",
+          "audience",
+          "message",
+          "status",
+          "created_at",
+          "decided_at",
+          "access_until",
+          "last_used_at",
+          "opens"
+        ],
+        "title": "DemoRequestOut",
+        "type": "object"
+      },
+      "DemoScenarioOut": {
+        "properties": {
+          "devices": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Devices",
+            "type": "object"
+          },
+          "diabetes_type": {
+            "title": "Diabetes Type",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "pump": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pump"
+          },
+          "sensor": {
+            "title": "Sensor",
+            "type": "string"
+          },
+          "summary": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Summary",
+            "type": "object"
+          },
+          "title": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Title",
+            "type": "object"
+          },
+          "treatment": {
+            "title": "Treatment",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "summary",
+          "devices",
+          "diabetes_type",
+          "treatment",
+          "pump",
+          "sensor"
+        ],
+        "title": "DemoScenarioOut",
+        "type": "object"
+      },
+      "DemoSessionIn": {
+        "properties": {
+          "link": {
+            "maxLength": 200,
+            "minLength": 20,
+            "title": "Link",
+            "type": "string"
+          },
+          "locale": {
+            "default": "en",
+            "pattern": "^(en|he)$",
+            "title": "Locale",
+            "type": "string"
+          },
+          "scenario": {
+            "maxLength": 32,
+            "title": "Scenario",
+            "type": "string"
+          }
+        },
+        "required": [
+          "link",
+          "scenario"
+        ],
+        "title": "DemoSessionIn",
+        "type": "object"
+      },
+      "DemoSessionOut": {
+        "properties": {
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "expires_in": {
+            "title": "Expires In",
+            "type": "integer"
+          },
+          "refresh_token": {
+            "title": "Refresh Token",
+            "type": "string"
+          },
+          "scenario": {
+            "title": "Scenario",
+            "type": "string"
+          },
+          "token_type": {
+            "const": "bearer",
+            "default": "bearer",
+            "title": "Token Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "access_token",
+          "refresh_token",
+          "expires_in",
+          "scenario",
+          "email"
+        ],
+        "title": "DemoSessionOut",
+        "type": "object"
+      },
       "DeviceEventOut": {
         "properties": {
           "code": {
@@ -5653,6 +5959,17 @@
               }
             ],
             "title": "Avatar Url"
+          },
+          "demo": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Demo"
           },
           "email": {
             "title": "Email",
@@ -10895,6 +11212,252 @@
         ]
       }
     },
+    "/admin/demo-requests": {
+      "get": {
+        "operationId": "list_requests_admin_demo_requests_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DemoRequestOut"
+                  },
+                  "title": "Response List Requests Admin Demo Requests Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Requests",
+        "tags": [
+          "demo"
+        ]
+      }
+    },
+    "/admin/demo-requests/{request_id}": {
+      "delete": {
+        "description": "Deletes the request and its details (its sessions go with it).",
+        "operationId": "delete_request_admin_demo_requests__request_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "request_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Request Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete Request",
+        "tags": [
+          "demo"
+        ]
+      }
+    },
+    "/admin/demo-requests/{request_id}/approve": {
+      "post": {
+        "description": "Approves a request (or renews an approved one's link) and emails the link. The link is shown here once.",
+        "operationId": "approve_admin_demo_requests__request_id__approve_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "request_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Request Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemoLinkOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Approve",
+        "tags": [
+          "demo"
+        ]
+      }
+    },
+    "/admin/demo-requests/{request_id}/decline": {
+      "post": {
+        "description": "Declined quietly: nothing is emailed.",
+        "operationId": "decline_admin_demo_requests__request_id__decline_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "request_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Request Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemoRequestOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Decline",
+        "tags": [
+          "demo"
+        ]
+      }
+    },
+    "/admin/demo-requests/{request_id}/revoke": {
+      "post": {
+        "description": "The link stops working and its open demo sessions end.",
+        "operationId": "revoke_admin_demo_requests__request_id__revoke_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "request_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Request Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemoRequestOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Revoke",
+        "tags": [
+          "demo"
+        ]
+      }
+    },
+    "/admin/demo/team-link": {
+      "post": {
+        "description": "A link for the team's own demos and scenario tests (Guy: also a tool to test scenarios). Not emailed.",
+        "operationId": "team_link_admin_demo_team_link_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemoLinkOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Team Link",
+        "tags": [
+          "demo"
+        ]
+      }
+    },
     "/admin/users": {
       "get": {
         "operationId": "users_admin_users_get",
@@ -12260,6 +12823,118 @@
         "summary": "Resume",
         "tags": [
           "conversation"
+        ]
+      }
+    },
+    "/demo/requests": {
+      "post": {
+        "operationId": "request_demo_demo_requests_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoRequestIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Request Demo Demo Requests Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "not_agreed"
+          },
+          "429": {
+            "description": "busy"
+          }
+        },
+        "summary": "Request Demo",
+        "tags": [
+          "demo"
+        ]
+      }
+    },
+    "/demo/scenarios": {
+      "get": {
+        "operationId": "scenarios_demo_scenarios_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DemoScenarioOut"
+                  },
+                  "title": "Response Scenarios Demo Scenarios Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Scenarios",
+        "tags": [
+          "demo"
+        ]
+      }
+    },
+    "/demo/session": {
+      "post": {
+        "description": "A demo session with the scenario's shared demo account, for a valid personal link. No username or password.",
+        "operationId": "open_session_demo_session_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoSessionIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemoSessionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "description": "demo_link_invalid"
+          },
+          "404": {
+            "description": "no_such_scenario"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Open Session",
+        "tags": [
+          "demo"
         ]
       }
     },
