@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-251, thread "Restyle the parent viewing-child companion screen"): Guy asked that the companion tab
+a parent sees while viewing a child's data look like the regular main screen, with the character in the middle, and
+that the "Viewing … · view only" line above the tab bar become a more prominent strip on top. `AboutChat` now has the
+main screen's top glow, the character beside the title, the privacy note, and the character in the middle ("Ask me
+about {name}") until the conversation starts; still text only. While viewing, `ViewingBanner place="top"` is a strip in
+the accent colour across every tab with a Switch pill; the quiet "My data" line stays above the tab bar (G-110). App 201
+tests, i18n 20; browser e2e `tools/e2e/sharing.cjs` 31/31 (he light, en light, he dark; it now accepts the current legal
+versions first). App #141 merged. Next: OTA to testers.
+
 18 Nov 2026 (Jira PM-248, thread "Allow under-18 users with a parent following"): Guy asked that people under 18 can
 use the app, but only with a parent invited to follow them. The date of birth step now leads under-18s to "Invite a
 parent" (the old adults-only stop screen, G-109): the server keeps only the day they turn 18 (`users.minor_until`,

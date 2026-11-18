@@ -25,10 +25,17 @@ const server = http.createServer((req, res) => {
   const browser = await chromium.launch();
   const errors = [];
   try {
+    // The current terms, privacy policy and AI consent accepted, so no read-and-accept screen comes first.
+    const accept = async (tk) => {
+      const docs = (await api('/consent', { token: tk })).json;
+      await api('/consent/accept', { method: 'POST', token: tk, body: { versions: Object.fromEntries(docs.documents.map((d) => [d.kind, d.version])), at: new Date().toISOString() } });
+      await api('/consent/ai', { method: 'POST', token: tk, body: { at: new Date().toISOString() } });
+    };
     const account = async (email, name, locale) => {
       await api('/auth/sign-up', { method: 'POST', body: { email, password: PW } });
       const tk = (await api('/auth/sign-in', { method: 'POST', body: { email, password: PW } })).json.access_token;
       await api('/profile', { method: 'PUT', token: tk, body: { locale, answers: { ...ANSWERS, companion: { ...ANSWERS.companion, callMe: name } } } });
+      await accept(tk);
       return tk;
     };
     const son = await account('son@example.com', 'Itay', 'en');
@@ -103,6 +110,9 @@ const server = http.createServer((req, res) => {
       await p2.getByText(he ? 'חזרה' : 'Back', { exact: true }).last().click().catch(() => null); await p2.waitForTimeout(800);
       // The dad's own conversation about his son's data.
       await tab(p2, T.comp); await p2.waitForTimeout(2500);
+      // PM-251: the character in the middle before the conversation starts, the viewing strip on top.
+      await shot2('065-about-chat-empty');
+      ok(`${lang} ${scheme}: character text on the viewer's screen`, (await p2.getByText(he ? 'אפשר לשאול אותי על Itay' : 'Ask me about Itay', { exact: true }).count()) > 0);
       await p2.getByLabel(T.ph).fill(he ? 'איך היה לו היום?' : 'How was his day?');
       await p2.getByRole('button', { name: T.send }).last().click(); await p2.waitForTimeout(3000);
       await shot2('07-about-chat');
@@ -121,6 +131,7 @@ const server = http.createServer((req, res) => {
       // Someone close with no diabetes data of their own (DAP-7 "family"): the code is entered on that screen.
       const friend = (await api('/auth/sign-in', { method: 'POST', body: { email: 'friend@example.com', password: PW } })).json.access_token
         || (await api('/auth/sign-up', { method: 'POST', body: { email: 'friend@example.com', password: PW } }), (await api('/auth/sign-in', { method: 'POST', body: { email: 'friend@example.com', password: PW } })).json.access_token);
+      await accept(friend);
       await api('/auth/persona', { method: 'PUT', token: friend, body: { persona: 'family' } });
       const fcode = (await api('/sharing/invites', { method: 'POST', token: son, body: { scopes: ['glucose'], relation: 'friend', consent: true } })).json.code;
       const c3 = await ctxFor(); const p3 = await c3.newPage(); lastPage = p3; p3.on('pageerror', (e) => errors.push(e.message)); p3.setDefaultTimeout(6000);
