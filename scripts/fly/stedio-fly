@@ -219,10 +219,16 @@ cmd_deploy_api() {
 # install/latest.json: the newest build number, read by the API's GET /app/version so an older install offers the new
 # one without a `fly secrets set` per build (PM-217). From the IPA name (stedio-<version>-<build>.ipa), else from the
 # install folder's release.json ("build"). Without a number no file is written and the API uses STEADY_APP_LATEST_BUILD.
-write_latest_json() { # <stage dir> <ipa name>
-  python3 - "$1" "${2:-}" "$BUILDS_INSTALL/release.json" <<'PY'
+# Android (PM-218) counts its builds apart: the staged APK's name (stedio-<version>-<build>.apk) adds an "android" entry,
+# {"build": N, "version": "..."}; the top-level "build" stays the iPhone's, so older APIs keep reading it.
+write_latest_json() { # <stage dir> <ipa name> <apk name>
+  python3 - "$1" "${2:-}" "$BUILDS_INSTALL/release.json" "${3:-}" <<'PY'
 import json, re, sys
-stage, ipa, release = sys.argv[1:4]
+stage, ipa, release, apk = sys.argv[1:5]
+android = None
+a = re.fullmatch(r"stedio-(\d+\.\d+\.\d+)-(\d+)\.apk", apk)
+if a:
+    android = {"build": int(a.group(2)), "version": a.group(1)}
 build = version = None
 m = re.fullmatch(r"stedio-(\d+\.\d+\.\d+)-(\d+)\.ipa", ipa)
 if m:
@@ -238,13 +244,18 @@ else:
             build, version = b, r.get("version") if isinstance(r.get("version"), str) else None
     except (OSError, ValueError, AttributeError):
         pass
-if build is None:
+if build is None and android is None:
     print("WARN   no build number in the IPA name or release.json: no latest.json, the API uses STEADY_APP_LATEST_BUILD")
     sys.exit(0)
+out = {"build": build, "version": version}
+if android:
+    out["android"] = android
 with open(f"{stage}/latest.json", "w") as f:
-    json.dump({"build": build, "version": version}, f)
+    json.dump(out, f)
     f.write("\n")
 print(f"latest build published: {build} ({version or 'version unknown'})")
+if android:
+    print(f"latest Android build published: {android['build']} ({android['version']})")
 PY
 }
 
@@ -257,7 +268,10 @@ cmd_deploy_web() {
     local ipa; ipa="$(grep -o '[^/]*\.ipa' "$stage/manifest.plist" | head -1)"
     [ -n "$ipa" ] && cp -L "$BUILDS_INSTALL/$ipa" "$stage"/
     sed -i '' "s#https://$OLD_WEB_HOST#$WEB_URL#g" "$stage/index.html" "$stage/manifest.plist"
-    write_latest_json "$stage" "$ipa"
+    # The newest Android APK (PM-218), named stedio-<version>-<build>.apk; the highest build number wins.
+    local apk; apk="$(cd "$BUILDS_INSTALL" && ls stedio-*-*.apk 2>/dev/null | sed -E 's/^stedio-[0-9.]+-([0-9]+)\.apk$/\1 &/' | sort -n | tail -1 | cut -d' ' -f2)"
+    [ -n "$apk" ] && cp -L "$BUILDS_INSTALL/$apk" "$stage"/
+    write_latest_json "$stage" "$ipa" "$apk"
     say "install files staged: $(ls "$stage" | tr '\n' ' ')"
   else
     echo "WARN   $BUILDS_INSTALL not found: the website goes up without the tester install page"

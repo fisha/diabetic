@@ -15,6 +15,19 @@ verified only against test stand-ins or not at all. See `docs/integration-status
 3 s timeout, keeps the last good number through a website outage, and falls back to `STEADY_APP_LATEST_BUILD`. No
 migration, no app change. API tests pass. Next: deploy-web (publishes build 17), then deploy-api; check
 `/app/version` says 17.
+18 Nov 2026 (Jira PM-218, thread "Ship an Android build for testers"): a new tester has an Android phone and Guy
+approved a native Android build. The testers and preview profiles build a sideloadable APK. `expo prebuild` for Android
+showed CAMERA and RECORD_AUDIO blocked in the manifest (the camera and image-picker plugins' `false` options block a
+permission for every module), so meal and lab photos and the voice call would have failed on Android; the plugins now
+get the same permission texts (iOS Info.plist unchanged, checked with `expo config --type introspect`), and WebRTC's
+SYSTEM_ALERT_WINDOW is blocked. `GET /app/version` adds `android_latest_build`, read from an `android` entry in
+`install/latest.json` (written by `stedio-fly deploy-web` from `stedio-<version>-<build>.apk`), else
+`STEADY_APP_ANDROID_LATEST_BUILD`; Android compares only with it (EAS counts Android builds from 1). Google sign-in on
+Android waits for an Android OAuth client (`EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID`); email sign-in works. The Android
+notification channels are now only the quiet glucose look-back channel. API tests for app_version pass; `pnpm check`
+passes; Android JS bundle exports. Gradle not compiled here (no Android SDK). Next: the APK build on the Mac, the
+install page's Android section, then the tester's phone.
+
 17 Nov 2026 (Jira PM-214, thread "Upgrade the visit report"): Guy asked for a much richer visit report. The PDF is
 redesigned (logo band, the person's name, the visit day and everyone it is with, KPI tiles, ranges bar, AGP, daily
 in-range bars, carbs and insulin bars, an optional Apple Health page with steps and sleep, and a log where meal,
