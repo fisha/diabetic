@@ -1711,6 +1711,50 @@
         "title": "DeleteIn",
         "type": "object"
       },
+      "DemoInviteIn": {
+        "properties": {
+          "audience": {
+            "default": "other",
+            "pattern": "^(investor|pharma|insurer|hospital|health_fund|other)$",
+            "title": "Audience",
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "title": "Email",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "organization": {
+            "anyOf": [
+              {
+                "maxLength": 160,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Organization"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "title": "DemoInviteIn",
+        "type": "object"
+      },
       "DemoLinkOut": {
         "properties": {
           "access_until": {
@@ -11193,6 +11237,53 @@
         ]
       }
     },
+    "/admin/demo-requests/invite": {
+      "post": {
+        "description": "An admin invites someone by email (Guy, 18 Nov 2026): an approved request is made, or the person's open one is\nused, and the personal link is emailed (shown once when no email can be sent).",
+        "operationId": "invite_admin_demo_requests_invite_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoInviteIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemoLinkOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Invite",
+        "tags": [
+          "demo"
+        ]
+      }
+    },
     "/admin/demo-requests/{request_id}": {
       "delete": {
         "description": "Deletes the request and its details (its sessions go with it).",
@@ -11237,7 +11328,6 @@
     },
     "/admin/demo-requests/{request_id}/approve": {
       "post": {
-        "description": "Approves a request (or renews an approved one's link) and emails the link. The link is shown here once.",
         "operationId": "approve_admin_demo_requests__request_id__approve_post",
         "parameters": [
           {
