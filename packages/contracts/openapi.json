@@ -17968,6 +17968,7 @@
     },
     "/nutrition/summary": {
       "get": {
+        "description": "The last `days` local days up to today, or the local days `from`..`to` (both included, at most 92, not after\ntoday) for the day by day list (Guy, 18 Nov 2026, PM-255).",
         "operationId": "food_summary_nutrition_summary_get",
         "parameters": [
           {
@@ -17980,6 +17981,40 @@
               "minimum": 1,
               "title": "Days",
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "From"
+            }
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "To"
             }
           }
         ],

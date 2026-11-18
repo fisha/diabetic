@@ -16,6 +16,15 @@ visit's date and time, and the saved line, My visits, the report header and the 
 visit, report and account pass; `pnpm check` passes; `tools/e2e/visit-report.cjs` passes in en light, he light and he
 dark. Next: deploy the API, then the testers OTA (0.6.0 and 0.5.0).
 
+18 Nov 2026 (Jira PM-255, thread "Show daily carbs and protein summary"): Guy asked that the Carbs and Protein tiles
+(Overview > Food today), which show a full-day average, also lead to a list of days with each day's total carbs and
+protein, for a week, a month or a range of dates. The Carbs so far and Protein so far sheets have a "Day by day" row; the
+new sheet `/breakdown/days` has Week (last 7 days), Month (last 30) and Dates (from-to, up to 92 days), the period's
+full-day averages (the tiles' own rule) and full days N/M, then a carbs and protein column per day, newest first (dd.mm
+in Hebrew, mm.dd in English; "≥" when some meals lack protein); a day opens its day detail (PM-172). API:
+`/nutrition/summary` takes `from`/`to`. Descriptive totals only. API #116 and app #146 merged; API 674 tests, app 204,
+i18n 20; e2e `tools/e2e/day-by-day.cjs` 37/37. Not yet seen on a phone. Next: deploy API, then OTA (0.6.0 and 0.5.0).
+
 18 Nov 2026 (Jira PM-254, thread "Stop showing already-read insights again"): Guy saw the same card ("Check-in 17:58:
 Had dinner?", "Above your range now") on the main-screen Insights card again and again; once read there it should not
 come back. The G-77 mark-read existed, but check-ins, out-of-range readings and pump alerts had no read key, and the
