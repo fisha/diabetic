@@ -1886,6 +1886,8 @@ Second version (Guy approved 18 Nov 2026 evening): the top row holds only the in
 name; the opened card covers the tiles. History and text are plain icons (no round background) under "Tap to talk".
 The floating bar's companion tab is a line sound wave named "Talk" instead of the orb (the board's unlabelled orb);
 the side bar in a wide window keeps the orb.
+Later the same night: the open card starts under the line (the line stays), and the line's icon is a light bulb
+instead of the star.
 
 ## G-109 Under 18 with a parent following (PM-248, 18 Nov 2026, Guy asked)
 

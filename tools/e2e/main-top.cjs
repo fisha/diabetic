@@ -89,6 +89,9 @@ const server = http.createServer((req, res) => {
         const after = (await page.getByText(L.tir, { exact: true }).first().boundingBox())?.y;
         ok(`${tag}: open card does not push the tiles`, before != null && after != null && Math.abs(before - after) < 1, `${before} -> ${after}`);
         ok(`${tag}: opens on 1/${count}`, (await page.getByText(`1/${count}`).count()) > 0);
+        // It opens under the line, which stays where it was (Guy, 18 Nov 2026).
+        const pb = await pill.first().boundingBox(); const cb = await page.getByText(`1/${count}`).first().boundingBox();
+        ok(`${tag}: card opens under the line`, !!pb && !!cb && cb.y >= pb.y + pb.height, pb && cb ? `${Math.round(cb.y)} >= ${Math.round(pb.y + pb.height)}` : 'missing');
         await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-02-open.png`) });
         if (count > 1) {
           await page.getByRole('button', { name: L.next, exact: true }).click(); await page.waitForTimeout(500);
@@ -97,6 +100,11 @@ const server = http.createServer((req, res) => {
         }
         await page.getByRole('button', { name: L.fold, exact: true }).click(); await page.waitForTimeout(500);
         ok(`${tag}: folds back to the line`, (await pill.count()) > 0);
+        // A tap on the line opens the card and a second tap folds it.
+        await pill.first().click(); await page.waitForTimeout(500);
+        const shown = (await page.getByText(`1/${count}`).count()) > 0;
+        await pill.first().click(); await page.waitForTimeout(500);
+        ok(`${tag}: the line opens and folds`, shown && (await page.getByText(`1/${count}`).count()) === 0);
       }
       if ((await plus.count()) === 1) {
         await plus.click(); await page.waitForTimeout(1500);

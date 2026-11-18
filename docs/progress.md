@@ -97,6 +97,11 @@ Later the same day: admin invite by email (api #109, web #43), and two family sc
 child with type 1 whose demo account resets nightly and never trains. The app in the frame opens viewing Maya. No
 migration. Chromium check 5/5.
 
+18 Nov 2026 night (Jira PM-238, same thread): from Guy's phone screenshot, the opened insights card now starts under the
+"Insights" line, which stays in place (a second tap on the line folds the card), and lies over the tiles. The card
+shows only "N/M" and the arrows, since the line above names it. The line's star icon became a light bulb (`bulb`).
+e2e `main-top.cjs` 91/91 (adds: card under the line, the line opens and folds). JS only. Next: OTA.
+
 18 Nov 2026 evening (Jira PM-238, same thread): Guy approved a second main-screen design from screenshots. On the idle
 voice view the top row is only the insights line (no character or name there); its opened card lies over the time in
 range and glucose tiles. History and text are plain icons under "Tap to talk", and the top takes only its own height,
