@@ -10,12 +10,27 @@ verified only against test stand-ins or not at all. See `docs/integration-status
 
 18 Nov 2026 (Jira PM-236, thread "Redesign website with scroll motion"): Guy asked for a home page that feels like
 Stelo's how-it-works page: scroll motion, photos of people using the app (AI-generated, approved by Guy) and real app
-screens. Built in apps/web: hero photo behind the phone, a full-width photo that opens on scroll, "How it works" as a
+screens. Built in apps/web: the hero keeps only the phone (Guy: the photo did not belong there), a full-width photo that opens on scroll, "How it works" as a
 sticky phone that swaps four real app screens (e2e captures with sample data) per chapter (`Story.tsx`), a photo
 mosaic with parallax, and rising reveals. CSS scroll-driven animations only; nothing moves with reduced motion; the
 page says the people are AI-generated and the screens show sample data. Built on the demo branch (PM-233, "Ask for a
 demo"). Typecheck clean for these files, lint and web tests pass; checked in Chromium at desktop and phone widths.
 Next: Guy's look on his Mac, then PR and deploy-web.
+
+18 Nov 2026 (Jira PM-233, thread "Add investor demo to the website"): Guy asked for an "Ask for a demo" button next to
+"Join the waiting list", admin approval, and the real app shown in a phone frame on the website (web only) with a side
+panel of scenarios and talking points for investors, pharma, insurers, hospitals and health funds. Demo data never trains
+models, viewers need no username or password, and the team uses it to test scenarios. Guy chose shared demo accounts that
+go back to the generated data every 24 hours. Built: API `steady_api/demo/` (7 scenarios, 90 generated days each,
+one shared account per scenario and language, made with COPY in about 2 s, a per-account advisory lock, remade at 03:00
+Israel time under a new id, carried on to the moment it is opened), `routers/demo.py` (request form, personal link
+`#k=` stored as a hash, 30 days, one-day demo sessions, admin approve/renew/revoke/decline/delete, team link),
+demo accounts left out of training, priors, the ranker and the admin user list, account/device/sharing writes refused;
+app demo mode (`features/demo/`, session in sessionStorage so the viewer's own sign-in is untouched, Devices, Privacy,
+Sharing, Admin, Sign out and Delete hidden); web `/demo` page, home buttons, admin page Dashboard > Admin > Demo
+requests. Privacy `2026-11-18T14:00:00Z` adds demo request data, demo retention and the stored link. API 21 demo tests,
+e2e 13/13 in Chromium against a local API. Lawyer review PM-235 (`needs-lawyer`). Next: deploy API (migration
+e5d1a7c3b9f2) and web together, OTA.
 
 18 Nov 2026 (Jira PM-234, same thread): Guy asked for no placeholders on the legal pages. Every `⟦…⟧` in privacy,
 terms and accessibility (en and he) is filled: support and accessibility contact guy@mi-ng.com, hosting on Fly.io in

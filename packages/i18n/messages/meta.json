@@ -11442,6 +11442,12 @@
       "translation"
     ]
   },
+  "set.acct_demo": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "set.add": {
     "board": "Settings",
     "review": [
@@ -15795,6 +15801,158 @@
       "translation"
     ]
   },
+  "wd.dr_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin tab (PM-233)"
+  },
+  "wd.dr_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_none": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_who": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_aud": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_when": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_status": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_used": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_s_pending": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_s_approved": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_s_declined": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_s_revoked": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_opens": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_approve": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_renew": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_decline": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_revoke": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_delete": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_emailed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_not_emailed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_link": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_copy": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_copied": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_team": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Opens the demo with a team link, for the team's own demos and scenario tests"
+  },
+  "wd.dr_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wdg.above": {
     "board": "WIDGET",
     "review": [
@@ -16182,13 +16340,6 @@
     "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
   },
   "web.m_scr_why": {
-    "board": "Website",
-    "review": [
-      "translation"
-    ],
-    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
-  },
-  "web.m_ph1": {
     "board": "Website",
     "review": [
       "translation"
@@ -16866,6 +17017,423 @@
     ]
   },
   "web.trial": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.demo_cta": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_title": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Demo page title (PM-233)"
+  },
+  "web.dm_req_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_req_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_name": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_email": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_org": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_aud": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Select label; the options follow"
+  },
+  "web.dm_aud_investor": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_aud_pharma": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_aud_insurer": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_aud_hospital": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_aud_health_fund": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_aud_other": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_msg": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_agree": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Required checkbox; <a> links the privacy policy"
+  },
+  "web.dm_send": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_sending": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_sent_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_sent_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_err": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_busy": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_tag": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_who": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Panel heading above the scenario list"
+  },
+  "web.dm_lens": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Panel heading above the audience choice"
+  },
+  "web.dm_l_investor": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_l_pharma": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_l_insurer": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_l_care": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_show": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Button: opens the app screen this point is about"
+  },
+  "web.dm_app_lang": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_look": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_day": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_night": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_restart": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Reloads the app in the frame on its first screen"
+  },
+  "web.dm_loading": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_note": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Under the demo panel; regulatory and privacy note"
+  },
+  "web.dm_bad_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_bad_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_bad_cta": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_offline": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_frame": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Accessible name of the phone frame"
+  },
+  "web.dm_p_inv1_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv1_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv2_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv2_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv3_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv3_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv4_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv4_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ph1_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ph1_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ph2_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ph2_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ph3_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ph3_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ins1_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ins1_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ins2_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ins2_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ins3_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ins3_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_care1_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_care1_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_care2_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_care2_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_care3_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_care3_b": {
     "board": "Website",
     "review": [
       "translation"
@@ -19505,11 +20073,5 @@
       "translation"
     ],
     "note": "Confirm after swiping the next visit card (PM-222)"
-  },
-  "web.demo_cta": {
-    "board": "Website",
-    "review": [
-      "translation"
-    ]
   }
 }

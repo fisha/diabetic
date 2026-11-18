@@ -94,6 +94,11 @@ export type SharingOut = S['SharingOut'];
 export type ViewerOut = S['ViewerOut'];
 export type ViewingOut = S['ViewingOut'];
 export type AdminUserOut = S['AdminUserOut'];
+// The interactive web demo (PM-233).
+export type DemoRequestOut = S['DemoRequestOut'];
+export type DemoLinkOut = S['DemoLinkOut'];
+export type DemoScenarioOut = S['DemoScenarioOut'];
+export type DemoSessionOut = S['DemoSessionOut'];
 export type AppVersionOut = S['AppVersionOut'];
 export type WhyOut = S['WhyOut'];
 export type InterpretationOut = S['InterpretationOut'];
