@@ -106,6 +106,13 @@ Later the same day: admin invite by email (api #109, web #43), and two family sc
 child with type 1 whose demo account resets nightly and never trains. The app in the frame opens viewing Maya. No
 migration. Chromium check 5/5.
 
+18 Nov 2026 night (Jira PM-259, same thread): Guy asked to remove the insights from Overview since they are on the main
+screen. Overview no longer shows the Insights heading, last analysis, small wins or insight cards; the last analysis and
+the corrected/ended notes (G-42) moved to All insights. WinCard and useProgress removed; `ovr.ins_t` / `ovr.ins_src`
+strings removed. e2e insights/findings/progress open insights from All insights (and accept the current legal versions;
+progress puts off the companion unlock); offline drops the Overview analysis check. insights.cjs "summary wins" fails
+before and after this change (not investigated here). Next: OTA.
+
 18 Nov 2026 night (Jira PM-238, same thread): from Guy's phone screenshot, the opened insights card now starts under the
 "Insights" line, which stays in place (a second tap on the line folds the card), and lies over the tiles. The card
 shows only "N/M" and the arrows, since the line above names it. The line's star icon became a light bulb (`bulb`).
