@@ -25,6 +25,10 @@ const server = http.createServer((req, res) => {
     await api('/auth/sign-up', { method: 'POST', body: { email: 'b@example.com', password: 'correct horse battery' } });
     const tk = (await api('/auth/sign-in', { method: 'POST', body: { email: 'b@example.com', password: 'correct horse battery' } })).json.access_token;
     await api('/profile', { method: 'PUT', token: tk, body: { locale: 'en', answers: { ...ANSWERS, ratios: { ...ANSWERS.ratios, target: '80-140' } } } });
+    // The current legal versions are accepted up front, as in the other checks, so the re-consent screen doesn't cover the app.
+    const docs = (await api('/consent', { token: tk })).json;
+    await api('/consent/accept', { method: 'POST', token: tk, body: { versions: Object.fromEntries(docs.documents.map((d) => [d.kind, d.version])), at: new Date().toISOString() } });
+    await api('/consent/ai', { method: 'POST', token: tk, body: { at: new Date().toISOString() } });
     await api('/settings', { method: 'PUT', token: tk, body: { timezone: Intl.DateTimeFormat().resolvedOptions().timeZone } }).catch(() => null);
     const at = (h, m = 0, dayOff = 0) => { const d = new Date(); d.setDate(d.getDate() - dayOff); d.setHours(h, m, 0, 0); return d; };
     const hour = new Date().getHours();
@@ -94,8 +98,13 @@ const server = http.createServer((req, res) => {
           await page.getByRole('button', { name: 'Back' }).first().click(); await page.waitForTimeout(2500);
           const recs = (await api(`/records?kind=meal&since=${encodeURIComponent(at(0).toISOString())}&until=${encodeURIComponent(at(23, 59).toISOString())}`, { token: tk })).json || [];
           ok('the change reached the server', recs.some((r) => r.data.carbs_total_g === 60), recs.map((r) => r.data.carbs_total_g).join(','));
-          ok('back on the breakdown', await page.getByRole('button', { name: 'Delete, Yogurt' }).first().isVisible().catch(() => false));
-          await page.getByRole('button', { name: 'Delete, Yogurt' }).first().click(); await page.waitForTimeout(800);
+          // Delete is a swipe toward the start (PM-222): a long swipe on the row asks first.
+          const yog = page.getByRole('button', { name: /^Yogurt,/ }).first();
+          ok('back on the breakdown', await yog.isVisible().catch(() => false));
+          const b = await yog.boundingBox();
+          await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2); await page.mouse.down();
+          for (let k = 1; k <= 12; k++) { await page.mouse.move(b.x + b.width / 2 - 25 * k, b.y + b.height / 2); await page.waitForTimeout(16); }
+          await page.mouse.up(); await page.waitForTimeout(800);
           await shot('protein-delete-ask');
           await page.getByText('Delete entry', { exact: true }).last().click(); await page.waitForTimeout(2500);
           ok('deleted meal leaves the breakdown', (await page.getByText('Yogurt', { exact: true }).count()) === 0);

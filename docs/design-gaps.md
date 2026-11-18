@@ -1821,3 +1821,17 @@ The design's history sheet (COM-03) shows a title and "when · summary" and open
 conversation from" line; it has no delete. Guy asked for delete by swiping a row to the side (never a delete button),
 with the shared SwipeRow (PM-222) and a confirm dialog that says what goes and that Memory stays. The design's small
 character before each row is not shown.
+
+### G-104 · Tap a meal icon on the day graph to see what was eaten (**PM-224, Guy 18 Nov 2026**, verified-test)
+
+Not in the design; Guy asked for it (screenshot of the 24h graph with the meal icons marked). On 24h and Day "Over
+time", each meal icon under the graph is a button. It opens a sheet from the bottom: each meal's journal row (time,
+foods or the note written for a pump's carbs, carbs, and the pump insulin given with it in the same row), its protein
+when known, its photos (not while viewing someone else), and "Open in journal", which opens that meal's own journal
+entry, also on a day older than the journal's two. Open states:
+- Icons that overlap (about 1.7 hours apart on a phone) open together as "2 meals"; each tap area is 44 pt tall and as
+  wide as the space allows, split in the middle between neighbours, so a close neighbour gives a narrower area.
+- Week and longer show no meal icons, so nothing opens there.
+- The plot is 18 pt taller to hold the tap areas inside it (Android takes no touches outside a view).
+- Two pump meals inside one bolus row show once, as that row.
+
