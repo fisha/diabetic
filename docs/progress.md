@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-229, thread "Fill privacy contact in the privacy policy"): Guy gave the privacy contact
+guy@mi-ng.com. The privacy policy (en and he) names it in "Who we are" and "Contact"; the data protection officer and EU
+representative placeholders are removed for the closed Israeli testing stage, and whether either is needed before a
+wider launch is with the lawyer (PM-230, label `needs-lawyer`). New privacy version `2026-11-18T12:45:00Z` in
+`legal.CURRENT` and `LEGAL_UPDATED`, so the app asks everyone to read and accept again. Other placeholders remain
+(support email, accessibility coordinator, minimum age, retention, hosting text): see `docs/legal-open-items.md`.
+Next: deploy API and web together.
+
 18 Nov 2026 (Jira PM-226, thread "Fix glucose display on Apple Watch"): two photos from Guy's Apple Watch Ultra.
 (1) The Smart Stack card (small family) was lavender with near-invisible text, "79" was clipped inside a dark box, and
 the age was cut off. The watch does not resolve the phone's dynamic or semantic colours, so the small card now has a
