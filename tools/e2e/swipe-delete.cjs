@@ -18,6 +18,7 @@ const ANSWERS = { version: 1, consent: { service: true, training: false, at: new
 
 /** Drags from the row's middle by dx pixels, in small steps like a finger. */
 async function swipe(page, locator, dx) {
+  await locator.scrollIntoViewIfNeeded();
   const b = await locator.boundingBox();
   const x = b.x + b.width / 2; const y = b.y + b.height / 2;
   await page.mouse.move(x, y); await page.mouse.down();
@@ -44,11 +45,13 @@ const server = http.createServer((req, res) => {
     const hour = new Date().getHours();
     const runs = process.env.ONLY ? [process.env.ONLY.split(':')] : [['en', 'light'], ['he', 'light'], ['he', 'dark']];
     // Two meals per run: one deleted from the journal, one kept for the breakdown's short swipe.
+    // A run of its own: names unique to this run, so earlier runs' meals don't count.
+    const tag = String(Date.now() % 100000);
     let i = 0;
     for (const [lang] of runs) {
-      for (const [name, carbs] of [[`Toast ${lang}${i}`, 22], [`Rice ${lang}${i}`, 40]]) {
+      for (const [name, carbs] of [[`Toast ${lang}${i}x${tag}`, 22], [`Rice ${lang}${i}x${tag}`, 40]]) {
         const items = [{ name, unit: 'g', qty: 100, carbs_g: carbs, protein_g: 5, prov: 'wt', weighed: true }];
-        const r = await api('/records', { method: 'POST', token: tk, body: { idempotency_key: `sw-${i}-${name}`, kind: 'meal', occurred_at: at(Math.max(0, hour - 1), 5 + i).toISOString(), entered_at: new Date().toISOString(), source: 'manual', data: { items, ate: 'all', carbs_total_g: carbs, any_unknown: false, protein_total_g: 5 } } });
+        const r = await api('/records', { method: 'POST', token: tk, body: { idempotency_key: `sw-${i}-${name.replace(/\W/g, "_")}-${Date.now()}`, kind: 'meal', occurred_at: at(Math.max(0, hour - 1), 5 + i).toISOString(), entered_at: new Date().toISOString(), source: 'manual', data: { items, ate: 'all', carbs_total_g: carbs, any_unknown: false, protein_total_g: 5 } } });
         ok(`meal ${name} saved`, r.status === 200 || r.status === 201, String(r.status));
       }
       i++;
@@ -58,7 +61,7 @@ const server = http.createServer((req, res) => {
     i = 0;
     for (const [lang, scheme] of runs) {
       const he = lang === 'he';
-      const toast = `Toast ${lang}${i}`; const rice = `Rice ${lang}${i}`; i++;
+      const toast = `Toast ${lang}${i}x${tag}`; const rice = `Rice ${lang}${i}x${tag}`; i++;
       await api('/profile', { method: 'PUT', token: tk, body: { locale: lang, answers: ANSWERS } });
       const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: scheme, locale: 'en-US', deviceScaleFactor: 2 });
       const page = await ctx.newPage();
@@ -92,6 +95,7 @@ const server = http.createServer((req, res) => {
 
       // The wrong way uncovers nothing.
       await swipe(page, row, -toStart * 150);
+      await shot('02b-after-wrong-way');
       ok(`${lang} ${scheme}: swipe the other way uncovers nothing`, !(await page.getByRole('button', { name: new RegExp(`^${L.del}, ${toast}`) }).first().isVisible().catch(() => false)));
 
       // A long swipe toward the start asks, then deletes on the server.
@@ -105,9 +109,13 @@ const server = http.createServer((req, res) => {
       await shot('04-after-delete');
 
       // Overview > carbs breakdown: a short swipe uncovers Delete; tapping the row closes it again.
+      // A reward for logging meals may open over the screen; "Later" closes it.
+      const later = page.getByText(he ? 'אחר כך' : 'Later', { exact: true }).last();
+      if (await later.isVisible().catch(() => false)) { await later.click(); await page.waitForTimeout(800); }
       await page.getByRole('tab', { name: L.overview }).first().click().catch(async () => page.getByText(L.overview, { exact: true }).last().click());
       await page.waitForTimeout(3500);
       const tile = page.getByRole('button', { name: new RegExp(`^${L.carbs},`) }).first();
+      if (await later.isVisible().catch(() => false)) { await later.click(); await page.waitForTimeout(800); }
       await tile.scrollIntoViewIfNeeded().catch(() => null);
       await tile.click(); await page.waitForTimeout(2500);
       const bRow = page.getByRole('button', { name: new RegExp(`^${rice}`) }).first();
@@ -119,7 +127,8 @@ const server = http.createServer((req, res) => {
       ok(`${lang} ${scheme}: Delete sits at the end of the row`, ub && rb && (he ? ub.x < rb.x : ub.x > rb.x), JSON.stringify({ ub, rb }));
       await shot('05-breakdown-uncovered');
       await swipe(page, bRow, -toStart * 120);
-      ok(`${lang} ${scheme}: swiping back closes it`, !(await uncovered.isVisible().catch(() => false)));
+      const back = await bRow.boundingBox().catch(() => null); const list = await page.getByText(rice, { exact: true }).first().boundingBox().catch(() => null);
+      ok(`${lang} ${scheme}: swiping back closes it`, back && rb && Math.abs(back.x - (rb.x - toStart * 88)) < 2, JSON.stringify({ back, list }));
       ok(`${lang} ${scheme}: nothing else was deleted`, (await meals()).includes(rice));
       await shot('06-breakdown-closed');
       await ctx.close();
