@@ -6348,11 +6348,18 @@ export interface components {
              */
             photo_retention: "afterAnalysis" | "days90" | "untilDeleted";
             /**
+             * Sensor End Options
+             * @default {}
+             */
+            sensor_end_options: {
+                [key: string]: (168 | 72 | 24 | 5)[];
+            };
+            /**
              * Sensor End Reminder
              * @default {}
              */
             sensor_end_reminder: {
-                [key: string]: 72 | 24 | 5;
+                [key: string]: 168 | 72 | 24 | 5;
             };
             /**
              * Sensor End Types
@@ -6383,7 +6390,7 @@ export interface components {
             photo_retention?: ("afterAnalysis" | "days90" | "untilDeleted") | null;
             /** Sensor End Reminder */
             sensor_end_reminder?: {
-                [key: string]: (72 | 24 | 5) | null;
+                [key: string]: (168 | 72 | 24 | 5) | null;
             } | null;
             /** Timezone */
             timezone?: string | null;

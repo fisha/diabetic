@@ -1,6 +1,6 @@
 // "Sensor ending" reminder choice (PM-260, Guy 18 Nov 2026) end to end against the test server (services/api: uvicorn
 // tests.e2e_server:app): Profile > Notifications shows a choice per sensor type the connected device services can tell
-// the end of (Off / 3 days / 24 hours / 5 hours), saves it on the server, and without such a service says what to connect.
+// the end of (Off / 3 days / 24 hours / 5 hours, and 7 days for a sensor rated 14 days or more), saves it on the server, and without such a service says what to connect.
 // The device links are written straight into the test database (no device service is reached).
 // Usage: node tools/e2e/sensor-end.cjs <web export built with EXPO_PUBLIC_API_URL=http://localhost:8000> <out dir> <psql url>
 // Start from an empty database: it signs up se-en@example.com, se-he@example.com and se-none@example.com.
@@ -54,8 +54,8 @@ const server = http.createServer((req, res) => {
       const he = lang === 'he';
       const shot = (name) => page.screenshot({ path: path.join(out, `${who}-${scheme}-${name}.png`), fullPage: true });
       const L = he
-        ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', prof: 'פרופיל', notif: 'התראות', title: 'סיום חיישן', libre: 'FreeStyle Libre', g7: 'Dexcom G7', d3: '3 ימים', h24: '24 שעות', h5: '5 שעות', off: 'כבוי' }
-        : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', prof: 'Profile', notif: 'Notifications', title: 'Sensor ending', libre: 'FreeStyle Libre', g7: 'Dexcom G7', d3: '3 days', h24: '24 hours', h5: '5 hours', off: 'Off' };
+        ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', prof: 'פרופיל', notif: 'התראות', title: 'סיום חיישן', libre: 'FreeStyle Libre', g7: 'Dexcom G7', d7: '7 ימים', d3: '3 ימים', h24: '24 שעות', h5: '5 שעות', off: 'כבוי' }
+        : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', prof: 'Profile', notif: 'Notifications', title: 'Sensor ending', libre: 'FreeStyle Libre', g7: 'Dexcom G7', d7: '7 days', d3: '3 days', h24: '24 hours', h5: '5 hours', off: 'Off' };
       await page.goto(base); await page.waitForTimeout(2000);
       if (he) { await page.getByText('עברית', { exact: true }).first().click(); await page.waitForTimeout(800); }
       await page.getByText(L.have, { exact: true }).last().click(); await page.waitForTimeout(1500);
@@ -78,18 +78,19 @@ const server = http.createServer((req, res) => {
       }
       const libre = page.getByRole('radiogroup', { name: L.libre }); const g7 = page.getByRole('radiogroup', { name: L.g7 });
       ok(`${who} ${scheme}: a choice per sensor type`, (await libre.count()) === 1 && (await g7.count()) === 1);
-      ok(`${who} ${scheme}: all four options`, (await libre.getByRole('radio').count()) === 4, String(await libre.getByRole('radio').count()));
+      ok(`${who} ${scheme}: Libre (14 days) also offers 7 days`, (await libre.getByRole('radio').count()) === 5 && (await libre.getByText(L.d7, { exact: true }).count()) === 1, String(await libre.getByRole('radio').count()));
+      ok(`${who} ${scheme}: Dexcom G7 (10 days) has no 7 days`, (await g7.getByRole('radio').count()) === 4 && (await g7.getByText(L.d7, { exact: true }).count()) === 0);
       if (scheme === 'light') {
-        await libre.getByText(L.d3, { exact: true }).click(); await page.waitForTimeout(1200);
+        await libre.getByText(L.d7, { exact: true }).click(); await page.waitForTimeout(1200);
         await g7.getByText(L.h5, { exact: true }).click(); await page.waitForTimeout(1200);
         const s = (await api('/settings', { token: tokens[who] })).json;
-        ok(`${who}: saved per type on the server`, s.sensor_end_reminder.libre3 === 72 && s.sensor_end_reminder.dexcomG7 === 5, JSON.stringify(s.sensor_end_reminder));
+        ok(`${who}: saved per type on the server`, s.sensor_end_reminder.libre3 === 168 && s.sensor_end_reminder.dexcomG7 === 5, JSON.stringify(s.sensor_end_reminder));
         await shot('01-chosen');
         await page.reload(); await page.waitForTimeout(4000);
         const r = page.getByRole('radiogroup', { name: L.libre });
         await r.first().scrollIntoViewIfNeeded();
         const sel = await r.getByRole('radio').evaluateAll((els) => els.map((e) => `${e.textContent}=${!!e.querySelector('svg')}`));
-        ok(`${who}: the choice is shown again after reload`, sel.some((x) => x.startsWith(L.d3) && x.endsWith('=true')), sel.join('|'));
+        ok(`${who}: the choice is shown again after reload`, sel.some((x) => x.startsWith(L.d7) && x.endsWith('=true')), sel.join('|'));
         await r.getByText(L.off, { exact: true }).click(); await page.waitForTimeout(1200);
         const s2 = (await api('/settings', { token: tokens[who] })).json;
         ok(`${who}: Off removes that type only`, !('libre3' in s2.sensor_end_reminder) && s2.sensor_end_reminder.dexcomG7 === 5, JSON.stringify(s2.sensor_end_reminder));

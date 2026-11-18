@@ -16,8 +16,10 @@ reminder before (only the pump's own "sensor ending" alert relayed from CareLink
 CareLink's own sensor time left, else the reported start plus the maker's rated days; one push per sensor; the longer
 reminders wait for the morning. API #119 and app #150 merged; API 682 tests pass (2 failures not from this change:
 `test_logs` on `routers/demo.py`, and a flaky `test_environment` case that passes alone), app 208, i18n 20; e2e
-`tools/e2e/sensor-end.cjs` 18/18. The push itself was checked in tests only, not on a phone. Next: deploy API, then OTA
-(0.6.0 and 0.5.0).
+`tools/e2e/sensor-end.cjs` 18/18. The push itself was checked in tests only, not on a phone. Live 18 Nov: API v76 and testers OTA.
+Follow-up (Guy 21:07): "7 days" for sensors rated 14 days or more (FreeStyle Libre); `/settings`
+`sensor_end_options` lists the times per type, a time not offered is refused. API #120, app #152; e2e 21/21. Next:
+deploy API, then OTA (0.6.0 and 0.5.0).
 
 18 Nov 2026 (Jira PM-261, thread "Stop backups from filling the DB disk"): production was down 20:22 to 20:41 UTC
 because the stedio-db 1 GB volume filled up (Postgres crashed writing WAL; volume now 3 GB, no data lost). Every
