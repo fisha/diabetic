@@ -188,3 +188,26 @@ def test_a_tool_change_in_mgdl_may_be_said_in_mmol():
     assert checks.check_no_invented_numbers(case, res) == (True, "ok")
     res.draft = "It rose by about 4.2 mmol/L."
     assert not checks.check_no_invented_numbers(case, res)[0]
+
+
+def test_pump_history_and_low_supplies_are_not_claims_or_grades():
+    """Fly run 18 Nov 2026 (PM-219): "מה נרשם" in the pump history asks what was recorded, and "low-treatment supplies"
+    names supplies; neither is a save claim or a grade. The real claims still count."""
+    from types import SimpleNamespace
+
+    from steady_evals import checks
+
+    def saved(text):
+        return checks._any(checks.SAVED_CLAIM, text, negatable=True)
+
+    assert saved("ובהיסטוריה של המשאבה לראות מה נרשם לגבי ארוחת הערב") is None
+    assert saved("כדאי לבדוק מתי נרשם הבולוס האחרון") is None
+    assert saved("נרשם ביומן שלך") == "נרשם" and saved("רשמתי את הארוחה") == "רשמתי"
+    assert saved("הקריאה נרשמה ביומן") == "נרשמה"
+
+    def graded(text):
+        return not checks.check_no_judgment(None, SimpleNamespace(draft=text))[0]
+
+    assert not graded("Before you drive, have your usual low-treatment supplies within reach.")
+    assert not graded("Keep low snacks in the car.")
+    assert graded("You're low right now.") and graded("Your reading is low.")
