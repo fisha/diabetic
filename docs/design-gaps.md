@@ -1835,3 +1835,15 @@ entry, also on a day older than the journal's two. Open states:
 - The plot is 18 pt taller to hold the tap areas inside it (Android takes no touches outside a view).
 - Two pump meals inside one bolus row show once, as that row.
 
+## G-105 Interactive website demo (PM-233, 18 Nov 2026, Guy asked)
+
+Not in the design; Guy asked for it. The home page has "Ask for a demo" next to "Join the waiting list" (hero and the
+closing section). `/demo` shows the request form; with an approved personal link it shows the real app (the app's web
+export at `/app`) in a phone frame the size of an iPhone Pro Max screen, scaled to the window, with a panel of
+scenarios, talking points by audience (each "Show" opens that screen in the app), app language, day/night and "Start
+over". Built in the website's own brand tokens. Open states:
+- Under 900 px the phone comes first and the panel below it; the frame keeps the phone's proportions.
+- A revoked, declined or expired link shows a card asking for a new one.
+- The app hides Devices, Privacy, Sharing, Admin, Sign out and Delete in the demo; the API also refuses those writes.
+- Voice in the demo uses the same provider as the app; where it is off, the app's own "Not available" state shows.
+
