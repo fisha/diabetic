@@ -15953,6 +15953,36 @@
       "translation"
     ]
   },
+  "wd.dr_inv_h": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_inv_email": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_inv_name": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_inv_org": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_inv_send": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wdg.above": {
     "board": "WIDGET",
     "review": [

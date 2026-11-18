@@ -75,6 +75,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/admin/demo-requests/invite": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Invite
+         * @description An admin invites someone by email (Guy, 18 Nov 2026): an approved request is made, or the person's open one is
+         *     used, and the personal link is emailed (shown once when no email can be sent).
+         */
+        post: operations["invite_admin_demo_requests_invite_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/admin/demo-requests/{request_id}": {
         parameters: {
             query?: never;
@@ -104,10 +125,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /**
-         * Approve
-         * @description Approves a request (or renews an approved one's link) and emails the link. The link is shown here once.
-         */
+        /** Approve */
         post: operations["approve_admin_demo_requests__request_id__approve_post"];
         delete?: never;
         options?: never;
@@ -3549,6 +3567,23 @@ export interface components {
              */
             confirm: "DELETE";
         };
+        /** DemoInviteIn */
+        DemoInviteIn: {
+            /**
+             * Audience
+             * @default other
+             */
+            audience: string;
+            /**
+             * Email
+             * Format: email
+             */
+            email: string;
+            /** Name */
+            name?: string | null;
+            /** Organization */
+            organization?: string | null;
+        };
         /** DemoLinkOut */
         DemoLinkOut: {
             /**
@@ -6883,6 +6918,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["DemoRequestOut"][];
+                };
+            };
+        };
+    };
+    invite_admin_demo_requests_invite_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DemoInviteIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DemoLinkOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
