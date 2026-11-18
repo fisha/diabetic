@@ -2440,7 +2440,11 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Food Summary */
+        /**
+         * Food Summary
+         * @description The last `days` local days up to today, or the local days `from`..`to` (both included, at most 92, not after
+         *     today) for the day by day list (Guy, 18 Nov 2026, PM-255).
+         */
         get: operations["food_summary_nutrition_summary_get"];
         put?: never;
         post?: never;
@@ -11788,6 +11792,8 @@ export interface operations {
         parameters: {
             query?: {
                 days?: number;
+                from?: string | null;
+                to?: string | null;
             };
             header?: never;
             path?: never;

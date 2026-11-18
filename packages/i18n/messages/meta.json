@@ -721,6 +721,97 @@
     ],
     "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
   },
+  "bk.dd_title": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Day by day sheet: carbs and protein per day over a week, a month or chosen dates (Guy, 18 Nov 2026, PM-255)."
+  },
+  "bk.dd_open_sub": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_period": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_week": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_month": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_range": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_from": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_to": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_bad_range": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_avg": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_days": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_so_far": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_meals": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.dd_note": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
   "bk.peak": {
     "board": "Overview",
     "review": [
