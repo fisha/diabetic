@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-261, thread "Stop backups from filling the DB disk"): production was down 20:22 to 20:41 UTC
+because the stedio-db 1 GB volume filled up (Postgres crashed writing WAL; volume now 3 GB, no data lost). Every
+`deploy-api` takes a pg_dump on the volume and the backup script pruned only by age, so 74 dumps (641 MB) piled up.
+`deploy/fly/db/backup.sh` now keeps the newest 10 dumps (and the 14-day limit) and refuses to dump when less than
+200 MB plus the last dump's size would stay free. Tested against a scratch folder (prune to 10, refusal path). Needs
+`stedio-fly deploy-db` to take effect; the first backup after it removes the older dumps (still in the daily snapshots).
+
 18 Nov 2026 (Jira PM-257, thread "Add a take a break glucose-only mode"): Guy asked for a quick "Take a break" switch in
 Profile: no pushes from the app except high and low glucose, no insights, and the whole app becomes one clean screen with
 the sensor reading in big (iPhone StandBy style, upright) and a small icon that ends it; also from the iPhone Action

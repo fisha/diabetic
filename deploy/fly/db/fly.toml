@@ -16,6 +16,9 @@ swap_size_mb = 512
   PGDATA = '/data/pgdata'
   BACKUP_HOUR_UTC = '1'
   BACKUP_KEEP_DAYS = '14'
+  # Also at most this many dumps: deploy-api takes one before every deploy (PM-261).
+  BACKUP_KEEP_COUNT = '10'
+  BACKUP_MIN_FREE_MB = '200'
   # POSTGRES_PASSWORD is a Fly secret.
 
 [mounts]

@@ -18,9 +18,12 @@ Never run `fly launch` (it rewrites fly.toml and adds machines).
 ## Backups (health data)
 
 1. Fly snapshots each volume every day: 30 days kept for the database, 14 for photos (`fly volumes snapshots list`).
-2. The database machine writes a `pg_dump` to `/data/backups` every night after 01:00 UTC and keeps 14 days.
-   `stedio-fly backup` takes one on demand; `deploy-api` takes one before every deploy (migrations run in the release
-   command). Restore: `fly ssh console -a stedio-db`, then `pg_restore -U steady -h /var/run/postgresql --clean -d steady <file>`.
+2. The database machine writes a `pg_dump` to `/data/backups` every night after 01:00 UTC. `stedio-fly backup` takes
+   one on demand; `deploy-api` takes one before every deploy (migrations run in the release command). Each backup keeps
+   the newest 10 dumps and none older than 14 days (`BACKUP_KEEP_COUNT`, `BACKUP_KEEP_DAYS` in `db/fly.toml`), and
+   refuses to start when the volume would be left with less than `BACKUP_MIN_FREE_MB` (200) free, so a backup can never
+   fill the disk Postgres writes to (PM-261: 74 dumps filled the 1 GB volume on 18 Nov 2026 and took production down).
+   The script is part of the database image: a change to `db/backup.sh` applies after `stedio-fly deploy-db`. Restore: `fly ssh console -a stedio-db`, then `pg_restore -U steady -h /var/run/postgresql --clean -d steady <file>`.
 
 ## Secrets
 

@@ -10,7 +10,7 @@
 #   stedio-fly deploy-web   Stage the tester install files with the new address and install/latest.json (the newest
 #                           build number the API offers to older installs, PM-217), then deploy the website
 #   stedio-fly copy-data    Copy the Mac's database and meal photos/exports to Fly (overwrites Fly's copy)
-#   stedio-fly backup       Take a database backup now (on the database volume)
+#   stedio-fly backup       Take a database backup now (on the database volume; keeps the newest 10, PM-261)
 #   stedio-fly status       Machines, volumes and health of the three apps
 #   stedio-fly research-setup   Create stedio-research, its read-only database login (new password each run) and its
 #                           secrets; then run deploy-research
