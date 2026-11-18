@@ -125,6 +125,10 @@ Later the same day: admin invite by email (api #109, web #43), and two family sc
 child with type 1 whose demo account resets nightly and never trains. The app in the frame opens viewing Maya. No
 migration. Chromium check 5/5.
 
+18 Nov 2026 night (Jira PM-238, same thread): Guy said the bordered insights pill looked like a search box and approved a
+mockup: the collapsed line is a card like the tiles (same fill, radius, hairline), light bulb in a soft square, "Insights"
+small above the start of the first card, count with an accent dot, chevron. e2e `main-top.cjs` 96/96. JS only. Next: OTA.
+
 18 Nov 2026 night (Jira PM-259, same thread): Guy asked to remove the insights from Overview since they are on the main
 screen. Overview no longer shows the Insights heading, last analysis, small wins or insight cards; the last analysis and
 the corrected/ended notes (G-42) moved to All insights. WinCard and useProgress removed; `ovr.ins_t` / `ovr.ins_src`
