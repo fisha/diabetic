@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-236, thread "Redesign website with scroll motion"): Guy asked for a home page that feels like
+Stelo's how-it-works page: scroll motion, photos of people using the app (AI-generated, approved by Guy) and real app
+screens. Built in apps/web: hero photo behind the phone, a full-width photo that opens on scroll, "How it works" as a
+sticky phone that swaps four real app screens (e2e captures with sample data) per chapter (`Story.tsx`), a photo
+mosaic with parallax, and rising reveals. CSS scroll-driven animations only; nothing moves with reduced motion; the
+page says the people are AI-generated and the screens show sample data. Built on the demo branch (PM-233, "Ask for a
+demo"). Typecheck clean for these files, lint and web tests pass; checked in Chromium at desktop and phone widths.
+Next: Guy's look on his Mac, then PR and deploy-web.
+
 18 Nov 2026 (Jira PM-234, same thread): Guy asked for no placeholders on the legal pages. Every `⟦…⟧` in privacy,
 terms and accessibility (en and he) is filled: support and accessibility contact guy@mi-ng.com, hosting on Fly.io in
 Frankfurt (the Mac server and ngrok lines removed), no email provider line, OpenAI 30-day abuse retention, backups and
