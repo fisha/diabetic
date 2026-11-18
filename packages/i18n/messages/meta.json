@@ -20959,5 +20959,11 @@
       "translation"
     ],
     "note": "My test results by test date (PM-263, Guy 18 Nov 2026)."
+  },
+  "set.auto": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
   }
 }

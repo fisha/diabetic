@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-264, thread "Add automatic theme option"): Guy asked for an Automatic choice in Accessibility >
+Appearance next to Day and Night ("גם אוטומטי לפי הגדרות המכשיר"). The design already lists system, day, night; the theme
+provider already resolved `system` live from the phone, but the screen had no chip for it. Added the Automatic chip and
+chips now show the saved choice. New users stay on Automatic; saved Day/Night choices are untouched. JS + strings only.
+App #156 merged; `pnpm check` passes (app 208). Not yet seen on a phone. Next: testers OTA (0.6.0 and 0.5.0).
+
 18 Nov 2026 (Jira PM-263, thread "Upgrade the visit report"): Guy asked to turn the visit report entry into "Clinic &
 tests" ("מרפאה ובדיקות"). Profile now opens a Clinic & tests screen with "My test results" (the PM-213 lab results),
 "Report for my clinic" (the PM-214 report and visits) and the "Read a lab report" card for new tests. JS only, no API

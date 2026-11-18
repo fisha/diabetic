@@ -1777,7 +1777,7 @@
   "set.admin": "Admin",
   "set.admin_sub": "Accounts and waiting list, on the website",
   "set.app_lang": "App language",
-  "set.appear_note": "Night inverts the surfaces: black background and light text. Glucose colours keep their meaning.",
+  "set.appear_note": "Automatic follows your phone's light or dark setting. Night inverts the surfaces: black background and light text. Glucose colours keep their meaning.",
   "set.appearance": "Appearance",
   "set.before": "Before you connect",
   "set.before1": "Stedio will read glucose readings from your account. It can’t change your device.",
@@ -3280,5 +3280,6 @@
   "clin.results": "My test results",
   "clin.results_sub": "Your results by test date, and adding new tests",
   "clin.report_sub": "A PDF for a visit with your doctor, nurse or dietitian, and your visits",
-  "lab.day_n": "{n, plural, one {# result} other {# results}}"
+  "lab.day_n": "{n, plural, one {# result} other {# results}}",
+  "set.auto": "Automatic"
 }
