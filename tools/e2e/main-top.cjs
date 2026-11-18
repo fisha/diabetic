@@ -113,6 +113,12 @@ const server = http.createServer((req, res) => {
         await plus.click(); await page.waitForTimeout(1500);
         ok(`${tag}: plus opens Quick log`, page.url().includes('/log'), page.url());
       }
+      // Overview and Journal have no plus in their header either: only the one beside the tab bar (Guy, 18 Nov 2026).
+      for (const tabPath of ['overview', 'journal']) {
+        await page.goto(`${base}/${tabPath}`); await page.waitForTimeout(3000);
+        await page.getByText(he ? 'אחר כך' : 'Later', { exact: true }).first().click({ timeout: 1500 }).catch(() => {});
+        ok(`${tag}: ${tabPath} has one plus`, (await page.getByRole('button', { name: L.add, exact: true }).count()) === 1);
+      }
       // The clinic visit report is in the Health group of Profile (Guy, 18 Nov 2026).
       await page.goto(`${base}/profile`); await page.waitForTimeout(4000);
       const y = async (txt) => (await page.getByText(txt, { exact: true }).first().boundingBox())?.y ?? -1;

@@ -138,6 +138,10 @@ Later the same day: admin invite by email (api #109, web #43), and two family sc
 child with type 1 whose demo account resets nightly and never trains. The app in the frame opens viewing Maya. No
 migration. Chromium check 5/5.
 
+18 Nov 2026 night (Jira PM-262, same thread): the header plus on Overview and Journal is gone (the round plus beside the
+tab bar covers it); in a wide window the side bar gets a Quick log row instead. e2e `main-top.cjs` 106/106 (one plus on
+Overview and Journal). JS only. Next: OTA.
+
 18 Nov 2026 night (Jira PM-238, same thread): Guy said the bordered insights pill looked like a search box and approved a
 mockup: the collapsed line is a card like the tiles (same fill, radius, hairline), light bulb in a soft square, "Insights"
 small above the start of the first card, count with an accent dot, chevron. e2e `main-top.cjs` 96/96. JS only. Next: OTA.
