@@ -7975,7 +7975,8 @@
     "board": "Onboarding",
     "review": [
       "translation"
-    ]
+    ],
+    "note": "PM-248: under 18 with a parent following (was the adults-only stop screen)."
   },
   "onb.mi_fix": {
     "board": "Onboarding",
@@ -8005,7 +8006,8 @@
     "board": "Onboarding",
     "review": [
       "translation"
-    ]
+    ],
+    "note": "PM-248: under 18 with a parent following (was the adults-only stop screen)."
   },
   "onb.na_l": {
     "board": "Onboarding",
@@ -13247,7 +13249,8 @@
     "board": "Settings",
     "review": [
       "translation"
-    ]
+    ],
+    "note": "PM-248: under 18 with a parent following (was the adults-only stop screen)."
   },
   "set.motion_r": {
     "board": "Settings",
@@ -20480,5 +20483,141 @@
       "translation"
     ],
     "note": "Confirm after swiping the next visit card (PM-222)"
+  },
+  "onb.mi_what": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "onb.mi_change": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "onb.mi_invite": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "onb.mi_code": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "onb.mi_wait": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "onb.mi_check": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "onb.mi_not_yet": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "onb.mi_lost": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "onb.mi_send_text": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "shr.parent": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "shr.parent_keep": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "shr.gd_t": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "shr.gd_b": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "shr.gd_confirm": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "shr.gd_ok": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "shr.gd_need": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
+  },
+  "shr.gd_minor": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "PM-248: under 18 with a parent following."
   }
 }

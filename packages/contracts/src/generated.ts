@@ -311,6 +311,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/birth": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Birth Date
+         * @description PM-248: the date of birth from onboarding, so the server knows whether a parent must follow before anything else.
+         *     Under /auth/ so it answers while no parent follows yet. Only the day the person turns 18 is kept, if still ahead.
+         */
+        put: operations["set_birth_date_auth_birth_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/google": {
         parameters: {
             query?: never;
@@ -3317,6 +3338,16 @@ export interface components {
             value: number;
         };
         /**
+         * BirthIn
+         * @description The date of birth as typed in onboarding (PM-248); only the day the person turns 18 is kept, if still ahead.
+         */
+        BirthIn: {
+            /** Birth */
+            birth: {
+                [key: string]: string;
+            };
+        };
+        /**
          * BodyDetailsOut
          * @description What is behind each "Body today" tile (Itay, 15 Nov 2026): today by hour, the last week by day, last night's stages.
          */
@@ -4902,6 +4933,11 @@ export interface components {
         InviteIn: {
             /** Consent */
             consent: boolean;
+            /**
+             * Guardian
+             * @default false
+             */
+            guardian: boolean;
             /** Label */
             label?: string | null;
             /** Relation */
@@ -4919,6 +4955,11 @@ export interface components {
              * Format: date-time
              */
             code_expires_at: string;
+            /**
+             * Guardian
+             * @default false
+             */
+            guardian: boolean;
             /** Name */
             name: string;
             /** Scopes */
@@ -5161,6 +5202,11 @@ export interface components {
              */
             email_verified: boolean;
             /**
+             * Guardian Needed
+             * @default false
+             */
+            guardian_needed: boolean;
+            /**
              * Has Data
              * @default true
              */
@@ -5177,6 +5223,11 @@ export interface components {
              * @default false
              */
             is_admin: boolean;
+            /**
+             * Minor
+             * @default false
+             */
+            minor: boolean;
             /** Persona */
             persona?: ("self" | "prediabetes" | "child" | "family") | null;
         };
@@ -6619,6 +6670,13 @@ export interface components {
             /** Consent At */
             consent_at?: string | null;
             /**
+             * Guardian
+             * @default false
+             */
+            guardian: boolean;
+            /** Guardian Confirmed At */
+            guardian_confirmed_at?: string | null;
+            /**
              * Id
              * Format: uuid
              */
@@ -6652,6 +6710,11 @@ export interface components {
              * Format: date-time
              */
             accepted_at: string;
+            /**
+             * Guardian
+             * @default false
+             */
+            guardian: boolean;
             /**
              * Id
              * Format: uuid
@@ -6925,6 +6988,11 @@ export interface components {
         steady_api__routers__sharing__AcceptIn: {
             /** Code */
             code: string;
+            /**
+             * Guardian Confirm
+             * @default false
+             */
+            guardian_confirm: boolean;
         };
     };
     responses: never;
@@ -7409,6 +7477,39 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    set_birth_date_auth_birth_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BirthIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Me"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
             };
         };
     };
@@ -11759,7 +11860,7 @@ export interface operations {
                     "application/json": components["schemas"]["ProfileOut"];
                 };
             };
-            /** @description consent_required or under_18 */
+            /** @description consent_required, birth_required or guardian_required */
             422: {
                 headers: {
                     [name: string]: unknown;

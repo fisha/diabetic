@@ -1866,3 +1866,12 @@ Continue always move on. Open states:
 - The consent step's answers are recorded on the server before the first connection opens; if that fails, a banner
   says nothing was connected and the person can retry or skip.
 - On the website the health store row shows "On your phone", as in Settings.
+
+## G-109 Under 18 with a parent following (PM-248, 18 Nov 2026, Guy asked)
+
+Guy: the app can be used under 18, but only with a parent invited to follow. The board's adults-only stop screen
+("minor", ONB) becomes "Invite a parent to follow you" with the same art and layout: the parts the parent sees, the
+invite code with Send code, "My parent accepted, continue" and "Edit date of birth". The invite screen a parent opens
+(`/share`) gets a confirmation tick ("I am {name}'s parent or legal guardian…"). Neither is on the board; built from
+the existing onboarding and sharing components. The same screen opens for an account under 18 whose parent stopped
+following. Screenshots: `/mnt/project-files/steady/minors/` (en light, he light, he dark).
