@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-222, thread "Delete by swiping across the app"): Guy asked that every deletion in the app is a
+sideways swipe, never a delete button, and that a conversation can be deleted. New shared `SwipeRow` (app, JS only:
+PanResponder + Animated): toward the start of the reading direction (left in English, right in Hebrew), a short swipe
+uncovers Delete, a long one deletes; optional confirm; a trash button only while VoiceOver/TalkBack is on. Used on
+journal entries, Overview breakdown meals, usual meals, foods in a meal being logged, check-ins, memories, kept visits,
+the next visit, sharing (people and invites) and onboarding carb-ratio periods; the Delete buttons on the journal entry
+and visit screens are gone. Conversation delete is PM-220 (its own thread) on the same component. App #127 merged.
+`pnpm typecheck`, app tests 192, i18n tests pass; new e2e `tools/e2e/swipe-delete.cjs` 43/43 (en light, he light,
+he dark). Not yet on a phone: next is the testers OTA (0.6.0 and 0.5.0) together with PM-220.
+
 18 Nov 2026 (Jira PM-224, thread "Open meal details from the glucose chart"): Guy asked to tap the meal icons under
 the Overview glucose graph to see what he ate. On 24h and Day, a meal icon opens a sheet with that meal's journal row
 (foods or pump note, carbs, the pump bolus in the same row), protein, photos, and "Open in journal", which opens the
