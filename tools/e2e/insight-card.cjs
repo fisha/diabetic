@@ -1,3 +1,5 @@
+// Superseded on 18 Nov 2026 (PM-238): the insight cards left the box under the character for the top of the screen,
+// checked by tools/e2e/main-top.cjs. Kept for history; it fails against builds from PM-238 on.
 // The insight card under the companion shows whole (PM-210, Guy 17 Nov 2026), end-to-end check against the test server
 // (services/api: uvicorn tests.e2e_server:app). Synthetic readings for this check only.
 // Usage: node tools/e2e/insight-card.cjs <web export built with EXPO_PUBLIC_API_URL=http://localhost:8000> <screenshot dir>

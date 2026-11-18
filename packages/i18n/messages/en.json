@@ -3211,5 +3211,11 @@
   "meal.again_log": "Log it again",
   "cmp.swipe_delete": "Delete",
   "shr.remove_q": "Stop sharing with {name}?",
-  "visit.remove_q": "Remove this visit?"
+  "visit.remove_q": "Remove this visit?",
+  "now.pill": "Insights",
+  "now.prev": "Previous insight",
+  "now.next": "Next insight",
+  "now.fold": "Close insights",
+  "now.so_far": "So far today",
+  "now.glucose": "Glucose"
 }
