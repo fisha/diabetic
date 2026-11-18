@@ -12,6 +12,10 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 - 15 Nov 2026 (Guy): the company is **Ming GF Ltd, Tel Aviv, Israel**. It is the controller (privacy), the provider
   and owner (terms), the operator (accessibility statement) and the footer line. No company number is shown (not
   needed for GDPR; add it if the lawyer wants it).
+- 18 Nov 2026 (Guy, PM-229): the privacy contact is **guy@mi-ng.com** (privacy policy "Who we are" and "Contact", en
+  and he; privacy version `2026-11-18T12:45:00Z`). The data protection officer and EU representative lines were removed
+  for the closed Israeli testing stage; whether either is needed before a wider launch is with the lawyer (PM-230,
+  `needs-lawyer`).
 - Governing law set to the laws of the State of Israel and the competent courts in Tel Aviv, following the company's
   seat. Change it in the four `terms.*.ts` files if the lawyer advises otherwise.
 
@@ -19,10 +23,7 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 
 | Item | Pages |
 |---|---|
-| Privacy contact email | privacy |
 | Support email | terms |
-| Data protection officer (name and contact), if one is appointed | privacy |
-| EU representative under GDPR Article 27, if needed (needed when serving people in the EU without an EU office) | privacy |
 | Accessibility coordinator: name, phone, email, and the reply time in business days | accessibility |
 | Minimum age and the rules for a child's account and parent or guardian consent | privacy, terms |
 
@@ -30,7 +31,8 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 
 | Item | Pages | Notes |
 |---|---|---|
-| Country where the server is today (Guy's Mac) | privacy | Israel has an EU adequacy decision, which simplifies transfers |
+| Data protection officer and EU representative (GDPR Article 27) before a wider launch | privacy | Lawyer (PM-230). Removed from the page for the closed Israeli testing stage |
+| Country where the server is today (the text still says Guy's Mac; production is Fly.io, region fra, Frankfurt) | privacy | Israel has an EU adequacy decision, which simplifies transfers. The ngrok processor line is also out of date |
 | Production hosting provider and location | privacy | `docs/release-readiness.md`, Hosting |
 | Retention of backups and logs | privacy | No backup policy exists yet |
 | Retention of waiting-list requests that were not approved | privacy | The API keeps them today with no limit |
