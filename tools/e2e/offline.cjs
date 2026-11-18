@@ -46,7 +46,6 @@ const server = http.createServer((req, res) => {
       page.setDefaultTimeout(8000);
       const he = lang === 'he';
       const L = he ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', ovr: 'סקירה', jrn: 'יומן' } : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', ovr: 'Overview', jrn: 'Journal' };
-      const ANALYSED = he ? /נותח לאחרונה/ : /Last analysed/;
       const OFF = he ? 'אין חיבור ל־Stedio' : 'No connection to Stedio';
       const SAVED = he ? /מוצגים הנתונים שנשמרו בטלפון/ : /Showing what was saved on this phone/;
       await page.goto(base); await page.waitForTimeout(2000);
@@ -59,7 +58,6 @@ const server = http.createServer((req, res) => {
       const tab = async (name) => { await page.getByRole('tab', { name }).first().click().catch(async () => page.getByText(name, { exact: true }).last().click()); await page.waitForTimeout(3000); };
       await tab(L.ovr);
       ok(`${lang} ${scheme}: online, latest reading shown`, (await page.getByText('137', { exact: true }).count()) > 0);
-      ok(`${lang} ${scheme}: online, insights analysis shown`, (await page.getByText(ANALYSED).count()) > 0);
       ok(`${lang} ${scheme}: online, no offline banner`, (await page.getByText(OFF, { exact: true }).count()) === 0);
       await shot('01-overview-online');
       await tab(L.jrn);
@@ -72,8 +70,6 @@ const server = http.createServer((req, res) => {
       ok(`${lang} ${scheme}: offline, banner on Overview`, (await page.getByText(OFF, { exact: true }).count()) > 0);
       ok(`${lang} ${scheme}: offline, banner names the kept data`, (await page.getByText(SAVED).count()) > 0);
       ok(`${lang} ${scheme}: offline, latest reading still shown`, (await page.getByText('137', { exact: true }).count()) > 0);
-      // Insights clear on a failed read without kept data; with it the last analysis stays.
-      ok(`${lang} ${scheme}: offline, last insights analysis still shown`, (await page.getByText(ANALYSED).count()) > 0);
       await shot('02-overview-offline');
       await tab(L.jrn);
       ok(`${lang} ${scheme}: offline, banner on Journal`, (await page.getByText(OFF, { exact: true }).count()) > 0);

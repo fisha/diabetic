@@ -29,6 +29,8 @@ const server = http.createServer((req, res) => {
   try {
     await api('/auth/sign-up', { method: 'POST', body: { email: 'g@example.com', password: 'correct horse battery' } });
     const tk = (await api('/auth/sign-in', { method: 'POST', body: { email: 'g@example.com', password: 'correct horse battery' } })).json.access_token;
+    // Accept the current legal documents, so sign-in doesn't stop at the re-consent screen.
+    { const docs = (await api('/consent', { token: tk })).json; await api('/consent/accept', { method: 'POST', token: tk, body: { versions: Object.fromEntries(docs.documents.map((d) => [d.kind, d.version])), at: new Date().toISOString() } }); }
     await api('/profile', { method: 'PUT', token: tk, body: { locale: 'en', answers: ANSWERS } });
     // 45 days of 15-minute sensor readings (a Libre-like rhythm): evenings above 80-140, the last 3 weeks a little better.
     const start = Date.now() - 45 * 86400000; let items = []; let n = 0;
@@ -47,6 +49,8 @@ const server = http.createServer((req, res) => {
     await page.getByLabel('Password', { exact: true }).fill('correct horse battery');
     await page.getByText('Sign in', { exact: true }).last().click(); await page.waitForTimeout(2500);
     await page.getByText('Overview', { exact: true }).last().click(); await page.waitForTimeout(3000);
+    // A companion unlock (45 sensor days in this data) opens over Overview once: put off.
+    await page.getByText('Later', { exact: true }).first().click({ timeout: 3000 }).catch(() => {}); await page.waitForTimeout(800);
     const listed = (await api('/insights', { token: tk })).json;
     ok('ranking from the server', listed.ranking && listed.ranking.served === 'rules', JSON.stringify(listed.ranking));
     await page.getByText('Month', { exact: true }).first().click(); await page.waitForTimeout(3500);
@@ -61,7 +65,8 @@ const server = http.createServer((req, res) => {
     await page.mouse.wheel(0, 250); await page.waitForTimeout(500);
     await shot('p02-trend');
     // Open an insight, look closer and talk it over: three kinds of event on the server.
-    await page.getByText('Insights', { exact: true }).first().scrollIntoViewIfNeeded();
+    // The insights left Overview for the main screen and All insights (Guy, 18 Nov 2026).
+    await page.goto(`${base}/insights`); await page.waitForTimeout(2500);
     const card = page.getByRole('button', { name: /night/i }).first();
     await card.click(); await page.waitForTimeout(1500);
     await page.getByText('What was left out', { exact: false }).first().click().catch(() => {});
