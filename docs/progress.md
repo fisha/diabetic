@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-219): the companion regression gate stopped deploy-api: one blocking judge verdict of 114,
+en-mentor-18 no_forecast ("a breakfast that may help keep glucose steadier"). The no-forecast rule in the companion's
+prompt (and the viewer's) now covers general food and activity answers: describe the choice, never what it will or
+may do to glucose, and offer a look-back at their own records. Prompt tests pass. Next: `stedio-fly evals` on Fly
+must pass before merge, then deploy-api (also ships PM-217 and PM-218).
 18 Nov 2026 (Jira PM-217, thread "Detect new app builds automatically"): Guy approved ending the
 `fly secrets set STEADY_APP_LATEST_BUILD=N` step after each native build. `stedio-fly deploy-web` now writes
 `install/latest.json` (build and version, from the IPA name or `release.json`) next to the manifest, and the API's
