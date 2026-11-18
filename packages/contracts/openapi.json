@@ -5492,6 +5492,17 @@
           "text": {
             "title": "Text",
             "type": "string"
+          },
+          "topic": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Topic"
           }
         },
         "required": [
@@ -5779,6 +5790,20 @@
             "default": null,
             "title": "Fat Total G"
           },
+          "fiber_total_g": {
+            "anyOf": [
+              {
+                "maximum": 2000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Fiber Total G"
+          },
           "items": {
             "items": {
               "$ref": "#/components/schemas/MealItemData"
@@ -5943,6 +5968,20 @@
             ],
             "default": null,
             "title": "Fat G"
+          },
+          "fiber_g": {
+            "anyOf": [
+              {
+                "maximum": 1000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Fiber G"
           },
           "name": {
             "maxLength": 120,
@@ -6478,6 +6517,16 @@
           "subject": {
             "title": "Subject",
             "type": "string"
+          },
+          "win": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Line"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
@@ -14750,6 +14799,69 @@
         ]
       }
     },
+    "/health-data/nights": {
+      "get": {
+        "description": "The nights that overlap [since, until), as \"Body today\" builds them (one source per night, the one that saw most of\nit), for the sleep icons under the glucose graph (Guy, 18 Nov 2026, PM-244). Only what the health store recorded.",
+        "operationId": "list_nights_health_data_nights_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "since",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Since",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "until",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Until",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/NightOut"
+                  },
+                  "title": "Response List Nights Health Data Nights Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Nights",
+        "tags": [
+          "health-data"
+        ]
+      }
+    },
     "/health-data/samples": {
       "get": {
         "operationId": "list_samples_health_data_samples_get",
@@ -15721,6 +15833,53 @@
         "summary": "Register",
         "tags": [
           "live-activity"
+        ]
+      }
+    },
+    "/meal/barcode/{code}": {
+      "get": {
+        "description": "A packaged food by its barcode (PM-242), from Open Food Facts: carbs, fiber, protein and fat per 100 g as on the\nlabel, and the label's serving when it has one. Only the barcode number leaves the server. 404 when the database\ndoesn't have the product or its label has no carbohydrate value; the app then offers a photo or a search.",
+        "operationId": "barcode_meal_barcode__code__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "schema": {
+              "title": "Code",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FoodMatch"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_found"
+          },
+          "422": {
+            "description": "invalid_barcode"
+          },
+          "502": {
+            "description": "lookup_failed"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Barcode",
+        "tags": [
+          "meal"
         ]
       }
     },

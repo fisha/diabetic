@@ -5714,6 +5714,62 @@
       "translation"
     ]
   },
+  "meal.m_barcode": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_frame": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_hint": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_looking": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_not_found": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_failed": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_again": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_source": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
   "meal.m_photo": {
     "board": "Meal",
     "review": [
@@ -9025,6 +9081,111 @@
       "translation"
     ],
     "note": "Overview graph: tap a meal icon to see what was eaten (Guy, 18 Nov 2026, PM-224)."
+  },
+  "ovr.workout_hit": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.sleep_hit": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.events_hit": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.workout_sheet_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.sleep_sheet_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.event_sheet_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.rises_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly roundup of the largest rises after logged meals and workouts, no threshold (Guy, 18 Nov 2026, PM-241)."
+  },
+  "ovr.rises_lead": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly roundup of the largest rises after logged meals and workouts, no threshold (Guy, 18 Nov 2026, PM-241)."
+  },
+  "ovr.rises_when": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly roundup of the largest rises after logged meals and workouts, no threshold (Guy, 18 Nov 2026, PM-241)."
+  },
+  "ovr.rises_a11y": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly roundup of the largest rises after logged meals and workouts, no threshold (Guy, 18 Nov 2026, PM-241)."
+  },
+  "ovr.sleep_span": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.sleep_asleep": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.sleep_in_bed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.sleep_awake": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.sleep_src": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
   },
   "ovr.ins_none": {
     "board": "Overview",
@@ -17294,6 +17455,90 @@
     ],
     "note": "Protein shown and editable on the meal (Itay via Guy, 15 Nov 2026)."
   },
+  "meal.curve_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_so_far": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_start": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_peak": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_after": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_rise": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_back": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_not_yet": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_not_back": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_axis_meal": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_axis_h": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_a11y": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
   "meal.protein_none": {
     "board": "Meal",
     "review": [
@@ -17321,6 +17566,34 @@
       "translation"
     ],
     "note": "Protein shown and editable on the meal (Itay via Guy, 15 Nov 2026)."
+  },
+  "meal.fat_v": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Fat and fiber per meal next to protein (Guy, 18 Nov 2026, PM-243)."
+  },
+  "meal.fiber_v": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Fat and fiber per meal next to protein (Guy, 18 Nov 2026, PM-243)."
+  },
+  "meal.fat_l": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Fat and fiber per meal next to protein (Guy, 18 Nov 2026, PM-243)."
+  },
+  "meal.fiber_l": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Fat and fiber per meal next to protein (Guy, 18 Nov 2026, PM-243)."
   },
   "meal.carbs_v": {
     "board": "Meal",
@@ -18150,6 +18423,41 @@
       "translation"
     ],
     "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "note.win": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Morning recap: at most three cards about yesterday and one thing that went well (Guy, 18 Nov 2026, PM-240)."
+  },
+  "note.topic_glucose": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Morning recap: at most three cards about yesterday and one thing that went well (Guy, 18 Nov 2026, PM-240)."
+  },
+  "note.topic_activity": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Morning recap: at most three cards about yesterday and one thing that went well (Guy, 18 Nov 2026, PM-240)."
+  },
+  "note.topic_food": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Morning recap: at most three cards about yesterday and one thing that went well (Guy, 18 Nov 2026, PM-240)."
+  },
+  "note.topic_sleep": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Morning recap: at most three cards about yesterday and one thing that went well (Guy, 18 Nov 2026, PM-240)."
   },
   "note.add_q": {
     "board": "Insights",
