@@ -15,6 +15,12 @@ and the kept answer returned while offline was shown whole, so after midnight ye
 answers and answers held over from another window now keep only their rows inside the window (app
 `keptAnswer`, `useRange`; app PR #124). No copy, companion or API change, so no eval run. `pnpm check` passes (mobile
 184 tests, one new). Next: OTA (0.6.0 and 0.5.0); find why the phone could not reach the API since 07:16.
+18 Nov 2026 (Jira PM-223, thread "Suggest repeating yesterday's meal"): Guy eats the same breakfast every morning and
+asked to log it from history instead of a photo. Log a meal now opens with a "Same as yesterday?" card when a meal was
+logged yesterday within two hours of this time of day and nothing is logged today around then; "Log it again" opens the
+review with its foods and the time now, saved only from the review. Recent meals and usual meals (DAP-15) stay as they
+were. App only (diabetic-app#125), strings in `packages/i18n`; no API, companion or data change. `pnpm check` passes
+(app 188 tests, 5 new); e2e `tools/e2e/repeat-meal.cjs` 19/19 (en light, he light, he dark). Next: OTA.
 18 Nov 2026 (Jira PM-221, thread "Rename sport mode to temporary target"): Guy asked that the label "מצב ספורט" read
 "יעד זמני" (MiniMed 780G Temp Target). `mode.temp_target` and `mode.b_temp_target` now read "יעד זמני" in Hebrew and
 "Temp target" in English (row and badge alike). Strings only: no companion, API or data change, so no eval run is
