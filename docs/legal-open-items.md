@@ -16,32 +16,35 @@ have a privacy lawyer review the whole text. None of this is legal advice.
   and he; privacy version `2026-11-18T12:45:00Z`). The data protection officer and EU representative lines were removed
   for the closed Israeli testing stage; whether either is needed before a wider launch is with the lawyer (PM-230,
   `needs-lawyer`).
+- 18 Nov 2026 (Guy, PM-234: "אני לא רוצה placeholders"): no `⟦…⟧` is left on any page. Support email and
+  accessibility contact guy@mi-ng.com (reply within 5 business days); hosting Fly.io, Frankfurt, Germany (EU), backups
+  in region; the old Mac-server text and the ngrok line removed; no email provider line (none is configured,
+  `integration-status.md` "Transactional email"); OpenAI may keep API requests up to 30 days for abuse detection;
+  backups up to 30 days (Fly snapshots 30 days, nightly dumps 14 days), server logs up to 30 days; unapproved
+  waiting-list requests until the end of testing; minimum age 18 (matches the app's adult-only onboarding,
+  `onb.mi_b`); billing terms to be added before billing opens. Versions: privacy `2026-11-18T13:15:00Z`, terms
+  `2026-11-18`, accessibility `2026-11-18`. Lawyer points are in PM-230.
 - Governing law set to the laws of the State of Israel and the competent courts in Tel Aviv, following the company's
   seat. Change it in the four `terms.*.ts` files if the lawyer advises otherwise.
 
 ## Guy to provide
 
-| Item | Pages |
-|---|---|
-| Support email | terms |
-| Accessibility coordinator: name, phone, email, and the reply time in business days | accessibility |
-| Minimum age and the rules for a child's account and parent or guardian consent | privacy, terms |
+Nothing. On 18 Nov 2026 Guy asked for no placeholders on the pages (PM-234); every `⟦…⟧` was filled with the values
+below, which Guy and the lawyer can still change.
 
 ## To decide or confirm before production
 
 | Item | Pages | Notes |
 |---|---|---|
 | Data protection officer and EU representative (GDPR Article 27) before a wider launch | privacy | Lawyer (PM-230). Removed from the page for the closed Israeli testing stage |
-| Country where the server is today (the text still says Guy's Mac; production is Fly.io, region fra, Frankfurt) | privacy | Israel has an EU adequacy decision, which simplifies transfers. The ngrok processor line is also out of date |
-| Production hosting provider and location | privacy | `docs/release-readiness.md`, Hosting |
-| Retention of backups and logs | privacy | No backup policy exists yet |
-| Retention of waiting-list requests that were not approved | privacy | The API keeps them today with no limit |
-| Email provider for sign-in codes and account emails | privacy | SMTP sender in `services/api/.env` |
-| Data processing agreement with OpenAI and its retention setting (zero data retention or 30 days) | privacy | The API sends `store=false` |
-| Transfer mechanism per processor (SCCs or Data Privacy Framework) | privacy | OpenAI, Expo, ngrok, email provider |
+| Delete unapproved waiting-list requests when testing ends, as the policy now says | privacy | PM-234 follow-up; the API keeps them with no limit today |
+| Data processing agreement with OpenAI; the policy says it may keep requests up to 30 days for abuse detection | privacy | The API sends `store=false`; lower it if zero data retention is agreed |
+| Transfer mechanism per processor (SCCs or Data Privacy Framework) | privacy | OpenAI, Fly.io, Expo, Apple, Google (PM-230) |
+| Accessibility coordinator's name and phone (the page gives email only) | accessibility | Lawyer (PM-230): Israeli accessibility regulations may require them |
+| Minimum age 18 and family accounts later | privacy, terms | Lawyer before opening to parents of children (PM-230) |
 | Sharing with a trusted person (DAP-19): consent text, the viewer's chat about shared data, and older shares without a consent record | privacy, terms | Lawyer (PM-127); texts in `packages/i18n` `shr.consent_*` and privacy "Sharing" |
-| Cancellation and refund terms under consumer protection law | terms | When billing opens |
-| Liability wording | terms | Lawyer |
+| Cancellation and refund terms under consumer protection law | terms | When billing opens; the terms say they will be added first |
+| Liability wording | terms | Lawyer (PM-230); the page marker was removed on Guy's request |
 | General 15 g / 15 minutes low rule in companion replies, given as general information with the person's own care plan first, plus an emergency call button (Guy, 17 Nov 2026) | none (product behaviour) | Lawyer and clinical advisor (PM-206): is it general information or treatment guidance? If it is guidance, remove it or replace it with a fixed text a clinician approved (G-05). |
 | Consent to the external AI engine (PM-149) required for using Stedio, withdrawn only by deleting the account; whether an optional version (journal without the companion) is needed for consent to count as freely given | privacy | Lawyer (PM-99); texts `onb.c3`, `onb.c3b`, `ai.*`, `set.pv_ai*`; privacy policy "Who we share it with" names OpenAI |
 

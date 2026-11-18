@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-234, same thread): Guy asked for no placeholders on the legal pages. Every `⟦…⟧` in privacy,
+terms and accessibility (en and he) is filled: support and accessibility contact guy@mi-ng.com, hosting on Fly.io in
+Frankfurt (the Mac server and ngrok lines removed), no email provider line, OpenAI 30-day abuse retention, backups and
+logs up to 30 days, unapproved waiting-list requests until the end of testing, minimum age 18. One new version: privacy
+`2026-11-18T13:15:00Z`, terms `2026-11-18`, accessibility `2026-11-18`. Lawyer points added to PM-230. Next: deploy API
+and web together.
+
 18 Nov 2026 (Jira PM-229, thread "Fill privacy contact in the privacy policy"): Guy gave the privacy contact
 guy@mi-ng.com. The privacy policy (en and he) names it in "Who we are" and "Contact"; the data protection officer and EU
 representative placeholders are removed for the closed Israeli testing stage, and whether either is needed before a
