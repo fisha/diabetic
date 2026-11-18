@@ -8157,6 +8157,54 @@
       "translation"
     ]
   },
+  "onb.cn_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Onboarding connect step (Guy, 18 Nov 2026, PM-245). Not on the board: design gap."
+  },
+  "onb.cn_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Onboarding connect step (Guy, 18 Nov 2026, PM-245). Not on the board: design gap."
+  },
+  "onb.cn_for": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Onboarding connect step (Guy, 18 Nov 2026, PM-245). Not on the board: design gap."
+  },
+  "onb.cn_more": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Onboarding connect step (Guy, 18 Nov 2026, PM-245). Not on the board: design gap."
+  },
+  "onb.cn_later": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Onboarding connect step (Guy, 18 Nov 2026, PM-245). Not on the board: design gap."
+  },
+  "onb.cn_err": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Onboarding connect step (Guy, 18 Nov 2026, PM-245). Not on the board: design gap."
+  },
   "onb.pu_t": {
     "board": "Onboarding",
     "review": [

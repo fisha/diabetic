@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-245, thread "Connect data sources during onboarding"): Guy asked for real device connections inside
+onboarding, early, with onboarding going on afterwards. New step `connect` after `sensor` (G-107): the connection that
+fits the chosen pump and sensor first, then Apple Health / Health Connect and the rest, each opening the existing
+connection screen; skippable. API: `POST /consent/onboarding` records the consent step's answers before the first
+connection (the profile save used to be the first record, so a device could sync with no consent on the server), with
+the same rules as the profile save (`record_consents`); `GET /profile/device` gives a connected pump's range and ratios
+before a profile exists. No privacy text change (consent is still given at sign-up). Screenshots en/he, day/night, from
+the web export against a local API. Guy asked to merge and deploy (18 Nov); app #136, api #112 merged. Next: deploy API, then OTA to testers.
+
 18 Nov 2026 (Jira PM-236, thread "Redesign website with scroll motion"): Guy asked for a home page that feels like
 Stelo's how-it-works page: scroll motion, photos of people using the app (AI-generated, approved by Guy) and real app
 screens. Built in apps/web: the hero keeps only the phone (Guy: the photo did not belong there), a full-width photo that opens on scroll, "How it works" as a

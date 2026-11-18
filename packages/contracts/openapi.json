@@ -2272,6 +2272,32 @@
         "title": "DeviceRatiosOut",
         "type": "object"
       },
+      "DeviceSettingsOut": {
+        "properties": {
+          "device_ratios": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DeviceRatiosOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "device_target": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DeviceTargetOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "title": "DeviceSettingsOut",
+        "type": "object"
+      },
       "DeviceTargetOut": {
         "properties": {
           "high_mgdl": {
@@ -12514,6 +12540,46 @@
         ]
       }
     },
+    "/consent/onboarding": {
+      "post": {
+        "description": "The consents a person gave on the onboarding consent step, recorded before the profile is saved (PM-245): the app\nsends them before a data connection (CareLink, Dexcom, Libre, Tandem, the phone's health store) starts during\nonboarding, so no device data arrives without a consent record. The same records and rules as the profile save\n(`record_consents`), which later finds them already there and adds nothing. Refused without the service consent and\nthe Terms of Use and Privacy Policy, which onboarding requires before this point.",
+        "operationId": "onboarding_consent_consent_onboarding_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsentIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "consent_required"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Onboarding Consent",
+        "tags": [
+          "profile"
+        ]
+      }
+    },
     "/conversation/about": {
       "post": {
         "description": "The companion opens about the item the person was looking at, already knowing it, with a short first line.",
@@ -17876,6 +17942,33 @@
           }
         ],
         "summary": "Put Profile",
+        "tags": [
+          "profile"
+        ]
+      }
+    },
+    "/profile/device": {
+      "get": {
+        "description": "The target range and carb ratios from a connected pump, also before any profile exists (PM-245): a pump connected\nduring onboarding shows its settings on the ratios step, which the profile save then keeps from the pump (G-48).",
+        "operationId": "get_device_settings_profile_device_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceSettingsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Device Settings",
         "tags": [
           "profile"
         ]

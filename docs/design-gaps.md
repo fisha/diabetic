@@ -1854,3 +1854,15 @@ meal entry), "Biggest rises this week" card on Overview > Week, workout and slee
 "went well" box and topic icons on the morning recap, fat and fiber rows, and the barcode scan screen (same dark camera
 frame as MEAL-02, a wide frame, Open Food Facts credit). Status: verified-test on the web export; screenshots shown to
 Guy before the OTA.
+
+## G-107 Connect data sources during onboarding (PM-245, 18 Nov 2026, Guy asked)
+
+Not on the onboarding board; Guy asked for it ("put it in onboarding, even in the early steps, and then continue").
+A step "Connect your data" right after the sensor step (before ratios, so a connected pump's range and ratios show
+there). "Suggested for you" lists the service that fits the chosen pump and sensor (MiniMed/Guardian: CareLink;
+t:slim/Mobi: Tandem Source; Dexcom: Dexcom Share; Libre: LibreLinkUp) and the phone's health store; "Other connections"
+lists the rest. Rows are the Settings > Devices rows and open the same connection screens. Skip, "Complete later" and
+Continue always move on. Open states:
+- The consent step's answers are recorded on the server before the first connection opens; if that fails, a banner
+  says nothing was connected and the person can retry or skip.
+- On the website the health store row shows "On your phone", as in Settings.

@@ -620,6 +620,30 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/consent/onboarding": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Onboarding Consent
+         * @description The consents a person gave on the onboarding consent step, recorded before the profile is saved (PM-245): the app
+         *     sends them before a data connection (CareLink, Dexcom, Libre, Tandem, the phone's health store) starts during
+         *     onboarding, so no device data arrives without a consent record. The same records and rules as the profile save
+         *     (`record_consents`), which later finds them already there and adds nothing. Refused without the service consent and
+         *     the Terms of Use and Privacy Policy, which onboarding requires before this point.
+         */
+        post: operations["onboarding_consent_consent_onboarding_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/conversation/about": {
         parameters: {
             query?: never;
@@ -2423,6 +2447,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/profile/device": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Device Settings
+         * @description The target range and carb ratios from a connected pump, also before any profile exists (PM-245): a pump connected
+         *     during onboarding shows its settings on the ratios step, which the profile save then keeps from the pump (G-48).
+         */
+        get: operations["get_device_settings_profile_device_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/profile/history": {
         parameters: {
             query?: never;
@@ -3836,6 +3881,11 @@ export interface components {
              * @constant
              */
             source: "tandem";
+        };
+        /** DeviceSettingsOut */
+        DeviceSettingsOut: {
+            device_ratios?: components["schemas"]["DeviceRatiosOut"] | null;
+            device_target?: components["schemas"]["DeviceTargetOut"] | null;
         };
         /** DeviceTargetOut */
         DeviceTargetOut: {
@@ -7926,6 +7976,37 @@ export interface operations {
             };
         };
     };
+    onboarding_consent_consent_onboarding_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ConsentIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConsentOut"];
+                };
+            };
+            /** @description consent_required */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     open_about_conversation_about_post: {
         parameters: {
             query?: never;
@@ -11684,6 +11765,26 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    get_device_settings_profile_device_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DeviceSettingsOut"];
+                };
             };
         };
     };
