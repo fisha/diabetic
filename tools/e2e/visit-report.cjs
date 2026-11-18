@@ -55,8 +55,8 @@ async function setup(email, locale) {
   const m = await api('/records', { method: 'POST', token: tk, body: { idempotency_key: `vr-meal-${locale}`, kind: 'meal', occurred_at: y.toISOString(), entered_at: y.toISOString(), source: 'photo-estimate', data: meal } });
   ok(`${locale}: meal with photo saved`, m.status === 201 || m.status === 200, String(m.status));
   await api('/records', { method: 'POST', token: tk, body: { idempotency_key: `vr-ins-${locale}`, kind: 'insulin', occurred_at: new Date(y.getTime() + 6 * 60000).toISOString(), entered_at: y.toISOString(), source: 'manual', data: { insulin: 'Fiasp', units: 5 } } });
-  const visit = await api('/visit', { method: 'PUT', token: tk, body: { date: day(Date.now() + 2 * 86400000), with: ['diabetes_doctor', 'dietitian'] } });
-  ok(`${locale}: visit with two people saved`, visit.status === 200 && visit.json.with_all.length === 2, JSON.stringify(visit.json));
+  const visit = await api('/visit', { method: 'PUT', token: tk, body: { date: day(Date.now() + 2 * 86400000), time: '16:30', with: ['diabetes_doctor', 'dietitian'] } });
+  ok(`${locale}: visit with two people saved`, visit.status === 200 && visit.json.with_all.length === 2 && visit.json.time === '16:30', JSON.stringify(visit.json));
   return tk;
 }
 
@@ -99,6 +99,12 @@ const server = http.createServer((req, res) => {
       const boxes = page.getByRole('checkbox');
       ok(`${lang} ${scheme}: suggested questions offered as boxes`, (await boxes.count()) > 0, String(await boxes.count()));
       await shot('01-form');
+      // PM-256: the saved visit shows its weekday, date and time; changing it shows a date and a time field.
+      const wd = new Intl.DateTimeFormat(he ? 'he' : 'en-GB', { weekday: 'short' }).format(new Date(Date.now() + 2 * 86400000));
+      ok(`${lang} ${scheme}: the visit shows weekday and time`, (await page.getByText(new RegExp(`${wd}.*16:30`)).count()) > 0, wd);
+      await page.getByText(he ? 'שינוי' : 'Change', { exact: true }).first().click(); await page.waitForTimeout(600);
+      ok(`${lang} ${scheme}: changing shows date and time fields`, (await page.getByRole('button', { name: new RegExp(`${wd}`) }).count()) > 0 && (await page.getByRole('button', { name: /16:30/ }).count()) > 0);
+      await shot('01b-visit-edit');
       if (scheme === 'light') {
         await page.getByLabel(L.name, { exact: true }).fill(he ? 'דנה לוי' : 'Dana Levi');
         await boxes.first().click(); await page.waitForTimeout(300);
@@ -124,7 +130,7 @@ const server = http.createServer((req, res) => {
         await page.getByText(L.past, { exact: true }).first().scrollIntoViewIfNeeded();
         ok(`${lang}: past visits listed`, (await page.getByText(L.past, { exact: true }).count()) > 0);
         await shot('04-past-visits');
-        await page.getByTestId(/^visit-/).first().click(); await page.waitForTimeout(2500);
+        await page.getByTestId(/^visit-(?!next)/).first().click(); await page.waitForTimeout(2500);
         await page.getByLabel(L.summary, { exact: true }).fill(he ? 'הרופאה ביקשה לבדוק שוב את הלילות. הדיאטנית נתנה רעיונות לארוחות בוקר.' : 'The doctor wants to look at the nights again. The dietitian gave breakfast ideas.');
         await page.getByText(L.saved, { exact: true }).first().waitFor({ timeout: 8000 });
         ok(`${lang}: own summary saved on the phone`, true);

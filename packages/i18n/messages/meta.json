@@ -19269,6 +19269,13 @@
     ],
     "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
   },
+  "visit.time": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit time (PM-256, Guy 18 Nov 2026)."
+  },
   "visit.with": {
     "board": "Settings",
     "review": [

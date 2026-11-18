@@ -10551,6 +10551,18 @@
             "title": "Date",
             "type": "string"
           },
+          "time": {
+            "anyOf": [
+              {
+                "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Time"
+          },
           "with": {
             "anyOf": [
               {
@@ -10594,6 +10606,17 @@
           "prepares_from": {
             "title": "Prepares From",
             "type": "string"
+          },
+          "time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Time"
           },
           "with": {
             "title": "With",
