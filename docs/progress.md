@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-226, thread "Fix glucose display on Apple Watch"): two photos from Guy's Apple Watch Ultra.
+(1) The Smart Stack card (small family) was lavender with near-invisible text, "79" was clipped inside a dark box, and
+the age was cut off. The watch does not resolve the phone's dynamic or semantic colours, so the small card now has a
+fixed dark background and night-token colours, no character image, no clipping, and the reading's clock time. (2) When
+there was no recent reading the card showed only "Noon". It now shows "Not current" with the last reading's time and
+never the value (server `no_value_state` and the app). CareLink had no gaps; the value went missing because the app
+redrew the card from stale memory when it was left. The app now skips the redraw until it knows the range and unit and
+registers again on each leave, and the server resends on re-register. app #123, api #102 and #103 merged; API v60;
+OTA 0.6.0/0.5.0 from 7371619. Swift compiled on the Mac. Next: native build (Guy's go-ahead), then a look on the watch.
+
 18 Nov 2026 (Jira PM-228, thread "Fix slow API requests and sensor insight errors"): API logs 00:00-11:16 UTC showed
 2x 500 on the "sensors ending early" reading (a finding's `days` is a number, the interpret route iterated it), /insights
 computing ~950 ms on almost every poll, and health uploads of 1000 samples cut off after the 15 s timeout (the app then
