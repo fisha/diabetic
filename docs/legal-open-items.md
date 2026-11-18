@@ -50,6 +50,12 @@ below, which Guy and the lawyer can still change.
 
 ## Queued for the next legal version
 
+**Released 18 Nov 2026 as privacy `2026-11-18T14:00:00Z` (PM-233):** demo request data under "What we collect", demo
+retention under "How long we keep data", and the stored demo link under "Cookies and storage", in English and Hebrew.
+Lawyer review: PM-235. Still open from before: approval and verification emails go out over SMTP, and the policy names
+no email provider.
+
+
 **Released 17 Nov 2026 as privacy `2026-11-17T21:30:00Z` (PM-208, Guy: "אתה יכול להוציא גרסה משפטית חדשה").** Both
 lines below are in the policy in English and Hebrew (plus a retention line for the verdicts), `quality.POLICY` names that
 version, and `STEADY_QUALITY_SAMPLE_SHARE=0.05` is set in `deploy/fly/api/fly.toml`. Nothing is queued now; add new
