@@ -2916,6 +2916,8 @@ export interface components {
         };
         /** AppVersionOut */
         AppVersionOut: {
+            /** Android Latest Build */
+            android_latest_build?: number | null;
             /** Install Url */
             install_url: string | null;
             /** Latest Build */

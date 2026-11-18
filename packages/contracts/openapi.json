@@ -573,6 +573,17 @@
       },
       "AppVersionOut": {
         "properties": {
+          "android_latest_build": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Android Latest Build"
+          },
           "install_url": {
             "anyOf": [
               {
