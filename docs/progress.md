@@ -36,6 +36,7 @@ photos, incl. a woman in a hijab and an African-American man) with parallax, and
 photos carry no caption (Guy). Built on the demo branch (PM-233, "Ask for a
 demo"). Typecheck clean for these files, lint and web tests pass; checked in Chromium at desktop and phone widths.
 Next: Guy's look on his Mac, then PR and deploy-web.
+Round 2 (Guy, 18 Nov evening, web #48): on phones "How it works" is tabs, one chapter open at a time; the mosaic keeps four photos and three moved into the chapters. Under-18 with a parent following is its own thread; the site stays 18+ until the terms change.
 
 18 Nov 2026 (Jira PM-239 to PM-244, thread "Stelo adopt-first items", from the Dexcom Stelo research PM-237): Guy asked
 to build the "Adopt first" list. Built, all retrospective and descriptive, no score and no threshold of the app's own:
@@ -69,6 +70,18 @@ Later the same day: admin invite by email (api #109, web #43), and two family sc
 (api #110, web #44): a parent without diabetes, and a parent with type 2 and their own data, each following Maya, a
 child with type 1 whose demo account resets nightly and never trains. The app in the frame opens viewing Maya. No
 migration. Chromium check 5/5.
+
+18 Nov 2026 (Jira PM-238, thread "Redesign main screen like Stelo"): Guy sent two screenshots of Dexcom Stelo's app
+(inspiration only, no assets or branding) and approved the design from screenshots before any upload. The companion's
+voice view is now two halves: on top, on a soft accent glow, one "Insights" line with a count that opens into one card at
+a time (back/next, "2/7", swipe, fold; talk about this, mark as read and all insights stay), and under it one row with
+"Time in range, so far today" (sensor readings against the person's own range, hidden without enough coverage) and the
+latest glucose with its age, "not current" past 15 minutes, and an arrow to Overview; below, the character with "Tap to
+talk". The header keeps plus, history and text. The tab bar is a floating pill with icons and labels (the companion orb
+now has its label) and a round plus beside it for Quick log. "Report for my clinic" moved from Account to Health in
+Profile (Guy's ask). JS only. App 192 tests, i18n 20, e2e `tools/e2e/main-top.cjs` 51/51 (en/he, light/dark, 375x667 and
+440x956), `tab-bar.cjs` 17/17. `insight-card.cjs` (PM-210) is superseded. Next: OTA to testers (0.6.0 and 0.5.0), a
+look on Guy's phone.
 
 18 Nov 2026 (Jira PM-234, same thread): Guy asked for no placeholders on the legal pages. Every `⟦…⟧` in privacy,
 terms and accessibility (en and he) is filled: support and accessibility contact guy@mi-ng.com, hosting on Fly.io in
