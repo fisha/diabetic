@@ -9169,6 +9169,39 @@
             "title": "Photo Retention",
             "type": "string"
           },
+          "sensor_end_reminder": {
+            "additionalProperties": {
+              "enum": [
+                72,
+                24,
+                5
+              ],
+              "type": "integer"
+            },
+            "default": {},
+            "propertyNames": {
+              "enum": [
+                "guardian4",
+                "dexcomG7",
+                "libre3"
+              ]
+            },
+            "title": "Sensor End Reminder",
+            "type": "object"
+          },
+          "sensor_end_types": {
+            "default": [],
+            "items": {
+              "enum": [
+                "guardian4",
+                "dexcomG7",
+                "libre3"
+              ],
+              "type": "string"
+            },
+            "title": "Sensor End Types",
+            "type": "array"
+          },
           "timezone": {
             "title": "Timezone",
             "type": "string"
@@ -9319,6 +9352,39 @@
               }
             ],
             "title": "Photo Retention"
+          },
+          "sensor_end_reminder": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        72,
+                        24,
+                        5
+                      ],
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "propertyNames": {
+                  "enum": [
+                    "guardian4",
+                    "dexcomG7",
+                    "libre3"
+                  ]
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor End Reminder"
           },
           "timezone": {
             "anyOf": [

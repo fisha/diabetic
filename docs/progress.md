@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-260, thread "Choose sensor expiry reminder timing"): Guy asked that Notifications let the person
+choose how long before a sensor ends to be reminded, per sensor type: 3 days, 24 hours or 5 hours. There was no app
+reminder before (only the pump's own "sensor ending" alert relayed from CareLink). Now Profile > Notifications has a
+"Sensor ending" card with Off / 3 days / 24 hours / 5 hours per sensor type the connected services can tell the end of
+(G-112). API: `sensor_end_reminder` and `sensor_end_types` in `/settings`, worker step `sensor_end` (`sensor_end.py`):
+CareLink's own sensor time left, else the reported start plus the maker's rated days; one push per sensor; the longer
+reminders wait for the morning. API #119 and app #150 merged; API 682 tests pass (2 failures not from this change:
+`test_logs` on `routers/demo.py`, and a flaky `test_environment` case that passes alone), app 208, i18n 20; e2e
+`tools/e2e/sensor-end.cjs` 18/18. The push itself was checked in tests only, not on a phone. Next: deploy API, then OTA
+(0.6.0 and 0.5.0).
+
 18 Nov 2026 (Jira PM-261, thread "Stop backups from filling the DB disk"): production was down 20:22 to 20:41 UTC
 because the stedio-db 1 GB volume filled up (Postgres crashed writing WAL; volume now 3 GB, no data lost). Every
 `deploy-api` takes a pg_dump on the volume and the backup script pruned only by age, so 74 dumps (641 MB) piled up.
