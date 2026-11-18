@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-254, thread "Stop showing already-read insights again"): Guy saw the same card ("Check-in 17:58:
+Had dinner?", "Above your range now") on the main-screen Insights card again and again; once read there it should not
+come back. The G-77 mark-read existed, but check-ins, out-of-range readings and pump alerts had no read key, and the
+PM-238 card marked a card read only through its chip. Now a card in view in the open card for 1.5 s is read (server-kept,
+every device); it stays while the card is open and is gone after folding. New `home-read` keys: `fu:<id>`, `al:<id>`,
+`reading:high|low:<first reading of the run>` (one key per out-of-range episode: same side, no gap over 30 min).
+Read logic only, no layout change. API #114 and app #143 merged; API test_insights 13 pass, app 203. Not yet seen on a
+phone. Next: deploy API, then OTA (0.6.0 and 0.5.0).
+
 18 Nov 2026 (Jira PM-251, thread "Restyle the parent viewing-child companion screen"): Guy asked that the companion tab
 a parent sees while viewing a child's data look like the regular main screen, with the character in the middle, and
 that the "Viewing … · view only" line above the tab bar become a more prominent strip on top. `AboutChat` now has the
