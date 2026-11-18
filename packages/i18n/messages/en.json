@@ -3031,5 +3031,8 @@
   "lab.add": "Add by hand",
   "lab.load_fail": "Lab results couldn’t be loaded.",
   "lab.retry": "Try again",
-  "lab.scan_file": "Upload a PDF"
+  "lab.scan_file": "Upload a PDF",
+  "cmp.swipe_delete": "Delete",
+  "shr.remove_q": "Stop sharing with {name}?",
+  "visit.remove_q": "Remove this visit?"
 }

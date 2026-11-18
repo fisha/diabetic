@@ -3031,5 +3031,8 @@
   "lab.add": "הוספה ידנית",
   "lab.load_fail": "לא הצלחנו לטעון את תוצאות הבדיקות.",
   "lab.retry": "לנסות שוב",
-  "lab.scan_file": "העלאת קובץ PDF"
+  "lab.scan_file": "העלאת קובץ PDF",
+  "cmp.swipe_delete": "מחיקה",
+  "shr.remove_q": "להפסיק לשתף עם {name}?",
+  "visit.remove_q": "להסיר את הביקור?"
 }

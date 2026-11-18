@@ -19302,5 +19302,26 @@
       "translation"
     ],
     "note": "Lab report PDF upload (PM-213, Guy 17 Nov 2026, native build)."
+  },
+  "cmp.swipe_delete": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Swipe-to-delete action uncovered by swiping a row; also the screen reader's Delete action (PM-222)"
+  },
+  "shr.remove_q": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Confirm after swiping a person's sharing row (PM-222)"
+  },
+  "visit.remove_q": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Confirm after swiping the next visit card (PM-222)"
   }
 }
