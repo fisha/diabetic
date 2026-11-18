@@ -3038,5 +3038,8 @@
   "lab.scan_file": "Upload a PDF",
   "meal.again_t": "Same as yesterday?",
   "meal.again_at": "Yesterday {time}",
-  "meal.again_log": "Log it again"
+  "meal.again_log": "Log it again",
+  "cmp.swipe_delete": "Delete",
+  "shr.remove_q": "Stop sharing with {name}?",
+  "visit.remove_q": "Remove this visit?"
 }

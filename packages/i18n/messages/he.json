@@ -3038,5 +3038,8 @@
   "lab.scan_file": "העלאת קובץ PDF",
   "meal.again_t": "כמו אתמול?",
   "meal.again_at": "אתמול {time}",
-  "meal.again_log": "לתעד שוב"
+  "meal.again_log": "לתעד שוב",
+  "cmp.swipe_delete": "מחיקה",
+  "shr.remove_q": "להפסיק לשתף עם {name}?",
+  "visit.remove_q": "להסיר את הביקור?"
 }
