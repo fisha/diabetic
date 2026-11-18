@@ -3213,6 +3213,11 @@ export interface components {
              */
             details: boolean;
             /**
+             * Health
+             * @default true
+             */
+            health: boolean;
+            /**
              * Lang
              * @enum {string}
              */
@@ -3223,10 +3228,15 @@ export interface components {
              */
             name: string;
             /**
+             * Photos
+             * @default false
+             */
+            photos: boolean;
+            /**
              * Questions
              * @default
              */
-            questions: string;
+            questions: string | string[];
         };
         /** ConnectionOut */
         ConnectionOut: {
@@ -6057,7 +6067,7 @@ export interface components {
             /** Median */
             median: number | null;
             /** Part */
-            part: ("morning" | "afternoon" | "evening" | "night") | null;
+            part: ("night" | "morning" | "afternoon" | "evening") | null;
             /** Today */
             today: number | null;
             /** Weekday */
@@ -6167,11 +6177,8 @@ export interface components {
              * Format: date
              */
             date: string;
-            /**
-             * With
-             * @enum {string}
-             */
-            with: "diabetes_doctor" | "family_doctor" | "dietitian" | "nurse";
+            /** With */
+            with: ("diabetes_doctor" | "family_doctor" | "dietitian" | "nurse") | ("diabetes_doctor" | "family_doctor" | "dietitian" | "nurse")[];
         };
         /** VisitOut */
         VisitOut: {
@@ -6181,6 +6188,8 @@ export interface components {
             prepares_from: string;
             /** With */
             with: string;
+            /** With All */
+            with_all: string[];
         };
         /** VoiceStatusOut */
         VoiceStatusOut: {
@@ -6334,7 +6343,7 @@ export interface components {
             /** Minutes */
             minutes: number | null;
             /** Part */
-            part: ("morning" | "afternoon" | "evening" | "night") | null;
+            part: ("night" | "morning" | "afternoon" | "evening") | null;
         };
         /** AcceptIn */
         steady_api__routers__consent__AcceptIn: {

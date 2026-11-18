@@ -18242,6 +18242,237 @@
     ],
     "note": "Emergency call button on a companion reply about acute symptoms (Guy, 17 Nov 2026); the number comes from the phone's region, never from the model."
   },
+  "rep.name_h": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "rep.q_none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "rep.q_add": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "rep.q_add_btn": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "rep.q_suggested": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "rep.photos": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "rep.photos_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "rep.health": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "rep.health_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "rep.note_kept": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "visits.t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "visits.b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "visits.reports": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "visits.upcoming": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "visits.summary_written": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.when": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.summary": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.summary_h": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.saving": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.saved": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.questions": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.reports": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.report": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.no_reports": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.view": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.share": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.delete": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.delete_q": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.delete_yes": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.keep": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
+  "vd.gone": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit report upgrade (PM-214, Guy 17 Nov 2026)."
+  },
   "lab.t_glucose": {
     "board": "Companion",
     "review": [

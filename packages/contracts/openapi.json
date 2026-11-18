@@ -1414,6 +1414,11 @@
             "title": "Details",
             "type": "boolean"
           },
+          "health": {
+            "default": true,
+            "title": "Health",
+            "type": "boolean"
+          },
           "lang": {
             "enum": [
               "he",
@@ -1428,11 +1433,28 @@
             "title": "Name",
             "type": "string"
           },
+          "photos": {
+            "default": false,
+            "title": "Photos",
+            "type": "boolean"
+          },
           "questions": {
+            "anyOf": [
+              {
+                "maxLength": 1500,
+                "type": "string"
+              },
+              {
+                "items": {
+                  "maxLength": 300,
+                  "type": "string"
+                },
+                "maxItems": 30,
+                "type": "array"
+              }
+            ],
             "default": "",
-            "maxLength": 1500,
-            "title": "Questions",
-            "type": "string"
+            "title": "Questions"
           }
         },
         "required": [
@@ -9642,10 +9664,10 @@
             "anyOf": [
               {
                 "enum": [
+                  "night",
                   "morning",
                   "afternoon",
-                  "evening",
-                  "night"
+                  "evening"
                 ],
                 "type": "string"
               },
@@ -9954,14 +9976,30 @@
             "type": "string"
           },
           "with": {
-            "enum": [
-              "diabetes_doctor",
-              "family_doctor",
-              "dietitian",
-              "nurse"
+            "anyOf": [
+              {
+                "enum": [
+                  "diabetes_doctor",
+                  "family_doctor",
+                  "dietitian",
+                  "nurse"
+                ],
+                "type": "string"
+              },
+              {
+                "items": {
+                  "enum": [
+                    "diabetes_doctor",
+                    "family_doctor",
+                    "dietitian",
+                    "nurse"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              }
             ],
-            "title": "With",
-            "type": "string"
+            "title": "With"
           }
         },
         "required": [
@@ -9984,11 +10022,19 @@
           "with": {
             "title": "With",
             "type": "string"
+          },
+          "with_all": {
+            "items": {
+              "type": "string"
+            },
+            "title": "With All",
+            "type": "array"
           }
         },
         "required": [
           "date",
           "with",
+          "with_all",
           "prepares_from"
         ],
         "title": "VisitOut",
@@ -10413,10 +10459,10 @@
             "anyOf": [
               {
                 "enum": [
+                  "night",
                   "morning",
                   "afternoon",
-                  "evening",
-                  "night"
+                  "evening"
                 ],
                 "type": "string"
               },
