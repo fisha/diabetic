@@ -3274,5 +3274,10 @@
   "brk.end": "End break",
   "brk.none": "No recent reading",
   "brk.last": "Last reading {time}",
-  "brk.on": "Taking a break"
+  "brk.on": "Taking a break",
+  "clin.title": "Clinic & tests",
+  "clin.row_sub": "Your test results, a report for your clinic and new lab reports",
+  "clin.results": "My test results",
+  "clin.results_sub": "Every result you added, and what each test is",
+  "clin.report_sub": "A PDF for a visit with your doctor, nurse or dietitian, and your visits"
 }

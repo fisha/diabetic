@@ -20917,5 +20917,40 @@
       "translation"
     ],
     "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
+  },
+  "clin.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic & tests area (PM-263, Guy 18 Nov 2026)."
+  },
+  "clin.row_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic & tests area (PM-263, Guy 18 Nov 2026)."
+  },
+  "clin.results": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic & tests area (PM-263, Guy 18 Nov 2026)."
+  },
+  "clin.results_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic & tests area (PM-263, Guy 18 Nov 2026)."
+  },
+  "clin.report_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic & tests area (PM-263, Guy 18 Nov 2026)."
   }
 }

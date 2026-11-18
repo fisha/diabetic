@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-263, thread "Upgrade the visit report"): Guy asked to turn the visit report entry into "Clinic &
+tests" ("מרפאה ובדיקות"). Profile now opens a Clinic & tests screen with "My test results" (the PM-213 lab results),
+"Report for my clinic" (the PM-214 report and visits) and the "Read a lab report" card for new tests. JS only, no API
+change. `pnpm check` passes; `tools/e2e/visit-report.cjs` now enters through Clinic & tests and passes in en light, he
+light and he dark. Next: testers OTA (0.6.0 and 0.5.0).
+
 18 Nov 2026 (Jira PM-260, thread "Choose sensor expiry reminder timing"): Guy asked that Notifications let the person
 choose how long before a sensor ends to be reminded, per sensor type: 3 days, 24 hours or 5 hours. There was no app
 reminder before (only the pump's own "sensor ending" alert relayed from CareLink). Now Profile > Notifications has a
