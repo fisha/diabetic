@@ -1918,3 +1918,13 @@ past 15 minutes "Not current" with the last reading's time and no value (PM-226 
 X in the top corners. Never over sign-in, onboarding or the blocking re-consent screen. Screenshots:
 `/mnt/project-files/steady/take-a-break/` (en light, en dark, he light, he dark; small and large).
 
+## G-112 Sensor ending reminder time per sensor type (PM-260, 18 Nov 2026, Guy asked)
+
+The design has no sensor ending reminder. Guy (18 Nov 2026) asked that Notifications let the person set how long before
+a sensor ends a reminder comes, by the sensor's type: 3 days, 24 hours or 5 hours. Built: a "Sensor ending" card in
+Profile > Notifications with, for each sensor type the connected device services can tell the end of (Guardian 4 via
+CareLink, Dexcom G7 via Tandem, FreeStyle Libre via LibreLinkUp or Tandem), Off / 3 days / 24 hours / 5 hours chips that
+save as picked; without such a service the card says which to connect. The push ("Sensor ending soon", day and time of
+the end, about how long is left, and whether it comes from the pump or from the start plus the maker's rated days) is
+sent once per sensor; 3-day and 24-hour reminders wait for 08:00 at night. Dexcom Share gives no sensor start, so no
+reminder there. Screenshots: `/mnt/project-files/steady/sensor-end/`.

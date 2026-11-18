@@ -2515,6 +2515,72 @@
       "translation"
     ]
   },
+  "sen.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "sen.helper": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "sen.off": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "sen.h72": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "sen.h24": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "sen.h5": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "sen.guardian4": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "sen.dexcomG7": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "sen.libre3": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "sen.note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "sen.none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
   "env.denied": {
     "board": "Settings",
     "review": [

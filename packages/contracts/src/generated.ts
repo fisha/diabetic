@@ -6347,6 +6347,18 @@ export interface components {
              * @enum {string}
              */
             photo_retention: "afterAnalysis" | "days90" | "untilDeleted";
+            /**
+             * Sensor End Reminder
+             * @default {}
+             */
+            sensor_end_reminder: {
+                [key: string]: 72 | 24 | 5;
+            };
+            /**
+             * Sensor End Types
+             * @default []
+             */
+            sensor_end_types: ("guardian4" | "dexcomG7" | "libre3")[];
             /** Timezone */
             timezone: string;
         };
@@ -6369,6 +6381,10 @@ export interface components {
             memory_enabled?: boolean | null;
             /** Photo Retention */
             photo_retention?: ("afterAnalysis" | "days90" | "untilDeleted") | null;
+            /** Sensor End Reminder */
+            sensor_end_reminder?: {
+                [key: string]: (72 | 24 | 5) | null;
+            } | null;
             /** Timezone */
             timezone?: string | null;
         };
