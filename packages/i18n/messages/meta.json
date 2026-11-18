@@ -5714,6 +5714,62 @@
       "translation"
     ]
   },
+  "meal.m_barcode": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_frame": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_hint": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_looking": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_not_found": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_failed": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_again": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
+  "meal.bc_source": {
+    "board": "Meal (PM-242)",
+    "review": [
+      "translation"
+    ],
+    "note": "Barcode scan for packaged food; values from Open Food Facts."
+  },
   "meal.m_photo": {
     "board": "Meal",
     "review": [
@@ -8101,6 +8157,54 @@
       "translation"
     ]
   },
+  "onb.cn_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Onboarding connect step (Guy, 18 Nov 2026, PM-245). Not on the board: design gap."
+  },
+  "onb.cn_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Onboarding connect step (Guy, 18 Nov 2026, PM-245). Not on the board: design gap."
+  },
+  "onb.cn_for": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Onboarding connect step (Guy, 18 Nov 2026, PM-245). Not on the board: design gap."
+  },
+  "onb.cn_more": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Onboarding connect step (Guy, 18 Nov 2026, PM-245). Not on the board: design gap."
+  },
+  "onb.cn_later": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Onboarding connect step (Guy, 18 Nov 2026, PM-245). Not on the board: design gap."
+  },
+  "onb.cn_err": {
+    "board": "Onboarding",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Onboarding connect step (Guy, 18 Nov 2026, PM-245). Not on the board: design gap."
+  },
   "onb.pu_t": {
     "board": "Onboarding",
     "review": [
@@ -9025,6 +9129,111 @@
       "translation"
     ],
     "note": "Overview graph: tap a meal icon to see what was eaten (Guy, 18 Nov 2026, PM-224)."
+  },
+  "ovr.workout_hit": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.sleep_hit": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.events_hit": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.workout_sheet_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.sleep_sheet_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.event_sheet_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.rises_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly roundup of the largest rises after logged meals and workouts, no threshold (Guy, 18 Nov 2026, PM-241)."
+  },
+  "ovr.rises_lead": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly roundup of the largest rises after logged meals and workouts, no threshold (Guy, 18 Nov 2026, PM-241)."
+  },
+  "ovr.rises_when": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly roundup of the largest rises after logged meals and workouts, no threshold (Guy, 18 Nov 2026, PM-241)."
+  },
+  "ovr.rises_a11y": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly roundup of the largest rises after logged meals and workouts, no threshold (Guy, 18 Nov 2026, PM-241)."
+  },
+  "ovr.sleep_span": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.sleep_asleep": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.sleep_in_bed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.sleep_awake": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
+  },
+  "ovr.sleep_src": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview graph: workout and sleep icons open what was recorded (Guy, 18 Nov 2026, PM-244)."
   },
   "ovr.ins_none": {
     "board": "Overview",
@@ -11437,6 +11646,12 @@
     ]
   },
   "set.acct_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.acct_demo": {
     "board": "Settings",
     "review": [
       "translation"
@@ -15795,6 +16010,188 @@
       "translation"
     ]
   },
+  "wd.dr_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin tab (PM-233)"
+  },
+  "wd.dr_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_none": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_who": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_aud": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_when": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_status": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_used": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_s_pending": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_s_approved": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_s_declined": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_s_revoked": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_opens": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_approve": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_renew": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_decline": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_revoke": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_delete": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_emailed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_not_emailed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_link": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_copy": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_copied": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_team": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Opens the demo with a team link, for the team's own demos and scenario tests"
+  },
+  "wd.dr_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_inv_h": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_inv_email": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_inv_name": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_inv_org": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.dr_inv_send": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wdg.above": {
     "board": "WIDGET",
     "review": [
@@ -16110,6 +16507,132 @@
       "translation"
     ],
     "note": "Calmer home page (Guy, 15 Nov 2026)"
+  },
+  "web.m_talk_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_talk_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_band": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_life_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_life_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_screens": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_scr_talk": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_scr_log": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_scr_week": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_scr_why": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_ph2": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_ph3": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_ph4": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_ph6": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_ph7": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_ph8": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_ph9": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
+  },
+  "web.m_ph10": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
   },
   "web.c_s1": {
     "board": "Website",
@@ -16759,6 +17282,423 @@
       "translation"
     ]
   },
+  "web.demo_cta": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_title": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Demo page title (PM-233)"
+  },
+  "web.dm_req_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_req_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_name": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_email": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_org": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_aud": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Select label; the options follow"
+  },
+  "web.dm_aud_investor": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_aud_pharma": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_aud_insurer": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_aud_hospital": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_aud_health_fund": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_aud_other": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_msg": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_agree": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Required checkbox; <a> links the privacy policy"
+  },
+  "web.dm_send": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_sending": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_sent_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_sent_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_err": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_busy": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_tag": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_who": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Panel heading above the scenario list"
+  },
+  "web.dm_lens": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Panel heading above the audience choice"
+  },
+  "web.dm_l_investor": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_l_pharma": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_l_insurer": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_l_care": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_show": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Button: opens the app screen this point is about"
+  },
+  "web.dm_app_lang": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_look": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_day": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_night": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_restart": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Reloads the app in the frame on its first screen"
+  },
+  "web.dm_loading": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_note": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Under the demo panel; regulatory and privacy note"
+  },
+  "web.dm_bad_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_bad_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_bad_cta": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_offline": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_frame": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Accessible name of the phone frame"
+  },
+  "web.dm_p_inv1_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv1_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv2_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv2_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv3_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv3_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv4_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_inv4_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ph1_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ph1_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ph2_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ph2_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ph3_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ph3_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ins1_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ins1_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ins2_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ins2_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ins3_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_ins3_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_care1_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_care1_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_care2_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_care2_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_care3_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
+  "web.dm_p_care3_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ]
+  },
   "win.basis_best": {
     "board": "Overview",
     "review": [
@@ -17294,6 +18234,90 @@
     ],
     "note": "Protein shown and editable on the meal (Itay via Guy, 15 Nov 2026)."
   },
+  "meal.curve_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_so_far": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_start": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_peak": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_after": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_rise": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_back": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_not_yet": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_not_back": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_axis_meal": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_axis_h": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
+  "meal.curve_a11y": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
+  },
   "meal.protein_none": {
     "board": "Meal",
     "review": [
@@ -17321,6 +18345,34 @@
       "translation"
     ],
     "note": "Protein shown and editable on the meal (Itay via Guy, 15 Nov 2026)."
+  },
+  "meal.fat_v": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Fat and fiber per meal next to protein (Guy, 18 Nov 2026, PM-243)."
+  },
+  "meal.fiber_v": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Fat and fiber per meal next to protein (Guy, 18 Nov 2026, PM-243)."
+  },
+  "meal.fat_l": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Fat and fiber per meal next to protein (Guy, 18 Nov 2026, PM-243)."
+  },
+  "meal.fiber_l": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Fat and fiber per meal next to protein (Guy, 18 Nov 2026, PM-243)."
   },
   "meal.carbs_v": {
     "board": "Meal",
@@ -18150,6 +19202,41 @@
       "translation"
     ],
     "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "note.win": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Morning recap: at most three cards about yesterday and one thing that went well (Guy, 18 Nov 2026, PM-240)."
+  },
+  "note.topic_glucose": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Morning recap: at most three cards about yesterday and one thing that went well (Guy, 18 Nov 2026, PM-240)."
+  },
+  "note.topic_activity": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Morning recap: at most three cards about yesterday and one thing that went well (Guy, 18 Nov 2026, PM-240)."
+  },
+  "note.topic_food": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Morning recap: at most three cards about yesterday and one thing that went well (Guy, 18 Nov 2026, PM-240)."
+  },
+  "note.topic_sleep": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Morning recap: at most three cards about yesterday and one thing that went well (Guy, 18 Nov 2026, PM-240)."
   },
   "note.add_q": {
     "board": "Insights",

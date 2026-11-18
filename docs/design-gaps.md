@@ -1835,3 +1835,34 @@ entry, also on a day older than the journal's two. Open states:
 - The plot is 18 pt taller to hold the tap areas inside it (Android takes no touches outside a view).
 - Two pump meals inside one bolus row show once, as that row.
 
+## G-105 Interactive website demo (PM-233, 18 Nov 2026, Guy asked)
+
+Not in the design; Guy asked for it. The home page has "Ask for a demo" next to "Join the waiting list" (hero and the
+closing section). `/demo` shows the request form; with an approved personal link it shows the real app (the app's web
+export at `/app`) in a phone frame the size of an iPhone Pro Max screen, scaled to the window, with a panel of
+scenarios, talking points by audience (each "Show" opens that screen in the app), app language, day/night and "Start
+over". Built in the website's own brand tokens. Open states:
+- Under 900 px the phone comes first and the panel below it; the frame keeps the phone's proportions.
+- A revoked, declined or expired link shows a card asking for a new one.
+- The app hides Devices, Privacy, Sharing, Admin, Sign out and Delete in the demo; the API also refuses those writes.
+- Voice in the demo uses the same provider as the app; where it is off, the app's own "Not available" state shows.
+
+## G-106 Stelo adopt-first screens (PM-239 to PM-244, 18 Nov 2026, Guy asked)
+
+Not on the boards; drawn in the existing card, tile and sheet styles. Meal glucose curve card (meal sheet and journal
+meal entry), "Biggest rises this week" card on Overview > Week, workout and sleep sheets from the graph icons, the
+"went well" box and topic icons on the morning recap, fat and fiber rows, and the barcode scan screen (same dark camera
+frame as MEAL-02, a wide frame, Open Food Facts credit). Status: verified-test on the web export; screenshots shown to
+Guy before the OTA.
+
+## G-107 Connect data sources during onboarding (PM-245, 18 Nov 2026, Guy asked)
+
+Not on the onboarding board; Guy asked for it ("put it in onboarding, even in the early steps, and then continue").
+A step "Connect your data" right after the sensor step (before ratios, so a connected pump's range and ratios show
+there). "Suggested for you" lists the service that fits the chosen pump and sensor (MiniMed/Guardian: CareLink;
+t:slim/Mobi: Tandem Source; Dexcom: Dexcom Share; Libre: LibreLinkUp) and the phone's health store; "Other connections"
+lists the rest. Rows are the Settings > Devices rows and open the same connection screens. Skip, "Complete later" and
+Continue always move on. Open states:
+- The consent step's answers are recorded on the server before the first connection opens; if that fails, a banner
+  says nothing was connected and the person can retry or skip.
+- On the website the health store row shows "On your phone", as in Settings.

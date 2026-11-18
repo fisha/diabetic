@@ -50,6 +50,12 @@ below, which Guy and the lawyer can still change.
 
 ## Queued for the next legal version
 
+**Released 18 Nov 2026 as privacy `2026-11-18T14:00:00Z` (PM-233):** demo request data under "What we collect", demo
+retention under "How long we keep data", and the stored demo link under "Cookies and storage", in English and Hebrew.
+Lawyer review: PM-235. Still open from before: approval and verification emails go out over SMTP, and the policy names
+no email provider.
+
+
 **Released 17 Nov 2026 as privacy `2026-11-17T21:30:00Z` (PM-208, Guy: "אתה יכול להוציא גרסה משפטית חדשה").** Both
 lines below are in the policy in English and Hebrew (plus a retention line for the verdicts), `quality.POLICY` names that
 version, and `STEADY_QUALITY_SAMPLE_SHARE=0.05` is set in `deploy/fly/api/fly.toml`. Nothing is queued now; add new
@@ -90,7 +96,7 @@ approved lines here.
 - Meal photo retention choices: `routers/settings.py` `photo_retention`. Exports expire after 7 days
   (`EXPORT_DAYS`), invite codes after 7 days (`CODE_DAYS`), refresh tokens after 30 days.
 - OpenAI requests with `store=False`: `ai/provider.py`, `ai/food.py`. No voice recordings are written to disk.
-- Location rounded to 0.1 degree before Open-Meteo: `environment.py`. USDA gets the search text only: `nutrition.py`.
+- Location rounded to 0.1 degree before Open-Meteo: `environment.py`. USDA gets the search text only: `nutrition.py`. Open Food Facts gets the barcode number only, from the server, with a generic user agent and no account (`barcodes.py`, PM-242); its data is ODbL, so the scan screen credits it.
 - Website: sign-in kept in page memory only (`apps/web/src/lib/api.ts`), one cookie `NEXT_LOCALE` (next-intl), no
   analytics, fonts self-hosted.
 - Admin read-only access during testing, no change to another person's treatment settings: G-44 and Guy's admin rule.

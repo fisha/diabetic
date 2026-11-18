@@ -8,6 +8,57 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-245, thread "Connect data sources during onboarding"): Guy asked for real device connections inside
+onboarding, early, with onboarding going on afterwards. New step `connect` after `sensor` (G-107): the connection that
+fits the chosen pump and sensor first, then Apple Health / Health Connect and the rest, each opening the existing
+connection screen; skippable. API: `POST /consent/onboarding` records the consent step's answers before the first
+connection (the profile save used to be the first record, so a device could sync with no consent on the server), with
+the same rules as the profile save (`record_consents`); `GET /profile/device` gives a connected pump's range and ratios
+before a profile exists. No privacy text change (consent is still given at sign-up). Screenshots en/he, day/night, from
+the web export against a local API. Guy asked to merge and deploy (18 Nov); app #136, api #112 merged. Next: deploy API, then OTA to testers.
+
+18 Nov 2026 (Jira PM-236, thread "Redesign website with scroll motion"): Guy asked for a home page that feels like
+Stelo's how-it-works page: scroll motion, photos of people using the app (AI-generated, approved by Guy) and real app
+screens. Built in apps/web: the hero keeps only the phone (Guy: the photo did not belong there), a full-width photo that opens on scroll, "How it works" as a
+sticky phone that swaps four real app screens (e2e captures with sample data) per chapter (`Story.tsx`), a mosaic of people using the app (real screens warped onto generated green-screen
+photos, incl. a woman in a hijab and an African-American man) with parallax, and rising reveals. CSS scroll-driven animations only; nothing moves with reduced motion; the
+photos carry no caption (Guy). Built on the demo branch (PM-233, "Ask for a
+demo"). Typecheck clean for these files, lint and web tests pass; checked in Chromium at desktop and phone widths.
+Next: Guy's look on his Mac, then PR and deploy-web.
+
+18 Nov 2026 (Jira PM-239 to PM-244, thread "Stelo adopt-first items", from the Dexcom Stelo research PM-237): Guy asked
+to build the "Adopt first" list. Built, all retrospective and descriptive, no score and no threshold of the app's own:
+meal glucose curve from the meal to +3 h (at the meal, highest, rise, back to start; the person's own range drawn when
+set) in the meal sheet and the journal (`features/meal/curve.ts`, `MealCurveCard.tsx`); the morning recap holds at most
+one fact per topic (glucose, activity, food, sleep) plus one "went well" or none, with a new sleep tool
+(`agents/notes.py`); the week view lists the biggest rises after logged meals and workouts, each opening its journal
+entry (`overview/rises.ts`, `RisesCard.tsx`); fat and fiber per meal end to end (`fiber_g`, `fiber_total_g`); workout and
+sleep icons on the day graph with their own sheets (`GET /health-data/nights`); barcode scan on Log a meal with
+expo-camera (no new native module) and `GET /meal/barcode/{code}` from Open Food Facts (Guy chose it; only the number is
+sent; Israeli and EU label carbs taken as already net of fiber, North American labels have fiber subtracted). Privacy
+`2026-11-18T15:00:00Z` adds the Open Food Facts line. API tests, app 200 tests, e2e `tools/e2e/meal-impact.cjs` 31/31 (en
+light, he light, he dark). Open Food Facts is not reachable from the container, so a real lookup is first tried on Fly.
+Next: deploy API (before the OTA: the app sends `fiber_g`), web, OTA; try a real scan on a phone.
+
+18 Nov 2026 (Jira PM-233, thread "Add investor demo to the website"): Guy asked for an "Ask for a demo" button next to
+"Join the waiting list", admin approval, and the real app shown in a phone frame on the website (web only) with a side
+panel of scenarios and talking points for investors, pharma, insurers, hospitals and health funds. Demo data never trains
+models, viewers need no username or password, and the team uses it to test scenarios. Guy chose shared demo accounts that
+go back to the generated data every 24 hours. Built: API `steady_api/demo/` (7 scenarios, 90 generated days each,
+one shared account per scenario and language, made with COPY in about 2 s, a per-account advisory lock, remade at 03:00
+Israel time under a new id, carried on to the moment it is opened), `routers/demo.py` (request form, personal link
+`#k=` stored as a hash, 30 days, one-day demo sessions, admin approve/renew/revoke/decline/delete, team link),
+demo accounts left out of training, priors, the ranker and the admin user list, account/device/sharing writes refused;
+app demo mode (`features/demo/`, session in sessionStorage so the viewer's own sign-in is untouched, Devices, Privacy,
+Sharing, Admin, Sign out and Delete hidden); web `/demo` page, home buttons, admin page Dashboard > Admin > Demo
+requests. Privacy `2026-11-18T14:00:00Z` adds demo request data, demo retention and the stored link. API 21 demo tests,
+e2e 13/13 in Chromium against a local API. Lawyer review PM-235 (`needs-lawyer`). Next: deploy API (migration
+e5d1a7c3b9f2) and web together, OTA.
+Later the same day: admin invite by email (api #109, web #43), and two family scenarios through the existing sharing
+(api #110, web #44): a parent without diabetes, and a parent with type 2 and their own data, each following Maya, a
+child with type 1 whose demo account resets nightly and never trains. The app in the frame opens viewing Maya. No
+migration. Chromium check 5/5.
+
 18 Nov 2026 (Jira PM-234, same thread): Guy asked for no placeholders on the legal pages. Every `⟦…⟧` in privacy,
 terms and accessibility (en and he) is filled: support and accessibility contact guy@mi-ng.com, hosting on Fly.io in
 Frankfurt (the Mac server and ngrok lines removed), no email provider line, OpenAI 30-day abuse retention, backups and

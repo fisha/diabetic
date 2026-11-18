@@ -58,6 +58,141 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/admin/demo-requests": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Requests */
+        get: operations["list_requests_admin_demo_requests_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/demo-requests/invite": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Invite
+         * @description An admin invites someone by email (Guy, 18 Nov 2026): an approved request is made, or the person's open one is
+         *     used, and the personal link is emailed (shown once when no email can be sent).
+         */
+        post: operations["invite_admin_demo_requests_invite_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/demo-requests/{request_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Delete Request
+         * @description Deletes the request and its details (its sessions go with it).
+         */
+        delete: operations["delete_request_admin_demo_requests__request_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/demo-requests/{request_id}/approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Approve */
+        post: operations["approve_admin_demo_requests__request_id__approve_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/demo-requests/{request_id}/decline": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Decline
+         * @description Declined quietly: nothing is emailed.
+         */
+        post: operations["decline_admin_demo_requests__request_id__decline_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/demo-requests/{request_id}/revoke": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Revoke
+         * @description The link stops working and its open demo sessions end.
+         */
+        post: operations["revoke_admin_demo_requests__request_id__revoke_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/demo/team-link": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Team Link
+         * @description A link for the team's own demos and scenario tests (Guy: also a tool to test scenarios). Not emailed.
+         */
+        post: operations["team_link_admin_demo_team_link_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/admin/users": {
         parameters: {
             query?: never;
@@ -485,6 +620,30 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/consent/onboarding": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Onboarding Consent
+         * @description The consents a person gave on the onboarding consent step, recorded before the profile is saved (PM-245): the app
+         *     sends them before a data connection (CareLink, Dexcom, Libre, Tandem, the phone's health store) starts during
+         *     onboarding, so no device data arrives without a consent record. The same records and rules as the profile save
+         *     (`record_consents`), which later finds them already there and adds nothing. Refused without the service consent and
+         *     the Terms of Use and Privacy Policy, which onboarding requires before this point.
+         */
+        post: operations["onboarding_consent_consent_onboarding_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/conversation/about": {
         parameters: {
             query?: never;
@@ -646,6 +805,60 @@ export interface paths {
          *     this" continue it too. The app calls this when the person starts talking in it, not when they only read it.
          */
         post: operations["resume_conversations__conversation_id__resume_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/demo/requests": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Request Demo */
+        post: operations["request_demo_demo_requests_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/demo/scenarios": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Scenarios */
+        get: operations["scenarios_demo_scenarios_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/demo/session": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Open Session
+         * @description A demo session with the scenario's shared demo account, for a valid personal link. No username or password.
+         */
+        post: operations["open_session_demo_session_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1449,6 +1662,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/health-data/nights": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Nights
+         * @description The nights that overlap [since, until), as "Body today" builds them (one source per night, the one that saw most of
+         *     it), for the sleep icons under the glucose graph (Guy, 18 Nov 2026, PM-244). Only what the health store recorded.
+         */
+        get: operations["list_nights_health_data_nights_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/health-data/samples": {
         parameters: {
             query?: never;
@@ -1836,6 +2070,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/meal/barcode/{code}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Barcode
+         * @description A packaged food by its barcode (PM-242), from Open Food Facts: carbs, fiber, protein and fat per 100 g as on the
+         *     label, and the label's serving when it has one. Only the barcode number leaves the server. 404 when the database
+         *     doesn't have the product or its label has no carbohydrate value; the app then offers a photo or a search.
+         */
+        get: operations["barcode_meal_barcode__code__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/meal/foods": {
         parameters: {
             query?: never;
@@ -2184,6 +2440,27 @@ export interface paths {
         get: operations["get_profile_profile_get"];
         /** Put Profile */
         put: operations["put_profile_profile_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/profile/device": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Device Settings
+         * @description The target range and carb ratios from a connected pump, also before any profile exists (PM-245): a pump connected
+         *     during onboarding shows its settings on the ratios step, which the profile save then keeps from the pump (G-48).
+         */
+        get: operations["get_device_settings_profile_device_get"];
+        put?: never;
         post?: never;
         delete?: never;
         options?: never;
@@ -3378,6 +3655,162 @@ export interface components {
              */
             confirm: "DELETE";
         };
+        /** DemoInviteIn */
+        DemoInviteIn: {
+            /**
+             * Audience
+             * @default other
+             */
+            audience: string;
+            /**
+             * Email
+             * Format: email
+             */
+            email: string;
+            /** Name */
+            name?: string | null;
+            /** Organization */
+            organization?: string | null;
+        };
+        /** DemoLinkOut */
+        DemoLinkOut: {
+            /**
+             * Access Until
+             * Format: date-time
+             */
+            access_until: string;
+            /** Emailed */
+            emailed: boolean;
+            /** Link */
+            link: string;
+        };
+        /** DemoRequestIn */
+        DemoRequestIn: {
+            /** Agreed */
+            agreed: boolean;
+            /** Audience */
+            audience: string;
+            /**
+             * Email
+             * Format: email
+             */
+            email: string;
+            /** Message */
+            message?: string | null;
+            /** Name */
+            name: string;
+            /** Organization */
+            organization: string;
+        };
+        /** DemoRequestOut */
+        DemoRequestOut: {
+            /** Access Until */
+            access_until: string | null;
+            /** Audience */
+            audience: string;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Decided At */
+            decided_at: string | null;
+            /** Email */
+            email: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Last Used At */
+            last_used_at: string | null;
+            /** Message */
+            message: string | null;
+            /** Name */
+            name: string;
+            /** Opens */
+            opens: number;
+            /** Organization */
+            organization: string;
+            /** Status */
+            status: string;
+        };
+        /** DemoScenarioOut */
+        DemoScenarioOut: {
+            /** Devices */
+            devices: {
+                [key: string]: string;
+            };
+            /** Diabetes Type */
+            diabetes_type: string;
+            /**
+             * Follows
+             * @default false
+             */
+            follows: boolean;
+            /** Id */
+            id: string;
+            /** Pump */
+            pump: string | null;
+            /** Sensor */
+            sensor: string;
+            /** Summary */
+            summary: {
+                [key: string]: string;
+            };
+            /** Title */
+            title: {
+                [key: string]: string;
+            };
+            /** Treatment */
+            treatment: string;
+        };
+        /** DemoSessionIn */
+        DemoSessionIn: {
+            /** Link */
+            link: string;
+            /**
+             * Locale
+             * @default en
+             */
+            locale: string;
+            /** Scenario */
+            scenario: string;
+        };
+        /** DemoSessionOut */
+        DemoSessionOut: {
+            /** Access Token */
+            access_token: string;
+            /** Email */
+            email: string;
+            /** Expires In */
+            expires_in: number;
+            /** Has Profile */
+            has_profile: boolean;
+            /** Refresh Token */
+            refresh_token: string;
+            /** Scenario */
+            scenario: string;
+            /**
+             * Token Type
+             * @default bearer
+             * @constant
+             */
+            token_type: "bearer";
+            viewing?: components["schemas"]["DemoViewingOut"] | null;
+        };
+        /** DemoViewingOut */
+        DemoViewingOut: {
+            /** Name */
+            name: string;
+            /**
+             * Owner Id
+             * Format: uuid
+             */
+            owner_id: string;
+            /** Scopes */
+            scopes: string[];
+        };
         /** DeviceEventOut */
         DeviceEventOut: {
             /** Code */
@@ -3448,6 +3881,11 @@ export interface components {
              * @constant
              */
             source: "tandem";
+        };
+        /** DeviceSettingsOut */
+        DeviceSettingsOut: {
+            device_ratios?: components["schemas"]["DeviceRatiosOut"] | null;
+            device_target?: components["schemas"]["DeviceTargetOut"] | null;
         };
         /** DeviceTargetOut */
         DeviceTargetOut: {
@@ -4642,6 +5080,8 @@ export interface components {
             evidence: string[];
             /** Text */
             text: string;
+            /** Topic */
+            topic?: string | null;
         };
         /**
          * LinesOut
@@ -4711,6 +5151,8 @@ export interface components {
             approved: boolean;
             /** Avatar Url */
             avatar_url?: string | null;
+            /** Demo */
+            demo?: string | null;
             /** Email */
             email: string;
             /**
@@ -4769,6 +5211,11 @@ export interface components {
              * @default null
              */
             fat_total_g: number | null;
+            /**
+             * Fiber Total G
+             * @default null
+             */
+            fiber_total_g: number | null;
             /** Items */
             items: components["schemas"]["MealItemData"][];
             /**
@@ -4824,6 +5271,11 @@ export interface components {
              * @default null
              */
             fat_g: number | null;
+            /**
+             * Fiber G
+             * @default null
+             */
+            fiber_g: number | null;
             /** Name */
             name: string;
             /**
@@ -5039,6 +5491,7 @@ export interface components {
             seen: boolean;
             /** Subject */
             subject: string;
+            win?: components["schemas"]["Line"] | null;
         };
         /** NudgesIn */
         NudgesIn: {
@@ -6575,6 +7028,201 @@ export interface operations {
             };
         };
     };
+    list_requests_admin_demo_requests_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DemoRequestOut"][];
+                };
+            };
+        };
+    };
+    invite_admin_demo_requests_invite_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DemoInviteIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DemoLinkOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_request_admin_demo_requests__request_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                request_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    approve_admin_demo_requests__request_id__approve_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                request_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DemoLinkOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    decline_admin_demo_requests__request_id__decline_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                request_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DemoRequestOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    revoke_admin_demo_requests__request_id__revoke_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                request_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DemoRequestOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    team_link_admin_demo_team_link_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DemoLinkOut"];
+                };
+            };
+        };
+    };
     users_admin_users_get: {
         parameters: {
             query?: never;
@@ -7328,6 +7976,37 @@ export interface operations {
             };
         };
     };
+    onboarding_consent_consent_onboarding_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ConsentIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConsentOut"];
+                };
+            };
+            /** @description consent_required */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     open_about_conversation_about_post: {
         parameters: {
             query?: never;
@@ -7639,6 +8318,113 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["ThreadOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    request_demo_demo_requests_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DemoRequestIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description not_agreed */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description busy */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    scenarios_demo_scenarios_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DemoScenarioOut"][];
+                };
+            };
+        };
+    };
+    open_session_demo_session_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DemoSessionIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DemoSessionOut"];
+                };
+            };
+            /** @description demo_link_invalid */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description no_such_scenario */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -9463,6 +10249,38 @@ export interface operations {
             };
         };
     };
+    list_nights_health_data_nights_get: {
+        parameters: {
+            query: {
+                since: string;
+                until: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NightOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     list_samples_health_data_samples_get: {
         parameters: {
             query: {
@@ -10112,6 +10930,49 @@ export interface operations {
         responses: {
             /** @description Successful Response */
             204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    barcode_meal_barcode__code__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FoodMatch"];
+                };
+            };
+            /** @description not_found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description invalid_barcode */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description lookup_failed */
+            502: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -10904,6 +11765,26 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    get_device_settings_profile_device_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DeviceSettingsOut"];
+                };
             };
         };
     };
