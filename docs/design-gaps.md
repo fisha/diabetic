@@ -1816,6 +1816,12 @@ the protected store, deleted with the account, not in the server export. Open st
 - In the web preview visits are kept in memory only and the PDF is not stored (the server copy lasts 7 days).
 - A new phone or reinstall starts with no earlier visits (no backup by design).
 
+## Conversations list: delete and time line (PM-220, 18 Nov 2026, Guy's ask)
+The design's history sheet (COM-03) shows a title and "when · summary" and opens the conversation with a "Resumed
+conversation from" line; it has no delete. Guy asked for delete by swiping a row to the side (never a delete button),
+with the shared SwipeRow (PM-222) and a confirm dialog that says what goes and that Memory stays. The design's small
+character before each row is not shown.
+
 ### G-104 · Tap a meal icon on the day graph to see what was eaten (**PM-224, Guy 18 Nov 2026**, verified-test)
 
 Not in the design; Guy asked for it (screenshot of the 24h graph with the meal icons marked). On 24h and Day "Over

@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-220, thread "Improve the conversations list"): Guy's screenshot of the Conversations sheet
+(first message as title, three lines of reply, no time, tap did nothing). Each row now has a short title the AI engine
+writes in the background (`conversation_titles.py`: AI consent only, no digits or dose wording, else the first
+message), one line with today/yesterday or dd.mm (mm.dd in English) and the time, then the last reply. A tap opens that
+conversation in text with the design's "Resumed conversation from" line; writing goes on in it (`conversation_id` on
+send), and voice makes it current first (`POST /conversations/{id}/resume`). Guy also asked for delete by swiping:
+`DELETE /conversations/{id}` and the shared SwipeRow (PM-222) with a confirm dialog. Migration `b7d2e4f6a8c1`.
+API 624 tests pass; app typecheck and tests pass; web e2e `tools/e2e/history.cjs` passes in en light, he light and he
+dark. Privacy policy wording for the titles is open (PM-227). Next: merge after PM-222, deploy-api, OTA.
 18 Nov 2026 (Jira PM-222, thread "Delete by swiping across the app"): Guy asked that every deletion in the app is a
 sideways swipe, never a delete button, and that a conversation can be deleted. New shared `SwipeRow` (app, JS only:
 PanResponder + Animated): toward the start of the reading direction (left in English, right in Hebrew), a short swipe
