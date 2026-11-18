@@ -153,6 +153,8 @@ child with type 1 whose demo account resets nightly and never trains. The app in
 migration. Chromium check 5/5.
 
 18 Nov 2026 night (Jira PM-262, same thread): the header plus on Overview and Journal is gone (the round plus beside the
+
+18 Nov 2026 night (Jira PM-265, same thread): the time-in-range tile on the main screen counts the last 24 hours (not since midnight) and is always shown when the person has a range, with a dash and "Not enough data" when coverage is too low. It had hidden itself every night just after 00:00. App PR #157.
 tab bar covers it); in a wide window the side bar gets a Quick log row instead. e2e `main-top.cjs` 106/106 (one plus on
 Overview and Journal). JS only. Next: OTA.
 
