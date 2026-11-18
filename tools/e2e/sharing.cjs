@@ -57,8 +57,8 @@ const server = http.createServer((req, res) => {
       for (const v of (await api('/sharing', { token: son })).json.viewers) await api(`/sharing/${v.id}`, { method: 'DELETE', token: son });
       const L = he ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון' } : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account' };
       const T = he
-        ? { next: 'המשך', agree: 'אני מסכים/ה, ליצור הזמנה', partner: 'משפחה', accept: 'לאשר ולצפות', sw: 'החלפה', me: 'הנתונים שלי', send: 'שליחה', ph: 'לשאול על הנתונים של Itay…', journal: 'יומן', comp: 'מלווה' }
-        : { next: 'Continue', agree: 'I agree, create the invite', partner: 'Family', accept: 'Accept and view', sw: 'Switch', me: 'My data', send: 'Send', ph: "Ask about Itay's data…", journal: 'Journal', comp: 'Companion' };
+        ? { next: 'המשך', agree: 'אני מסכים/ה, ליצור הזמנה', partner: 'משפחה', accept: 'לאשר ולצפות', sw: 'החלפה', me: 'הנתונים שלי', send: 'שליחה', ph: 'לשאול על הנתונים של Itay…', journal: 'יומן', comp: 'שיחה' }
+        : { next: 'Continue', agree: 'I agree, create the invite', partner: 'Family', accept: 'Accept and view', sw: 'Switch', me: 'My data', send: 'Send', ph: "Ask about Itay's data…", journal: 'Journal', comp: 'Talk' };
       const signIn = async (page, email) => {
         await page.goto(base); await page.waitForTimeout(2000);
         if (he) { await page.getByText('עברית', { exact: true }).first().click().catch(() => null); await page.waitForTimeout(800); }

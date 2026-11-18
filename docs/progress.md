@@ -97,6 +97,14 @@ Later the same day: admin invite by email (api #109, web #43), and two family sc
 child with type 1 whose demo account resets nightly and never trains. The app in the frame opens viewing Maya. No
 migration. Chromium check 5/5.
 
+18 Nov 2026 evening (Jira PM-238, same thread): Guy approved a second main-screen design from screenshots. On the idle
+voice view the top row is only the insights line (no character or name there); its opened card lies over the time in
+range and glucose tiles. History and text are plain icons under "Tap to talk", and the top takes only its own height,
+so they stay clear of the tab bar on a 375x667 phone. The companion tab in the floating bar is a sound-wave icon named
+"Talk" / "שיחה" (`com.tab_c`; Guy: too many circles); the wide-window side bar keeps the orb. JS only. App 202 tests,
+i18n 20, e2e `main-top.cjs` 81/81 (adds: no name header, icons above the tab bar, Talk tab), `tab-bar.cjs` 17/17. Other
+e2e scripts that opened the tab by "Companion" now use "Talk". Next: OTA to testers.
+
 18 Nov 2026 (Jira PM-238, thread "Redesign main screen like Stelo"): Guy sent two screenshots of Dexcom Stelo's app
 (inspiration only, no assets or branding) and approved the design from screenshots before any upload. The companion's
 voice view is now two halves: on top, on a soft accent glow, one "Insights" line with a count that opens into one card at
