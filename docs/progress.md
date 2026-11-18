@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-256, thread "Upgrade the visit report"): Guy said the next-visit date ("05.10") was unclear and
+not like other dates, and there was no hour. The date field now shows the weekday with the date (dd.mm in Hebrew,
+mm.dd in English, the year only when it is not this year) and a time field sits next to it (native picker, optional;
+older apps send no time). The API keeps the time with the saved visit, the visit preparation starts 3 days before the
+visit's date and time, and the saved line, My visits, the report header and the export show it. API tests for the
+visit, report and account pass; `pnpm check` passes; `tools/e2e/visit-report.cjs` passes in en light, he light and he
+dark. Next: deploy the API, then the testers OTA (0.6.0 and 0.5.0).
+
 18 Nov 2026 (Jira PM-254, thread "Stop showing already-read insights again"): Guy saw the same card ("Check-in 17:58:
 Had dinner?", "Above your range now") on the main-screen Insights card again and again; once read there it should not
 come back. The G-77 mark-read existed, but check-ins, out-of-range readings and pump alerts had no read key, and the

@@ -1821,6 +1821,8 @@ The design's history sheet (COM-03) shows a title and "when · summary" and open
 conversation from" line; it has no delete. Guy asked for delete by swiping a row to the side (never a delete button),
 with the shared SwipeRow (PM-222) and a confirm dialog that says what goes and that Memory stays. The design's small
 character before each row is not shown.
+- Visit time (PM-256, 18 Nov 2026): the next visit has an optional time next to its date; the date shows the weekday.
+  The preparation starts 3 days before the visit's date and time.
 
 ### G-104 · Tap a meal icon on the day graph to see what was eaten (**PM-224, Guy 18 Nov 2026**, verified-test)
 

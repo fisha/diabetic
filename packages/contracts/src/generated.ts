@@ -6745,6 +6745,8 @@ export interface components {
              * Format: date
              */
             date: string;
+            /** Time */
+            time?: string | null;
             /** With */
             with: ("diabetes_doctor" | "family_doctor" | "dietitian" | "nurse") | ("diabetes_doctor" | "family_doctor" | "dietitian" | "nurse")[];
         };
@@ -6754,6 +6756,8 @@ export interface components {
             date: string;
             /** Prepares From */
             prepares_from: string;
+            /** Time */
+            time?: string | null;
             /** With */
             with: string;
             /** With All */
