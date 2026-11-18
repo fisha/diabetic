@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-248, thread "Allow under-18 users with a parent following"): Guy asked that people under 18 can
+use the app, but only with a parent invited to follow them. The date of birth step now leads under-18s to "Invite a
+parent" (the old adults-only stop screen, G-109): the server keeps only the day they turn 18 (`users.minor_until`,
+`PUT /auth/birth`), and until a parent accepts the parent invite and confirms being the parent or legal guardian, it
+answers nothing but sign-in, sharing, consents, export and deletion (`guardian_required`); so no profile, device or AI
+before the parent. The minor cannot remove the last parent; if the parent stops following, the account waits again;
+it all ends at 18. A waitlisted parent is approved by accepting a parent invite from an approved account. Minors never
+train models, priors or the quality review. Terms and privacy (en, he) `2026-11-18T18:30:00Z`, so everyone accepts
+again. Lawyer points PM-249 (`needs-lawyer`). API 672 tests pass, app 201, i18n 20; browser e2e `tools/e2e/minors.cjs`
+22/22. Next: deploy API (migration `c4e8a2d6f1b3`) and web together, then OTA to testers.
+
 18 Nov 2026 (Jira PM-245, thread "Connect data sources during onboarding"): Guy asked for real device connections inside
 onboarding, early, with onboarding going on afterwards. New step `connect` after `sensor` (G-107): the connection that
 fits the chosen pump and sensor first, then Apple Health / Health Connect and the rest, each opening the existing

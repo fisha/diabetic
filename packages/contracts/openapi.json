@@ -781,6 +781,24 @@
         "title": "BestOut",
         "type": "object"
       },
+      "BirthIn": {
+        "additionalProperties": false,
+        "description": "The date of birth as typed in onboarding (PM-248); only the day the person turns 18 is kept, if still ahead.",
+        "properties": {
+          "birth": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Birth",
+            "type": "object"
+          }
+        },
+        "required": [
+          "birth"
+        ],
+        "title": "BirthIn",
+        "type": "object"
+      },
       "BodyDetailsOut": {
         "description": "What is behind each \"Body today\" tile (Itay, 15 Nov 2026): today by hour, the last week by day, last night's stages.",
         "properties": {
@@ -5315,6 +5333,11 @@
             "title": "Consent",
             "type": "boolean"
           },
+          "guardian": {
+            "default": false,
+            "title": "Guardian",
+            "type": "boolean"
+          },
           "label": {
             "anyOf": [
               {
@@ -5374,6 +5397,11 @@
             "format": "date-time",
             "title": "Code Expires At",
             "type": "string"
+          },
+          "guardian": {
+            "default": false,
+            "title": "Guardian",
+            "type": "boolean"
           },
           "name": {
             "title": "Name",
@@ -6097,6 +6125,11 @@
             "title": "Email Verified",
             "type": "boolean"
           },
+          "guardian_needed": {
+            "default": false,
+            "title": "Guardian Needed",
+            "type": "boolean"
+          },
           "has_data": {
             "default": true,
             "title": "Has Data",
@@ -6114,6 +6147,11 @@
           "is_admin": {
             "default": false,
             "title": "Is Admin",
+            "type": "boolean"
+          },
+          "minor": {
+            "default": false,
+            "title": "Minor",
             "type": "boolean"
           },
           "persona": {
@@ -10363,6 +10401,23 @@
             ],
             "title": "Consent At"
           },
+          "guardian": {
+            "default": false,
+            "title": "Guardian",
+            "type": "boolean"
+          },
+          "guardian_confirmed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guardian Confirmed At"
+          },
           "id": {
             "format": "uuid",
             "title": "Id",
@@ -10445,6 +10500,11 @@
             "format": "date-time",
             "title": "Accepted At",
             "type": "string"
+          },
+          "guardian": {
+            "default": false,
+            "title": "Guardian",
+            "type": "boolean"
           },
           "id": {
             "format": "uuid",
@@ -11173,6 +11233,11 @@
             "minLength": 6,
             "title": "Code",
             "type": "string"
+          },
+          "guardian_confirm": {
+            "default": false,
+            "title": "Guardian Confirm",
+            "type": "boolean"
           }
         },
         "required": [
@@ -11860,6 +11925,53 @@
           }
         },
         "summary": "Apple",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/birth": {
+      "put": {
+        "description": "PM-248: the date of birth from onboarding, so the server knows whether a parent must follow before anything else.\nUnder /auth/ so it answers while no parent follows yet. Only the day the person turns 18 is kept, if still ahead.",
+        "operationId": "set_birth_date_auth_birth_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BirthIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Me"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Birth Date",
         "tags": [
           "auth"
         ]
@@ -17933,7 +18045,7 @@
             "description": "Successful Response"
           },
           "422": {
-            "description": "consent_required or under_18"
+            "description": "consent_required, birth_required or guardian_required"
           }
         },
         "security": [

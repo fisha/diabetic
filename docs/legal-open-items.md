@@ -41,7 +41,7 @@ below, which Guy and the lawyer can still change.
 | Data processing agreement with OpenAI; the policy says it may keep requests up to 30 days for abuse detection | privacy | The API sends `store=false`; lower it if zero data retention is agreed |
 | Transfer mechanism per processor (SCCs or Data Privacy Framework) | privacy | OpenAI, Fly.io, Expo, Apple, Google (PM-230) |
 | Accessibility coordinator's name and phone (the page gives email only) | accessibility | Lawyer (PM-230): Israeli accessibility regulations may require them |
-| Minimum age 18 and family accounts later | privacy, terms | Lawyer before opening to parents of children (PM-230) |
+| Under 18 with a parent following (PM-248, 18 Nov 2026): the parent's in-app confirmation as parental consent, one parent or both, a lower age limit, self-declared age, minors and the external AI engine, turning 18, the parent's delete right, the contracting party | privacy, terms | Lawyer (PM-249, `needs-lawyer`). Built defaults: any age under 18 with one confirmed parent (18+), no profile, device or AI before that, minors never train models |
 | Sharing with a trusted person (DAP-19): consent text, the viewer's chat about shared data, and older shares without a consent record | privacy, terms | Lawyer (PM-127); texts in `packages/i18n` `shr.consent_*` and privacy "Sharing" |
 | Cancellation and refund terms under consumer protection law | terms | When billing opens; the terms say they will be added first |
 | Liability wording | terms | Lawyer (PM-230); the page marker was removed on Guy's request |
