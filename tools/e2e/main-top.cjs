@@ -61,6 +61,9 @@ const server = http.createServer((req, res) => {
       const has = (await pill.count()) > 0;
       const count = has ? Number((await pill.first().getAttribute('aria-label')).split(', ')[1]) : 0;
       ok(`${tag}: insights line with a count`, has && count > 0, `count ${count}`);
+      // The line is a card with the start of the first insight under "Insights" (Guy, 18 Nov 2026: no search-box pill).
+      const lineText = has ? (await pill.first().innerText()).split('\n').map((x) => x.trim()).filter(Boolean) : [];
+      ok(`${tag}: line previews the first insight`, lineText.length >= 3 && lineText.some((x) => x.length > 12), lineText.join(' | '));
       ok(`${tag}: time in range tile`, (await page.getByText(L.so, { exact: true }).count()) > 0 && (await page.getByText(L.tir, { exact: true }).count()) > 0);
       ok(`${tag}: glucose tile with age`, (await page.getByText(L.glu, { exact: true }).count()) > 0 && (await page.getByText(he ? /דק|עכשיו/ : /min|now/).count()) > 0);
       // Tiles side by side on one row.
