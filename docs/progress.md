@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+18 Nov 2026 (Jira PM-225, thread "Fix insight showing yesterday as today"): Guy's main screen at 12:37 read "68
+active minutes logged today" while showing "No connection to Stedio"; the minutes were yesterday's. Range reads
+(records, glucose, heart rate) reaching now share one offline cache key for the calendar day and the rolling 24 hours,
+and the kept answer returned while offline was shown whole, so after midnight yesterday's rows counted as today. Kept
+answers and answers held over from another window now keep only their rows inside the window (app
+`keptAnswer`, `useRange`; app PR #124). No copy, companion or API change, so no eval run. `pnpm check` passes (mobile
+184 tests, one new). Next: OTA (0.6.0 and 0.5.0); find why the phone could not reach the API since 07:16.
 18 Nov 2026 (Jira PM-221, thread "Rename sport mode to temporary target"): Guy asked that the label "מצב ספורט" read
 "יעד זמני" (MiniMed 780G Temp Target). `mode.temp_target` and `mode.b_temp_target` now read "יעד זמני" in Hebrew and
 "Temp target" in English (row and badge alike). Strings only: no companion, API or data change, so no eval run is
