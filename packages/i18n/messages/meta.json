@@ -20958,5 +20958,145 @@
     "review": [
       "translation"
     ]
+  },
+  "com.via_wa": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.body": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.agree": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.open": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.waiting": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.linked": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.kinds": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.k_checkin": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.k_reminder": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.k_daily": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.k_weekly": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.k_visit": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.k_insight": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.k_meal": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.k_sensor": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.k_link": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.kinds_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.ai_off": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "wa.failed": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
   }
 }
