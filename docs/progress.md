@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-295, thread "Fix companion default name for new users"): a new tester's companion was called "Noa";
+it should be "Stedio". Cause: the name has been fixed since 14 Nov (no field), but the app's onboarding draft still
+started with the old default "Noa" and saved it. App: default and fallbacks are "Stedio". API: a new profile always
+gets "Stedio" and later saves keep the saved name (`profile_answers.keep_companion_name`), so apps before the OTA never
+write "Noa" back; migration `e1f3a5c7d9b2` renames "Noa" to "Stedio" for accounts made after 14 Nov 17:00 UTC (older
+accounts may have chosen it and are kept). Voice sample default and demo accounts use "Stedio". API tests
+`test_companion_name_is_not_set_by_a_save`, `test_a_name_saved_before_the_fixed_name_is_kept`; migration SQL checked on
+Postgres; app tests pass. Next: deploy API (runs the migration), OTA to testers.
+
 19 Nov 2026 (Jira PM-293, thread "Restyle the parent viewing-child companion screen"): Guy asked that the follower view
 show the conversation page and let the viewer talk about the profile of the person viewed, and that the Live Activity
 show the viewer's own data, never the person viewed. Found: an admin who also follows someone got no companion tab

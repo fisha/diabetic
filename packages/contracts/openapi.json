@@ -21894,7 +21894,7 @@
             "name": "name",
             "required": false,
             "schema": {
-              "default": "Noa",
+              "default": "Stedio",
               "maxLength": 40,
               "title": "Name",
               "type": "string"
