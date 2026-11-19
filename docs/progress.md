@@ -155,6 +155,8 @@ migration. Chromium check 5/5.
 18 Nov 2026 night (Jira PM-262, same thread): the header plus on Overview and Journal is gone (the round plus beside the
 
 18 Nov 2026 night (Jira PM-265, same thread): the time-in-range tile on the main screen counts the last 24 hours (not since midnight) and is always shown when the person has a range, with a dash and "Not enough data" when coverage is too low. It had hidden itself every night just after 00:00. App PR #157.
+
+19 Nov 2026 (Jira PM-266/PM-267, same thread): CareLink's history tirSettings is a report preference, not the pump's range. A tester had 70-140 there while her pump's SG Review was 70-180. The API now keeps the pump's own range (device.pump_band), found by matching the pump's live time-in-range figures, ahead of tirSettings (api #122). scripts/carelink_range_sample.py prints the ranges plus a masked JSON sample (api #121). App: a fatal JS error is saved and sent to /app/client-error (where=fatal) on the next run (app #158), to catch Guy's intermittent launch crash on build 18.
 tab bar covers it); in a wide window the side bar gets a Quick log row instead. e2e `main-top.cjs` 106/106 (one plus on
 Overview and Journal). JS only. Next: OTA.
 
