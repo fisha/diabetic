@@ -14447,6 +14447,13 @@
     ],
     "note": "Viewer companion screen, under the character (PM-251, Guy 18 Nov 2026)."
   },
+  "shr.chat_about": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer companion: the question put in the message box by an insight's Talk button (PM-294, Guy 19 Nov 2026)."
+  },
   "shr.sw_view_only": {
     "board": "Settings",
     "review": [

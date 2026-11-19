@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-294, same thread): Guy asked that the viewer also see the insights of the person viewed. The
+follower's conversation tab (`AboutChat`) shows the main screen's `NowInsights` when insights are shared (only the line
+once a conversation is going); read only, as before (no mark-read or changes, refused by the API too); "Talk about this"
+puts `shr.chat_about` into the viewer's own message box. Browser e2e `tools/e2e/sharing.cjs` has new checks (he light,
+en light, he dark, no failures). App #181. Next: OTA to testers (no API change).
+
 19 Nov 2026 (Jira PM-293, thread "Restyle the parent viewing-child companion screen"): Guy asked that the follower view
 show the conversation page and let the viewer talk about the profile of the person viewed, and that the Live Activity
 show the viewer's own data, never the person viewed. Found: an admin who also follows someone got no companion tab
