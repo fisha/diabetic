@@ -3300,5 +3300,6 @@
   "wa.k_link": "Connection stopped",
   "wa.kinds_note": "If you haven't written to Stedio in the last day, these first arrive as a short message with a button. Nothing is sent between 22:00 and 07:00. Glucose alerts stay in the app.",
   "wa.ai_off": "The companion is off. Turn it on in Settings > Privacy to chat on WhatsApp.",
-  "wa.failed": "That didn't work. Try again in a moment."
+  "wa.failed": "That didn't work. Try again in a moment.",
+  "meal.total_est_said": "Estimate, not a measurement · for the amounts you described"
 }
