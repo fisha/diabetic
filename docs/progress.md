@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-314, thread "Upgrade the visit report"): Guy asked for the meal sheet's examples in the clinic
+report. A new section "Glucose after meals" shows the three meals of the period with the largest rise and one typical
+meal (the middle rise of the rest): the meal, carbs and the insulin for it, the curve with the person's own range
+shaded, glucose at the meal, the highest and when, the rise and the time back to start. Same rule as the app's meal
+sheet: the return is looked for up to 6 h after the meal and not past the next logged meal or workout ("Not within
+6 h", "Not before the next meal"). Food names only with the detailed log. API only; no app change.
+
 19 Nov 2026 (Jira PM-309, thread "Make "Today so far" insights about today"): Guy said the Today so far sheet still
 listed 14-day patterns ("two hours after dinner: usually 134 -> 153") and asked that it be about today, e.g. what
 happened today two hours after dinner and how that compares with the other days. Each routine there now leads with a
