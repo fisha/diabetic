@@ -24175,5 +24175,47 @@
       "translation"
     ],
     "note": "Adult weekly challenge (PM-303, Guy 19 Nov 2026)."
+  },
+  "shr.rel_dad": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-312: who a follower is to the person sharing; Dad/Mom/Grandpa/Grandma titles show on encouragements."
+  },
+  "shr.rel_mom": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-312: who a follower is to the person sharing; Dad/Mom/Grandpa/Grandma titles show on encouragements."
+  },
+  "shr.rel_grandpa": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-312: who a follower is to the person sharing; Dad/Mom/Grandpa/Grandma titles show on encouragements."
+  },
+  "shr.rel_grandma": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-312: who a follower is to the person sharing; Dad/Mom/Grandpa/Grandma titles show on encouragements."
+  },
+  "shr.rel_s": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-312: who a follower is to the person sharing; Dad/Mom/Grandpa/Grandma titles show on encouragements."
+  },
+  "onb.mi_who": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-312: who a follower is to the person sharing; Dad/Mom/Grandpa/Grandma titles show on encouragements."
   }
 }

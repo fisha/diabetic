@@ -3734,5 +3734,11 @@
   "yg.g_baby": "Little",
   "yg.g_kid": "Buddy",
   "yg.g_explorer": "Explorer",
-  "yg.ch_log_lunch_work": "Log lunch on work days"
+  "yg.ch_log_lunch_work": "Log lunch on work days",
+  "shr.rel_dad": "Dad",
+  "shr.rel_mom": "Mom",
+  "shr.rel_grandpa": "Grandpa",
+  "shr.rel_grandma": "Grandma",
+  "shr.rel_s": "Dad, Mom, Grandpa and Grandma show by that name on the encouragements they send you.",
+  "onb.mi_who": "Who will follow you?"
 }
