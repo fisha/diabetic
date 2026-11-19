@@ -7522,6 +7522,54 @@
         "title": "PartIn",
         "type": "object"
       },
+      "PastVisit": {
+        "properties": {
+          "date": {
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "title": "Date",
+            "type": "string"
+          },
+          "questions": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 30,
+            "title": "Questions",
+            "type": "array"
+          },
+          "summary": {
+            "default": "",
+            "maxLength": 2000,
+            "title": "Summary",
+            "type": "string"
+          },
+          "time": {
+            "anyOf": [
+              {
+                "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Time"
+          },
+          "with": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 4,
+            "title": "With",
+            "type": "array"
+          }
+        },
+        "required": [
+          "date"
+        ],
+        "title": "PastVisit",
+        "type": "object"
+      },
       "PauseIn": {
         "additionalProperties": false,
         "properties": {
@@ -7585,6 +7633,29 @@
           "persona"
         ],
         "title": "PersonaIn",
+        "type": "object"
+      },
+      "Phone": {
+        "description": "What only the phone keeps, sent with a message for that answer only (never stored on the server).",
+        "properties": {
+          "past_visits": {
+            "items": {
+              "$ref": "#/components/schemas/PastVisit"
+            },
+            "maxItems": 12,
+            "title": "Past Visits",
+            "type": "array"
+          },
+          "visit_questions": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 30,
+            "title": "Visit Questions",
+            "type": "array"
+          }
+        },
+        "title": "Phone",
         "type": "object"
       },
       "PhotoOut": {
@@ -8952,6 +9023,16 @@
             ],
             "title": "Conversation Id"
           },
+          "phone": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Phone"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "text": {
             "maxLength": 4000,
             "minLength": 1,
@@ -9009,6 +9090,16 @@
               }
             ],
             "title": "Opener"
+          },
+          "phone": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Phone"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "resume": {
             "default": false,
@@ -10167,6 +10258,16 @@
             "minLength": 1,
             "title": "Heard",
             "type": "string"
+          },
+          "phone": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Phone"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
