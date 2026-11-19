@@ -24266,5 +24266,40 @@
       "translation"
     ],
     "note": "PM-315: back to start when glucose never rose above its start after the meal; same wording as the clinic report."
+  },
+  "ovr.rises_t_today": {
+    "board": "Overview (PM-318)",
+    "review": [
+      "translation"
+    ],
+    "note": "Guy, 19 Nov 2026: biggest rises for a single day too; one Insights row on Overview opening All insights."
+  },
+  "ovr.rises_t_24h": {
+    "board": "Overview (PM-318)",
+    "review": [
+      "translation"
+    ],
+    "note": "Guy, 19 Nov 2026: biggest rises for a single day too; one Insights row on Overview opening All insights."
+  },
+  "ovr.rises_t_on": {
+    "board": "Overview (PM-318)",
+    "review": [
+      "translation"
+    ],
+    "note": "Guy, 19 Nov 2026: biggest rises for a single day too; one Insights row on Overview opening All insights."
+  },
+  "ovr.ins_row": {
+    "board": "Overview (PM-318)",
+    "review": [
+      "translation"
+    ],
+    "note": "Guy, 19 Nov 2026: biggest rises for a single day too; one Insights row on Overview opening All insights."
+  },
+  "ovr.ins_row_n": {
+    "board": "Overview (PM-318)",
+    "review": [
+      "translation"
+    ],
+    "note": "Guy, 19 Nov 2026: biggest rises for a single day too; one Insights row on Overview opening All insights."
   }
 }
