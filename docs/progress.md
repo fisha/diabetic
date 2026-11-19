@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-296, thread "Upgrade the visit report"): Itay (Libre, own range 70-120) said the clinic report
+showed 70-180. The report now uses the person's own range (from the profile, or the pump's when connected) as the main
+one: the headline "In own range" tile, the ranges bar and legend (below / in / above), the day-by-day bars, the day
+table and the shaded band in the glucose-by-time-of-day profile. The international consensus 70-180 stays as a
+labelled reference line under the bar ("For reference, the international consensus range 70 to 180: ...") and as grey
+dashed lines on the profile. Without an own range the report keeps the five consensus ranges. API only; no app change.
+
 19 Nov 2026 (Jira PM-295, thread "Fix companion default name for new users"): a new tester's companion was called "Noa";
 it should be "Stedio". Cause: the name has been fixed since 14 Nov (no field), but the app's onboarding draft still
 started with the old default "Noa" and saved it. App: default and fallbacks are "Stedio". API: a new profile always
