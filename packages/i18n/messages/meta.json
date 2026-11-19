@@ -637,6 +637,13 @@
     ],
     "note": "Day detail opened from a Full days row (Guy, 17 Nov 2026)."
   },
+  "bk.d_note@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "bk.del_failed": {
     "board": "Overview",
     "review": [
@@ -811,6 +818,13 @@
     "review": [
       "translation"
     ]
+  },
+  "bk.dd_note@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "bk.peak": {
     "board": "Overview",
@@ -1706,6 +1720,14 @@
       "clinical"
     ]
   },
+  "com.low.title@v": {
+    "board": "Localization",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "com.mic_den_b": {
     "board": "Companion",
     "review": [
@@ -1749,6 +1771,14 @@
       "clinical"
     ],
     "note": "Shown instead of a model reply that read as a dose instruction (server safety check)"
+  },
+  "com.no_dose@v": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "com.no_save": {
     "board": "Companion",
@@ -2100,6 +2130,13 @@
       "translation"
     ]
   },
+  "com.src_meter@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "com.st_idle": {
     "board": "Companion",
     "review": [
@@ -2202,6 +2239,13 @@
       "translation"
     ],
     "note": "Arguments replace the sample values drawn in the design."
+  },
+  "com.stale_b@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "com.stop": {
     "board": "Companion",
@@ -2454,6 +2498,13 @@
     "review": [
       "translation"
     ]
+  },
+  "com.yours@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "dal.battery": {
     "board": "Settings",
@@ -2881,6 +2932,13 @@
       "translation"
     ]
   },
+  "hab.note@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "hab.other": {
     "board": "Companion",
     "review": [
@@ -2985,6 +3043,14 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.a1c_b@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.a1c_basis": {
     "board": "OVR-04",
     "review": [
@@ -2998,6 +3064,13 @@
     "review": [
       "translation"
     ]
+  },
+  "ins.a1c_lab@v": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.a1c_short": {
     "board": "OVR-01",
@@ -3036,6 +3109,14 @@
       "clinical"
     ]
   },
+  "ins.adv_move@v": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.adv_team": {
     "board": "OVR-04",
     "review": [
@@ -3043,6 +3124,14 @@
       "clinical"
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.adv_team@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.analyzed": {
     "board": "Overview",
@@ -3062,11 +3151,25 @@
       "translation"
     ]
   },
+  "ins.basis@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.basis_carelink": {
     "board": "OVR-01",
     "review": [
       "translation"
     ]
+  },
+  "ins.basis_carelink@v": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.basis_pump": {
     "board": "INS-01",
@@ -3074,17 +3177,38 @@
       "translation"
     ]
   },
+  "ins.basis_pump@v": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.body_above": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
+  "ins.body_above@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.body_below": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "ins.body_below@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.cert_high": {
     "board": "Overview",
@@ -3122,6 +3246,13 @@
       "translation"
     ]
   },
+  "ins.ev_profile@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.ev_record": {
     "board": "Insights",
     "review": [
@@ -3139,6 +3270,13 @@
     "review": [
       "translation"
     ]
+  },
+  "ins.f_act_gap_b@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_act_gap_t": {
     "board": "Overview",
@@ -3188,11 +3326,26 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_basis@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_body_basis": {
     "board": "Insights",
     "review": [
       "translation"
     ]
+  },
+  "ins.f_body_basis@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_body_g": {
     "board": "Insights",
@@ -3208,6 +3361,14 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_food_b@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_food_good_b": {
     "board": "OVR-04",
     "review": [
@@ -3216,6 +3377,14 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_food_good_b@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_food_good_t": {
     "board": "OVR-04",
     "review": [
@@ -3223,6 +3392,14 @@
       "clinical"
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_good_t@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_food_info_t": {
     "board": "OVR-04",
@@ -3240,6 +3417,14 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_food_watch_b@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_food_watch_t": {
     "board": "OVR-04",
     "review": [
@@ -3247,6 +3432,14 @@
       "clinical"
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.f_food_watch_t@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_gap_b": {
     "board": "Insights",
@@ -3296,6 +3489,14 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_late_b@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_late_b2": {
     "board": "OVR-04",
     "review": [
@@ -3304,12 +3505,27 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_late_b2@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_late_rise_b": {
     "board": "Insights",
     "review": [
       "translation"
     ],
     "note": "Medians; rise and other are signed changes with unit."
+  },
+  "ins.f_late_rise_b@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_late_rise_t": {
     "board": "Insights",
@@ -3333,6 +3549,13 @@
     ],
     "note": "Body of the meal-time insight. Descriptive only."
   },
+  "ins.f_meal_time_b@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_meal_time_t": {
     "board": "Insights",
     "review": [
@@ -3348,6 +3571,14 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_range_good_b@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_range_good_t": {
     "board": "OVR-04",
     "review": [
@@ -3362,6 +3593,13 @@
       "translation"
     ]
   },
+  "ins.f_rhr_b@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_rhr_t": {
     "board": "Insights",
     "review": [
@@ -3369,12 +3607,26 @@
     ],
     "note": "G-72 finding rhr_glucose."
   },
+  "ins.f_rhr_t@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_sensor_short_b": {
     "board": "Insights",
     "review": [
       "translation"
     ],
     "note": "Insight body (G-58)."
+  },
+  "ins.f_sensor_short_b@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_sensor_short_t": {
     "board": "Insights",
@@ -3418,6 +3670,13 @@
       "translation"
     ]
   },
+  "ins.f_sleep_b@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_sleep_t": {
     "board": "Insights",
     "review": [
@@ -3425,11 +3684,25 @@
     ],
     "note": "G-72 finding sleep_glucose."
   },
+  "ins.f_sleep_t@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_steps": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "ins.f_steps@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_steps_b": {
     "board": "Insights",
@@ -3437,12 +3710,26 @@
       "translation"
     ]
   },
+  "ins.f_steps_b@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_steps_t": {
     "board": "Insights",
     "review": [
       "translation"
     ],
     "note": "G-72 finding steps_glucose."
+  },
+  "ins.f_steps_t@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_heat_t": {
     "board": "Insights",
@@ -3452,6 +3739,14 @@
     ],
     "note": "PM-154 finding heat_glucose: hot days (felt 30 °C or more) against other days; observation only."
   },
+  "ins.f_heat_t@v": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_heat_b": {
     "board": "Insights",
     "review": [
@@ -3459,6 +3754,14 @@
       "clinical"
     ],
     "note": "PM-154 finding heat_glucose: hot days (felt 30 °C or more) against other days; observation only."
+  },
+  "ins.f_heat_b@v": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_heat_steps": {
     "board": "Insights",
@@ -3476,6 +3779,14 @@
     ],
     "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
   },
+  "ins.f_prev_steps_t@v": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_prev_steps_b": {
     "board": "Insights",
     "review": [
@@ -3483,6 +3794,14 @@
       "clinical"
     ],
     "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_prev_steps_b@v": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_weekend_t": {
     "board": "Insights",
@@ -3492,6 +3811,14 @@
     ],
     "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
   },
+  "ins.f_weekend_t@v": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_weekend_b": {
     "board": "Insights",
     "review": [
@@ -3499,6 +3826,14 @@
       "clinical"
     ],
     "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_weekend_b@v": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_weekend_basis": {
     "board": "Insights",
@@ -3508,6 +3843,14 @@
     ],
     "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
   },
+  "ins.f_weekend_basis@v": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_best_t": {
     "board": "Insights",
     "review": [
@@ -3516,6 +3859,14 @@
     ],
     "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
   },
+  "ins.f_best_t@v": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_best_b": {
     "board": "Insights",
     "review": [
@@ -3523,6 +3874,14 @@
       "clinical"
     ],
     "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
+  },
+  "ins.f_best_b@v": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_best_first_meal": {
     "board": "Insights",
@@ -3596,6 +3955,14 @@
     ],
     "note": "G-98 (17 Nov 2026): look-back pattern in the person's own data; observation only, no cause, no advice."
   },
+  "ins.f_best_basis@v": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_heat_basis": {
     "board": "Insights",
     "review": [
@@ -3603,6 +3970,14 @@
       "clinical"
     ],
     "note": "PM-154 finding heat_glucose: hot days (felt 30 °C or more) against other days; observation only."
+  },
+  "ins.f_heat_basis@v": {
+    "board": "Insights",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_sub": {
     "board": "OVR-04",
@@ -3636,6 +4011,14 @@
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
   },
+  "ins.f_timing_good_b@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.f_timing_good_t": {
     "board": "OVR-04",
     "review": [
@@ -3657,6 +4040,13 @@
       "translation"
     ],
     "note": "G-69: Apple Fitness / Health Connect exercise minutes, stood hours, workouts and lows after workouts (Guy, 13 Nov 2026)."
+  },
+  "ins.f_workout_lows@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.f_workout_t": {
     "board": "Insights",
@@ -3713,12 +4103,26 @@
       "translation"
     ]
   },
+  "ins.gone_corrected@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.gone_ended": {
     "board": "Overview",
     "review": [
       "translation"
     ],
     "note": "Says only that the pattern was not seen in recent data; never that something improved."
+  },
+  "ins.gone_ended@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.median_b": {
     "board": "OVR-04",
@@ -3733,6 +4137,13 @@
     ],
     "note": "G-07: shown instead of insights while no target range is set. The example only shows the format."
   },
+  "ins.no_band@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.obs": {
     "board": "Overview",
     "review": [
@@ -3745,11 +4156,25 @@
       "translation"
     ]
   },
+  "ins.p_basis@v": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.p_rise_b": {
     "board": "INS-01",
     "review": [
       "translation"
     ]
+  },
+  "ins.p_rise_b@v": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.p_rise_b2": {
     "board": "OVR-04",
@@ -3758,6 +4183,14 @@
       "clinical"
     ],
     "note": "Routine finding (G-38), from findings.py. Needs the clinical review (G-05)."
+  },
+  "ins.p_rise_b2@v": {
+    "board": "OVR-04",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.p_rise_t": {
     "board": "INS-01",
@@ -3776,6 +4209,13 @@
     "review": [
       "translation"
     ]
+  },
+  "ins.p_timing_b@v": {
+    "board": "INS-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.p_timing_t": {
     "board": "INS-01",
@@ -3843,6 +4283,13 @@
       "translation"
     ]
   },
+  "ins.rd_empty@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.rd_facts": {
     "board": "Insights",
     "review": [
@@ -3868,6 +4315,13 @@
     ],
     "note": "Personal reading loads by itself in the insight detail (Guy, 15 Nov 2026)."
   },
+  "ins.rd_loading@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.rd_missing": {
     "board": "Insights",
     "review": [
@@ -3879,6 +4333,13 @@
     "review": [
       "translation"
     ]
+  },
+  "ins.rd_note@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.rd_t": {
     "board": "Insights",
@@ -3892,6 +4353,13 @@
       "translation"
     ],
     "note": "Personal reading loads by itself in the insight detail (Guy, 15 Nov 2026)."
+  },
+  "ins.rd_what@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.set_cap": {
     "board": "Settings",
@@ -3977,11 +4445,25 @@
       "translation"
     ]
   },
+  "ins.t_above_afternoon@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.t_above_evening": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "ins.t_above_evening@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.t_above_morning": {
     "board": "Overview",
@@ -3989,11 +4471,25 @@
       "translation"
     ]
   },
+  "ins.t_above_morning@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.t_above_night": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "ins.t_above_night@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.t_below_afternoon": {
     "board": "Overview",
@@ -4001,11 +4497,25 @@
       "translation"
     ]
   },
+  "ins.t_below_afternoon@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.t_below_evening": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "ins.t_below_evening@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.t_below_morning": {
     "board": "Overview",
@@ -4013,11 +4523,25 @@
       "translation"
     ]
   },
+  "ins.t_below_morning@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.t_below_night": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "ins.t_below_night@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.tag_new": {
     "board": "Overview",
@@ -4051,6 +4575,13 @@
       "translation"
     ],
     "note": "{when}: today, yesterday, last Tuesday, or on 11 Nov, with its own preposition (14 Nov 2026)."
+  },
+  "ins.upd_corrected@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.upd_new": {
     "board": "Overview",
@@ -4105,11 +4636,25 @@
       "translation"
     ]
   },
+  "ins.why_band_dev@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.why_band_you": {
     "board": "Insights",
     "review": [
       "translation"
     ]
+  },
+  "ins.why_band_you@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.why_d_activity": {
     "board": "Insights",
@@ -4159,6 +4704,13 @@
       "translation"
     ]
   },
+  "ins.why_data_none@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.why_fix": {
     "board": "Insights",
     "review": [
@@ -4171,11 +4723,25 @@
       "translation"
     ]
   },
+  "ins.why_goals@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ins.why_goals_none": {
     "board": "Insights",
     "review": [
       "translation"
     ]
+  },
+  "ins.why_goals_none@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.why_hide": {
     "board": "Insights",
@@ -4269,6 +4835,13 @@
       "translation"
     ]
   },
+  "jrn.b_rep@v": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "jrn.b_sug": {
     "board": "Journal",
     "review": [
@@ -4286,6 +4859,13 @@
     "review": [
       "translation"
     ]
+  },
+  "jrn.b_you@v": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "jrn.back": {
     "board": "Journal",
@@ -4353,6 +4933,13 @@
     "review": [
       "translation"
     ]
+  },
+  "jrn.dup_meal@v": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "jrn.dup_merge": {
     "board": "Journal",
@@ -4429,6 +5016,13 @@
     "review": [
       "translation"
     ]
+  },
+  "jrn.empty@v": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "jrn.empty_f": {
     "board": "Journal",
@@ -4550,6 +5144,13 @@
       "translation"
     ]
   },
+  "jrn.ins_detail@v": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "jrn.ins_manual": {
     "board": "Journal",
     "review": [
@@ -4569,6 +5170,13 @@
     "review": [
       "translation"
     ]
+  },
+  "jrn.ins_src@v": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "jrn.ins_title": {
     "board": "Journal",
@@ -4658,6 +5266,13 @@
       "translation"
     ]
   },
+  "jrn.loading@v": {
+    "board": "JRN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "jrn.meal_edit": {
     "board": "Journal",
     "review": [
@@ -4682,11 +5297,25 @@
       "translation"
     ]
   },
+  "jrn.meal_src_photo@v": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "jrn.meal_src_you": {
     "board": "Journal",
     "review": [
       "translation"
     ]
+  },
+  "jrn.meal_src_you@v": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "jrn.meal_title": {
     "board": "Journal",
@@ -4707,6 +5336,13 @@
     "review": [
       "translation"
     ]
+  },
+  "jrn.orig_kept@v": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "jrn.pair_after": {
     "board": "Journal",
@@ -4745,12 +5381,28 @@
       "clinical"
     ]
   },
+  "jrn.pair_higher@v": {
+    "board": "Journal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "jrn.pair_lower": {
     "board": "Journal",
     "review": [
       "translation",
       "clinical"
     ]
+  },
+  "jrn.pair_lower@v": {
+    "board": "Journal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "jrn.pair_none": {
     "board": "Journal",
@@ -4877,6 +5529,13 @@
     ],
     "note": "Where a device event came from when the person logged it (\"I changed my set\")"
   },
+  "jrn.src_you@v": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "jrn.st_completed": {
     "board": "Journal",
     "review": [
@@ -4888,6 +5547,13 @@
     "review": [
       "translation"
     ]
+  },
+  "jrn.st_declined@v": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "jrn.st_opened": {
     "board": "Journal",
@@ -4925,6 +5591,13 @@
     "review": [
       "translation"
     ]
+  },
+  "jrn.state.reported@v": {
+    "board": "Localization",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "jrn.state.suggested": {
     "board": "Localization",
@@ -5215,6 +5888,13 @@
       "translation"
     ]
   },
+  "lrn.checking_b@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "lrn.learning": {
     "board": "Overview",
     "review": [
@@ -5239,11 +5919,25 @@
       "translation"
     ]
   },
+  "lrn.personal@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "lrn.personal_b": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "lrn.personal_b@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "lrn.t": {
     "board": "Overview",
@@ -5264,6 +5958,13 @@
       "translation"
     ]
   },
+  "lrn.warming_none@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "lrn.d_became": {
     "board": "Overview",
     "review": [
@@ -5275,6 +5976,13 @@
     "review": [
       "translation"
     ]
+  },
+  "lrn.d_future@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "lrn.d_future_t": {
     "board": "Overview",
@@ -5336,11 +6044,25 @@
       "translation"
     ]
   },
+  "lrn.d_routine@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "lrn.d_shown": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "lrn.d_shown@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "lrn.d_will": {
     "board": "Overview",
@@ -5366,11 +6088,25 @@
       "translation"
     ]
   },
+  "lrn.how_day@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "lrn.how_order": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "lrn.how_order@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "lrn.how_progress": {
     "board": "Overview",
@@ -5383,6 +6119,13 @@
     "review": [
       "translation"
     ]
+  },
+  "lrn.how_routine@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "lrn.how_t": {
     "board": "Overview",
@@ -5414,17 +6157,38 @@
       "translation"
     ]
   },
+  "lrn.st_checking@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "lrn.st_learning": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
+  "lrn.st_learning@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "lrn.st_personal": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "lrn.st_personal@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "lrn.st_warming": {
     "board": "Overview",
@@ -5443,6 +6207,13 @@
     "review": [
       "translation"
     ]
+  },
+  "lrn.warming_on@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "meal.a1": {
     "board": "Meal",
@@ -6338,6 +7109,13 @@
       "translation"
     ]
   },
+  "now.alert_b@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "now.checkin_t": {
     "board": "Companion",
     "review": [
@@ -6350,11 +7128,25 @@
       "translation"
     ]
   },
+  "now.high_t@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "now.in_b": {
     "board": "Companion",
     "review": [
       "translation"
     ]
+  },
+  "now.in_b@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "now.in_t0": {
     "board": "Companion",
@@ -6367,6 +7159,13 @@
     "review": [
       "translation"
     ]
+  },
+  "now.in_t1@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "now.in_t2": {
     "board": "Companion",
@@ -6385,6 +7184,13 @@
     "review": [
       "translation"
     ]
+  },
+  "now.low_t@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "now.mark_read": {
     "board": "Companion",
@@ -6411,6 +7217,13 @@
       "translation"
     ]
   },
+  "now.move_t1@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "now.move_t2": {
     "board": "Companion",
     "review": [
@@ -6428,6 +7241,13 @@
     "review": [
       "translation"
     ]
+  },
+  "now.reading_b@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "now.reminder_t": {
     "board": "Companion",
@@ -6460,6 +7280,13 @@
       "translation"
     ]
   },
+  "now.tir_b@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "now.tir_t0": {
     "board": "Companion",
     "review": [
@@ -6471,6 +7298,13 @@
     "review": [
       "translation"
     ]
+  },
+  "now.tir_t1@v": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "now.tir_t2": {
     "board": "Companion",
@@ -6650,11 +7484,25 @@
       "translation"
     ]
   },
+  "nut.target_day@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "nut.target_kg": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "nut.target_kg@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "onb.a_apple": {
     "board": "Onboarding",
@@ -9236,6 +10084,13 @@
       "translation"
     ]
   },
+  "ovr.day_empty@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ovr.day_na": {
     "board": "Overview",
     "review": [
@@ -9473,6 +10328,13 @@
       "translation"
     ]
   },
+  "ovr.lg_range@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ovr.lg_sensor": {
     "board": "Overview",
     "review": [
@@ -9509,11 +10371,25 @@
       "translation"
     ]
   },
+  "ovr.no_tir@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ovr.none_b": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "ovr.none_b@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ovr.none_cta": {
     "board": "Overview",
@@ -9533,6 +10409,14 @@
       "translation",
       "clinical"
     ]
+  },
+  "ovr.not_cause@v": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ovr.not_right": {
     "board": "Overview",
@@ -9636,11 +10520,25 @@
       "translation"
     ]
   },
+  "ovr.range_carelink@v": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ovr.range_pump": {
     "board": "OVR-01",
     "review": [
       "translation"
     ]
+  },
+  "ovr.range_pump@v": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ovr.reading.stale": {
     "board": "Localization",
@@ -9691,11 +10589,25 @@
       "translation"
     ]
   },
+  "ovr.src_meter@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ovr.src_pump": {
     "board": "OVR-01",
     "review": [
       "translation"
     ]
+  },
+  "ovr.src_pump@v": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ovr.src_sensor": {
     "board": "Overview",
@@ -9709,11 +10621,25 @@
       "translation"
     ]
   },
+  "ovr.src_you@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "ovr.src_you_pump": {
     "board": "OVR-01",
     "review": [
       "translation"
     ]
+  },
+  "ovr.src_you_pump@v": {
+    "board": "OVR-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ovr.st_act": {
     "board": "Overview",
@@ -9745,6 +10671,14 @@
       "translation",
       "clinical"
     ]
+  },
+  "ovr.stale@v": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ovr.stale_wu": {
     "board": "Overview",
@@ -10097,6 +11031,13 @@
     ],
     "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
   },
+  "prg.no_range@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "prg.row_cons": {
     "board": "Overview",
     "review": [
@@ -10125,12 +11066,26 @@
     ],
     "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
   },
+  "prg.row_tbr@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "prg.row_tir": {
     "board": "Overview",
     "review": [
       "translation"
     ],
     "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.row_tir@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "prg.st_insufficient": {
     "board": "Overview",
@@ -10148,6 +11103,14 @@
     ],
     "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
   },
+  "prg.st_none@v": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "prg.st_sustained": {
     "board": "Overview",
     "review": [
@@ -10156,12 +11119,27 @@
     ],
     "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
   },
+  "prg.st_sustained@v": {
+    "board": "Overview",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "prg.trend_sub": {
     "board": "Overview",
     "review": [
       "translation"
     ],
     "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.trend_sub@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "prg.trend_t": {
     "board": "Overview",
@@ -10170,12 +11148,26 @@
     ],
     "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
   },
+  "prg.trend_t@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "prg.week_a11y": {
     "board": "Overview",
     "review": [
       "translation"
     ],
     "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "prg.week_a11y@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "prg.week_a11y_na": {
     "board": "Overview",
@@ -10437,6 +11429,13 @@
     ],
     "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
   },
+  "rtn.act_best@v": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "rtn.act_energy": {
     "board": "RTN-01",
     "review": [
@@ -10555,6 +11554,13 @@
       "translation"
     ],
     "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "rtn.act_usual_b@v": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "rtn.act_wk_count": {
     "board": "RTN-01",
@@ -10717,6 +11723,13 @@
       "translation"
     ]
   },
+  "rtn.fam_tag@v": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "rtn.fd_day": {
     "board": "RTN-01",
     "review": [
@@ -10790,6 +11803,13 @@
     "review": [
       "translation"
     ]
+  },
+  "rtn.fd_title@v": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "rtn.fd_today": {
     "board": "RTN-01",
@@ -11093,6 +12113,13 @@
       "translation"
     ]
   },
+  "rtn.src_app@v": {
+    "board": "JRN-04",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "rtn.src_conv": {
     "board": "Routine",
     "review": [
@@ -11113,6 +12140,13 @@
       "translation"
     ],
     "note": "Board memory source line"
+  },
+  "rtn.src_you@v": {
+    "board": "Routine",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "rtn.st_dismissed": {
     "board": "Routine",
@@ -11254,12 +12288,26 @@
     ],
     "note": "RTN-01 still unknown item (G-36)."
   },
+  "rtn.u_breakfast@v": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "rtn.u_dinner": {
     "board": "RTN-01",
     "review": [
       "translation"
     ],
     "note": "RTN-01 still unknown item (G-36)."
+  },
+  "rtn.u_dinner@v": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "rtn.u_glucose": {
     "board": "RTN-01",
@@ -11268,12 +12316,26 @@
     ],
     "note": "RTN-01 still unknown item (G-36)."
   },
+  "rtn.u_glucose@v": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "rtn.u_insulin": {
     "board": "RTN-01",
     "review": [
       "translation"
     ],
     "note": "RTN-01 still unknown item (G-36). Missing records do not mean insulin was not taken."
+  },
+  "rtn.u_insulin@v": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "rtn.u_lunch": {
     "board": "RTN-01",
@@ -11282,12 +12344,26 @@
     ],
     "note": "RTN-01 still unknown item (G-36)."
   },
+  "rtn.u_lunch@v": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "rtn.u_meals": {
     "board": "RTN-01",
     "review": [
       "translation"
     ],
     "note": "RTN-01 still unknown item (G-36)."
+  },
+  "rtn.u_meals@v": {
+    "board": "RTN-01",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "rtn.unavail_pause": {
     "board": "Routine",
@@ -14882,11 +15958,25 @@
       "translation"
     ]
   },
+  "sum.body@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "sum.l_none": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "sum.l_none@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "sum.w_days": {
     "board": "Overview",
@@ -14961,6 +16051,13 @@
     ],
     "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
   },
+  "td.lg_band@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "td.lg_mid": {
     "board": "Overview",
     "review": [
@@ -14981,6 +16078,13 @@
       "translation"
     ],
     "note": "Overview: progress against a baseline and the typical day (13 Nov 2026, not in the design boards; Guy asked for it)."
+  },
+  "td.sub@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "td.thin": {
     "board": "Overview",
@@ -17898,11 +19002,25 @@
     ],
     "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
   },
+  "win.basis_best@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "win.basis_day": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "win.basis_day@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "win.basis_steady": {
     "board": "Overview",
@@ -17922,11 +19040,25 @@
       "translation"
     ]
   },
+  "win.below_week_b@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "win.below_week_t": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "win.below_week_t@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "win.energy_best_b": {
     "board": "Overview",
@@ -17934,6 +19066,13 @@
       "translation"
     ],
     "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "win.energy_best_b@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "win.energy_best_t": {
     "board": "Overview",
@@ -17960,6 +19099,13 @@
       "translation"
     ]
   },
+  "win.steady_b@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "win.steady_t": {
     "board": "Overview",
     "review": [
@@ -17972,6 +19118,13 @@
       "translation"
     ],
     "note": "G-67: steps and active energy routine and personal bests (Guy, 13 Nov 2026)."
+  },
+  "win.steps_best_b@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "win.steps_best_t": {
     "board": "Overview",
@@ -17992,11 +19145,25 @@
       "translation"
     ]
   },
+  "win.tir_day_b@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "win.tir_day_t": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "win.tir_day_t@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "win.tir_week_b": {
     "board": "Overview",
@@ -18004,11 +19171,25 @@
       "translation"
     ]
   },
+  "win.tir_week_b@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "win.tir_week_t": {
     "board": "Overview",
     "review": [
       "translation"
     ]
+  },
+  "win.tir_week_t@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "wk.count": {
     "board": "Journal",
@@ -18045,6 +19226,13 @@
     "review": [
       "translation"
     ]
+  },
+  "wk.note@v": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "wk.t": {
     "board": "Journal",
@@ -18100,6 +19288,13 @@
       "translation"
     ],
     "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.body_1@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "sum.keep": {
     "board": "Overview",
@@ -18157,6 +19352,13 @@
     ],
     "note": "Today's summary lists only routines whose time already came today (Guy, 16 Nov 2026)."
   },
+  "sum.basis_today@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "sum.today": {
     "board": "Overview",
     "review": [
@@ -18199,12 +19401,26 @@
     ],
     "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
   },
+  "sum.td_part_in@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "sum.td_part_in_sofar": {
     "board": "Overview",
     "review": [
       "translation"
     ],
     "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_part_in_sofar@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "sum.td_part_above": {
     "board": "Overview",
@@ -18213,12 +19429,26 @@
     ],
     "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
   },
+  "sum.td_part_above@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "sum.td_part_above_sofar": {
     "board": "Overview",
     "review": [
       "translation"
     ],
     "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_part_above_sofar@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "sum.td_part_below": {
     "board": "Overview",
@@ -18227,12 +19457,26 @@
     ],
     "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
   },
+  "sum.td_part_below@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "sum.td_part_below_sofar": {
     "board": "Overview",
     "review": [
       "translation"
     ],
     "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_part_below_sofar@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "sum.us_in": {
     "board": "Overview",
@@ -18241,6 +19485,13 @@
     ],
     "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
   },
+  "sum.us_in@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "sum.us_above": {
     "board": "Overview",
     "review": [
@@ -18248,12 +19499,26 @@
     ],
     "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
   },
+  "sum.us_above@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "sum.us_below": {
     "board": "Overview",
     "review": [
       "translation"
     ],
     "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.us_below@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "sum.td_workout": {
     "board": "Overview",
@@ -18303,6 +19568,13 @@
       "translation"
     ],
     "note": "Period summary: keep / improve, time in range by part of day (Guy, 15 Nov 2026)."
+  },
+  "sum.parts_b@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "sum.part_night": {
     "board": "Overview",
@@ -18495,6 +19767,13 @@
       "translation"
     ],
     "note": "Insight detail charts (Guy, 15 Nov 2026)."
+  },
+  "ins.ch_band@v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ins.ch_seen": {
     "board": "Overview",
@@ -19513,6 +20792,13 @@
       "translation"
     ],
     "note": "Preparing agents (PM-182..184, Guy 17 Nov 2026)."
+  },
+  "note.week_t@v": {
+    "board": "Insights",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "note.visit_t": {
     "board": "Insights",
@@ -20729,6 +22015,14 @@
     ],
     "note": "Lab report reading and results table (PM-213, Guy 17 Nov 2026)."
   },
+  "lab.x_note@v": {
+    "board": "Companion",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
   "lab.empty": {
     "board": "Companion",
     "review": [
@@ -20990,6 +22284,13 @@
       "translation"
     ],
     "note": "How quickly glucose came back after a rise; descriptive, the person's own start value only."
+  },
+  "ovr.rises_lead@v": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ovr.rises_a11y": {
     "board": "Overview (PM-253)",
@@ -24259,6 +25560,13 @@
       "translation"
     ],
     "note": "PM-315 (Guy, 19 Nov 2026): end-of-week card on the main screen offering the week's biggest rises; descriptive only."
+  },
+  "now.rises_b@v": {
+    "board": "Companion (main screen)",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "meal.curve_no_rise": {
     "board": "Meal",

@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-313, thread "Use third person when viewing someone's account"): Guy asked that while someone
+views another person's account, text that says "your" ("בטווח שלך") names the person instead ("בטווח של יונתן"). App:
+182 catalog ids now have a viewer variant (`<id>@v`, en and he, `{person}` = the name the share shows) for the main
+screen, insights and their details, charts and breakdowns, journal sources, wins, learning days, routine summaries and
+the insights strip in the viewer's conversation; `src/i18n/viewer.ts` picks the variant while viewing, so ids without
+one (the viewer's own conversation, the viewing strip) are unchanged. Hebrew variants avoid gendered verbs ("נרשם על
+ידי", "הסוכר של {person} היה"). Widgets, Live Activity and watch stay one's own and use `tOwn`. API: the viewer
+companion is told to speak of the person by name in the third person, never "your range". App tests 227 (new
+`viewer-wording.test.ts`), i18n 20, API 787; browser run `tools/e2e/viewer-wording.cjs` 14/14 (he light, en light, he
+dark), screenshots in `/mnt/project-files/steady/viewer-wording/`. Regression set not run here (no key); deploy-api runs
+it. Next: deploy API, then OTA to testers.
+
 19 Nov 2026 (Jira PM-316, PM-317, clinic portal thread): a suspended clinic member sees "Your clinic access is
 suspended" instead of "not on a clinic team", and Admin > Clinics shows the status as text with a separate
 Suspend/Restore button (the old status button toggled on click, which is how Guy's own membership was suspended).
