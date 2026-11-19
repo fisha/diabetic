@@ -5721,7 +5721,7 @@ export interface components {
             /** Label */
             label?: string | null;
             /** Relation */
-            relation?: ("partner" | "friend" | "family" | "other") | null;
+            relation?: ("dad" | "mom" | "grandpa" | "grandma" | "partner" | "friend" | "family" | "other") | null;
             /** Scopes */
             scopes: ("glucose" | "insights" | "journal" | "profile")[];
         };
@@ -7190,11 +7190,13 @@ export interface components {
         };
         /**
          * ScopesIn
-         * @description The owner changes what one person sees (permission settings).
+         * @description The owner changes what one person sees (permission settings), or who they are to them (PM-312), or both.
          */
         ScopesIn: {
+            /** Relation */
+            relation?: ("dad" | "mom" | "grandpa" | "grandma" | "partner" | "friend" | "family" | "other") | null;
             /** Scopes */
-            scopes: ("glucose" | "insights" | "journal" | "profile")[];
+            scopes?: ("glucose" | "insights" | "journal" | "profile")[] | null;
         };
         /** SegmentOut */
         SegmentOut: {

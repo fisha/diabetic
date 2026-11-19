@@ -3734,5 +3734,11 @@
   "yg.g_baby": "קטנטן",
   "yg.g_kid": "חבר",
   "yg.g_explorer": "חוקר",
-  "yg.ch_log_lunch_work": "לרשום צהריים בימי עבודה"
+  "yg.ch_log_lunch_work": "לרשום צהריים בימי עבודה",
+  "shr.rel_dad": "אבא",
+  "shr.rel_mom": "אמא",
+  "shr.rel_grandpa": "סבא",
+  "shr.rel_grandma": "סבתא",
+  "shr.rel_s": "אבא, אמא, סבא וסבתא יופיעו בשם הזה בעידודים שהם שולחים לך.",
+  "onb.mi_who": "מי יעקוב אחריך?"
 }

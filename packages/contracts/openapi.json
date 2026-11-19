@@ -6000,6 +6000,10 @@
             "anyOf": [
               {
                 "enum": [
+                  "dad",
+                  "mom",
+                  "grandpa",
+                  "grandma",
                   "partner",
                   "friend",
                   "family",
@@ -10180,27 +10184,52 @@
       },
       "ScopesIn": {
         "additionalProperties": false,
-        "description": "The owner changes what one person sees (permission settings).",
+        "description": "The owner changes what one person sees (permission settings), or who they are to them (PM-312), or both.",
         "properties": {
+          "relation": {
+            "anyOf": [
+              {
+                "enum": [
+                  "dad",
+                  "mom",
+                  "grandpa",
+                  "grandma",
+                  "partner",
+                  "friend",
+                  "family",
+                  "other"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relation"
+          },
           "scopes": {
-            "items": {
-              "enum": [
-                "glucose",
-                "insights",
-                "journal",
-                "profile"
-              ],
-              "type": "string"
-            },
-            "maxItems": 4,
-            "minItems": 1,
-            "title": "Scopes",
-            "type": "array"
+            "anyOf": [
+              {
+                "items": {
+                  "enum": [
+                    "glucose",
+                    "insights",
+                    "journal",
+                    "profile"
+                  ],
+                  "type": "string"
+                },
+                "maxItems": 4,
+                "minItems": 1,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scopes"
           }
         },
-        "required": [
-          "scopes"
-        ],
         "title": "ScopesIn",
         "type": "object"
       },
