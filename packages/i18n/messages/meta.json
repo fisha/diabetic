@@ -16446,6 +16446,30 @@
     ],
     "note": "Lock-screen widget (G-40). No glucose values on the lock screen."
   },
+  "wdg.meal_nudge_breakfast": {
+    "board": "WIDGET",
+    "review": [
+      "translation",
+      "regulatory"
+    ],
+    "note": "Live Activity / watch, PM-288: replaces the usual meal time line once that time has passed with no meal logged. Clock and meal log only, never a glucose reading; asks to log, never to eat."
+  },
+  "wdg.meal_nudge_lunch": {
+    "board": "WIDGET",
+    "review": [
+      "translation",
+      "regulatory"
+    ],
+    "note": "Live Activity / watch, PM-288: replaces the usual meal time line once that time has passed with no meal logged. Clock and meal log only, never a glucose reading; asks to log, never to eat."
+  },
+  "wdg.meal_nudge_dinner": {
+    "board": "WIDGET",
+    "review": [
+      "translation",
+      "regulatory"
+    ],
+    "note": "Live Activity / watch, PM-288: replaces the usual meal time line once that time has passed with no meal logged. Clock and meal log only, never a glucose reading; asks to log, never to eat."
+  },
   "wdg.part_0": {
     "board": "WIDGET",
     "review": [
