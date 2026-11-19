@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-285, thread "Show trend arrows for Libre readings"): Guy saw "74 →" in LibreLinkUp and "74" with
+no arrow on Stedio's Overview. Prod aggregates (counts only) showed the LibreLinkUp arrow is stored (about 74% of Libre
+rows in 48 h, 87% for CareLink); the Overview "Latest reading" card simply never drew an arrow for any source. Built:
+app Overview card arrow (fresh readings, 15 min, shared `freshTrend`/`TREND_ARROW` in `features/devices/age.ts`),
+Live Activity `tr` field drawn as SF Symbols like the watch (Swift needs the next local native build), API Live
+Activity push sends `tr`, and cross-source dedupe keeps a dropped reading's arrow on the health-store copy already held.
+diabetic-api #131, diabetic-app #171 merged. Next: deploy API, then OTA; Swift in the next native build.
+
 19 Nov 2026 (Jira PM-275, thread "Build doctor portal with pre-visit summary"): Guy asked for a desktop portal for
 clinic teams, in the demo and the real system: a team member asks for a patient by email, the patient accepts in the
 app, and the clinic sees a one-page pre-visit summary in 10 sections (last 90 days next to the 90 before, numbers first,
