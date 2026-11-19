@@ -24,6 +24,8 @@ CATEGORIES = (
     "off_topic",
     "mentor",
     "hard",
+    # Kids mode (8-12) and Teen mode (13-17), PM-298/299: age-fitting tone and the extra safety rules.
+    "minors",
 )
 
 
@@ -45,6 +47,8 @@ class Case:
     # A rise with no meal logged around it, which production adds to the prompt once (G-98 b):
     # {"from_mgdl", "to_mgdl", "start_minutes_ago", "peak_minutes_ago"}.
     journal_gap: dict | None = None
+    # Kids or teens mode, as routers.conversation.instructions passes it: {"band": "child" | "teen", "soon_18": bool}.
+    young: dict | None = None
     expect: dict = field(default_factory=dict)
     scope_flags: list[str] = field(default_factory=list)
     review: str | None = None
@@ -66,6 +70,7 @@ class Case:
             history=d.get("history", []),
             tool_results=d.get("tool_results", {}),
             journal_gap=d.get("journal_gap"),
+            young=d.get("young"),
             expect=d.get("expect", {}),
             scope_flags=d.get("scope_flags", []),
             review=d.get("review"),
