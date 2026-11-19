@@ -1951,6 +1951,23 @@ clinic report with their visits (PM-214). When viewing someone else's data, only
 - Built from the existing Card, ToggleRow, Button and ToneNote; no new visual element.
 
 
+### G-116 · "You did it!" wins on the phone and the Apple Watch (**approved by Guy, 19 Nov 2026, PM-280**)
+
+**Gap**
+- The design has no win push and no watch celebration. Guy asked for wins to be celebrated on the watch the way Apple
+  Fitness says "You did it", saw the mockup (`/mnt/project-files/steady/watch-wins/`) and chose the plain push now and
+  the watch screen with the next native build.
+
+**What was built**
+- API `steady_api/wins.py`: one push, kind `win`, iOS category `win`, for behaviour wins only: a new steps or active
+  energy best on the day it happens, a workout that ended in the last 30 minutes, a new companion unlock. Time-in-range
+  wins are not pushed by it (they stay in the app and the weekly insight push).
+- Product rules (not clinical): at most one a local day, none in quiet hours (theirs or 21:00-08:00), none with insight
+  pushes off, fewer nudges, Take a break or all notifications off. No numbers or health values in the words. Classic
+  Stedio: title "Stedio", no emoji, no unlocks, `plain` in the data.
+- A best that was celebrated is left out of the weekly insight push (`push_state` "win").
+- Watch (`targets/watch/WinNotification.swift`): the custom notification screen for category `win`: a ring that
+  closes, a check, the push's words, sparkles (none when `plain`), success haptic. Needs the next local native build.
 ### G-115 · All notifications switch (**asked by Guy, 19 Nov 2026, PM-279**)
 **Gap**
 - The Notifications design (SET-09) has per-kind switches only. Guy asked for one switch at the top of the list that

@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-280, thread "Celebrate wins on Apple Watch"): Guy asked for wins to be celebrated on the watch like
+Fitness's "You did it". He saw the mockup (`/mnt/project-files/steady/watch-wins/`) and chose the plain push now and the
+watch screen in the next native build. API `steady_api/wins.py`: one `win` push a day at most for behaviour wins only (a
+steps or active energy best on the day, a workout that just ended, a companion unlock), never glucose; quiet hours, insight
+pushes off, fewer nudges, Take a break and all notifications off send nothing; Classic Stedio is plain with no unlocks; no
+numbers in the words (G-116). Watch: `targets/watch/WinNotification.swift`, a custom notification screen for category
+`win` (ring, check, sparkles, success haptic), not compiled yet. API `tests/test_wins.py` 13 pass.
 19 Nov 2026 (Jira PM-284, thread "Add a take a break glucose-only mode"): Guy renamed Take a break to Quiet mode.
 English "Quiet mode" / "End quiet mode" / "Quiet mode on"; Hebrew "מצב שקט" / "לצאת ממצב שקט" / "מצב שקט פעיל". The
 App Intent (Action Button, Shortcuts) is "Quiet mode" too, and the companion's app-data line says Quiet mode. Behavior
