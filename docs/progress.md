@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-282, thread "Fix Hebrew placeholder in chat input"): in Hebrew the companion chat placeholder
+"הודעה לStedio" was laid out left to right on iOS, so "Stedio" jumped to the right edge. Text inputs now take the app
+language's base direction (`useInputDirection` in `apps/mobile/src/i18n/I18nProvider.tsx`: writingDirection for iOS,
+a direction mark at the start of translated placeholders for Android and web): companion and follower chat boxes, food
+search and every non-LTR TextField. Hebrew string is now "הודעה ל־{name}". Guard in `test/rtl.test.ts`. `pnpm check`
+passes (app 211). Visual check on Guy's iPhone after the OTA.
+
 19 Nov 2026 (Jira PM-279, thread "Add a master switch for all notifications"): Guy asked for one switch at the top of
 the Notifications list that turns all notifications on or off with one tap. App: "All notifications" is the first card
 (`features/settings/notifyAll.ts`, kept on the phone and the server); off shows every row off and locked but keeps each
