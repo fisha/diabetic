@@ -3268,12 +3268,12 @@
   "meal.curve_t_act": "Glucose after this workout",
   "meal.curve_axis_act": "Workout",
   "meal.curve_from_peak": "{time} after the highest",
-  "brk.title": "Take a break",
+  "brk.title": "Quiet mode",
   "brk.helper": "One screen with your latest reading. No insights and no notifications, except high and low glucose if you turned them on.",
-  "brk.end": "End break",
+  "brk.end": "End quiet mode",
   "brk.none": "No recent reading",
   "brk.last": "Last reading {time}",
-  "brk.on": "Taking a break",
+  "brk.on": "Quiet mode on",
   "clin.title": "Clinic & tests",
   "clin.row_sub": "Your test results and a report for your clinic",
   "clin.results": "My test results",
@@ -3301,5 +3301,9 @@
   "wa.kinds_note": "If you haven't written to Stedio in the last day, these first arrive as a short message with a button. Nothing is sent between 22:00 and 07:00. Glucose alerts stay in the app.",
   "wa.ai_off": "The companion is off. Turn it on in Settings > Privacy to chat on WhatsApp.",
   "wa.failed": "That didn't work. Try again in a moment.",
-  "meal.total_est_said": "Estimate, not a measurement · for the amounts you described"
+  "meal.total_est_said": "Estimate, not a measurement · for the amounts you described",
+  "set.all": "All notifications",
+  "set.all_b": "Off pauses every Stedio notification, the out-of-range look-back too. Your choices below are kept for when you turn it back on. Your sensor's and pump's own alarms are not affected.",
+  "set.all_fail": "Not saved yet. It will be sent when you're online.",
+  "set.all_off": "All off"
 }

@@ -3070,6 +3070,68 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/whatsapp": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** State */
+        get: operations["state_whatsapp_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/whatsapp/kinds": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Kinds
+         * @description Which proactive messages stay in the app instead of WhatsApp (the rest go to WhatsApp).
+         */
+        put: operations["set_kinds_whatsapp_kinds_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/whatsapp/link": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Start Link
+         * @description The person agreed to the WhatsApp consent and asked to link: a new one-time code inside a wa.me link.
+         */
+        post: operations["start_link_whatsapp_link_post"];
+        /**
+         * Unlink
+         * @description Unlinks the number: the WhatsApp consent is withdrawn, the number deleted, and one goodbye line sent if the free
+         *     window is still open.
+         */
+        delete: operations["unlink_whatsapp_link_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -5003,6 +5065,18 @@ export interface components {
             /** Scopes */
             scopes: string[];
         };
+        /** KindOut */
+        KindOut: {
+            /** Kind */
+            kind: string;
+            /** On */
+            on: boolean;
+        };
+        /** KindsIn */
+        KindsIn: {
+            /** Off */
+            off: string[];
+        };
         /**
          * LabData
          * @description A lab or clinic result the person entered (13 Nov 2026), with the date it was taken and where it came from. Stored as
@@ -5197,6 +5271,28 @@ export interface components {
              * @default The app is still working on what the person just told you (for example estimating a meal). Tell them in a few words that you're on it. Don't guess the result.
              */
             working: string;
+        };
+        /** LinkIn */
+        LinkIn: {
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /** Version */
+            version: string;
+        };
+        /** LinkOut */
+        LinkOut: {
+            /** Code */
+            code: string;
+            /**
+             * Expires At
+             * Format: date-time
+             */
+            expires_at: string;
+            /** Url */
+            url: string | null;
         };
         /** LiveActivityIn */
         LiveActivityIn: {
@@ -6371,6 +6467,11 @@ export interface components {
             /** Memory Enabled */
             memory_enabled: boolean;
             /**
+             * Notifications On
+             * @default true
+             */
+            notifications_on: boolean;
+            /**
              * Photo Retention
              * @enum {string}
              */
@@ -6414,6 +6515,8 @@ export interface components {
             insight_push_week_cap?: number | null;
             /** Memory Enabled */
             memory_enabled?: boolean | null;
+            /** Notifications On */
+            notifications_on?: boolean | null;
             /** Photo Retention */
             photo_retention?: ("afterAnalysis" | "days90" | "untilDeleted") | null;
             /** Sensor End Reminder */
@@ -6897,6 +7000,30 @@ export interface components {
         /** WarmupStateOut */
         WarmupStateOut: {
             warmup?: components["schemas"]["WarmupOut"] | null;
+        };
+        /** WhatsAppOut */
+        WhatsAppOut: {
+            /** Available */
+            available: boolean;
+            /** Consent Version */
+            consent_version: string;
+            /**
+             * Consented
+             * @default false
+             */
+            consented: boolean;
+            /**
+             * Kinds
+             * @default []
+             */
+            kinds: components["schemas"]["KindOut"][];
+            /** Last3 */
+            last3?: string | null;
+            /**
+             * Linked
+             * @default false
+             */
+            linked: boolean;
         };
         /**
          * WhyOut
@@ -13180,6 +13307,129 @@ export interface operations {
             };
             /** @description voice_unconfigured */
             503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    state_whatsapp_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WhatsAppOut"];
+                };
+            };
+        };
+    };
+    set_kinds_whatsapp_kinds_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["KindsIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WhatsAppOut"];
+                };
+            };
+            /** @description not_linked */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description unknown_kind */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    start_link_whatsapp_link_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LinkIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LinkOut"];
+                };
+            };
+            /** @description not_available or ai_consent_required */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description version_changed */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    unlink_whatsapp_link_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };

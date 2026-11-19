@@ -1951,7 +1951,7 @@ clinic report with their visits (PM-214). When viewing someone else's data, only
 - Built from the existing Card, ToggleRow, Button and ToneNote; no new visual element.
 
 
-### G-115 · "You did it!" wins on the phone and the Apple Watch (**approved by Guy, 19 Nov 2026, PM-280**)
+### G-116 · "You did it!" wins on the phone and the Apple Watch (**approved by Guy, 19 Nov 2026, PM-280**)
 
 **Gap**
 - The design has no win push and no watch celebration. Guy asked for wins to be celebrated on the watch the way Apple
@@ -1968,3 +1968,15 @@ clinic report with their visits (PM-214). When viewing someone else's data, only
 - A best that was celebrated is left out of the weekly insight push (`push_state` "win").
 - Watch (`targets/watch/WinNotification.swift`): the custom notification screen for category `win`: a ring that
   closes, a check, the push's words, sparkles (none when `plain`), success haptic. Needs the next local native build.
+### G-115 · All notifications switch (**asked by Guy, 19 Nov 2026, PM-279**)
+**Gap**
+- The Notifications design (SET-09) has per-kind switches only. Guy asked for one switch at the top of the list that
+  turns all notifications on or off with one tap ("טוגל שיופיע בראש הרשימה כדי להפעיל ולכבות את כל ההתראות").
+
+**What was built**
+- Settings > Notifications: "All notifications" is the first card, above System permission. Off: every row below shows
+  off and locked, but keeps its own choice, so turning it back on restores the person's choices (not everything on).
+  Profile shows "All off" under Notifications. Autosaved; English and Hebrew, RTL.
+- It includes the out-of-range look-back (a notification like the others); the helper text says the sensor's and
+  pump's own alarms are not affected.
+- Built from the existing Card and ToggleRow; no new visual element. Screenshots: `/mnt/project-files/steady/notify-all/`.

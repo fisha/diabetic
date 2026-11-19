@@ -20874,42 +20874,42 @@
     "review": [
       "translation"
     ],
-    "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
+    "note": "Quiet mode (PM-257; renamed from Take a break in PM-284, Guy 19 Nov 2026): main-screen switch and the one-screen reading view."
   },
   "brk.helper": {
     "board": "Settings",
     "review": [
       "translation"
     ],
-    "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
+    "note": "Quiet mode (PM-257; renamed from Take a break in PM-284, Guy 19 Nov 2026): main-screen switch and the one-screen reading view."
   },
   "brk.end": {
     "board": "Settings",
     "review": [
       "translation"
     ],
-    "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
+    "note": "Quiet mode (PM-257; renamed from Take a break in PM-284, Guy 19 Nov 2026): main-screen switch and the one-screen reading view."
   },
   "brk.none": {
     "board": "Settings",
     "review": [
       "translation"
     ],
-    "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
+    "note": "Quiet mode (PM-257; renamed from Take a break in PM-284, Guy 19 Nov 2026): main-screen switch and the one-screen reading view."
   },
   "brk.last": {
     "board": "Settings",
     "review": [
       "translation"
     ],
-    "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
+    "note": "Quiet mode (PM-257; renamed from Take a break in PM-284, Guy 19 Nov 2026): main-screen switch and the one-screen reading view."
   },
   "brk.on": {
     "board": "Settings",
     "review": [
       "translation"
     ],
-    "note": "Take a break mode (PM-257, Guy 18 Nov 2026): Profile switch and the one-screen reading view."
+    "note": "Quiet mode (PM-257; renamed from Take a break in PM-284, Guy 19 Nov 2026): main-screen switch and the one-screen reading view."
   },
   "clin.title": {
     "board": "Settings",
@@ -21101,6 +21101,32 @@
   },
   "meal.total_est_said": {
     "board": "Meal",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.all": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "All notifications switch (PM-279, Guy 19 Nov 2026)."
+  },
+  "set.all_b": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "set.all_fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.all_off": {
+    "board": "Settings",
     "review": [
       "translation"
     ]
