@@ -1,4 +1,5 @@
-// Overview: the time-in-range card sits right under the latest reading and above the graph (Guy, 17 Nov 2026),
+// Overview: the time-in-range card sits right under the latest reading and above the graph (Guy, 17 Nov 2026) and
+// names the range it counts against (19 Nov 2026),
 // end to end against the test server (services/api: uvicorn tests.e2e_server:app).
 // Usage: node tools/e2e/tir-first.cjs <web export built with EXPO_PUBLIC_API_URL=http://localhost:8000> <screenshot dir>
 // Signs up tir@example.com with synthetic readings for this check only (start from a database without that account).
@@ -53,11 +54,16 @@ const server = http.createServer((req, res) => {
       await page.getByText(L.go, { exact: true }).last().click(); await page.waitForTimeout(5000);
       await page.getByText(L.ov, { exact: true }).last().click(); await page.waitForTimeout(5000);
       const radio = (name) => page.getByRole('radio', { name, exact: true }).first();
-      const y = async (loc) => (await loc.boundingBox())?.y ?? NaN;
+      // The main screen stays mounted behind Overview with its own time-in-range tile at the top: measure the lowest match.
+      const y = async (loc) => {
+        const ys = [];
+        for (const l of await loc.filter({ visible: true }).all()) ys.push((await l.boundingBox())?.y ?? NaN);
+        return ys.length ? Math.max(...ys) : NaN;
+      };
       await radio(T.day).click(); await page.waitForTimeout(3000);
-      const yLatest = await y(page.getByText(T.latest, { exact: true }).first());
-      const ySum = await y(page.getByText(T.today, { exact: true }).first());
-      const yTir = await y(page.getByText(T.tir, { exact: true }).first());
+      const yLatest = await y(page.getByText(T.latest, { exact: true }));
+      const ySum = await y(page.getByText(T.today, { exact: true }));
+      const yTir = await y(page.getByText(T.tir, { exact: true }));
       const yPeriod = await y(radio(T.day));
       const yGraph = await y(radio(T.time));
       ok(`${lang} ${scheme}: time in range under the latest reading`, yLatest < ySum && ySum < yTir, JSON.stringify({ yLatest, ySum, yTir }));
@@ -65,6 +71,10 @@ const server = http.createServer((req, res) => {
       await page.screenshot({ path: path.join(out, `${lang}-${scheme}-01-day.png`) });
       await radio(T.week).click(); await page.waitForTimeout(3000);
       ok(`${lang} ${scheme}: card follows the chosen period`, (await page.getByText(T.weekSum, { exact: true }).count()) > 0);
+      // The card names the range it counts against (Guy, 19 Nov 2026): the typed 80-140 here.
+      // The numbers are wrapped in direction marks, so match around them.
+      const rangeText = he ? /הטווח שלך\W*80\W140/ : /Your range\W*80\W140/;
+      ok(`${lang} ${scheme}: card shows the range`, (await page.getByText(rangeText).count()) > 0);
       await page.screenshot({ path: path.join(out, `${lang}-${scheme}-02-week.png`) });
       await ctx.close();
     }
