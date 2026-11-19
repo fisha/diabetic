@@ -2956,6 +2956,7 @@
   "meal.curve_not_back": "Not within 6 h",
   "meal.curve_not_back_meal": "Not before the next meal",
   "meal.curve_not_back_act": "Not before the next workout",
+  "meal.curve_no_rise": "No rise",
   "meal.curve_axis_meal": "Meal",
   "meal.curve_axis_h": "+{h} h",
   "meal.curve_a11y": "Glucose after the meal: {start} at the meal, highest {peak} after {after}.",

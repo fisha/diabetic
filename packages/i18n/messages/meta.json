@@ -24259,5 +24259,12 @@
       "translation"
     ],
     "note": "PM-315 (Guy, 19 Nov 2026): end-of-week card on the main screen offering the week's biggest rises; descriptive only."
+  },
+  "meal.curve_no_rise": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-315: back to start when glucose never rose above its start after the meal; same wording as the clinic report."
   }
 }
