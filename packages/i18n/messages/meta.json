@@ -23272,5 +23272,19 @@
       "translation"
     ],
     "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "now.tir_next": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Accessibility hint on the main screen's time-in-range tile: a tap steps the period (PM-289)."
+  },
+  "now.tir_open": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Accessibility label of the arrow on the main screen's time-in-range tile, which opens Overview (PM-289)."
   }
 }
