@@ -1,4 +1,4 @@
-// Take a break (PM-257, Guy 18 Nov 2026): the Profile switch turns the whole app into one black screen with the latest
+// Take a break (PM-257, Guy 18 Nov 2026; on the main screen since PM-274, 19 Nov): the switch under the character turns the whole app into one black screen with the latest
 // reading in big, coloured by the person's own range; past 15 minutes "Not current" with the time and no value; a small
 // icon ends it; the server holds the state (pushes withheld but the glucose look-back); steady://break turns it on.
 // End-to-end against the test server (services/api: uvicorn tests.e2e_server:app). Synthetic readings for this check only.
@@ -61,14 +61,21 @@ const server = http.createServer((req, res) => {
       page.on('pageerror', (e) => errors.push(e.message));
       page.setDefaultTimeout(6000);
       await signIn(page, 'b@example.com', he);
+      // Not in Profile any more (Guy, 19 Nov 2026, PM-274).
       await page.goto(`${base}/profile`); await page.waitForTimeout(4000);
+      ok(`${tag}: no switch in Profile`, (await page.getByRole('switch', { name: L.title, exact: true }).count()) === 0);
+      // On the main screen, under the character, beside the history and text icons, clear of the tab bar.
+      await page.goto(`${base}/companion`); await page.waitForTimeout(6000);
       const sw = page.getByRole('switch', { name: L.title, exact: true });
-      ok(`${tag}: Profile has the switch`, (await sw.count()) === 1);
-      // Near the top: above the Health group.
-      const swy = (await sw.first().boundingBox())?.y ?? 9999;
-      const hy = (await page.getByText(he ? 'בריאות' : 'HEALTH', { exact: true }).first().boundingBox())?.y ?? -1;
-      ok(`${tag}: switch above Health`, hy > 0 && swy < hy, `${swy} < ${hy}`);
-      await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-01-profile.png`) });
+      ok(`${tag}: main screen has the switch`, (await sw.count()) === 1);
+      const sb = await sw.first().boundingBox().catch(() => null); const bar = await page.getByRole('tablist').first().boundingBox();
+      const hb = await page.getByRole('button', { name: he ? 'שיחות' : 'Conversations', exact: true }).first().boundingBox().catch(() => null);
+      ok(`${tag}: switch clear of the tab bar`, !!sb && !!bar && sb.y + sb.height <= bar.y, sb && bar ? `${Math.round(sb.y + sb.height)} <= ${Math.round(bar.y)}` : 'missing');
+      ok(`${tag}: switch in the icons row`, !!sb && !!hb && Math.abs(sb.y + sb.height / 2 - (hb.y + hb.height / 2)) < 12);
+      // The label on the far side of the switch: after it in reading order (right of it in English, left in Hebrew).
+      const lb = await page.getByText(L.title, { exact: true }).first().boundingBox().catch(() => null);
+      ok(`${tag}: label after the switch`, !!sb && !!lb && (he ? lb.x + lb.width <= sb.x + 2 : lb.x >= sb.x + sb.width - 2));
+      await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-01-main.png`) });
       await sw.first().click(); await page.waitForTimeout(2500);
       const end = page.getByRole('button', { name: L.end, exact: true });
       ok(`${tag}: break screen with the end icon`, (await end.count()) === 1);
