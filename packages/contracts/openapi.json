@@ -10076,6 +10076,11 @@
             "title": "Memory Enabled",
             "type": "boolean"
           },
+          "notifications_on": {
+            "default": true,
+            "title": "Notifications On",
+            "type": "boolean"
+          },
           "photo_retention": {
             "enum": [
               "afterAnalysis",
@@ -10277,6 +10282,17 @@
               }
             ],
             "title": "Memory Enabled"
+          },
+          "notifications_on": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notifications On"
           },
           "photo_retention": {
             "anyOf": [

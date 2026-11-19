@@ -1950,3 +1950,16 @@ clinic report with their visits (PM-214). When viewing someone else's data, only
 - Companion conversation: messages from the WhatsApp chat carry an "On WhatsApp" line under the bubble, like "via voice".
 - Built from the existing Card, ToggleRow, Button and ToneNote; no new visual element.
 
+
+### G-115 · All notifications switch (**asked by Guy, 19 Nov 2026, PM-279**)
+**Gap**
+- The Notifications design (SET-09) has per-kind switches only. Guy asked for one switch at the top of the list that
+  turns all notifications on or off with one tap ("טוגל שיופיע בראש הרשימה כדי להפעיל ולכבות את כל ההתראות").
+
+**What was built**
+- Settings > Notifications: "All notifications" is the first card, above System permission. Off: every row below shows
+  off and locked, but keeps its own choice, so turning it back on restores the person's choices (not everything on).
+  Profile shows "All off" under Notifications. Autosaved; English and Hebrew, RTL.
+- It includes the out-of-range look-back (a notification like the others); the helper text says the sensor's and
+  pump's own alarms are not affected.
+- Built from the existing Card and ToggleRow; no new visual element. Screenshots: `/mnt/project-files/steady/notify-all/`.

@@ -7024,6 +7024,11 @@ export interface components {
             /** Memory Enabled */
             memory_enabled: boolean;
             /**
+             * Notifications On
+             * @default true
+             */
+            notifications_on: boolean;
+            /**
              * Photo Retention
              * @enum {string}
              */
@@ -7067,6 +7072,8 @@ export interface components {
             insight_push_week_cap?: number | null;
             /** Memory Enabled */
             memory_enabled?: boolean | null;
+            /** Notifications On */
+            notifications_on?: boolean | null;
             /** Photo Retention */
             photo_retention?: ("afterAnalysis" | "days90" | "untilDeleted") | null;
             /** Sensor End Reminder */

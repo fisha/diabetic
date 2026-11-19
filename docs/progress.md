@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-279, thread "Add a master switch for all notifications"): Guy asked for one switch at the top of
+the Notifications list that turns all notifications on or off with one tap. App: "All notifications" is the first card
+(`features/settings/notifyAll.ts`, kept on the phone and the server); off shows every row off and locked but keeps each
+choice, so on restores them; no local reminders are scheduled and nothing shows while the app is open; Profile says
+"All off". API: `notifications_on` in `/settings` (in `routine_state`, no migration); `push.send` withholds every kind
+while off, the out-of-range look-back included (Guy's "all"), and WhatsApp proactive messages with it. API full suite
+719 pass; `pnpm check` passes (app 210); e2e `tools/e2e/notify-all.cjs` 43/43 on the web export (en light, he light,
+he dark 375x667). Next: deploy API, then OTA; look on Guy's phone.
+
 19 Nov 2026 (Jira PM-273, thread "Skip \"how much did you eat\" when amount is given"): Guy logged "I ate half a
 banana"; the review showed ½ piece but still asked "How much did you eat?" with "All of it", and "Half" would have halved
 it again. App: the question is hidden for meals described in words or voice (`asksAte` in `features/meal/model.ts`),
