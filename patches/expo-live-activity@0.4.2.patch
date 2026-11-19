@@ -12,7 +12,7 @@ index 125311485a6581649d5f30c167bed86a986f955b..61e9bc8594be308ab2e596d8e51c6712
  export type NativeLiveActivityState = {
      title: string;
 diff --git a/ios/ExpoLiveActivityModule.swift b/ios/ExpoLiveActivityModule.swift
-index 6fdf9f5d07e6178d968b7f5800d234855145038b..3a1f69c87c118147b5d55641c08e0ae51b30daea 100644
+index 6fdf9f5d07e6178d968b7f5800d234855145038b..0857e1a23c23b51fc7540dcf5f30e2530355b755 100644
 --- a/ios/ExpoLiveActivityModule.swift
 +++ b/ios/ExpoLiveActivityModule.swift
 @@ -12,6 +12,10 @@ public class ExpoLiveActivityModule: Module {
@@ -26,8 +26,16 @@ index 6fdf9f5d07e6178d968b7f5800d234855145038b..3a1f69c87c118147b5d55641c08e0ae5
      struct ProgressBar: Record {
        @Field
        var date: Double?
-@@ -254,14 +258,14 @@ public class ExpoLiveActivityModule: Module {
+@@ -252,16 +256,22 @@ public class ExpoLiveActivityModule: Module {
+           progress: state.progressBar?.progress
+         )
  
++        // Stedio patch (PM-271): one card only. A card iOS has ended after its 8 hours stays on the lock screen and the
++        // watch with its last content and cannot be updated; every other card of this app is ended before a new one starts.
++        for old in Activity<LiveActivityAttributes>.activities {
++          Task { await old.end(nil, dismissalPolicy: .immediate) }
++        }
++
          let activity = try Activity.request(
            attributes: attributes,
 -          content: .init(state: initialState, staleDate: nil),
@@ -43,7 +51,7 @@ index 6fdf9f5d07e6178d968b7f5800d234855145038b..3a1f69c87c118147b5d55641c08e0ae5
          }
  
          return activity.id
-@@ -315,7 +319,7 @@ public class ExpoLiveActivityModule: Module {
+@@ -315,7 +325,7 @@ public class ExpoLiveActivityModule: Module {
            progress: state.progressBar?.progress
          )
          try await updateImages(state: state, newState: &newState)
