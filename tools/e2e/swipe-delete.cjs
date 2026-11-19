@@ -26,6 +26,19 @@ async function swipe(page, locator, dx) {
   await page.mouse.up(); await page.waitForTimeout(600);
 }
 
+/** Watches the row for 2.5 s after a screen opens: the farthest it slid toward the start (PM-287 hint). */
+async function watchHint(page, locator, toStart) {
+  const start = await locator.boundingBox().catch(() => null);
+  if (!start) return { most: 0, back: 0 };
+  let most = 0; let end = start;
+  for (let k = 0; k < 50; k++) {
+    const b = await locator.boundingBox().catch(() => null);
+    if (b) { most = Math.max(most, (b.x - start.x) * toStart); end = b; }
+    await page.waitForTimeout(50);
+  }
+  return { most, back: Math.abs(end.x - start.x) };
+}
+
 const server = http.createServer((req, res) => {
   let p = path.join(root, decodeURIComponent(req.url.split('?')[0]));
   if (!fs.existsSync(p) || fs.statSync(p).isDirectory()) p = path.join(root, 'index.html');
@@ -81,7 +94,13 @@ const server = http.createServer((req, res) => {
       await page.getByText(L.go, { exact: true }).last().click(); await page.waitForTimeout(4000);
       // Accept any pending legal or AI screens the same way a person would not be needed here: the API accepted them.
       await page.getByRole('tab', { name: L.journal }).first().click().catch(async () => page.getByText(L.journal, { exact: true }).last().click());
-      await page.waitForTimeout(3500);
+      // The hint (PM-287): the first meal (the newest) slides toward the start a moment after the list shows, then back.
+      const first = page.getByRole('button', { name: /(Rice|Toast) \w+x\d+/ }).first();
+      await first.waitFor({ timeout: 8000 });
+      const hintSeen = await watchHint(page, first, toStart);
+      ok(`${lang} ${scheme}: journal hint nudges the first row toward the start`, hintSeen.most > 20, `${Math.round(hintSeen.most)} px`);
+      ok(`${lang} ${scheme}: and it comes back`, hintSeen.back < 2, `${hintSeen.back} px`);
+      await shot('00-journal-after-hint');
       const row = page.getByRole('button', { name: new RegExp(toast) }).first();
       ok(`${lang} ${scheme}: journal shows the meal`, await row.isVisible().catch(() => false));
       await shot('01-journal');
@@ -120,6 +139,10 @@ const server = http.createServer((req, res) => {
       await tile.click(); await page.waitForTimeout(2500);
       const bRow = page.getByRole('button', { name: new RegExp(`^${rice}`) }).first();
       ok(`${lang} ${scheme}: breakdown shows the meal`, await bRow.isVisible().catch(() => false));
+      // After a swipe the person knows: no more hints.
+      const bFirst = page.getByRole('button', { name: /^(Rice|Toast) / }).first();
+      const bSlid = await watchHint(page, bFirst, toStart);
+      ok(`${lang} ${scheme}: no hint once the person has swiped`, bSlid.most < 2, `${Math.round(bSlid.most)} px`);
       await swipe(page, bRow, toStart * 70);
       const uncovered = page.getByRole('button', { name: `${L.del}, ${rice}`, exact: true }).first();
       ok(`${lang} ${scheme}: short swipe uncovers Delete`, await uncovered.isVisible().catch(() => false));

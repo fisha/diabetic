@@ -2130,3 +2130,11 @@ for a dev build. Then: run every flow on the phone, clinical and translation rev
   celebrate setting now describes companion unlocks only (small wins have no confetti).
 - Live voice: loudspeaker in the default mode (louder); a watchdog wakes paused audio and counts a finished answer as
   played; interruptions and device route changes restart the session, audio and microphone.
+
+19 Nov 2026 (Jira PM-287, thread "Delete by swiping across the app"): Guy had not noticed the swipe. SwipeRow takes a
+`hint` key; the first deletable row of each list slides 44 px toward the delete action and back, 0.7 s after the list
+appears, at most twice per list, and never again once the person has swiped any row (`swipeHints` and
+`swipeLearned` in the phone's local preferences). Skipped under Reduce Motion and screen readers; RTL-mirrored.
+App tests 213/213, typecheck clean, e2e `tools/e2e/swipe-delete.cjs` passes in en light, he light and he dark (hint
+44 px out, back to 0, no hint after a swipe). Next: OTA, then Guy checks it on his iPhone.
+
