@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-284, thread "Add a take a break glucose-only mode"): Guy renamed Take a break to Quiet mode.
+English "Quiet mode" / "End quiet mode" / "Quiet mode on"; Hebrew "מצב שקט" / "לצאת ממצב שקט" / "מצב שקט פעיל". The
+App Intent (Action Button, Shortcuts) is "Quiet mode" too, and the companion's app-data line says Quiet mode. Behavior
+unchanged; code ids keep "break". e2e `tools/e2e/take-a-break.cjs` 73/73, app tests 210 pass, API break and app-data
+tests pass.
+
 19 Nov 2026 (Jira PM-279, thread "Add a master switch for all notifications"): Guy asked for one switch at the top of
 the Notifications list that turns all notifications on or off with one tap. App: "All notifications" is the first card
 (`features/settings/notifyAll.ts`, kept on the phone and the server); off shows every row off and locked but keeps each
