@@ -2010,3 +2010,19 @@ clinic report with their visits (PM-214). When viewing someone else's data, only
 - The app approval screen shows four notes instead of the mockup's two: it adds who on the team can open it and the
   180 days it covers, so the consent says everything the clinic will see.
 
+
+### G-118 · Back to start past three hours, every past meal, end-of-week rises card (**asked by Guy, 19 Nov 2026, PM-315**)
+**Gap**
+- The meal curve (G-106, PM-239) said "Not within 3 h" when glucose came back later. Guy asked for the actual time
+  ("חזרה להתחלה צריך להיות הזמן… גם אם הוא גדול משלוש שעות"), for the curve on every past meal (not only from the
+  week's biggest rises), and for a suggestion toward the end of the week to look at the week's biggest rises.
+
+**What was built**
+- Back to start is looked for up to 6 h after the meal, stopping at the next logged meal or workout. A return after
+  3 h shows its time and extends the curve to the whole hour after it (axis +4 h, +5 h, +6 h); the highest and the
+  rise then cover the readings up to the return. No return: "Not within 6 h" or "Not before the next meal/workout".
+  The 6 h is a display window (a product rule, not clinical), shared with the clinic report.
+- Journal: a pump meal merged into a reading's or a bolus's row shows the curve in that row's detail.
+- Main screen: on Thursday to Saturday, when the last 7 days have rises, a plain card "This week's biggest rises"
+  (insight tier, no sound, not while viewing, hidden with fewer nudges) opens Overview on the week, scrolled to the
+  list. Read once, it stays away until the next week (`rises:<Sunday>`). Built from the existing feed card.
