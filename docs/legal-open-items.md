@@ -117,3 +117,12 @@ approved lines here.
   the rows the person checks are saved, as `lab` records (covered by export and deletion). To confirm with the lawyer:
   the photo itself carries the person's name and ID number to the processor (the model is told to leave them out of
   its answer, but it sees them), and whether lab reports need a consent of their own beyond the AI consent.
+- Clinic sharing (PM-275, privacy version `2026-11-19T12:00:00Z`): a clinic team sees a person's pre-visit summary only
+  after the person accepts in the app (`consent: true`, `consent_version` stored on the link), with the parts they
+  chose; view log 12 months; questions until 7 days after the visit (30 without a date); summary wording 1 day; an
+  unanswered request ends after 14 days; the clinic never learns whether an email has an account. Clinic team members'
+  name, role and licence number are kept for the clinic. To confirm with the lawyer: Stedio's role towards the clinic
+  (independent controller sharing at the person's request, or processor for the clinic), whether a data-sharing
+  agreement with each clinic is needed, and whether the printed copy in the clinic's file is outside Stedio's
+  responsibility once printed.
+
