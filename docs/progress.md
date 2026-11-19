@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-286, thread "Fix bolognese parsing and food deletion"): Guy logged "בולונז ברוטב עגבניות, רוטב
+בלבד" and the parser made "sauce only" a food with no values, so the meal's protein read "—". The food analyzer's
+instructions now keep describing words ("sauce only", "without pasta") with their food, count a meat sauce's protein, and
+ask for typical values for every named food; a food still left without carbs or protein takes only the missing values
+from the Israeli food list when a food there has every word of its name (`ai/food.py` `filled_from_list`). Meal protein,
+fat and fiber totals (app `mealMacro`, companion `ai/entries.py`) sum the foods that have a value, as carbs do. API #132,
+app #173 merged; API 746 tests, app 211 tests and typecheck pass. Swipe-to-delete already existed (PM-222); Guy's hint
+request went to the PM-222 thread. Next: deploy-api (runs the companion eval gate, food analyzer changed), then OTA.
+
 19 Nov 2026 (Jira PM-285, thread "Show trend arrows for Libre readings"): Guy saw "74 →" in LibreLinkUp and "74" with
 no arrow on Stedio's Overview. Prod aggregates (counts only) showed the LibreLinkUp arrow is stored (about 74% of Libre
 rows in 48 h, 87% for CareLink); the Overview "Latest reading" card simply never drew an arrow for any source. Built:
