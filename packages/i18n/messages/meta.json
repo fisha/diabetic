@@ -18157,6 +18157,139 @@
     ],
     "note": "Today's summary lists only routines whose time already came today (Guy, 16 Nov 2026)."
   },
+  "sum.today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.usual": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_meal": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_meal_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.us_meal": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_part_in": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_part_in_sofar": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_part_above": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_part_above_sofar": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_part_below": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_part_below_sofar": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.us_in": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.us_above": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.us_below": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_workout": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_workout_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.us_workout": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.td_time": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
+  "sum.us_time": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Today's summary: today next to the usual days, per routine (Guy, 19 Nov 2026, PM-309)."
+  },
   "sum.parts_t": {
     "board": "Overview",
     "review": [

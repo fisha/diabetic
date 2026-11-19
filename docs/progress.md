@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-309, thread "Make "Today so far" insights about today"): Guy said the Today so far sheet still
+listed 14-day patterns ("two hours after dinner: usually 134 -> 153") and asked that it be about today, e.g. what
+happened today two hours after dinner and how that compares with the other days. Each routine there now leads with a
+"Today" line from today's own readings and meals, with the server's definitions (sensor reading within 15 min of the
+meal and 2 h +/- 20 min after; a part of the day is the middle value of its readings, "so far" while it lasts; a
+workout's start and an hour after its end; the meal's time), then a "Usually" line with the routine's own medians or
+day counts (`Insight.usual`). Keep or improve follows today's value against the person's own range (no other
+threshold); routines not tied to today (foods, untimed patterns) go under More patterns; a part of the day still ahead
+that is worth preparing for keeps its badge. App only (no API change). App tests 221, e2e `tools/e2e/today-so-far.cjs`
+13/13 (he dark, he light, en light), screenshots in `/mnt/project-files/steady/today-so-far/`. Next: OTA to testers.
+
 19 Nov 2026 (Jira PM-297..307, thread "Design a kids mode for under-18 users"): Kids mode (8-12) and Teen mode
 (13-17), built from the mockups Guy approved (`/mnt/project-files/steady/young-mode/`), plus the adult items he chose.
 API: age band from the date of birth (`users.teen_from`, under 8 refused with `too_young`), parent switches (voice,
