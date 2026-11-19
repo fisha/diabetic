@@ -5472,6 +5472,41 @@
         "title": "InvitePreviewOut",
         "type": "object"
       },
+      "KindOut": {
+        "properties": {
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "on": {
+            "title": "On",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "kind",
+          "on"
+        ],
+        "title": "KindOut",
+        "type": "object"
+      },
+      "KindsIn": {
+        "additionalProperties": false,
+        "properties": {
+          "off": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Off",
+            "type": "array"
+          }
+        },
+        "required": [
+          "off"
+        ],
+        "title": "KindsIn",
+        "type": "object"
+      },
       "LabData": {
         "additionalProperties": false,
         "description": "A lab or clinic result the person entered (13 Nov 2026), with the date it was taken and where it came from. Stored as\nentered; Stedio does not grade it against a range.",
@@ -6047,6 +6082,57 @@
           }
         },
         "title": "LinesOut",
+        "type": "object"
+      },
+      "LinkIn": {
+        "additionalProperties": false,
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "version",
+          "at"
+        ],
+        "title": "LinkIn",
+        "type": "object"
+      },
+      "LinkOut": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "title": "Expires At",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          }
+        },
+        "required": [
+          "code",
+          "url",
+          "expires_at"
+        ],
+        "title": "LinkOut",
         "type": "object"
       },
       "LiveActivityIn": {
@@ -9251,6 +9337,11 @@
             "title": "Memory Enabled",
             "type": "boolean"
           },
+          "notifications_on": {
+            "default": true,
+            "title": "Notifications On",
+            "type": "boolean"
+          },
           "photo_retention": {
             "enum": [
               "afterAnalysis",
@@ -9452,6 +9543,17 @@
               }
             ],
             "title": "Memory Enabled"
+          },
+          "notifications_on": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notifications On"
           },
           "photo_retention": {
             "anyOf": [
@@ -10957,6 +11059,53 @@
           }
         },
         "title": "WarmupStateOut",
+        "type": "object"
+      },
+      "WhatsAppOut": {
+        "properties": {
+          "available": {
+            "title": "Available",
+            "type": "boolean"
+          },
+          "consent_version": {
+            "title": "Consent Version",
+            "type": "string"
+          },
+          "consented": {
+            "default": false,
+            "title": "Consented",
+            "type": "boolean"
+          },
+          "kinds": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/KindOut"
+            },
+            "title": "Kinds",
+            "type": "array"
+          },
+          "last3": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last3"
+          },
+          "linked": {
+            "default": false,
+            "title": "Linked",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "available",
+          "consent_version"
+        ],
+        "title": "WhatsAppOut",
         "type": "object"
       },
       "WhyOut": {
@@ -20155,6 +20304,146 @@
         "summary": "Transcribe",
         "tags": [
           "voice"
+        ]
+      }
+    },
+    "/whatsapp": {
+      "get": {
+        "operationId": "state_whatsapp_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WhatsAppOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "State",
+        "tags": [
+          "whatsapp"
+        ]
+      }
+    },
+    "/whatsapp/kinds": {
+      "put": {
+        "description": "Which proactive messages stay in the app instead of WhatsApp (the rest go to WhatsApp).",
+        "operationId": "set_kinds_whatsapp_kinds_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KindsIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WhatsAppOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_linked"
+          },
+          "422": {
+            "description": "unknown_kind"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Kinds",
+        "tags": [
+          "whatsapp"
+        ]
+      }
+    },
+    "/whatsapp/link": {
+      "delete": {
+        "description": "Unlinks the number: the WhatsApp consent is withdrawn, the number deleted, and one goodbye line sent if the free\nwindow is still open.",
+        "operationId": "unlink_whatsapp_link_delete",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Unlink",
+        "tags": [
+          "whatsapp"
+        ]
+      },
+      "post": {
+        "description": "The person agreed to the WhatsApp consent and asked to link: a new one-time code inside a wa.me link.",
+        "operationId": "start_link_whatsapp_link_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LinkOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "403": {
+            "description": "not_available or ai_consent_required"
+          },
+          "409": {
+            "description": "version_changed"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Start Link",
+        "tags": [
+          "whatsapp"
         ]
       }
     }
