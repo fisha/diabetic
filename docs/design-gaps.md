@@ -1936,3 +1936,17 @@ clinic report with their visits (PM-214). When viewing someone else's data, only
 2026: reading a new lab report sits only inside "My test results", and earlier tests are listed one row per test date
 (weekday and date, the number of results and the first test names); a date opens that day's results. Privacy > "Share with my care team" still opens the clinic report directly.
 
+### G-114 · WhatsApp companion channel card (**approved by Guy, 19 Nov 2026, PM-269**)
+
+**Gap**
+- The design has no WhatsApp channel. Guy asked for the same companion on WhatsApp, approved the spec ("מאושר", 19 Nov
+  2026; spec in Jira PM-269) and asked for it on his own account first.
+
+**What was built**
+- Profile > Companion: one card under Classic Stedio, shown only when the server offers it to the account
+  (`GET /whatsapp` `available`). Not linked: the WhatsApp consent text, an "I agree" switch and "Open WhatsApp", which
+  opens WhatsApp with a one-time code message; the card updates when the message arrives. Linked: a switch with the last
+  3 digits (off unlinks), a switch per proactive message kind, and a note on templates, quiet hours and glucose alerts.
+- Companion conversation: messages from the WhatsApp chat carry an "On WhatsApp" line under the bubble, like "via voice".
+- Built from the existing Card, ToggleRow, Button and ToneNote; no new visual element.
+

@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-269, thread "Add a WhatsApp companion channel"): Guy asked to chat with the same companion on
+WhatsApp, directly through Meta's WhatsApp Cloud API with no provider, with proactive messages in the first version
+("זה כל החוויה") and only his own account at first. Spec approved ("מאושר"), in Jira PM-269; lawyer review PM-270.
+Built: API `steady_api/whatsapp/` (link by a one-time code the person sends from WhatsApp, Meta's signature on the
+webhook, messages stored once by Meta's id and handled in order per number, the app's companion pipeline with the dose
+filter, replies split for WhatsApp, emergency number by country code, Save / Not now buttons for records, STOP),
+proactive messages through `push.send` (free text inside the 24-hour window, a template with a button outside it, at most
+3 a day, nothing 22:00 to 07:00, push fallback, never glucose alerts or device alarms) and the agents' notes; app card in
+Profile > Companion and the "On WhatsApp" mark. API `tests/test_whatsapp.py` 20 pass with a Graph API stand-in, full API suite 711 pass;
+`pnpm check` passes. Nothing has reached Meta: next, Guy's Meta setup and secrets (deploy/fly/README.md), then the
+templates, then a real message from his phone.
+
 19 Nov 2026 (Jira PM-268, thread "Give the companion access to all app data"): Itay asked the companion when his next
 clinic visit is and it said it had no access, though the visit is saved on "Report for my clinic". Guy: the companion
 must have full access to everything in the app. API: `steady_api/ai/app_data.py` puts the saved next visit (weekday,

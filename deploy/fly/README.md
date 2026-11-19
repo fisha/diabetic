@@ -106,3 +106,27 @@ After adding the Google settings to `.env`, run both again.
 
 About $3.19 (API 512 MB) + $1.94 (database 256 MB) + volumes 2 x $0.15 + website and research tool only while running (cents) +
 snapshots (first 10 GB free) ≈ **$5.5–6 a month**. Shared IPv4 and the fly.dev addresses are free.
+
+## WhatsApp companion channel (PM-269)
+
+The same companion on WhatsApp, through Meta's WhatsApp Cloud API (no provider between). Off until these are set; Guy
+creates the Meta Business portfolio, app, number and token himself and sets the secrets in Terminal (never in chat):
+
+```
+fly secrets set -a stedio-api \
+  STEADY_WHATSAPP_ACCESS_TOKEN=... \
+  STEADY_WHATSAPP_APP_SECRET=... \
+  STEADY_WHATSAPP_VERIFY_TOKEN=... \
+  STEADY_WHATSAPP_PHONE_NUMBER_ID=... \
+  STEADY_WHATSAPP_BUSINESS_ACCOUNT_ID=... \
+  STEADY_WHATSAPP_NUMBER=<Stedio number, digits with country code> \
+  STEADY_WHATSAPP_EMAILS='["<the allowed account emails>"]' \
+  STEADY_WHATSAPP_ENABLED=true
+```
+
+Setting secrets restarts the API: check no voice call is open first. Then in the Meta app, WhatsApp > Configuration >
+Webhook: callback `https://stedio-api.fly.dev/whatsapp/webhook`, the same verify token, and subscribe to `messages`.
+Templates (`stedio_checkin`, `stedio_reminder`, `stedio_daily`, `stedio_weekly`, `stedio_visit`, `stedio_insight`,
+`stedio_meal`, `stedio_sensor`, `stedio_link`, each in `en` and `he`, one quick-reply button, no variables; submitted with
+`fly ssh console -a stedio-api -C "python -m steady_api.whatsapp.templates"`) must be
+approved by Meta before proactive messages outside the 24-hour window can go; until then they fall back to the app push.
