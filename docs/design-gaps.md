@@ -1980,3 +1980,19 @@ clinic report with their visits (PM-214). When viewing someone else's data, only
 - It includes the out-of-range look-back (a notification like the others); the helper text says the sensor's and
   pump's own alarms are not affected.
 - Built from the existing Card and ToggleRow; no new visual element. Screenshots: `/mnt/project-files/steady/notify-all/`.
+
+### G-116 · Clinic portal and pre-visit summary (**approved by Guy, 19 Nov 2026, PM-275**)
+**Gap**
+- No design board for clinics. Guy approved the mockups in `/mnt/project-files/steady/doctor-portal/` (01 patients and
+  add, 02 summary, 03 app approval) and asked for more: separate clinic sign-in, four roles, a chart behind every
+  number, a marketing section with no screenshots, and an admin screen for clinics.
+
+**What was built**
+- Website `/en/clinic` and `/he/clinic` (Hebrew allowed here because the mockups were approved in Hebrew; the rest of
+  the site stays English only): sign-in, Patients, Requests, Account, summary, chart dialogs, one-page print.
+- Not in the mockups, built from existing elements: Requests and Account pages, chart dialogs, Admin > Clinics, the
+  home "Clinics" section (text cards only), Demo "Clinic view", and in the app the Clinics card on Sharing and the
+  manage screen for a clinic already shared with (parts, questions for the visit, stop).
+- The app approval screen shows four notes instead of the mockup's two: it adds who on the team can open it and the
+  180 days it covers, so the consent says everything the clinic will see.
+

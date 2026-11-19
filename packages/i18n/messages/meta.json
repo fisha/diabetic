@@ -21130,5 +21130,2123 @@
     "review": [
       "translation"
     ]
+  },
+  "clc.for": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.nav_patients": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.nav_requests": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.nav_account": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.lang": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.licence": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.sign_out": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.role_doctor": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.role_nurse": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.role_dietitian": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.role_social_worker": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.nm_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.nm_b": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.fail_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.fail_b": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.si_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.si_b": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.si_email": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.si_pw": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.si_go": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.si_offline": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.si_unconf": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.si_invalid": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.si_failed": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.si_google_off": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.si_apart": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.demo_no_link": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.demo_bad_link": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.demo_chip": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.demo_read_only": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.search": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.add": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.add_b": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.add_email": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.add_privacy": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.add_go": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.add_sent": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.add_many": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.add_bad": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.cancel": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.done": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.close": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.empty_patients": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.empty_requests": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.list_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_patient": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_sent": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_diabetes": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_devices": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_latest": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_viewed": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_visit": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_open": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.open": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.st_pending": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.st_declined": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.st_expired": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ago_min": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ago_h": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.dt_type1": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.dt_type2": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.dt_prediabetes": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.dt_other": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.dt_notSure": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.dt_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.gone": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.back": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.loading": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.since": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.data_through": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.next_visit": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.period": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.print": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.flag_tir": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.flag_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.flag_not_collected": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.s1": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.s2": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.s3": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.s4": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.s5": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.s6": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.s7": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.s8": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.s9": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.s10": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.by_ai": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.by_rules": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.by_ai_short": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.by_rules_short": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.nothing_stands_out": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ranges": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.last90": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.prior90": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.tir_short": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.missing": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.why_collected": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.why_shared": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.why_recorded": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.not_shared_part": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_metric": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_target": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_now": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_change": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_before": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_status": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_chart": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_date": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.col_kind": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.m_wear": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.m_tir": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.m_tbr": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.m_tbr2": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.m_tar": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.m_tar2": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.m_cv": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.m_gmi": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.m_mean": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.same": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.higher": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.lower": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.off_target": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.i_treatment": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.tk_closed_loop": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.tk_pump": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.tk_injections": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.i_auto": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.i_tdd": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.i_bolus_share": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.i_pump_days": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.i_boluses": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.i_auto_corr": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.i_no_bolus": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.i_late": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.i_alone": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.n_of_m": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.meals_n": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.per_day": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.p_night": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.p_night_v": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.before_n": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.lowest_median": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.p_meals": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.meal_breakfast": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.meal_lunch": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.meal_dinner": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.p_meals_unit": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.p_exercise": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.p_ex_v": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.p_week": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.p_week_v": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.p_dawn": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.p_dawn_v": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.wd_0": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.wd_1": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.wd_2": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.wd_3": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.wd_4": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.wd_5": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.wd_6": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.e_severe": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.e_ketones": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.e_sick": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.e_sick_v": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.e_hospital": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.e_devices": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.e_alerts": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.none_logged": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.l_carbs": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.n_of_days": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.l_exercise": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.sessions": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.l_steps": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.steps_v": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.l_sleep": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.l_weight": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.was": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.t_uacr": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.t_coeliac": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.t_bp_bmi": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.t_eye": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.t_foot_kidney": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.w_mood": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.w_app": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.w_fewer": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.w_minor": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.w_parent_yes": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.w_parent_no": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.q_from_app": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.q_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.foot_record": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.foot_sources": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.prepared": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.chart_of": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_agp": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_agp_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_weekly_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_night_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_meals_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_weekday_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_dawn_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_low_during": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_low_after": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_auto": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_hours": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_carb_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_days": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.ch_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.yes": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.no": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.acc_you": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.acc_name": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.acc_role": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.acc_clinic": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.acc_change": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.acc_team": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.acc_team_b": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_b": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_clinic_name": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_city": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_create": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_fail": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_no_account": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_has_members": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_has_patients": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_patients": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_delete_clinic": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_no_members": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_email": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_status": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_active": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_suspended": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_remove": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_add_member": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_added": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.adm_member_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_nav": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_h": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_b": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_1_t": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_1_b": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_2_t": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_2_b": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_3_t": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_3_b": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_4_t": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_4_b": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_signin": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.cl_note": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.dm_clinic_h": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.dm_clinic_b": {
+    "board": "Website",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "web.dm_clinic_cta": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinics section and demo clinic view (PM-275, Guy 19 Nov 2026)"
+  },
+  "wd.adm_clinics": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin > Clinics (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.dg_under1": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.dg_y1to5": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.dg_y5to10": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.dg_y10to20": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.dg_over20": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "clc.tk_no_insulin": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.asks": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.review": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.stop": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.stop_q": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.last_viewed": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.someone": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.never_viewed": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.manage": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.fail": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.ask_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.gone": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.asked_by": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.team": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.what_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.sc_sensor": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.sc_sensor_s": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.sc_insulin": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.sc_lifestyle": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.sc_labs": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.sc_questions": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.consent_1": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.consent_2": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.consent_3": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.consent_4": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.share": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.not_now": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.q_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.q_b": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "copy"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.q_label": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.q_send": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.q_sent": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.role_doctor": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.role_nurse": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.role_dietitian": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+  },
+  "care.role_social_worker": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
   }
 }

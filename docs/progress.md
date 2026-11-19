@@ -8,6 +8,23 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-275, thread "Build doctor portal with pre-visit summary"): Guy asked for a desktop portal for
+clinic teams, in the demo and the real system: a team member asks for a patient by email, the patient accepts in the
+app, and the clinic sees a one-page pre-visit summary in 10 sections (last 90 days next to the 90 before, numbers first,
+"Missing" for any gap, no dosing; section 10 states the data and the topic, never a treatment: Guy's decision card).
+Then (via the coordinator): a separate clinic sign-in on the website on the same users table, roles doctor, nurse,
+dietitian and social worker, a chart behind every number, a marketing "Clinics" section with no screenshots, and an
+admin screen to create clinics and add team members. Built: API `routers/clinic.py` (admin clinics and members, clinic
+`/clinic/*`, the person's `/care-team/*`, push on a new request, retention in the worker), `clinic_summary.py` (facts
+from the same metrics as the app, model wording checked by the notes filters, rule wording without AI consent),
+`demo/clinic.py` + `/demo/clinic-session` (demo clinic with the demo people, read-only), migration `c4e8a2f6d1b3`;
+website `/{en,he}/clinic` (own session in page memory, patients, requests, account, summary with charts and one-page
+print), Admin > Clinics, home "Clinics" section, Demo "Clinic view"; app Settings > Sharing "Clinics" card and
+`/settings/care-team/[id]` (approve with parts, change parts, questions for the visit, stop; push tap opens it).
+Privacy policy version `2026-11-19T12:00:00Z` (clinic sharing, clinic team data, retention) forces re-accept. Checks:
+API full suite, web and app typecheck, lint and tests, i18n tests. Next: deploy API, then web and OTA; Guy looks at the
+demo clinic view. The demo keeps 90 days, so every "before" in the demo shows Missing.
+
 19 Nov 2026 (Jira PM-280, thread "Celebrate wins on Apple Watch"): Guy asked for wins to be celebrated on the watch like
 Fitness's "You did it". He saw the mockup (`/mnt/project-files/steady/watch-wins/`) and chose the plain push now and the
 watch screen in the next native build. API `steady_api/wins.py`: one `win` push a day at most for behaviour wins only (a
