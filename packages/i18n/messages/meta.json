@@ -25518,5 +25518,96 @@
       "translation"
     ],
     "note": "PM-312: who a follower is to the person sharing; Dad/Mom/Grandpa/Grandma titles show on encouragements."
+  },
+  "meal.curve_not_back_meal": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-315 (Guy, 19 Nov 2026): no return to start before the next logged meal or workout."
+  },
+  "meal.curve_not_back_act": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-315 (Guy, 19 Nov 2026): no return to start before the next logged meal or workout."
+  },
+  "ovr.rises_not_back_meal": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-315 (Guy, 19 Nov 2026): no return to start before the next logged meal or workout."
+  },
+  "ovr.rises_not_back_act": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-315 (Guy, 19 Nov 2026): no return to start before the next logged meal or workout."
+  },
+  "now.rises_t": {
+    "board": "Companion (main screen)",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-315 (Guy, 19 Nov 2026): end-of-week card on the main screen offering the week's biggest rises; descriptive only."
+  },
+  "now.rises_b": {
+    "board": "Companion (main screen)",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-315 (Guy, 19 Nov 2026): end-of-week card on the main screen offering the week's biggest rises; descriptive only."
+  },
+  "now.rises_b@v": {
+    "board": "Companion (main screen)",
+    "review": [
+      "translation"
+    ],
+    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
+  },
+  "meal.curve_no_rise": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-315: back to start when glucose never rose above its start after the meal; same wording as the clinic report."
+  },
+  "ovr.rises_t_today": {
+    "board": "Overview (PM-318)",
+    "review": [
+      "translation"
+    ],
+    "note": "Guy, 19 Nov 2026: biggest rises for a single day too; one Insights row on Overview opening All insights."
+  },
+  "ovr.rises_t_24h": {
+    "board": "Overview (PM-318)",
+    "review": [
+      "translation"
+    ],
+    "note": "Guy, 19 Nov 2026: biggest rises for a single day too; one Insights row on Overview opening All insights."
+  },
+  "ovr.rises_t_on": {
+    "board": "Overview (PM-318)",
+    "review": [
+      "translation"
+    ],
+    "note": "Guy, 19 Nov 2026: biggest rises for a single day too; one Insights row on Overview opening All insights."
+  },
+  "ovr.ins_row": {
+    "board": "Overview (PM-318)",
+    "review": [
+      "translation"
+    ],
+    "note": "Guy, 19 Nov 2026: biggest rises for a single day too; one Insights row on Overview opening All insights."
+  },
+  "ovr.ins_row_n": {
+    "board": "Overview (PM-318)",
+    "review": [
+      "translation"
+    ],
+    "note": "Guy, 19 Nov 2026: biggest rises for a single day too; one Insights row on Overview opening All insights."
   }
 }

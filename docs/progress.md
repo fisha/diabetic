@@ -10,7 +10,7 @@ verified only against test stand-ins or not at all. See `docs/integration-status
 
 19 Nov 2026 (Jira PM-313, thread "Use third person when viewing someone's account"): Guy asked that while someone
 views another person's account, text that says "your" ("בטווח שלך") names the person instead ("בטווח של יונתן"). App:
-181 catalog ids now have a viewer variant (`<id>@v`, en and he, `{person}` = the name the share shows) for the main
+182 catalog ids now have a viewer variant (`<id>@v`, en and he, `{person}` = the name the share shows) for the main
 screen, insights and their details, charts and breakdowns, journal sources, wins, learning days, routine summaries and
 the insights strip in the viewer's conversation; `src/i18n/viewer.ts` picks the variant while viewing, so ids without
 one (the viewer's own conversation, the viewing strip) are unchanged. Hebrew variants avoid gendered verbs ("נרשם על
@@ -19,6 +19,25 @@ companion is told to speak of the person by name in the third person, never "you
 `viewer-wording.test.ts`), i18n 20, API 787; browser run `tools/e2e/viewer-wording.cjs` 14/14 (he light, en light, he
 dark), screenshots in `/mnt/project-files/steady/viewer-wording/`. Regression set not run here (no key); deploy-api runs
 it. Next: deploy API, then OTA to testers.
+
+19 Nov 2026 (Jira PM-318, same thread): Overview shows the biggest rises for a single day too ("Biggest rises today",
+"in the last 24 hours", or a date), following a late meal past the end of the day (readings and the next logged meal or
+workout up to 6 h after); and the insights come back to Overview as one row "Insights · N" that opens All insights
+(not while viewing someone who doesn't share insights). App only. Next: OTA.
+
+19 Nov 2026 (Jira PM-315, thread "Show actual return-to-baseline time after meals"): the meal curve's "Back to start"
+now shows the actual time past 3 h (searched up to 6 h, stopping at the next logged meal or workout; the curve extends
+to the whole hour after the return), every past meal in the journal shows the curve (pump meals merged into a reading's
+or bolus's row too), and Thursday to Saturday the main screen offers "This week's biggest rises", opening Overview's
+week at the list (G-118). API: the card's read mark `rises:<date>` (home-read). Same rule as the clinic report
+(api #144). App tests 226, API insights tests pass. Next: deploy API, then OTA.
+
+19 Nov 2026 (Jira PM-314, thread "Upgrade the visit report"): Guy asked for the meal sheet's examples in the clinic
+report. A new section "Glucose after meals" shows the three meals of the period with the largest rise and one typical
+meal (the middle rise of the rest): the meal, carbs and the insulin for it, the curve with the person's own range
+shaded, glucose at the meal, the highest and when, the rise and the time back to start. Same rule as the app's meal
+sheet: the return is looked for up to 6 h after the meal and not past the next logged meal or workout ("Not within
+6 h", "Not before the next meal"). Food names only with the detailed log. API only; no app change.
 
 19 Nov 2026 (Jira PM-309, thread "Make "Today so far" insights about today"): Guy said the Today so far sheet still
 listed 14-day patterns ("two hours after dinner: usually 134 -> 153") and asked that it be about today, e.g. what
