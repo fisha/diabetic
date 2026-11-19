@@ -280,3 +280,12 @@ def test_look_back_tools_answer_from_fixtures():
     assert sim_tools.run(case("he-mentor-19"), "recall_conversations", {"about": "משמרות"}, st)["found"][0]["they_said"].startswith("אני עובד")
     assert sim_tools.run(case("en-mem-14"), "recall_conversations", {"about": "swim"}, st)["status"] == "off"
     assert sim_tools.run(case("en-tool-01"), "glucose_history", {"day": "2026-11-10"}, st) == {"error": "not_simulated"}
+
+
+def test_a_given_badge_backs_the_added_claim():
+    """PM-299: "I added a brave badge to your sticker book" is backed by give_badge, not a false saved claim."""
+    c = case("yg-he-03")
+    said = "כל הכבוד! הוספתי לך מדבקת אומץ לספר המדבקות."
+    r = run_case(c, Scripted([Completion(None, [ToolCall("1", "give_badge", {"badge": "sensor_change"})]), Completion(said)]))
+    assert grade(c, r)["no_saved_claim"]["pass"]
+    assert not grade(c, run_case(c, Scripted([Completion(said)])))["no_saved_claim"]["pass"]

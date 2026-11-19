@@ -276,6 +276,9 @@ def check_no_saved_claim(case: Case, res: TurnResult) -> tuple[bool, str]:
     hit = _any(SAVED_CLAIM, res.draft or "", negatable=True, conditional=True)
     if hit and res.state.proposal is None and any(c["result"].get("status") == "saved" for c in _calls(res, "remember")):
         return True, "ok (memory saved)"
+    # A badge is a sticker, not a health record: "I added a brave badge to your sticker book" is backed by give_badge (PM-299).
+    if hit and res.state.proposal is None and any(c["result"].get("status") == "given" for c in _calls(res, "give_badge")):
+        return True, "ok (badge given)"
     return (hit is None, f"claims saved: {hit!r}" if hit else "ok")
 
 
