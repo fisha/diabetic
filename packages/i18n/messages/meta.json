@@ -21104,5 +21104,31 @@
     "review": [
       "translation"
     ]
+  },
+  "set.all": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "All notifications switch (PM-279, Guy 19 Nov 2026)."
+  },
+  "set.all_b": {
+    "board": "Settings",
+    "review": [
+      "translation",
+      "clinical"
+    ]
+  },
+  "set.all_fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.all_off": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ]
   }
 }
