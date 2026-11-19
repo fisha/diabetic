@@ -20,6 +20,12 @@ companion is told to speak of the person by name in the third person, never "you
 dark), screenshots in `/mnt/project-files/steady/viewer-wording/`. Regression set not run here (no key); deploy-api runs
 it. Next: deploy API, then OTA to testers.
 
+19 Nov 2026 (Jira PM-316, PM-317, clinic portal thread): a suspended clinic member sees "Your clinic access is
+suspended" instead of "not on a clinic team", and Admin > Clinics shows the status as text with a separate
+Suspend/Restore button (the old status button toggled on click, which is how Guy's own membership was suspended).
+A clinic request now also emails the account holder (existing accounts only, no health data) and shows a row on the
+app's main screen until answered. A clinician may ask for their own summary. API #147, web #55, app #190.
+
 19 Nov 2026 (Jira PM-318, same thread): Overview shows the biggest rises for a single day too ("Biggest rises today",
 "in the last 24 hours", or a date), following a late meal past the end of the day (readings and the next logged meal or
 workout up to 6 h after); and the insights come back to Overview as one row "Insights · N" that opens All insights
