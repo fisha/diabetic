@@ -51,6 +51,12 @@ accounts may have chosen it and are kept). Voice sample default and demo account
 `test_companion_name_is_not_set_by_a_save`, `test_a_name_saved_before_the_fixed_name_is_kept`; migration SQL checked on
 Postgres; app tests pass. Next: deploy API (runs the migration), OTA to testers.
 
+19 Nov 2026 (Jira PM-310, same thread): Guy did not see his son's meal photo while viewing. Photos had been kept from
+followers since 13 Nov; Guy chose (decision card) to show them to followers who see the journal, at once for existing
+shares. `GET /meal/photos/{id}` joined the journal share scope and admin view paths (delete still refused); `MealPhoto`
+loads it with X-View-As when the journal is shared; `shr.sc_journal` now names photos (en, he). Lawyer question PM-311
+(`needs-lawyer`). API 786 tests, app 221. api #143, app #186. Next: deploy API, OTA.
+
 19 Nov 2026 (Jira PM-294, same thread): Guy asked that the viewer also see the insights of the person viewed. The
 follower's conversation tab (`AboutChat`) shows the main screen's `NowInsights` when insights are shared (only the line
 once a conversation is going); read only, as before (no mark-read or changes, refused by the API too); "Talk about this"
