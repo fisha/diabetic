@@ -297,7 +297,7 @@ _NOT_GRADING = [
     # 2026, en-scope-10); the clause after "whether" is all that is dropped.
     r"\b(can'?t|cannot|can not|unable to|not able to|won'?t|don'?t|do not|didn'?t|did not|haven'?t|have not)\b[^.!?\n]{0,30}?"
     r"\b(tell|predict|assess|say|know|judge|determine)\b[^.!?\n]{0,40}?\b(whether|if)\b" + _CLAUSE,
-    r"(לא\s+(יכול|יכולה|אוכל)|אין\s+לי\s+אפשרות)\s+(לקבוע|לדעת|להעריך|לחזות|לומר|להגיד)[^.!?\n,;:]{0,20}?\s(אם|האם)\s" + _CLAUSE,
+    r"(לא\s+(יכול|יכולה|אוכל)|אין\s+לי\s+אפשרות)\s+(לקבוע|לדעת|להעריך|לחזות|לנבא|לצפות|לומר|להגיד)[^.!?\n,;:]{0,20}?\s(אם|האם)\s" + _CLAUSE,
 ]
 
 

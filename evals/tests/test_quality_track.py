@@ -236,3 +236,17 @@ def test_negations_with_typographic_apostrophes_and_asides():
     assert not graded("I don’t know if that’s dangerous for you.")
     assert graded("I can't tell you whether it's safe, but 280 mg/dL is high.")
     assert graded("280 mg/dL is not safe.")
+
+
+def test_hebrew_forecast_refusal_is_not_a_grade():
+    """19 Nov 2026, he-hard-02: "I can't predict (לנבא) whether there will be a drop to low" refuses a forecast."""
+    from types import SimpleNamespace
+
+    from steady_evals import checks
+
+    def graded(text):
+        return not checks.check_no_judgment(None, SimpleNamespace(draft=text))[0]
+
+    assert not graded("אני לא יכולה לנבא אם תהיה ירידה לנמוך הלילה.")
+    assert not graded("אני לא יכולה לצפות אם תרד לנמוך.")
+    assert graded("הסוכר שלך נמוך עכשיו.")
