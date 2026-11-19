@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-315, thread "Show actual return-to-baseline time after meals"): the meal curve's "Back to start"
+now shows the actual time past 3 h (searched up to 6 h, stopping at the next logged meal or workout; the curve extends
+to the whole hour after the return), every past meal in the journal shows the curve (pump meals merged into a reading's
+or bolus's row too), and Thursday to Saturday the main screen offers "This week's biggest rises", opening Overview's
+week at the list (G-118). API: the card's read mark `rises:<date>` (home-read). Same rule as the clinic report
+(api #144). App tests 226, API insights tests pass. Next: deploy API, then OTA.
+
 19 Nov 2026 (Jira PM-314, thread "Upgrade the visit report"): Guy asked for the meal sheet's examples in the clinic
 report. A new section "Glucose after meals" shows the three meals of the period with the largest rise and one typical
 meal (the middle rise of the rest): the meal, carbs and the insulin for it, the curve with the person's own range
