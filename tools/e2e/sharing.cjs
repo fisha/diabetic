@@ -112,6 +112,17 @@ const server = http.createServer((req, res) => {
       await tab(p2, T.comp); await p2.waitForTimeout(2500);
       // PM-251: the character in the middle before the conversation starts, the viewing strip on top.
       await shot2('065-about-chat-empty');
+      // PM-294: the son's insights on the viewer's screen (shared), read only; Talk puts a question in the box.
+      ok(`${lang} ${scheme}: son's insights on the viewer's screen`, (await p2.getByText(he ? 'תובנות' : 'Insights', { exact: true }).count()) > 0);
+      await p2.getByText(he ? 'תובנות' : 'Insights', { exact: true }).first().click(); await p2.waitForTimeout(1200);
+      await shot2('066-about-chat-insight-open');
+      const talk = p2.getByText(he ? 'לדבר על זה' : 'Talk about this', { exact: true }).first();
+      if (await talk.count()) {
+        await talk.click(); await p2.waitForTimeout(600);
+        ok(`${lang} ${scheme}: Talk puts the question in the viewer's box`, /\?$/.test(await p2.getByLabel(T.ph).inputValue()));
+        await p2.getByLabel(T.ph).fill('');
+      }
+      await p2.getByText(he ? 'תובנות' : 'Insights', { exact: true }).first().click().catch(() => null); await p2.waitForTimeout(800);
       ok(`${lang} ${scheme}: character text on the viewer's screen`, (await p2.getByText(he ? 'אפשר לשאול אותי על Itay' : 'Ask me about Itay', { exact: true }).count()) > 0);
       await p2.getByLabel(T.ph).fill(he ? 'איך היה לו היום?' : 'How was his day?');
       await p2.getByRole('button', { name: T.send }).last().click(); await p2.waitForTimeout(3000);
