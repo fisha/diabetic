@@ -8,6 +8,21 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-290, thread "Let iPhone testers register their device themselves"): Guy wants new iPhone testers
+to add their own phone instead of us running `eas device:create` for each one. Finding: an Expo registration link
+(`expo.dev/register-device/<id>`, an `AppleDeviceRegistrationRequest`) has one `resolvedAppleDevice` and a `closedAt`
+in EAS's schema (eas-cli 27.10.0), so it serves one phone; the fixed 12 Nov link on /get/iphone was replaced. Built: API
+`steady_api/ios_devices.py` and `routers/ios_device.py` (`GET/POST /auth/ios-device`, open to waitlisted accounts,
+blocked for demo accounts): the server makes each signed-in tester their own link with an Expo robot token
+(`STEADY_EXPO_TOKEN`, account `mingdev`, team S6L7799Q36) and keeps only the link id, time added and model, never the
+UDID (table `ios_device_registrations`, migration `d7b3e1a9c5f2`, in the export as `test_iphone`, deleted with the
+account). Worker step `ios_devices` checks open links every 2 minutes for 14 days, emails the admins "a new iPhone needs
+a build" once, and emails the tester once a newer iPhone build is published. Website `/get/iphone` step 2 signs the
+tester in on the page and opens their link, then shows "on the list" or "ready". API 13 new tests; web typecheck and
+lint; page states checked in Chromium at iPhone 13 size against an API stand-in. Privacy policy line for Expo and Apple
+receiving the tester's device identifier: open item PM-291. Next: Guy creates the Expo robot token and sets the fly
+secret, then deploy API and web.
+
 19 Nov 2026 (Jira PM-289, thread "Toggle time-in-range period on tap"): Guy asked that a tap on the main screen's
 time-in-range tile switch the period instead of opening Overview, with a small arrow that still opens Overview and
 the person's range in brackets by the title (his pick on a decision card). Built: a tap steps Last 24 hours -> Today
