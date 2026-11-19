@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 from pydantic import ValidationError
 
 from .cases import Case
-from .production import GLUCOSE_ENTRY_MGDL_MAX, GLUCOSE_ENTRY_MGDL_MIN, about_someone_else, prod_tools, to_mgdl
+from .production import GLUCOSE_ENTRY_MGDL_MAX, GLUCOSE_ENTRY_MGDL_MIN, about_someone_else, prod_app_data, prod_tools, to_mgdl
 
 SIMULATED = {
     "propose_glucose",
@@ -25,6 +25,7 @@ SIMULATED = {
     "note_profile_question",
     "similar_meals",
     "recall_conversations",
+    "app_data",
 }
 # Tools answered only from a case's `tool_results` fixture (no case needs their logic yet).
 FIXTURE_ONLY = {
@@ -129,6 +130,11 @@ def _dispatch(case: Case, name: str, args: dict, state: SimState) -> dict:
         if not case.memory_on:
             return {"status": "off", "detail": "The person turned memory off: earlier conversations are not used."}
         return case.tool_results.get("recall_conversations", {"status": "nothing_yet", "detail": "No earlier conversations to look in yet."})
+    if name == "app_data":
+        # The app's screens (PM-268), read-only: a case's `tool_results["app_data"][section]`, else the section empty.
+        a = prod_app_data.AppData.model_validate(args)
+        given = case.tool_results.get("app_data", {})
+        return {"section": a.section, **given.get(a.section, {}), "note": prod_app_data.NOTE}
     if name == "show_emergency_call":
         # Same answer as production: a call button, never a number from the model (Guy, 17 Nov 2026).
         if any(c["name"] == name for c in state.calls):
