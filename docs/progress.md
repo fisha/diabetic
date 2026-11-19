@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-293, thread "Restyle the parent viewing-child companion screen"): Guy asked that the follower view
+show the conversation page and let the viewer talk about the profile of the person viewed, and that the Live Activity
+show the viewer's own data, never the person viewed. Found: an admin who also follows someone got no companion tab
+while viewing (app hid it for admins; the API answered admins' X-View-As with admin rules, which refuse chat paths).
+Now an admin with an active share gets the follower's conversation (`deps.current_user`); when the owner shares the
+profile, the viewer's conversation context includes `context.about` for them (`viewer_instructions`). In the app the tab
+shows for an admin who follows the person, and the lock-screen card, home widgets and watch read with `session.authed`
+`self` (no X-View-As) while viewing; the Overview no longer hands the viewed person's range to the card. API test
+`test_viewer_talks_about_the_shared_profile_and_an_admin_who_follows_gets_the_same_chat`; app 218 tests. The Live
+Activity change needs a phone to see (not checked in the container). Next: deploy API, OTA to testers.
+
 19 Nov 2026 (Jira PM-292, thread "Fix onboarding restarting after Meet companion"): an under-18 tester whose parent had
 accepted the invite tapped "Meet your companion" and was sent back to the start of onboarding; API logs showed no
 `PUT /profile`. Cause: the finish step's pre-save check accepted only `ageGate 'adult'`, so `'under18'` went to the date
