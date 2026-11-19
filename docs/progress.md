@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-273, thread "Skip \"how much did you eat\" when amount is given"): Guy logged "I ate half a
+banana"; the review showed ½ piece but still asked "How much did you eat?" with "All of it", and "Half" would have halved
+it again. App: the question is hidden for meals described in words or voice (`asksAte` in `features/meal/model.ts`),
+kept for photos, recent, usual and manual meals, and still shown when a described meal already carries a fraction.
+API: `propose_meal` no longer takes `ate` (the amount eaten is in the description; cards use `ate: all`). App 210 tests,
+e2e `tools/e2e/meal.cjs` 22/22 on the web export; companion regression set runs on Fly with the API deploy.
+
 19 Nov 2026 (Jira PM-269, thread "Add a WhatsApp companion channel"): Guy asked to chat with the same companion on
 WhatsApp, directly through Meta's WhatsApp Cloud API with no provider, with proactive messages in the first version
 ("זה כל החוויה") and only his own account at first. Spec approved ("מאושר"), in Jira PM-269; lawyer review PM-270.

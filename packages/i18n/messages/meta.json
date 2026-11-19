@@ -21098,5 +21098,11 @@
       "translation"
     ],
     "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
+  },
+  "meal.total_est_said": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ]
   }
 }

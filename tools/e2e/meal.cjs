@@ -33,6 +33,9 @@ const server = http.createServer((req, res) => {
     await api('/auth/sign-up', { method: 'POST', body: { email: 'f@example.com', password: 'correct horse battery' } });
     const tf = (await api('/auth/sign-in', { method: 'POST', body: { email: 'f@example.com', password: 'correct horse battery' } })).json;
     await api('/profile', { method: 'PUT', token: tf.access_token, body: { locale: 'en', answers: ANSWERS } });
+    // Every document in force, the AI consent among them, is accepted, so the AI routes answer (PM-156).
+    const docs = (await api('/consent', { token: tf.access_token })).json.documents;
+    await api('/consent/accept', { method: 'POST', token: tf.access_token, body: { versions: Object.fromEntries(docs.map((d) => [d.kind, d.version])), at: new Date().toISOString() } });
     await page.goto(`${base}/sign-in`); await page.waitForTimeout(1500);
     await page.getByLabel('Email', { exact: true }).fill('f@example.com');
     await page.getByLabel('Password', { exact: true }).fill('correct horse battery');
@@ -46,6 +49,7 @@ const server = http.createServer((req, res) => {
     await shot('m01-review-photo');
     ok('review lists foods from the photo', await page.getByText('Rice').first().isVisible() && await page.getByText('Soup').first().isVisible());
     ok('question shown', await page.getByText('Cream or broth?').first().isVisible());
+    ok('photo asks how much was eaten', await page.getByText('How much did you eat?').first().isVisible());
     await page.getByText('Broth', { exact: true }).click(); await page.waitForTimeout(300);
     await page.getByText('Save meal', { exact: true }).last().click(); await page.waitForTimeout(2000);
     ok('meal saved', await page.getByText('Meal saved').first().isVisible());
@@ -67,6 +71,8 @@ const server = http.createServer((req, res) => {
     await page.getByText('Find foods', { exact: true }).last().click(); await page.waitForTimeout(2500);
     ok('description parsed', await page.getByText('Banana').first().isVisible() && await page.getByText('Toast').first().isVisible());
     await shot('m02-review-text');
+    // A description already says how much was eaten (PM-273): no second "how much" question.
+    ok('description does not ask how much was eaten', (await page.getByText('How much did you eat?').count()) === 0);
 
     // Search adds a food with its database carbs.
     await page.getByText('Add a food', { exact: true }).first().click(); await page.waitForTimeout(800);
