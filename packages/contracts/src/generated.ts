@@ -434,6 +434,30 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/ios-device": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Ios Device
+         * @description Where the person's own iPhone stands. An open link is checked with Expo first, so a phone just added shows.
+         */
+        get: operations["ios_device_auth_ios_device_get"];
+        put?: never;
+        /**
+         * Add Ios Device
+         * @description The person's registration link: the open one they already have, or a new one. One link per account.
+         */
+        post: operations["add_ios_device_auth_ios_device_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/me": {
         parameters: {
             query?: never;
@@ -3175,6 +3199,44 @@ export interface paths {
         patch: operations["change_scopes_sharing__share_id__patch"];
         trace?: never;
     };
+    "/sharing/{share_id}/cheer": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Send Cheer
+         * @description A parent's cheer (PM-300), or any follower's for an adult they follow (PM-304).
+         */
+        post: operations["send_cheer_sharing__share_id__cheer_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sharing/{share_id}/young": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Parent Get */
+        get: operations["parent_get_sharing__share_id__young_get"];
+        /** Parent Set */
+        put: operations["parent_set_sharing__share_id__young_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/visit": {
         parameters: {
             query?: never;
@@ -3426,6 +3488,114 @@ export interface paths {
          *     window is still open.
          */
         delete: operations["unlink_whatsapp_link_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/young": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Young */
+        get: operations["get_young_young_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/young/challenge": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Set Challenge */
+        put: operations["set_challenge_young_challenge_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/young/cheers/{cheer_id}/seen": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Cheer Seen */
+        post: operations["cheer_seen_young_cheers__cheer_id__seen_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/young/handover": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Handover
+         * @description At 18: the parent keeps following as an ordinary viewer, or stops. Either way the choice is asked once.
+         */
+        post: operations["handover_young_handover_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/young/quiet": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Quiet
+         * @description Quiet hours for every notification (PM-307): the person's own check-in quiet times, any age.
+         */
+        put: operations["set_quiet_young_quiet_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/young/stickers/seen": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Stickers Seen */
+        post: operations["stickers_seen_young_stickers_seen_post"];
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -3973,6 +4143,22 @@ export interface components {
             /** Username */
             username?: string | null;
         };
+        /** ChallengeIn */
+        ChallengeIn: {
+            /** Id */
+            id: ("log_lunch" | "log_breakfast" | "move" | "talk") | null;
+        };
+        /** ChallengeOut */
+        ChallengeOut: {
+            /** Done */
+            done: boolean;
+            /** Id */
+            id: string;
+            /** Met */
+            met: number;
+            /** Target */
+            target: number;
+        };
         /** ChangeMetaOut */
         ChangeMetaOut: {
             /**
@@ -3987,6 +4173,31 @@ export interface components {
         CheckIn: {
             /** Text */
             text: string;
+        };
+        /** CheerIn */
+        CheerIn: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "high_five" | "heart" | "star" | "trophy" | "rocket";
+        };
+        /** CheerOut */
+        CheerOut: {
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /** From Name */
+            from_name: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Kind */
+            kind: string;
         };
         /**
          * ClientErrorIn
@@ -4157,6 +4368,28 @@ export interface components {
             documents: components["schemas"]["DocumentOut"][];
             /** Pending */
             pending: ("terms" | "privacy" | "ai")[];
+        };
+        /** Controls */
+        Controls: {
+            /** Quiet */
+            quiet: boolean;
+            /** Set At */
+            set_at?: string | null;
+            /** Set By */
+            set_by?: string | null;
+            /** Teen Early */
+            teen_early: boolean;
+            /** Voice */
+            voice: boolean;
+        };
+        /** ControlsIn */
+        ControlsIn: {
+            /** Quiet */
+            quiet?: boolean | null;
+            /** Teen Early */
+            teen_early?: boolean | null;
+            /** Voice */
+            voice?: boolean | null;
         };
         /** ConversationOut */
         ConversationOut: {
@@ -5139,6 +5372,21 @@ export interface components {
              */
             unit: string | null;
         };
+        /** HandoverIn */
+        HandoverIn: {
+            /** Keep */
+            keep: boolean;
+        };
+        /** HandoverOut */
+        HandoverOut: {
+            /** Parent Name */
+            parent_name: string;
+            /**
+             * Share Id
+             * Format: uuid
+             */
+            share_id: string;
+        };
         /** HealthExtraBatch */
         HealthExtraBatch: {
             /** Items */
@@ -5497,6 +5745,20 @@ export interface components {
             /** Scopes */
             scopes: string[];
         };
+        /** IosDeviceOut */
+        IosDeviceOut: {
+            /** Available */
+            available: boolean;
+            /** Link */
+            link?: string | null;
+            /** Model */
+            model?: string | null;
+            /**
+             * State
+             * @enum {string}
+             */
+            state: "none" | "open" | "added" | "ready";
+        };
         /** KindOut */
         KindOut: {
             /** Kind */
@@ -5751,6 +6013,8 @@ export interface components {
         };
         /** Me */
         Me: {
+            /** Age Band */
+            age_band?: ("child" | "teen") | null;
             /**
              * Approved
              * @default true
@@ -6291,6 +6555,14 @@ export interface components {
             /** Refreshing */
             refreshing: boolean;
         };
+        /** ParentYoungOut */
+        ParentYoungOut: {
+            /** Band */
+            band: ("child" | "teen") | null;
+            controls: components["schemas"]["Controls"];
+            /** Teen Early Possible */
+            teen_early_possible: boolean;
+        };
         /** ParseIn */
         ParseIn: {
             /** Text */
@@ -6307,10 +6579,18 @@ export interface components {
             icon?: string | null;
             /** Line */
             line?: string | null;
+            /** Nudge */
+            nudge?: string | null;
+            /** Plain */
+            plain?: string | null;
+            /** Slot */
+            slot?: ("breakfast" | "lunch" | "dinner") | null;
             /** Title */
             title: string;
             /** To */
             to: number;
+            /** Usual */
+            usual?: string | null;
         };
         /** PastVisit */
         PastVisit: {
@@ -6639,12 +6919,24 @@ export interface components {
             /** Token */
             token: string;
         };
+        /** QuestOut */
+        QuestOut: {
+            /** Done */
+            done: boolean;
+            /** Id */
+            id: string;
+        };
         /** QuestionsIn */
         QuestionsIn: {
             /** Questions */
             questions: string[];
             /** Visit Date */
             visit_date?: string | null;
+        };
+        /** QuietIn */
+        QuietIn: {
+            /** On */
+            on: boolean;
         };
         /** RankingOut */
         RankingOut: {
@@ -7133,6 +7425,23 @@ export interface components {
             /** Minutes */
             minutes: number;
         };
+        /** StickerOut */
+        StickerOut: {
+            /**
+             * Day
+             * Format: date
+             */
+            day: string;
+            /**
+             * Earned At
+             * Format: date-time
+             */
+            earned_at: string;
+            /** Kind */
+            kind: string;
+            /** Seen */
+            seen: boolean;
+        };
         /** SyncAllOut */
         SyncAllOut: {
             /** Added */
@@ -7558,6 +7867,13 @@ export interface components {
         WarmupStateOut: {
             warmup?: components["schemas"]["WarmupOut"] | null;
         };
+        /** WeekOut */
+        WeekOut: {
+            /** Days */
+            days: (boolean | null)[];
+            /** Last Week Kept */
+            last_week_kept: boolean;
+        };
         /** WhatsAppOut */
         WhatsAppOut: {
             /** Available */
@@ -7690,6 +8006,38 @@ export interface components {
             minutes: number | null;
             /** Part */
             part: ("night" | "morning" | "afternoon" | "evening") | null;
+        };
+        /** YoungOut */
+        YoungOut: {
+            /** Band */
+            band: ("child" | "teen") | null;
+            challenge?: components["schemas"]["ChallengeOut"] | null;
+            /**
+             * Challenges
+             * @default []
+             */
+            challenges: string[];
+            /**
+             * Cheers
+             * @default []
+             */
+            cheers: components["schemas"]["CheerOut"][];
+            controls?: components["schemas"]["Controls"] | null;
+            /** Growth */
+            growth?: ("baby" | "kid" | "explorer") | null;
+            handover?: components["schemas"]["HandoverOut"] | null;
+            quest?: components["schemas"]["QuestOut"] | null;
+            /**
+             * Quiet Self
+             * @default false
+             */
+            quiet_self: boolean;
+            /**
+             * Stickers
+             * @default []
+             */
+            stickers: components["schemas"]["StickerOut"][];
+            week?: components["schemas"]["WeekOut"] | null;
         };
         /** AcceptIn */
         steady_api__routers__clinic__AcceptIn: {
@@ -8551,6 +8899,60 @@ export interface operations {
                 };
             };
             /** @description google_unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ios_device_auth_ios_device_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["IosDeviceOut"];
+                };
+            };
+        };
+    };
+    add_ios_device_auth_ios_device_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["IosDeviceOut"];
+                };
+            };
+            /** @description expo_unavailable */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description expo_unconfigured */
             503: {
                 headers: {
                     [name: string]: unknown;
@@ -14093,6 +14495,107 @@ export interface operations {
             };
         };
     };
+    send_cheer_sharing__share_id__cheer_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CheerIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CheerOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    parent_get_sharing__share_id__young_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ParentYoungOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    parent_set_sharing__share_id__young_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ControlsIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ParentYoungOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     get_visit_visit_get: {
         parameters: {
             query?: never;
@@ -14599,6 +15102,166 @@ export interface operations {
         };
     };
     unlink_whatsapp_link_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_young_young_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["YoungOut"];
+                };
+            };
+        };
+    };
+    set_challenge_young_challenge_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ChallengeIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    cheer_seen_young_cheers__cheer_id__seen_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                cheer_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    handover_young_handover_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["HandoverIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_quiet_young_quiet_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["QuietIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    stickers_seen_young_stickers_seen_post: {
         parameters: {
             query?: never;
             header?: never;

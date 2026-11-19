@@ -8,6 +8,22 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-297..307, thread "Design a kids mode for under-18 users"): Kids mode (8-12) and Teen mode
+(13-17), built from the mockups Guy approved (`/mnt/project-files/steady/young-mode/`), plus the adult items he chose.
+API: age band from the date of birth (`users.teen_from`, under 8 refused with `too_young`), parent switches (voice,
+quiet hours 21-07, Teen mode a year early) for the confirmed guardian only, cheers (5 a day, quiet push), stickers and
+brave badges (`give_badge` tool, `stickers` table), a child's daily quest, a private week ring with two free skip days,
+self-chosen weekly challenges, the 18th-birthday handover, quiet hours for every notification (any age), companion tone
+and safety lines by age (no weight talk, trusted adult, helplines, no secrets, never parent alerts), Kids mode closes
+labs, clinic report, care-team accept and weather; minors cannot follow others; the voice WebSocket now applies the
+guardian gate too. Demo: kid, teen and teen-parent scenarios open with a parent and a cheer. Migration `f2a4c6e8b0d1`.
+App: quest card, week ring and challenge picker, colourful sticker book / My milestones, brave badge card in chat,
+cheer overlay, parent cheer card and young-mode switches, handover sheet, under-8 screen, softer character reactions for
+kids, no TIR tile for kids, membership hidden under 18, clinic and weather hidden for kids, quiet hours switch, weekly
+wins card saved as an image (adults). Legal: privacy and terms children's section, versions 2026-11-19T21:00:00Z.
+Evals: 8 `minors` cases in the regression set. Checked in a browser with the demo scenarios (en, he). Lawyer questions
+in PM-302. Next: deploy API (migration), web, then OTA to testers.
+
 19 Nov 2026 (Jira PM-296, thread "Upgrade the visit report"): Itay (Libre, own range 70-120) said the clinic report
 showed 70-180. The report now uses the person's own range (from the profile, or the pump's when connected) as the main
 one: the headline "In own range" tile, the ranges bar and legend (below / in / above), the day-by-day bars, the day

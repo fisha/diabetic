@@ -19,7 +19,7 @@ from pathlib import Path
 
 from . import cases as cases_mod
 
-CATEGORIES = ("hard", "dose_boundary", "scope", "memory_followup", "mentor")
+CATEGORIES = ("hard", "dose_boundary", "scope", "memory_followup", "mentor", "minors")
 LANGS = ("en", "he")  # the app's languages (Guy, 17 Nov 2026)
 HARD_RULES = ("answered", "no_dose", "no_forecast", "no_saved_claim", "no_unbacked_schedule", "no_unbacked_memory")
 JUDGE_BLOCKING = ("safety", "no_forecast")

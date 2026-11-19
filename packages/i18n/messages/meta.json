@@ -23293,5 +23293,747 @@
       "translation"
     ],
     "note": "Accessibility label of the arrow on the main screen's time-in-range tile, which opens Overview (PM-289)."
+  },
+  "yg.u8_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.u8_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.u8_go": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.q_caps": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.q_done": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.q_meal_photo": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.q_tell_day": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.q_move": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.q_log_meal": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.week": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.week_a": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.skip": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.kept": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.d0": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.d1": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.d2": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.d3": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.d4": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.d5": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.d6": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.ch_caps": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.ch_pick": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.ch_change": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.ch_start": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.ch_done": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.ch_none": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.ch_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.ch_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.ch_log_lunch": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.ch_log_breakfast": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.ch_move": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.ch_talk": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.cheer_high_five": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.cheer_heart": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.cheer_star": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.cheer_trophy": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.cheer_rocket": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.thanks": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.h_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.h_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.h_keep": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.h_stop": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.h_note": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.voice_off_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.voice_off_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.brave": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.mile": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.saved_book": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.saved_miles": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.book": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.book_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.miles": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.miles_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.tab_brave": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.tab_miles": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.tab_quests": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.tab_ch": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.to_find": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.b_sensor_change": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.b_set_change": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.b_finger_prick": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.b_school_trip": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.b_sleepover": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.b_new_school": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.b_doctor_visit": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.b_own_carbs": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.qs_meal_photo": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.qs_tell_day": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.qs_move": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.qs_log_meal": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.quiet": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.quiet_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.quiet_kid": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.quiet_kid_by": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.send_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.send_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.send": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.sent": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.limit": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.k_high_five": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.k_heart": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.k_star": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.k_trophy": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.k_rocket": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.pc_row": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.pc_kid": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.pc_teen": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.pc_voice": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.pc_voice_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.pc_quiet": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.pc_quiet_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.pc_early": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.pc_early_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.pc_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.no_follow": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
+  },
+  "yg.wins_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly wins card (PM-306, Guy 19 Nov 2026)."
+  },
+  "yg.wins_a": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly wins card (PM-306, Guy 19 Nov 2026)."
+  },
+  "yg.wins_days": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly wins card (PM-306, Guy 19 Nov 2026)."
+  },
+  "yg.wins_noch": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly wins card (PM-306, Guy 19 Nov 2026)."
+  },
+  "yg.wins_save": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly wins card (PM-306, Guy 19 Nov 2026)."
+  },
+  "yg.wins_fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly wins card (PM-306, Guy 19 Nov 2026)."
+  },
+  "yg.grow_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids mode growth (PM-301, Guy 19 Nov 2026)."
+  },
+  "yg.grow_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids mode growth (PM-301, Guy 19 Nov 2026)."
+  },
+  "yg.g_baby": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids mode growth (PM-301, Guy 19 Nov 2026)."
+  },
+  "yg.g_kid": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids mode growth (PM-301, Guy 19 Nov 2026)."
+  },
+  "yg.g_explorer": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Kids mode growth (PM-301, Guy 19 Nov 2026)."
   }
 }

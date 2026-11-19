@@ -1583,6 +1583,61 @@
         "title": "CgmOut",
         "type": "object"
       },
+      "ChallengeIn": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "enum": [
+                  "log_lunch",
+                  "log_breakfast",
+                  "move",
+                  "talk"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "title": "ChallengeIn",
+        "type": "object"
+      },
+      "ChallengeOut": {
+        "properties": {
+          "done": {
+            "title": "Done",
+            "type": "boolean"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "met": {
+            "title": "Met",
+            "type": "integer"
+          },
+          "target": {
+            "title": "Target",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "met",
+          "target",
+          "done"
+        ],
+        "title": "ChallengeOut",
+        "type": "object"
+      },
       "ChangeMetaOut": {
         "properties": {
           "at": {
@@ -1614,6 +1669,57 @@
           "text"
         ],
         "title": "CheckIn",
+        "type": "object"
+      },
+      "CheerIn": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "high_five",
+              "heart",
+              "star",
+              "trophy",
+              "rocket"
+            ],
+            "title": "Kind",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind"
+        ],
+        "title": "CheerIn",
+        "type": "object"
+      },
+      "CheerOut": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "from_name": {
+            "title": "From Name",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "from_name",
+          "at"
+        ],
+        "title": "CheerOut",
         "type": "object"
       },
       "ClientErrorIn": {
@@ -2011,6 +2117,92 @@
           "pending"
         ],
         "title": "ConsentOut",
+        "type": "object"
+      },
+      "Controls": {
+        "properties": {
+          "quiet": {
+            "title": "Quiet",
+            "type": "boolean"
+          },
+          "set_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Set At"
+          },
+          "set_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Set By"
+          },
+          "teen_early": {
+            "title": "Teen Early",
+            "type": "boolean"
+          },
+          "voice": {
+            "title": "Voice",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "voice",
+          "quiet",
+          "teen_early"
+        ],
+        "title": "Controls",
+        "type": "object"
+      },
+      "ControlsIn": {
+        "additionalProperties": false,
+        "properties": {
+          "quiet": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quiet"
+          },
+          "teen_early": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Teen Early"
+          },
+          "voice": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Voice"
+          }
+        },
+        "title": "ControlsIn",
         "type": "object"
       },
       "ConversationOut": {
@@ -4819,6 +5011,39 @@
         "title": "HabitData",
         "type": "object"
       },
+      "HandoverIn": {
+        "additionalProperties": false,
+        "properties": {
+          "keep": {
+            "title": "Keep",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "keep"
+        ],
+        "title": "HandoverIn",
+        "type": "object"
+      },
+      "HandoverOut": {
+        "properties": {
+          "parent_name": {
+            "title": "Parent Name",
+            "type": "string"
+          },
+          "share_id": {
+            "format": "uuid",
+            "title": "Share Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "share_id",
+          "parent_name"
+        ],
+        "title": "HandoverOut",
+        "type": "object"
+      },
       "HealthExtraBatch": {
         "additionalProperties": false,
         "properties": {
@@ -5844,6 +6069,52 @@
         "title": "InvitePreviewOut",
         "type": "object"
       },
+      "IosDeviceOut": {
+        "properties": {
+          "available": {
+            "title": "Available",
+            "type": "boolean"
+          },
+          "link": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Link"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "state": {
+            "enum": [
+              "none",
+              "open",
+              "added",
+              "ready"
+            ],
+            "title": "State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "state",
+          "available"
+        ],
+        "title": "IosDeviceOut",
+        "type": "object"
+      },
       "KindOut": {
         "properties": {
           "kind": {
@@ -6596,6 +6867,21 @@
       },
       "Me": {
         "properties": {
+          "age_band": {
+            "anyOf": [
+              {
+                "enum": [
+                  "child",
+                  "teen"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Age Band"
+          },
           "approved": {
             "default": true,
             "title": "Approved",
@@ -8087,6 +8373,39 @@
         "title": "OpenersOut",
         "type": "object"
       },
+      "ParentYoungOut": {
+        "properties": {
+          "band": {
+            "anyOf": [
+              {
+                "enum": [
+                  "child",
+                  "teen"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Band"
+          },
+          "controls": {
+            "$ref": "#/components/schemas/Controls"
+          },
+          "teen_early_possible": {
+            "title": "Teen Early Possible",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "band",
+          "teen_early_possible",
+          "controls"
+        ],
+        "title": "ParentYoungOut",
+        "type": "object"
+      },
       "ParseIn": {
         "additionalProperties": false,
         "properties": {
@@ -8135,6 +8454,46 @@
             ],
             "title": "Line"
           },
+          "nudge": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nudge"
+          },
+          "plain": {
+            "anyOf": [
+              {
+                "maxLength": 300,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Plain"
+          },
+          "slot": {
+            "anyOf": [
+              {
+                "enum": [
+                  "breakfast",
+                  "lunch",
+                  "dinner"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Slot"
+          },
           "title": {
             "maxLength": 120,
             "title": "Title",
@@ -8143,6 +8502,18 @@
           "to": {
             "title": "To",
             "type": "integer"
+          },
+          "usual": {
+            "anyOf": [
+              {
+                "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Usual"
           }
         },
         "required": [
@@ -9103,6 +9474,24 @@
         "title": "PushTokenIn",
         "type": "object"
       },
+      "QuestOut": {
+        "properties": {
+          "done": {
+            "title": "Done",
+            "type": "boolean"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "done"
+        ],
+        "title": "QuestOut",
+        "type": "object"
+      },
       "QuestionsIn": {
         "additionalProperties": false,
         "properties": {
@@ -9131,6 +9520,20 @@
           "questions"
         ],
         "title": "QuestionsIn",
+        "type": "object"
+      },
+      "QuietIn": {
+        "additionalProperties": false,
+        "properties": {
+          "on": {
+            "title": "On",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "on"
+        ],
+        "title": "QuietIn",
         "type": "object"
       },
       "RankingOut": {
@@ -10505,6 +10908,36 @@
         "title": "SnoozeIn",
         "type": "object"
       },
+      "StickerOut": {
+        "properties": {
+          "day": {
+            "format": "date",
+            "title": "Day",
+            "type": "string"
+          },
+          "earned_at": {
+            "format": "date-time",
+            "title": "Earned At",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "seen": {
+            "title": "Seen",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "kind",
+          "day",
+          "earned_at",
+          "seen"
+        ],
+        "title": "StickerOut",
+        "type": "object"
+      },
       "SyncAllOut": {
         "properties": {
           "added": {
@@ -11800,6 +12233,34 @@
         "title": "WarmupStateOut",
         "type": "object"
       },
+      "WeekOut": {
+        "properties": {
+          "days": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "last_week_kept": {
+            "title": "Last Week Kept",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "days",
+          "last_week_kept"
+        ],
+        "title": "WeekOut",
+        "type": "object"
+      },
       "WhatsAppOut": {
         "properties": {
           "available": {
@@ -12210,6 +12671,125 @@
           "minutes"
         ],
         "title": "WorkoutsOut",
+        "type": "object"
+      },
+      "YoungOut": {
+        "properties": {
+          "band": {
+            "anyOf": [
+              {
+                "enum": [
+                  "child",
+                  "teen"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Band"
+          },
+          "challenge": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ChallengeOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "challenges": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Challenges",
+            "type": "array"
+          },
+          "cheers": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/CheerOut"
+            },
+            "title": "Cheers",
+            "type": "array"
+          },
+          "controls": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Controls"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "growth": {
+            "anyOf": [
+              {
+                "enum": [
+                  "baby",
+                  "kid",
+                  "explorer"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Growth"
+          },
+          "handover": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HandoverOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "quest": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/QuestOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "quiet_self": {
+            "default": false,
+            "title": "Quiet Self",
+            "type": "boolean"
+          },
+          "stickers": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/StickerOut"
+            },
+            "title": "Stickers",
+            "type": "array"
+          },
+          "week": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WeekOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "band"
+        ],
+        "title": "YoungOut",
         "type": "object"
       },
       "steady_api__routers__clinic__AcceptIn": {
@@ -13521,6 +14101,64 @@
           }
         },
         "summary": "Google",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/ios-device": {
+      "get": {
+        "description": "Where the person's own iPhone stands. An open link is checked with Expo first, so a phone just added shows.",
+        "operationId": "ios_device_auth_ios_device_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IosDeviceOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Ios Device",
+        "tags": [
+          "auth"
+        ]
+      },
+      "post": {
+        "description": "The person's registration link: the open one they already have, or a new one. One link per account.",
+        "operationId": "add_ios_device_auth_ios_device_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IosDeviceOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "502": {
+            "description": "expo_unavailable"
+          },
+          "503": {
+            "description": "expo_unconfigured"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Add Ios Device",
         "tags": [
           "auth"
         ]
@@ -21444,6 +22082,169 @@
         ]
       }
     },
+    "/sharing/{share_id}/cheer": {
+      "post": {
+        "description": "A parent's cheer (PM-300), or any follower's for an adult they follow (PM-304).",
+        "operationId": "send_cheer_sharing__share_id__cheer_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheerIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheerOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Send Cheer",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/sharing/{share_id}/young": {
+      "get": {
+        "operationId": "parent_get_sharing__share_id__young_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParentYoungOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Parent Get",
+        "tags": [
+          "young"
+        ]
+      },
+      "put": {
+        "operationId": "parent_set_sharing__share_id__young_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ControlsIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParentYoungOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Parent Set",
+        "tags": [
+          "young"
+        ]
+      }
+    },
     "/visit": {
       "delete": {
         "operationId": "delete_visit_visit_delete",
@@ -22125,6 +22926,211 @@
         "summary": "Start Link",
         "tags": [
           "whatsapp"
+        ]
+      }
+    },
+    "/young": {
+      "get": {
+        "operationId": "get_young_young_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/YoungOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Young",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/young/challenge": {
+      "put": {
+        "operationId": "set_challenge_young_challenge_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChallengeIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Challenge",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/young/cheers/{cheer_id}/seen": {
+      "post": {
+        "operationId": "cheer_seen_young_cheers__cheer_id__seen_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cheer_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Cheer Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Cheer Seen",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/young/handover": {
+      "post": {
+        "description": "At 18: the parent keeps following as an ordinary viewer, or stops. Either way the choice is asked once.",
+        "operationId": "handover_young_handover_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HandoverIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Handover",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/young/quiet": {
+      "put": {
+        "description": "Quiet hours for every notification (PM-307): the person's own check-in quiet times, any age.",
+        "operationId": "set_quiet_young_quiet_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuietIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Quiet",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/young/stickers/seen": {
+      "post": {
+        "operationId": "stickers_seen_young_stickers_seen_post",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Stickers Seen",
+        "tags": [
+          "young"
         ]
       }
     }

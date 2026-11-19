@@ -20,7 +20,8 @@ from steady_api.ai.safety import about_someone_else, reads_as_dose_instruction, 
 from steady_api.clinical import GLUCOSE_ENTRY_MGDL_MAX, GLUCOSE_ENTRY_MGDL_MIN, MGDL_PER_MMOL, to_mgdl
 from steady_api.models import DeviceLink, GlucoseRecord, HealthSample, Memory, Profile, Record, User
 
-TOOL_SPECS = prod_tools.SPECS
+# What production offers everyone without Classic Stedio (tools.specs_for): the tools plus the badge tool (PM-299/305).
+TOOL_SPECS = [*prod_tools.SPECS, prod_tools.BADGE_SPEC]
 MAX_TOOL_ROUNDS = 4  # mirrors steady_api.routers.conversation.MAX_TOOL_ROUNDS
 
 __all__ = [

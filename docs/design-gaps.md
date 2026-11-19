@@ -1951,6 +1951,20 @@ clinic report with their visits (PM-214). When viewing someone else's data, only
 - Built from the existing Card, ToggleRow, Button and ToneNote; no new visual element.
 
 
+### G-117 · Kids mode and Teen mode (**approved by Guy, 19 Nov 2026, PM-297**)
+**Gap**
+- No design board for under-18s. Guy approved the mockups in `/mnt/project-files/steady/young-mode/` (kid main screen,
+  quest done, sticker book, brave badge, cheer, companion growth, teen main screen, challenge picker, titles, parent
+  cheer, parent switches, handover at 18, under 8) and asked that stickers be colourful.
+
+**What was built**
+- As in the mockups, with colourful stickers (an emoji on a gradient circle per sticker) instead of the teal icons.
+- Not in the mockups, built from existing elements: the quiet-hours switch in Notifications (PM-307), "My milestones"
+  for adults (the sticker book screen with milestones and challenges, PM-305), the weekly wins card drawn as a picture
+  with a Save button (PM-306), and the follower cheer card for adults (PM-304, the parent cheer card).
+- Growth stages (k5) sit in Profile > Companion for a child. Teen titles (t3) are not built: teens keep the existing
+  wardrobe (outfits) and Classic Stedio switch.
+
 ### G-116 · "You did it!" wins on the phone and the Apple Watch (**approved by Guy, 19 Nov 2026, PM-280**)
 
 **Gap**

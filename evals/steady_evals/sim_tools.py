@@ -18,6 +18,7 @@ from .production import GLUCOSE_ENTRY_MGDL_MAX, GLUCOSE_ENTRY_MGDL_MIN, about_so
 SIMULATED = {
     "propose_glucose",
     "show_emergency_call",
+    "give_badge",
     "recent_records",
     "remember",
     "schedule_follow_up",
@@ -140,6 +141,13 @@ def _dispatch(case: Case, name: str, args: dict, state: SimState) -> dict:
         if any(c["name"] == name for c in state.calls):
             return {"status": "already_shown"}
         return {"status": "shown", "detail": "A call button for the local emergency number is on screen. Don't write a phone number."}
+    if name == "give_badge":
+        # Same answers as production: one badge a turn, only a listed one (PM-299).
+        if args.get("badge") not in prod_tools.BADGE_SPEC["function"]["parameters"]["properties"]["badge"]["enum"]:
+            return {"status": "not_available"}
+        if any(c["name"] == name for c in state.calls):
+            return {"status": "already_given"}
+        return {"status": "given"}
     if name in FIXTURE_ONLY:
         return case.tool_results.get(name, {"error": "not_simulated"})
     return {"error": "unknown_tool"}
