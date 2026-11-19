@@ -8,6 +8,21 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-268, thread "Give the companion access to all app data"): Itay asked the companion when his next
+clinic visit is and it said it had no access, though the visit is saved on "Report for my clinic". Guy: the companion
+must have full access to everything in the app. API: `steady_api/ai/app_data.py` puts the saved next visit (weekday,
+date, time, with whom, when the preparation starts) and the preparation's suggested questions, the current sensor's
+end, reminders in the next 7 days and Take a break into the companion's instructions (text and voice), and adds the
+read-only tool `app_data` (visit, labs, summaries, reminders, food_by_day, body_by_day, settings, devices, small_wins,
+sharing, usual_meals). The live voice note now delegates for anything else in the app. Phone-only items (questions for
+the coming visit, earlier visits with the person's own summary, PM-214) go with each message, voice delegation and live
+call start as `phone`, for that answer only: never stored, logged or put in a tool result. Lab results are read only
+through the tool (data minimisation). API tests: 690 pass plus the new `tests/test_app_data.py` (6 ML tests in
+`test_ope`/`test_ranker_pipeline` fail only in the full-suite order and pass alone, with and without this change);
+`pnpm check` passes (app 209). Gaps: questions typed on the report screen are kept on the phone only once a report is
+made (existing behaviour), and the WebSocket voice fallback does not send the phone items. Not yet seen on a phone.
+Next: companion evals on Fly, deploy API, then OTA (0.6.0 and 0.5.0).
+
 18 Nov 2026 (Jira PM-264, thread "Add automatic theme option"): Guy asked for an Automatic choice in Accessibility >
 Appearance next to Day and Night ("גם אוטומטי לפי הגדרות המכשיר"). The design already lists system, day, night; the theme
 provider already resolved `system` live from the phone, but the screen had no chip for it. Added the Automatic chip and

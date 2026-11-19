@@ -5731,6 +5731,22 @@ export interface components {
             /** To */
             to: number;
         };
+        /** PastVisit */
+        PastVisit: {
+            /** Date */
+            date: string;
+            /** Questions */
+            questions?: string[];
+            /**
+             * Summary
+             * @default
+             */
+            summary: string;
+            /** Time */
+            time?: string | null;
+            /** With */
+            with?: string[];
+        };
         /** PauseIn */
         PauseIn: {
             /** Until */
@@ -5750,6 +5766,16 @@ export interface components {
              * @enum {string}
              */
             persona: "self" | "prediabetes" | "child" | "family";
+        };
+        /**
+         * Phone
+         * @description What only the phone keeps, sent with a message for that answer only (never stored on the server).
+         */
+        Phone: {
+            /** Past Visits */
+            past_visits?: components["schemas"]["PastVisit"][];
+            /** Visit Questions */
+            visit_questions?: string[];
         };
         /** PhotoOut */
         PhotoOut: {
@@ -6246,6 +6272,7 @@ export interface components {
             client_id: string;
             /** Conversation Id */
             conversation_id?: string | null;
+            phone?: components["schemas"]["Phone"] | null;
             /** Text */
             text: string;
             /**
@@ -6269,6 +6296,7 @@ export interface components {
         SessionIn: {
             /** Opener */
             opener?: string | null;
+            phone?: components["schemas"]["Phone"] | null;
             /**
              * Resume
              * @default false
@@ -6609,6 +6637,7 @@ export interface components {
         TurnIn: {
             /** Heard */
             heard: string;
+            phone?: components["schemas"]["Phone"] | null;
         };
         /** TurnOut */
         TurnOut: {
