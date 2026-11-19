@@ -3573,7 +3573,7 @@
   "clc.adm_remove": "Remove",
   "clc.adm_add_member": "Add to clinic",
   "clc.adm_added": "Added. They sign in on the clinic page.",
-  "clc.adm_member_note": "One clinic per person. Click a status to suspend or restore; a suspended member sees nothing.",
+  "clc.adm_member_note": "One clinic per person. A new member is active. A suspended member sees nothing until restored.",
   "web.cl_nav": "For clinics",
   "web.cl_h": "For clinic teams",
   "web.cl_b": "Before a visit, see a one-page summary of what your patient chose to share from Stedio: the last 90 days next to the 90 before, numbers first.",
@@ -3747,5 +3747,10 @@
   "shr.rel_grandpa": "Grandpa",
   "shr.rel_grandma": "Grandma",
   "shr.rel_s": "Dad, Mom, Grandpa and Grandma show by that name on the encouragements they send you.",
-  "onb.mi_who": "Who will follow you?"
+  "onb.mi_who": "Who will follow you?",
+  "clc.sus_t": "Your clinic access is suspended",
+  "clc.sus_b": "A Stedio admin suspended this account on its clinic team, so it sees no patients for now. Ask your clinic or Stedio to restore it.",
+  "clc.adm_suspend": "Suspend",
+  "clc.adm_restore": "Restore",
+  "care.home_t": "{clinic} asks to see your pre-visit summary"
 }

@@ -24266,5 +24266,40 @@
       "translation"
     ],
     "note": "PM-315: back to start when glucose never rose above its start after the meal; same wording as the clinic report."
+  },
+  "clc.sus_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic member status (PM-316, Guy 19 Nov 2026)"
+  },
+  "clc.sus_b": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic member status (PM-316, Guy 19 Nov 2026)"
+  },
+  "clc.adm_suspend": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic member status (PM-316, Guy 19 Nov 2026)"
+  },
+  "clc.adm_restore": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic member status (PM-316, Guy 19 Nov 2026)"
+  },
+  "care.home_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic request on the main screen (PM-317, Guy 19 Nov 2026)"
   }
 }
