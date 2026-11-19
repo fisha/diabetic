@@ -2026,3 +2026,5 @@ clinic report with their visits (PM-214). When viewing someone else's data, only
 - Main screen: on Thursday to Saturday, when the last 7 days have rises, a plain card "This week's biggest rises"
   (insight tier, no sound, not while viewing, hidden with fewer nudges) opens Overview on the week, scrolled to the
   list. Read once, it stays away until the next week (`rises:<Sunday>`). Built from the existing feed card.
+- PM-318 (Guy, 19 Nov 2026): Overview's Day and 24 h views list that day's biggest rises too, and Overview has one
+  "Insights" row (with the number of insights) that opens All insights, in the place of the section removed in PM-259.
