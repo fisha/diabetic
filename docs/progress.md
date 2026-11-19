@@ -94,6 +94,12 @@ shares. `GET /meal/photos/{id}` joined the journal share scope and admin view pa
 loads it with X-View-As when the journal is shared; `shr.sc_journal` now names photos (en, he). Lawyer question PM-311
 (`needs-lawyer`). API 786 tests, app 221. api #143, app #186. Next: deploy API, OTA.
 
+19 Nov 2026 (Jira PM-319, same thread): inside a conversation about his son, Guy had no way back to the Talk screen with
+his son's data. `AboutChat` now has a home view (character, insights, cheer, "Continue the conversation" under the
+character and as a history icon in the header) and a conversation view (messages, Back in the header). Sending opens the
+conversation; Back or tapping the Talk tab goes home. String `shr.chat_continue` (en, he). e2e sharing.cjs checks Back,
+Continue and the tab tap. App 230 tests. app #193. Next: OTA only (no API change).
+
 19 Nov 2026 (Jira PM-294, same thread): Guy asked that the viewer also see the insights of the person viewed. The
 follower's conversation tab (`AboutChat`) shows the main screen's `NowInsights` when insights are shared (only the line
 once a conversation is going); read only, as before (no mark-read or changes, refused by the API too); "Talk about this"
