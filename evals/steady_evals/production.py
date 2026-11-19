@@ -11,6 +11,7 @@ if str(API) not in sys.path:
     sys.path.insert(0, str(API))
 
 from steady_api import mentor as prod_mentor
+from steady_api.ai import app_data as prod_app_data
 from steady_api.ai import context as prod_context
 from steady_api.ai import judge as prod_judge
 from steady_api.ai import tools as prod_tools
@@ -40,6 +41,7 @@ __all__ = [
     "prod_mentor",
     "Profile",
     "prod_tools",
+    "prod_app_data",
     "reads_as_dose_instruction",
     "reads_as_forecast",
     "second_look",
