@@ -76,6 +76,12 @@ because the stedio-db 1 GB volume filled up (Postgres crashed writing WAL; volum
 200 MB plus the last dump's size would stay free. Tested against a scratch folder (prune to 10, refusal path). Needs
 `stedio-fly deploy-db` to take effect; the first backup after it removes the older dumps (still in the daily snapshots).
 
+19 Nov 2026 (Jira PM-274, thread "Add a take a break glucose-only mode"): Guy asked to move the Take a break switch
+from Profile to the main screen, under the character, only the switch and its label; after the mockup he asked for the
+label on the switch's other side. Built: `BreakToggle` in the row of the history and text icons (a row of its own was cut
+off by the tab bar on 375x667), label after the switch; the Profile card is gone; hidden while viewing and in the web
+demo. App #164 merged; app 210 tests, typecheck; e2e `tools/e2e/take-a-break.cjs` 73/73. Next: OTA (0.6.0 and 0.5.0).
+
 18 Nov 2026 (Jira PM-257, thread "Add a take a break glucose-only mode"): Guy asked for a quick "Take a break" switch in
 Profile: no pushes from the app except high and low glucose, no insights, and the whole app becomes one clean screen with
 the sensor reading in big (iPhone StandBy style, upright) and a small icon that ends it; also from the iPhone Action

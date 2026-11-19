@@ -1911,8 +1911,8 @@ followers who are not viewing stays above the tab bar.
 
 The design has no glucose-only mode. Guy (18 Nov 2026) asked for a quick "Take a break" switch in Profile that turns the
 whole app into one clean screen with the sensor reading in big, like iPhone StandBy but upright, with a small icon that
-ends it, and that can also be turned on from the iPhone Action Button. Built: a switch card under the account card in
-Profile; a black full-screen view over every tab with the latest value huge in the widget's night tint for where it sits
+ends it, and that can also be turned on from the iPhone Action Button. Built: a switch (first a card in Profile; since 19 Nov 2026, PM-274, on the main screen under the character, in the
+row of the history and text icons, label on the switch's far side, Guy approved the mockup); a black full-screen view over every tab with the latest value huge in the widget's night tint for where it sits
 against the person's own range (white without a range), its unit, the trend arrow while fresh, the clock time and age;
 past 15 minutes "Not current" with the last reading's time and no value (PM-226 rule); "Taking a break" and a small round
 X in the top corners. Never over sign-in, onboarding or the blocking re-consent screen. Screenshots:
