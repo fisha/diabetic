@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-280, thread "Celebrate wins on Apple Watch"): Guy asked for wins to be celebrated on the watch like
+Fitness's "You did it". He saw the mockup (`/mnt/project-files/steady/watch-wins/`) and chose the plain push now and the
+watch screen in the next native build. API `steady_api/wins.py`: one `win` push a day at most for behaviour wins only (a
+steps or active energy best on the day, a workout that just ended, a companion unlock), never glucose; quiet hours, insight
+pushes off, fewer nudges, Take a break and all notifications off send nothing; Classic Stedio is plain with no unlocks; no
+numbers in the words (G-115). Watch: `targets/watch/WinNotification.swift`, a custom notification screen for category
+`win` (ring, check, sparkles, success haptic), not compiled yet. API `tests/test_wins.py` 13 pass.
+
 19 Nov 2026 (Jira PM-273, thread "Skip \"how much did you eat\" when amount is given"): Guy logged "I ate half a
 banana"; the review showed ½ piece but still asked "How much did you eat?" with "All of it", and "Half" would have halved
 it again. App: the question is hidden for meals described in words or voice (`asksAte` in `features/meal/model.ts`),
