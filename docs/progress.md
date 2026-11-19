@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-292, thread "Fix onboarding restarting after Meet companion"): an under-18 tester whose parent had
+accepted the invite tapped "Meet your companion" and was sent back to the start of onboarding; API logs showed no
+`PUT /profile`. Cause: the finish step's pre-save check accepted only `ageGate 'adult'`, so `'under18'` went to the date
+of birth, the parent invite and all of setup again. Fixed in app #178: `missingForSave()` accepts `under18` (the server
+still checks the parent), a `guardian_required` save refusal opens the parent invite, and the invite returns to where it
+was opened from. App tests 218/218, typecheck clean; not yet tried on a phone. Next: testers OTA (0.6.0 and 0.5.0).
+
 19 Nov 2026 (Jira PM-290, thread "Let iPhone testers register their device themselves"): Guy wants new iPhone testers
 to add their own phone instead of us running `eas device:create` for each one. Finding: an Expo registration link
 (`expo.dev/register-device/<id>`, an `AppleDeviceRegistrationRequest`) has one `resolvedAppleDevice` and a `closedAt`
