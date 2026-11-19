@@ -2203,6 +2203,7 @@
   "shr.chat_ph": "לשאול על הנתונים של {name}…",
   "shr.chat_empty": "אפשר לשאול מה שרוצים להבין בנתונים של {name}. בכל דבר דחוף, פנו ישירות אל {name}.",
   "shr.chat_orb": "אפשר לשאול אותי על {name}",
+  "shr.chat_about": "אפשר להסביר לי את התובנה: {title}?",
   "shr.sw_view_only": "צפייה בלבד",
   "sub.annual": "שנתי",
   "sub.annual_b": "חיוב פעם בשנה",
