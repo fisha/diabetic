@@ -1020,6 +1020,151 @@
         "title": "BreakOut",
         "type": "object"
       },
+      "CareClinicOut": {
+        "properties": {
+          "city": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "City"
+          },
+          "clinic": {
+            "title": "Clinic",
+            "type": "string"
+          },
+          "decided_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decided At"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "title": "Expires At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "last_viewed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Viewed At"
+          },
+          "last_viewed_by": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Viewed By"
+          },
+          "questions": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Questions"
+          },
+          "questions_sent_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Questions Sent At"
+          },
+          "requested_at": {
+            "format": "date-time",
+            "title": "Requested At",
+            "type": "string"
+          },
+          "requested_by": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Requested By"
+          },
+          "scopes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scopes",
+            "type": "array"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "team": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Team",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "clinic",
+          "city",
+          "requested_by",
+          "team",
+          "requested_at",
+          "expires_at",
+          "decided_at",
+          "scopes",
+          "last_viewed_at",
+          "last_viewed_by",
+          "questions_sent_at",
+          "questions"
+        ],
+        "title": "CareClinicOut",
+        "type": "object"
+      },
       "CareLinkIn": {
         "additionalProperties": false,
         "properties": {
@@ -1228,6 +1373,61 @@
           "connected"
         ],
         "title": "CareLinkOut",
+        "type": "object"
+      },
+      "CareScopesIn": {
+        "additionalProperties": false,
+        "properties": {
+          "scopes": {
+            "items": {
+              "enum": [
+                "sensor",
+                "insulin",
+                "lifestyle",
+                "labs",
+                "questions"
+              ],
+              "type": "string"
+            },
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Scopes",
+            "type": "array"
+          }
+        },
+        "required": [
+          "scopes"
+        ],
+        "title": "CareScopesIn",
+        "type": "object"
+      },
+      "CareTeamOut": {
+        "properties": {
+          "clinics": {
+            "items": {
+              "$ref": "#/components/schemas/CareClinicOut"
+            },
+            "title": "Clinics",
+            "type": "array"
+          },
+          "consent_version": {
+            "default": "clinic-2026-11-19",
+            "title": "Consent Version",
+            "type": "string"
+          },
+          "requests": {
+            "items": {
+              "$ref": "#/components/schemas/CareClinicOut"
+            },
+            "title": "Requests",
+            "type": "array"
+          }
+        },
+        "required": [
+          "requests",
+          "clinics"
+        ],
+        "title": "CareTeamOut",
         "type": "object"
       },
       "CgmIn": {
@@ -1448,6 +1648,157 @@
           "message"
         ],
         "title": "ClientErrorIn",
+        "type": "object"
+      },
+      "ClinicIn": {
+        "additionalProperties": false,
+        "properties": {
+          "city": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "City"
+          },
+          "name": {
+            "maxLength": 160,
+            "minLength": 2,
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "title": "ClinicIn",
+        "type": "object"
+      },
+      "ClinicMeOut": {
+        "properties": {
+          "city": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "City"
+          },
+          "clinic": {
+            "title": "Clinic",
+            "type": "string"
+          },
+          "clinic_id": {
+            "format": "uuid",
+            "title": "Clinic Id",
+            "type": "string"
+          },
+          "demo": {
+            "default": false,
+            "title": "Demo",
+            "type": "boolean"
+          },
+          "licence_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Licence No"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          },
+          "team": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Team",
+            "type": "array"
+          },
+          "user_id": {
+            "format": "uuid",
+            "title": "User Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "user_id",
+          "name",
+          "role",
+          "licence_no",
+          "clinic_id",
+          "clinic",
+          "city",
+          "team"
+        ],
+        "title": "ClinicMeOut",
+        "type": "object"
+      },
+      "ClinicOut": {
+        "properties": {
+          "city": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "City"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "members": {
+            "items": {
+              "$ref": "#/components/schemas/MemberOut"
+            },
+            "title": "Members",
+            "type": "array"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "patients": {
+            "title": "Patients",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "city",
+          "created_at",
+          "members",
+          "patients"
+        ],
+        "title": "ClinicOut",
         "type": "object"
       },
       "ClinicReportIn": {
@@ -1753,6 +2104,27 @@
           "confirm"
         ],
         "title": "DeleteIn",
+        "type": "object"
+      },
+      "DemoClinicIn": {
+        "properties": {
+          "link": {
+            "maxLength": 200,
+            "minLength": 20,
+            "title": "Link",
+            "type": "string"
+          },
+          "locale": {
+            "default": "en",
+            "pattern": "^(en|he)$",
+            "title": "Locale",
+            "type": "string"
+          }
+        },
+        "required": [
+          "link"
+        ],
+        "title": "DemoClinicIn",
         "type": "object"
       },
       "DemoInviteIn": {
@@ -5472,6 +5844,41 @@
         "title": "InvitePreviewOut",
         "type": "object"
       },
+      "KindOut": {
+        "properties": {
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "on": {
+            "title": "On",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "kind",
+          "on"
+        ],
+        "title": "KindOut",
+        "type": "object"
+      },
+      "KindsIn": {
+        "additionalProperties": false,
+        "properties": {
+          "off": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Off",
+            "type": "array"
+          }
+        },
+        "required": [
+          "off"
+        ],
+        "title": "KindsIn",
+        "type": "object"
+      },
       "LabData": {
         "additionalProperties": false,
         "description": "A lab or clinic result the person entered (13 Nov 2026), with the date it was taken and where it came from. Stored as\nentered; Stedio does not grade it against a range.",
@@ -6047,6 +6454,57 @@
           }
         },
         "title": "LinesOut",
+        "type": "object"
+      },
+      "LinkIn": {
+        "additionalProperties": false,
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "version",
+          "at"
+        ],
+        "title": "LinkIn",
+        "type": "object"
+      },
+      "LinkOut": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "title": "Expires At",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          }
+        },
+        "required": [
+          "code",
+          "url",
+          "expires_at"
+        ],
+        "title": "LinkOut",
         "type": "object"
       },
       "LiveActivityIn": {
@@ -6659,6 +7117,179 @@
           "record_ids"
         ],
         "title": "MealPatternOut",
+        "type": "object"
+      },
+      "MemberIn": {
+        "additionalProperties": false,
+        "properties": {
+          "clinic_id": {
+            "format": "uuid",
+            "title": "Clinic Id",
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "title": "Email",
+            "type": "string"
+          },
+          "licence_no": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Licence No"
+          },
+          "name": {
+            "maxLength": 120,
+            "minLength": 2,
+            "title": "Name",
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "doctor",
+              "nurse",
+              "dietitian",
+              "social_worker"
+            ],
+            "title": "Role",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "clinic_id",
+          "role",
+          "name"
+        ],
+        "title": "MemberIn",
+        "type": "object"
+      },
+      "MemberOut": {
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "licence_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Licence No"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "user_id": {
+            "format": "uuid",
+            "title": "User Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "user_id",
+          "email",
+          "name",
+          "role",
+          "licence_no",
+          "status"
+        ],
+        "title": "MemberOut",
+        "type": "object"
+      },
+      "MemberPatch": {
+        "additionalProperties": false,
+        "properties": {
+          "clinic_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Clinic Id"
+          },
+          "licence_no": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Licence No"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "minLength": 2,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "role": {
+            "anyOf": [
+              {
+                "enum": [
+                  "doctor",
+                  "nurse",
+                  "dietitian",
+                  "social_worker"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Role"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "enum": [
+                  "active",
+                  "suspended"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        "title": "MemberPatch",
         "type": "object"
       },
       "MembershipOut": {
@@ -7570,6 +8201,135 @@
         "title": "PastVisit",
         "type": "object"
       },
+      "PatientRow": {
+        "properties": {
+          "data_through": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data Through"
+          },
+          "decided_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decided At"
+          },
+          "demo_scenario": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Demo Scenario"
+          },
+          "devices": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Devices",
+            "type": "array"
+          },
+          "diabetes_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Diabetes Type"
+          },
+          "email_hint": {
+            "title": "Email Hint",
+            "type": "string"
+          },
+          "last_viewed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Viewed At"
+          },
+          "link_id": {
+            "format": "uuid",
+            "title": "Link Id",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "next_visit": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Visit"
+          },
+          "requested_at": {
+            "format": "date-time",
+            "title": "Requested At",
+            "type": "string"
+          },
+          "scopes": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Scopes",
+            "type": "array"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "link_id",
+          "status",
+          "name",
+          "email_hint",
+          "requested_at",
+          "decided_at"
+        ],
+        "title": "PatientRow",
+        "type": "object"
+      },
       "PauseIn": {
         "additionalProperties": false,
         "properties": {
@@ -8343,6 +9103,36 @@
         "title": "PushTokenIn",
         "type": "object"
       },
+      "QuestionsIn": {
+        "additionalProperties": false,
+        "properties": {
+          "questions": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 30,
+            "title": "Questions",
+            "type": "array"
+          },
+          "visit_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Visit Date"
+          }
+        },
+        "required": [
+          "questions"
+        ],
+        "title": "QuestionsIn",
+        "type": "object"
+      },
       "RankingOut": {
         "properties": {
           "explored": {
@@ -8641,6 +9431,41 @@
           "removed"
         ],
         "title": "RemovedOut",
+        "type": "object"
+      },
+      "RequestIn": {
+        "additionalProperties": false,
+        "properties": {
+          "email": {
+            "format": "email",
+            "title": "Email",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "title": "RequestIn",
+        "type": "object"
+      },
+      "RequestOut": {
+        "properties": {
+          "expires_at": {
+            "format": "date-time",
+            "title": "Expires At",
+            "type": "string"
+          },
+          "status": {
+            "const": "sent",
+            "default": "sent",
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "expires_at"
+        ],
+        "title": "RequestOut",
         "type": "object"
       },
       "RescheduleIn": {
@@ -10959,6 +11784,53 @@
         "title": "WarmupStateOut",
         "type": "object"
       },
+      "WhatsAppOut": {
+        "properties": {
+          "available": {
+            "title": "Available",
+            "type": "boolean"
+          },
+          "consent_version": {
+            "title": "Consent Version",
+            "type": "string"
+          },
+          "consented": {
+            "default": false,
+            "title": "Consented",
+            "type": "boolean"
+          },
+          "kinds": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/KindOut"
+            },
+            "title": "Kinds",
+            "type": "array"
+          },
+          "last3": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last3"
+          },
+          "linked": {
+            "default": false,
+            "title": "Linked",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "available",
+          "consent_version"
+        ],
+        "title": "WhatsAppOut",
+        "type": "object"
+      },
       "WhyOut": {
         "description": "\"Why am I seeing this?\" for one insight: what it rests on and which of the person's goals it speaks to.",
         "properties": {
@@ -11324,6 +12196,37 @@
         "title": "WorkoutsOut",
         "type": "object"
       },
+      "steady_api__routers__clinic__AcceptIn": {
+        "additionalProperties": false,
+        "properties": {
+          "consent": {
+            "title": "Consent",
+            "type": "boolean"
+          },
+          "scopes": {
+            "items": {
+              "enum": [
+                "sensor",
+                "insulin",
+                "lifestyle",
+                "labs",
+                "questions"
+              ],
+              "type": "string"
+            },
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Scopes",
+            "type": "array"
+          }
+        },
+        "required": [
+          "scopes",
+          "consent"
+        ],
+        "title": "AcceptIn",
+        "type": "object"
+      },
       "steady_api__routers__consent__AcceptIn": {
         "additionalProperties": false,
         "properties": {
@@ -11656,6 +12559,323 @@
         "summary": "Similar Workouts",
         "tags": [
           "daily"
+        ]
+      }
+    },
+    "/admin/clinic-members": {
+      "put": {
+        "description": "Marks an existing account as a clinic team member of one clinic, with a role. The account must exist: the person\nsigns in once on the website first (Google, Apple or email).",
+        "operationId": "admin_set_member_admin_clinic_members_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MemberIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClinicOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Set Member",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/admin/clinic-members/{user_id}": {
+      "delete": {
+        "description": "The account stays; it is no longer a clinic member and sees no patient.",
+        "operationId": "admin_remove_member_admin_clinic_members__user_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "User Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Remove Member",
+        "tags": [
+          "clinic"
+        ]
+      },
+      "patch": {
+        "operationId": "admin_edit_member_admin_clinic_members__user_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "User Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MemberPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClinicOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Edit Member",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/admin/clinics": {
+      "get": {
+        "operationId": "admin_clinics_admin_clinics_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ClinicOut"
+                  },
+                  "title": "Response Admin Clinics Admin Clinics Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Clinics",
+        "tags": [
+          "clinic"
+        ]
+      },
+      "post": {
+        "operationId": "admin_create_clinic_admin_clinics_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClinicIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClinicOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Create Clinic",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/admin/clinics/{clinic_id}": {
+      "delete": {
+        "description": "Only an empty clinic: its members must be moved or removed first. Its ended links go with it.",
+        "operationId": "admin_delete_clinic_admin_clinics__clinic_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "clinic_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Clinic Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Delete Clinic",
+        "tags": [
+          "clinic"
+        ]
+      },
+      "patch": {
+        "operationId": "admin_edit_clinic_admin_clinics__clinic_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "clinic_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Clinic Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClinicIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClinicOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Edit Clinic",
+        "tags": [
+          "clinic"
         ]
       }
     },
@@ -12747,6 +13967,555 @@
         ]
       }
     },
+    "/care-team": {
+      "get": {
+        "operationId": "care_team_care_team_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareTeamOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Care Team",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/care-team/{link_id}": {
+      "delete": {
+        "description": "The person stops sharing with a clinic (or withdraws from a request). Takes effect on the clinic's next request.",
+        "operationId": "care_stop_care_team__link_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Care Stop",
+        "tags": [
+          "clinic"
+        ]
+      },
+      "patch": {
+        "operationId": "care_scopes_care_team__link_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CareScopesIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareClinicOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Care Scopes",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/care-team/{link_id}/accept": {
+      "post": {
+        "operationId": "care_accept_care_team__link_id__accept_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/steady_api__routers__clinic__AcceptIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareClinicOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Care Accept",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/care-team/{link_id}/decline": {
+      "post": {
+        "operationId": "care_decline_care_team__link_id__decline_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Care Decline",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/care-team/{link_id}/questions": {
+      "put": {
+        "description": "The person sends their questions for the visit to this clinic. Kept until 7 days after the visit.",
+        "operationId": "care_questions_care_team__link_id__questions_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuestionsIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareClinicOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Care Questions",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/clinic/links/{link_id}": {
+      "delete": {
+        "description": "A team member withdraws a request or stops seeing a person. The person's summaries for this clinic go too.",
+        "operationId": "clinic_end_clinic_links__link_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Clinic End",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/clinic/me": {
+      "get": {
+        "operationId": "clinic_me_clinic_me_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClinicMeOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Clinic Me",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/clinic/patients": {
+      "get": {
+        "operationId": "clinic_patients_clinic_patients_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PatientRow"
+                  },
+                  "title": "Response Clinic Patients Clinic Patients Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Clinic Patients",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/clinic/patients/{link_id}/series/{name}": {
+      "get": {
+        "operationId": "clinic_series_clinic_patients__link_id__series__name__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Clinic Series Clinic Patients  Link Id  Series  Name  Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Clinic Series",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/clinic/patients/{link_id}/summary": {
+      "get": {
+        "operationId": "clinic_summary_page_clinic_patients__link_id__summary_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "locale",
+            "required": false,
+            "schema": {
+              "default": "en",
+              "pattern": "^(en|he)$",
+              "title": "Locale",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Clinic Summary Page Clinic Patients  Link Id  Summary Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Clinic Summary Page",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/clinic/requests": {
+      "post": {
+        "operationId": "clinic_request_clinic_requests_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "429": {
+            "description": "too_many"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Clinic Request",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
     "/consent": {
       "get": {
         "operationId": "get_consent_consent_get",
@@ -13403,6 +15172,51 @@
         "summary": "Resume",
         "tags": [
           "conversation"
+        ]
+      }
+    },
+    "/demo/clinic-session": {
+      "post": {
+        "description": "The clinic portal in the demo (PM-275): the demo clinician's session, with the demo people linked to the demo\nclinic. Same personal link as the app demo; the clinic side stays read-only for this account.",
+        "operationId": "open_clinic_session_demo_clinic_session_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoClinicIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tokens"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "description": "demo_link_invalid"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Open Clinic Session",
+        "tags": [
+          "demo"
         ]
       }
     },
@@ -20155,6 +21969,146 @@
         "summary": "Transcribe",
         "tags": [
           "voice"
+        ]
+      }
+    },
+    "/whatsapp": {
+      "get": {
+        "operationId": "state_whatsapp_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WhatsAppOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "State",
+        "tags": [
+          "whatsapp"
+        ]
+      }
+    },
+    "/whatsapp/kinds": {
+      "put": {
+        "description": "Which proactive messages stay in the app instead of WhatsApp (the rest go to WhatsApp).",
+        "operationId": "set_kinds_whatsapp_kinds_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KindsIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WhatsAppOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_linked"
+          },
+          "422": {
+            "description": "unknown_kind"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Kinds",
+        "tags": [
+          "whatsapp"
+        ]
+      }
+    },
+    "/whatsapp/link": {
+      "delete": {
+        "description": "Unlinks the number: the WhatsApp consent is withdrawn, the number deleted, and one goodbye line sent if the free\nwindow is still open.",
+        "operationId": "unlink_whatsapp_link_delete",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Unlink",
+        "tags": [
+          "whatsapp"
+        ]
+      },
+      "post": {
+        "description": "The person agreed to the WhatsApp consent and asked to link: a new one-time code inside a wa.me link.",
+        "operationId": "start_link_whatsapp_link_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LinkOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "403": {
+            "description": "not_available or ai_consent_required"
+          },
+          "409": {
+            "description": "version_changed"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Start Link",
+        "tags": [
+          "whatsapp"
         ]
       }
     }
