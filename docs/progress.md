@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+19 Nov 2026 (Jira PM-289, thread "Toggle time-in-range period on tap"): Guy asked that a tap on the main screen's
+time-in-range tile switch the period instead of opening Overview, with a small arrow that still opens Overview and
+the person's range in brackets by the title (his pick on a decision card). Built: a tap steps Last 24 hours -> Today
+so far -> Last 7 days -> back (`features/companion/tirPeriod.ts`, one week of readings and the Overview's
+`timeInRange` rule), round arrow beside the title, "(70–180)" under the title, glucose tile head the same height so the
+numbers line up. diabetic-app #177 merged; `pnpm check` passes (app 217); e2e `tools/e2e/tir-period.cjs` 61/61 and
+`main-top.cjs` (en light small) 22/22 on the web export. Next: testers OTA for 0.6.0 and 0.5.0 (app only, no API).
+
 19 Nov 2026 (Jira PM-286, thread "Fix bolognese parsing and food deletion"): Guy logged "בולונז ברוטב עגבניות, רוטב
 בלבד" and the parser made "sauce only" a food with no values, so the meal's protein read "—". The food analyzer's
 instructions now keep describing words ("sauce only", "without pasta") with their food, count a meat sauce's protein, and

@@ -3605,5 +3605,7 @@
   "care.role_doctor": "Doctor",
   "care.role_nurse": "Nurse",
   "care.role_dietitian": "Dietitian",
-  "care.role_social_worker": "Social worker"
+  "care.role_social_worker": "Social worker",
+  "now.tir_next": "Shows the next period: last 24 hours, today, last 7 days.",
+  "now.tir_open": "Open Overview"
 }

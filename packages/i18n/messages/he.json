@@ -3605,5 +3605,7 @@
   "care.role_doctor": "רופא/ה",
   "care.role_nurse": "אח/ות",
   "care.role_dietitian": "דיאטן/ית",
-  "care.role_social_worker": "עובד/ת סוציאלי/ת"
+  "care.role_social_worker": "עובד/ת סוציאלי/ת",
+  "now.tir_next": "מציג את התקופה הבאה: 24 השעות האחרונות, היום, 7 הימים האחרונים.",
+  "now.tir_open": "פתיחת סקירה"
 }
