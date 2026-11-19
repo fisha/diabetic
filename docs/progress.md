@@ -25,6 +25,26 @@ Privacy policy version `2026-11-19T12:00:00Z` (clinic sharing, clinic team data,
 API full suite, web and app typecheck, lint and tests, i18n tests. Next: deploy API, then web and OTA; Guy looks at the
 demo clinic view. The demo keeps 90 days, so every "before" in the demo shows Missing.
 
+19 Nov 2026 (Jira PM-280, thread "Celebrate wins on Apple Watch"): Guy asked for wins to be celebrated on the watch like
+Fitness's "You did it". He saw the mockup (`/mnt/project-files/steady/watch-wins/`) and chose the plain push now and the
+watch screen in the next native build. API `steady_api/wins.py`: one `win` push a day at most for behaviour wins only (a
+steps or active energy best on the day, a workout that just ended, a companion unlock), never glucose; quiet hours, insight
+pushes off, fewer nudges, Take a break and all notifications off send nothing; Classic Stedio is plain with no unlocks; no
+numbers in the words (G-116). Watch: `targets/watch/WinNotification.swift`, a custom notification screen for category
+`win` (ring, check, sparkles, success haptic), not compiled yet. API `tests/test_wins.py` 13 pass.
+19 Nov 2026 (Jira PM-284, thread "Add a take a break glucose-only mode"): Guy renamed Take a break to Quiet mode.
+English "Quiet mode" / "End quiet mode" / "Quiet mode on"; Hebrew "מצב שקט" / "לצאת ממצב שקט" / "מצב שקט פעיל". The
+App Intent (Action Button, Shortcuts) is "Quiet mode" too, and the companion's app-data line says Quiet mode. Behavior
+unchanged; code ids keep "break". e2e `tools/e2e/take-a-break.cjs` 73/73, app tests 210 pass, API break and app-data
+tests pass.
+
+19 Nov 2026 (Jira PM-282, thread "Fix Hebrew placeholder in chat input"): in Hebrew the companion chat placeholder
+"הודעה לStedio" was laid out left to right on iOS, so "Stedio" jumped to the right edge. Text inputs now take the app
+language's base direction (`useInputDirection` in `apps/mobile/src/i18n/I18nProvider.tsx`: writingDirection for iOS,
+a direction mark at the start of translated placeholders for Android and web): companion and follower chat boxes, food
+search and every non-LTR TextField. Hebrew string is now "הודעה ל־{name}". Guard in `test/rtl.test.ts`. `pnpm check`
+passes (app 211). Visual check on Guy's iPhone after the OTA.
+
 19 Nov 2026 (Jira PM-279, thread "Add a master switch for all notifications"): Guy asked for one switch at the top of
 the Notifications list that turns all notifications on or off with one tap. App: "All notifications" is the first card
 (`features/settings/notifyAll.ts`, kept on the phone and the server); off shows every row off and locked but keeps each

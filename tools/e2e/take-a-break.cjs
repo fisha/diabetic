@@ -1,4 +1,4 @@
-// Take a break (PM-257, Guy 18 Nov 2026; on the main screen since PM-274, 19 Nov): the switch under the character turns the whole app into one black screen with the latest
+// Quiet mode, called Take a break until PM-284 (PM-257, Guy 18 Nov 2026; on the main screen since PM-274, 19 Nov): the switch under the character turns the whole app into one black screen with the latest
 // reading in big, coloured by the person's own range; past 15 minutes "Not current" with the time and no value; a small
 // icon ends it; the server holds the state (pushes withheld but the glucose look-back); steady://break turns it on.
 // End-to-end against the test server (services/api: uvicorn tests.e2e_server:app). Synthetic readings for this check only.
@@ -54,7 +54,7 @@ const server = http.createServer((req, res) => {
       await api('/profile', { method: 'PUT', token: tk, body: { locale: lang, answers: ANSWERS } });
       await reading(tk, 2, value);
       const he = lang === 'he';
-      const L = he ? { title: 'לצאת להפסקה', end: 'לסיים את ההפסקה', on: 'בהפסקה' } : { title: 'Take a break', end: 'End break', on: 'Taking a break' };
+      const L = he ? { title: 'מצב שקט', end: 'לצאת ממצב שקט', on: 'מצב שקט פעיל' } : { title: 'Quiet mode', end: 'End quiet mode', on: 'Quiet mode on' };
       const tag = `${lang} ${scheme} ${size}`;
       const ctx = await browser.newContext({ viewport: SIZES[size], colorScheme: scheme, locale: 'en-US', deviceScaleFactor: 2 });
       const page = await ctx.newPage();
@@ -115,7 +115,7 @@ const server = http.createServer((req, res) => {
       await signIn(page, 's@example.com', he);
       await page.goto(`${base}/companion`); await page.waitForTimeout(5000);
       const tag = `${lang} ${scheme} stale`;
-      ok(`${tag}: break from the server`, (await page.getByRole('button', { name: he ? 'לסיים את ההפסקה' : 'End break', exact: true }).count()) === 1);
+      ok(`${tag}: break from the server`, (await page.getByRole('button', { name: he ? 'לצאת ממצב שקט' : 'End quiet mode', exact: true }).count()) === 1);
       ok(`${tag}: says not current`, (await page.getByText(he ? 'לא עדכני' : 'Not current', { exact: true }).count()) > 0);
       ok(`${tag}: no value`, (await page.getByTestId('break-screen').getByText(/155/).count()) === 0 && (await page.getByTestId('break-screen').count()) === 1);
       ok(`${tag}: last reading time`, (await page.getByText(he ? /קריאה אחרונה/ : /Last reading/).count()) > 0);
