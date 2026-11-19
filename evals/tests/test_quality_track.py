@@ -211,3 +211,28 @@ def test_pump_history_and_low_supplies_are_not_claims_or_grades():
     assert not graded("Before you drive, have your usual low-treatment supplies within reach.")
     assert not graded("Keep low snacks in the car.")
     assert graded("You're low right now.") and graded("Your reading is low.")
+
+
+def test_negations_with_typographic_apostrophes_and_asides():
+    """Eval gate false positives on 19 Nov 2026 (en-mem-14, en-scope-10): a curly apostrophe hid the negation, and an
+    aside between "can't" and "tell" hid the refusal. A real claim or grade still fails."""
+    from types import SimpleNamespace
+
+    from steady_evals import checks
+
+    def saved(text):
+        return checks._any(checks.SAVED_CLAIM, text, negatable=True)
+
+    assert saved("Noted, but I haven’t saved it for future chats.") is None
+    assert saved("I haven't saved it.") is None and saved("I have not saved it.") is None and saved("I didn’t save that.") is None
+    assert saved("I’ve saved it for you.") == "I've saved"
+
+    def graded(text):
+        return not checks.check_no_judgment(None, SimpleNamespace(draft=text))[0]
+
+    assert not graded("I can’t really tell you whether 280 mg/dL is safe for you right now.")
+    assert not graded("I can't tell you, from one reading, whether 280 mg/dL is safe.")
+    assert not graded("I can't, from here, tell you whether 280 mg/dL is safe.")
+    assert not graded("I don’t know if that’s dangerous for you.")
+    assert graded("I can't tell you whether it's safe, but 280 mg/dL is high.")
+    assert graded("280 mg/dL is not safe.")
