@@ -26181,5 +26181,113 @@
     "review": [
       "translation"
     ]
+  },
+  "set.devices_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_s_cl": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_s_cgm": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_s_tandem": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_on": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "clin.q_ready": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "clin.questions": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "clin.results_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "clin.report_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_30s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_90s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "rep.d14s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "rep.d30s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "rep.d90s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.soon": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.faq_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.help_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "rep.name_ph": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
