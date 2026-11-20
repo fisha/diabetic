@@ -4064,5 +4064,12 @@
   "lab.empty_s": "Results you add show here by test date.",
   "lab.page_t": "Test results",
   "lab.add_row": "Add a result by hand",
-  "lab.page_b": "Photograph a report, or choose up to 4 photos. Stedio copies the results for you to check. The photos are not kept."
+  "lab.page_b": "Photograph a report, or choose up to 4 photos. Stedio copies the results for you to check. The photos are not kept.",
+  "lab.rv_lead": "{count, plural, one {I read 1 result.} other {I read # results.}} Check each one before saving. The photo is not kept.",
+  "lab.rv_date": "Date of the test",
+  "lab.from_report": "From a photographed report · checked by you",
+  "lab.from_report@v": "From a photographed report · checked by {person}",
+  "lab.day_note": "Copied from your report as written. Stedio does not judge results; your care team does.",
+  "lab.day_note@v": "Copied from the report as written. Stedio does not judge results; {person}'s care team does.",
+  "lab.rv_skip": "Leave out {test}"
 }

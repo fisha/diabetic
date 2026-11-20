@@ -26403,5 +26403,47 @@
     "review": [
       "translation"
     ]
+  },
+  "lab.rv_lead": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.rv_date": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.from_report": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.from_report@v": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.day_note": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.day_note@v": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.rv_skip": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

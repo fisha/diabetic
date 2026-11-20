@@ -49,7 +49,7 @@ const server = http.createServer((req, res) => {
       const L = he ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון' } : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account' };
       const T = he
         ? { title: 'תוצאות בדיקות', choose: 'בחירת תמונות', review: 'בדיקת התוצאות', save: 'שמירת 3 תוצאות', a1c: 'HbA1c', zinc: 'Zinc', what: 'מה הבדיקה הזו', skipped: 'תוצאה אחת בלי מספר' }
-        : { title: 'Lab results', choose: 'Choose photos', review: 'Check the results', save: 'Save 3 results', a1c: 'HbA1c', zinc: 'Zinc', what: 'What this test is', skipped: 'One result without a number' };
+        : { title: 'Test results', choose: 'Choose photos', review: 'Check the results', save: 'Save 3 results', a1c: 'HbA1c', zinc: 'Zinc', what: 'What this test is', skipped: 'One result without a number' };
       await page.goto(base); await page.waitForTimeout(2000);
       if (he) { await page.getByText('עברית', { exact: true }).first().click(); await page.waitForTimeout(800); }
       await page.getByText(L.have, { exact: true }).last().click(); await page.waitForTimeout(1500);
@@ -75,10 +75,21 @@ const server = http.createServer((req, res) => {
       const labs = (await api('/labs', { token: tk })).json || [];
       ok(`${lang} ${scheme}: four results stored, the read ones as lab reports with the printed range`, labs.length === 4 && labs.filter((r) => r.data.range_text === '<100').length === 1, String(labs.length));
       await page.getByRole('button', { name: new RegExp(he ? 'המוגלובין מסוכרר|A1c' : 'A1c') }).first().click().catch(async () => page.getByText(/A1c/).first().click());
-      await page.waitForTimeout(800);
+      await page.waitForTimeout(1500);
+      // The table's rows open the test date's screen (PM-263); a row there opens what the test is.
+      if ((await page.getByText(T.what, { exact: true }).count()) === 0) {
+        await page.getByRole('button', { name: new RegExp(he ? 'המוגלובין מסוכרר|A1c' : 'A1c') }).first().click().catch(() => {});
+        await page.waitForTimeout(800);
+      }
       await page.screenshot({ path: path.join(out, `${lang}-${scheme}-04-explained.png`) });
       ok(`${lang} ${scheme}: tapping a row shows what the test is`, (await page.getByText(T.what, { exact: true }).count()) > 0);
+      // Duet x90: one test date's own screen.
+      const d = new Date(); const ymd = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      await page.goto(`${base}/labs/${ymd}`); await page.getByText(T.a1c).first().waitFor({ timeout: 15000 }).catch(() => {}); await page.waitForTimeout(800);
+      await page.screenshot({ path: path.join(out, `${lang}-${scheme}-06-day.png`) });
+      ok(`${lang} ${scheme}: the date's screen lists the results`, (await page.getByText(T.a1c).count()) > 0);
       if (!he) {
+        await page.goto(`${base}/labs`); await page.waitForTimeout(3000);
         // A PDF from Files (PM-213, native build from 18 Nov 2026; the web has a file input).
         const pick = page.waitForEvent('filechooser');
         await page.getByRole('button', { name: 'Upload a PDF' }).first().click();
