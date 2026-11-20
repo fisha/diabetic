@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+20 Nov 2026 (Jira PM-327, thread "Detect infusion set changes from CareLink"): Guy changed his infusion set at about
+09:50 Israel time and the journal only showed "basal resumed". CareLink's only set change signal was the 30-day
+history's `Agg1d[].setChange` day flag (hourly, dated at midnight); live data has no rewind or prime marker. Each poll
+now compares the reservoir (units, else percent) with the previous poll: a rise of 5 U / 5 % or more means a new
+reservoir was loaded, and a `set_change` event is kept at the pump stop within 3 h before, else at the poll. The
+history's day-only row for that day is moved to the real time or left out (api #153). API tests 809 passed. Deploy:
+API only, no app change. Next: confirm on Guy's next set change that the row appears at the right time.
+
 20 Nov 2026 (Jira PM-326, thread "Redo UX audit with UI skills"): Guy asked to install the nine UI skills from the
 article "9 Best UI Skills for Claude Code in 2026" and redo the UX audit with them for comparison. Eight are vendored
 in `.claude/skills/` after reading them (root #272); shadcn/ui was skipped (not used in Stedio), and parts that download
