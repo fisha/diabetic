@@ -58,6 +58,12 @@ const server = http.createServer((req, res) => {
           clinics: [{ ...base, id: 'c2', status: 'accepted', scopes: ['sensor', 'labs'], decided_at: new Date(Date.now() - 2 * 86_400_000).toISOString(), last_viewed_at: y.toISOString(), last_viewed_by: null }] };
         await page.route('**/care-team', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify(body) }));
       }
+      // ROWS=1: a set change three days ago and a lab result, for the Overview status rows (z21). Screenshot tooling only.
+      if (process.env.ROWS) {
+        const h = { 'access-control-allow-origin': '*' };
+        await page.route('**/devices/events?**', (r) => r.fulfill({ contentType: 'application/json', headers: h, body: JSON.stringify([{ group: 'set_changed', code: 'set_change', occurred_at: new Date(Date.now() - 3 * 86_400_000).toISOString() }]) }));
+        await page.route('**/records?**kind=lab**', (r) => r.fulfill({ contentType: 'application/json', headers: h, body: JSON.stringify([{ data: { test: 'a1c', name: 'HbA1c', value: 6.8, unit: '%', taken_on: new Date(Date.now() - 20 * 86_400_000).toISOString().slice(0, 10) } }]) }));
+      }
       if (process.env.NOOPENERS) await page.route('**/conversation/openers', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify({ openers: [], refreshing: false }) }));
       for (const r of routesArg.split(',')) {
         await page.goto(base + r); await page.waitForTimeout(Number(process.env.WAIT || 6000));
