@@ -2070,7 +2070,7 @@
   "set.delete.title": "Delete account and data",
   "set.dev_health_sub": "Readings your phone already stores",
   "set.dev_planned_cap": "Planned capability",
-  "set.devices": "Devices & connections",
+  "set.devices": "Devices & data sources",
   "set.devices.planned": "Device connections are planned. For now, log readings yourself or by voice.",
   "set.devices_sub": "Health store and device connections",
   "set.dig": "Read numbers digit by digit",
@@ -4045,5 +4045,10 @@
   "set.soon": "Coming soon",
   "set.faq_t": "Questions",
   "set.help_t": "Help",
-  "rep.name_ph": "First and last name"
+  "rep.name_ph": "First and last name",
+  "set.privacy_t": "Privacy, AI & data",
+  "set.photos_t": "Keep meal photos",
+  "set.ph_0s": "After analysis",
+  "set.ph_90s": "90 days",
+  "set.ph_alls": "Until I delete"
 }
