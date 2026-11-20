@@ -26373,5 +26373,11 @@
     "review": [
       "translation"
     ]
+  },
+  "sub.inc_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

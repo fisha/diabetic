@@ -4059,5 +4059,6 @@
   "lrn.c_shown": "Insights shown",
   "lrn.c_learned": "Learned",
   "lrn.c_future": "Day {n} · {date}",
-  "lrn.lead_warm": "Day {day} of {total}. On day {total} ({date}) the first insights you saw become examples to learn from."
+  "lrn.lead_warm": "Day {day} of {total}. On day {total} ({date}) the first insights you saw become examples to learn from.",
+  "sub.inc_t": "What’s included"
 }

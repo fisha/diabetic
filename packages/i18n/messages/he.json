@@ -4059,5 +4059,6 @@
   "lrn.c_shown": "תובנות שהוצגו",
   "lrn.c_learned": "מה נלמד",
   "lrn.c_future": "יום {n} · {date}",
-  "lrn.lead_warm": "יום {day} מתוך {total}. ביום {total} ({date}) התובנות הראשונות שראית יהפכו לדוגמאות ללמידה."
+  "lrn.lead_warm": "יום {day} מתוך {total}. ביום {total} ({date}) התובנות הראשונות שראית יהפכו לדוגמאות ללמידה.",
+  "sub.inc_t": "מה כלול"
 }
