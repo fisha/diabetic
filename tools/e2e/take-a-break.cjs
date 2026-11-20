@@ -68,20 +68,19 @@ const server = http.createServer((req, res) => {
       // Not in Profile any more (Guy, 19 Nov 2026, PM-274).
       await page.goto(`${base}/profile`); await page.waitForTimeout(4000);
       ok(`${tag}: no switch in Profile`, (await page.getByRole('switch', { name: L.title, exact: true }).count()) === 0);
-      // On the main screen, under the character, beside the history and text icons, clear of the tab bar.
+      // On the main screen (Duet, PM-341): the Zz button beside the history and text buttons, clear of the tab bar. A tap
+      // opens the quiet mode sheet; "Turn on now" there turns it on (holding the button does it at once).
       await page.goto(`${base}/companion`); await page.waitForTimeout(6000);
-      const sw = page.getByRole('switch', { name: L.title, exact: true });
-      ok(`${tag}: main screen has the switch`, (await sw.count()) === 1);
+      const sw = page.getByRole('button', { name: L.title, exact: true });
+      ok(`${tag}: main screen has the quiet mode button`, (await sw.count()) === 1);
       const sb = await sw.first().boundingBox().catch(() => null); const bar = await page.getByRole('tablist').first().boundingBox();
       const hb = await page.getByRole('button', { name: he ? 'שיחות' : 'Conversations', exact: true }).first().boundingBox().catch(() => null);
-      // 320x568 is shorter than the main screen even with the character at its smallest: it scrolls there (by design).
-      if (size !== 'tiny') ok(`${tag}: switch clear of the tab bar`, !!sb && !!bar && sb.y + sb.height <= bar.y, sb && bar ? `${Math.round(sb.y + sb.height)} <= ${Math.round(bar.y)}` : 'missing');
-      ok(`${tag}: switch in the icons row`, !!sb && !!hb && Math.abs(sb.y + sb.height / 2 - (hb.y + hb.height / 2)) < 12);
-      // The label on the far side of the switch: after it in reading order (right of it in English, left in Hebrew).
-      const lb = await page.getByText(L.title, { exact: true }).first().boundingBox().catch(() => null);
-      ok(`${tag}: label after the switch`, !!sb && !!lb && (he ? lb.x + lb.width <= sb.x + 2 : lb.x >= sb.x + sb.width - 2));
+      if (size !== 'tiny') ok(`${tag}: button clear of the tab bar`, !!sb && !!bar && sb.y + sb.height <= bar.y, sb && bar ? `${Math.round(sb.y + sb.height)} <= ${Math.round(bar.y)}` : 'missing');
+      ok(`${tag}: button in the icons row`, !!sb && !!hb && Math.abs(sb.y + sb.height / 2 - (hb.y + hb.height / 2)) < 12);
       if (units === 'mgdl' && size !== 'tiny') await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-01-main.png`) });
-      await sw.first().click(); await page.waitForTimeout(2500);
+      await sw.first().click(); await page.waitForTimeout(1500);
+      if (units === 'mgdl' && size !== 'tiny') await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-015-sheet.png`) });
+      await page.getByText(he ? 'להפעיל עכשיו' : 'Turn on now', { exact: true }).last().click(); await page.waitForTimeout(2500);
       const end = page.getByRole('button', { name: L.end, exact: true });
       ok(`${tag}: break screen with the end icon`, (await end.count()) === 1);
       // The value is wrapped in direction marks (isolateLtr).
@@ -93,7 +92,7 @@ const server = http.createServer((req, res) => {
       }).catch(() => null);
       ok(`${tag}: number whole on screen`, !!fit && fit.g[0] >= 0 && fit.g[2] <= fit.w && fit.g[1] >= fit.b[1] - 1 && fit.g[3] <= fit.b[3] + 1 && fit.sw <= fit.cw + 1, JSON.stringify(fit));
       ok(`${tag}: coloured by own range`, (await big.evaluate((e) => getComputedStyle(e).color).catch(() => '')) === colour);
-      ok(`${tag}: black screen`, (await page.evaluate(() => { const e = document.elementFromPoint(20, innerHeight - 30); let x = e; while (x && getComputedStyle(x).backgroundColor === 'rgba(0, 0, 0, 0)') x = x.parentElement; return x ? getComputedStyle(x).backgroundColor : ''; })) === 'rgb(0, 0, 0)');
+      ok(`${tag}: dark screen (Duet p06 #0B1312)`, (await page.evaluate(() => { const e = document.elementFromPoint(20, innerHeight - 30); let x = e; while (x && getComputedStyle(x).backgroundColor === 'rgba(0, 0, 0, 0)') x = x.parentElement; return x ? getComputedStyle(x).backgroundColor : ''; })) === 'rgb(11, 19, 18)');
       ok(`${tag}: the time and age show`, (await page.getByText(he ? /לפני|עכשיו/ : /ago|now/).count()) > 0);
       ok(`${tag}: no insights or tab bar visible`, await page.evaluate(() => { const t = document.querySelector('[role="tablist"]'); if (!t) return true; const b = t.getBoundingClientRect(); const e = document.elementFromPoint(b.x + b.width / 2, b.y + b.height / 2); return !t.contains(e); }));
       const st = (await api('/follow-ups/break', { token: tk })).json;

@@ -26133,5 +26133,17 @@
     "review": [
       "translation"
     ]
+  },
+  "brk.now": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.hold_hint": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

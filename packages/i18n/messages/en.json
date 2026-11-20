@@ -4005,7 +4005,7 @@
   "brk.days": "Days",
   "brk.ways_t": "More ways to turn it on",
   "brk.way_home": "Home screen",
-  "brk.way_home_s": "The moon button under {name}",
+  "brk.way_home_s": "The Zz button under {name}",
   "brk.way_ab": "Action Button",
   "brk.way_ab_s": "Hold the iPhone Action Button",
   "brk.sched_note": "Quiet mode turns on at {from} and off at {to} on the chosen days.",
@@ -4019,5 +4019,7 @@
   "brk.turn_on": "Turn on",
   "brk.set_sched": "Set a daily schedule",
   "brk.on_until": "Quiet mode on · until {time}",
-  "set.quiet_sched": "Quiet mode schedule"
+  "set.quiet_sched": "Quiet mode schedule",
+  "brk.now": "Turn on now",
+  "brk.hold_hint": "Tip: hold the Zz button on the main screen to turn it on right away."
 }
