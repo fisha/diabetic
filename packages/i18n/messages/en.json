@@ -3973,5 +3973,6 @@
   "bk.hr_none_ios": "Heart rate comes from Apple Health, when a watch or band records it.",
   "bk.hr_none_android": "Heart rate comes from Health Connect, when a watch or band records it.",
   "cmp.pw_show": "Show",
-  "cmp.pw_hide": "Hide"
+  "cmp.pw_hide": "Hide",
+  "set.dev_ro": "Stedio only reads. Nothing is ever sent to a pump or sensor."
 }

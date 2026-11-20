@@ -25857,5 +25857,11 @@
     "review": [
       "translation"
     ]
+  },
+  "set.dev_ro": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
