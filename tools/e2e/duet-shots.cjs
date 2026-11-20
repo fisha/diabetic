@@ -53,6 +53,10 @@ const server = http.createServer((req, res) => {
         // OPEN=<text>: tap the first element with that text (for example the insights line) before the shot.
         if (process.env.OPEN) { await page.getByText(new RegExp(process.env.OPEN)).first().click(); await page.waitForTimeout(1200); }
         const name = `${process.env.NOOPENERS ? 'p01-' : ''}${process.env.GREETING ? 'greet-' : ''}${process.env.OPEN ? 'open-' : ''}${process.env.VIEW ? process.env.VIEW + '-' : ''}${scenario}-${r.replace(/[^a-z0-9]+/gi, '_').replace(/^_|_$/g, '') || 'root'}-${lang}-${scheme}.png`;
+        // PROBE=a|b|c: print where each text sits (for pixel comparison with the mockups).
+        if (process.env.PROBE) for (const q of process.env.PROBE.split('|')) { const b = await page.getByText(q, { exact: true }).first().boundingBox().catch(() => null); console.log('probe', q, b && [Math.round(b.x), Math.round(b.y), Math.round(b.width), Math.round(b.height)]); }
+        // TREE=text: print the boxes of that text's ancestors (to find stray spacing).
+        if (process.env.TREE) console.log(await page.evaluate((q) => { const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) if (n.textContent.trim() === q) break; const out = []; let e = n && n.parentElement; while (e && out.length < 14) { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); out.push(`${Math.round(r.y)} h${Math.round(r.height)} pt${cs.paddingTop} mt${cs.marginTop} gap${cs.rowGap} kids[${[...e.children].map((c) => { const b = c.getBoundingClientRect(); return Math.round(b.y) + ':' + Math.round(b.height); }).join(' ')}]`); e = e.parentElement; } return out.join('\n'); }, process.env.TREE));
         await page.screenshot({ path: path.join(out, name) });
         console.log('shot', name);
       }

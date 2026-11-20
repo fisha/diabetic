@@ -3979,5 +3979,6 @@
   "com.greet_morning": "Good morning! How's your day starting?",
   "com.greet_afternoon": "Hi, how are you?",
   "com.greet_evening": "Hi, how was your day?",
-  "com.greet_night": "Good evening, how was your day?"
+  "com.greet_night": "Good evening, how was your day?",
+  "com.now_tick": "now"
 }

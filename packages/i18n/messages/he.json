@@ -3979,5 +3979,6 @@
   "com.greet_morning": "בוקר טוב! איך התחלת את היום?",
   "com.greet_afternoon": "היי, מה שלומך?",
   "com.greet_evening": "היי, איך עבר היום?",
-  "com.greet_night": "ערב טוב, איך היה היום?"
+  "com.greet_night": "ערב טוב, איך היה היום?",
+  "com.now_tick": "עכשיו"
 }
