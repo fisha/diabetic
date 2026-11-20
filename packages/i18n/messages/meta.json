@@ -25905,5 +25905,11 @@
     "review": [
       "translation"
     ]
+  },
+  "set.always_on": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

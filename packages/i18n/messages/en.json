@@ -3981,5 +3981,6 @@
   "com.greet_evening": "Hi, how was your day?",
   "com.greet_night": "Good evening, how was your day?",
   "com.now_tick": "now",
-  "com.ql_more": "More"
+  "com.ql_more": "More",
+  "set.always_on": "Always on"
 }

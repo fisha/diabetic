@@ -3981,5 +3981,6 @@
   "com.greet_evening": "היי, איך עבר היום?",
   "com.greet_night": "ערב טוב, איך היה היום?",
   "com.now_tick": "עכשיו",
-  "com.ql_more": "עוד"
+  "com.ql_more": "עוד",
+  "set.always_on": "תמיד פועל"
 }
