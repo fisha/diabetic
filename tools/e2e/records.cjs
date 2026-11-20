@@ -65,7 +65,7 @@ const server = http.createServer((req, res) => {
     // The test server's food database finds "Pita, raw" (20 g carbs per 100 g); a typical serving is 100 g.
     await page.getByText('Pita, raw', { exact: true }).click(); await page.waitForTimeout(800);
     await shot('r02-meal-review');
-    await page.getByText('Save meal', { exact: true }).last().click(); await page.waitForTimeout(2000);
+    await page.getByText(/^Save meal/).last().click(); await page.waitForTimeout(2000);
     ok('meal saved screen', await page.getByText('Meal saved').first().isVisible());
     await shot('r03-meal-saved');
 
