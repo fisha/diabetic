@@ -21,6 +21,21 @@ WhatsApp fixed lines point to Settings > WhatsApp. `pnpm check` passes. Not yet 
 other onboarding steps (shared components only), history, viewer, kids home (p30 tab set needs Guy), most Settings
 sub-screens. Next: show Guy on the iOS simulator; nothing is deployed until he approves.
 
+21 Nov 2026 (Jira PM-340, PM-341, thread "Implement the Duet design"): continued the one to one Duet pass, each screen
+checked by overlay against `round4/mockups` (overlays in `round4/compare/`). Overview p02: a period line card (dates
+and range above, sensor line in the band, labels under it, tap opens the detailed graph with earlier periods, the two
+views and the coverage line; "Show less" closes it), time in range with below/above under a gapped bar, latest
+reading at 38 with a dotted range tag, Learning and the period summary as rows; six periods kept (Guy). Settings:
+devices p19, clinic p24 (a saved next visit as an accent card), report p25, export p26, language p27, accessibility
+p28 (contrast says Coming soon), help p29, privacy p22, AI engine sheet z31, sensor connect x80, delete x83,
+membership x87, viewer settings p35. Learning p08 (day strip, collected and learned rows) and routine p09. Quiet
+mode timing (PM-341: schedule, turn on now, hold the Zz button) in API and app. Deliberate deviations kept: existing
+longer consent and help texts, report options and the visit card stay on the report screen (x89 visit screen and
+"remind me the day before" not built: new feature, needs Guy), z31 "what is / is never sent" rows not added (needs
+lawyer wording), Apple Health "what it sends" rows not added (no per-type data on web), viewer strip kept (Guy).
+App tests 240 pass, typecheck clean, lint unchanged. Not deployed; API (break schedule) must go before the OTA.
+Next: show Guy on the simulator; kids home p30 tab set needs Guy.
+
 20 Nov 2026 (Jira PM-327, thread "Detect infusion set changes from CareLink"): Guy changed his infusion set at about
 09:50 Israel time and the journal only showed "basal resumed". CareLink's only set change signal was the 30-day
 history's `Agg1d[].setChange` day flag (hourly, dated at midnight); live data has no rewind or prime marker. Each poll
