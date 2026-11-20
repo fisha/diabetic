@@ -43,6 +43,8 @@ const server = http.createServer((req, res) => {
       const page = await ctx.newPage();
       page.on('pageerror', (e) => console.log('pageerror', e.message));
       // NOOPENERS=1: the main screen without Stedio's question (board p01), for comparison; the demo always has one.
+      // GREETING=1: only the greeting bubble (the demo also has a question), for comparison with p01.
+      if (process.env.GREETING) await page.route('**/conversation/openers', async (r) => { const res = await r.fetch(); const j = await res.json(); r.fulfill({ response: res, body: JSON.stringify({ ...j, openers: j.openers.filter((o) => o.kind === 'greeting') }) }); });
       if (process.env.NOOPENERS) await page.route('**/conversation/openers', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify({ openers: [], refreshing: false }) }));
       for (const r of routesArg.split(',')) {
         await page.goto(base + r); await page.waitForTimeout(Number(process.env.WAIT || 6000));
@@ -50,7 +52,7 @@ const server = http.createServer((req, res) => {
         if (r !== '/break' && (await page.getByTestId('break-end').count())) { await page.getByTestId('break-end').click(); await page.goto(base + r); await page.waitForTimeout(4000); }
         // OPEN=<text>: tap the first element with that text (for example the insights line) before the shot.
         if (process.env.OPEN) { await page.getByText(new RegExp(process.env.OPEN)).first().click(); await page.waitForTimeout(1200); }
-        const name = `${process.env.NOOPENERS ? 'p01-' : ''}${process.env.OPEN ? 'open-' : ''}${process.env.VIEW ? process.env.VIEW + '-' : ''}${scenario}-${r.replace(/[^a-z0-9]+/gi, '_').replace(/^_|_$/g, '') || 'root'}-${lang}-${scheme}.png`;
+        const name = `${process.env.NOOPENERS ? 'p01-' : ''}${process.env.GREETING ? 'greet-' : ''}${process.env.OPEN ? 'open-' : ''}${process.env.VIEW ? process.env.VIEW + '-' : ''}${scenario}-${r.replace(/[^a-z0-9]+/gi, '_').replace(/^_|_$/g, '') || 'root'}-${lang}-${scheme}.png`;
         await page.screenshot({ path: path.join(out, name) });
         console.log('shot', name);
       }
