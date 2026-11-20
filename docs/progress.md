@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+20 Nov 2026 (Jira PM-324, thread "Show glucose scale on meal curve"): Guy could not tell the scale of "Glucose after
+this meal" (70-180 or 100-200?). Every glucose chart now has a value column on the right: the person's own range bounds
+in the range colour and heavier, plus round values with faint gridlines (`components/glucoseAxis.ts`,
+`GlucoseYAxis.tsx`). The meal/workout curve (meal detail, journal, meal sheet, rises, viewer) uses round values, is never
+narrower than 100 mg/dL (6 mmol/L) so a small wiggle no longer looks like a spike, is taller (132), and has a legend
+("Your range 70-180 mg/dL", "--- At the meal"; existing strings). The Overview day graph and Typical day show
+100/200/300 (5/10/15 mmol) plus the range bounds. App #196. App tests 239, e2e `meal-impact.cjs` (en light, he light,
+he dark) all pass; screenshots `/mnt/project-files/steady/meal-scale/`. Typical day type-checked only. App only. Next: OTA.
+
 20 Nov 2026 (Jira PM-320, thread "Show sensor updating state with elapsed timer"): Guy asked that "Sensor updating"
 look like the warm-up, with a counter of how long it has been happening, and no reading that is not current. API: the
 pump's own "Sensor updating" message (CareLink 801) with no sensor reading since, while the CareLink status is fresh and
