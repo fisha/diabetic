@@ -2365,3 +2365,4 @@ appears, at most twice per list, and never again once the person has swiped any 
 App tests 213/213, typecheck clean, e2e `tools/e2e/swipe-delete.cjs` passes in en light, he light and he dark (hint
 44 px out, back to 0, no hint after a swipe). Next: OTA, then Guy checks it on his iPhone.
 
+- 20 Nov (PM-340): Duet one to one pass done on onboarding, auth, log forms, Overview, journal, routine, insights, Settings and the viewer home. Deliberate deviations listed for Guy (insight list z06, opener z05, quick-log More, insights filter, kids three tabs, treatment list, time row). WhatsApp open to every account with Meta in the privacy policy (PM-270). Not deployed: waiting for Guy on the simulator.
