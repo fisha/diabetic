@@ -6758,7 +6758,7 @@
     "review": [
       "translation"
     ],
-    "note": "Barcode scan for packaged food; values from Open Food Facts."
+    "note": "Barcode scan for packaged food; values from Open Food Facts, then USDA FoodData Central branded foods (PM-336)."
   },
   "meal.m_photo": {
     "board": "Meal",
