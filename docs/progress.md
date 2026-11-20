@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+20 Nov 2026 (Jira PM-326, thread "Redo UX audit with UI skills"): Guy asked to install the nine UI skills from the
+article "9 Best UI Skills for Claude Code in 2026" and redo the UX audit with them for comparison. Eight are vendored
+in `.claude/skills/` after reading them (root #272); shadcn/ui was skipped (not used in Stedio), and parts that download
+or run outside code were left out (see `.claude/skills/README.md`). Round 2 of the audit (doc "Stedio UX audit, round
+2 (with UI skills)", https://claude.ai/artifact/AmkV1dP77eBTHtb64CZ1mj): 35 findings, native audit 12/20, Nielsen 24/40,
+with a side-by-side comparison against round 1 (PM-323). New items include text contrast in the tokens, unvirtualised
+Journal lists, the "Estimated A1c" insight title, and unused haptics. Research only; nothing is built until Guy picks.
+
 20 Nov 2026 (Jira PM-324, thread "Show glucose scale on meal curve"): Guy could not tell the scale of "Glucose after
 this meal" (70-180 or 100-200?). Every glucose chart now has a value column on the right: the person's own range bounds
 in the range colour and heavier, plus round values with faint gridlines (`components/glucoseAxis.ts`,
