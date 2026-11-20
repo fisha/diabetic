@@ -26379,5 +26379,29 @@
     "review": [
       "translation"
     ]
+  },
+  "lab.empty_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.page_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.add_row": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.page_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

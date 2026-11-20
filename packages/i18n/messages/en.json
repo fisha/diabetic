@@ -2228,7 +2228,7 @@
   "set.pv_service_b": "Required to store records and respond. To stop, delete your account.",
   "set.pv_thanks": "Thanks. De-identified records may be used to improve models. Turning this off stops future use; see the policy for data already used.",
   "set.pv_train": "Help improve models",
-  "set.pv_train_b": "Optional. Off by default. Separate from providing the service.",
+  "set.pv_train_b": "Optional, and separate from providing the service.",
   "set.quiet": "Quiet hours and check-in frequency",
   "set.report": "Report a problem",
   "set.rm": "Reduce motion",
@@ -4060,5 +4060,9 @@
   "lrn.c_learned": "Learned",
   "lrn.c_future": "Day {n} · {date}",
   "lrn.lead_warm": "Day {day} of {total}. On day {total} ({date}) the first insights you saw become examples to learn from.",
-  "sub.inc_t": "What’s included"
+  "sub.inc_t": "What’s included",
+  "lab.empty_s": "Results you add show here by test date.",
+  "lab.page_t": "Test results",
+  "lab.add_row": "Add a result by hand",
+  "lab.page_b": "Photograph a report, or choose up to 4 photos. Stedio copies the results for you to check. The photos are not kept."
 }
