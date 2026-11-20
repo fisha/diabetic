@@ -1546,7 +1546,8 @@ export interface paths {
         };
         /**
          * Sensor Warmup
-         * @description Whether a new sensor is warming up now, from the connected device services (read only).
+         * @description Whether a new sensor is warming up, or the sensor is updating (PM-320), now, from the connected device services
+         *     (read only). A follower may read it with the glucose (deps.SCOPE_PATHS): it is why no current reading is shown.
          */
         get: operations["sensor_warmup_devices_warmup_get"];
         put?: never;
@@ -2524,7 +2525,8 @@ export interface paths {
         };
         /**
          * Get Photo
-         * @description The photo of a saved meal, for its Journal card (Guy, 13 Nov 2026). Only the person's own; gone once removed.
+         * @description The photo of a saved meal, for its Journal card (Guy, 13 Nov 2026); gone once removed. Also for someone the person
+         *     shares their journal with, view only (PM-310): with X-View-As the user here is the person who shares (deps).
          */
         get: operations["get_photo_meal_photos__photo_id__get"];
         put?: never;
@@ -7646,6 +7648,19 @@ export interface components {
             pushed_at: string | null;
         };
         /**
+         * UpdatingOut
+         * @description The sensor updating (PM-320): the pump says so and no reading has come since `since`. No reading is current.
+         */
+        UpdatingOut: {
+            /**
+             * Since
+             * Format: date-time
+             */
+            since: string;
+            /** Source */
+            source: string;
+        };
+        /**
          * UsualMealIn
          * @description The foods as a saved meal stores them, for the whole served amount. A usual meal is the person's own, so it keeps
          *     no estimate range or confidence: the app logs it again with its values as they were saved.
@@ -7867,6 +7882,7 @@ export interface components {
         };
         /** WarmupStateOut */
         WarmupStateOut: {
+            updating?: components["schemas"]["UpdatingOut"] | null;
             warmup?: components["schemas"]["WarmupOut"] | null;
         };
         /** WeekOut */
@@ -7955,6 +7971,12 @@ export interface components {
             lc?: ("en" | "he") | null;
             /** Old */
             old: string;
+            /** Ul */
+            ul?: string | null;
+            /** Un */
+            un?: string | null;
+            /** Ut */
+            ut?: string | null;
             /** Wa */
             wa?: string | null;
             /** Wl */

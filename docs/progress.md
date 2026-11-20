@@ -8,6 +8,20 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+20 Nov 2026 (Jira PM-320, thread "Show sensor updating state with elapsed timer"): Guy asked that "Sensor updating"
+look like the warm-up, with a counter of how long it has been happening, and no reading that is not current. API: the
+pump's own "Sensor updating" message (CareLink 801) with no sensor reading since, while the CareLink status is fresh and
+no later sensor message (change, expired, signal lost, connected) came, is the update (`warmup.updating`, technical
+limit 12 h); `GET /devices/warmup` returns `updating {source, since}`, and a follower may read it with the glucose. The
+Live Activity push sends it once (`_up` marker) with the warm-up fields too, so today's builds show "Sensor updating" and
+"No current reading" without a value; `WordsIn` takes `ut`/`ul`/`un`. App: the main screen's reading tile and pill (adult,
+teen, kid) show "Sensor updating", a stopwatch counting up (00:23:14), "No current reading" and since when; the
+Overview's latest-reading card (also what a follower sees) shows the same instead of the value; widgets, watch and the
+lock-screen card get `us`/`ut`/`ul`, drawn counting up by the next native build (Swift not compiled here). Tests: API 803,
+app 234, i18n 20; browser run `tools/e2e/sensor-updating.cjs` (he light, en light, he dark, follower), screenshots in
+`/mnt/project-files/steady/sensor-updating/`. Next: deploy API first (the app sends new card words that an older API
+refuses), then OTA; the next local native build for the counter on the lock screen, widgets and watch.
+
 19 Nov 2026 (Jira PM-313, thread "Use third person when viewing someone's account"): Guy asked that while someone
 views another person's account, text that says "your" ("בטווח שלך") names the person instead ("בטווח של יונתן"). App:
 182 catalog ids now have a viewer variant (`<id>@v`, en and he, `{person}` = the name the share shows) for the main
