@@ -46,6 +46,16 @@ const server = http.createServer((req, res) => {
       // NOOPENERS=1: the main screen without Stedio's question (board p01), for comparison; the demo always has one.
       // GREETING=1: only the greeting bubble (the demo also has a question), for comparison with p01.
       if (process.env.GREETING) await page.route('**/conversation/openers', async (r) => { const res = await r.fetch(); const j = await res.json(); r.fulfill({ response: res, body: JSON.stringify({ ...j, openers: j.openers.filter((o) => o.kind === 'greeting') }) }); });
+      // CARE=1: a clinic request (c1) and a clinic already shared with (c2), for the care team screens (x88, z34).
+      // Screenshot tooling only: the app shows whatever /care-team returns.
+      if (process.env.CARE) {
+        const y = new Date(Date.now() - 86_400_000); y.setHours(14, 20, 0, 0);
+        const base = { city: 'Tel Aviv', clinic: 'Diabetes clinic', expires_at: new Date(Date.now() + 7 * 86_400_000).toISOString(), questions: null, questions_sent_at: null, requested_at: new Date().toISOString(), requested_by: null, team: [] };
+        const body = { consent_version: 'clinic-2026-11-19',
+          requests: [{ ...base, id: 'c1', status: 'pending', scopes: [], decided_at: null, last_viewed_at: null, last_viewed_by: null }],
+          clinics: [{ ...base, id: 'c2', status: 'accepted', scopes: ['sensor', 'labs'], decided_at: new Date(Date.now() - 2 * 86_400_000).toISOString(), last_viewed_at: y.toISOString(), last_viewed_by: null }] };
+        await page.route('**/care-team', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify(body) }));
+      }
       if (process.env.NOOPENERS) await page.route('**/conversation/openers', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify({ openers: [], refreshing: false }) }));
       for (const r of routesArg.split(',')) {
         await page.goto(base + r); await page.waitForTimeout(Number(process.env.WAIT || 6000));

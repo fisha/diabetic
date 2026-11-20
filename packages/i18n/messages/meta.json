@@ -26445,5 +26445,29 @@
     "review": [
       "translation"
     ]
+  },
+  "set.pf_history_note": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "care.nav_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "care.since": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "care.last_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

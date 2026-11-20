@@ -4071,5 +4071,9 @@
   "lab.from_report@v": "From a photographed report · checked by {person}",
   "lab.day_note": "Copied from your report as written. Stedio does not judge results; your care team does.",
   "lab.day_note@v": "Copied from the report as written. Stedio does not judge results; {person}'s care team does.",
-  "lab.rv_skip": "Leave out {test}"
+  "lab.rv_skip": "Leave out {test}",
+  "set.pf_history_note": "Changes are kept so you can see what the companion knew at each time. Only you can change these settings.",
+  "care.nav_t": "Care team",
+  "care.since": "Sharing since {date}",
+  "care.last_t": "Last opened by the clinic"
 }
