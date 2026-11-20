@@ -71,6 +71,9 @@ const server = http.createServer((req, res) => {
         if (process.env.PROBE) for (const q of process.env.PROBE.split('|')) { const b = await page.getByText(q, { exact: true }).first().boundingBox().catch(() => null); console.log('probe', q, b && [Math.round(b.x), Math.round(b.y), Math.round(b.width), Math.round(b.height)]); }
         // TREE=text: print the boxes of that text's ancestors (to find stray spacing).
         if (process.env.TREE) console.log(await page.evaluate((q) => { const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) if (n.textContent.trim() === q) break; const out = []; let e = n && n.parentElement; while (e && out.length < 14) { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); out.push(`${Math.round(r.y)} h${Math.round(r.height)} pt${cs.paddingTop} mt${cs.marginTop} gap${cs.rowGap} kids[${[...e.children].map((c) => { const b = c.getBoundingClientRect(); return Math.round(b.y) + ':' + Math.round(b.height); }).join(' ')}]`); e = e.parentElement; } return out.join('\n'); }, process.env.TREE));
+        // SCROLL=<px>: scroll the screen's list down that far before the shot (lower parts of a long screen).
+        if (process.env.SCROLL) { await page.mouse.move(196, 400); await page.mouse.wheel(0, Number(process.env.SCROLL)); await page.waitForTimeout(900); }
+        if (process.env.EVAL) console.log('eval', JSON.stringify(await page.evaluate(process.env.EVAL)));
         await page.screenshot({ path: path.join(out, name) });
         console.log('shot', name);
       }
