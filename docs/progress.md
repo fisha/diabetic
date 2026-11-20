@@ -35,6 +35,16 @@ longer consent and help texts, report options and the visit card stay on the rep
 lawyer wording), Apple Health "what it sends" rows not added (no per-type data on web), viewer strip kept (Guy).
 App tests 240 pass, typecheck clean, lint unchanged. Not deployed; API (break schedule) must go before the OTA.
 Next: show Guy on the simulator; kids home p30 tab set needs Guy.
+Later on 21 Nov: labs index p16, test date x90 and review x91 (labs e2e now follows the date screen), change history
+x86, export ready x85, care team request x88 and shared z34 (ToggleRow takes an icon tile), Overview states (x69 an old
+sensor reading first, outlined and grey without its range tag; x70 meter readings never "out of date", the day card
+says why there is no time in range and the line shows each reading as a ring on the full 00 to 24 day; z22 the
+character with Connect a device and Add a reading), Body and Food today as three-to-a-row tiles (z21), device status as
+an icon row (x82). Fixes from the simulator review: the language preview shows no sample reading (unit and the time
+now), the Day line spans 00 to 24, the training switch's line no longer says "off by default". Deviations kept: the
+x90 Edit link and x91 "Hard to read" flag (no such data or feature), z21 rows for infusion set, sensor end and latest
+lab (new composition, needs Guy), z30 WhatsApp keeps its full Meta consent card, line card has no Y labels (as the
+board). Shot tooling: CARE (care team), AHEAD (clock ahead), SCROLL and EVAL options in `tools/e2e/duet-shots.cjs`.
 
 20 Nov 2026 (Jira PM-327, thread "Detect infusion set changes from CareLink"): Guy changed his infusion set at about
 09:50 Israel time and the journal only showed "basal resumed". CareLink's only set change signal was the 30-day
