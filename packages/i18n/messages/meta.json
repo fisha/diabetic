@@ -26487,5 +26487,113 @@
     "review": [
       "translation"
     ]
+  },
+  "ovr.r_set": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_set_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_day": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_sensor": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_sensor_d": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_sensor_h": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_lab": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_pick": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.tab_days": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.tab_stk": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.found": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.num": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.in_range": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.range": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.hi": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.hi_0": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.challenge": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.book_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
