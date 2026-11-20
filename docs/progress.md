@@ -24,6 +24,16 @@ or run outside code were left out (see `.claude/skills/README.md`). Round 2 of t
 with a side-by-side comparison against round 1 (PM-323). New items include text contrast in the tokens, unvirtualised
 Journal lists, the "Estimated A1c" insight title, and unused haptics. Research only; nothing is built until Guy picks.
 
+20 Nov 2026 (Jira PM-328, thread "Fix journal mixing my and Yonatan's data"): switching in the Journal between Guy's own
+data and Yonatan's sometimes mixed their entries, or kept the first person's until a pull to refresh. Causes: the
+range reads (`useRange`) were keyed only by time window, so a mounted tab kept the other person's answers; an answer
+on its way during a switch could land on the new person; `X-View-As` was decided after the token refresh, not when the
+screen asked; the Journal showed the phone's own unsent records while viewing. Now every read carries the person it was
+asked for, `useRange` keys and drops answers by person, the Journal and Overview tabs start fresh per person
+(`PersonScope`), the viewer home is keyed by person, and unsent records show only on one's own data. App #198.
+Tests: app typecheck, 239 unit tests (lint errors unchanged from main), browser run `tools/e2e/switch-person.cjs`
+(en light, he light, he dark), which fails 6 checks on the app before the fix. App only. Next: testers OTA.
+
 20 Nov 2026 (Jira PM-324, thread "Show glucose scale on meal curve"): Guy could not tell the scale of "Glucose after
 this meal" (70-180 or 100-200?). Every glucose chart now has a value column on the right: the person's own range bounds
 in the range colour and heavier, plus round values with faint gridlines (`components/glucoseAxis.ts`,
