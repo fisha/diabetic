@@ -4096,5 +4096,6 @@
   "yg.hi": "היי {name}",
   "yg.hi_0": "היי!",
   "yg.challenge": "האתגר של היום",
-  "yg.book_t": "ספר המדבקות"
+  "yg.book_t": "ספר המדבקות",
+  "ovr.day_split_now": "{day} עד עכשיו: מתחת {below}%, בטווח {inRange}%, מעל {above}%"
 }
