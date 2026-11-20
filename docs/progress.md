@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+20 Nov 2026 (Jira PM-336, thread "Add free barcode food sources"): Guy asked to add only free sources to the barcode
+scan, which found Israeli products but few US ones. When Open Food Facts has no product (or no carbohydrate value), the
+API now asks USDA FoodData Central's branded foods by GTIN/UPC with the existing food search key (api `barcodes.py`).
+FatSecret was checked and left out: barcode lookup is only in Premier Free (application, US data, in-app credit), not
+in the free Basic edition; Nutritionix is paid. The privacy policy's USDA line now names the barcode number (privacy
+version 2026-11-20, so the app asks everyone to accept again) and the scan screen credits both sources. Next: a real
+US product scan on Fly.
+
 20 Nov 2026 (Jira PM-327, thread "Detect infusion set changes from CareLink"): Guy changed his infusion set at about
 09:50 Israel time and the journal only showed "basal resumed". CareLink's only set change signal was the 30-day
 history's `Agg1d[].setChange` day flag (hourly, dated at midnight); live data has no rewind or prime marker. Each poll
