@@ -3971,5 +3971,7 @@
   "com.hist_start": "Start a conversation",
   "bk.none_t": "Nothing here yet today",
   "bk.hr_none_ios": "Heart rate comes from Apple Health, when a watch or band records it.",
-  "bk.hr_none_android": "Heart rate comes from Health Connect, when a watch or band records it."
+  "bk.hr_none_android": "Heart rate comes from Health Connect, when a watch or band records it.",
+  "cmp.pw_show": "Show",
+  "cmp.pw_hide": "Hide"
 }

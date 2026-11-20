@@ -3971,5 +3971,7 @@
   "com.hist_start": "להתחיל שיחה",
   "bk.none_t": "עוד אין כאן נתונים היום",
   "bk.hr_none_ios": "הדופק מגיע מ-Apple Health, כששעון או צמיד מודדים אותו.",
-  "bk.hr_none_android": "הדופק מגיע מ-Health Connect, כששעון או צמיד מודדים אותו."
+  "bk.hr_none_android": "הדופק מגיע מ-Health Connect, כששעון או צמיד מודדים אותו.",
+  "cmp.pw_show": "הצג",
+  "cmp.pw_hide": "הסתר"
 }

@@ -25845,5 +25845,17 @@
     "review": [
       "translation"
     ]
+  },
+  "cmp.pw_show": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.pw_hide": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
