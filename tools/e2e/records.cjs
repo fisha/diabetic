@@ -58,7 +58,7 @@ const server = http.createServer((req, res) => {
 
     // Meal entered by hand: a food found in the food database.
     await chip('Meal');
-    await page.getByText('Search foods and enter amounts', { exact: true }).first().click(); await page.waitForTimeout(1200);
+    await page.getByText('Search foods and amounts', { exact: true }).first().click(); await page.waitForTimeout(1200);
     await page.getByText('Add a food', { exact: true }).first().click(); await page.waitForTimeout(800);
     await page.getByPlaceholder('Search foods').first().fill('Pita');
     await page.waitForTimeout(500);

@@ -60,7 +60,7 @@ const server = http.createServer((req, res) => {
 
     // Description: two foods.
     await meal();
-    await page.getByText('Describe it by voice or text', { exact: true }).last().click(); await page.waitForTimeout(1000);
+    await page.getByText('Describe by voice or text', { exact: true }).last().click(); await page.waitForTimeout(1000);
     // Dictation adds the transcribed words to what was typed (the test transcriber hears "My reading is 142").
     await page.locator('textarea').first().fill('banana');
     await page.getByText('Dictate', { exact: true }).last().click(); await page.waitForTimeout(1500);
