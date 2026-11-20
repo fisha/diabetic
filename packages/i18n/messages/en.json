@@ -3974,5 +3974,6 @@
   "bk.hr_none_android": "Heart rate comes from Health Connect, when a watch or band records it.",
   "cmp.pw_show": "Show",
   "cmp.pw_hide": "Hide",
-  "set.dev_ro": "Stedio only reads. Nothing is ever sent to a pump or sensor."
+  "set.dev_ro": "Stedio only reads. Nothing is ever sent to a pump or sensor.",
+  "now.tir_24h": "last 24 h"
 }

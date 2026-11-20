@@ -42,13 +42,15 @@ const server = http.createServer((req, res) => {
       }, [stored, lang, viewing]);
       const page = await ctx.newPage();
       page.on('pageerror', (e) => console.log('pageerror', e.message));
+      // NOOPENERS=1: the main screen without Stedio's question (board p01), for comparison; the demo always has one.
+      if (process.env.NOOPENERS) await page.route('**/conversation/openers', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify({ openers: [], refreshing: false }) }));
       for (const r of routesArg.split(',')) {
         await page.goto(base + r); await page.waitForTimeout(Number(process.env.WAIT || 6000));
         // Quiet mode left on by an earlier shot of /break covers every screen: end it first, except on /break itself.
         if (r !== '/break' && (await page.getByTestId('break-end').count())) { await page.getByTestId('break-end').click(); await page.goto(base + r); await page.waitForTimeout(4000); }
         // OPEN=<text>: tap the first element with that text (for example the insights line) before the shot.
         if (process.env.OPEN) { await page.getByText(new RegExp(process.env.OPEN)).first().click(); await page.waitForTimeout(1200); }
-        const name = `${process.env.OPEN ? 'open-' : ''}${process.env.VIEW ? process.env.VIEW + '-' : ''}${scenario}-${r.replace(/[^a-z0-9]+/gi, '_').replace(/^_|_$/g, '') || 'root'}-${lang}-${scheme}.png`;
+        const name = `${process.env.NOOPENERS ? 'p01-' : ''}${process.env.OPEN ? 'open-' : ''}${process.env.VIEW ? process.env.VIEW + '-' : ''}${scenario}-${r.replace(/[^a-z0-9]+/gi, '_').replace(/^_|_$/g, '') || 'root'}-${lang}-${scheme}.png`;
         await page.screenshot({ path: path.join(out, name) });
         console.log('shot', name);
       }
