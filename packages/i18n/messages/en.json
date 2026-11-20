@@ -4021,5 +4021,11 @@
   "brk.on_until": "Quiet mode on · until {time}",
   "set.quiet_sched": "Quiet mode schedule",
   "brk.now": "Turn on now",
-  "brk.hold_hint": "Tip: hold the Zz button on the main screen to turn it on right away."
+  "brk.hold_hint": "Tip: hold the Zz button on the main screen to turn it on right away.",
+  "ovr.tir_below": "Below {n}%",
+  "ovr.tir_above": "Above {n}%",
+  "ovr.chart_open": "Opens the detailed graph",
+  "ovr.less": "Show less",
+  "lrn.row_t": "Learning your patterns",
+  "lrn.day_of": "Day {day} of {total}"
 }

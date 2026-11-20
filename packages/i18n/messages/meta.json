@@ -26145,5 +26145,41 @@
     "review": [
       "translation"
     ]
+  },
+  "ovr.tir_below": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.tir_above": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.chart_open": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.less": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.row_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.day_of": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

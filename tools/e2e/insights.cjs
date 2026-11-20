@@ -69,6 +69,9 @@ const server = http.createServer((req, res) => {
     ok('server hides muted insight', after.insights.length === 0, JSON.stringify(after.insights.map((x) => x.key)));
     await shot('i03-feedback');
     await page.goto(`${base}/overview`); await page.waitForTimeout(2500);
+    // A wardrobe unlock card can open over the page; it is not part of this test.
+    const later = page.getByText('Later', { exact: true });
+    if (await later.count()) { await later.first().click(); await page.waitForTimeout(800); }
 
     // Week summary: counts and plain facts from the records.
     await page.getByText('Week', { exact: true }).first().click(); await page.waitForTimeout(2500);
