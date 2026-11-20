@@ -11667,6 +11667,26 @@
         "title": "UpdateOut",
         "type": "object"
       },
+      "UpdatingOut": {
+        "description": "The sensor updating (PM-320): the pump says so and no reading has come since `since`. No reading is current.",
+        "properties": {
+          "since": {
+            "format": "date-time",
+            "title": "Since",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "since"
+        ],
+        "title": "UpdatingOut",
+        "type": "object"
+      },
       "UsualMealIn": {
         "additionalProperties": false,
         "description": "The foods as a saved meal stores them, for the whole served amount. A usual meal is the person's own, so it keeps\nno estimate range or confidence: the app logs it again with its values as they were saved.",
@@ -12248,6 +12268,16 @@
       },
       "WarmupStateOut": {
         "properties": {
+          "updating": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/UpdatingOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "warmup": {
             "anyOf": [
               {
@@ -12497,6 +12527,42 @@
             "maxLength": 80,
             "title": "Old",
             "type": "string"
+          },
+          "ul": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ul"
+          },
+          "un": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Un"
+          },
+          "ut": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ut"
           },
           "wa": {
             "anyOf": [
@@ -17019,7 +17085,7 @@
     },
     "/devices/warmup": {
       "get": {
-        "description": "Whether a new sensor is warming up now, from the connected device services (read only).",
+        "description": "Whether a new sensor is warming up, or the sensor is updating (PM-320), now, from the connected device services\n(read only). A follower may read it with the glucose (deps.SCOPE_PATHS): it is why no current reading is shown.",
         "operationId": "sensor_warmup_devices_warmup_get",
         "responses": {
           "200": {
@@ -19912,7 +19978,7 @@
         ]
       },
       "get": {
-        "description": "The photo of a saved meal, for its Journal card (Guy, 13 Nov 2026). Only the person's own; gone once removed.",
+        "description": "The photo of a saved meal, for its Journal card (Guy, 13 Nov 2026); gone once removed. Also for someone the person\nshares their journal with, view only (PM-310): with X-View-As the user here is the person who shares (deps).",
         "operationId": "get_photo_meal_photos__photo_id__get",
         "parameters": [
           {

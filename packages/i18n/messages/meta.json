@@ -2460,6 +2460,62 @@
     ],
     "note": "Above the warm-up countdown timer (01:42:17)."
   },
+  "com.up_title": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "The pump says the CGM sensor is updating (PM-320): no current reading. Shown instead of the latest reading, like the warm-up."
+  },
+  "com.up_for": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Above the count-up timer (00:12:34) of how long the sensor has been updating (PM-320)."
+  },
+  "com.up_since": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "When the sensor update began, clock time (PM-320)."
+  },
+  "com.up_text": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Screen reader: how long the sensor has been updating, under an hour (PM-320)."
+  },
+  "com.up_text_h": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Screen reader: how long the sensor has been updating, an hour or more (PM-320)."
+  },
+  "com.up_none": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "While the sensor updates (PM-320): said plainly that there is no current glucose reading."
+  },
+  "wdg.up_for": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Lock-screen card, widgets and watch: {t} is a timer the phone counts up (PM-320)."
+  },
+  "ovr.stale_up": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Overview note when the last reading is old because the sensor is updating (PM-320)."
+  },
   "com.wu_meta": {
     "board": "Companion",
     "review": [
