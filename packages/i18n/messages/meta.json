@@ -25971,5 +25971,167 @@
     "review": [
       "translation"
     ]
+  },
+  "brk.set_sub": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.st_on": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.st_off": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.st_until": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.sched_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.sched": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.from": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.to": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.next_morning": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.days": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.ways_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.way_home": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.way_home_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.way_ab": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.way_ab_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.sched_note": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.sheet_sub": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.keep_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.k_off": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.k_hour": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.k_until": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.k_morning": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.k_pick": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.turn_on": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.set_sched": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.on_until": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.quiet_sched": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

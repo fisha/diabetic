@@ -994,10 +994,37 @@
         "title": "Body_upload_meal_photos_post",
         "type": "object"
       },
+      "BreakIn": {
+        "description": "Turned on until it is turned off, or until a time (for an hour, until the morning, a chosen time).",
+        "properties": {
+          "until": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Until"
+          }
+        },
+        "title": "BreakIn",
+        "type": "object"
+      },
       "BreakOut": {
         "properties": {
           "on": {
             "title": "On",
+            "type": "boolean"
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/BreakScheduleIO"
+          },
+          "scheduled": {
+            "default": false,
+            "title": "Scheduled",
             "type": "boolean"
           },
           "since": {
@@ -1011,13 +1038,61 @@
               }
             ],
             "title": "Since"
+          },
+          "until": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Until"
           }
         },
         "required": [
           "on",
-          "since"
+          "since",
+          "schedule"
         ],
         "title": "BreakOut",
+        "type": "object"
+      },
+      "BreakScheduleIO": {
+        "description": "The daily quiet schedule (PM-341): from and to as hh:mm on the person's clock, days 0 = Sunday to 6 = Saturday.",
+        "properties": {
+          "days": {
+            "items": {
+              "type": "integer"
+            },
+            "maxItems": 7,
+            "title": "Days",
+            "type": "array"
+          },
+          "from": {
+            "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+            "title": "From",
+            "type": "string"
+          },
+          "on": {
+            "title": "On",
+            "type": "boolean"
+          },
+          "to": {
+            "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+            "title": "To",
+            "type": "string"
+          }
+        },
+        "required": [
+          "on",
+          "from",
+          "to",
+          "days"
+        ],
+        "title": "BreakScheduleIO",
         "type": "object"
       },
       "CareClinicOut": {
@@ -17515,8 +17590,25 @@
         ]
       },
       "put": {
-        "description": "Take a break (PM-257, Guy 18 Nov 2026): until turned off, the app is one screen with the latest reading and no push\ngoes out but the out-of-range look-back the person turned on. Check-ins wait as in a pause; the app starts none.",
+        "description": "Take a break (PM-257, Guy 18 Nov 2026): until turned off or until the time given, the app is one screen with the\nlatest reading and no push goes out but the out-of-range look-back the person turned on. Check-ins wait as in a\npause; the app starts none.",
         "operationId": "take_break_follow_ups_break_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/BreakIn"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -17527,6 +17619,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "security": [
@@ -17535,6 +17637,53 @@
           }
         ],
         "summary": "Take Break",
+        "tags": [
+          "follow-ups"
+        ]
+      }
+    },
+    "/follow-ups/break/schedule": {
+      "put": {
+        "description": "The daily quiet schedule (PM-341): quiet mode turns on and off by itself on the chosen days.",
+        "operationId": "set_break_schedule_follow_ups_break_schedule_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BreakScheduleIO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BreakOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Break Schedule",
         "tags": [
           "follow-ups"
         ]
@@ -19731,7 +19880,7 @@
     },
     "/meal/barcode/{code}": {
       "get": {
-        "description": "A packaged food by its barcode (PM-242), from Open Food Facts: carbs, fiber, protein and fat per 100 g as on the\nlabel, and the label's serving when it has one. Only the barcode number leaves the server. 404 when the database\ndoesn't have the product or its label has no carbohydrate value; the app then offers a photo or a search.",
+        "description": "A packaged food by its barcode (PM-242), from Open Food Facts and then, for products it doesn't have, USDA\nFoodData Central's branded foods (PM-336): carbs, fiber, protein and fat per 100 g as on the label, and the\nlabel's serving when it has one. Only the barcode number leaves the server. 404 when no source has the product\nwith a carbohydrate value; the app then offers a photo or a search. 502 when none has it and a source failed.",
         "operationId": "barcode_meal_barcode__code__get",
         "parameters": [
           {
