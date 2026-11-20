@@ -68,6 +68,10 @@ const server = http.createServer((req, res) => {
         c = await companion();
         ok('turned off again: saved', c.classic === false);
         ok('turned off again: accessories back', (await page.getByText(T.acc, { exact: true }).count()) > 0);
+        // PM-321: they open right under the Classic card, not below the WhatsApp or other cards.
+        const sb = await page.getByRole('switch', { name: T.classic }).first().boundingBox();
+        const ab = await page.getByText(T.acc, { exact: true }).first().boundingBox();
+        ok('turned off again: accessories right under Classic', !!sb && !!ab && ab.y > sb.y && ab.y - (sb.y + sb.height) < 120, sb && ab ? `${Math.round(ab.y - sb.y - sb.height)} px` : 'missing');
         await shot('04-off-again');
       }
       await ctx.close();

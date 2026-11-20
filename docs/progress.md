@@ -22,6 +22,15 @@ app 234, i18n 20; browser run `tools/e2e/sensor-updating.cjs` (he light, en ligh
 `/mnt/project-files/steady/sensor-updating/`. Next: deploy API first (the app sends new card words that an older API
 refuses), then OTA; the next local native build for the counter on the lock screen, widgets and watch.
 
+20 Nov 2026 (Jira PM-321, PM-322, thread "Fix companion settings and quiet mode layout"): Profile > Companion shows the
+accessories (or the plain character while Classic is on) right under the Classic Stedio switch; the kids growth card
+and the WhatsApp card come after them. Quiet mode's big number is sized from the width and height it has
+(`bigNumberSize`, glyph widths per character), ignores the system text size and has a 1.25x line, so 3-digit mg/dL and
+mmol with a decimal fit every phone. Regression fixed on the way: since the main-screen fit change the idle character
+never shrank (the rest of its box was measured as 0), so on 375x667 the quiet mode switch slid under the tab bar. App
+#195. App tests 235, e2e `take-a-break.cjs` 143/143 (320, 375, 440 wide; he/en; mg/dL and mmol) and
+`classic-mode.cjs` pass; screenshots `/mnt/project-files/steady/quiet-mode-fit/`. App only. Next: OTA.
+
 19 Nov 2026 (Jira PM-313, thread "Use third person when viewing someone's account"): Guy asked that while someone
 views another person's account, text that says "your" ("בטווח שלך") names the person instead ("בטווח של יונתן"). App:
 182 catalog ids now have a viewer variant (`<id>@v`, en and he, `{person}` = the name the share shows) for the main

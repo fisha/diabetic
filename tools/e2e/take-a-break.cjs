@@ -15,7 +15,7 @@ const api = async (p, { method = 'GET', body, token } = {}) => {
   return { status: r.status, json: await r.json().catch(() => null) };
 };
 const ANSWERS = { version: 1, consent: { service: true, training: false, at: new Date().toISOString() }, ageGate: 'adult', diabetesType: 'type1', birth: { day: '', month: '', year: '' }, units: 'mgdl', body: { height: '', heightUnit: 'cm', weight: '', weightUnit: 'kg', measured: 'today' }, rapid: [], basal: [], insulinOther: false, insulinUnknown: false, pumpOther: '', sensorOther: '', ratios: { unknown: true, periods: [], correction: '', target: '70-180' }, history: { notes: '' }, routine: { checkInTimes: [] }, companion: { avatar: 'sage', name: 'Noa', style: 'warm', classic: true }, checkIns: { frequency: 'moreAtFirst' } };
-const SIZES = { small: { width: 375, height: 667 }, large: { width: 440, height: 956 } };
+const SIZES = { tiny: { width: 320, height: 568 }, small: { width: 375, height: 667 }, large: { width: 440, height: 956 } };
 const PW = 'correct horse battery';
 
 async function account(email, lang) {
@@ -49,13 +49,17 @@ const server = http.createServer((req, res) => {
   try {
     const tk = await account('b@example.com', 'en');
     // [language, scheme, size, latest value, expected colour]: in range, below and above the person's 70-180.
-    const runs = [['en', 'light', 'large', 128, 'rgb(169, 200, 230)'], ['he', 'dark', 'large', 64, 'rgb(240, 183, 154)'], ['he', 'light', 'small', 236, 'rgb(210, 188, 235)'], ['en', 'dark', 'small', 141, 'rgb(169, 200, 230)']];
-    for (const [lang, scheme, size, value, colour] of runs) {
-      await api('/profile', { method: 'PUT', token: tk, body: { locale: lang, answers: ANSWERS } });
-      await reading(tk, 2, value);
+    // PM-322: the number must fit whole on every phone, 3 digits and mmol with a decimal included.
+    const runs = [['en', 'light', 'large', 128, 'rgb(169, 200, 230)'], ['he', 'dark', 'large', 64, 'rgb(240, 183, 154)'], ['he', 'light', 'small', 236, 'rgb(210, 188, 235)'], ['en', 'dark', 'small', 141, 'rgb(169, 200, 230)'],
+      ['en', 'dark', 'tiny', 400, 'rgb(210, 188, 235)', 'mgdl'], ['he', 'dark', 'tiny', 400, 'rgb(210, 188, 235)', 'mmol'], ['en', 'light', 'small', 225, 'rgb(210, 188, 235)', 'mmol'], ['he', 'light', 'large', 199, 'rgb(210, 188, 235)', 'mmol']];
+    for (const [lang, scheme, size, mgdl, colour, units = 'mgdl'] of runs) {
+      const value = units === 'mmol' ? (mgdl / 18.0182).toFixed(1) : String(mgdl);
+      const target = units === 'mmol' ? '3.9-10.0' : '70-180';
+      await api('/profile', { method: 'PUT', token: tk, body: { locale: lang, answers: { ...ANSWERS, units, ratios: { ...ANSWERS.ratios, target } } } });
+      await reading(tk, 2, mgdl);
       const he = lang === 'he';
       const L = he ? { title: 'מצב שקט', end: 'לצאת ממצב שקט', on: 'מצב שקט פעיל' } : { title: 'Quiet mode', end: 'End quiet mode', on: 'Quiet mode on' };
-      const tag = `${lang} ${scheme} ${size}`;
+      const tag = `${lang} ${scheme} ${size} ${value}`;
       const ctx = await browser.newContext({ viewport: SIZES[size], colorScheme: scheme, locale: 'en-US', deviceScaleFactor: 2 });
       const page = await ctx.newPage();
       page.on('pageerror', (e) => errors.push(e.message));
@@ -70,25 +74,31 @@ const server = http.createServer((req, res) => {
       ok(`${tag}: main screen has the switch`, (await sw.count()) === 1);
       const sb = await sw.first().boundingBox().catch(() => null); const bar = await page.getByRole('tablist').first().boundingBox();
       const hb = await page.getByRole('button', { name: he ? 'שיחות' : 'Conversations', exact: true }).first().boundingBox().catch(() => null);
-      ok(`${tag}: switch clear of the tab bar`, !!sb && !!bar && sb.y + sb.height <= bar.y, sb && bar ? `${Math.round(sb.y + sb.height)} <= ${Math.round(bar.y)}` : 'missing');
+      // 320x568 is shorter than the main screen even with the character at its smallest: it scrolls there (by design).
+      if (size !== 'tiny') ok(`${tag}: switch clear of the tab bar`, !!sb && !!bar && sb.y + sb.height <= bar.y, sb && bar ? `${Math.round(sb.y + sb.height)} <= ${Math.round(bar.y)}` : 'missing');
       ok(`${tag}: switch in the icons row`, !!sb && !!hb && Math.abs(sb.y + sb.height / 2 - (hb.y + hb.height / 2)) < 12);
       // The label on the far side of the switch: after it in reading order (right of it in English, left in Hebrew).
       const lb = await page.getByText(L.title, { exact: true }).first().boundingBox().catch(() => null);
       ok(`${tag}: label after the switch`, !!sb && !!lb && (he ? lb.x + lb.width <= sb.x + 2 : lb.x >= sb.x + sb.width - 2));
-      await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-01-main.png`) });
+      if (units === 'mgdl' && size !== 'tiny') await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-01-main.png`) });
       await sw.first().click(); await page.waitForTimeout(2500);
       const end = page.getByRole('button', { name: L.end, exact: true });
       ok(`${tag}: break screen with the end icon`, (await end.count()) === 1);
       // The value is wrapped in direction marks (isolateLtr).
       const big = page.getByTestId('break-screen').getByText(new RegExp(`^[\u2066-\u2069]*${value}[\u2066-\u2069]*$`)).first();
       ok(`${tag}: latest value in big`, (await big.count()) === 1 && ((await big.boundingBox())?.height ?? 0) > 100, `${(await big.boundingBox().catch(() => null))?.height}`);
+      const fit = await page.getByTestId('break-value').evaluate((e) => {
+        const r = document.createRange(); r.selectNodeContents(e); const g = r.getBoundingClientRect(); const b = e.getBoundingClientRect();
+        return { g: [g.left, g.top, g.right, g.bottom].map(Math.round), b: [b.left, b.top, b.right, b.bottom].map(Math.round), w: innerWidth, sw: e.scrollWidth, cw: e.clientWidth };
+      }).catch(() => null);
+      ok(`${tag}: number whole on screen`, !!fit && fit.g[0] >= 0 && fit.g[2] <= fit.w && fit.g[1] >= fit.b[1] - 1 && fit.g[3] <= fit.b[3] + 1 && fit.sw <= fit.cw + 1, JSON.stringify(fit));
       ok(`${tag}: coloured by own range`, (await big.evaluate((e) => getComputedStyle(e).color).catch(() => '')) === colour);
       ok(`${tag}: black screen`, (await page.evaluate(() => { const e = document.elementFromPoint(20, innerHeight - 30); let x = e; while (x && getComputedStyle(x).backgroundColor === 'rgba(0, 0, 0, 0)') x = x.parentElement; return x ? getComputedStyle(x).backgroundColor : ''; })) === 'rgb(0, 0, 0)');
       ok(`${tag}: the time and age show`, (await page.getByText(he ? /לפני|עכשיו/ : /ago|now/).count()) > 0);
       ok(`${tag}: no insights or tab bar visible`, await page.evaluate(() => { const t = document.querySelector('[role="tablist"]'); if (!t) return true; const b = t.getBoundingClientRect(); const e = document.elementFromPoint(b.x + b.width / 2, b.y + b.height / 2); return !t.contains(e); }));
       const st = (await api('/follow-ups/break', { token: tk })).json;
       ok(`${tag}: server has the break on`, st && st.on === true);
-      await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-02-break.png`) });
+      await page.screenshot({ path: path.join(out, `${lang}-${scheme}-${size}-${value}-02-break.png`) });
       // Stays after the app opens again.
       await page.goto(`${base}/companion`); await page.waitForTimeout(5000);
       ok(`${tag}: still on after reopening`, (await page.getByRole('button', { name: L.end, exact: true }).count()) === 1);
