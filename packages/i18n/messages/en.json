@@ -3982,5 +3982,14 @@
   "com.greet_night": "Good evening, how was your day?",
   "com.now_tick": "now",
   "com.ql_more": "More",
-  "set.always_on": "Always on"
+  "set.always_on": "Always on",
+  "shr.invite_btn": "Invite someone",
+  "shr.share_t": "What to share",
+  "shr.ready_t": "Invite ready",
+  "shr.ready_s": "Send it to one person. It works once.",
+  "shr.share_link": "Share link",
+  "shr.enter_code": "Enter an invite code",
+  "shr.see_t": "What they see",
+  "set.tell_t": "What to tell me",
+  "set.when_t": "When"
 }

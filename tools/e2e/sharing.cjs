@@ -57,8 +57,8 @@ const server = http.createServer((req, res) => {
       for (const v of (await api('/sharing', { token: son })).json.viewers) await api(`/sharing/${v.id}`, { method: 'DELETE', token: son });
       const L = he ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון' } : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account' };
       const T = he
-        ? { next: 'המשך', agree: 'אני מסכים/ה, ליצור הזמנה', partner: 'משפחה', accept: 'לאשר ולצפות', sw: 'החלפה', me: 'הנתונים שלי', send: 'שליחה', ph: 'לשאול על הנתונים של Itay…', journal: 'יומן', comp: 'שיחה' }
-        : { next: 'Continue', agree: 'I agree, create the invite', partner: 'Family', accept: 'Accept and view', sw: 'Switch', me: 'My data', send: 'Send', ph: "Ask about Itay's data…", journal: 'Journal', comp: 'Talk' };
+        ? { invite: 'להזמין מישהו', next: 'המשך', agree: 'אני מסכים/ה, ליצור הזמנה', partner: 'משפחה', accept: 'לאשר ולצפות', sw: 'החלפה', me: 'הנתונים שלי', send: 'שליחה', ph: 'לשאול על הנתונים של Itay…', journal: 'יומן', comp: 'שיחה' }
+        : { invite: 'Invite someone', next: 'Continue', agree: 'I agree, create the invite', partner: 'Family', accept: 'Accept and view', sw: 'Switch', me: 'My data', send: 'Send', ph: "Ask about Itay's data…", journal: 'Journal', comp: 'Talk' };
       const signIn = async (page, email) => {
         await page.goto(base); await page.waitForTimeout(2000);
         if (he) { await page.getByText('עברית', { exact: true }).first().click().catch(() => null); await page.waitForTimeout(800); }
@@ -73,11 +73,13 @@ const server = http.createServer((req, res) => {
       const c1 = await ctxFor(); const p1 = await c1.newPage(); p1.on('pageerror', (e) => errors.push(e.message)); p1.setDefaultTimeout(6000);
       const shot1 = (name) => p1.screenshot({ path: path.join(out, `${lang}-${scheme}-${name}.png`) });
       await signIn(p1, 'son@example.com');
-      lastPage = p1; await tab(p1, he ? 'פרופיל' : 'Profile'); await p1.waitForTimeout(2000);
+      // The fourth tab is Settings in the Duet design (PM-335).
+      lastPage = p1; await tab(p1, he ? 'הגדרות' : 'Settings'); await p1.waitForTimeout(2000);
       await p1.getByText(he ? 'שיתוף' : 'Sharing', { exact: true }).first().click(); await p1.waitForTimeout(2500);
+      await shot1('00-sharing');
+      // Duet p23 / z32: Invite someone opens the invite screen with what sharing means, what to share and who it is.
+      await p1.getByText(T.invite, { exact: true }).last().click(); await p1.waitForTimeout(1200);
       await p1.getByRole('radio', { name: T.partner }).first().click();
-      await shot1('01-invite-form');
-      await p1.getByText(T.next, { exact: true }).last().click(); await p1.waitForTimeout(800);
       await shot1('02-consent');
       await p1.getByText(T.agree, { exact: true }).last().click(); await p1.waitForTimeout(2000);
       await shot1('03-invite-made');
@@ -143,7 +145,7 @@ const server = http.createServer((req, res) => {
       ok(`${lang} ${scheme}: tapping the tab goes home`, (await p2.getByText(orbText, { exact: true }).count()) > 0);
       const sonConv = (await api('/conversations', { token: son })).json;
       ok(`${lang} ${scheme}: son sees none of it`, Array.isArray(sonConv) && sonConv.length === 0);
-      await tab(p2, he ? 'פרופיל' : 'Profile'); await p2.waitForTimeout(2000);
+      await tab(p2, he ? 'הגדרות' : 'Settings'); await p2.waitForTimeout(2000);
       await shot2('08-viewer-home');
       // Back to his own data in one tap.
       await p2.getByText(T.sw, { exact: true }).first().click(); await p2.waitForTimeout(800);

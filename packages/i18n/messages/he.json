@@ -3982,5 +3982,14 @@
   "com.greet_night": "ערב טוב, איך היה היום?",
   "com.now_tick": "עכשיו",
   "com.ql_more": "עוד",
-  "set.always_on": "תמיד פועל"
+  "set.always_on": "תמיד פועל",
+  "shr.invite_btn": "להזמין מישהו",
+  "shr.share_t": "מה לשתף",
+  "shr.ready_t": "ההזמנה מוכנה",
+  "shr.ready_s": "אפשר לשלוח אותה לאדם אחד. היא עובדת פעם אחת.",
+  "shr.share_link": "שיתוף הקישור",
+  "shr.enter_code": "להזין קוד הזמנה",
+  "shr.see_t": "מה רואים",
+  "set.tell_t": "על מה לעדכן אותי",
+  "set.when_t": "מתי"
 }

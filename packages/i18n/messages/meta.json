@@ -25911,5 +25911,59 @@
     "review": [
       "translation"
     ]
+  },
+  "shr.invite_btn": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.share_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.ready_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.ready_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.share_link": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.enter_code": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.see_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tell_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.when_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
