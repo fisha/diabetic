@@ -170,7 +170,7 @@
   "com.g_unit": "Unit",
   "com.g_val": "Reading",
   "com.heard": "I heard",
-  "com.hist_empty": "Nothing here yet",
+  "com.hist_empty": "No conversations yet",
   "com.hist_delete": "Delete conversation",
   "com.hist_delete_q": "Delete this conversation?",
   "com.hist_delete_b": "Its messages are deleted from Stedio and can't be brought back. What you asked to remember stays in Memory.",
@@ -4050,5 +4050,14 @@
   "set.photos_t": "Keep meal photos",
   "set.ph_0s": "After analysis",
   "set.ph_90s": "90 days",
-  "set.ph_alls": "Until I delete"
+  "set.ph_alls": "Until I delete",
+  "lrn.c_on": "Collected on {date}",
+  "lrn.c_entries": "Entries",
+  "lrn.c_readings": "Glucose readings",
+  "lrn.c_meals": "Meals",
+  "lrn.c_insulin": "Insulin entries",
+  "lrn.c_shown": "Insights shown",
+  "lrn.c_learned": "Learned",
+  "lrn.c_future": "Day {n} · {date}",
+  "lrn.lead_warm": "Day {day} of {total}. On day {total} ({date}) the first insights you saw become examples to learn from."
 }

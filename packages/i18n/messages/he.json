@@ -170,7 +170,7 @@
   "com.g_unit": "יחידה",
   "com.g_val": "ערך",
   "com.heard": "שמעתי",
-  "com.hist_empty": "אין כאן עדיין כלום",
+  "com.hist_empty": "עדיין אין שיחות",
   "com.hist_delete": "מחיקת השיחה",
   "com.hist_delete_q": "למחוק את השיחה?",
   "com.hist_delete_b": "ההודעות שלה יימחקו מ-Stedio ולא ניתן יהיה לשחזר אותן. מה שביקשת לזכור נשאר בזיכרון.",
@@ -4050,5 +4050,14 @@
   "set.photos_t": "שמירת תמונות ארוחה",
   "set.ph_0s": "אחרי הניתוח",
   "set.ph_90s": "90 ימים",
-  "set.ph_alls": "עד שאמחק"
+  "set.ph_alls": "עד שאמחק",
+  "lrn.c_on": "נאסף ב-{date}",
+  "lrn.c_entries": "רשומות",
+  "lrn.c_readings": "מדידות סוכר",
+  "lrn.c_meals": "ארוחות",
+  "lrn.c_insulin": "רשומות אינסולין",
+  "lrn.c_shown": "תובנות שהוצגו",
+  "lrn.c_learned": "מה נלמד",
+  "lrn.c_future": "יום {n} · {date}",
+  "lrn.lead_warm": "יום {day} מתוך {total}. ביום {total} ({date}) התובנות הראשונות שראית יהפכו לדוגמאות ללמידה."
 }

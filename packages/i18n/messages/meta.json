@@ -26319,5 +26319,59 @@
     "review": [
       "translation"
     ]
+  },
+  "lrn.c_on": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_entries": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_readings": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_meals": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_insulin": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_shown": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_learned": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_future": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.lead_warm": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
