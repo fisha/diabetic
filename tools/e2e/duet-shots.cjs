@@ -36,10 +36,11 @@ const server = http.createServer((req, res) => {
       await ctx.addInitScript(([st, lang, vw]) => {
         if (sessionStorage.getItem('seeded')) return;
         sessionStorage.setItem('seeded', '1');
-        localStorage.setItem('steady.session', JSON.stringify(st));
+        // SIGNEDOUT=1: no session, for the welcome, sign-up and sign-in screens.
+        if (st) localStorage.setItem('steady.session', JSON.stringify(st)); else localStorage.removeItem('steady.session');
         localStorage.setItem('steady.preferences', JSON.stringify({ locale: lang, takeBreak: false }));
         if (vw) localStorage.setItem('steady.viewing', JSON.stringify(vw)); else localStorage.removeItem('steady.viewing');
-      }, [stored, lang, viewing]);
+      }, [process.env.SIGNEDOUT ? null : stored, lang, viewing]);
       const page = await ctx.newPage();
       page.on('pageerror', (e) => console.log('pageerror', e.message));
       // NOOPENERS=1: the main screen without Stedio's question (board p01), for comparison; the demo always has one.

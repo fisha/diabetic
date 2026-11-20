@@ -956,7 +956,7 @@
   "meal.bc_not_found": "המוצר הזה עוד לא ברשימת המזונות.",
   "meal.bc_failed": "לא הצלחנו לחפש את המוצר כרגע.",
   "meal.bc_again": "סריקה נוספת",
-  "meal.bc_source": "הערכים מהתווית, דרך Open Food Facts. נשלח רק מספר הברקוד.",
+  "meal.bc_source": "הערכים מהתווית, דרך Open Food Facts או USDA. נשלח רק מספר הברקוד.",
   "meal.m_photo": "צילום תמונה",
   "meal.meal": "ארוחה",
   "meal.more": "יותר",
