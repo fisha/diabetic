@@ -17,6 +17,14 @@ narrower than 100 mg/dL (6 mmol/L) so a small wiggle no longer looks like a spik
 100/200/300 (5/10/15 mmol) plus the range bounds. App #196. App tests 239, e2e `meal-impact.cjs` (en light, he light,
 he dark) all pass; screenshots `/mnt/project-files/steady/meal-scale/`. Typical day type-checked only. App only. Next: OTA.
 
+20 Nov 2026 (Jira PM-325, thread "Fix quiet mode on Itay's iPhone"): on Itay's iPhone 17 the quiet mode switch turned
+on (the API log shows PUT /follow-ups/break 200) but the reading screen never showed; on Guy's iPhone 16 Pro Max it
+did. `BreakScreen` was a plain view after the native stack and also re-checked the stored session's waiting, guardian
+and profile flags that the switch does not. It is now a `Modal` (native full-screen layer above the stack and its
+sheets), gated like the switch (signed in, own data; the waitlist, onboarding, re-consent and invite screens stay in
+NEVER_OVER), and it steps aside while the app lock covers the app (`useLockCovering`). App #197. Tests: app typecheck,
+235 unit tests, e2e `take-a-break.cjs` 143/143 on web. Next: testers OTA, then Itay retries on his iPhone 17.
+
 20 Nov 2026 (Jira PM-320, thread "Show sensor updating state with elapsed timer"): Guy asked that "Sensor updating"
 look like the warm-up, with a counter of how long it has been happening, and no reading that is not current. API: the
 pump's own "Sensor updating" message (CareLink 801) with no sensor reading since, while the CareLink status is fresh and
