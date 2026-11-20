@@ -3975,5 +3975,9 @@
   "cmp.pw_show": "Show",
   "cmp.pw_hide": "Hide",
   "set.dev_ro": "Stedio only reads. Nothing is ever sent to a pump or sensor.",
-  "now.tir_24h": "last 24 h"
+  "now.tir_24h": "last 24 h",
+  "com.greet_morning": "Good morning! How's your day starting?",
+  "com.greet_afternoon": "Hi, how are you?",
+  "com.greet_evening": "Hi, how was your day?",
+  "com.greet_night": "Good evening, how was your day?"
 }

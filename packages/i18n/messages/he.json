@@ -3975,5 +3975,9 @@
   "cmp.pw_show": "הצג",
   "cmp.pw_hide": "הסתר",
   "set.dev_ro": "Stedio רק קורא. שום דבר לא נשלח אף פעם למשאבה או לחיישן.",
-  "now.tir_24h": "24 שעות"
+  "now.tir_24h": "24 שעות",
+  "com.greet_morning": "בוקר טוב! איך התחלת את היום?",
+  "com.greet_afternoon": "היי, מה שלומך?",
+  "com.greet_evening": "היי, איך עבר היום?",
+  "com.greet_night": "ערב טוב, איך היה היום?"
 }

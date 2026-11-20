@@ -25869,5 +25869,29 @@
     "review": [
       "translation"
     ]
+  },
+  "com.greet_morning": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.greet_afternoon": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.greet_evening": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.greet_night": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
