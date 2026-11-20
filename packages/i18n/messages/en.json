@@ -3968,5 +3968,8 @@
   "onb.wa_later": "You can choose what Stedio sends there, or disconnect, in Settings > WhatsApp.",
   "com.ql_meal_sub": "Photo, or describe, search or scan a barcode",
   "com.hist_empty_b": "Your talks with Stedio show here, newest first.",
-  "com.hist_start": "Start a conversation"
+  "com.hist_start": "Start a conversation",
+  "bk.none_t": "Nothing here yet today",
+  "bk.hr_none_ios": "Heart rate comes from Apple Health, when a watch or band records it.",
+  "bk.hr_none_android": "Heart rate comes from Health Connect, when a watch or band records it."
 }

@@ -25827,5 +25827,23 @@
     "review": [
       "translation"
     ]
+  },
+  "bk.none_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.hr_none_ios": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.hr_none_android": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
