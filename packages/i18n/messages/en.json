@@ -3966,5 +3966,7 @@
   "onb.wa_done_t": "WhatsApp is connected",
   "onb.wa_done_b": "Stedio said hello there. Write to it whenever you like, in text.",
   "onb.wa_later": "You can choose what Stedio sends there, or disconnect, in Settings > WhatsApp.",
-  "com.ql_meal_sub": "Photo, or describe, search or scan a barcode"
+  "com.ql_meal_sub": "Photo, or describe, search or scan a barcode",
+  "com.hist_empty_b": "Your talks with Stedio show here, newest first.",
+  "com.hist_start": "Start a conversation"
 }

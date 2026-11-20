@@ -25815,5 +25815,17 @@
     "review": [
       "translation"
     ]
+  },
+  "com.hist_empty_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.hist_start": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
