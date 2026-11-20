@@ -3991,5 +3991,6 @@
   "shr.enter_code": "Enter an invite code",
   "shr.see_t": "What they see",
   "set.tell_t": "What to tell me",
-  "set.when_t": "When"
+  "set.when_t": "When",
+  "shr.copy": "Copy code"
 }

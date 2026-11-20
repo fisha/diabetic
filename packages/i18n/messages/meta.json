@@ -25965,5 +25965,11 @@
     "review": [
       "translation"
     ]
+  },
+  "shr.copy": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

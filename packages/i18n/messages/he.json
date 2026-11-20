@@ -3991,5 +3991,6 @@
   "shr.enter_code": "להזין קוד הזמנה",
   "shr.see_t": "מה רואים",
   "set.tell_t": "על מה לעדכן אותי",
-  "set.when_t": "מתי"
+  "set.when_t": "מתי",
+  "shr.copy": "העתקת הקוד"
 }
