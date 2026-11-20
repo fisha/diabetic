@@ -128,6 +128,19 @@ const server = http.createServer((req, res) => {
       await p2.getByRole('button', { name: T.send }).last().click(); await p2.waitForTimeout(3000);
       await shot2('07-about-chat');
       ok(`${lang} ${scheme}: chat reply`, (await p2.getByText(he ? /רוב המדידות/ : /most readings/).count()) > 0);
+      // PM-319: Back from the conversation to the home view with the son's data, Continue opens it again, and tapping
+      // the Talk tab while in the conversation goes home too.
+      const orbText = he ? 'אפשר לשאול אותי על Itay' : 'Ask me about Itay';
+      const cont = he ? 'להמשיך את השיחה' : 'Continue the conversation';
+      ok(`${lang} ${scheme}: no character inside the conversation`, (await p2.getByText(orbText, { exact: true }).count()) === 0);
+      await p2.getByRole('button', { name: he ? 'חזרה' : 'Back', exact: true }).first().click(); await p2.waitForTimeout(1000);
+      await shot2('071-about-chat-back-home');
+      ok(`${lang} ${scheme}: Back shows the home view with the character`, (await p2.getByText(orbText, { exact: true }).count()) > 0);
+      ok(`${lang} ${scheme}: home view offers to continue`, (await p2.getByText(cont, { exact: true }).count()) > 0);
+      await p2.getByText(cont, { exact: true }).first().click(); await p2.waitForTimeout(1000);
+      ok(`${lang} ${scheme}: Continue shows the conversation again`, (await p2.getByText(he ? 'איך היה לו היום?' : 'How was his day?', { exact: true }).count()) > 0);
+      await tab(p2, T.comp); await p2.waitForTimeout(1000);
+      ok(`${lang} ${scheme}: tapping the tab goes home`, (await p2.getByText(orbText, { exact: true }).count()) > 0);
       const sonConv = (await api('/conversations', { token: son })).json;
       ok(`${lang} ${scheme}: son sees none of it`, Array.isArray(sonConv) && sonConv.length === 0);
       await tab(p2, he ? 'פרופיל' : 'Profile'); await p2.waitForTimeout(2000);
