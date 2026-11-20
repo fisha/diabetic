@@ -26469,5 +26469,23 @@
     "review": [
       "translation"
     ]
+  },
+  "ovr.empty_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.empty_connect": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.empty_add": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

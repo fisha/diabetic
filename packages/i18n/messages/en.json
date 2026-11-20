@@ -4075,5 +4075,8 @@
   "set.pf_history_note": "Changes are kept so you can see what the companion knew at each time. Only you can change these settings.",
   "care.nav_t": "Care team",
   "care.since": "Sharing since {date}",
-  "care.last_t": "Last opened by the clinic"
+  "care.last_t": "Last opened by the clinic",
+  "ovr.empty_b": "Connect a sensor or add a reading, and your day shows here.",
+  "ovr.empty_connect": "Connect a device",
+  "ovr.empty_add": "Add a reading"
 }

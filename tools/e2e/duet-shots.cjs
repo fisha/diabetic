@@ -43,6 +43,8 @@ const server = http.createServer((req, res) => {
       }, [process.env.SIGNEDOUT ? null : stored, lang, viewing]);
       const page = await ctx.newPage();
       page.on('pageerror', (e) => console.log('pageerror', e.message));
+      // AHEAD=<minutes>: the page's clock runs that far ahead, so the latest reading is that old (board x69, stale).
+      if (process.env.AHEAD) await page.clock.install({ time: Date.now() + Number(process.env.AHEAD) * 60_000 });
       // NOOPENERS=1: the main screen without Stedio's question (board p01), for comparison; the demo always has one.
       // GREETING=1: only the greeting bubble (the demo also has a question), for comparison with p01.
       if (process.env.GREETING) await page.route('**/conversation/openers', async (r) => { const res = await r.fetch(); const j = await res.json(); r.fulfill({ response: res, body: JSON.stringify({ ...j, openers: j.openers.filter((o) => o.kind === 'greeting') }) }); });
