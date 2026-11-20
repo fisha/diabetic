@@ -25707,5 +25707,113 @@
       "translation"
     ],
     "note": "Guy, 19 Nov 2026: biggest rises for a single day too; one Insights row on Overview opening All insights."
+  },
+  "set.search": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.search_none": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.wa_sub": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.quiet_sub": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.type_instead": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_connect": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_not_now": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_code_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_code_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_code": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_valid": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_wait": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_done_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_done_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_later": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ql_meal_sub": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

@@ -8,6 +8,19 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+20 Nov 2026 (Jira PM-335 under design PM-334, thread "Implement the Duet design"): Guy approved the round 4 "Duet"
+design and asked to implement all of it, never removing a feature or inventing data, and to see it on the simulator
+before any deploy, OTA or build. Built in app branch `claude/project-thread-ja0cv9`: Rubik (OFL, bundled, OTA-safe),
+the Duet day and night palettes and type scale (`packages/tokens/src/duet.ts`, app only; web keeps tokens.css), core
+components, Settings hub with search and a WhatsApp screen, Home (solid glucose block beside time in range, the day's
+line from real sensor readings when it fits without shrinking the character, insight card, labelled pills, moon button
+for Quiet mode), Overview in the p02 order with the week card (x92) moved from Home, Journal groups and slim reading
+rows, quick log, Log a meal, insight rows, Quiet mode colours, and an early onboarding WhatsApp step (y01-y03, Guy 20
+Nov: consent, one-time code sent from WhatsApp, connected; only for accounts the server offers WhatsApp to). API: the
+WhatsApp fixed lines point to Settings > WhatsApp. `pnpm check` passes. Not yet restyled to the board: sign-in and the
+other onboarding steps (shared components only), history, viewer, kids home (p30 tab set needs Guy), most Settings
+sub-screens. Next: show Guy on the iOS simulator; nothing is deployed until he approves.
+
 20 Nov 2026 (Jira PM-327, thread "Detect infusion set changes from CareLink"): Guy changed his infusion set at about
 09:50 Israel time and the journal only showed "basal resumed". CareLink's only set change signal was the 30-day
 history's `Agg1d[].setChange` day flag (hourly, dated at midnight); live data has no rewind or prime marker. Each poll
