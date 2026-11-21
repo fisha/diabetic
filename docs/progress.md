@@ -8,6 +8,10 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-377, same thread): Guy: the source settings screen (MiniMed · CareLink) no longer shows the pump
+alerts and messages card (its four `set.cl_note*` strings removed); the connection and pump status cards stay, and
+the alerts stay in the Journal's Alerts tab. App #223. Next: OTA.
+
 21 Nov 2026 (Jira PM-376, same thread): Guy asked to show only the kind of entry, not the source's name ("חיישן •
 CareLink" read as both). Journal reading rows say Sensor, the device badge says Device, pump alerts and modes say "From
 the pump", and the Overview latest reading, its graph readout and the Talk screen's reading lines say Sensor or Meter.
