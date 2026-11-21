@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-386, PM-388): Guy chose all six parental permissions for Kids and Teen mode. A confirmed parent's
+"{name}'s Kids/Teen mode" screen now also has: meal photo reading, and in Teen mode WhatsApp, lab report reading and
+weather and location (all on by default; off closes the server path with 403 `off_by_parent`, unlinks WhatsApp, forgets
+the weather), quiet hours' times (on the half hour), and "My OK for new followers" (a young person's new follower is kept
+with `shares.parent_needed` and sees nothing until the parent approves; declining ends the share). Migration
+`e2f4a6b8c0d5`. The child sees every switch on "Set by your parent" (now for teens too); closed ways leave the app (meal
+photo buttons, lab photo buttons, weather toggle). Privacy policy updated (en, he), version `2026-11-21T21:00:00Z`.
+PM-388: relationship chips on Sharing and the invite screen are a dropdown (`components/SelectRow.tsx`). Checks: API
+tests, app 257, browser runs `tools/e2e/parent-permissions.cjs` 13/13 and `tools/e2e/sharing.cjs` relation step.
+G-121, G-122. Next: API deploy, web deploy, OTA.
+
 21 Nov 2026 (Jira PM-394, thread "Add Journal sub-filters"): Guy: the main card of the "What would you like to log?"
 sheet reads "Meal photo" / "צילום ארוחה" (existing `com.ql_photo`; `com.qa_m` unchanged elsewhere). App #236. Next: OTA.
 

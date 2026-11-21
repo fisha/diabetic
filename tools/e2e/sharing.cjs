@@ -79,6 +79,9 @@ const server = http.createServer((req, res) => {
       await shot1('00-sharing');
       // Duet p23 / z32: Invite someone opens the invite screen with what sharing means, what to share and who it is.
       await p1.getByText(T.invite, { exact: true }).last().click(); await p1.waitForTimeout(1200);
+      // PM-388: who it is is a dropdown; open it, then choose.
+      await p1.getByRole('button', { name: new RegExp(`^${he ? 'מי זה\\?' : 'Who is it\\?'}`) }).first().click(); await p1.waitForTimeout(500);
+      await shot1('01b-relation-open');
       await p1.getByRole('radio', { name: T.partner }).first().click();
       await shot1('02-consent');
       await p1.getByText(T.agree, { exact: true }).last().click(); await p1.waitForTimeout(2000);

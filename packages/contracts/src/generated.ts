@@ -3330,6 +3330,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sharing/{share_id}/young/pending/{pending_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Parent Decide
+         * @description The parent's OK for someone new who follows their child (PM-386), or a no: approved, the share opens; declined, it
+         *     ends as if the child had removed them (their conversations about the child go too).
+         */
+        post: operations["parent_decide_sharing__share_id__young_pending__pending_id__post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/visit": {
         parameters: {
             query?: never;
@@ -4523,8 +4544,33 @@ export interface components {
         };
         /** Controls */
         Controls: {
+            /**
+             * Approve Followers
+             * @default false
+             */
+            approve_followers: boolean;
+            /**
+             * Labs
+             * @default true
+             */
+            labs: boolean;
+            /**
+             * Meal Photo
+             * @default true
+             */
+            meal_photo: boolean;
             /** Quiet */
             quiet: boolean;
+            /**
+             * Quiet From
+             * @default 21:00
+             */
+            quiet_from: string;
+            /**
+             * Quiet To
+             * @default 07:00
+             */
+            quiet_to: string;
             /** Set At */
             set_at?: string | null;
             /** Set By */
@@ -4533,15 +4579,39 @@ export interface components {
             teen_early: boolean;
             /** Voice */
             voice: boolean;
+            /**
+             * Weather
+             * @default true
+             */
+            weather: boolean;
+            /**
+             * Whatsapp
+             * @default true
+             */
+            whatsapp: boolean;
         };
         /** ControlsIn */
         ControlsIn: {
+            /** Approve Followers */
+            approve_followers?: boolean | null;
+            /** Labs */
+            labs?: boolean | null;
+            /** Meal Photo */
+            meal_photo?: boolean | null;
             /** Quiet */
             quiet?: boolean | null;
+            /** Quiet From */
+            quiet_from?: string | null;
+            /** Quiet To */
+            quiet_to?: string | null;
             /** Teen Early */
             teen_early?: boolean | null;
             /** Voice */
             voice?: boolean | null;
+            /** Weather */
+            weather?: boolean | null;
+            /** Whatsapp */
+            whatsapp?: boolean | null;
         };
         /** ConversationOut */
         ConversationOut: {
@@ -6755,6 +6825,11 @@ export interface components {
             /** Band */
             band: ("child" | "teen") | null;
             controls: components["schemas"]["Controls"];
+            /**
+             * Pending
+             * @default []
+             */
+            pending: components["schemas"]["PendingOut"][];
             /** Teen Early Possible */
             teen_early_possible: boolean;
         };
@@ -6857,6 +6932,33 @@ export interface components {
             paused: boolean;
             /** Until */
             until: string | null;
+        };
+        /** PendingIn */
+        PendingIn: {
+            /** Approve */
+            approve: boolean;
+        };
+        /**
+         * PendingOut
+         * @description Someone new who follows the young person and waits for the parent's OK (PM-386).
+         */
+        PendingOut: {
+            /**
+             * Accepted At
+             * Format: date-time
+             */
+            accepted_at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+            /** Relation */
+            relation: string | null;
+            /** Scopes */
+            scopes: string[];
         };
         /** PersonaIn */
         PersonaIn: {
@@ -7968,6 +8070,11 @@ export interface components {
             scopes: string[];
             /** Viewer Email */
             viewer_email: string | null;
+            /**
+             * Waiting Parent
+             * @default false
+             */
+            waiting_parent: boolean;
         };
         /**
          * ViewingOut
@@ -8010,6 +8117,11 @@ export interface components {
              *     ]
              */
             scopes: string[];
+            /**
+             * Waiting Parent
+             * @default false
+             */
+            waiting_parent: boolean;
         };
         /** VisitIn */
         VisitIn: {
@@ -14998,6 +15110,42 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["ControlsIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ParentYoungOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    parent_decide_sharing__share_id__young_pending__pending_id__post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+                pending_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PendingIn"];
             };
         };
         responses: {

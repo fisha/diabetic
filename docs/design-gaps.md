@@ -2056,3 +2056,17 @@ own data". Guy asked to move his own sharing settings down and to be able to ren
 with him. Built: a "Name or nickname" field (Duet text field look, placeholder the person's own name, "Only you see
 this name" helper) under the lead, and "Sharing settings" alone at the end under the heading "Your own sharing".
 
+### G-121 · Parental permissions in Kids and Teen mode (**chosen by Guy, 21 Nov 2026, PM-386**)
+
+The Duet parent controls (young-mode p2) have three switches. Guy chose six more parental permissions. Built in the same
+look: a "Permissions" group (meal photo reading; in Teen mode WhatsApp, lab report reading, weather and location), quiet
+hours' times as two dropdown rows under the switches when quiet hours are on, a "New followers" group with "My OK for new
+followers", and a "Waiting for your OK" card per new follower with Approve and Decline. The child's "Set by your parent"
+(z52) lists the same rows, read-only, and is shown to teens too. Where a permission is off, its way in is removed or
+replaced by "Turned off by your parent".
+
+### G-122 · Relationship as a dropdown (**asked by Guy, 21 Nov 2026, PM-388**)
+
+The relationship chips on a share card and on the invite screen looked messy with eight options. Built: one row with
+"Who is it?" and the chosen value that opens the list under it (`components/SelectRow.tsx`), with a "Not chosen" option.
+
