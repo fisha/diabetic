@@ -22,7 +22,7 @@ seen on a phone. Next: OTA.
 
 21 Nov 2026 (Jira PM-390, same thread): Guy's iPhone screenshot: the Talk tiles' top was cut under the status bar,
 both tiles should be smaller, and the hat covered the greeting bubble. The idle scroll area now starts below the status
-bar (filled with the glow's first colour), the tiles are smaller (number 44, padding 10/14), and `VoiceOrb` keeps room
+bar (filled with the glow's first colour), the tiles are smaller (number 48, padding 12/15, after Guy found 44 too small), and `VoiceOrb` keeps room
 above the idle character for what is on its head. App #231.
 
 21 Nov 2026 (Jira PM-381): Guy: the Talk screen gets pull to refresh like Overview and Journal (sources synced, then
