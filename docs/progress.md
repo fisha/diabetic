@@ -46,6 +46,9 @@ It opens WhatsApp with a ready message (`sub.invite_msg`: a short pitch and the 
 WhatsApp the system share sheet opens. No personal data in the message, nothing sent to the server. App #227. Not yet
 seen on a phone. Next: OTA.
 
+21 Nov 2026 (Jira PM-405, same thread): Guy: when the Talk pull is let go, the crushed character jumps out and does a
+different trick each time (somersault, double spin, boing, wiggle, proud puff, shake; never twice in a row). App #247.
+
 21 Nov 2026 (Jira PM-400, same thread): Guy: on the Talk pull to refresh the character is really crushed (to about a
 third of its height) and looks scared (eyes wide and open, a round gasp) while pulled. App #243.
 
