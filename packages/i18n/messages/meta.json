@@ -26637,5 +26637,17 @@
     "review": [
       "translation"
     ]
+  },
+  "yg.ch_this": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ch_so_far": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

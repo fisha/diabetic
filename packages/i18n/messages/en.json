@@ -4103,5 +4103,7 @@
   "yg.ps_t": "Set by your parent",
   "yg.ps_by": "Set by {name}",
   "yg.ps_last": "Last changed by {name}, {when}.",
-  "yg.ps_note": "You can see these but only a parent can change them. Your conversations with Stedio stay yours; your parents can't read them."
+  "yg.ps_note": "You can see these but only a parent can change them. Your conversations with Stedio stay yours; your parents can't read them.",
+  "yg.ch_this": "This week: {name}",
+  "yg.ch_so_far": "{n} of {total} so far"
 }
