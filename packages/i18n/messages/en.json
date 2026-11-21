@@ -4126,8 +4126,6 @@
   "yg.wk_log": "Log now",
   "yg.wk_ok": "Got it",
   "yg.wk_hint": "Explains how the week works",
-  "lh.habit": "{name}: {days} of {of} days",
-  "lh.lab": "{test}: {value} ({date}, {source})",
   "onb.d_pick": "Choose a date",
   "onb.sx_t": "Sex",
   "onb.sx_b": "Some things that affect glucose, like the menstrual cycle, differ by sex.",
