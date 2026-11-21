@@ -3292,6 +3292,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sharing/{share_id}/nickname": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Nickname
+         * @description The viewer names the person they follow (PM-385). Only the viewer sees it; nothing of the owner's changes.
+         */
+        put: operations["set_nickname_sharing__share_id__nickname_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sharing/{share_id}/young": {
         parameters: {
             query?: never;
@@ -6522,6 +6542,14 @@ export interface components {
             /** Via */
             via: string;
         };
+        /**
+         * NicknameIn
+         * @description The viewer's own name for the person they follow. Empty or null goes back to the person's own name.
+         */
+        NicknameIn: {
+            /** Nickname */
+            nickname?: string | null;
+        };
         /** NightDayOut */
         NightDayOut: {
             /** Asleep Min */
@@ -6686,6 +6714,8 @@ export interface components {
             sensor?: string | null;
             /** Sensorother */
             sensorOther: string;
+            /** Sex */
+            sex?: ("female" | "male" | "preferNot") | null;
             /** Treatment */
             treatment?: string | null;
             /**
@@ -7961,6 +7991,10 @@ export interface components {
             id: string;
             /** Name */
             name: string;
+            /** Nickname */
+            nickname?: string | null;
+            /** Own Name */
+            own_name?: string | null;
             /**
              * Owner Id
              * Format: uuid
@@ -14873,6 +14907,41 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CheerOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_nickname_sharing__share_id__nickname_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NicknameIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ViewingOut"];
                 };
             };
             /** @description Validation Error */

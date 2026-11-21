@@ -2048,3 +2048,11 @@ clinic report with their visits (PM-214). When viewing someone else's data, only
   unchanged.
 - Under the date, "Sex" with three chips (Female, Male, Prefer not to say) and one line on why; an answer is required,
   "Prefer not to say" counts. Shown in Review and Settings > Diabetes profile; stored in the profile answers.
+
+### G-120 · Viewer settings: a name of the viewer's own, own sharing last (**asked by Guy, 21 Nov 2026, PM-385**)
+
+The Duet viewer home (p35) has no name field and puts "Sharing settings" between the parent controls and "Back to my
+own data". Guy asked to move his own sharing settings down and to be able to rename or nickname the person who shares
+with him. Built: a "Name or nickname" field (Duet text field look, placeholder the person's own name, "Only you see
+this name" helper) under the lead, and "Sharing settings" alone at the end under the heading "Your own sharing".
+

@@ -7983,6 +7983,26 @@
         "title": "MessageOut",
         "type": "object"
       },
+      "NicknameIn": {
+        "additionalProperties": false,
+        "description": "The viewer's own name for the person they follow. Empty or null goes back to the person's own name.",
+        "properties": {
+          "nickname": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nickname"
+          }
+        },
+        "title": "NicknameIn",
+        "type": "object"
+      },
       "NightDayOut": {
         "properties": {
           "asleep_min": {
@@ -8492,6 +8512,22 @@
           "sensorOther": {
             "title": "Sensorother",
             "type": "string"
+          },
+          "sex": {
+            "anyOf": [
+              {
+                "enum": [
+                  "female",
+                  "male",
+                  "preferNot"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sex"
           },
           "treatment": {
             "anyOf": [
@@ -12316,6 +12352,28 @@
           "name": {
             "title": "Name",
             "type": "string"
+          },
+          "nickname": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nickname"
+          },
+          "own_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Own Name"
           },
           "owner_id": {
             "format": "uuid",
@@ -22676,6 +22734,65 @@
         "summary": "Send Cheer",
         "tags": [
           "young"
+        ]
+      }
+    },
+    "/sharing/{share_id}/nickname": {
+      "put": {
+        "description": "The viewer names the person they follow (PM-385). Only the viewer sees it; nothing of the owner's changes.",
+        "operationId": "set_nickname_sharing__share_id__nickname_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NicknameIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ViewingOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Nickname",
+        "tags": [
+          "sharing"
         ]
       }
     },
