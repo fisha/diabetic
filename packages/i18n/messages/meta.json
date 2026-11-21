@@ -26858,5 +26858,101 @@
       "translation"
     ],
     "note": "Review and Settings > Diabetes profile row (PM-359)."
+  },
+  "jrn.sub_title": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_hint": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_clear": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_on": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_continuous": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_every2h": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_bolus": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_basal": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_small": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_large": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.subs_small": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.subs_large": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_low": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_high": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_set": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_sensor": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
   }
 }

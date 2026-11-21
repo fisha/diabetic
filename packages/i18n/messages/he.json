@@ -4138,5 +4138,21 @@
   "onb.sx_f": "נקבה",
   "onb.sx_m": "זכר",
   "onb.sx_err": "בחרו אחת מהאפשרויות.",
-  "onb.rv_sex": "מין"
+  "onb.rv_sex": "מין",
+  "jrn.sub_title": "סינון: {tab}",
+  "jrn.sub_hint": "לחיצה ארוכה לעוד אפשרויות סינון",
+  "jrn.sub_clear": "נקה",
+  "jrn.sub_on": "מסונן: {list}",
+  "jrn.sub_continuous": "רציף",
+  "jrn.sub_every2h": "כל שעתיים",
+  "jrn.sub_bolus": "בולוס",
+  "jrn.sub_basal": "בזאלי",
+  "jrn.sub_small": "קטנות, עד 30 גרם",
+  "jrn.sub_large": "גדולות, מעל 30 גרם",
+  "jrn.subs_small": "קטנות",
+  "jrn.subs_large": "גדולות",
+  "jrn.sub_low": "נמוך",
+  "jrn.sub_high": "גבוה",
+  "jrn.sub_set": "החלפת סט",
+  "jrn.sub_sensor": "החלפת חיישן"
 }
