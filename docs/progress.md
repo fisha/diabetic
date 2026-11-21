@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-372, thread "Add sub-filters to Journal tabs"): Guy asked for options inside the Journal's filter
+tabs. A long press on Glucose, Insulin, Meals, Alerts or All opens a sheet (a tap on the selected tab, which shows a
+chevron, opens it too): glucose continuous or one reading every 2 hours (first reading of each local two-hour block),
+bolus or basal (basal = logged as basal or an insulin named as basal in the person's own profile; pump records are
+boluses), small meals (<= 30 g carbs) or large (> 30 g), alerts low / high / set change / sensor change; All offers
+every kind and each choice narrows only its own kind. The tab shows its choice ("Insulin · Bolus", "All · 3") and a
+"Filtered" line with Clear shows while a choice is on. App only, no API (app #220). Tests: app 256, i18n 20, browser run
+`tools/e2e/journal-filters.cjs` 33/33 (he dark, en light, he light), screenshots `/mnt/project-files/steady/journal-filters/`.
+Not yet seen at iOS large text sizes or on a phone. Next: testers OTA.
+
 21 Nov 2026 (Jira PM-368, thread "Open meal photos full screen on tap"): Guy asked that tapping a photographed meal's
 photo wherever it shows later opens it full screen. Built one shared `PhotoViewer` (app `components/`): black
 background, pinch or double tap to zoom (up to 4x), drag while zoomed, close with the X on the leading side (right in
