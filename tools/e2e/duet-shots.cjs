@@ -64,6 +64,20 @@ const server = http.createServer((req, res) => {
         await page.route('**/devices/events?**', (r) => r.fulfill({ contentType: 'application/json', headers: h, body: JSON.stringify([{ group: 'set_changed', code: 'set_change', occurred_at: new Date(Date.now() - 3 * 86_400_000).toISOString() }]) }));
         await page.route('**/records?**kind=lab**', (r) => r.fulfill({ contentType: 'application/json', headers: h, body: JSON.stringify([{ data: { test: 'a1c', name: 'HbA1c', value: 6.8, unit: '%', taken_on: new Date(Date.now() - 20 * 86_400_000).toISOString().slice(0, 10) } }]) }));
       }
+      // BODY=1: a day of Apple Health data for "Body today" (a phone with Health connected; the simulator has none).
+      if (process.env.BODY) {
+        const at = (h) => { const d = new Date(); d.setHours(h, 0, 0, 0); return d.toISOString(); };
+        const body = { steps: 6420, steps_usual: 7100, distance_km: 4.6, heart: { mean: 74, low: 58, high: 121 }, resting: 61, resting_usual: 63,
+          night: { bed: new Date(Date.parse(at(23)) - 86_400_000).toISOString(), wake: at(6), asleep_min: 412, in_bed_min: 440, awake: 2, deep_min: 74, rem_min: 96 },
+          night_vs_usual: 'usual', exercise_min: 28, exercise_usual: 25, energy_kcal: 410, energy_usual: 450 };
+        const day = (k) => new Date(Date.now() - k * 86_400_000).toISOString().slice(0, 10);
+        const hours = (f) => Array.from({ length: new Date().getHours() + 1 }, (_, h) => ({ hour: h, value: f(h) }));
+        const details = { day: day(0), steps_hours: hours((h) => (h < 7 ? 0 : 200 + ((h * 137) % 900))), steps_days: [6420, 5024, 7856, 5974, 9763, 4081, 13120].map((v, k) => ({ day: day(k), value: v })),
+          distance_hours: [], distance_days: [], energy_hours: [], energy_days: [], exercise_hours: [], exercise_days: [], heart_hours: [], resting_days: [], nights: [], segments: [] };
+        const h = { 'access-control-allow-origin': '*' };
+        await page.route('**/health-data/today/details**', (r) => r.fulfill({ contentType: 'application/json', headers: h, body: JSON.stringify(details) }));
+        await page.route(/\/health-data\/today(\?|$)/, (r) => r.fulfill({ contentType: 'application/json', headers: h, body: JSON.stringify(body) }));
+      }
       if (process.env.NOOPENERS) await page.route('**/conversation/openers', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify({ openers: [], refreshing: false }) }));
       for (const r of routesArg.split(',')) {
         await page.goto(base + r); await page.waitForTimeout(Number(process.env.WAIT || 6000));
