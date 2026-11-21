@@ -4171,5 +4171,7 @@
   "yg.pc_decline": "לא לאשר",
   "yg.off_parent": "כבוי על ידי ההורה",
   "shr.wait_parent": "מחכה לאישור ההורה",
-  "shr.wait_parent_v": "מחכה לאישור ההורה של {name}"
+  "shr.wait_parent_v": "מחכה לאישור ההורה של {name}",
+  "upd.build": "גרסה {n}",
+  "upd.of": "עדכון מ-{date}, {time}"
 }

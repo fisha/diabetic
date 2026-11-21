@@ -4171,5 +4171,7 @@
   "yg.pc_decline": "Decline",
   "yg.off_parent": "Turned off by your parent",
   "shr.wait_parent": "Waiting for your parent's OK",
-  "shr.wait_parent_v": "Waiting for {name}'s parent to approve"
+  "shr.wait_parent_v": "Waiting for {name}'s parent to approve",
+  "upd.build": "Build {n}",
+  "upd.of": "Update of {date}, {time}"
 }
