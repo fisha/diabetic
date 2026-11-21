@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-353, thread "Let iPhone testers register their device themselves"): Guy's new iPhone tester got
+stuck: the /get/iphone step sent people to sign in (which hung at Google on the iPhone) although self-registration is
+off (no STEADY_EXPO_TOKEN). Correction to PM-290: the Mac found that `eas device:create` returns the same team link
+every time (expo.dev/register-device/2f2b16a0-…) and several phones registered through it, so the link is team-wide,
+not one phone. Built: API public `GET /auth/ios-device/available` (#161); web: while it is false the step shows the
+standing link and no sign-in (#58). Google sign-in on iPhone Safari (button renders, click does nothing) is still
+open in PM-353: no COOP header in our code, so the next suspect is the OAuth client's authorized origins or Safari's
+popup handling. Next: deploy API then web.
+
 20 Nov 2026 (Jira PM-335 under design PM-334, thread "Implement the Duet design"): Guy approved the round 4 "Duet"
 design and asked to implement all of it, never removing a feature or inventing data, and to see it on the simulator
 before any deploy, OTA or build. Built in app branch `claude/project-thread-ja0cv9`: Rubik (OFL, bundled, OTA-safe),
