@@ -4171,5 +4171,19 @@
   "yg.pc_decline": "לא לאשר",
   "yg.off_parent": "כבוי על ידי ההורה",
   "shr.wait_parent": "מחכה לאישור ההורה",
-  "shr.wait_parent_v": "מחכה לאישור ההורה של {name}"
+  "shr.wait_parent_v": "מחכה לאישור ההורה של {name}",
+  "bd.t_avg": "הגוף, ממוצע ליום",
+  "bd.t_on": "הגוף ב-{when}",
+  "bd.n_days": "{n} ימים עם נתונים",
+  "bd.n_nights": "{n} לילות",
+  "bd.none_period": "אין נתונים בתקופה הזו",
+  "nut.t_avg": "תזונה, ממוצע ליום",
+  "nut.t_on": "תזונה ב-{when}",
+  "nut.l_meals_day": "ארוחות ביום",
+  "nut.l_carbs_day": "פחמימות ביום",
+  "nut.l_protein_day": "חלבון ביום",
+  "nut.l_meals_on": "ארוחות",
+  "nut.l_carbs_on": "פחמימות",
+  "nut.l_protein_on": "חלבון",
+  "nut.of_period": "מתוך {n} ימים"
 }

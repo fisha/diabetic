@@ -130,3 +130,4 @@ export type StickerOut = S['StickerOut'];
 export type CheerOut = S['CheerOut'];
 export type ChallengeOut = S['ChallengeOut'];
 export type WeekOut = S['WeekOut'];
+export type PeriodBodyOut = S['PeriodBodyOut'];
