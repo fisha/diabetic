@@ -83,6 +83,8 @@ const server = http.createServer((req, res) => {
       // Three rounds, as Guy does it: to the kid and back, no pull to refresh.
       for (let round = 1; round <= 3; round++) {
         await switchTo('Yonatan');
+        // PM-384 (Guy, 21 Nov 2026): viewing someone opens on Talk, not Overview.
+        ok(`${lang} ${scheme} round ${round}: switch lands on Talk`, new URL(p.url()).pathname === '/companion', p.url());
         await tab(p, T.journal); await p.waitForTimeout(2500);
         if (round === 1) await shot('02-kid-journal');
         await check(`round ${round}: kid's journal`, KID, MINE);
