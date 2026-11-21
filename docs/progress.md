@@ -70,6 +70,13 @@ with swipe to stop following, clinic report preview bar z35 (the preview already
 Health "Body today" checked with sample data (shots option BODY=1); it hides only when Health sent nothing today.
 The Mac simulator runs against production with Guy's account, so kids/teen screens need a choice from Guy (local test
 server, stay on prod, or deploy the API).
+20 Nov 2026 (Jira PM-336, thread "Add free barcode food sources"): Guy asked to add only free sources to the barcode
+scan, which found Israeli products but few US ones. When Open Food Facts has no product (or no carbohydrate value), the
+API now asks USDA FoodData Central's branded foods by GTIN/UPC with the existing food search key (api `barcodes.py`).
+FatSecret was checked and left out: barcode lookup is only in Premier Free (application, US data, in-app credit), not
+in the free Basic edition; Nutritionix is paid. The privacy policy's USDA line now names the barcode number (privacy
+version 2026-11-20, so the app asks everyone to accept again) and the scan screen credits both sources. Next: a real
+US product scan on Fly.
 
 20 Nov 2026 (Jira PM-327, thread "Detect infusion set changes from CareLink"): Guy changed his infusion set at about
 09:50 Israel time and the journal only showed "basal resumed". CareLink's only set change signal was the 30-day

@@ -956,7 +956,7 @@
   "meal.bc_not_found": "This product isn't in the food list yet.",
   "meal.bc_failed": "The product couldn't be looked up right now.",
   "meal.bc_again": "Scan again",
-  "meal.bc_source": "Values from the label, via Open Food Facts or USDA. Only the barcode number is sent.",
+  "meal.bc_source": "Values from the label, via Open Food Facts or USDA FoodData Central. Only the barcode number is sent.",
   "meal.m_photo": "Take a photo",
   "meal.meal": "Meal",
   "meal.more": "More",
