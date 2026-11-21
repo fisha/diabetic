@@ -20,6 +20,11 @@ It opens WhatsApp with a ready message (`sub.invite_msg`: a short pitch and the 
 WhatsApp the system share sheet opens. No personal data in the message, nothing sent to the server. App #227. Not yet
 seen on a phone. Next: OTA.
 
+21 Nov 2026 (Jira PM-390, same thread): Guy's iPhone screenshot: the Talk tiles' top was cut under the status bar,
+both tiles should be smaller, and the hat covered the greeting bubble. The idle scroll area now starts below the status
+bar (filled with the glow's first colour), the tiles are smaller (number 44, padding 10/14), and `VoiceOrb` keeps room
+above the idle character for what is on its head. App #231.
+
 21 Nov 2026 (Jira PM-381): Guy: the Talk screen gets pull to refresh like Overview and Journal (sources synced, then
 the reading, records, device events, pump active insulin, sensor state, insight tiles/cards and young-mode cards load
 again; also on the viewer's Talk home without a source sync). While pulling on iOS the character is pressed flat from
