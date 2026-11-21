@@ -49,12 +49,14 @@ below, which Guy and the lawyer can still change.
 | Consent to the external AI engine (PM-149) required for using Stedio, withdrawn only by deleting the account; whether an optional version (journal without the companion) is needed for consent to count as freely given | privacy | Lawyer (PM-99); texts `onb.c3`, `onb.c3b`, `ai.*`, `set.pv_ai*`; privacy policy "Who we share it with" names OpenAI |
 
 ## Queued for the next legal version
-- WhatsApp companion channel (PM-269, 19 Nov 2026): Meta (WhatsApp Cloud API, Meta Platforms Ireland / Meta Platforms
-  Inc.) becomes a processor of the WhatsApp chat (messages, phone number, delivery status), with transfers to the United
-  States. While only Guy's own account can use it, the privacy policy is unchanged; before anyone else gets it, add Meta
-  to the processor list, the data collected, retention on Meta's side and withdrawal (unlink or STOP) in English and
-  Hebrew, as a new privacy version. Lawyer review PM-270 (`needs-lawyer`). The separate `whatsapp` consent (strings
-  `wa.body`, `wa.agree`, version `2026-11-19` in `steady_api/whatsapp/links.py`) is recorded before linking.
+- (Done 20 Nov 2026, privacy version `2026-11-20`, PM-270.) WhatsApp companion channel (PM-269): Meta (WhatsApp Cloud
+  API, Meta Platforms Ireland / Meta Platforms Inc.) is now in the privacy policy, English and Hebrew: data collected,
+  legal basis (its own optional consent), processor entry with no end-to-end encryption and Meta's up-to-30-day
+  retention, transfers, and retention on our side. Guy opened WhatsApp to every account the age rules allow (the
+  allowlist is gone). Still for the lawyer (PM-270, `needs-lawyer`): Meta's WhatsApp Business data processing terms as
+  the DPA, the transfer mechanism (DPF / SCCs), and confirm Meta's 30-day Cloud API retention wording. The separate
+  `whatsapp` consent (strings `wa.body`, `wa.agree`, version `2026-11-19` in `steady_api/whatsapp/links.py`) is recorded
+  before linking.
 
 **Released 18 Nov 2026 as privacy `2026-11-18T14:00:00Z` (PM-233):** demo request data under "What we collect", demo
 retention under "How long we keep data", and the stored demo link under "Cookies and storage", in English and Hebrew.

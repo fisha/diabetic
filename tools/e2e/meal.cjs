@@ -51,7 +51,7 @@ const server = http.createServer((req, res) => {
     ok('question shown', await page.getByText('Cream or broth?').first().isVisible());
     ok('photo asks how much was eaten', await page.getByText('How much did you eat?').first().isVisible());
     await page.getByText('Broth', { exact: true }).click(); await page.waitForTimeout(300);
-    await page.getByText('Save meal', { exact: true }).last().click(); await page.waitForTimeout(2000);
+    await page.getByText(/^Save meal/).last().click(); await page.waitForTimeout(2000);
     ok('meal saved', await page.getByText('Meal saved').first().isVisible());
     let meals = (await api(`/records?${range}&kind=meal`, { token: tf.access_token })).json;
     // Answering the soup's question re-estimates it (G-75): the stand-in reads the answer as a new 30 g food.
@@ -60,7 +60,7 @@ const server = http.createServer((req, res) => {
 
     // Description: two foods.
     await meal();
-    await page.getByText('Describe it by voice or text', { exact: true }).last().click(); await page.waitForTimeout(1000);
+    await page.getByText('Describe by voice or text', { exact: true }).last().click(); await page.waitForTimeout(1000);
     // Dictation adds the transcribed words to what was typed (the test transcriber hears "My reading is 142").
     await page.locator('textarea').first().fill('banana');
     await page.getByText('Dictate', { exact: true }).last().click(); await page.waitForTimeout(1500);
@@ -85,7 +85,7 @@ const server = http.createServer((req, res) => {
     await page.getByRole('button', { name: /Tap to type the protein of Apple, raw/ }).first().click(); await page.waitForTimeout(300);
     await page.getByLabel(/Protein in grams for Apple, raw/).last().fill('12'); await page.keyboard.press('Enter'); await page.waitForTimeout(500);
     ok('typed protein shown', await page.getByText('Protein ≈ 12 g').first().isVisible());
-    await page.getByText('Save meal', { exact: true }).last().click(); await page.waitForTimeout(2000);
+    await page.getByText(/^Save meal/).last().click(); await page.waitForTimeout(2000);
     meals = (await api(`/records?${range}&kind=meal`, { token: tf.access_token })).json;
     const text = meals.find((m) => m.source !== 'photo-estimate');
     ok('typed protein stored', !!text && text.data.items[2].protein_g === 12, JSON.stringify(text && text.data.items[2]));
@@ -112,7 +112,7 @@ const server = http.createServer((req, res) => {
     await shot('m07-review-edited');
     ok('edited amount, carbs and name shown', await page.getByText('Basmati rice').first().isVisible() && await page.getByText('≈ 115 g').first().isVisible());
     ok('typed carbs close the question', !(await page.getByText('Cream or broth?').first().isVisible()));
-    await page.getByText('Save meal', { exact: true }).last().click(); await page.waitForTimeout(2000);
+    await page.getByText(/^Save meal/).last().click(); await page.waitForTimeout(2000);
     meals = (await api(`/records?${range}&kind=meal`, { token: tf.access_token })).json;
     const both = meals.find((m) => (m.data.photo_ids || []).length === 2);
     ok(

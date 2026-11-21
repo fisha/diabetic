@@ -8,6 +8,68 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+20 Nov 2026 (Jira PM-335 under design PM-334, thread "Implement the Duet design"): Guy approved the round 4 "Duet"
+design and asked to implement all of it, never removing a feature or inventing data, and to see it on the simulator
+before any deploy, OTA or build. Built in app branch `claude/project-thread-ja0cv9`: Rubik (OFL, bundled, OTA-safe),
+the Duet day and night palettes and type scale (`packages/tokens/src/duet.ts`, app only; web keeps tokens.css), core
+components, Settings hub with search and a WhatsApp screen, Home (solid glucose block beside time in range, the day's
+line from real sensor readings when it fits without shrinking the character, insight card, labelled pills, moon button
+for Quiet mode), Overview in the p02 order with the week card (x92) moved from Home, Journal groups and slim reading
+rows, quick log, Log a meal, insight rows, Quiet mode colours, and an early onboarding WhatsApp step (y01-y03, Guy 20
+Nov: consent, one-time code sent from WhatsApp, connected; only for accounts the server offers WhatsApp to). API: the
+WhatsApp fixed lines point to Settings > WhatsApp. `pnpm check` passes. Not yet restyled to the board: sign-in and the
+other onboarding steps (shared components only), history, viewer, kids home (p30 tab set needs Guy), most Settings
+sub-screens. Next: show Guy on the iOS simulator; nothing is deployed until he approves.
+
+21 Nov 2026 (Jira PM-340, PM-341, thread "Implement the Duet design"): continued the one to one Duet pass, each screen
+checked by overlay against `round4/mockups` (overlays in `round4/compare/`). Overview p02: a period line card (dates
+and range above, sensor line in the band, labels under it, tap opens the detailed graph with earlier periods, the two
+views and the coverage line; "Show less" closes it), time in range with below/above under a gapped bar, latest
+reading at 38 with a dotted range tag, Learning and the period summary as rows; six periods kept (Guy). Settings:
+devices p19, clinic p24 (a saved next visit as an accent card), report p25, export p26, language p27, accessibility
+p28 (contrast says Coming soon), help p29, privacy p22, AI engine sheet z31, sensor connect x80, delete x83,
+membership x87, viewer settings p35. Learning p08 (day strip, collected and learned rows) and routine p09. Quiet
+mode timing (PM-341: schedule, turn on now, hold the Zz button) in API and app. Deliberate deviations kept: existing
+longer consent and help texts, report options and the visit card stay on the report screen (x89 visit screen and
+"remind me the day before" not built: new feature, needs Guy), z31 "what is / is never sent" rows not added (needs
+lawyer wording), Apple Health "what it sends" rows not added (no per-type data on web), viewer strip kept (Guy).
+App tests 240 pass, typecheck clean, lint unchanged. Not deployed; API (break schedule) must go before the OTA.
+Next: show Guy on the simulator; kids home p30 tab set needs Guy.
+Later on 21 Nov: labs index p16, test date x90 and review x91 (labs e2e now follows the date screen), change history
+x86, export ready x85, care team request x88 and shared z34 (ToggleRow takes an icon tile), Overview states (x69 an old
+sensor reading first, outlined and grey without its range tag; x70 meter readings never "out of date", the day card
+says why there is no time in range and the line shows each reading as a ring on the full 00 to 24 day; z22 the
+character with Connect a device and Add a reading), Body and Food today as three-to-a-row tiles (z21), device status as
+an icon row (x82). Fixes from the simulator review: the language preview shows no sample reading (unit and the time
+now), the Day line spans 00 to 24, the training switch's line no longer says "off by default". Deviations kept: the
+x90 Edit link and x91 "Hard to read" flag (no such data or feature), z21 rows for infusion set, sensor end and latest
+lab (new composition, needs Guy), z30 WhatsApp keeps its full Meta consent card, line card has no Y labels (as the
+board). Shot tooling: CARE (care team), AHEAD (clock ahead), SCROLL and EVAL options in `tools/e2e/duet-shots.cjs`.
+
+21 Nov 2026, later (PM-340, PM-342, Guy on the simulator): Overview opens straight on the detailed graph (no compact
+line, no Show less); its time in range card shows only the figure and bar. Week bars: today fills only the part of the
+day that has passed. Home has no glucose line any more (Guy: too much information); the time-in-range tile names its
+period even without a figure. z21 status rows under Body today (set change, sensor time left, latest lab, tile chooser)
+from real data only. Kids mode: tabs Talk / My days / Stickers (journal and Settings rows at the end of My days), My
+milestones book with round places (p31), home with "Hi {name}", Your number, Today's challenge and Sticker book tiles
+(p30), My days with the quest, week ring, weekly challenge and Stedio grows with you (z54; API now gives a child the
+week ring and challenge, Guy's choice). Viewer: strip says only "Viewing {name}", no hint under the title, short privacy
+line, room under the strip; cheer card as z40-z43. Not deployed. API change needs deploy before the kids week shows.
+
+21 Nov 2026, night (PM-340, Guy asleep, "keep going"): kids tab bar now follows the young store and the sign-in (a
+child who opens straight on Settings got the adult tabs). z52 "Set by your parent" (Settings row for a child, read-only
+switches, who and when from the last change only), z58 under-8 screen gains Sign out, Journal filter row fades at its
+end, z50 cheer dim 0.97, z51 cheer push names the kind with its sticker ("Mom sent you a high-five! 🙌", api), p33
+parent's Kids mode controls in the list style, z54 week as day letters with one list for the challenge and growth
+("Last week kept" kept beside the skip-days line). z44 viewer chat follows Guy's later choices (strip "Viewing {name}",
+short privacy line), not the board's header card. Not deployed; API (kids week, cheer text) needs deploy first.
+Same night, old-design sweep (Guy: no screen may stay in the old design): teen and adult week ring and challenge as
+x92 (day letters, trophy card with a bar per day), weekly wins picture flat accent in Rubik, infusion set as a radio
+group, first days x67 (answer buttons; the wrong "Logged on 14 of 3 days" line dropped), people I follow as list rows
+with swipe to stop following, clinic report preview bar z35 (the preview already existed; no new dependency). Apple
+Health "Body today" checked with sample data (shots option BODY=1); it hides only when Health sent nothing today.
+The Mac simulator runs against production with Guy's account, so kids/teen screens need a choice from Guy (local test
+server, stay on prod, or deploy the API).
 20 Nov 2026 (Jira PM-336, thread "Add free barcode food sources"): Guy asked to add only free sources to the barcode
 scan, which found Israeli products but few US ones. When Open Food Facts has no product (or no carbohydrate value), the
 API now asks USDA FoodData Central's branded foods by GTIN/UPC with the existing food search key (api `barcodes.py`).
@@ -2360,3 +2422,4 @@ appears, at most twice per list, and never again once the person has swiped any 
 App tests 213/213, typecheck clean, e2e `tools/e2e/swipe-delete.cjs` passes in en light, he light and he dark (hint
 44 px out, back to 0, no hint after a swipe). Next: OTA, then Guy checks it on his iPhone.
 
+- 20 Nov (PM-340): Duet one to one pass done on onboarding, auth, log forms, Overview, journal, routine, insights, Settings and the viewer home. Deliberate deviations listed for Guy (insight list z06, opener z05, quick-log More, insights filter, kids three tabs, treatment list, time row). WhatsApp open to every account with Meta in the privacy policy (PM-270). Not deployed: waiting for Guy on the simulator.

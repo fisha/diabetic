@@ -11,6 +11,11 @@ export type AppearancePreference = 'system' | ThemeName;
 
 export const palettes: Readonly<Record<ThemeName, Palette>> = { day, night };
 
+export { duetDay, duetNight, duetType, duetRadius, RUBIK } from './duet.ts';
+import { duetDay, duetNight } from './duet.ts';
+/** The mobile app's palettes (Duet, PM-335). The website keeps `palettes` through tokens.css. */
+export const appPalettes: Readonly<Record<ThemeName, Palette>> = { day: duetDay, night: duetNight };
+
 export type TypeStyle = keyof typeof type;
 
 /**

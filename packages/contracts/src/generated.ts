@@ -1611,7 +1611,12 @@ export interface paths {
         get: operations["get_export_exports__export_id__get"];
         put?: never;
         post?: never;
-        delete?: never;
+        /**
+         * Delete Export
+         * @description Deletes a report or export the person made, before its 7 days are up (Guy, 21 Nov 2026, PM-349: "a report I made,
+         *     let me delete it"): the sealed file and its row. One already gone (expired or deleted) is a 404.
+         */
+        delete: operations["delete_export_exports__export_id__delete"];
         options?: never;
         head?: never;
         patch?: never;
@@ -1666,13 +1671,34 @@ export interface paths {
         get: operations["get_break_follow_ups_break_get"];
         /**
          * Take Break
-         * @description Take a break (PM-257, Guy 18 Nov 2026): until turned off, the app is one screen with the latest reading and no push
-         *     goes out but the out-of-range look-back the person turned on. Check-ins wait as in a pause; the app starts none.
+         * @description Take a break (PM-257, Guy 18 Nov 2026): until turned off or until the time given, the app is one screen with the
+         *     latest reading and no push goes out but the out-of-range look-back the person turned on. Check-ins wait as in a
+         *     pause; the app starts none.
          */
         put: operations["take_break_follow_ups_break_put"];
         post?: never;
         /** End Break */
         delete: operations["end_break_follow_ups_break_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/follow-ups/break/schedule": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Break Schedule
+         * @description The daily quiet schedule (PM-341): quiet mode turns on and off by itself on the chosen days.
+         */
+        put: operations["set_break_schedule_follow_ups_break_schedule_put"];
+        post?: never;
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -2403,6 +2429,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/labs/day/{taken_on}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Delete Day
+         * @description Deletes one test date's results, the whole report as listed in My test results (Guy, 21 Nov 2026, PM-348: swipe a
+         *     report away). Soft delete like a single record: gone from every screen and summary; the rows and their revisions stay
+         *     until account deletion.
+         */
+        delete: operations["delete_day_labs_day__taken_on__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/labs/scan": {
         parameters: {
             query?: never;
@@ -2447,9 +2495,10 @@ export interface paths {
         };
         /**
          * Barcode
-         * @description A packaged food by its barcode (PM-242), from Open Food Facts: carbs, fiber, protein and fat per 100 g as on the
-         *     label, and the label's serving when it has one. Only the barcode number leaves the server. 404 when the database
-         *     doesn't have the product or its label has no carbohydrate value; the app then offers a photo or a search.
+         * @description A packaged food by its barcode (PM-242), from Open Food Facts and then, for products it doesn't have, USDA
+         *     FoodData Central's branded foods (PM-336): carbs, fiber, protein and fat per 100 g as on the label, and the
+         *     label's serving when it has one. Only the barcode number leaves the server. 404 when no source has the product
+         *     with a carbohydrate value; the app then offers a photo or a search. 502 when none has it and a source failed.
          */
         get: operations["barcode_meal_barcode__code__get"];
         put?: never;
@@ -3977,12 +4026,42 @@ export interface components {
             /** File */
             file: string;
         };
+        /**
+         * BreakIn
+         * @description Turned on until it is turned off, or until a time (for an hour, until the morning, a chosen time).
+         */
+        BreakIn: {
+            /** Until */
+            until?: string | null;
+        };
         /** BreakOut */
         BreakOut: {
             /** On */
             on: boolean;
+            schedule: components["schemas"]["BreakScheduleIO"];
+            /**
+             * Scheduled
+             * @default false
+             */
+            scheduled: boolean;
             /** Since */
             since: string | null;
+            /** Until */
+            until?: string | null;
+        };
+        /**
+         * BreakScheduleIO
+         * @description The daily quiet schedule (PM-341): from and to as hh:mm on the person's clock, days 0 = Sunday to 6 = Saturday.
+         */
+        BreakScheduleIO: {
+            /** Days */
+            days: number[];
+            /** From */
+            from: string;
+            /** On */
+            on: boolean;
+            /** To */
+            to: string;
         };
         /** CareClinicOut */
         CareClinicOut: {
@@ -4750,6 +4829,8 @@ export interface components {
              * @enum {string}
              */
             format: "pdf" | "csv";
+            /** From Day */
+            from_day?: string | null;
             /** Include */
             include: ("g" | "m" | "i" | "a" | "n" | "c")[];
             /** Labels */
@@ -4760,7 +4841,9 @@ export interface components {
              * Range
              * @enum {string}
              */
-            range: "30" | "90" | "all";
+            range: "30" | "90" | "all" | "days";
+            /** To Day */
+            to_day?: string | null;
         };
         /** ExportOut */
         ExportOut: {
@@ -5790,6 +5873,21 @@ export interface components {
              */
             range_text: string | null;
             /**
+             * Read Text
+             * @default null
+             */
+            read_text: string | null;
+            /**
+             * Read Value
+             * @default null
+             */
+            read_value: number | null;
+            /**
+             * Result Text
+             * @default null
+             */
+            result_text: string | null;
+            /**
              * Source
              * @enum {string}
              */
@@ -5806,8 +5904,11 @@ export interface components {
             test: "a1c" | "fasting_glucose" | "glucose" | "ogtt" | "c_peptide" | "insulin" | "gad_antibodies" | "ketones" | "ldl" | "hdl" | "non_hdl" | "triglycerides" | "cholesterol" | "egfr" | "creatinine" | "urea" | "uric_acid" | "uacr" | "urine_albumin" | "sodium" | "potassium" | "calcium" | "magnesium" | "phosphorus" | "alt" | "ast" | "ggt" | "alk_phos" | "bilirubin" | "albumin" | "hemoglobin" | "hematocrit" | "rbc" | "mcv" | "wbc" | "platelets" | "ferritin" | "iron" | "b12" | "folate" | "vitamin_d" | "tsh" | "ft4" | "crp" | "ttg_iga" | "other";
             /** Unit */
             unit: string;
-            /** Value */
-            value: number;
+            /**
+             * Value
+             * @default null
+             */
+            value: number | null;
         };
         /** LabRow */
         LabRow: {
@@ -5815,6 +5916,8 @@ export interface components {
             name: string;
             /** Range Text */
             range_text?: string | null;
+            /** Result Text */
+            result_text?: string | null;
             /**
              * Test
              * @enum {string}
@@ -5826,7 +5929,7 @@ export interface components {
              */
             unit: string;
             /** Value */
-            value: number;
+            value?: number | null;
         };
         /** LabScan */
         LabScan: {
@@ -5839,6 +5942,8 @@ export interface components {
              * @default 0
              */
             skipped: number;
+            /** Skipped Names */
+            skipped_names?: string[];
             /** Taken On */
             taken_on?: string | null;
         };
@@ -7341,7 +7446,7 @@ export interface components {
              * @default {}
              */
             sensor_end_reminder: {
-                [key: string]: 168 | 72 | 24 | 5;
+                [key: string]: (168 | 72 | 24 | 5)[];
             };
             /**
              * Sensor End Types
@@ -7374,7 +7479,7 @@ export interface components {
             photo_retention?: ("afterAnalysis" | "days90" | "untilDeleted") | null;
             /** Sensor End Reminder */
             sensor_end_reminder?: {
-                [key: string]: (168 | 72 | 24 | 5) | null;
+                [key: string]: (168 | 72 | 24 | 5)[] | (168 | 72 | 24 | 5) | null;
             } | null;
             /** Timezone */
             timezone?: string | null;
@@ -11297,6 +11402,35 @@ export interface operations {
             };
         };
     };
+    delete_export_exports__export_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                export_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     export_file_exports__export_id__file_get: {
         parameters: {
             query?: never;
@@ -11431,7 +11565,11 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        requestBody?: never;
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["BreakIn"] | null;
+            };
+        };
         responses: {
             /** @description Successful Response */
             200: {
@@ -11440,6 +11578,15 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["BreakOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
@@ -11460,6 +11607,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["BreakOut"];
+                };
+            };
+        };
+    };
+    set_break_schedule_follow_ups_break_schedule_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BreakScheduleIO"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BreakOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
@@ -12805,6 +12985,42 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["RecordOut"][];
+                };
+            };
+        };
+    };
+    delete_day_labs_day__taken_on__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                taken_on: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description no_results */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

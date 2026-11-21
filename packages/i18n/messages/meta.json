@@ -25707,5 +25707,1019 @@
       "translation"
     ],
     "note": "Guy, 19 Nov 2026: biggest rises for a single day too; one Insights row on Overview opening All insights."
+  },
+  "set.search": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.search_none": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.wa_sub": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.quiet_sub": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.type_instead": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_connect": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_not_now": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_code_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_code_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_code": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_valid": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_wait": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_done_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_done_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "onb.wa_later": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ql_meal_sub": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.hist_empty_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.hist_start": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.none_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.hr_none_ios": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "bk.hr_none_android": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.pw_show": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "cmp.pw_hide": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.dev_ro": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "now.tir_24h": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.greet_morning": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.greet_afternoon": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.greet_evening": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.greet_night": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.now_tick": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "com.ql_more": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.always_on": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.invite_btn": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.share_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.ready_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.ready_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.share_link": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.enter_code": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.see_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.tell_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.when_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "shr.copy": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.set_sub": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.st_on": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.st_off": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.st_until": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.sched_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.sched": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.from": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.to": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.next_morning": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.days": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.ways_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.way_home": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.way_home_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.way_ab": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.way_ab_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.sched_note": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.sheet_sub": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.keep_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.k_off": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.k_hour": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.k_until": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.k_morning": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.k_pick": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.turn_on": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.set_sched": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.on_until": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.quiet_sched": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.now": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "brk.hold_hint": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.tir_below": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.tir_above": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.chart_open": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.less": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.row_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.day_of": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.devices_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_s_cl": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_s_cgm": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_s_tandem": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ds_on": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "clin.q_ready": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "clin.questions": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "clin.results_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "clin.report_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_30s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_90s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "rep.d14s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "rep.d30s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "rep.d90s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.soon": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.faq_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.help_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "rep.name_ph": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.privacy_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.photos_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ph_0s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ph_90s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ph_alls": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_on": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_entries": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_readings": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_meals": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_insulin": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_shown": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_learned": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.c_future": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lrn.lead_warm": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "sub.inc_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.empty_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.page_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.add_row": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.page_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.rv_lead": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.rv_date": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.from_report": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.from_report@v": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.day_note": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.day_note@v": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.rv_skip": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.pf_history_note": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "care.nav_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "care.since": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "care.last_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.empty_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.empty_connect": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.empty_add": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_set": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_set_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_day": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_sensor": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_sensor_d": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_sensor_h": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_lab": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_pick": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.tab_days": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.tab_stk": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.found": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.num": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.in_range": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.range": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.hi": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.hi_0": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.challenge": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.book_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.day_split_now": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.write": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.see_book": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ps_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ps_by": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ps_last": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ps_note": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ch_this": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ch_so_far": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "meal.eaten_day": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_days": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_from": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_to": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.del_day_q": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.del_q": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.differs": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.same_as_read": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.edit_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.edit_save": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.rv_skipped_names": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "vd.del_report_q": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

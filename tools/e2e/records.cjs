@@ -58,14 +58,14 @@ const server = http.createServer((req, res) => {
 
     // Meal entered by hand: a food found in the food database.
     await chip('Meal');
-    await page.getByText('Search foods and enter amounts', { exact: true }).first().click(); await page.waitForTimeout(1200);
+    await page.getByText('Search foods and amounts', { exact: true }).first().click(); await page.waitForTimeout(1200);
     await page.getByText('Add a food', { exact: true }).first().click(); await page.waitForTimeout(800);
     await page.getByPlaceholder('Search foods').first().fill('Pita');
     await page.waitForTimeout(500);
     // The test server's food database finds "Pita, raw" (20 g carbs per 100 g); a typical serving is 100 g.
     await page.getByText('Pita, raw', { exact: true }).click(); await page.waitForTimeout(800);
     await shot('r02-meal-review');
-    await page.getByText('Save meal', { exact: true }).last().click(); await page.waitForTimeout(2000);
+    await page.getByText(/^Save meal/).last().click(); await page.waitForTimeout(2000);
     ok('meal saved screen', await page.getByText('Meal saved').first().isVisible());
     await shot('r03-meal-saved');
 

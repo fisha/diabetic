@@ -2028,3 +2028,7 @@ clinic report with their visits (PM-214). When viewing someone else's data, only
   list. Read once, it stays away until the next week (`rises:<Sunday>`). Built from the existing feed card.
 - PM-318 (Guy, 19 Nov 2026): Overview's Day and 24 h views list that day's biggest rises too, and Overview has one
   "Insights" row (with the number of insights) that opens All insights, in the place of the section removed in PM-259.
+- Duet z35 "Report for my clinic" preview (21 Nov 2026, PM-340): the preview already existed (View after the report is
+  made, a WebView that shows the PDF on iPhone, a new tab on the web; no new dependency). Its top bar now follows the
+  board (round back, title at the start, Share in the accent). Android's WebView cannot show a PDF, so there the person
+  shares it and opens it in a PDF app, as before.

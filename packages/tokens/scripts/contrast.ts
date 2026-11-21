@@ -1,7 +1,7 @@
 // Checks the text/background pairs the design uses against WCAG thresholds in both themes.
 // Body text needs 4.5:1. Large text (>= 24 px, or >= 18.66 px bold) and graphical marks need 3:1.
 // A failing pair fails the script unless it is listed in KNOWN with the design-gap id that tracks it.
-import { palettes, contrastRatio, type ColorToken, type ThemeName } from '../src/index.ts';
+import { palettes, appPalettes, contrastRatio, type ColorToken, type ThemeName } from '../src/index.ts';
 
 type Pair = { fg: ColorToken; bg: ColorToken; min: 4.5 | 3; use: string };
 
@@ -30,14 +30,20 @@ export const KNOWN: Record<string, string> = {
   'day:inrange/surfaceBg': 'G-16',
   'day:above/surfaceBg': 'G-16',
   'night:onAccent/accent': 'G-16',
+  // Duet (PM-335) keeps the same glucose hues and night accent as the design; same gap.
+  'app:day:below/surfaceBg': 'G-16',
+  'app:day:inrange/surfaceBg': 'G-16',
+  'app:day:above/surfaceBg': 'G-16',
+  'app:night:onAccent/accent': 'G-16',
 };
 
 let failed = 0;
 const report: string[] = [];
-for (const theme of ['day', 'night'] as ThemeName[]) {
+// The website's palettes (tokens.css) and the app's Duet palettes (PM-335) are both checked.
+for (const [set, sets] of [['', palettes], ['app:', appPalettes]] as const) for (const theme of ['day', 'night'] as ThemeName[]) {
   for (const p of PAIRS) {
-    const ratio = contrastRatio(palettes[theme][p.fg], palettes[theme][p.bg]);
-    const key = `${theme}:${p.fg}/${p.bg}`;
+    const ratio = contrastRatio(sets[theme][p.fg], sets[theme][p.bg]);
+    const key = `${set}${theme}:${p.fg}/${p.bg}`;
     if (ratio + 1e-9 < p.min) {
       const gap = KNOWN[key];
       report.push(`${gap ? 'KNOWN' : 'FAIL '} ${key} ${ratio.toFixed(2)}:1 < ${p.min}:1 (${p.use})${gap ? ` [${gap}]` : ''}`);
@@ -48,5 +54,5 @@ for (const theme of ['day', 'night'] as ThemeName[]) {
   }
 }
 console.log(report.join('\n') || 'all pairs pass');
-console.log(`${PAIRS.length * 2} pairs checked, ${failed} unexpected failures`);
+console.log(`${PAIRS.length * 4} pairs checked, ${failed} unexpected failures`);
 if (failed) process.exit(1);

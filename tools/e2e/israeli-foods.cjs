@@ -66,7 +66,7 @@ const server = http.createServer((req, res) => {
     await page.getByText(first.name, { exact: true }).first().click(); await page.waitForTimeout(800);
     await shot('03-review-pita');
     const carbs = Math.round(first.carbs_per_100g * first.portions[0].grams / 100);
-    await page.getByText(tr['meal.save'], { exact: true }).last().click(); await page.waitForTimeout(2000);
+    await page.getByText(new RegExp('^' + tr['meal.save'])).last().click(); await page.waitForTimeout(2000);
     const meals = (await api(`/records?${range}&kind=meal`, { token: tf.access_token })).json;
     const pita = meals.length && meals[0].data.items.find((i) => i.name === first.name);
     ok('saved: pita as one piece with its carbs', !!pita && pita.unit === 'piece' && pita.qty === 1 && Math.round(pita.carbs_g) === carbs, JSON.stringify(pita));

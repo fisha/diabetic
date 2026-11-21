@@ -120,7 +120,6 @@ fly secrets set -a stedio-api \
   STEADY_WHATSAPP_PHONE_NUMBER_ID=... \
   STEADY_WHATSAPP_BUSINESS_ACCOUNT_ID=... \
   STEADY_WHATSAPP_NUMBER=<Stedio number, digits with country code> \
-  STEADY_WHATSAPP_EMAILS='["<the allowed account emails>"]' \
   STEADY_WHATSAPP_ENABLED=true
 ```
 

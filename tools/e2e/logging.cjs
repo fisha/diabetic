@@ -91,7 +91,7 @@ const server = http.createServer((req, res) => {
     await p2.getByText('Edit', { exact: true }).first().click(); await p2.waitForTimeout(2500);
     ok('meal editor opens with the foods', await p2.getByText('Soup').last().isVisible());
     await p2.screenshot({ path: path.join(out, 'l05-meal-editor.png') });
-    await p2.getByText('Save meal', { exact: true }).last().click(); await p2.waitForTimeout(2500);
+    await p2.getByText(/^Save meal/).last().click(); await p2.waitForTimeout(2500);
     const th2 = (await api('/conversation/messages', { token: th.access_token })).json.messages.find((m) => m.proposal);
     const hm = (await api(`/records?${range}&kind=meal`, { token: th.access_token })).json;
     ok('saved from the editor, card marked with the record', hm.length === 1 && th2.proposal_status === 'saved' && th2.proposal.record_id === hm[0].id);

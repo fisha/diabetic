@@ -71,7 +71,7 @@ const server = http.createServer((req, res) => {
         await shot('02-typed-no-range');
       }
 
-      await page.getByText(T.save, { exact: true }).last().click(); await page.waitForTimeout(2500);
+      await page.getByText(new RegExp('^' + T.save)).last().click(); await page.waitForTimeout(2500);
       const meals = (await api(`/records?${range}&kind=meal`, { token: tk })).json;
       const last = meals.reduce((a, b) => (a.received_at > b.received_at ? a : b)).data;
       if (lang === 'en') ok('typed meal stored with the first estimate and no range', last.items[0].carbs_g === 50 && last.items[0].est_carbs_g === 44.8 && last.carbs_low_total_g == null, JSON.stringify(last.items[0]));

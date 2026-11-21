@@ -994,10 +994,37 @@
         "title": "Body_upload_meal_photos_post",
         "type": "object"
       },
+      "BreakIn": {
+        "description": "Turned on until it is turned off, or until a time (for an hour, until the morning, a chosen time).",
+        "properties": {
+          "until": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Until"
+          }
+        },
+        "title": "BreakIn",
+        "type": "object"
+      },
       "BreakOut": {
         "properties": {
           "on": {
             "title": "On",
+            "type": "boolean"
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/BreakScheduleIO"
+          },
+          "scheduled": {
+            "default": false,
+            "title": "Scheduled",
             "type": "boolean"
           },
           "since": {
@@ -1011,13 +1038,61 @@
               }
             ],
             "title": "Since"
+          },
+          "until": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Until"
           }
         },
         "required": [
           "on",
-          "since"
+          "since",
+          "schedule"
         ],
         "title": "BreakOut",
+        "type": "object"
+      },
+      "BreakScheduleIO": {
+        "description": "The daily quiet schedule (PM-341): from and to as hh:mm on the person's clock, days 0 = Sunday to 6 = Saturday.",
+        "properties": {
+          "days": {
+            "items": {
+              "type": "integer"
+            },
+            "maxItems": 7,
+            "title": "Days",
+            "type": "array"
+          },
+          "from": {
+            "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+            "title": "From",
+            "type": "string"
+          },
+          "on": {
+            "title": "On",
+            "type": "boolean"
+          },
+          "to": {
+            "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+            "title": "To",
+            "type": "string"
+          }
+        },
+        "required": [
+          "on",
+          "from",
+          "to",
+          "days"
+        ],
+        "title": "BreakScheduleIO",
         "type": "object"
       },
       "CareClinicOut": {
@@ -3129,6 +3204,18 @@
             "title": "Format",
             "type": "string"
           },
+          "from_day": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "From Day"
+          },
           "include": {
             "items": {
               "enum": [
@@ -3158,10 +3245,23 @@
             "enum": [
               "30",
               "90",
-              "all"
+              "all",
+              "days"
             ],
             "title": "Range",
             "type": "string"
+          },
+          "to_day": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "To Day"
           }
         },
         "required": [
@@ -6177,6 +6277,47 @@
             "default": null,
             "title": "Range Text"
           },
+          "read_text": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Read Text"
+          },
+          "read_value": {
+            "anyOf": [
+              {
+                "maximum": 100000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Read Value"
+          },
+          "result_text": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Result Text"
+          },
           "source": {
             "enum": [
               "lab_report",
@@ -6250,15 +6391,22 @@
             "type": "string"
           },
           "value": {
-            "maximum": 100000,
-            "minimum": 0,
-            "title": "Value",
-            "type": "number"
+            "anyOf": [
+              {
+                "maximum": 100000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Value"
           }
         },
         "required": [
           "test",
-          "value",
           "unit",
           "taken_on",
           "source"
@@ -6285,6 +6433,18 @@
               }
             ],
             "title": "Range Text"
+          },
+          "result_text": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Result Text"
           },
           "test": {
             "enum": [
@@ -6345,16 +6505,22 @@
             "type": "string"
           },
           "value": {
-            "maximum": 100000.0,
-            "minimum": 0.0,
-            "title": "Value",
-            "type": "number"
+            "anyOf": [
+              {
+                "maximum": 100000.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
           }
         },
         "required": [
           "test",
-          "name",
-          "value"
+          "name"
         ],
         "title": "LabRow",
         "type": "object"
@@ -6378,6 +6544,14 @@
             "minimum": 0.0,
             "title": "Skipped",
             "type": "integer"
+          },
+          "skipped_names": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 60,
+            "title": "Skipped Names",
+            "type": "array"
           },
           "taken_on": {
             "anyOf": [
@@ -10548,13 +10722,16 @@
           },
           "sensor_end_reminder": {
             "additionalProperties": {
-              "enum": [
-                168,
-                72,
-                24,
-                5
-              ],
-              "type": "integer"
+              "items": {
+                "enum": [
+                  168,
+                  72,
+                  24,
+                  5
+                ],
+                "type": "integer"
+              },
+              "type": "array"
             },
             "default": {},
             "propertyNames": {
@@ -10747,6 +10924,18 @@
               {
                 "additionalProperties": {
                   "anyOf": [
+                    {
+                      "items": {
+                        "enum": [
+                          168,
+                          72,
+                          24,
+                          5
+                        ],
+                        "type": "integer"
+                      },
+                      "type": "array"
+                    },
                     {
                       "enum": [
                         168,
@@ -17246,6 +17435,46 @@
       }
     },
     "/exports/{export_id}": {
+      "delete": {
+        "description": "Deletes a report or export the person made, before its 7 days are up (Guy, 21 Nov 2026, PM-349: \"a report I made,\nlet me delete it\"): the sealed file and its row. One already gone (expired or deleted) is a 404.",
+        "operationId": "delete_export_exports__export_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "export_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Export Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete Export",
+        "tags": [
+          "account"
+        ]
+      },
       "get": {
         "operationId": "get_export_exports__export_id__get",
         "parameters": [
@@ -17515,8 +17744,25 @@
         ]
       },
       "put": {
-        "description": "Take a break (PM-257, Guy 18 Nov 2026): until turned off, the app is one screen with the latest reading and no push\ngoes out but the out-of-range look-back the person turned on. Check-ins wait as in a pause; the app starts none.",
+        "description": "Take a break (PM-257, Guy 18 Nov 2026): until turned off or until the time given, the app is one screen with the\nlatest reading and no push goes out but the out-of-range look-back the person turned on. Check-ins wait as in a\npause; the app starts none.",
         "operationId": "take_break_follow_ups_break_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/BreakIn"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -17527,6 +17773,16 @@
               }
             },
             "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
           }
         },
         "security": [
@@ -17535,6 +17791,53 @@
           }
         ],
         "summary": "Take Break",
+        "tags": [
+          "follow-ups"
+        ]
+      }
+    },
+    "/follow-ups/break/schedule": {
+      "put": {
+        "description": "The daily quiet schedule (PM-341): quiet mode turns on and off by itself on the chosen days.",
+        "operationId": "set_break_schedule_follow_ups_break_schedule_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BreakScheduleIO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BreakOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Break Schedule",
         "tags": [
           "follow-ups"
         ]
@@ -19619,6 +19922,51 @@
         ]
       }
     },
+    "/labs/day/{taken_on}": {
+      "delete": {
+        "description": "Deletes one test date's results, the whole report as listed in My test results (Guy, 21 Nov 2026, PM-348: swipe a\nreport away). Soft delete like a single record: gone from every screen and summary; the rows and their revisions stay\nuntil account deletion.",
+        "operationId": "delete_day_labs_day__taken_on__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taken_on",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "title": "Taken On",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "no_results"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete Day",
+        "tags": [
+          "labs"
+        ]
+      }
+    },
     "/labs/scan": {
       "post": {
         "operationId": "scan_labs_scan_post",
@@ -19731,7 +20079,7 @@
     },
     "/meal/barcode/{code}": {
       "get": {
-        "description": "A packaged food by its barcode (PM-242), from Open Food Facts: carbs, fiber, protein and fat per 100 g as on the\nlabel, and the label's serving when it has one. Only the barcode number leaves the server. 404 when the database\ndoesn't have the product or its label has no carbohydrate value; the app then offers a photo or a search.",
+        "description": "A packaged food by its barcode (PM-242), from Open Food Facts and then, for products it doesn't have, USDA\nFoodData Central's branded foods (PM-336): carbs, fiber, protein and fat per 100 g as on the label, and the\nlabel's serving when it has one. Only the barcode number leaves the server. 404 when no source has the product\nwith a carbohydrate value; the app then offers a photo or a search. 502 when none has it and a source failed.",
         "operationId": "barcode_meal_barcode__code__get",
         "parameters": [
           {
