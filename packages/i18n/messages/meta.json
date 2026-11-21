@@ -26721,5 +26721,11 @@
     "review": [
       "translation"
     ]
+  },
+  "onb.save_code": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

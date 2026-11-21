@@ -458,6 +458,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/ios-device/available": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Ios Device Available
+         * @description Public (PM-353): whether testers can add their iPhone themselves (the Expo token is set). The guide asks for
+         *     sign-in only when this is true, so nobody signs in only to learn that it is not switched on.
+         */
+        get: operations["ios_device_available_auth_ios_device_available_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/me": {
         parameters: {
             query?: never;
@@ -5830,6 +5851,11 @@ export interface components {
             /** Scopes */
             scopes: string[];
         };
+        /** IosDeviceAvailableOut */
+        IosDeviceAvailableOut: {
+            /** Available */
+            available: boolean;
+        };
         /** IosDeviceOut */
         IosDeviceOut: {
             /** Available */
@@ -6642,6 +6668,8 @@ export interface components {
              * @constant
              */
             version: 1;
+            /** Whatsappoffer */
+            whatsappOffer?: boolean | null;
         };
         /** OpenerOut */
         OpenerOut: {
@@ -9087,6 +9115,26 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    ios_device_available_auth_ios_device_available_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["IosDeviceAvailableOut"];
+                };
             };
         };
     };
