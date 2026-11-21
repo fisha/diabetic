@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-398, app #241): Guy: when anything is set in Zz (quiet mode), such as a schedule, the Zz button on
+the Talk screen shows its selected state. It is selected while quiet mode is on (by hand or timed) or its daily schedule
+is on, in Duet's selected look (accent-soft fill, accent ring, accent icon) with VoiceOver "selected". Type check, lint
+and the app's 257 tests pass; not yet seen on a simulator or phone (ships in the next testers OTA).
+
 21 Nov 2026 (Jira PM-386, PM-388): Guy chose all six parental permissions for Kids and Teen mode. A confirmed parent's
 "{name}'s Kids/Teen mode" screen now also has: meal photo reading, and in Teen mode WhatsApp, lab report reading and
 weather and location (all on by default; off closes the server path with 403 `off_by_parent`, unlinks WhatsApp, forgets
@@ -33,6 +38,9 @@ companion; the owner's account is unchanged; empty goes back to the person's nam
 It opens WhatsApp with a ready message (`sub.invite_msg`: a short pitch and the website install page `/en/get`); without
 WhatsApp the system share sheet opens. No personal data in the message, nothing sent to the server. App #227. Not yet
 seen on a phone. Next: OTA.
+
+21 Nov 2026 (Jira PM-400, same thread): Guy: on the Talk pull to refresh the character is really crushed (to about a
+third of its height) and looks scared (eyes wide and open, a round gasp) while pulled. App #243.
 
 21 Nov 2026 (Jira PM-393, same thread): Guy: the Talk screen layout stays as it was. Stedio's follow-up question
 (Duet 3.4, PM-340) no longer replaces "Tap to talk" with a row of voice/text answers; it takes turns with the greeting
