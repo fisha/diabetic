@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-365, thread "Stop WhatsApp messages after opt-out"): a tester asked on WhatsApp not to get
+updates; the companion promised to stop but nothing recorded it, so a meal nudge still went. Guy's rule: once a person
+asks to stop, Stedio sends no proactive WhatsApp message of any kind and only answers when they write. Built in the API
+(#163): `whatsapp_links.proactive_off_at` (migration `b3d5f7a9c1e2`), a narrow Hebrew/English matcher
+(`texts.asks_updates_off` / `asks_updates_on`) checked before the companion with a fixed confirmation line, one gate in
+`proactive.deliver`, `deliver_waiting` and `notes_due` (waiting template texts are dropped), the Settings > WhatsApp card
+shows every kind off (`updates_off`) and turning one on restarts them, relinking keeps the stop. STOP still unlinks.
+One-off `python -m steady_api.whatsapp.stop_backfill [--apply]` sets the stop for earlier asks (counts only). What
+WhatsApp no longer takes goes as the app push, under the app's own notification switches. Next: deploy API, run the
+backfill.
+
 21 Nov 2026 (Jira PM-363, thread "Stop Overview listing every lab result"): after Itay uploaded a lab report, the
 Overview "Labs and habits" card listed every test. It is now a Duet group: the latest HbA1c, LDL, eGFR and UACR (urine
 microalbumin when only it was reported), each opening its test date, one "All lab results" row with the number of
