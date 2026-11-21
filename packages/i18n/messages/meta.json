@@ -26601,5 +26601,17 @@
     "review": [
       "translation"
     ]
+  },
+  "yg.write": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.see_book": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

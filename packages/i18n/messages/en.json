@@ -4097,5 +4097,7 @@
   "yg.hi_0": "Hi!",
   "yg.challenge": "Today's challenge",
   "yg.book_t": "Sticker book",
-  "ovr.day_split_now": "{day} so far: below {below}%, in range {inRange}%, above {above}%"
+  "ovr.day_split_now": "{day} so far: below {below}%, in range {inRange}%, above {above}%",
+  "yg.write": "Write to Stedio",
+  "yg.see_book": "See my sticker book"
 }

@@ -4097,5 +4097,7 @@
   "yg.hi_0": "היי!",
   "yg.challenge": "האתגר של היום",
   "yg.book_t": "ספר המדבקות",
-  "ovr.day_split_now": "{day} עד עכשיו: מתחת {below}%, בטווח {inRange}%, מעל {above}%"
+  "ovr.day_split_now": "{day} עד עכשיו: מתחת {below}%, בטווח {inRange}%, מעל {above}%",
+  "yg.write": "לכתוב ל-Stedio",
+  "yg.see_book": "לספר המדבקות שלי"
 }
