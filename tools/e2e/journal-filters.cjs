@@ -46,6 +46,7 @@ const server = http.createServer((req, res) => {
       ${rec('jf-basal', 'insulin', 340, 'app', { insulin: 'Tresiba', units: 14, reason: 'basal' })},
       ${rec('jf-bolus', 'insulin', 101, 'carelink', { insulin: 'Pump', units: 2.4, reason: 'pump bolus' })},
       ${rec('jf-pen', 'insulin', 30, 'app', { insulin: 'NovoRapid', units: 3, reason: 'meal' })},
+      ${rec('jf-auto', 'insulin', 55, 'carelink', { insulin: 'Pump', units: 0.2, reason: 'auto correction' })},
       ${rec('jf-small', 'meal', 240, 'app', meal(20, 'Apple'))},
       ${rec('jf-edge', 'meal', 180, 'app', meal(30, 'Yogurt'))},
       ${rec('jf-large', 'meal', 32, 'app', meal(65, 'Pasta'))}`);
@@ -63,8 +64,8 @@ const server = http.createServer((req, res) => {
       const shot = (name) => page.screenshot({ path: path.join(out, `${lang}-${scheme}-${name}.png`) });
       const he = lang === 'he';
       const L = he
-        ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', tab: 'יומן', all: 'הכול', glu: 'גלוקוז', ins: 'אינסולין', meal: 'ארוחות', alert: 'התראות', every2h: 'כל שעתיים', basal: 'בזאלי', bolus: 'בולוס', small: 'קטנות, עד 30 גרם', large: 'גדולות, מעל 30 גרם', low: 'נמוך', set: 'החלפת סט', clear: 'נקה', done: 'סיום', filtered: 'מסונן', lowT: 'סוכר נמוך', highT: 'סוכר גבוה', g20: 'ארוחה ≈ 20', g30: 'ארוחה ≈ 30', g65: 'ארוחה ≈ 65' }
-        : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', tab: 'Journal', all: 'All', glu: 'Glucose', ins: 'Insulin', meal: 'Meals', alert: 'Alerts', every2h: 'Every 2 hours', basal: 'Basal', bolus: 'Bolus', small: 'Small, up to 30 g', large: 'Large, over 30 g', low: 'Low', set: 'Set change', clear: 'Clear', done: 'Done', filtered: 'Filtered', lowT: 'Low glucose', highT: 'High glucose', g20: 'Meal ≈ 20', g30: 'Meal ≈ 30', g65: 'Meal ≈ 65' };
+        ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון', tab: 'יומן', all: 'הכול', glu: 'גלוקוז', ins: 'אינסולין', meal: 'ארוחות', alert: 'התראות', every2h: 'כל שעתיים', auto: 'תיקון אוטומטי', autoT: 'תיקון אוטומטי של המשאבה', bolus: 'בולוס', small: 'קטנות, עד 30 גרם', large: 'גדולות, מעל 30 גרם', low: 'נמוך', set: 'החלפת סט', clear: 'נקה', done: 'סיום', filtered: 'מסונן', lowT: 'סוכר נמוך', highT: 'סוכר גבוה', g20: 'ארוחה ≈ 20', g30: 'ארוחה ≈ 30', g65: 'ארוחה ≈ 65' }
+        : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account', tab: 'Journal', all: 'All', glu: 'Glucose', ins: 'Insulin', meal: 'Meals', alert: 'Alerts', every2h: 'Every 2 hours', auto: 'Auto correction', autoT: 'Automatic correction by the pump', bolus: 'Bolus', small: 'Small, up to 30 g', large: 'Large, over 30 g', low: 'Low', set: 'Set change', clear: 'Clear', done: 'Done', filtered: 'Filtered', lowT: 'Low glucose', highT: 'High glucose', g20: 'Meal ≈ 20', g30: 'Meal ≈ 30', g65: 'Meal ≈ 65' };
       await page.goto(base); await page.waitForTimeout(2000);
       if (he) { await page.getByText('עברית', { exact: true }).first().click(); await page.waitForTimeout(800); }
       await page.getByText(L.have, { exact: true }).last().click(); await page.waitForTimeout(1500);
@@ -100,13 +101,14 @@ const server = http.createServer((req, res) => {
       await page.getByRole('button', { name: L.clear, exact: true }).click(); await page.waitForTimeout(800);
       ok(`${lang}-${scheme} Clear brings every reading back`, (await count(/mg\/dL/)) === allReadings && !(await seen(L.filtered)));
 
-      // Insulin: basal only.
+      // Insulin (PM-375): the pump's automatic corrections, or the boluses the person gave; basal is neither.
       await longPress(L.ins);
-      await choose(L.basal); await closeSheet();
-      ok(`${lang}-${scheme} basal shows Tresiba only`, (await seen('Tresiba')) && !(await seen('NovoRapid')));
-      await shot('04-insulin-basal');
+      await choose(L.auto); await closeSheet();
+      ok(`${lang}-${scheme} auto correction shows only the pump's correction`, (await seen(L.autoT)) && !(await seen('NovoRapid')) && !(await seen('Tresiba')));
+      await shot('04-insulin-auto');
       await longPress(L.ins); await choose(L.bolus); await closeSheet();
-      ok(`${lang}-${scheme} bolus hides Tresiba`, !(await seen('Tresiba')) && (await seen('NovoRapid')));
+      ok(`${lang}-${scheme} bolus: own boluses, no auto correction, no basal`, (await seen('NovoRapid')) && !(await seen(L.autoT)) && !(await seen('Tresiba')));
+      await shot('04b-insulin-bolus');
 
       // Meals: 30 g is small, 65 g is large.
       await longPress(L.meal); await choose(L.small); await closeSheet();
@@ -122,6 +124,7 @@ const server = http.createServer((req, res) => {
       await longPress(L.all);
       ok(`${lang}-${scheme} All offers every kind`, (await page.getByRole('radiogroup').count()) === 4);
       await shot('07-all-sheet');
+      ok(`${lang}-${scheme} All with Bolus shows no auto correction`, !(await seen(L.autoT)));
       await closeSheet();
       ok(`${lang}-${scheme} All tab counts three choices`, await tab(`${L.all} · 3`).isVisible());
       await shot('08-all-filtered');

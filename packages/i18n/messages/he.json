@@ -4146,7 +4146,6 @@
   "jrn.sub_continuous": "רציף",
   "jrn.sub_every2h": "כל שעתיים",
   "jrn.sub_bolus": "בולוס",
-  "jrn.sub_basal": "בזאלי",
   "jrn.sub_small": "קטנות, עד 30 גרם",
   "jrn.sub_large": "גדולות, מעל 30 גרם",
   "jrn.subs_small": "קטנות",
@@ -4154,5 +4153,6 @@
   "jrn.sub_low": "נמוך",
   "jrn.sub_high": "גבוה",
   "jrn.sub_set": "החלפת סט",
-  "jrn.sub_sensor": "החלפת חיישן"
+  "jrn.sub_sensor": "החלפת חיישן",
+  "jrn.sub_auto": "תיקון אוטומטי"
 }
