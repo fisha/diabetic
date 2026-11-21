@@ -8,6 +8,9 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-394, thread "Add Journal sub-filters"): Guy: the main card of the "What would you like to log?"
+sheet reads "Meal photo" / "צילום ארוחה" (existing `com.ql_photo`; `com.qa_m` unchanged elsewhere). App #236. Next: OTA.
+
 21 Nov 2026 (Jira PM-385): Guy: while viewing someone who shares with him, Settings shows his own "Sharing settings"
 last, under "Your own sharing", since they are not about the person viewed. A "Name or nickname" field at the top lets
 the viewer call the person by a name of their own (`shares.viewer_nickname`, migration `d1e3f5a7b9c4`, `PUT
