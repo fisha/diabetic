@@ -4131,5 +4131,12 @@
   "yg.wk_hint": "Explains how the week works",
   "yg.ch_met": "Met",
   "yg.ch_of": "{n} of {total}",
-  "yg.wins_many": "{n} of {total} challenges met"
+  "yg.wins_many": "{n} of {total} challenges met",
+  "onb.d_pick": "Choose a date",
+  "onb.sx_t": "Sex",
+  "onb.sx_b": "Some things that affect glucose, like the menstrual cycle, differ by sex.",
+  "onb.sx_f": "Female",
+  "onb.sx_m": "Male",
+  "onb.sx_err": "Choose one of the options.",
+  "onb.rv_sex": "Sex"
 }

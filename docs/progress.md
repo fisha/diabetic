@@ -44,6 +44,15 @@ source as the pump's (app #216). Web was already read-only. Still allowed on dev
 (PM-110), the same-meal link (G-47), bulk removal on disconnect, account deletion. Open: privacy policy says "edit any
 record" (Guy to choose when to release the wording). Next: deploy API, then OTA.
 
+21 Nov 2026 (Jira PM-359, PM-367, thread "Simplify birth date and add sex in onboarding"): Guy asked for the date of
+birth as one field with a wheel and for a sex question. Built and merged: one Duet-style field that opens the native
+day/month/year wheel (dd.mm.yyyy in Hebrew, mm.dd.yyyy in English), Sex chips (Female, Male, Prefer not to say) on the
+same step, `sex` in the profile answers (no migration), "sex female/male" in the companion's context, privacy policy EN+HE
+with version 2026-11-21T17:30:00Z (forced re-accept), G-119. PM-367 (Guy's screenshot): Back, Skip and Continue all did
+the same thing and every tap was saved; now a step's answers are saved only by Continue, Skip moves on without saving,
+Back saves nothing, and "Complete your profile" walks the open questions. Seen on the iOS simulator with a local test
+account (app #218, api #165, web #59). Next: deploy API and web, then OTA.
+
 21 Nov 2026 (Jira PM-353, thread "Let iPhone testers register their device themselves"): Guy's new iPhone tester got
 stuck: the /get/iphone step sent people to sign in (which hung at Google on the iPhone) although self-registration is
 off (no STEADY_EXPO_TOKEN). Correction to PM-290: the Mac found that `eas device:create` returns the same team link
