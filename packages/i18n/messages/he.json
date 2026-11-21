@@ -4116,5 +4116,6 @@
   "lab.same_as_read": "כמו בדוח",
   "lab.edit_t": "תוצאה",
   "lab.edit_save": "שמירת השינוי",
-  "lab.rv_skipped_names": "{count, plural, one {לא הועתקה, כי לא הצלחתי לקרוא לה תוצאה: {names}.} other {לא הועתקו, כי לא הצלחתי לקרוא להן תוצאה: {names}.}} אפשר להוסיף אותן ידנית."
+  "lab.rv_skipped_names": "{count, plural, one {לא הועתקה, כי לא הצלחתי לקרוא לה תוצאה: {names}.} other {לא הועתקו, כי לא הצלחתי לקרוא להן תוצאה: {names}.}} אפשר להוסיף אותן ידנית.",
+  "vd.del_report_q": "למחוק את הדוח? הוא יימחק מהטלפון ומהשרת של Stedio."
 }

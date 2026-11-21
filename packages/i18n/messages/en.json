@@ -4116,5 +4116,6 @@
   "lab.same_as_read": "Same as on the report",
   "lab.edit_t": "Result",
   "lab.edit_save": "Save change",
-  "lab.rv_skipped_names": "{count, plural, one {Not copied, no result could be read for it: {names}.} other {Not copied, no result could be read for them: {names}.}} You can add them by hand."
+  "lab.rv_skipped_names": "{count, plural, one {Not copied, no result could be read for it: {names}.} other {Not copied, no result could be read for them: {names}.}} You can add them by hand.",
+  "vd.del_report_q": "Delete this report? It is removed from this phone and from Stedio's server."
 }

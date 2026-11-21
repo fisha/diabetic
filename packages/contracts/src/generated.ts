@@ -1611,7 +1611,12 @@ export interface paths {
         get: operations["get_export_exports__export_id__get"];
         put?: never;
         post?: never;
-        delete?: never;
+        /**
+         * Delete Export
+         * @description Deletes a report or export the person made, before its 7 days are up (Guy, 21 Nov 2026, PM-349: "a report I made,
+         *     let me delete it"): the sealed file and its row. One already gone (expired or deleted) is a 404.
+         */
+        delete: operations["delete_export_exports__export_id__delete"];
         options?: never;
         head?: never;
         patch?: never;
@@ -11385,6 +11390,35 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["ExportOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_export_exports__export_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                export_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {

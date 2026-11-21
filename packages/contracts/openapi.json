@@ -17435,6 +17435,46 @@
       }
     },
     "/exports/{export_id}": {
+      "delete": {
+        "description": "Deletes a report or export the person made, before its 7 days are up (Guy, 21 Nov 2026, PM-349: \"a report I made,\nlet me delete it\"): the sealed file and its row. One already gone (expired or deleted) is a 404.",
+        "operationId": "delete_export_exports__export_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "export_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Export Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete Export",
+        "tags": [
+          "account"
+        ]
+      },
       "get": {
         "operationId": "get_export_exports__export_id__get",
         "parameters": [
