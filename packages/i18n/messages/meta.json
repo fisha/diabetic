@@ -4976,7 +4976,8 @@
     "board": "Journal",
     "review": [
       "translation"
-    ]
+    ],
+    "note": "Any entry a device or service sent (Guy, 21 Nov 2026, PM-362): no edit, no delete, Hide only."
   },
   "jrn.dup_keep": {
     "board": "Journal",
@@ -5893,19 +5894,25 @@
       "translation"
     ]
   },
-  "lh.habit": {
+  "lh.habit_s": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
-  "lh.lab": {
+  "lh.recent": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
   "lh.t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lh.tests": {
     "board": "Overview",
     "review": [
       "translation"
