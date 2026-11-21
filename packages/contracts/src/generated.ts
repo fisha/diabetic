@@ -1996,7 +1996,7 @@ export interface paths {
         post?: never;
         /**
          * Delete
-         * @description Soft delete: gone from the journal and summaries; kept until account deletion.
+         * @description Soft delete: gone from the journal and summaries; kept until account deletion. A device's reading can't be (PM-362).
          */
         delete: operations["delete_glucose__record_id__delete"];
         options?: never;
@@ -3006,7 +3006,8 @@ export interface paths {
         post?: never;
         /**
          * Delete
-         * @description Soft delete: gone from the journal and summaries; the row and its revisions stay until account deletion.
+         * @description Soft delete: gone from the journal and summaries; the row and its revisions stay until account deletion. A device's
+         *     entry can't be deleted (PM-362); it can be hidden.
          */
         delete: operations["delete_records__record_id__delete"];
         options?: never;
@@ -3530,7 +3531,8 @@ export interface paths {
         get?: never;
         /**
          * Set Kinds
-         * @description Which proactive messages stay in the app instead of WhatsApp (the rest go to WhatsApp).
+         * @description Which proactive messages stay in the app instead of WhatsApp (the rest go to WhatsApp). After the person asked on
+         *     WhatsApp to stop them (PM-365), turning any kind on here restarts WhatsApp updates for the kinds left on.
          */
         put: operations["set_kinds_whatsapp_kinds_put"];
         post?: never;
@@ -3590,8 +3592,31 @@ export interface paths {
             cookie?: never;
         };
         get?: never;
-        /** Set Challenge */
+        /**
+         * Set Challenge
+         * @description One challenge or none (app versions before PM-371).
+         */
         put: operations["set_challenge_young_challenge_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/young/challenges": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Challenges
+         * @description This week's challenges: none, one or several (PM-371, Guy 21 Nov 2026).
+         */
+        put: operations["set_challenges_young_challenges_put"];
         post?: never;
         delete?: never;
         options?: never;
@@ -4260,6 +4285,11 @@ export interface components {
             met: number;
             /** Target */
             target: number;
+        };
+        /** ChallengesIn */
+        ChallengesIn: {
+            /** Ids */
+            ids: ("log_lunch" | "log_breakfast" | "move" | "talk")[];
         };
         /** ChangeMetaOut */
         ChangeMetaOut: {
@@ -8048,6 +8078,11 @@ export interface components {
              * @default false
              */
             linked: boolean;
+            /**
+             * Updates Off
+             * @default false
+             */
+            updates_off: boolean;
         };
         /**
          * WhyOut
@@ -8166,6 +8201,11 @@ export interface components {
         };
         /** YoungOut */
         YoungOut: {
+            /**
+             * Active
+             * @default []
+             */
+            active: components["schemas"]["ChallengeOut"][];
             /** Band */
             band: ("child" | "teen") | null;
             challenge?: components["schemas"]["ChallengeOut"] | null;
@@ -12299,6 +12339,13 @@ export interface operations {
                 };
                 content?: never;
             };
+            /** @description source_read_only: the reading came from a device */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
             /** @description Validation Error */
             422: {
                 headers: {
@@ -12333,6 +12380,13 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["GlucoseOut"];
                 };
+            };
+            /** @description source_read_only: the reading came from a device */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -14269,6 +14323,13 @@ export interface operations {
                 };
                 content?: never;
             };
+            /** @description source_read_only: the record came from a device */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
             /** @description Validation Error */
             422: {
                 headers: {
@@ -14303,6 +14364,13 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["RecordOut"];
                 };
+            };
+            /** @description source_read_only: the record came from a device */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -15437,6 +15505,37 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["ChallengeIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_challenges_young_challenges_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ChallengesIn"];
             };
         };
         responses: {

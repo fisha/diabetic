@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-368, thread "Open meal photos full screen on tap"): Guy asked that tapping a photographed meal's
+photo wherever it shows later opens it full screen. Built one shared `PhotoViewer` (app `components/`): black
+background, pinch or double tap to zoom (up to 4x), drag while zoomed, close with the X on the leading side (right in
+Hebrew) or a swipe down; plain Animated + PanResponder, so it ships by OTA. `MealPhoto` opens it, which covers every
+place a saved meal photo appears (Journal meal detail, Overview meal/day sheet). Chat and the meal curve card show no
+photo, so nothing changed there; the review screen while logging is not a "later" record and was left as it is.
+`pnpm check` passes (app 245 tests); e2e `tools/e2e/photo-viewer.cjs` 9/9 on the web build. Merged (app #217) on Guy's
+go-ahead to merge and deploy everything finished; next: testers OTA (app only, no API).
+
 21 Nov 2026 (Jira PM-365, thread "Stop WhatsApp messages after opt-out"): a tester asked on WhatsApp not to get
 updates; the companion promised to stop but nothing recorded it, so a meal nudge still went. Guy's rule: once a person
 asks to stop, Stedio sends no proactive WhatsApp message of any kind and only answers when they write. Built in the API
@@ -34,6 +43,15 @@ device state (no Edit, no swipe delete, the device note and Hide); the Overview 
 source as the pump's (app #216). Web was already read-only. Still allowed on device data: Hide, the pump meal food note
 (PM-110), the same-meal link (G-47), bulk removal on disconnect, account deletion. Open: privacy policy says "edit any
 record" (Guy to choose when to release the wording). Next: deploy API, then OTA.
+
+21 Nov 2026 (Jira PM-359, PM-367, thread "Simplify birth date and add sex in onboarding"): Guy asked for the date of
+birth as one field with a wheel and for a sex question. Built and merged: one Duet-style field that opens the native
+day/month/year wheel (dd.mm.yyyy in Hebrew, mm.dd.yyyy in English), Sex chips (Female, Male, Prefer not to say) on the
+same step, `sex` in the profile answers (no migration), "sex female/male" in the companion's context, privacy policy EN+HE
+with version 2026-11-21T17:30:00Z (forced re-accept), G-119. PM-367 (Guy's screenshot): Back, Skip and Continue all did
+the same thing and every tap was saved; now a step's answers are saved only by Continue, Skip moves on without saving,
+Back saves nothing, and "Complete your profile" walks the open questions. Seen on the iOS simulator with a local test
+account (app #218, api #165, web #59). Next: deploy API and web, then OTA.
 
 21 Nov 2026 (Jira PM-353, thread "Let iPhone testers register their device themselves"): Guy's new iPhone tester got
 stuck: the /get/iphone step sent people to sign in (which hung at Google on the iPhone) although self-registration is

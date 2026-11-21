@@ -5348,6 +5348,27 @@
       "translation"
     ]
   },
+  "jrn.photo_open_hint": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Full-screen meal photo viewer (PM-368)."
+  },
+  "jrn.photo_zoom_hint": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Full-screen meal photo viewer (PM-368)."
+  },
+  "jrn.photo_close": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Full-screen meal photo viewer (PM-368)."
+  },
   "jrn.meal_src_photo": {
     "board": "Journal",
     "review": [
@@ -26766,6 +26787,24 @@
     ]
   },
   "yg.wk_hint": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ch_met": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ch_of": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.wins_many": {
     "board": "Duet",
     "review": [
       "translation"
