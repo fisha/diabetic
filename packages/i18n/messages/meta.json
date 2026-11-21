@@ -26892,5 +26892,152 @@
       "translation"
     ],
     "note": "Viewer settings, nickname and own sharing at the bottom (PM-385, Guy 21 Nov 2026)."
+  },
+  "shr.rel_none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Relationship dropdown with nothing chosen (PM-388, Guy 21 Nov 2026)."
+  },
+  "yg.pc_from": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_to": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_perm_h": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_photo": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_photo_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_wa": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_wa_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_labs": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_labs_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_weather": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_weather_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_follow_h": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_follow": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_follow_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_pending_h": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_approve": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.pc_decline": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "yg.off_parent": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "shr.wait_parent": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "shr.wait_parent_v": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
   }
 }

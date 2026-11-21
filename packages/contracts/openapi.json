@@ -2220,9 +2220,34 @@
       },
       "Controls": {
         "properties": {
+          "approve_followers": {
+            "default": false,
+            "title": "Approve Followers",
+            "type": "boolean"
+          },
+          "labs": {
+            "default": true,
+            "title": "Labs",
+            "type": "boolean"
+          },
+          "meal_photo": {
+            "default": true,
+            "title": "Meal Photo",
+            "type": "boolean"
+          },
           "quiet": {
             "title": "Quiet",
             "type": "boolean"
+          },
+          "quiet_from": {
+            "default": "21:00",
+            "title": "Quiet From",
+            "type": "string"
+          },
+          "quiet_to": {
+            "default": "07:00",
+            "title": "Quiet To",
+            "type": "string"
           },
           "set_at": {
             "anyOf": [
@@ -2254,6 +2279,16 @@
           "voice": {
             "title": "Voice",
             "type": "boolean"
+          },
+          "weather": {
+            "default": true,
+            "title": "Weather",
+            "type": "boolean"
+          },
+          "whatsapp": {
+            "default": true,
+            "title": "Whatsapp",
+            "type": "boolean"
           }
         },
         "required": [
@@ -2267,6 +2302,39 @@
       "ControlsIn": {
         "additionalProperties": false,
         "properties": {
+          "approve_followers": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approve Followers"
+          },
+          "labs": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Labs"
+          },
+          "meal_photo": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Meal Photo"
+          },
           "quiet": {
             "anyOf": [
               {
@@ -2277,6 +2345,30 @@
               }
             ],
             "title": "Quiet"
+          },
+          "quiet_from": {
+            "anyOf": [
+              {
+                "pattern": "^([01]\\d|2[0-3]):(00|30)$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quiet From"
+          },
+          "quiet_to": {
+            "anyOf": [
+              {
+                "pattern": "^([01]\\d|2[0-3]):(00|30)$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quiet To"
           },
           "teen_early": {
             "anyOf": [
@@ -2299,6 +2391,28 @@
               }
             ],
             "title": "Voice"
+          },
+          "weather": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weather"
+          },
+          "whatsapp": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Whatsapp"
           }
         },
         "title": "ControlsIn",
@@ -8655,6 +8769,14 @@
           "controls": {
             "$ref": "#/components/schemas/Controls"
           },
+          "pending": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/PendingOut"
+            },
+            "title": "Pending",
+            "type": "array"
+          },
           "teen_early_possible": {
             "title": "Teen Early Possible",
             "type": "boolean"
@@ -9006,6 +9128,66 @@
           "until"
         ],
         "title": "PauseOut",
+        "type": "object"
+      },
+      "PendingIn": {
+        "additionalProperties": false,
+        "properties": {
+          "approve": {
+            "title": "Approve",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "approve"
+        ],
+        "title": "PendingIn",
+        "type": "object"
+      },
+      "PendingOut": {
+        "description": "Someone new who follows the young person and waits for the parent's OK (PM-386).",
+        "properties": {
+          "accepted_at": {
+            "format": "date-time",
+            "title": "Accepted At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "relation": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relation"
+          },
+          "scopes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scopes",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "relation",
+          "scopes",
+          "accepted_at"
+        ],
+        "title": "PendingOut",
         "type": "object"
       },
       "PersonaIn": {
@@ -12318,6 +12500,11 @@
               }
             ],
             "title": "Viewer Email"
+          },
+          "waiting_parent": {
+            "default": false,
+            "title": "Waiting Parent",
+            "type": "boolean"
           }
         },
         "required": [
@@ -12392,6 +12579,11 @@
             },
             "title": "Scopes",
             "type": "array"
+          },
+          "waiting_parent": {
+            "default": false,
+            "title": "Waiting Parent",
+            "type": "boolean"
           }
         },
         "required": [
@@ -22895,6 +23087,75 @@
           }
         ],
         "summary": "Parent Set",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/sharing/{share_id}/young/pending/{pending_id}": {
+      "post": {
+        "description": "The parent's OK for someone new who follows their child (PM-386), or a no: approved, the share opens; declined, it\nends as if the child had removed them (their conversations about the child go too).",
+        "operationId": "parent_decide_sharing__share_id__young_pending__pending_id__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "pending_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Pending Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PendingIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParentYoungOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Parent Decide",
         "tags": [
           "young"
         ]
