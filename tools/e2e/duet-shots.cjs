@@ -58,6 +58,24 @@ const server = http.createServer((req, res) => {
           clinics: [{ ...base, id: 'c2', status: 'accepted', scopes: ['sensor', 'labs'], decided_at: new Date(Date.now() - 2 * 86_400_000).toISOString(), last_viewed_at: y.toISOString(), last_viewed_by: null }] };
         await page.route('**/care-team', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify(body) }));
       }
+      // LABS=1: saved lab results on two test dates, one corrected after the report was read and one in words (PM-347),
+      // posted to the test server as the person would save them. LABSCAN=1: the photo picker gets a small image and the
+      // reading answers with rows (one in words) and a result it could not read, for the review screen.
+      if (process.env.LABS) {
+        const d = (k) => new Date(Date.now() - k * 86_400_000).toISOString().slice(0, 10);
+        const rows = [[3, { test: 'a1c', name: 'HbA1c', value: 6.9, unit: '%', read_value: 6.9, range_text: '4.0-5.6' }], [3, { test: 'creatinine', name: 'Creatinine', value: 1.44, unit: 'mg/dL', read_value: 0.94, range_text: '0.6-1.2' }],
+          [3, { test: 'other', name: 'Urine glucose', value: null, result_text: 'Negative', read_text: 'Negative', unit: '' }], [3, { test: 'ldl', name: 'LDL', value: 98, unit: 'mg/dL', read_value: 98 }], [90, { test: 'a1c', name: 'HbA1c', value: 7.2, unit: '%', read_value: 7.2 }]];
+        for (const [i, [k, data]] of rows.entries()) {
+          await api('/records', { method: 'POST', token: s.access_token, body: { idempotency_key: `shots-lab-${lang}-${Date.now()}-${i}`, kind: 'lab', occurred_at: `${d(k)}T08:00:00+00:00`, entered_at: new Date().toISOString(), source: 'manual', data: { source: 'lab_report', taken_on: d(k), ...data } } });
+        }
+      }
+      if (process.env.LABSCAN) {
+        const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64');
+        page.on('filechooser', (fc) => fc.setFiles({ name: 'report.png', mimeType: 'image/png', buffer: png }));
+        const scan = { provider: 'shots', taken_on: new Date(Date.now() - 86_400_000).toISOString().slice(0, 10), skipped: 2, skipped_names: ['Urine ketones', 'Urine protein'],
+          rows: [{ test: 'creatinine', name: 'Creatinine', value: 0.94, unit: 'mg/dL', range_text: '0.6-1.2' }, { test: 'other', name: 'Urine glucose', value: null, result_text: 'Negative', unit: '', range_text: 'Negative' }, { test: 'tsh', name: 'TSH', value: 2.1, unit: 'mIU/L', range_text: '0.4-4.0' }] };
+        await page.route('**/labs/scan', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify(scan) }));
+      }
       // ROWS=1: a set change three days ago and a lab result, for the Overview status rows (z21). Screenshot tooling only.
       if (process.env.ROWS) {
         const h = { 'access-control-allow-origin': '*' };

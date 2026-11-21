@@ -2424,6 +2424,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/labs/day/{taken_on}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Delete Day
+         * @description Deletes one test date's results, the whole report as listed in My test results (Guy, 21 Nov 2026, PM-348: swipe a
+         *     report away). Soft delete like a single record: gone from every screen and summary; the rows and their revisions stay
+         *     until account deletion.
+         */
+        delete: operations["delete_day_labs_day__taken_on__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/labs/scan": {
         parameters: {
             query?: never;
@@ -5846,6 +5868,21 @@ export interface components {
              */
             range_text: string | null;
             /**
+             * Read Text
+             * @default null
+             */
+            read_text: string | null;
+            /**
+             * Read Value
+             * @default null
+             */
+            read_value: number | null;
+            /**
+             * Result Text
+             * @default null
+             */
+            result_text: string | null;
+            /**
              * Source
              * @enum {string}
              */
@@ -5862,8 +5899,11 @@ export interface components {
             test: "a1c" | "fasting_glucose" | "glucose" | "ogtt" | "c_peptide" | "insulin" | "gad_antibodies" | "ketones" | "ldl" | "hdl" | "non_hdl" | "triglycerides" | "cholesterol" | "egfr" | "creatinine" | "urea" | "uric_acid" | "uacr" | "urine_albumin" | "sodium" | "potassium" | "calcium" | "magnesium" | "phosphorus" | "alt" | "ast" | "ggt" | "alk_phos" | "bilirubin" | "albumin" | "hemoglobin" | "hematocrit" | "rbc" | "mcv" | "wbc" | "platelets" | "ferritin" | "iron" | "b12" | "folate" | "vitamin_d" | "tsh" | "ft4" | "crp" | "ttg_iga" | "other";
             /** Unit */
             unit: string;
-            /** Value */
-            value: number;
+            /**
+             * Value
+             * @default null
+             */
+            value: number | null;
         };
         /** LabRow */
         LabRow: {
@@ -5871,6 +5911,8 @@ export interface components {
             name: string;
             /** Range Text */
             range_text?: string | null;
+            /** Result Text */
+            result_text?: string | null;
             /**
              * Test
              * @enum {string}
@@ -5882,7 +5924,7 @@ export interface components {
              */
             unit: string;
             /** Value */
-            value: number;
+            value?: number | null;
         };
         /** LabScan */
         LabScan: {
@@ -5895,6 +5937,8 @@ export interface components {
              * @default 0
              */
             skipped: number;
+            /** Skipped Names */
+            skipped_names?: string[];
             /** Taken On */
             taken_on?: string | null;
         };
@@ -12907,6 +12951,42 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["RecordOut"][];
+                };
+            };
+        };
+    };
+    delete_day_labs_day__taken_on__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                taken_on: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description no_results */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

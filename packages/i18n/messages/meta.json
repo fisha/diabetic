@@ -26673,5 +26673,47 @@
     "review": [
       "translation"
     ]
+  },
+  "lab.del_day_q": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.del_q": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.differs": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.same_as_read": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.edit_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.edit_save": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "lab.rv_skipped_names": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

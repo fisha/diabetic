@@ -3431,7 +3431,7 @@
   "lab.scan_camera_denied": "Camera access is off for Stedio. You can turn it on in the phone’s Settings, or choose photos instead.",
   "lab.rv_t": "Check the results",
   "lab.rv_b": "Copied from your report. Compare each one with the report and uncheck any you don’t want to save.",
-  "lab.rv_none": "No results with a number were found on the report.",
+  "lab.rv_none": "No results were found on the report.",
   "lab.rv_skipped": "{count, plural, one {One result without a number wasn’t copied.} other {# results without a number weren’t copied.}} You can add them by hand.",
   "lab.rv_save": "{count, plural, one {Save 1 result} other {Save # results}}",
   "lab.rv_saved": "{count, plural, one {1 result saved} other {# results saved}}",
@@ -4109,5 +4109,12 @@
   "meal.eaten_day": "Day of the meal",
   "set.ex_days": "Days",
   "set.ex_from": "From",
-  "set.ex_to": "To"
+  "set.ex_to": "To",
+  "lab.del_day_q": "{n, plural, one {Delete this test date and its result?} other {Delete this test date and its # results?}}",
+  "lab.del_q": "Delete this result?",
+  "lab.differs": "Different from what the report showed: {value}",
+  "lab.same_as_read": "Same as on the report",
+  "lab.edit_t": "Result",
+  "lab.edit_save": "Save change",
+  "lab.rv_skipped_names": "{count, plural, one {Not copied, no result could be read for it: {names}.} other {Not copied, no result could be read for them: {names}.}} You can add them by hand."
 }

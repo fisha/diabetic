@@ -6277,6 +6277,47 @@
             "default": null,
             "title": "Range Text"
           },
+          "read_text": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Read Text"
+          },
+          "read_value": {
+            "anyOf": [
+              {
+                "maximum": 100000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Read Value"
+          },
+          "result_text": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Result Text"
+          },
           "source": {
             "enum": [
               "lab_report",
@@ -6350,15 +6391,22 @@
             "type": "string"
           },
           "value": {
-            "maximum": 100000,
-            "minimum": 0,
-            "title": "Value",
-            "type": "number"
+            "anyOf": [
+              {
+                "maximum": 100000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Value"
           }
         },
         "required": [
           "test",
-          "value",
           "unit",
           "taken_on",
           "source"
@@ -6385,6 +6433,18 @@
               }
             ],
             "title": "Range Text"
+          },
+          "result_text": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Result Text"
           },
           "test": {
             "enum": [
@@ -6445,16 +6505,22 @@
             "type": "string"
           },
           "value": {
-            "maximum": 100000.0,
-            "minimum": 0.0,
-            "title": "Value",
-            "type": "number"
+            "anyOf": [
+              {
+                "maximum": 100000.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
           }
         },
         "required": [
           "test",
-          "name",
-          "value"
+          "name"
         ],
         "title": "LabRow",
         "type": "object"
@@ -6478,6 +6544,14 @@
             "minimum": 0.0,
             "title": "Skipped",
             "type": "integer"
+          },
+          "skipped_names": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 60,
+            "title": "Skipped Names",
+            "type": "array"
           },
           "taken_on": {
             "anyOf": [
@@ -19803,6 +19877,51 @@
           }
         ],
         "summary": "List Labs",
+        "tags": [
+          "labs"
+        ]
+      }
+    },
+    "/labs/day/{taken_on}": {
+      "delete": {
+        "description": "Deletes one test date's results, the whole report as listed in My test results (Guy, 21 Nov 2026, PM-348: swipe a\nreport away). Soft delete like a single record: gone from every screen and summary; the rows and their revisions stay\nuntil account deletion.",
+        "operationId": "delete_day_labs_day__taken_on__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taken_on",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "title": "Taken On",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "no_results"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Delete Day",
         "tags": [
           "labs"
         ]
