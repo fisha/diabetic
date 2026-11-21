@@ -42,6 +42,11 @@ the top in proportion to the pull and springs back on release (`features/refresh
 Talk, not Overview (Switch menu, view-as link, and app launch while viewing). `tools/e2e/switch-person.cjs` checks the
 landing; 0 failures in three looks. App #229. Next: OTA.
 
+21 Nov 2026 (Jira PM-395, same thread): Guy changed his mind on PM-382: the latest reading card is back on the Overview,
+first on the page ("צריך להחזיר את התוצאת סוכר ... שיהיה ראשון בעמוד"), with its stale, warm-up and sensor-updating states
+and strings. Order: latest reading, time in range, Insights, period and graph, biggest rises, Body today, Food today,
+then the rest. App #237; root `pnpm check` green (app 257); Playwright he light and en dark. Next: OTA.
+
 21 Nov 2026 (Jira PM-391, same thread): Guy: on the Overview the Insights row comes right after time in range ("תובנות
 צריכות להיות אחרי זמן בטווח"). Order: time in range, Insights, period and graph, biggest rises, Body today, Food today,
 then the rest. App #235; root `pnpm check` green (app 257); Playwright he light and en dark. Next: OTA.
