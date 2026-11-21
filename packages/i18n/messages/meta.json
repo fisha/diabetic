@@ -2509,13 +2509,6 @@
     ],
     "note": "Lock-screen card, widgets and watch: {t} is a timer the phone counts up (PM-320)."
   },
-  "ovr.stale_up": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ],
-    "note": "Overview note when the last reading is old because the sensor is updating (PM-320)."
-  },
   "com.wu_meta": {
     "board": "Companion",
     "review": [
@@ -10716,35 +10709,6 @@
     "review": [
       "translation"
     ]
-  },
-  "ovr.stale": {
-    "board": "Overview",
-    "review": [
-      "translation",
-      "clinical"
-    ]
-  },
-  "ovr.stale@v": {
-    "board": "Overview",
-    "review": [
-      "translation",
-      "clinical"
-    ],
-    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
-  },
-  "ovr.stale_wu": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ],
-    "note": "Instead of ovr.stale while a new sensor warms up (G-80, Guy 15 Nov 2026)."
-  },
-  "ovr.stale_wu_soon": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ],
-    "note": "Instead of ovr.stale while a new sensor warms up (G-80, Guy 15 Nov 2026)."
   },
   "ovr.sum_24h": {
     "board": "Overview",
@@ -26491,12 +26455,6 @@
     ]
   },
   "ovr.r_sensor_h": {
-    "board": "Duet",
-    "review": [
-      "translation"
-    ]
-  },
-  "ovr.r_pick": {
     "board": "Duet",
     "review": [
       "translation"
