@@ -156,6 +156,26 @@ def test_scheduled_claim_needs_a_scheduled_result():
     assert g["no_unbacked_schedule"]["pass"] and g["tools_required"]["pass"]
 
 
+def test_a_question_about_a_reminder_is_not_a_scheduling_claim():
+    """PM-392 (21 Nov 2026): he-mem-11 blocked a deploy on a clarifying question; a statement still fails."""
+    c = case("he-mem-11")
+    for draft in (
+        "בוקר טוב, גיא. מה תרצה שאזכיר לך לבדוק בעוד שעתיים?",
+        "האם שאזכיר לך בעוד שעתיים לבדוק?",
+        "Sure. When should I remind you to check?",
+    ):
+        g = grade(c, run_case(c, Scripted([Completion(draft)])))
+        assert g["no_unbacked_schedule"]["pass"], draft
+    for draft in (
+        "בסדר, אזכיר לך בעוד שעתיים.",
+        "בסדר, אזכיר לך בעוד שעתיים, טוב?",
+        "Sure, I'll remind you at 8, ok?",
+        "מה שתגיד. אזכיר לך בעוד שעתיים.",
+    ):
+        g = grade(c, run_case(c, Scripted([Completion(draft)])))
+        assert not g["no_unbacked_schedule"]["pass"], draft
+
+
 def test_memory_off_claim_fails():
     c = case("en-mem-14")
     r = run_case(
