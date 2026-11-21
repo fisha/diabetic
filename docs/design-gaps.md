@@ -2063,7 +2063,9 @@ look: a "Permissions" group (meal photo reading; in Teen mode WhatsApp, lab repo
 hours' times as two dropdown rows under the switches when quiet hours are on, a "New followers" group with "My OK for new
 followers", and a "Waiting for your OK" card per new follower with Approve and Decline. The child's "Set by your parent"
 (z52) lists the same rows, read-only, and is shown to teens too. Where a permission is off, its way in is removed or
-replaced by "Turned off by your parent".
+replaced by "Turned off by your parent". With meal photos off, the quick log's meal card (COM-11) has no camera mark
+and reads "Meal" / "Describe, search or scan a barcode", the app icon shortcut drops "Meal photo", and a camera link opens
+Log a meal.
 
 ### G-122 · Relationship as a dropdown (**asked by Guy, 21 Nov 2026, PM-388**)
 
