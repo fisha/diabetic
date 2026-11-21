@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-398, app #241): Guy: when anything is set in Zz (quiet mode), such as a schedule, the Zz button on
+the Talk screen shows its selected state. It is selected while quiet mode is on (by hand or timed) or its daily schedule
+is on, in Duet's selected look (accent-soft fill, accent ring, accent icon) with VoiceOver "selected". Type check, lint
+and the app's 257 tests pass; not yet seen on a simulator or phone (ships in the next testers OTA).
+
 21 Nov 2026 (Jira PM-386, PM-388): Guy chose all six parental permissions for Kids and Teen mode. A confirmed parent's
 "{name}'s Kids/Teen mode" screen now also has: meal photo reading, and in Teen mode WhatsApp, lab report reading and
 weather and location (all on by default; off closes the server path with 403 `off_by_parent`, unlinks WhatsApp, forgets
