@@ -19,6 +19,10 @@ again; also on the viewer's Talk home without a source sync). While pulling on i
 the top in proportion to the pull and springs back on release (`features/refresh/pullSquash.ts`, `VoiceOrb`
 `pressDown`); Android squashes once when the refresh starts. App #226. Native pull not yet seen on a phone.
 
+21 Nov 2026 (Jira PM-384, thread "Add Journal sub-filters"): Guy: switching to view someone else's data lands on
+Talk, not Overview (Switch menu, view-as link, and app launch while viewing). `tools/e2e/switch-person.cjs` checks the
+landing; 0 failures in three looks. App #229. Next: OTA.
+
 21 Nov 2026 (Jira PM-382, thread "Reorder the Overview sections"): Guy: the Overview no longer shows the latest reading
 card ("לא צריך את הקומפוננטה של המדידה האחרונה"; the Talk screen keeps the reading and its stale note). Order now: time in
 range, period, graph, the biggest rises, Body today, Food today, then the rest. The "Choose what to show" row is gone; a
