@@ -9,10 +9,11 @@ or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Hea
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
 21 Nov 2026 (Jira PM-363, thread "Stop Overview listing every lab result"): after Itay uploaded a lab report, the
-Overview "Labs and habits" card listed every test. It is now a Duet group: the latest HbA1c, LDL, eGFR and UACR (urine
-microalbumin when only it was reported), each opening its test date, one "All lab results" row with the number of
-tests, then the habit rows. Nothing removed; the full table keeps every result. App #213. App tests 242, typecheck and
-lint clean; web shots `/mnt/project-files/steady/release/pm-363/`. Next: testers OTA (app only, no API).
+Overview "Labs and habits" card listed every test. Guy chose (21 Nov): one "Recent labs" row (number of tests and the
+date) that opens all lab results, shown only when tests were done in the last 31 days; habits as before. Labs now read
+from `/labs` (no 92-day window; Guy's 2025 report was outside it, which is why he saw no card). The key-labs list of
+app #213 was replaced before any OTA. App #213, #215. App tests 242; web shots `/mnt/project-files/steady/release/pm-363/`.
+Next: testers OTA (app only, no API).
 
 21 Nov 2026 (Jira PM-353, thread "Let iPhone testers register their device themselves"): Guy's new iPhone tester got
 stuck: the /get/iphone step sent people to sign in (which hung at Google on the iPhone) although self-registration is
