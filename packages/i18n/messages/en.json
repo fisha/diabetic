@@ -4176,8 +4176,8 @@
   "upd.of": "Update of {date}, {time}",
   "bd.t_avg": "Body, a day on average",
   "bd.t_on": "Body on {when}",
-  "bd.n_days": "{n} days with data",
-  "bd.n_nights": "{n} nights",
+  "bd.n_days": "{n, plural, one {On one day} other {On # days}}",
+  "bd.n_nights": "{n, plural, one {One night} other {# nights}}",
   "bd.none_period": "No data in this period",
   "nut.t_avg": "Food, a day on average",
   "nut.t_on": "Food on {when}",
@@ -4187,5 +4187,5 @@
   "nut.l_meals_on": "Meals",
   "nut.l_carbs_on": "Carbs",
   "nut.l_protein_on": "Protein",
-  "nut.of_period": "of {n} days"
+  "nut.of_period": "{n, plural, one {of one day} other {of # days}}"
 }
