@@ -8,6 +8,10 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-378, same thread): Guy: the Overview graph no longer shows the "Your range ... · your
+time-in-range setting in CareLink" and "No data" legend lines (five unused strings removed); the range band is still
+drawn. App #224. Next: OTA.
+
 21 Nov 2026 (Jira PM-377, same thread): Guy: the source settings screen (MiniMed · CareLink) no longer shows the pump
 alerts and messages card (its four `set.cl_note*` strings removed); the connection and pump status cards stay, and
 the alerts stay in the Journal's Alerts tab. App #223. Next: OTA.

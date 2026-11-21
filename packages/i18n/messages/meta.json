@@ -10400,12 +10400,6 @@
       "translation"
     ]
   },
-  "ovr.lg_nodata": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
-  },
   "ovr.lg_range": {
     "board": "Overview",
     "review": [
@@ -10597,32 +10591,6 @@
     "review": [
       "translation"
     ]
-  },
-  "ovr.range_carelink": {
-    "board": "OVR-01",
-    "review": [
-      "translation"
-    ]
-  },
-  "ovr.range_carelink@v": {
-    "board": "OVR-01",
-    "review": [
-      "translation"
-    ],
-    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
-  },
-  "ovr.range_pump": {
-    "board": "OVR-01",
-    "review": [
-      "translation"
-    ]
-  },
-  "ovr.range_pump@v": {
-    "board": "OVR-01",
-    "review": [
-      "translation"
-    ],
-    "note": "Viewer variant (PM-313): used instead of the id without @v while viewing someone's shared data; {person} is their name."
   },
   "ovr.reading.stale": {
     "board": "Localization",
