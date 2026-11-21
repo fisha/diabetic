@@ -5872,19 +5872,19 @@
       "translation"
     ]
   },
-  "lh.habit": {
-    "board": "Overview",
-    "review": [
-      "translation"
-    ]
-  },
-  "lh.lab": {
+  "lh.habit_s": {
     "board": "Overview",
     "review": [
       "translation"
     ]
   },
   "lh.t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
+  "lh.tests": {
     "board": "Overview",
     "review": [
       "translation"
