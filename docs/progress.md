@@ -92,6 +92,12 @@ One-off `python -m steady_api.whatsapp.stop_backfill [--apply]` sets the stop fo
 WhatsApp no longer takes goes as the app push, under the app's own notification switches. Next: deploy API, run the
 backfill.
 
+21 Nov 2026 (Jira PM-389, thread "Stop Overview listing every lab result"): Guy saw a 3 Nov 2026 test as "11.03".
+Numeric dates (`apps/mobile/src/i18n/dates.ts`) now follow the device locale's day/month order and separator instead
+of the app language (this replaces the 17 Nov "mm.dd in English" rule); lab dates and the date of birth always carry
+the year (03/11/2026). Stored dates were right. App #232. App only. Next: testers OTA; check on Guy's iPhone that
+Hermes gives the region order.
+
 21 Nov 2026 (Jira PM-379, thread "Stop Overview listing every lab result"): Guy saw labs twice on Overview. The
 "Latest lab result" row in the status group (beside "Choose what to show") is removed; "Recent labs" under "Labs and
 habits" (PM-363) stays. `ovr.r_lab` string removed. App #225 (also carries PM-378). Next: testers OTA (app only).
