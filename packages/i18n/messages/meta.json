@@ -26733,5 +26733,35 @@
     "review": [
       "translation"
     ]
+  },
+  "yg.wk_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.wk_b": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.wk_log": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.wk_ok": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.wk_hint": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
