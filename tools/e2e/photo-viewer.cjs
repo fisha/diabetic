@@ -83,4 +83,6 @@ const server = http.createServer((req, res) => {
   } catch (e) { results.push('ERROR ' + e.message); await shot('error'); }
   console.log(results.join('\n')); if (errors.length) console.log('page errors:', errors.slice(0, 5).join(' | '));
   await browser.close(); server.close();
+  // A failed check or an error exits non-zero, so callers can tell a broken viewer from a pass.
+  if (results.some((r) => !r.startsWith('PASS'))) process.exitCode = 1;
 });
