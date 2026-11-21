@@ -4146,5 +4146,9 @@
   "jrn.sub_sensor": "Sensor change",
   "jrn.sub_auto": "Auto correction",
   "sub.invite": "Invite someone to Stedio",
-  "sub.invite_msg": "Hi! I wanted to tell you about Stedio, a companion app for everyday life with diabetes. You tell it what you ate and did, and it shows you patterns in your own data. It’s free for now. Install it here: {link}"
+  "sub.invite_msg": "Hi! I wanted to tell you about Stedio, a companion app for everyday life with diabetes. You tell it what you ate and did, and it shows you patterns in your own data. It’s free for now. Install it here: {link}",
+  "shr.nick_ph": "Name or nickname",
+  "shr.nick_b": "Only you see this name. {name}'s own account stays as it is.",
+  "shr.nick_saved": "Saved",
+  "shr.my_sharing_h": "Your own sharing"
 }

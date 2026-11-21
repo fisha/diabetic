@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-385): Guy: while viewing someone who shares with him, Settings shows his own "Sharing settings"
+last, under "Your own sharing", since they are not about the person viewed. A "Name or nickname" field at the top lets
+the viewer call the person by a name of their own (`shares.viewer_nickname`, migration `d1e3f5a7b9c4`, `PUT
+/sharing/{id}/nickname`, viewer only). It shows in the viewing strip, switcher, viewer wording and the viewer's
+companion; the owner's account is unchanged; empty goes back to the person's name. API tests, app 257, browser run
+`tools/e2e/viewer-nickname.cjs` 11/11 (en light, he dark). Next: API deploy, then OTA. G-120.
+
 21 Nov 2026 (Jira PM-383): Guy: Settings > Membership ends with "Invite someone to Stedio" ("להזמין מישהו ל-Stedio").
 It opens WhatsApp with a ready message (`sub.invite_msg`: a short pitch and the website install page `/en/get`); without
 WhatsApp the system share sheet opens. No personal data in the message, nothing sent to the server. App #227. Not yet
