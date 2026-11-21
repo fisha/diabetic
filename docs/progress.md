@@ -58,6 +58,10 @@ One-off `python -m steady_api.whatsapp.stop_backfill [--apply]` sets the stop fo
 WhatsApp no longer takes goes as the app push, under the app's own notification switches. Next: deploy API, run the
 backfill.
 
+21 Nov 2026 (Jira PM-379, thread "Stop Overview listing every lab result"): Guy saw labs twice on Overview. The
+"Latest lab result" row in the status group (beside "Choose what to show") is removed; "Recent labs" under "Labs and
+habits" (PM-363) stays. `ovr.r_lab` string removed. App #225 (also carries PM-378). Next: testers OTA (app only).
+
 21 Nov 2026 (Jira PM-363, thread "Stop Overview listing every lab result"): after Itay uploaded a lab report, the
 Overview "Labs and habits" card listed every test. Guy chose (21 Nov): one "Recent labs" row (number of tests and the
 date) that opens all lab results, shown only when tests were done in the last 31 days; habits as before. Labs now read
