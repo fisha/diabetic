@@ -4976,7 +4976,8 @@
     "board": "Journal",
     "review": [
       "translation"
-    ]
+    ],
+    "note": "Any entry a device or service sent (Guy, 21 Nov 2026, PM-362): no edit, no delete, Hide only."
   },
   "jrn.dup_keep": {
     "board": "Journal",

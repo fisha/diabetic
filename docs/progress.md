@@ -26,6 +26,15 @@ from `/labs` (no 92-day window; Guy's 2025 report was outside it, which is why h
 app #213 was replaced before any OTA. App #213, #215. App tests 242; web shots `/mnt/project-files/steady/release/pm-363/`.
 Next: testers OTA (app only, no API).
 
+21 Nov 2026 (Jira PM-362, thread "Lock device-sourced data from editing"): Guy: data that came from a source (carbs,
+insulin, glucose) must not be editable anywhere. API: `steady_api/sources.py` (person sources manual, voice,
+photo-estimate, conversation); PATCH and DELETE on `/records` and `/glucose` return 409 `source_read_only` for anything
+else; the companion's meal clarification never changes a device's entry (api #164). App: device entries use the board's
+device state (no Edit, no swipe delete, the device note and Hide); the Overview breakdown treats every non-person
+source as the pump's (app #216). Web was already read-only. Still allowed on device data: Hide, the pump meal food note
+(PM-110), the same-meal link (G-47), bulk removal on disconnect, account deletion. Open: privacy policy says "edit any
+record" (Guy to choose when to release the wording). Next: deploy API, then OTA.
+
 21 Nov 2026 (Jira PM-353, thread "Let iPhone testers register their device themselves"): Guy's new iPhone tester got
 stuck: the /get/iphone step sent people to sign in (which hung at Google on the iPhone) although self-registration is
 off (no STEADY_EXPO_TOKEN). Correction to PM-290: the Mac found that `eas device:create` returns the same team link

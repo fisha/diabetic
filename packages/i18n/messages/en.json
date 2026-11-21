@@ -679,7 +679,7 @@
   "jrn.del_yes": "Delete entry",
   "jrn.delete": "Delete",
   "jrn.deleted": "Entry deleted.",
-  "jrn.device_note": "Device readings can’t be edited here. You can hide one from summaries if you believe it’s wrong; the original stays in history.",
+  "jrn.device_note": "Entries from a device can’t be edited or deleted. You can hide one from summaries if you believe it’s wrong; the original stays in history.",
   "jrn.dup_keep": "They’re different, keep both",
   "jrn.dup_meal": "The pump recorded a meal close to the meal you logged at {time}. If it’s the same meal, it’s shown and counted once.",
   "jrn.dup_meal@v": "The pump recorded a meal close to the meal {person} logged at {time}. If it’s the same meal, it’s shown and counted once.",
