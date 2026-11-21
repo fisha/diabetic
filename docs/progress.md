@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-383): Guy: Settings > Membership ends with "Invite someone to Stedio" ("להזמין מישהו ל-Stedio").
+It opens WhatsApp with a ready message (`sub.invite_msg`: a short pitch and the website install page `/en/get`); without
+WhatsApp the system share sheet opens. No personal data in the message, nothing sent to the server. App #227. Not yet
+seen on a phone. Next: OTA.
+
 21 Nov 2026 (Jira PM-381): Guy: the Talk screen gets pull to refresh like Overview and Journal (sources synced, then
 the reading, records, device events, pump active insulin, sensor state, insight tiles/cards and young-mode cards load
 again; also on the viewer's Talk home without a source sync). While pulling on iOS the character is pressed flat from
