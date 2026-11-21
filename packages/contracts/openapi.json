@@ -6173,6 +6173,19 @@
         "title": "InvitePreviewOut",
         "type": "object"
       },
+      "IosDeviceAvailableOut": {
+        "properties": {
+          "available": {
+            "title": "Available",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "available"
+        ],
+        "title": "IosDeviceAvailableOut",
+        "type": "object"
+      },
       "IosDeviceOut": {
         "properties": {
           "available": {
@@ -8479,6 +8492,17 @@
             "const": 1,
             "title": "Version",
             "type": "integer"
+          },
+          "whatsappOffer": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Whatsappoffer"
           }
         },
         "required": [
@@ -14443,6 +14467,28 @@
           }
         ],
         "summary": "Add Ios Device",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/ios-device/available": {
+      "get": {
+        "description": "Public (PM-353): whether testers can add their iPhone themselves (the Expo token is set). The guide asks for\nsign-in only when this is true, so nobody signs in only to learn that it is not switched on.",
+        "operationId": "ios_device_available_auth_ios_device_available_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IosDeviceAvailableOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Ios Device Available",
         "tags": [
           "auth"
         ]
