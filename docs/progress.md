@@ -35,6 +35,10 @@ the top in proportion to the pull and springs back on release (`features/refresh
 Talk, not Overview (Switch menu, view-as link, and app launch while viewing). `tools/e2e/switch-person.cjs` checks the
 landing; 0 failures in three looks. App #229. Next: OTA.
 
+21 Nov 2026 (Jira PM-391, same thread): Guy: on the Overview the Insights row comes right after time in range ("תובנות
+צריכות להיות אחרי זמן בטווח"). Order: time in range, Insights, period and graph, biggest rises, Body today, Food today,
+then the rest. App #235; root `pnpm check` green (app 257); Playwright he light and en dark. Next: OTA.
+
 21 Nov 2026 (Jira PM-382, thread "Reorder the Overview sections"): Guy: the Overview no longer shows the latest reading
 card ("לא צריך את הקומפוננטה של המדידה האחרונה"; the Talk screen keeps the reading and its stale note). Order now: time in
 range, period, graph, the biggest rises, Body today, Food today, then the rest. The "Choose what to show" row is gone; a
