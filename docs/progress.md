@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-375, same thread): Guy changed the Insulin options to "auto correction" (the pump's automatic
+corrections, CareLink and Tandem) and "bolus" (boluses the person gave, meal or manual). Basal is no longer an option
+(pumps record boluses only); it shows only with no insulin option. On All a row shows only if, for each kind with a
+choice, one of its entries of that kind passes, so a reading holding only an automatic correction stays out under Bolus.
+App #221; app tests 257, browser run 36/36, screenshots `/mnt/project-files/steady/journal-filters/pm-375/`. Next: OTA.
+
 21 Nov 2026 (Jira PM-372, thread "Add sub-filters to Journal tabs"): Guy asked for options inside the Journal's filter
 tabs. A long press on Glucose, Insulin, Meals, Alerts or All opens a sheet (a tap on the selected tab, which shows a
 chevron, opens it too): glucose continuous or one reading every 2 hours (first reading of each local two-hour block),

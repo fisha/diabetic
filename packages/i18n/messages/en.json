@@ -4146,7 +4146,6 @@
   "jrn.sub_continuous": "Continuous",
   "jrn.sub_every2h": "Every 2 hours",
   "jrn.sub_bolus": "Bolus",
-  "jrn.sub_basal": "Basal",
   "jrn.sub_small": "Small, up to 30 g",
   "jrn.sub_large": "Large, over 30 g",
   "jrn.subs_small": "Small",
@@ -4154,5 +4153,6 @@
   "jrn.sub_low": "Low",
   "jrn.sub_high": "High",
   "jrn.sub_set": "Set change",
-  "jrn.sub_sensor": "Sensor change"
+  "jrn.sub_sensor": "Sensor change",
+  "jrn.sub_auto": "Auto correction"
 }

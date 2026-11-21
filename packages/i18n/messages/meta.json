@@ -26901,12 +26901,6 @@
       "translation"
     ]
   },
-  "jrn.sub_basal": {
-    "board": "Journal",
-    "review": [
-      "translation"
-    ]
-  },
   "jrn.sub_small": {
     "board": "Journal",
     "review": [
@@ -26950,6 +26944,12 @@
     ]
   },
   "jrn.sub_sensor": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.sub_auto": {
     "board": "Journal",
     "review": [
       "translation"
