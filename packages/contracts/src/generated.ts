@@ -4802,6 +4802,8 @@ export interface components {
              * @enum {string}
              */
             format: "pdf" | "csv";
+            /** From Day */
+            from_day?: string | null;
             /** Include */
             include: ("g" | "m" | "i" | "a" | "n" | "c")[];
             /** Labels */
@@ -4812,7 +4814,9 @@ export interface components {
              * Range
              * @enum {string}
              */
-            range: "30" | "90" | "all";
+            range: "30" | "90" | "all" | "days";
+            /** To Day */
+            to_day?: string | null;
         };
         /** ExportOut */
         ExportOut: {

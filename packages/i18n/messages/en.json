@@ -4106,5 +4106,8 @@
   "yg.ps_note": "You can see these but only a parent can change them. Your conversations with Stedio stay yours; your parents can't read them.",
   "yg.ch_this": "This week: {name}",
   "yg.ch_so_far": "{n} of {total} so far",
-  "meal.eaten_day": "Day of the meal"
+  "meal.eaten_day": "Day of the meal",
+  "set.ex_days": "Days",
+  "set.ex_from": "From",
+  "set.ex_to": "To"
 }

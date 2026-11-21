@@ -26655,5 +26655,23 @@
     "review": [
       "translation"
     ]
+  },
+  "set.ex_days": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_from": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "set.ex_to": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

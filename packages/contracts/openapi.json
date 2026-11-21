@@ -3204,6 +3204,18 @@
             "title": "Format",
             "type": "string"
           },
+          "from_day": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "From Day"
+          },
           "include": {
             "items": {
               "enum": [
@@ -3233,10 +3245,23 @@
             "enum": [
               "30",
               "90",
-              "all"
+              "all",
+              "days"
             ],
             "title": "Range",
             "type": "string"
+          },
+          "to_day": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "To Day"
           }
         },
         "required": [
