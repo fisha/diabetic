@@ -63,6 +63,13 @@ end, z50 cheer dim 0.97, z51 cheer push names the kind with its sticker ("Mom se
 parent's Kids mode controls in the list style, z54 week as day letters with one list for the challenge and growth
 ("Last week kept" kept beside the skip-days line). z44 viewer chat follows Guy's later choices (strip "Viewing {name}",
 short privacy line), not the board's header card. Not deployed; API (kids week, cheer text) needs deploy first.
+Same night, old-design sweep (Guy: no screen may stay in the old design): teen and adult week ring and challenge as
+x92 (day letters, trophy card with a bar per day), weekly wins picture flat accent in Rubik, infusion set as a radio
+group, first days x67 (answer buttons; the wrong "Logged on 14 of 3 days" line dropped), people I follow as list rows
+with swipe to stop following, clinic report preview bar z35 (the preview already existed; no new dependency). Apple
+Health "Body today" checked with sample data (shots option BODY=1); it hides only when Health sent nothing today.
+The Mac simulator runs against production with Guy's account, so kids/teen screens need a choice from Guy (local test
+server, stay on prod, or deploy the API).
 
 20 Nov 2026 (Jira PM-327, thread "Detect infusion set changes from CareLink"): Guy changed his infusion set at about
 09:50 Israel time and the journal only showed "basal resumed". CareLink's only set change signal was the 30-day
