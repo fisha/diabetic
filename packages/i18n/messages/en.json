@@ -4085,7 +4085,6 @@
   "ovr.r_sensor": "Sensor",
   "ovr.r_sensor_d": "{n, plural, one {Ends in 1 day} other {Ends in # days}}",
   "ovr.r_sensor_h": "{n, plural, one {Ends in 1 hour} other {Ends in # hours}}",
-  "ovr.r_lab": "Latest lab result",
   "ovr.r_pick": "Choose what to show",
   "yg.tab_days": "My days",
   "yg.tab_stk": "Stickers",
