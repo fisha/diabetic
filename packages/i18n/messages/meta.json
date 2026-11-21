@@ -26791,5 +26791,23 @@
     "review": [
       "translation"
     ]
+  },
+  "yg.ch_met": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ch_of": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.wins_many": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
