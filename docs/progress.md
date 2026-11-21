@@ -19,6 +19,9 @@ PM-388: relationship chips on Sharing and the invite screen are a dropdown (`com
 tests, app 257, browser runs `tools/e2e/parent-permissions.cjs` 13/13 and `tools/e2e/sharing.cjs` relation step.
 G-121, G-122. Next: API deploy, web deploy, OTA.
 
+21 Nov 2026 (Jira PM-394, thread "Add Journal sub-filters"): Guy: the main card of the "What would you like to log?"
+sheet reads "Meal photo" / "צילום ארוחה" (existing `com.ql_photo`; `com.qa_m` unchanged elsewhere). App #236. Next: OTA.
+
 21 Nov 2026 (Jira PM-385): Guy: while viewing someone who shares with him, Settings shows his own "Sharing settings"
 last, under "Your own sharing", since they are not about the person viewed. A "Name or nickname" field at the top lets
 the viewer call the person by a name of their own (`shares.viewer_nickname`, migration `d1e3f5a7b9c4`, `PUT
@@ -30,6 +33,10 @@ companion; the owner's account is unchanged; empty goes back to the person's nam
 It opens WhatsApp with a ready message (`sub.invite_msg`: a short pitch and the website install page `/en/get`); without
 WhatsApp the system share sheet opens. No personal data in the message, nothing sent to the server. App #227. Not yet
 seen on a phone. Next: OTA.
+
+21 Nov 2026 (Jira PM-393, same thread): Guy: the Talk screen layout stays as it was. Stedio's follow-up question
+(Duet 3.4, PM-340) no longer replaces "Tap to talk" with a row of voice/text answers; it takes turns with the greeting
+in the speech bubble (tap for text or voice). App #234.
 
 21 Nov 2026 (Jira PM-390, same thread): Guy's iPhone screenshot: the Talk tiles' top was cut under the status bar,
 both tiles should be smaller, and the hat covered the greeting bubble. The idle scroll area now starts below the status
@@ -45,6 +52,15 @@ the top in proportion to the pull and springs back on release (`features/refresh
 21 Nov 2026 (Jira PM-384, thread "Add Journal sub-filters"): Guy: switching to view someone else's data lands on
 Talk, not Overview (Switch menu, view-as link, and app launch while viewing). `tools/e2e/switch-person.cjs` checks the
 landing; 0 failures in three looks. App #229. Next: OTA.
+
+21 Nov 2026 (Jira PM-395, same thread): Guy changed his mind on PM-382: the latest reading card is back on the Overview,
+first on the page ("צריך להחזיר את התוצאת סוכר ... שיהיה ראשון בעמוד"), with its stale, warm-up and sensor-updating states
+and strings. Order: latest reading, time in range, Insights, period and graph, biggest rises, Body today, Food today,
+then the rest. App #237; root `pnpm check` green (app 257); Playwright he light and en dark. Next: OTA.
+
+21 Nov 2026 (Jira PM-391, same thread): Guy: on the Overview the Insights row comes right after time in range ("תובנות
+צריכות להיות אחרי זמן בטווח"). Order: time in range, Insights, period and graph, biggest rises, Body today, Food today,
+then the rest. App #235; root `pnpm check` green (app 257); Playwright he light and en dark. Next: OTA.
 
 21 Nov 2026 (Jira PM-382, thread "Reorder the Overview sections"): Guy: the Overview no longer shows the latest reading
 card ("לא צריך את הקומפוננטה של המדידה האחרונה"; the Talk screen keeps the reading and its stale note). Order now: time in
