@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-368, thread "Open meal photos full screen on tap"): Guy asked that tapping a photographed meal's
+photo wherever it shows later opens it full screen. Built one shared `PhotoViewer` (app `components/`): black
+background, pinch or double tap to zoom (up to 4x), drag while zoomed, close with the X on the leading side (right in
+Hebrew) or a swipe down; plain Animated + PanResponder, so it ships by OTA. `MealPhoto` opens it, which covers every
+place a saved meal photo appears (Journal meal detail, Overview meal/day sheet). Chat and the meal curve card show no
+photo, so nothing changed there; the review screen while logging is not a "later" record and was left as it is.
+`pnpm check` passes (app 245 tests); e2e `tools/e2e/photo-viewer.cjs` 9/9 on the web build. Merged (app #217) on Guy's
+go-ahead to merge and deploy everything finished; next: testers OTA (app only, no API).
+
 21 Nov 2026 (Jira PM-365, thread "Stop WhatsApp messages after opt-out"): a tester asked on WhatsApp not to get
 updates; the companion promised to stop but nothing recorded it, so a meal nudge still went. Guy's rule: once a person
 asks to stop, Stedio sends no proactive WhatsApp message of any kind and only answers when they write. Built in the API
