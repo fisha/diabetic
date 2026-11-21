@@ -9190,6 +9190,158 @@
         "title": "PendingOut",
         "type": "object"
       },
+      "PeriodBodyOut": {
+        "description": "Body data over a period (PM-397): each value is the mean of the days that have it, with how many days did.",
+        "properties": {
+          "asleep_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Asleep Min"
+          },
+          "awake": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Awake"
+          },
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "distance_days": {
+            "default": 0,
+            "title": "Distance Days",
+            "type": "integer"
+          },
+          "distance_km": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distance Km"
+          },
+          "energy_days": {
+            "default": 0,
+            "title": "Energy Days",
+            "type": "integer"
+          },
+          "energy_kcal": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Energy Kcal"
+          },
+          "exercise_days": {
+            "default": 0,
+            "title": "Exercise Days",
+            "type": "integer"
+          },
+          "exercise_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Exercise Min"
+          },
+          "first": {
+            "title": "First",
+            "type": "string"
+          },
+          "heart": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HeartOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "in_bed_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "In Bed Min"
+          },
+          "last": {
+            "title": "Last",
+            "type": "string"
+          },
+          "nights": {
+            "default": 0,
+            "title": "Nights",
+            "type": "integer"
+          },
+          "resting": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resting"
+          },
+          "resting_days": {
+            "default": 0,
+            "title": "Resting Days",
+            "type": "integer"
+          },
+          "steps": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steps"
+          },
+          "steps_days": {
+            "default": 0,
+            "title": "Steps Days",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "first",
+          "last",
+          "days"
+        ],
+        "title": "PeriodBodyOut",
+        "type": "object"
+      },
       "PersonaIn": {
         "additionalProperties": false,
         "properties": {
@@ -19392,6 +19544,68 @@
           }
         ],
         "summary": "List Nights",
+        "tags": [
+          "health-data"
+        ]
+      }
+    },
+    "/health-data/period": {
+      "get": {
+        "description": "The body over the local days `from`..`to`, both included (Guy, 21 Nov 2026, PM-397: the Overview's period).",
+        "operationId": "get_period_health_data_period_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "title": "From",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "title": "To",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodBodyOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "description": "bad_range"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Period",
         "tags": [
           "health-data"
         ]

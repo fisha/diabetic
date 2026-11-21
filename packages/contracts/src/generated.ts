@@ -2098,6 +2098,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/health-data/period": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Period
+         * @description The body over the local days `from`..`to`, both included (Guy, 21 Nov 2026, PM-397: the Overview's period).
+         */
+        get: operations["get_period_health_data_period_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/health-data/samples": {
         parameters: {
             query?: never;
@@ -6959,6 +6979,65 @@ export interface components {
             relation: string | null;
             /** Scopes */
             scopes: string[];
+        };
+        /**
+         * PeriodBodyOut
+         * @description Body data over a period (PM-397): each value is the mean of the days that have it, with how many days did.
+         */
+        PeriodBodyOut: {
+            /** Asleep Min */
+            asleep_min?: number | null;
+            /** Awake */
+            awake?: number | null;
+            /** Days */
+            days: number;
+            /**
+             * Distance Days
+             * @default 0
+             */
+            distance_days: number;
+            /** Distance Km */
+            distance_km?: number | null;
+            /**
+             * Energy Days
+             * @default 0
+             */
+            energy_days: number;
+            /** Energy Kcal */
+            energy_kcal?: number | null;
+            /**
+             * Exercise Days
+             * @default 0
+             */
+            exercise_days: number;
+            /** Exercise Min */
+            exercise_min?: number | null;
+            /** First */
+            first: string;
+            heart?: components["schemas"]["HeartOut"] | null;
+            /** In Bed Min */
+            in_bed_min?: number | null;
+            /** Last */
+            last: string;
+            /**
+             * Nights
+             * @default 0
+             */
+            nights: number;
+            /** Resting */
+            resting?: number | null;
+            /**
+             * Resting Days
+             * @default 0
+             */
+            resting_days: number;
+            /** Steps */
+            steps?: number | null;
+            /**
+             * Steps Days
+             * @default 0
+             */
+            steps_days: number;
         };
         /** PersonaIn */
         PersonaIn: {
@@ -12684,6 +12763,45 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["NightOut"][];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_period_health_data_period_get: {
+        parameters: {
+            query: {
+                from: string;
+                to: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PeriodBodyOut"];
+                };
+            };
+            /** @description bad_range */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {

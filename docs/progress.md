@@ -61,6 +61,13 @@ the top in proportion to the pull and springs back on release (`features/refresh
 Talk, not Overview (Switch menu, view-as link, and app launch while viewing). `tools/e2e/switch-person.cjs` checks the
 landing; 0 failures in three looks. App #229. Next: OTA.
 
+21 Nov 2026 (Jira PM-397, same thread): Guy: the period tabs come before time in range and the whole Overview follows the
+chosen period. Order: latest reading, period and dates, time in range, Insights, graph, biggest rises, Body, Food, then the
+rest. Body and Food for any period other than today are a day on average over the period's days (capped at today and 92),
+with "On N days" under each tile; one past day shows that day; a tile with no data says so. New API
+`GET /health-data/period?from&to` (API #170); food uses `/nutrition/summary?from&to`. Device status rows stay "now" only.
+App #245; API 876 tests, app 261; Playwright he light and en dark (week). Next: deploy API, then OTA.
+
 21 Nov 2026 (Jira PM-395, same thread): Guy changed his mind on PM-382: the latest reading card is back on the Overview,
 first on the page ("צריך להחזיר את התוצאת סוכר ... שיהיה ראשון בעמוד"), with its stale, warm-up and sensor-updating states
 and strings. Order: latest reading, time in range, Insights, period and graph, biggest rises, Body today, Food today,

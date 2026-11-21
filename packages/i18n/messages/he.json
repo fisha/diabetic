@@ -4173,5 +4173,19 @@
   "shr.wait_parent": "מחכה לאישור ההורה",
   "shr.wait_parent_v": "מחכה לאישור ההורה של {name}",
   "upd.build": "גרסה {n}",
-  "upd.of": "עדכון מ-{date}, {time}"
+  "upd.of": "עדכון מ-{date}, {time}",
+  "bd.t_avg": "הגוף, ממוצע ליום",
+  "bd.t_on": "הגוף ב-{when}",
+  "bd.n_days": "{n, plural, one {ביום אחד} =2 {ביומיים} other {ב-# ימים}}",
+  "bd.n_nights": "{n, plural, one {לילה אחד} =2 {שני לילות} other {# לילות}}",
+  "bd.none_period": "אין נתונים בתקופה הזו",
+  "nut.t_avg": "תזונה, ממוצע ליום",
+  "nut.t_on": "תזונה ב-{when}",
+  "nut.l_meals_day": "ארוחות ביום",
+  "nut.l_carbs_day": "פחמימות ביום",
+  "nut.l_protein_day": "חלבון ביום",
+  "nut.l_meals_on": "ארוחות",
+  "nut.l_carbs_on": "פחמימות",
+  "nut.l_protein_on": "חלבון",
+  "nut.of_period": "{n, plural, one {מתוך יום אחד} =2 {מתוך יומיים} other {מתוך # ימים}}"
 }

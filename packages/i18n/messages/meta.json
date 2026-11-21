@@ -27093,5 +27093,103 @@
     "review": [
       "translation"
     ]
+  },
+  "bd.t_avg": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Body card title when the Overview shows a period of several days (PM-397)."
+  },
+  "bd.t_on": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Body card title for one past day (PM-397). {when} is the day and month."
+  },
+  "bd.n_days": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Under a period tile: on how many days the value was recorded (PM-397)."
+  },
+  "bd.n_nights": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Under the sleep tile for a period: how many nights were recorded (PM-397)."
+  },
+  "bd.none_period": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "A chosen tile with no data in the shown period (PM-397)."
+  },
+  "nut.t_avg": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Food card title when the Overview shows a period of several days (PM-397)."
+  },
+  "nut.t_on": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Food card title for one past day (PM-397). {when} is the day and month."
+  },
+  "nut.l_meals_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Food tile for a period: mean meals on days with logged meals (PM-397)."
+  },
+  "nut.l_carbs_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Food tile for a period: mean carbs on days with logged meals (PM-397)."
+  },
+  "nut.l_protein_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Food tile for a period: mean protein on days with it (PM-397)."
+  },
+  "nut.l_meals_on": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Food tile for one past day (PM-397)."
+  },
+  "nut.l_carbs_on": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Food tile for one past day (PM-397)."
+  },
+  "nut.l_protein_on": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Food tile for one past day (PM-397)."
+  },
+  "nut.of_period": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Under Full days for a chosen period (PM-397)."
   }
 }
