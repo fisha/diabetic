@@ -1713,6 +1713,30 @@
         "title": "ChallengeOut",
         "type": "object"
       },
+      "ChallengesIn": {
+        "additionalProperties": false,
+        "properties": {
+          "ids": {
+            "items": {
+              "enum": [
+                "log_lunch",
+                "log_breakfast",
+                "move",
+                "talk"
+              ],
+              "type": "string"
+            },
+            "maxItems": 4,
+            "title": "Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "ids"
+        ],
+        "title": "ChallengesIn",
+        "type": "object"
+      },
       "ChangeMetaOut": {
         "properties": {
           "at": {
@@ -12571,6 +12595,11 @@
             "default": false,
             "title": "Linked",
             "type": "boolean"
+          },
+          "updates_off": {
+            "default": false,
+            "title": "Updates Off",
+            "type": "boolean"
           }
         },
         "required": [
@@ -12983,6 +13012,14 @@
       },
       "YoungOut": {
         "properties": {
+          "active": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/ChallengeOut"
+            },
+            "title": "Active",
+            "type": "array"
+          },
           "band": {
             "anyOf": [
               {
@@ -18713,7 +18750,7 @@
     },
     "/glucose/{record_id}": {
       "delete": {
-        "description": "Soft delete: gone from the journal and summaries; kept until account deletion.",
+        "description": "Soft delete: gone from the journal and summaries; kept until account deletion. A device's reading can't be (PM-362).",
         "operationId": "delete_glucose__record_id__delete",
         "parameters": [
           {
@@ -18730,6 +18767,9 @@
         "responses": {
           "204": {
             "description": "Successful Response"
+          },
+          "409": {
+            "description": "source_read_only: the reading came from a device"
           },
           "422": {
             "content": {
@@ -18832,6 +18872,9 @@
               }
             },
             "description": "Successful Response"
+          },
+          "409": {
+            "description": "source_read_only: the reading came from a device"
           },
           "422": {
             "content": {
@@ -21745,7 +21788,7 @@
     },
     "/records/{record_id}": {
       "delete": {
-        "description": "Soft delete: gone from the journal and summaries; the row and its revisions stay until account deletion.",
+        "description": "Soft delete: gone from the journal and summaries; the row and its revisions stay until account deletion. A device's\nentry can't be deleted (PM-362); it can be hidden.",
         "operationId": "delete_records__record_id__delete",
         "parameters": [
           {
@@ -21762,6 +21805,9 @@
         "responses": {
           "204": {
             "description": "Successful Response"
+          },
+          "409": {
+            "description": "source_read_only: the record came from a device"
           },
           "422": {
             "content": {
@@ -21864,6 +21910,9 @@
               }
             },
             "description": "Successful Response"
+          },
+          "409": {
+            "description": "source_read_only: the record came from a device"
           },
           "422": {
             "content": {
@@ -23306,7 +23355,7 @@
     },
     "/whatsapp/kinds": {
       "put": {
-        "description": "Which proactive messages stay in the app instead of WhatsApp (the rest go to WhatsApp).",
+        "description": "Which proactive messages stay in the app instead of WhatsApp (the rest go to WhatsApp). After the person asked on\nWhatsApp to stop them (PM-365), turning any kind on here restarts WhatsApp updates for the kinds left on.",
         "operationId": "set_kinds_whatsapp_kinds_put",
         "requestBody": {
           "content": {
@@ -23446,6 +23495,7 @@
     },
     "/young/challenge": {
       "put": {
+        "description": "One challenge or none (app versions before PM-371).",
         "operationId": "set_challenge_young_challenge_put",
         "requestBody": {
           "content": {
@@ -23478,6 +23528,46 @@
           }
         ],
         "summary": "Set Challenge",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/young/challenges": {
+      "put": {
+        "description": "This week's challenges: none, one or several (PM-371, Guy 21 Nov 2026).",
+        "operationId": "set_challenges_young_challenges_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChallengesIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Challenges",
         "tags": [
           "young"
         ]
