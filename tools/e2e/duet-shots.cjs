@@ -71,7 +71,7 @@ const server = http.createServer((req, res) => {
         if (r !== '/break' && (await page.getByTestId('break-end').count())) { await page.getByTestId('break-end').click(); await page.goto(base + r); await page.waitForTimeout(4000); }
         // OPEN=<text>: tap the first element with that text (for example the insights line) before the shot; several
         // taps in turn are separated by ">>" (OPEN='^Sabich$>>^Save meal').
-        for (const step of (process.env.OPEN ?? '').split('>>').filter(Boolean)) { await page.getByText(new RegExp(step)).last().click(); await page.waitForTimeout(1500); }
+        for (const step of (process.env.OPEN ?? '').split('>>').filter(Boolean)) { await page.getByText(new RegExp(step)).filter({ visible: true }).last().click(); await page.waitForTimeout(1500); }
         const name = `${process.env.NOOPENERS ? 'p01-' : ''}${process.env.GREETING ? 'greet-' : ''}${process.env.OPEN ? 'open-' : ''}${process.env.VIEW ? process.env.VIEW + '-' : ''}${scenario}-${r.replace(/[^a-z0-9]+/gi, '_').replace(/^_|_$/g, '') || 'root'}-${lang}-${scheme}.png`;
         // PROBE=a|b|c: print where each text sits (for pixel comparison with the mockups).
         if (process.env.PROBE) for (const q of process.env.PROBE.split('|')) { const b = await page.getByText(q, { exact: true }).first().boundingBox().catch(() => null); console.log('probe', q, b && [Math.round(b.x), Math.round(b.y), Math.round(b.width), Math.round(b.height)]); }
