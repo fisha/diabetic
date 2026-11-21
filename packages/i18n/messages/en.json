@@ -823,6 +823,7 @@
   "lab.unit_h": "As written on the report",
   "lab.value": "Result",
   "lh.habit_s": "{days} of {of} days",
+  "lh.recent": "Recent labs",
   "lh.t": "Labs and habits",
   "lh.tests": "{n, plural, one {# test} other {# tests}}",
   "lock.bio": "face or fingerprint",
