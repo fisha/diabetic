@@ -2032,3 +2032,19 @@ clinic report with their visits (PM-214). When viewing someone else's data, only
   made, a WebView that shows the PDF on iPhone, a new tab on the web; no new dependency). Its top bar now follows the
   board (round back, title at the start, Share in the accent). Android's WebView cannot show a PDF, so there the person
   shares it and opens it in a PDF app, as before.
+
+### G-119 · Date of birth in one wheel field, and a sex question (**asked by Guy, 21 Nov 2026, PM-359**)
+**Gap**
+- Duet x10 shows three typed fields (month, day, year). Guy: "תאריך הלידה צריך להיות שדה אחד שנפתח למשתמש גלגל בחירה
+  של יום חודש ושנה, השלוש שדות היום מקשים מאוד על התהליך. בנוסף צריך לשאול את המין של המשתמש". No board shows a sex
+  question.
+
+**What was built**
+- x10 keeps its title, lead and footer. The three fields become one field in the same Duet field style (label 14/600,
+  white box 56 high, field radius), showing the date as dd.mm.yyyy in Hebrew and mm.dd.yyyy in English, with the
+  calendar icon at the end. A tap opens the platform wheel of day, month and year (iOS: the spinner in the existing
+  bottom sheet with Done; Android: the spinner dialog). The wheel starts at 1 January thirty years ago; nothing is saved
+  until the person turns it or taps Done. Earliest 1900, latest today. The age rules (8+, under 18 with a parent) are
+  unchanged.
+- Under the date, "Sex" with three chips (Female, Male, Prefer not to say) and one line on why; an answer is required,
+  "Prefer not to say" counts. Shown in Review and Settings > Diabetes profile; stored in the profile answers.

@@ -26733,5 +26733,54 @@
     "review": [
       "translation"
     ]
+  },
+  "onb.d_pick": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "The one date of birth field before a date is picked (PM-359)."
+  },
+  "onb.sx_t": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Sex question on the date of birth step (Guy, 21 Nov 2026, PM-359)."
+  },
+  "onb.sx_b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Why the sex question is asked (PM-359)."
+  },
+  "onb.sx_f": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-359."
+  },
+  "onb.sx_m": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-359."
+  },
+  "onb.sx_err": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-359."
+  },
+  "onb.rv_sex": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Review and Settings > Diabetes profile row (PM-359)."
   }
 }

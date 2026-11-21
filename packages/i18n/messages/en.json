@@ -4119,5 +4119,12 @@
   "lab.rv_skipped_names": "{count, plural, one {Not copied, no result could be read for it: {names}.} other {Not copied, no result could be read for them: {names}.}} You can add them by hand.",
   "vd.del_report_q": "Delete this report? It is removed from this phone and from Stedio's server.",
   "onb.save_code": "The server didn't accept the save (code {code}). Your answers are still on this phone, so you can try again later.",
-  "set.ts_s": "Small"
+  "set.ts_s": "Small",
+  "onb.d_pick": "Choose a date",
+  "onb.sx_t": "Sex",
+  "onb.sx_b": "Some things that affect glucose, like the menstrual cycle, differ by sex.",
+  "onb.sx_f": "Female",
+  "onb.sx_m": "Male",
+  "onb.sx_err": "Choose one of the options.",
+  "onb.rv_sex": "Sex"
 }
