@@ -15,6 +15,13 @@ picked day is never later than now, the calendar stops at today), and the day be
 date with the year (PM-389). Note and Habit have no time field and are unchanged. Type check, app tests (262) and the
 i18n tests pass; journal edit checked on the web dev build. Not yet seen on a phone. Next: OTA.
 
+21 Nov 2026 (Jira PM-404, api #171, app #248): Guy's follow-up on the Zz sheet. It shows the daily schedule when it is
+on (hours and days), adds "Starting from" (now or a chosen time; "How long" counts from the start; the server keeps the
+start in `break_since` and holds nothing until it comes; a start still to come shows with Cancel, and in Settings as
+"Off · starts at"), and a hold on Zz no longer switches it to its selected look (selected = schedule on or a later start).
+Checked on the web export against the e2e server in Hebrew (screenshots in /mnt/project-files/steady/quiet-pm404/); not
+yet on a phone. The API must be deployed before the OTA.
+
 21 Nov 2026 (Jira PM-398, app #241): Guy: when anything is set in Zz (quiet mode), such as a schedule, the Zz button on
 the Talk screen shows its selected state. It is selected while quiet mode is on (by hand or timed) or its daily schedule
 is on, in Duet's selected look (accent-soft fill, accent ring, accent icon) with VoiceOver "selected". Type check, lint

@@ -4135,9 +4135,12 @@ export interface components {
         };
         /**
          * BreakIn
-         * @description Turned on until it is turned off, or until a time (for an hour, until the morning, a chosen time).
+         * @description Turned on until it is turned off, or until a time (for an hour, until the morning, a chosen time); from now or
+         *     from a later time (`start`, PM-404).
          */
         BreakIn: {
+            /** Start */
+            start?: string | null;
             /** Until */
             until?: string | null;
         };
@@ -4153,6 +4156,8 @@ export interface components {
             scheduled: boolean;
             /** Since */
             since: string | null;
+            /** Starts */
+            starts?: string | null;
             /** Until */
             until?: string | null;
         };

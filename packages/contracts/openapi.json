@@ -995,8 +995,20 @@
         "type": "object"
       },
       "BreakIn": {
-        "description": "Turned on until it is turned off, or until a time (for an hour, until the morning, a chosen time).",
+        "description": "Turned on until it is turned off, or until a time (for an hour, until the morning, a chosen time); from now or\nfrom a later time (`start`, PM-404).",
         "properties": {
+          "start": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start"
+          },
           "until": {
             "anyOf": [
               {
@@ -1038,6 +1050,18 @@
               }
             ],
             "title": "Since"
+          },
+          "starts": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Starts"
           },
           "until": {
             "anyOf": [
