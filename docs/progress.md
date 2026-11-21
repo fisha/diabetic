@@ -56,6 +56,14 @@ milestones book with round places (p31), home with "Hi {name}", Your number, Tod
 week ring and challenge, Guy's choice). Viewer: strip says only "Viewing {name}", no hint under the title, short privacy
 line, room under the strip; cheer card as z40-z43. Not deployed. API change needs deploy before the kids week shows.
 
+21 Nov 2026, night (PM-340, Guy asleep, "keep going"): kids tab bar now follows the young store and the sign-in (a
+child who opens straight on Settings got the adult tabs). z52 "Set by your parent" (Settings row for a child, read-only
+switches, who and when from the last change only), z58 under-8 screen gains Sign out, Journal filter row fades at its
+end, z50 cheer dim 0.97, z51 cheer push names the kind with its sticker ("Mom sent you a high-five! 🙌", api), p33
+parent's Kids mode controls in the list style, z54 week as day letters with one list for the challenge and growth
+("Last week kept" kept beside the skip-days line). z44 viewer chat follows Guy's later choices (strip "Viewing {name}",
+short privacy line), not the board's header card. Not deployed; API (kids week, cheer text) needs deploy first.
+
 20 Nov 2026 (Jira PM-327, thread "Detect infusion set changes from CareLink"): Guy changed his infusion set at about
 09:50 Israel time and the journal only showed "basal resumed". CareLink's only set change signal was the 30-day
 history's `Agg1d[].setChange` day flag (hourly, dated at midnight); live data has no rewind or prime marker. Each poll
