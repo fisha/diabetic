@@ -96,6 +96,12 @@ standing link and no sign-in (#58). Google sign-in on iPhone Safari (button rend
 open in PM-353: no COOP header in our code, so the next suspect is the OAuth client's authorized origins or Safari's
 popup handling. Next: deploy API then web.
 
+21 Nov 2026 (Jira PM-380, thread "Detect infusion set changes from CareLink"): a false "set changed" showed at 18:57
+Israel; Guy had not changed his set. PM-327 kept any reservoir rise of 5 U between polls and dated it at the poll when
+no pump stop came before. Now a rise needs a pump stop in the 3 h before it, at least 20 U / 10 %, and the pump in
+reach on both polls; migration `c4e6a8b0d2f3` removes live set changes with no stop before them (api #167). API tests
+871 passed. Deploy: API with the data migration, no app change.
+
 20 Nov 2026 (Jira PM-335 under design PM-334, thread "Implement the Duet design"): Guy approved the round 4 "Duet"
 design and asked to implement all of it, never removing a feature or inventing data, and to see it on the simulator
 before any deploy, OTA or build. Built in app branch `claude/project-thread-ja0cv9`: Rubik (OFL, bundled, OTA-safe),
