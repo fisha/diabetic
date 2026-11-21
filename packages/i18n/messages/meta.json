@@ -27198,5 +27198,61 @@
       "translation"
     ],
     "note": "Under Full days for a chosen period (PM-397)."
+  },
+  "brk.start_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ],
+    "note": "Quiet mode sheet: schedule info and Starting from (Guy, 21 Nov 2026, PM-404)."
+  },
+  "brk.s_now": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ],
+    "note": "Quiet mode sheet: schedule info and Starting from (Guy, 21 Nov 2026, PM-404)."
+  },
+  "brk.s_at": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ],
+    "note": "Quiet mode sheet: schedule info and Starting from (Guy, 21 Nov 2026, PM-404)."
+  },
+  "brk.sched_info": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ],
+    "note": "Quiet mode sheet: schedule info and Starting from (Guy, 21 Nov 2026, PM-404)."
+  },
+  "brk.every_day": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ],
+    "note": "Quiet mode sheet: schedule info and Starting from (Guy, 21 Nov 2026, PM-404)."
+  },
+  "brk.starts_at": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ],
+    "note": "Quiet mode sheet: schedule info and Starting from (Guy, 21 Nov 2026, PM-404)."
+  },
+  "brk.st_starts": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ],
+    "note": "Quiet mode sheet: schedule info and Starting from (Guy, 21 Nov 2026, PM-404)."
+  },
+  "brk.cancel_start": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ],
+    "note": "Quiet mode sheet: schedule info and Starting from (Guy, 21 Nov 2026, PM-404)."
   }
 }
