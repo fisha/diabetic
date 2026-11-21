@@ -50,7 +50,7 @@ const server = http.createServer((req, res) => {
     await shot('h01-text');
     await page.getByRole('button', { name: 'Quick log' }).first().click(); await page.waitForTimeout(1000);
     await shot('h02-log-sheet');
-    await page.getByText('Meal', { exact: true }).last().click(); await page.waitForTimeout(1500);
+    await page.getByText('Meal photo', { exact: true }).last().click(); await page.waitForTimeout(1500);
     await page.getByText('Describe by voice or text', { exact: true }).last().click(); await page.waitForTimeout(1000);
     await page.locator('textarea').first().fill('banana');
     await page.getByText('Find foods', { exact: true }).last().click(); await page.waitForTimeout(2500);
