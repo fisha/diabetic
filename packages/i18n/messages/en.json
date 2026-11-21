@@ -89,6 +89,7 @@
   "cmp.badge.unsure": "Unsure",
   "cmp.badge.weighed": "Weighed",
   "cmp.clinicalReview": "Clinical review",
+  "cmp.field.day": "Day",
   "cmp.field.done": "Done",
   "cmp.field.notSet": "Not set",
   "cmp.field.unknown": "Unknown value",

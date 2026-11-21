@@ -988,6 +988,13 @@
     ],
     "note": "G-05 label on unreviewed clinical copy in development builds"
   },
+  "cmp.field.day": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Calendar button beside a time: moves the entry to another past day (PM-402)"
+  },
   "cmp.field.done": {
     "board": "Components",
     "review": [

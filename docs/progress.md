@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-402, app #246): Guy: the add sheet's Insulin taken, Activity and Glucose forms, and the journal's
+edit form, pick the day as well as the time. Each gets the calendar beside the time that the meal form has (PM-343);
+`TimeField`'s `pastDay` prop holds the rule once (a time later than now on the picked day goes to the day before, a
+picked day is never later than now, the calendar stops at today), and the day beside the time shows the device-region
+date with the year (PM-389). Note and Habit have no time field and are unchanged. Type check, app tests (262) and the
+i18n tests pass; journal edit checked on the web dev build. Not yet seen on a phone. Next: OTA.
+
 21 Nov 2026 (Jira PM-398, app #241): Guy: when anything is set in Zz (quiet mode), such as a schedule, the Zz button on
 the Talk screen shows its selected state. It is selected while quiet mode is on (by hand or timed) or its daily schedule
 is on, in Duet's selected look (accent-soft fill, accent ring, accent icon) with VoiceOver "selected". Type check, lint
