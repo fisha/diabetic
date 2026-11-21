@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-376, same thread): Guy asked to show only the kind of entry, not the source's name ("חיישן •
+CareLink" read as both). Journal reading rows say Sensor, the device badge says Device, pump alerts and modes say "From
+the pump", and the Overview latest reading, its graph readout and the Talk screen's reading lines say Sensor or Meter.
+An entry's detail keeps its labelled Source row. App #222; browser run 39/39 (a check that no row shows "CareLink").
+Next: OTA.
+
 21 Nov 2026 (Jira PM-375, same thread): Guy changed the Insulin options to "auto correction" (the pump's automatic
 corrections, CareLink and Tandem) and "bolus" (boluses the person gave, meal or manual). Basal is no longer an option
 (pumps record boluses only); it shows only with no insulin option. On All a row shows only if, for each kind with a

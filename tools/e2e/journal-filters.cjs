@@ -85,6 +85,8 @@ const server = http.createServer((req, res) => {
       const count = (re) => page.getByText(re).count();
       const seen = async (text) => (await page.getByText(text, { exact: false }).count()) > 0;
       await shot('01-journal');
+      // The rows say the kind of entry only, never the source's name (Guy, 21 Nov 2026, PM-376).
+      ok(`${lang}-${scheme} no source name on the rows`, (await page.getByText(/CareLink/).filter({ visible: true }).count()) === 0);
 
       // Glucose: every two hours keeps one reading per block; Clear brings them all back.
       await tab(L.glu).click(); await page.waitForTimeout(800);
