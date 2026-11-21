@@ -27081,5 +27081,17 @@
       "translation"
     ],
     "note": "Parental permissions in Kids and Teen mode (PM-386, Guy 21 Nov 2026)."
+  },
+  "upd.build": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "upd.of": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
