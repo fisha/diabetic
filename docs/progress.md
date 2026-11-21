@@ -8,6 +8,33 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-365, thread "Stop WhatsApp messages after opt-out"): a tester asked on WhatsApp not to get
+updates; the companion promised to stop but nothing recorded it, so a meal nudge still went. Guy's rule: once a person
+asks to stop, Stedio sends no proactive WhatsApp message of any kind and only answers when they write. Built in the API
+(#163): `whatsapp_links.proactive_off_at` (migration `b3d5f7a9c1e2`), a narrow Hebrew/English matcher
+(`texts.asks_updates_off` / `asks_updates_on`) checked before the companion with a fixed confirmation line, one gate in
+`proactive.deliver`, `deliver_waiting` and `notes_due` (waiting template texts are dropped), the Settings > WhatsApp card
+shows every kind off (`updates_off`) and turning one on restarts them, relinking keeps the stop. STOP still unlinks.
+One-off `python -m steady_api.whatsapp.stop_backfill [--apply]` sets the stop for earlier asks (counts only). What
+WhatsApp no longer takes goes as the app push, under the app's own notification switches. Next: deploy API, run the
+backfill.
+
+21 Nov 2026 (Jira PM-363, thread "Stop Overview listing every lab result"): after Itay uploaded a lab report, the
+Overview "Labs and habits" card listed every test. Guy chose (21 Nov): one "Recent labs" row (number of tests and the
+date) that opens all lab results, shown only when tests were done in the last 31 days; habits as before. Labs now read
+from `/labs` (no 92-day window; Guy's 2025 report was outside it, which is why he saw no card). The key-labs list of
+app #213 was replaced before any OTA. App #213, #215. App tests 242; web shots `/mnt/project-files/steady/release/pm-363/`.
+Next: testers OTA (app only, no API).
+
+21 Nov 2026 (Jira PM-362, thread "Lock device-sourced data from editing"): Guy: data that came from a source (carbs,
+insulin, glucose) must not be editable anywhere. API: `steady_api/sources.py` (person sources manual, voice,
+photo-estimate, conversation); PATCH and DELETE on `/records` and `/glucose` return 409 `source_read_only` for anything
+else; the companion's meal clarification never changes a device's entry (api #164). App: device entries use the board's
+device state (no Edit, no swipe delete, the device note and Hide); the Overview breakdown treats every non-person
+source as the pump's (app #216). Web was already read-only. Still allowed on device data: Hide, the pump meal food note
+(PM-110), the same-meal link (G-47), bulk removal on disconnect, account deletion. Open: privacy policy says "edit any
+record" (Guy to choose when to release the wording). Next: deploy API, then OTA.
+
 21 Nov 2026 (Jira PM-353, thread "Let iPhone testers register their device themselves"): Guy's new iPhone tester got
 stuck: the /get/iphone step sent people to sign in (which hung at Google on the iPhone) although self-registration is
 off (no STEADY_EXPO_TOKEN). Correction to PM-290: the Mac found that `eas device:create` returns the same team link
