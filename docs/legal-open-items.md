@@ -128,3 +128,7 @@ approved lines here.
   agreement with each clinic is needed, and whether the printed copy in the clinic's file is outside Stedio's
   responsibility once printed.
 
+- Sex (PM-359, privacy text 2026-11-21T17:30:00Z): asked with the date of birth (female, male, prefer not to say),
+  stored in the profile answers (exported and deleted with the profile), in the profile change history; the companion's
+  context gets only "sex female" or "sex male" (`ai/context.py` `about`), under the existing AI consent. Purpose:
+  things that differ by sex, such as the menstrual cycle. Lawyer to confirm the wording with the rest (G-05).
