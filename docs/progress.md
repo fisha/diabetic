@@ -39,6 +39,9 @@ It opens WhatsApp with a ready message (`sub.invite_msg`: a short pitch and the 
 WhatsApp the system share sheet opens. No personal data in the message, nothing sent to the server. App #227. Not yet
 seen on a phone. Next: OTA.
 
+21 Nov 2026 (Jira PM-400, same thread): Guy: on the Talk pull to refresh the character is really crushed (to about a
+third of its height) and looks scared (eyes wide and open, a round gasp) while pulled. App #243.
+
 21 Nov 2026 (Jira PM-393, same thread): Guy: the Talk screen layout stays as it was. Stedio's follow-up question
 (Duet 3.4, PM-340) no longer replaces "Tap to talk" with a row of voice/text answers; it takes turns with the greeting
 in the speech bubble (tap for text or voice). App #234.
