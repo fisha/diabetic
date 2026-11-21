@@ -107,6 +107,15 @@ const server = http.createServer((req, res) => {
       await p2.goto(`${base}/labs`); await p2.waitForTimeout(8000);
       await shot(p2, '04-teen-labs');
       ok(`${lang} ${scheme}: lab photo buttons gone`, (await p2.getByText(he ? 'כבוי על ידי ההורה' : 'Turned off by your parent').count()) > 0);
+      // Meal photos off: the quick log's meal card has no camera, and a link to the camera opens Log a meal.
+      await api(`/sharing/${share}/young`, { method: 'PUT', token: dad, body: { meal_photo: false } });
+      await p2.goto(`${base}/log`); await p2.waitForTimeout(6000);
+      await shot(p2, '05-teen-quick-log-no-photo');
+      const photoLabel = he ? 'צילום ארוחה' : 'Meal photo';
+      ok(`${lang} ${scheme}: quick log has no meal photo`, (await p2.getByRole('button', { name: photoLabel, exact: true }).count()) === 0 && (await p2.getByText(photoLabel, { exact: true }).count()) === 0);
+      await p2.goto(`${base}/meal/camera`); await p2.waitForTimeout(5000);
+      ok(`${lang} ${scheme}: camera link opens Log a meal`, !p2.url().includes('/camera'), p2.url());
+      await api(`/sharing/${share}/young`, { method: 'PUT', token: dad, body: { meal_photo: true } });
       await c2.close();
     }
   } catch (e) { results.push(`FAIL crashed — ${e.message}`); }
