@@ -4099,5 +4099,9 @@
   "yg.book_t": "Sticker book",
   "ovr.day_split_now": "{day} so far: below {below}%, in range {inRange}%, above {above}%",
   "yg.write": "Write to Stedio",
-  "yg.see_book": "See my sticker book"
+  "yg.see_book": "See my sticker book",
+  "yg.ps_t": "Set by your parent",
+  "yg.ps_by": "Set by {name}",
+  "yg.ps_last": "Last changed by {name}, {when}.",
+  "yg.ps_note": "You can see these but only a parent can change them. Your conversations with Stedio stay yours; your parents can't read them."
 }

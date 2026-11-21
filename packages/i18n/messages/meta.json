@@ -26613,5 +26613,29 @@
     "review": [
       "translation"
     ]
+  },
+  "yg.ps_t": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ps_by": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ps_last": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "yg.ps_note": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }
