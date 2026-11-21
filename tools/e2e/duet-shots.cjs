@@ -98,6 +98,8 @@ const server = http.createServer((req, res) => {
       }
       // SENSORTYPES=libre3,...: the sensor types a connected device can tell the end of (the demo has no device link).
       if (process.env.SENSORTYPES) await page.route(/\/settings(\?|$)/, async (r) => { const res = await r.fetch(); const j = await res.json(); r.fulfill({ response: res, body: JSON.stringify({ ...j, sensor_end_types: process.env.SENSORTYPES.split(',') }) }); });
+      // ASKQ=<text>: Stedio asks that follow-up question on the main screen (board z05).
+      if (process.env.ASKQ) await page.route('**/conversation/openers', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify({ openers: [{ id: 'f-shot', kind: 'follow_up', text: process.env.ASKQ }], refreshing: false }) }));
       if (process.env.NOOPENERS) await page.route('**/conversation/openers', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify({ openers: [], refreshing: false }) }));
       for (const r of routesArg.split(',')) {
         await page.goto(base + r); await page.waitForTimeout(Number(process.env.WAIT || 6000));
