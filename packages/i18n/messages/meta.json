@@ -26892,5 +26892,19 @@
     "review": [
       "translation"
     ]
+  },
+  "sub.invite": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ],
+    "note": "Invite someone to Stedio via WhatsApp (PM-383, Guy 21 Nov 2026)."
+  },
+  "sub.invite_msg": {
+    "board": "Subscription",
+    "review": [
+      "translation"
+    ],
+    "note": "Ready message for WhatsApp; {link} is the website install page (PM-383). No medical claims."
   }
 }

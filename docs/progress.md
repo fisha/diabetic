@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+21 Nov 2026 (Jira PM-383): Guy: Settings > Membership ends with "Invite someone to Stedio" ("להזמין מישהו ל-Stedio").
+It opens WhatsApp with a ready message (`sub.invite_msg`: a short pitch and the website install page `/en/get`); without
+WhatsApp the system share sheet opens. No personal data in the message, nothing sent to the server. App #227. Not yet
+seen on a phone. Next: OTA.
+
 21 Nov 2026 (Jira PM-378, same thread): Guy: the Overview graph no longer shows the "Your range ... · your
 time-in-range setting in CareLink" and "No data" legend lines (five unused strings removed); the range band is still
 drawn. App #224. Next: OTA.
