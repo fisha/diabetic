@@ -46,6 +46,16 @@ x90 Edit link and x91 "Hard to read" flag (no such data or feature), z21 rows fo
 lab (new composition, needs Guy), z30 WhatsApp keeps its full Meta consent card, line card has no Y labels (as the
 board). Shot tooling: CARE (care team), AHEAD (clock ahead), SCROLL and EVAL options in `tools/e2e/duet-shots.cjs`.
 
+21 Nov 2026, later (PM-340, PM-342, Guy on the simulator): Overview opens straight on the detailed graph (no compact
+line, no Show less); its time in range card shows only the figure and bar. Week bars: today fills only the part of the
+day that has passed. Home has no glucose line any more (Guy: too much information); the time-in-range tile names its
+period even without a figure. z21 status rows under Body today (set change, sensor time left, latest lab, tile chooser)
+from real data only. Kids mode: tabs Talk / My days / Stickers (journal and Settings rows at the end of My days), My
+milestones book with round places (p31), home with "Hi {name}", Your number, Today's challenge and Sticker book tiles
+(p30), My days with the quest, week ring, weekly challenge and Stedio grows with you (z54; API now gives a child the
+week ring and challenge, Guy's choice). Viewer: strip says only "Viewing {name}", no hint under the title, short privacy
+line, room under the strip; cheer card as z40-z43. Not deployed. API change needs deploy before the kids week shows.
+
 20 Nov 2026 (Jira PM-327, thread "Detect infusion set changes from CareLink"): Guy changed his infusion set at about
 09:50 Israel time and the journal only showed "basal resumed". CareLink's only set change signal was the 30-day
 history's `Agg1d[].setChange` day flag (hourly, dated at midnight); live data has no rewind or prime marker. Each poll
