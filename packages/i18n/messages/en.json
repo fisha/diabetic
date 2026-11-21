@@ -327,7 +327,7 @@
   "dal.sensor": "Sensor (signal, calibration, ending)",
   "dal.title": "Pump alerts",
   "sen.title": "Sensor ending",
-  "sen.helper": "A reminder before your sensor ends, chosen for each sensor type.",
+  "sen.helper": "Pick one or more reminders before your sensor ends, for each sensor type. Leave all unticked for none.",
   "sen.off": "Off",
   "sen.h72": "3 days",
   "sen.h24": "24 hours",

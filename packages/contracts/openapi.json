@@ -10648,13 +10648,16 @@
           },
           "sensor_end_reminder": {
             "additionalProperties": {
-              "enum": [
-                168,
-                72,
-                24,
-                5
-              ],
-              "type": "integer"
+              "items": {
+                "enum": [
+                  168,
+                  72,
+                  24,
+                  5
+                ],
+                "type": "integer"
+              },
+              "type": "array"
             },
             "default": {},
             "propertyNames": {
@@ -10847,6 +10850,18 @@
               {
                 "additionalProperties": {
                   "anyOf": [
+                    {
+                      "items": {
+                        "enum": [
+                          168,
+                          72,
+                          24,
+                          5
+                        ],
+                        "type": "integer"
+                      },
+                      "type": "array"
+                    },
                     {
                       "enum": [
                         168,

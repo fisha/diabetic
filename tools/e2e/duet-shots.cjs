@@ -78,6 +78,8 @@ const server = http.createServer((req, res) => {
         await page.route('**/health-data/today/details**', (r) => r.fulfill({ contentType: 'application/json', headers: h, body: JSON.stringify(details) }));
         await page.route(/\/health-data\/today(\?|$)/, (r) => r.fulfill({ contentType: 'application/json', headers: h, body: JSON.stringify(body) }));
       }
+      // SENSORTYPES=libre3,...: the sensor types a connected device can tell the end of (the demo has no device link).
+      if (process.env.SENSORTYPES) await page.route(/\/settings(\?|$)/, async (r) => { const res = await r.fetch(); const j = await res.json(); r.fulfill({ response: res, body: JSON.stringify({ ...j, sensor_end_types: process.env.SENSORTYPES.split(',') }) }); });
       if (process.env.NOOPENERS) await page.route('**/conversation/openers', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify({ openers: [], refreshing: false }) }));
       for (const r of routesArg.split(',')) {
         await page.goto(base + r); await page.waitForTimeout(Number(process.env.WAIT || 6000));
