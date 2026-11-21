@@ -26727,5 +26727,11 @@
     "review": [
       "translation"
     ]
+  },
+  "set.ts_s": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ]
   }
 }

@@ -33,14 +33,14 @@ const server = http.createServer((req, res) => {
       const ctx = await browser.newContext({ viewport: process.env.VIEW ? { width: +process.env.VIEW.split('x')[0], height: +process.env.VIEW.split('x')[1] } : { width: 393, height: 852 }, colorScheme: scheme === 'dark' ? 'dark' : 'light', deviceScaleFactor: 1 });
       const stored = { refreshToken: s.refresh_token, email: s.email, hasProfile: s.has_profile, access: { token: s.access_token, until: Date.now() + 10 * 60000 } };
       const viewing = s.viewing ? { viewing: { ownerId: s.viewing.owner_id, name: s.viewing.name, scopes: s.viewing.scopes }, ownDraft: null } : null;
-      await ctx.addInitScript(([st, lang, vw]) => {
+      await ctx.addInitScript(([st, lang, vw, ts]) => {
         if (sessionStorage.getItem('seeded')) return;
         sessionStorage.setItem('seeded', '1');
         // SIGNEDOUT=1: no session, for the welcome, sign-up and sign-in screens.
         if (st) localStorage.setItem('steady.session', JSON.stringify(st)); else localStorage.removeItem('steady.session');
-        localStorage.setItem('steady.preferences', JSON.stringify({ locale: lang, takeBreak: false }));
+        localStorage.setItem('steady.preferences', JSON.stringify({ locale: lang, takeBreak: false, ...(ts ? { textSize: ts } : null) }));
         if (vw) localStorage.setItem('steady.viewing', JSON.stringify(vw)); else localStorage.removeItem('steady.viewing');
-      }, [process.env.SIGNEDOUT ? null : stored, lang, viewing]);
+      }, [process.env.SIGNEDOUT ? null : stored, lang, viewing, process.env.TEXTSIZE ?? null]);
       const page = await ctx.newPage();
       page.on('pageerror', (e) => console.log('pageerror', e.message));
       // AHEAD=<minutes>: the page's clock runs that far ahead, so the latest reading is that old (board x69, stale).
@@ -108,7 +108,7 @@ const server = http.createServer((req, res) => {
         // OPEN=<text>: tap the first element with that text (for example the insights line) before the shot; several
         // taps in turn are separated by ">>" (OPEN='^Sabich$>>^Save meal').
         for (const step of (process.env.OPEN ?? '').split('>>').filter(Boolean)) { await page.getByText(new RegExp(step)).filter({ visible: true }).last().click(); await page.waitForTimeout(1500); }
-        const name = `${process.env.NOOPENERS ? 'p01-' : ''}${process.env.GREETING ? 'greet-' : ''}${process.env.OPEN ? 'open-' : ''}${process.env.VIEW ? process.env.VIEW + '-' : ''}${scenario}-${r.replace(/[^a-z0-9]+/gi, '_').replace(/^_|_$/g, '') || 'root'}-${lang}-${scheme}.png`;
+        const name = `${process.env.TEXTSIZE ? process.env.TEXTSIZE + "-" : ""}${process.env.NOOPENERS ? 'p01-' : ''}${process.env.GREETING ? 'greet-' : ''}${process.env.OPEN ? 'open-' : ''}${process.env.VIEW ? process.env.VIEW + '-' : ''}${scenario}-${r.replace(/[^a-z0-9]+/gi, '_').replace(/^_|_$/g, '') || 'root'}-${lang}-${scheme}.png`;
         // PROBE=a|b|c: print where each text sits (for pixel comparison with the mockups).
         if (process.env.PROBE) for (const q of process.env.PROBE.split('|')) { const b = await page.getByText(q, { exact: true }).first().boundingBox().catch(() => null); console.log('probe', q, b && [Math.round(b.x), Math.round(b.y), Math.round(b.width), Math.round(b.height)]); }
         // TREE=text: print the boxes of that text's ancestors (to find stray spacing).
