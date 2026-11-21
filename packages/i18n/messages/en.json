@@ -3840,9 +3840,9 @@
   "yg.q_tell_day": "Tell me about your day",
   "yg.q_move": "Move for a bit and tell me",
   "yg.q_log_meal": "Add one meal",
-  "yg.week": "Your week",
+  "yg.week": "Days you logged this week",
   "yg.week_a": "Your week: {n} days with a check-in",
-  "yg.skip": "Two free skip days every week",
+  "yg.skip": "5 of 7 days keep the week",
   "yg.kept": "Last week kept",
   "yg.d0": "S",
   "yg.d1": "M",
@@ -4119,5 +4119,10 @@
   "lab.rv_skipped_names": "{count, plural, one {Not copied, no result could be read for it: {names}.} other {Not copied, no result could be read for them: {names}.}} You can add them by hand.",
   "vd.del_report_q": "Delete this report? It is removed from this phone and from Stedio's server.",
   "onb.save_code": "The server didn't accept the save (code {code}). Your answers are still on this phone, so you can try again later.",
-  "set.ts_s": "Small"
+  "set.ts_s": "Small",
+  "yg.wk_t": "How your week works",
+  "yg.wk_b": "A day turns green when you log something yourself (a meal, insulin, activity or a glucose reading) or talk with Stedio. Readings your sensor sends by itself don't count. Five green days keep the week, so two days are always free.",
+  "yg.wk_log": "Log now",
+  "yg.wk_ok": "Got it",
+  "yg.wk_hint": "Explains how the week works"
 }
