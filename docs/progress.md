@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+22 Nov 2026 (Jira PM-416, app #254, web #61): Guy saw "Tue 03/11" on the Test results list, without the year. Lab
+dates always carry the year (PM-389): the report-day rows now show weekday + date with the year in the device's order,
+Journal lab entries show that date instead of the stored ISO text, and the clinic portal's lab rows and lab chart add
+the year. The web demo runs the app's web build. Root `pnpm check` passed. No integration changed. Next: OTA and web
+deploy.
+
 22 Nov 2026 (Jira PM-413, api, app): Guy asked for an ML estimate of the rest of today's glucose as a dashed line on the
 Overview day chart, for his own account only, and on a finished day the estimate beside the sensor line, so it can be
 judged and learn. This is an owner-only research experiment: the 17 Nov "no forecasting" rule stays for everyone else.
