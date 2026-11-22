@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+22 Nov 2026 (Jira PM-406, api #172): Guy: while the app's quiet mode is on, WhatsApp sends nothing either. The
+agents' notes (yesterday, the weeks, a visit) now wait for the end of quiet mode while still fresh, a text waiting
+behind a template goes only when its button is tapped, and `proactive.deliver` refuses any proactive kind (pushes were
+already withheld in `push.send`). Replies to what the person writes are unchanged. Full API suite passes (881). Next:
+API deploy.
+
 22 Nov 2026 (Jira PM-409, app #249): Guy: an Overview tile with no data for the chosen period (awakenings, in bed)
 is not shown. Body and Nutrition leave such tiles out until they have data (still chosen); a Body section whose chosen
 tiles are all empty keeps its heading and pencil with one "No data" line. Typecheck and 267 app tests pass; OTA next.
