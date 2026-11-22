@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+22 Nov 2026 (Jira PM-417, app #255): Guy asked to zoom the Overview 24h and Day graph with two fingers. A pinch zooms the
+time axis around the fingers (down to one hour); while zoomed a sideways drag moves it, a vertical drag still scrolls,
+and a double tap (or a new period or day) shows the whole period. Every layer follows the zoom (line, dots, band, now
+line, the owner-only estimate, meal icons and tap slots); nothing else in the look changed. Plain React Native, so it
+ships by OTA. Root `pnpm check` passed; e2e `tools/e2e/graph-zoom.cjs` 11/11 with touch input on the web export. No
+integration changed. Next: OTA, then a pinch on Guy's phone.
+
 22 Nov 2026 (Jira PM-416, app #254, web #61): Guy saw "Tue 03/11" on the Test results list, without the year. Lab
 dates always carry the year (PM-389): the report-day rows now show weekday + date with the year in the device's order,
 Journal lab entries show that date instead of the stored ISO text, and the clinic portal's lab rows and lab chart add
