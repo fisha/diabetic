@@ -4196,5 +4196,9 @@
   "nut.l_meals_on": "ארוחות",
   "nut.l_carbs_on": "פחמימות",
   "nut.l_protein_on": "חלבון",
-  "nut.of_period": "{n, plural, one {מתוך יום אחד} =2 {מתוך יומיים} other {מתוך # ימים}}"
+  "nut.of_period": "{n, plural, one {מתוך יום אחד} =2 {מתוך יומיים} other {מתוך # ימים}}",
+  "now.log_meal": "לרשום ארוחה",
+  "now.log_insulin": "לרשום אינסולין",
+  "now.log_glucose": "לרשום גלוקוז",
+  "now.log_activity": "לרשום פעילות"
 }

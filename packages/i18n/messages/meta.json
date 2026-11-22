@@ -27254,5 +27254,33 @@
       "translation"
     ],
     "note": "Quiet mode sheet: schedule info and Starting from (Guy, 21 Nov 2026, PM-404)."
+  },
+  "now.log_meal": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Button on a companion check-in card on the Talk screen that asks the person to log something: opens the meal form (Log a meal) straight away (PM-408)."
+  },
+  "now.log_insulin": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Button on a companion check-in card on the Talk screen that asks the person to log something: opens the Insulin taken form straight away (PM-408)."
+  },
+  "now.log_glucose": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Button on a companion check-in card on the Talk screen that asks the person to log something: opens the Glucose form straight away (PM-408)."
+  },
+  "now.log_activity": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Button on a companion check-in card on the Talk screen that asks the person to log something: opens the Activity form straight away (PM-408)."
   }
 }

@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+22 Nov 2026 (Jira PM-408, app #250): Guy: when a card on the Talk screen's insights card asks the person to log
+something ("Had breakfast? You can log it"), the card has a button that opens the logging form straight away. A
+check-in or reminder whose follow-up `topic` is meal, insulin, glucose or activity (the API already sends it; the
+routine's meal check-ins and the companion's check-ins set it) gets a third chip, "Log meal" / "Log insulin" / "Log
+glucose" / "Log activity", beside "Answer now" and "Mark as read". It opens Log a meal or the matching Quick log form
+with the form's own time (now); nothing is prefilled from the question. Hidden while viewing someone else. Removing the
+card after the record is logged is the API's job (PM-407, separate thread). App 268 tests; e2e
+`tools/e2e/log-from-checkin.cjs` 5/5 in Hebrew and English. Not yet seen on a phone. Next: OTA.
+
 21 Nov 2026 (Jira PM-402, app #246): Guy: the add sheet's Insulin taken, Activity and Glucose forms, and the journal's
 edit form, pick the day as well as the time. Each gets the calendar beside the time that the meal form has (PM-343);
 `TimeField`'s `pastDay` prop holds the rule once (a time later than now on the picked day goes to the day before, a

@@ -4196,5 +4196,9 @@
   "nut.l_meals_on": "Meals",
   "nut.l_carbs_on": "Carbs",
   "nut.l_protein_on": "Protein",
-  "nut.of_period": "{n, plural, one {of one day} other {of # days}}"
+  "nut.of_period": "{n, plural, one {of one day} other {of # days}}",
+  "now.log_meal": "Log meal",
+  "now.log_insulin": "Log insulin",
+  "now.log_glucose": "Log glucose",
+  "now.log_activity": "Log activity"
 }
