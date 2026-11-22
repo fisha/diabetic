@@ -8,6 +8,10 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+22 Nov 2026 (Jira PM-409, app #249): Guy: an Overview tile with no data for the chosen period (awakenings, in bed)
+is not shown. Body and Nutrition leave such tiles out until they have data (still chosen); a Body section whose chosen
+tiles are all empty keeps its heading and pencil with one "No data" line. Typecheck and 267 app tests pass; OTA next.
+
 21 Nov 2026 (Jira PM-402, app #246): Guy: the add sheet's Insulin taken, Activity and Glucose forms, and the journal's
 edit form, pick the day as well as the time. Each gets the calendar beside the time that the meal form has (PM-343);
 `TimeField`'s `pastDay` prop holds the rule once (a time later than now on the picked day goes to the day before, a
