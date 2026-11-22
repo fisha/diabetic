@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+22 Nov 2026 (Jira PM-413, api #178): Guy: the glucose estimate should use the sensor's rate of change and every signal
+that can affect glucose. fc-v2 adds slopes over 15 and 30 minutes, their change and the trend arrow, protein and fat,
+the pump's automatic insulin apart from boluses, time since meal and bolus, heart rate, steps, sleep and pump modes;
+boosted trees per horizon band, ridge penalty by GCV, input importance in the metrics. Forecast tests pass. Next: API
+deploy (no migration; the model retrains on the next worker pass).
+
 22 Nov 2026 (Jira PM-417, app #255): Guy asked to zoom the Overview 24h and Day graph with two fingers. A pinch zooms the
 time axis around the fingers (down to one hour); while zoomed a sideways drag moves it, a vertical drag still scrolls,
 and a double tap (or a new period or day) shows the whole period. Every layer follows the zoom (line, dots, band, now
