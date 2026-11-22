@@ -4213,5 +4213,9 @@
   "ovr.fc_legend": "Estimate (experiment)",
   "ovr.fc_note": "Dashed line: an experimental estimate from your own past days, not for treatment decisions. On past hours it shows what was estimated an hour before.",
   "ovr.fc_hour_err": "Typical error an hour ahead: {error}.",
-  "ovr.fc_day_err": "Error this day so far: {error}."
+  "ovr.fc_day_err": "Error this day so far: {error}.",
+  "bd.t_24h": "Body, last 24 hours",
+  "bd.t_24h_was": "Body in these 24 hours",
+  "nut.t_24h": "Food, last 24 hours",
+  "nut.t_24h_was": "Food in these 24 hours"
 }

@@ -2170,6 +2170,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/health-data/window": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Window
+         * @description The body over the `hours` hours up to `until` (default now; an earlier 24 hours with the Overview's arrows), rolling
+         *     (Guy, 23 Nov 2026, PM-420: the Overview's 24h filter). `until` is never after now nor more than 92 days back.
+         */
+        get: operations["get_window_health_data_window_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/insights": {
         parameters: {
             query?: never;
@@ -12921,6 +12942,38 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["BodyDetailsOut"];
+                };
+            };
+        };
+    };
+    get_window_health_data_window_get: {
+        parameters: {
+            query?: {
+                hours?: number;
+                until?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TodayOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
