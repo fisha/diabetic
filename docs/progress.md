@@ -17,6 +17,16 @@ with the form's own time (now); nothing is prefilled from the question. Hidden w
 card after the record is logged is the API's job (PM-407, separate thread). App 268 tests; e2e
 `tools/e2e/log-from-checkin.cjs` 5/5 in Hebrew and English. Not yet seen on a phone. Next: OTA.
 
+22 Nov 2026 (Jira PM-406, api #172): Guy: while the app's quiet mode is on, WhatsApp sends nothing either. The
+agents' notes (yesterday, the weeks, a visit) now wait for the end of quiet mode while still fresh, a text waiting
+behind a template goes only when its button is tapped, and `proactive.deliver` refuses any proactive kind (pushes were
+already withheld in `push.send`). Replies to what the person writes are unchanged. Full API suite passes (881). Next:
+API deploy.
+
+22 Nov 2026 (Jira PM-409, app #249): Guy: an Overview tile with no data for the chosen period (awakenings, in bed)
+is not shown. Body and Nutrition leave such tiles out until they have data (still chosen); a Body section whose chosen
+tiles are all empty keeps its heading and pencil with one "No data" line. Typecheck and 267 app tests pass; OTA next.
+
 21 Nov 2026 (Jira PM-402, app #246): Guy: the add sheet's Insulin taken, Activity and Glucose forms, and the journal's
 edit form, pick the day as well as the time. Each gets the calendar beside the time that the meal form has (PM-343);
 `TimeField`'s `pastDay` prop holds the rule once (a time later than now on the picked day goes to the day before, a
