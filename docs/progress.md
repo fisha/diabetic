@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-423, app #257): Guy saw a face mask on the character and didn't know why (the poor-air weather
+look, European AQI above 60). The Talk greeting bubble now adds one line for each weather look the character has on
+(mask, sunglasses, hat and scarf), in the conversation language; not in Classic Stedio or while viewing someone. The
+bubbles sit 14 pt higher, clear of the character (Guy: too close). Root `pnpm check` passed. No integration changed.
+Next: OTA.
+
 23 Nov 2026 (Jira PM-420): Guy at 01:13 on Overview > 24h saw "Food today" with 0 meals and 0 g carbs (and 18 steps)
 although he ate at 13:34: the Body and Food cards treated 24h as the calendar day. 24h is now the rolling last 24 hours
 for every tile (meals, carbs, protein, weighed; steps, distance, heart rate, exercise, energy; resting heart rate the
