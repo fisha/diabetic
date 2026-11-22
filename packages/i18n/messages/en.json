@@ -4220,5 +4220,14 @@
   "bd.t_24h": "Body, last 24 hours",
   "bd.t_24h_was": "Body in these 24 hours",
   "nut.t_24h": "Food, last 24 hours",
-  "nut.t_24h_was": "Food in these 24 hours"
+  "nut.t_24h_was": "Food in these 24 hours",
+  "setr.title": "Infusion set change",
+  "setr.helper": "Pick one or more reminders before your set reaches the days it's rated for. Leave all unticked for none.",
+  "setr.note": "Counted from the last set change your pump reported or you marked, plus {n} days for the set type in Treatment settings.",
+  "setr.no_type": "Choose your infusion set type in Treatment settings to get this reminder.",
+  "setr.none": "Connect CareLink or Tandem in Devices, or mark a set change, to get this reminder.",
+  "vrem.title": "Reminders for you about {name}",
+  "vrem.helper": "Only you get these. {name}'s own settings don't change.",
+  "vrem.none": "{name}'s devices don't report a sensor end or a set change yet.",
+  "vrem.no_type": "No infusion set type is chosen in {name}'s Treatment settings, so a set reminder isn't possible."
 }
