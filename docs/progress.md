@@ -15,6 +15,14 @@ latest in the window; sleep the last night that ended in it), titles "Body/Food,
 show the same window. Day stays the calendar day. API `GET /health-data/window`; no migration. Root `pnpm check` and API
 body tests pass; e2e `tools/e2e/rolling-24h.cjs` on the web export. Next: API deploy, then OTA.
 
+22 Nov 2026 (Jira PM-419, api, root i18n): Guy: someone who had just installed the app already had a new item in
+Stedio's wardrobe, earned from history the first sync imported, and "it's the sensor that does it, not him". Every
+companion unlock rule now counts only what the person did after joining (messages, meals they logged, workouts that
+happened after joining counted once, days they logged or talked, steps and active energy bests after the joining day);
+the sensor-days rule is gone and time-in-range wins no longer open items. Small wins (G-43) are kept only for days and
+periods after the joining day. Young mode's "move" needs an activity that happened that day. Items already opened stay.
+API #181 merged (full suite passes except 3 forecast tests that need numpy, failing the same on main); i18n tests pass. No integration changed. Next: API deploy, then OTA for the two "days" strings.
+
 22 Nov 2026 (Jira PM-418, api #179): the fc-v2 retrain ran inside the worker on the shared 512 MB API machine and
 pushed it into swap (every screen slow, health check failed ~20:25 UTC). Training now runs in its own child process
 (nice 19, one thread, 350 MB data cap, dies with the worker, 15 min limit, starts only with >= 300 MB free) on at most

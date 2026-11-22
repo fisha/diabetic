@@ -1140,6 +1140,15 @@ something new comes in". No design board; built in the existing picker, card and
   in catalog order); no counts anywhere ("x of 31", "3 new things" removed; the dialog says "Something new
   unlocked!"). The companion's name can no longer be changed: the name field is gone from onboarding, Profile ›
   Companion and the website editor; a name already saved stays.
+- 22 Nov 2026 (Guy, PM-419): "it can't be that someone just installed the app and already got something in Stedio's
+  outfit... it's the sensor that does it, not him". Every rule now counts only what the person did after joining:
+  messages, meals they logged, workouts that happened after joining (each once), days they logged or talked (in a row,
+  and in all: "days together" no longer means days since joining), and steps or active energy bests on days after
+  the joining day. The sensor-days rule is gone (aviators open after 7 days of logging or talking, pixel glasses after
+  60), and time-in-range wins no longer open items (they stay as G-43 small wins). G-43 small wins themselves are kept
+  only for days (and periods) after the joining day; imported history can be the baseline, never the win. Young mode's
+  "move" quest and challenge need an activity that happened that day. Items already opened stay (nothing is lost) and
+  keep the reason they opened with.
 - Not done: an "unlock" card in the companion carousel (possible through `NowInsights.extra`), titles and colours.
 
 ### G-71 · Privacy, terms and accessibility pages (**Guy, 14 Nov 2026**, implemented-unverified)
