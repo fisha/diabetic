@@ -459,6 +459,10 @@ nearest two hours later (within 20 min); a pattern needs 3+ meals (timing: 3+ in
 Shown as insight cards on the Overview (no range needed), given to the companion, and used for app check-ins: one per
 meal slot per day when the usual time passed by 1-3 h with no meal logged, within the person's frequency choice and
 quiet hours, withdrawn if a meal is logged first. Correlation only; worded as such. Needs the clinical review (G-05).
+PM-407 (Guy, 22 Nov 2026: a dinner question came the next morning on WhatsApp after a late dinner was logged, with a
+breakfast question at 11:02): a meal check-in is about that meal in that part of the day only. Any meal since the slot
+began counts (a dinner after 23:00 too), and so does a meal entered after the question with an earlier time. No meal
+question is made, sent, or released from behind a WhatsApp template once its part of the day is over or the meal is logged.
 
 ### G-35 · Health store deletions and the "not updated" state (proposed, implemented)
 

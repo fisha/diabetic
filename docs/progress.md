@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+22 Nov 2026 (Jira PM-407, api #174): Guy got "Had dinner?" on WhatsApp at 11:02 the morning after logging a late dinner,
+then "Had breakfast?". The dinner question had waited behind a WhatsApp template overnight and was released, unchecked,
+when he tapped the next check-in. A meal check-in from the routine now lapses once any meal is logged since that part of
+the day began (a dinner after 23:00, or a meal entered later with an earlier time, counts) and once that part of the day
+is over; `tick` withdraws it and `deliver_waiting` drops its waiting WhatsApp text. No meal question is made after its
+part of the day ends. API tests pass. Next: API deploy.
+
 22 Nov 2026 (Jira PM-408, app #250): Guy: when a card on the Talk screen's insights card asks the person to log
 something ("Had breakfast? You can log it"), the card has a button that opens the logging form straight away. A
 check-in or reminder whose follow-up `topic` is meal, insulin, glucose or activity (the API already sends it; the
