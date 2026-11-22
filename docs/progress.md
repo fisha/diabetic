@@ -32,6 +32,15 @@ latest in the window; sleep the last night that ended in it), titles "Body/Food,
 show the same window. Day stays the calendar day. API `GET /health-data/window`; no migration. Root `pnpm check` and API
 body tests pass; e2e `tools/e2e/rolling-24h.cjs` on the web export. Next: API deploy, then OTA.
 
+22 Nov 2026 (Jira PM-422): Guy asked that someone viewing another person's data see the set change and sensor rows
+at the bottom of Overview, view only; that the viewer can set a reminder for themselves about that person's set or
+sensor change; and that a person can set a reminder before a set change like the sensor one. API: `GET /devices/equipment`
+(followers read it with the glucose part; the device connection and its events stay private), set change reminder from
+the set type in Treatment settings plus the last change, viewer reminders kept on the share (migration `a3c5e7f9b1d4`).
+App: StatusRows reads the new endpoint, Notifications has "Infusion set change", viewer settings have "Reminders for
+you about {name}". API tests and root `pnpm check` pass; e2e `tools/e2e/viewer-equipment.cjs` 29/29. Next: API deploy,
+then OTA.
+
 22 Nov 2026 (Jira PM-419, api, root i18n): Guy: someone who had just installed the app already had a new item in
 Stedio's wardrobe, earned from history the first sync imported, and "it's the sensor that does it, not him". Every
 companion unlock rule now counts only what the person did after joining (messages, meals they logged, workouts that

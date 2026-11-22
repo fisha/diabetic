@@ -2097,3 +2097,14 @@ days, not for treatment decisions. On past hours it shows what was estimated an 
 ahead: X. Error this day so far: Y." Nobody else sees any of it. It is outside Stedio's intended purpose (no
 forecasting, 17 Nov 2026) and stays an owner-only research experiment unless Guy, after a regulatory review and a
 lawyer, decides otherwise.
+
+### G-124 · Set and sensor rows for followers, set change reminder, a follower's own reminders (**asked by Guy, 22 Nov 2026, PM-422**)
+
+Guy: someone viewing another person's data should see the set change and sensor change rows at the bottom of
+Overview; the follower should be able to set a reminder for themselves about that person's set or sensor change; and
+a person should be able to set a reminder before a set change like the one for the sensor. No Duet board shows these.
+Built with existing pieces only: the owner's equipment rows (Duet z21) at the bottom of the viewer's Overview, with no
+action; an "Infusion set change" checkbox list in Notifications under "Sensor ending", in the same look (times 3 days
+for a 7-day set, 24 hours, 5 hours; the set's days come from the set type in Treatment settings); and under the viewer
+settings' "Back to my own data", "Reminders for you about {name}" with the same checkbox lists for that person's
+sensor type and set.

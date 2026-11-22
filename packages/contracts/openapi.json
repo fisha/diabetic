@@ -3311,6 +3311,48 @@
         "title": "EnvironmentOut",
         "type": "object"
       },
+      "EquipmentOut": {
+        "description": "The equipment rows at the bottom of Overview (Duet z21): only what a device or the person already said.",
+        "properties": {
+          "sensor_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor At"
+          },
+          "sensor_hours_left": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor Hours Left"
+          },
+          "set_changed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Set Changed At"
+          }
+        },
+        "title": "EquipmentOut",
+        "type": "object"
+      },
       "EventIn": {
         "additionalProperties": false,
         "properties": {
@@ -11199,6 +11241,48 @@
             "title": "Sensor End Types",
             "type": "array"
           },
+          "set_end_available": {
+            "default": false,
+            "title": "Set End Available",
+            "type": "boolean"
+          },
+          "set_end_options": {
+            "default": [],
+            "items": {
+              "enum": [
+                72,
+                24,
+                5
+              ],
+              "type": "integer"
+            },
+            "title": "Set End Options",
+            "type": "array"
+          },
+          "set_end_rated_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Set End Rated Days"
+          },
+          "set_end_reminder": {
+            "default": [],
+            "items": {
+              "enum": [
+                72,
+                24,
+                5
+              ],
+              "type": "integer"
+            },
+            "title": "Set End Reminder",
+            "type": "array"
+          },
           "timezone": {
             "title": "Timezone",
             "type": "string"
@@ -11406,6 +11490,26 @@
               }
             ],
             "title": "Sensor End Reminder"
+          },
+          "set_end_reminder": {
+            "anyOf": [
+              {
+                "items": {
+                  "enum": [
+                    72,
+                    24,
+                    5
+                  ],
+                  "type": "integer"
+                },
+                "maxItems": 3,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Set End Reminder"
           },
           "timezone": {
             "anyOf": [
@@ -12752,6 +12856,115 @@
           "accepted_at"
         ],
         "title": "ViewerOut",
+        "type": "object"
+      },
+      "ViewerRemindersIn": {
+        "additionalProperties": false,
+        "properties": {
+          "sensor": {
+            "additionalProperties": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "propertyNames": {
+              "enum": [
+                "guardian4",
+                "dexcomG7",
+                "libre3"
+              ]
+            },
+            "title": "Sensor",
+            "type": "object"
+          },
+          "set": {
+            "items": {
+              "type": "integer"
+            },
+            "maxItems": 3,
+            "title": "Set",
+            "type": "array"
+          }
+        },
+        "title": "ViewerRemindersIn",
+        "type": "object"
+      },
+      "ViewerRemindersOut": {
+        "description": "The viewer's own set and sensor reminders about the person they follow (PM-422), and what can be chosen: the\nsensor types the person's device services can tell the end of, and the set times for the person's set type.",
+        "properties": {
+          "sensor": {
+            "additionalProperties": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "default": {},
+            "propertyNames": {
+              "enum": [
+                "guardian4",
+                "dexcomG7",
+                "libre3"
+              ]
+            },
+            "title": "Sensor",
+            "type": "object"
+          },
+          "sensor_options": {
+            "additionalProperties": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "default": {},
+            "propertyNames": {
+              "enum": [
+                "guardian4",
+                "dexcomG7",
+                "libre3"
+              ]
+            },
+            "title": "Sensor Options",
+            "type": "object"
+          },
+          "sensor_types": {
+            "default": [],
+            "items": {
+              "enum": [
+                "guardian4",
+                "dexcomG7",
+                "libre3"
+              ],
+              "type": "string"
+            },
+            "title": "Sensor Types",
+            "type": "array"
+          },
+          "set": {
+            "default": [],
+            "items": {
+              "type": "integer"
+            },
+            "title": "Set",
+            "type": "array"
+          },
+          "set_available": {
+            "default": false,
+            "title": "Set Available",
+            "type": "boolean"
+          },
+          "set_options": {
+            "default": [],
+            "items": {
+              "type": "integer"
+            },
+            "title": "Set Options",
+            "type": "array"
+          }
+        },
+        "title": "ViewerRemindersOut",
         "type": "object"
       },
       "ViewingOut": {
@@ -17267,6 +17480,33 @@
           }
         ],
         "summary": "Dexcom Sync",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/equipment": {
+      "get": {
+        "description": "The set change and the sensor's time left, read only. A follower may read it with the glucose (PM-422, Guy 22 Nov\n2026: someone viewing another person's data sees the set and sensor rows too); only these two values, the device\nconnection itself stays private.",
+        "operationId": "equipment_devices_equipment_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EquipmentOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Equipment",
         "tags": [
           "devices"
         ]
@@ -23408,6 +23648,112 @@
           }
         ],
         "summary": "Set Nickname",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
+    "/sharing/{share_id}/reminders": {
+      "get": {
+        "description": "The viewer's own reminders about the person they follow (PM-422). Only the viewer reads or sets them.",
+        "operationId": "get_reminders_sharing__share_id__reminders_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ViewerRemindersOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Reminders",
+        "tags": [
+          "sharing"
+        ]
+      },
+      "put": {
+        "description": "Sets the viewer's own set and sensor reminders about the person they follow. Sent to the viewer only.",
+        "operationId": "set_reminders_sharing__share_id__reminders_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ViewerRemindersIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ViewerRemindersOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Set Reminders",
         "tags": [
           "sharing"
         ]
