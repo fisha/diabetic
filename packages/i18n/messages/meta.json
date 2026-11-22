@@ -25924,6 +25924,27 @@
       "translation"
     ]
   },
+  "com.weather_air_poor": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ],
+    "note": "Character weather looks said in the greeting bubble (PM-423, Guy 23 Nov 2026): appended to com.greet_* when the character wears the mask (poor air), sunglasses (hot) or hat and scarf (cold). Not in the design boards."
+  },
+  "com.weather_hot": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ],
+    "note": "Character weather looks said in the greeting bubble (PM-423, Guy 23 Nov 2026): appended to com.greet_* when the character wears the mask (poor air), sunglasses (hot) or hat and scarf (cold). Not in the design boards."
+  },
+  "com.weather_cold": {
+    "board": "Duet",
+    "review": [
+      "translation"
+    ],
+    "note": "Character weather looks said in the greeting bubble (PM-423, Guy 23 Nov 2026): appended to com.greet_* when the character wears the mask (poor air), sunglasses (hot) or hat and scarf (cold). Not in the design boards."
+  },
   "com.greet_afternoon": {
     "board": "Duet",
     "review": [
