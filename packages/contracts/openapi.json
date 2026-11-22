@@ -12320,7 +12320,7 @@
       },
       "UsualMealIn": {
         "additionalProperties": false,
-        "description": "The foods as a saved meal stores them, for the whole served amount. A usual meal is the person's own, so it keeps\nno estimate range or confidence: the app logs it again with its values as they were saved.",
+        "description": "The foods as a saved meal stores them, for the whole served amount. A usual meal is the person's own, so it keeps\nno estimate range or confidence: the app logs it again with its values as they were saved. `photo_id`: the meal's\nfirst photo, when it had one (PM-425).",
         "properties": {
           "items": {
             "items": {
@@ -12336,6 +12336,18 @@
             "minLength": 1,
             "title": "Name",
             "type": "string"
+          },
+          "photo_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Photo Id"
           }
         },
         "required": [
@@ -12362,6 +12374,23 @@
           "name": {
             "title": "Name",
             "type": "string"
+          },
+          "photo_asked": {
+            "default": false,
+            "title": "Photo Asked",
+            "type": "boolean"
+          },
+          "photo_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Photo Id"
           }
         },
         "required": [
@@ -12370,6 +12399,37 @@
           "items"
         ],
         "title": "UsualMealOut",
+        "type": "object"
+      },
+      "UsualMealPatch": {
+        "additionalProperties": false,
+        "description": "PM-425: a new photo for the favorite (it replaces the one before), or that its photo was suggested.",
+        "properties": {
+          "photo_asked": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Photo Asked"
+          },
+          "photo_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Photo Id"
+          }
+        },
+        "title": "UsualMealPatch",
         "type": "object"
       },
       "UsualOut": {
@@ -20971,7 +21031,7 @@
         ]
       },
       "get": {
-        "description": "The photo of a saved meal, for its Journal card (Guy, 13 Nov 2026); gone once removed. Also for someone the person\nshares their journal with, view only (PM-310): with X-View-As the user here is the person who shares (deps).",
+        "description": "The photo of a saved meal, for its Journal card (Guy, 13 Nov 2026); gone once removed. Also for someone the person\nshares their journal with, view only (PM-310): with X-View-As the user here is the person who shares (deps).\nA favorite's own photo (PM-425) is shown to its owner only.",
         "operationId": "get_photo_meal_photos__photo_id__get",
         "parameters": [
           {
@@ -21204,6 +21264,65 @@
           }
         ],
         "summary": "Delete Usual",
+        "tags": [
+          "meal"
+        ]
+      },
+      "patch": {
+        "operationId": "update_usual_meal_usual__usual_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "usual_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Usual Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsualMealPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsualMealOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Update Usual",
         "tags": [
           "meal"
         ]

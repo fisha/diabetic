@@ -2638,6 +2638,7 @@ export interface paths {
          * Get Photo
          * @description The photo of a saved meal, for its Journal card (Guy, 13 Nov 2026); gone once removed. Also for someone the person
          *     shares their journal with, view only (PM-310): with X-View-As the user here is the person who shares (deps).
+         *     A favorite's own photo (PM-425) is shown to its owner only.
          */
         get: operations["get_photo_meal_photos__photo_id__get"];
         put?: never;
@@ -2698,7 +2699,8 @@ export interface paths {
         delete: operations["delete_usual_meal_usual__usual_id__delete"];
         options?: never;
         head?: never;
-        patch?: never;
+        /** Update Usual */
+        patch: operations["update_usual_meal_usual__usual_id__patch"];
         trace?: never;
     };
     "/membership": {
@@ -8063,13 +8065,16 @@ export interface components {
         /**
          * UsualMealIn
          * @description The foods as a saved meal stores them, for the whole served amount. A usual meal is the person's own, so it keeps
-         *     no estimate range or confidence: the app logs it again with its values as they were saved.
+         *     no estimate range or confidence: the app logs it again with its values as they were saved. `photo_id`: the meal's
+         *     first photo, when it had one (PM-425).
          */
         UsualMealIn: {
             /** Items */
             items: components["schemas"]["MealItemData"][];
             /** Name */
             name: string;
+            /** Photo Id */
+            photo_id?: string | null;
         };
         /** UsualMealOut */
         UsualMealOut: {
@@ -8082,6 +8087,23 @@ export interface components {
             items: components["schemas"]["MealItemData"][];
             /** Name */
             name: string;
+            /**
+             * Photo Asked
+             * @default false
+             */
+            photo_asked: boolean;
+            /** Photo Id */
+            photo_id?: string | null;
+        };
+        /**
+         * UsualMealPatch
+         * @description PM-425: a new photo for the favorite (it replaces the one before), or that its photo was suggested.
+         */
+        UsualMealPatch: {
+            /** Photo Asked */
+            photo_asked?: boolean | null;
+            /** Photo Id */
+            photo_id?: string | null;
         };
         /**
          * UsualOut
@@ -13935,6 +13957,48 @@ export interface operations {
         responses: {
             /** @description Successful Response */
             204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    update_usual_meal_usual__usual_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                usual_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UsualMealPatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UsualMealOut"];
+                };
+            };
+            /** @description not_found */
+            404: {
                 headers: {
                     [name: string]: unknown;
                 };
