@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+22 Nov 2026 (Jira PM-418, api #179): the fc-v2 retrain ran inside the worker on the shared 512 MB API machine and
+pushed it into swap (every screen slow, health check failed ~20:25 UTC). Training now runs in its own child process
+(nice 19, one thread, 350 MB data cap, dies with the worker, 15 min limit, starts only with >= 300 MB free) on at most
+60,000 sampled rows of 90 days with float32 features (local run: 438 MB -> ~210 MB, one core). Requests never unpickle
+an older model. Next: API deploy (no OTA).
+
 22 Nov 2026 (Jira PM-413, api #178): Guy: the glucose estimate should use the sensor's rate of change and every signal
 that can affect glucose. fc-v2 adds slopes over 15 and 30 minutes, their change and the trend arrow, protein and fat,
 the pump's automatic insulin apart from boluses, time since meal and bolus, heart rate, steps, sleep and pump modes;
