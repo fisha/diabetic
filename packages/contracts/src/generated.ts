@@ -1374,6 +1374,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/devices/equipment": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Equipment
+         * @description The set change and the sensor's time left, read only. A follower may read it with the glucose (PM-422, Guy 22 Nov
+         *     2026: someone viewing another person's data sees the set and sensor rows too); only these two values, the device
+         *     connection itself stays private.
+         */
+        get: operations["equipment_devices_equipment_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/devices/events": {
         parameters: {
             query?: never;
@@ -3353,6 +3375,30 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sharing/{share_id}/reminders": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Reminders
+         * @description The viewer's own reminders about the person they follow (PM-422). Only the viewer reads or sets them.
+         */
+        get: operations["get_reminders_sharing__share_id__reminders_get"];
+        /**
+         * Set Reminders
+         * @description Sets the viewer's own set and sensor reminders about the person they follow. Sent to the viewer only.
+         */
+        put: operations["set_reminders_sharing__share_id__reminders_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sharing/{share_id}/young": {
         parameters: {
             query?: never;
@@ -4989,6 +5035,18 @@ export interface components {
             source?: "open-meteo" | null;
             /** Temp C */
             temp_c?: number | null;
+        };
+        /**
+         * EquipmentOut
+         * @description The equipment rows at the bottom of Overview (Duet z21): only what a device or the person already said.
+         */
+        EquipmentOut: {
+            /** Sensor At */
+            sensor_at?: string | null;
+            /** Sensor Hours Left */
+            sensor_hours_left?: number | null;
+            /** Set Changed At */
+            set_changed_at?: string | null;
         };
         /** EventIn */
         EventIn: {
@@ -7748,6 +7806,23 @@ export interface components {
              * @default []
              */
             sensor_end_types: ("guardian4" | "dexcomG7" | "libre3")[];
+            /**
+             * Set End Available
+             * @default false
+             */
+            set_end_available: boolean;
+            /**
+             * Set End Options
+             * @default []
+             */
+            set_end_options: (72 | 24 | 5)[];
+            /** Set End Rated Days */
+            set_end_rated_days?: number | null;
+            /**
+             * Set End Reminder
+             * @default []
+             */
+            set_end_reminder: (72 | 24 | 5)[];
             /** Timezone */
             timezone: string;
         };
@@ -7776,6 +7851,8 @@ export interface components {
             sensor_end_reminder?: {
                 [key: string]: (168 | 72 | 24 | 5)[] | (168 | 72 | 24 | 5) | null;
             } | null;
+            /** Set End Reminder */
+            set_end_reminder?: (72 | 24 | 5)[] | null;
             /** Timezone */
             timezone?: string | null;
         };
@@ -8180,6 +8257,56 @@ export interface components {
              * @default false
              */
             waiting_parent: boolean;
+        };
+        /** ViewerRemindersIn */
+        ViewerRemindersIn: {
+            /** Sensor */
+            sensor?: {
+                [key: string]: number[];
+            };
+            /** Set */
+            set?: number[];
+        };
+        /**
+         * ViewerRemindersOut
+         * @description The viewer's own set and sensor reminders about the person they follow (PM-422), and what can be chosen: the
+         *     sensor types the person's device services can tell the end of, and the set times for the person's set type.
+         */
+        ViewerRemindersOut: {
+            /**
+             * Sensor
+             * @default {}
+             */
+            sensor: {
+                [key: string]: number[];
+            };
+            /**
+             * Sensor Options
+             * @default {}
+             */
+            sensor_options: {
+                [key: string]: number[];
+            };
+            /**
+             * Sensor Types
+             * @default []
+             */
+            sensor_types: ("guardian4" | "dexcomG7" | "libre3")[];
+            /**
+             * Set
+             * @default []
+             */
+            set: number[];
+            /**
+             * Set Available
+             * @default false
+             */
+            set_available: boolean;
+            /**
+             * Set Options
+             * @default []
+             */
+            set_options: number[];
         };
         /**
          * ViewingOut
@@ -11159,6 +11286,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CgmOut"];
+                };
+            };
+        };
+    };
+    equipment_devices_equipment_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EquipmentOut"];
                 };
             };
         };
@@ -15230,6 +15377,72 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ViewingOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_reminders_sharing__share_id__reminders_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ViewerRemindersOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_reminders_sharing__share_id__reminders_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ViewerRemindersIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ViewerRemindersOut"];
                 };
             };
             /** @description Validation Error */

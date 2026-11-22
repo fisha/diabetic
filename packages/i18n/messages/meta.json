@@ -27422,5 +27422,68 @@
       "translation"
     ],
     "note": "Food card title for an earlier 24 hours on the Overview (back arrow on the 24h filter, PM-420)."
+  },
+  "setr.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Set change reminder and the viewer's own set and sensor reminders (PM-422, Guy 22 Nov 2026)."
+  },
+  "setr.helper": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Set change reminder and the viewer's own set and sensor reminders (PM-422, Guy 22 Nov 2026)."
+  },
+  "setr.note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Set change reminder and the viewer's own set and sensor reminders (PM-422, Guy 22 Nov 2026)."
+  },
+  "setr.no_type": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Set change reminder and the viewer's own set and sensor reminders (PM-422, Guy 22 Nov 2026)."
+  },
+  "setr.none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Set change reminder and the viewer's own set and sensor reminders (PM-422, Guy 22 Nov 2026)."
+  },
+  "vrem.title": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Set change reminder and the viewer's own set and sensor reminders (PM-422, Guy 22 Nov 2026)."
+  },
+  "vrem.helper": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Set change reminder and the viewer's own set and sensor reminders (PM-422, Guy 22 Nov 2026)."
+  },
+  "vrem.none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Set change reminder and the viewer's own set and sensor reminders (PM-422, Guy 22 Nov 2026)."
+  },
+  "vrem.no_type": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Set change reminder and the viewer's own set and sensor reminders (PM-422, Guy 22 Nov 2026)."
   }
 }
