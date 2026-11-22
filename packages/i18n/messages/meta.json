@@ -27373,5 +27373,33 @@
       "translation"
     ],
     "note": "Owner-only research experiment (PM-413): shown only on the one account the server turns the glucose estimate on for."
+  },
+  "bd.t_24h": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Body card title on the Overview's 24h filter: the tiles count the last 24 hours, not the calendar day (PM-420)."
+  },
+  "bd.t_24h_was": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Body card title for an earlier 24 hours on the Overview (back arrow on the 24h filter, PM-420)."
+  },
+  "nut.t_24h": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Food card title on the Overview's 24h filter: the tiles count the last 24 hours, not the calendar day (PM-420)."
+  },
+  "nut.t_24h_was": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Food card title for an earlier 24 hours on the Overview (back arrow on the 24h filter, PM-420)."
   }
 }

@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-420): Guy at 01:13 on Overview > 24h saw "Food today" with 0 meals and 0 g carbs (and 18 steps)
+although he ate at 13:34: the Body and Food cards treated 24h as the calendar day. 24h is now the rolling last 24 hours
+for every tile (meals, carbs, protein, weighed; steps, distance, heart rate, exercise, energy; resting heart rate the
+latest in the window; sleep the last night that ended in it), titles "Body/Food, last 24 hours", and the tiles' sheets
+show the same window. Day stays the calendar day. API `GET /health-data/window`; no migration. Root `pnpm check` and API
+body tests pass; e2e `tools/e2e/rolling-24h.cjs` on the web export. Next: API deploy, then OTA.
+
 22 Nov 2026 (Jira PM-418, api #179): the fc-v2 retrain ran inside the worker on the shared 512 MB API machine and
 pushed it into swap (every screen slow, health check failed ~20:25 UTC). Training now runs in its own child process
 (nice 19, one thread, 350 MB data cap, dies with the worker, 15 min limit, starts only with >= 300 MB free) on at most

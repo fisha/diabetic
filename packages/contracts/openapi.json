@@ -19825,6 +19825,74 @@
         ]
       }
     },
+    "/health-data/window": {
+      "get": {
+        "description": "The body over the `hours` hours up to `until` (default now; an earlier 24 hours with the Overview's arrows), rolling\n(Guy, 23 Nov 2026, PM-420: the Overview's 24h filter). `until` is never after now nor more than 92 days back.",
+        "operationId": "get_window_health_data_window_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "hours",
+            "required": false,
+            "schema": {
+              "default": 24,
+              "maximum": 24,
+              "minimum": 1,
+              "title": "Hours",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "until",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Until"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TodayOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Window",
+        "tags": [
+          "health-data"
+        ]
+      }
+    },
     "/insights": {
       "get": {
         "description": "`shown=true`: the client lists these insights on screen now, so each listing is kept as learning data.",
