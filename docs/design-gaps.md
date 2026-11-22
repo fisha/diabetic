@@ -2076,3 +2076,15 @@ Log a meal.
 The relationship chips on a share card and on the invite screen looked messy with eight options. Built: one row with
 "Who is it?" and the chosen value that opens the list under it (`components/SelectRow.tsx`), with a "Not chosen" option.
 
+
+### G-123 · Glucose estimate on the Overview day chart, owner-only experiment (**asked by Guy, 22 Nov 2026, PM-413**)
+
+Not in the design. Guy asked for an ML estimate of the rest of today's glucose as a dashed line on the Overview day
+chart, for his own account only, and on a finished day the estimate beside the sensor line so it can be judged and
+improve. Built for the single account the server turns it on for (`users.forecast_enabled`): a thin dashed line in the
+ink colour after the sensor line and, on hours that have passed, the estimate made an hour before each time; a legend
+item "Estimate (experiment)"; and a note under the chart: "Dashed line: an experimental estimate from your own past
+days, not for treatment decisions. On past hours it shows what was estimated an hour before. Typical error an hour
+ahead: X. Error this day so far: Y." Nobody else sees any of it. It is outside Stedio's intended purpose (no
+forecasting, 17 Nov 2026) and stays an owner-only research experiment unless Guy, after a regulatory review and a
+lawyer, decides otherwise.

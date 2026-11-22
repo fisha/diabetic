@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+22 Nov 2026 (Jira PM-413, api, app): Guy asked for an ML estimate of the rest of today's glucose as a dashed line on the
+Overview day chart, for his own account only, and on a finished day the estimate beside the sensor line, so it can be
+judged and learn. This is an owner-only research experiment: the 17 Nov "no forecasting" rule stays for everyone else.
+`users.forecast_enabled` is set by migration `f9b1c3d5e7a2` for one account, matched by the SHA-256 of its email;
+`GET /forecast/day` answers 404 to every other account and to any request with X-View-As. The worker retrains a per-person
+model once a day (five candidates; per horizon the one with the lowest validation MAE; test MAE beside persistence and
+the time-of-day average is kept in the model's metrics), keeps an estimate every 30 minutes and scores it once its day
+is over. The app draws the dashed line (hindsight an hour ahead, then the live estimate), a legend item and a note with
+the typical error. API tests and app tests pass; e2e `tools/e2e/forecast.cjs` 9/9 on the web export with simulated
+data. Next: API deploy (scikit-learn joins the image), then OTA.
+
 22 Nov 2026 (Jira PM-412, api #175, app #252): Guy was asked to sign in again while the app was open, and the re-login
 screen offered only email and password. Cause, from the code (production logs could not be read: the Mac was offline):
 refresh tokens rotate, and any rotated token coming back ended the whole session family, so a refresh whose answer
