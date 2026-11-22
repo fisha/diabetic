@@ -12488,7 +12488,7 @@
     "review": [
       "translation"
     ],
-    "note": "Companion unlocks (G-70; Guy, 13 Nov 2026): items for the companion character that open over time for habits. Not in the design boards."
+    "note": "Companion unlocks (G-70; Guy, 13 Nov 2026): items for the companion character that open over time for habits. Not in the design boards. PM-419 (Guy, 22 Nov 2026): days the person logged or talked, not days since joining."
   },
   "rwd.rule_meals": {
     "board": "Settings",
@@ -12502,7 +12502,7 @@
     "review": [
       "translation"
     ],
-    "note": "Companion unlocks (G-70; Guy, 13 Nov 2026): items for the companion character that open over time for habits. Not in the design boards."
+    "note": "Companion unlocks (G-70; Guy, 13 Nov 2026): items for the companion character that open over time for habits. Not in the design boards. Retired by PM-419 (nothing the sensor does opens an item); kept for older app versions."
   },
   "rwd.rule_streak": {
     "board": "Settings",
@@ -12565,7 +12565,7 @@
     "review": [
       "translation"
     ],
-    "note": "Companion unlocks (G-70; Guy, 13 Nov 2026): items for the companion character that open over time for habits. Not in the design boards."
+    "note": "Companion unlocks (G-70; Guy, 13 Nov 2026): items for the companion character that open over time for habits. Not in the design boards. PM-419 (Guy, 22 Nov 2026): days the person logged or talked, not days since joining."
   },
   "rwd.why_meals": {
     "board": "Settings",
@@ -12579,7 +12579,7 @@
     "review": [
       "translation"
     ],
-    "note": "Companion unlocks (G-70; Guy, 13 Nov 2026): items for the companion character that open over time for habits. Not in the design boards."
+    "note": "Companion unlocks (G-70; Guy, 13 Nov 2026): items for the companion character that open over time for habits. Not in the design boards. PM-419: shown only for items opened by the retired sensor-days rule."
   },
   "rwd.why_streak": {
     "board": "Settings",
