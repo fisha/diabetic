@@ -27345,5 +27345,33 @@
       "translation"
     ],
     "note": "Button on a companion check-in card on the Talk screen that asks the person to log something: opens the Activity form straight away (PM-408)."
+  },
+  "ovr.fc_legend": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Owner-only research experiment (PM-413): shown only on the one account the server turns the glucose estimate on for."
+  },
+  "ovr.fc_note": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Owner-only research experiment (PM-413): shown only on the one account the server turns the glucose estimate on for."
+  },
+  "ovr.fc_hour_err": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Owner-only research experiment (PM-413): shown only on the one account the server turns the glucose estimate on for."
+  },
+  "ovr.fc_day_err": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Owner-only research experiment (PM-413): shown only on the one account the server turns the glucose estimate on for."
   }
 }
