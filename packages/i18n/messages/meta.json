@@ -19929,6 +19929,20 @@
     ],
     "note": "Glucose curve after a meal, meal to +3 h, no score (Guy, 18 Nov 2026, PM-239)."
   },
+  "meal.curve_back_range": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-410 (Guy, 22 Nov 2026): back in the person's own range after a meal or workout, instead of back to start."
+  },
+  "meal.curve_stayed": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-410 (Guy, 22 Nov 2026): back in the person's own range after a meal or workout, instead of back to start."
+  },
   "meal.curve_not_yet": {
     "board": "Meal",
     "review": [
@@ -25588,6 +25602,55 @@
       "translation"
     ],
     "note": "PM-315 (Guy, 19 Nov 2026): no return to start before the next logged meal or workout."
+  },
+  "ovr.rises_lead_range": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-410 (Guy, 22 Nov 2026): back in the person's own range after a meal or workout, instead of back to start."
+  },
+  "ovr.rises_lead_range@v": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-410 (Guy, 22 Nov 2026): back in the person's own range after a meal or workout, instead of back to start."
+  },
+  "ovr.rises_back_range": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-410 (Guy, 22 Nov 2026): back in the person's own range after a meal or workout, instead of back to start."
+  },
+  "ovr.rises_stayed": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-410 (Guy, 22 Nov 2026): back in the person's own range after a meal or workout, instead of back to start."
+  },
+  "ovr.rises_not_back_range": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-410 (Guy, 22 Nov 2026): back in the person's own range after a meal or workout, instead of back to start."
+  },
+  "ovr.rises_not_back_range_meal": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-410 (Guy, 22 Nov 2026): back in the person's own range after a meal or workout, instead of back to start."
+  },
+  "ovr.rises_not_back_range_act": {
+    "board": "Overview (PM-253)",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-410 (Guy, 22 Nov 2026): back in the person's own range after a meal or workout, instead of back to start."
   },
   "now.rises_t": {
     "board": "Companion (main screen)",

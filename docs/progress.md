@@ -23,6 +23,12 @@ behind a template goes only when its button is tapped, and `proactive.deliver` r
 already withheld in `push.send`). Replies to what the person writes are unchanged. Full API suite passes (881). Next:
 API deploy.
 
+22 Nov 2026 (Jira PM-410, app #251, api #173): Guy: the meal sheet's "Back to start" becomes "Back in range". With the
+person's own range it is the time from the meal until glucose was back inside the range after leaving it (the reading
+at the meal counts), or "Stayed in range". It is searched as in PM-315 (up to 6 h, stopping at the next meal or
+workout). Without a range it stays "Back to start". The biggest-rises card and the clinic report use the same rule.
+Typecheck, 273 app tests and 878 API tests pass; not yet seen on a phone. API deploy first, then OTA.
+
 22 Nov 2026 (Jira PM-409, app #249): Guy: an Overview tile with no data for the chosen period (awakenings, in bed)
 is not shown. Body and Nutrition leave such tiles out until they have data (still chosen); a Body section whose chosen
 tiles are all empty keeps its heading and pencil with one "No data" line. Typecheck and 267 app tests pass; OTA next.
