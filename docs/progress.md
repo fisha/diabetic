@@ -19,6 +19,14 @@ is over. The app draws the dashed line (hindsight an hour ahead, then the live e
 the typical error. API tests and app tests pass; e2e `tools/e2e/forecast.cjs` 9/9 on the web export with simulated
 data. Next: API deploy (scikit-learn joins the image), then OTA.
 
+22 Nov 2026 (Jira PM-412, api #175, app #252): Guy was asked to sign in again while the app was open, and the re-login
+screen offered only email and password. Cause, from the code (production logs could not be read: the Mac was offline):
+refresh tokens rotate, and any rotated token coming back ended the whole session family, so a refresh whose answer
+never reached the app (a deploy restarting the server, the 15 s timeout, iOS suspending the app) signed the person out
+on the next refresh. Now a rotated token whose successor was never used rotates again and the unused one is
+withdrawn; a reuse after a later use, or a withdrawn token coming back, still ends the family. The refresh waits up to
+60 s. The session-expired screen offers Apple and Google like sign-in. Next: API deploy, then OTA.
+
 22 Nov 2026 (Jira PM-407, api #174): Guy got "Had dinner?" on WhatsApp at 11:02 the morning after logging a late dinner,
 then "Had breakfast?". The dinner question had waited behind a WhatsApp template overnight and was released, unchecked,
 when he tapped the next check-in. A meal check-in from the routine now lapses once any meal is logged since that part of
