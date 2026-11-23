@@ -4314,7 +4314,7 @@
   "games.done_today": "Answered today",
   "games.coins": "{n, plural, one {# coin} other {# coins}}",
   "games.points": "{n, plural, one {# point} other {# points}}",
-  "games.today_coins": "Coins today: {n} of {cap}",
+  "games.today_coins": "Coins today: {n}",
   "games.button": "Games",
   "games.close": "Close the game",
   "games.unsupported": "The games come with the next app update.",

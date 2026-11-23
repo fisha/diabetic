@@ -2049,7 +2049,7 @@ export interface paths {
         put?: never;
         /**
          * Score
-         * @description A finished game's points. Coins follow up to the per-game and daily caps; the rest only counts as a best.
+         * @description A finished game's points. Every point becomes a coin (no daily limit, Guy 23 Nov 2026).
          */
         post: operations["score_games_score_post"];
         delete?: never;
@@ -3759,7 +3759,7 @@ export interface paths {
         };
         /**
          * Preview
-         * @description One fixed sample sentence in a chosen voice and language, with the companion's name. Not a speech service.
+         * @description One fixed sample sentence in a chosen voice and language, with the mentor's fixed name. Not a speech service.
          */
         get: operations["preview_voice_preview_get"];
         put?: never;
@@ -5740,8 +5740,6 @@ export interface components {
             };
             /** Coins */
             coins: number;
-            /** Daily Cap */
-            daily_cap: number;
             /** Earned Today */
             earned_today: number;
             /** Item Today */

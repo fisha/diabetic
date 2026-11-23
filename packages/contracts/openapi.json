@@ -5044,10 +5044,6 @@
             "title": "Coins",
             "type": "integer"
           },
-          "daily_cap": {
-            "title": "Daily Cap",
-            "type": "integer"
-          },
           "earned_today": {
             "title": "Earned Today",
             "type": "integer"
@@ -5078,7 +5074,6 @@
         "required": [
           "coins",
           "earned_today",
-          "daily_cap",
           "best",
           "streak",
           "trivia_done",
@@ -20130,7 +20125,7 @@
     },
     "/games/score": {
       "post": {
-        "description": "A finished game's points. Coins follow up to the per-game and daily caps; the rest only counts as a best.",
+        "description": "A finished game's points. Every point becomes a coin (no daily limit, Guy 23 Nov 2026).",
         "operationId": "score_games_score_post",
         "requestBody": {
           "content": {
@@ -25376,7 +25371,7 @@
     },
     "/voice/preview": {
       "get": {
-        "description": "One fixed sample sentence in a chosen voice and language, with the companion's name. Not a speech service.",
+        "description": "One fixed sample sentence in a chosen voice and language, with the mentor's fixed name. Not a speech service.",
         "operationId": "preview_voice_preview_get",
         "parameters": [
           {
