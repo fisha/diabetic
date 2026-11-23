@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-468): Guy asked that the admin Analytics page show the real numbers instead of "<5" and show the
+values when hovering the charts. The API returns exact counts for platforms, countries, personas and connected devices
+(the admin Users page already shows each person's platform and region); the two 30-day charts show the day and its
+count on hover, and on keyboard focus with the arrow keys; the "<5" sentence left the subtitle (en + he). API tests,
+web typecheck, lint and tests pass; checked in a browser against the local test server. Next: API and web deploy.
 23 Nov 2026 (Jira PM-459): Guy asked that the mentor know everything the app knows and can do, e.g. when to change the
 sensor or the infusion set. The always-on app block now has the set (last change, day N, the day a change is
 recommended, from set_end) and the sensor's warm-up, start and "end not known"; the app_data tool gains games (coins,
