@@ -2527,7 +2527,7 @@
   "wd.an_agent": "Agent",
   "wd.an_agents": "Agents",
   "wd.an_agents_b": "{queued} waiting to run now · {read} notes read this week",
-  "wd.an_b": "Counts only, without demo or admin accounts. Groups smaller than 5 show as \"<5\". Updated {at}.",
+  "wd.an_b": "Counts only, without demo or admin accounts. Updated {at}.",
   "wd.an_countries": "Countries",
   "wd.an_data": "Data",
   "wd.an_dataset": "Last dataset {at}: {rows} rows from {subjects} people ({status})",
