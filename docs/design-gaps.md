@@ -2170,3 +2170,55 @@ or the invitation, so these are product rules, not clinical ones (`services/api 
 The design shows the breakdown sheets with data only. Added states, using existing components: a spinner (accent
 colour) while the sheet reads, and the error banner "Couldn't load this list. Check your connection and try again."
 with Try again when the read fails and nothing is kept on the phone. A failed read never shows "No meals logged today yet".
+
+### G-129 · A parent's view of their child's app use (**asked by Guy, 23 Nov 2026, PM-444**)
+
+Guy: when a parent views their child's data, Settings should also show statistics of what the child does in the app
+(how many times they entered data, which games they played, anything that shows whether the child uses the app). The
+design has no such screen. Built with existing parts only (`NavRow`, `Group`, `Segmented`, `NoteBox`, `PushedScreen`):
+
+- Viewer Settings, under "Kids and Teen mode for {name}": the row "{name}'s app use" with "Last activity: today, 15:08"
+  under it. Only a confirmed parent of a minor (guardian share) sees it; any other follower has no row (the API answers
+  404).
+- The screen: 7 days / 30 days; last activity and days with activity; entries the child logged themselves (meals,
+  insulin, glucose checks, activity, notes; device and health-store data never counts); conversations with the mentor,
+  messages sent and how many out loud; question of the day (days answered) and each game played with how many times.
+  A note that conversations stay private.
+- Product rules: counts, days and one time only, never a value, a meal's contents or a word of a conversation. Not the
+  weekly challenges, the week ring or the sticker book, because the child is told challenges are theirs alone ("Only you
+  see them"). Games played before 23 Nov 2026 have no day, so they are not counted in a period.
+- States: a spinner while it reads; "Couldn't load this. Check your connection and try again." with Try again.
+
+### G-130 · Support requests in the app, and the admin area (**asked by Guy, 23 Nov 2026, PM-445..448**)
+
+The design has no support or admin screens. Built with existing parts, no new look:
+
+- App, Settings > Help & support: "Report a problem" removed; "Contact support" opens a new request (subject, topic
+  chips, urgency segmented control, text with a privacy hint). "My requests" lists the person's requests with status and
+  unread count; each opens a conversation in the mentor's message bubbles (person right, support left, system notes),
+  with a reply box. A reply to a resolved or closed request opens it again. Pushes from support open the request.
+- Website, admin: the admin lands on an Admin hub with cards (Users, Support, Analytics, Demo requests, Clinics, App
+  updates, My app). Analytics shows counts only, without demo or admin accounts, and groups under 5 as "<5". Support
+  lists requests by status, shows the conversation, sets status and priority, answers, and opens a Jira issue with text
+  the admin writes. A user's email opens a profile with country (region setting), time zone, phones and browsers, last
+  sign-in and a password reset that emails a one-time code.
+- Clean-up as in mixmaster-pro: resolved after 5 days without the person's answer to support, closed 2 days later,
+  archived 7 days later, deleted a year after archiving.
+- No attachments on requests (privacy minimisation).
+
+### G-131 · Simple mode (**asked by Guy, 23 Nov 2026, PM-450**)
+
+The design has no Simple mode. Built with existing parts, no new look:
+
+- A switch "Simple mode" / "מצב פשוט" on the Settings screen, right under Quiet mode, so it is one tap away to turn off.
+  Stored with the profile answers as `companion.simple`, like Classic Stedio. Not shown to a child (Kids mode is
+  already short) or while viewing someone else.
+- While on: the tab bar is Talk, Overview and Settings with the "+" (the Journal tab is hidden). The main screen stays as
+  it is apart from the games button and the invitation to play. Every "+" option stays, and the mentor by voice and text.
+- Overview shows only the latest reading, the period chooser with time in range, the Insights row and the infusion set
+  and sensor rows (shown for any period, since they are about now). No graph, rises, Body, Food, learning days, summary,
+  wins card, typical day, trend, pump days or labs and habits.
+- Settings keeps every row (privacy, export, deletion and device settings must stay reachable) except My milestones.
+  The saved-meal screen drops "View in journal". Insight details keep their own links.
+- Nothing is removed: switching it off brings everything back.
+

@@ -65,7 +65,7 @@ def run(args: argparse.Namespace) -> Path:
     def one(job):
         case, rep = job
         res = run_case(case, provider)
-        verdict = judging.judge_turn(judge_provider, case, res) if judge_provider is not None else None
+        verdict = judging.judge_turn(judge_provider, case, res, getattr(args, "judge_context", True)) if judge_provider is not None else None
         return case, rep, res, grade(case, res), verdict
 
     rows = []

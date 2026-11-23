@@ -134,9 +134,23 @@ export type VisitOut = S['VisitOut'];
 // Kids and teens mode (PM-298..301) and the adult challenge, milestones and cheers (PM-303..307).
 export type YoungOut = S['YoungOut'];
 export type ParentYoungOut = S['ParentYoungOut'];
+export type ChildActivityOut = S['ChildActivityOut'];
 export type YoungControls = S['Controls'];
 export type StickerOut = S['StickerOut'];
 export type CheerOut = S['CheerOut'];
 export type ChallengeOut = S['ChallengeOut'];
 export type WeekOut = S['WeekOut'];
 export type PeriodBodyOut = S['PeriodBodyOut'];
+// Support requests and the admin area (PM-445..448).
+export type TicketIn = S['TicketIn'];
+export type TicketOut = S['TicketOut'];
+export type TicketDetailOut = S['TicketDetailOut'];
+export type SupportMessageOut = S['SupportMessageOut'];
+export type SupportListOut = S['SupportListOut'];
+export type ClientDeviceIn = S['ClientDeviceIn'];
+export type AdminTicketOut = S['AdminTicketOut'];
+export type AdminTicketDetailOut = S['AdminTicketDetailOut'];
+export type AdminSupportOut = S['AdminSupportOut'];
+export type JiraOut = S['JiraOut'];
+export type AdminProfileOut = S['AdminProfileOut'];
+export type PasswordResetOut = S['PasswordResetOut'];

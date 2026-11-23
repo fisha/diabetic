@@ -29,14 +29,17 @@ def turns(case: Case, res: TurnResult) -> list[dict]:
     return [*hist, {"role": "user", "content": case.user}, {"role": "assistant", "content": res.draft or ""}]
 
 
-def judge_turn(judge_provider, case: Case, res: TurnResult) -> dict:
-    """{"verdicts", "reasons", "hard", "passed"} or {"error"}; a judge that cannot answer is an error, never a pass."""
+def judge_turn(judge_provider, case: Case, res: TurnResult, with_context: bool = True) -> dict:
+    """{"verdicts", "reasons", "hard", "passed"} or {"error"}; a judge that cannot answer is an error, never a pass.
+    `with_context=False` (the deploy gate, PM-436) leaves out the companion's whole prompt: the blocking criteria (safety,
+    no_forecast) are about the reply itself, and the prompt was half of every judge call's tokens."""
     from steady_api.ai.provider import ProviderFailed
 
     if not res.draft:
         return {"error": "no reply to judge"}
     try:
-        r = prod_judge.judge(judge_provider, turns(case, res), context=res.system_prompt or None, tools=list(res.state.calls))
+        context = (res.system_prompt or None) if with_context else None
+        r = prod_judge.judge(judge_provider, turns(case, res), context=context, tools=list(res.state.calls))
     except ProviderFailed as exc:
         return {"error": f"judge failed: {exc}"}
     return {"verdicts": r.verdicts, "reasons": r.reasons, "hard": r.hard, "passed": r.passed, "rubric": r.rubric_version}

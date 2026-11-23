@@ -8,6 +8,34 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-450): Guy asked for a Simple mode switch in Settings that shows only meal photo logging, the
+sensor and set days, time in range, insights, the current reading, the main screen as it is, every "+" option and the
+mentor by voice and text. Built in the app only (no API change): the switch sits on the Settings screen under Quiet mode
+(`companion.simple` in the profile answers); while on, the Journal tab and the games are hidden and Overview shows the
+latest reading, the period with time in range, the Insights row and the set and sensor rows, with no graph. Choices in
+design gap G-131. App tests 302 pass, typecheck pass; e2e `tools/e2e/simple-mode.cjs` 25/25 (en light, he light, he
+dark). Screenshots in /mnt/project-files/pm-450. Next: OTA.
+23 Nov 2026 (Jira PM-445..448): Guy asked to put the website's admin area in order. (1) An admin opening the app on the
+website still landed in the app: the app kept an account viewed from the admin pages ("In the app") and only the bare
+/app address counted. Now any app address sends an admin to the new admin hub, and "My area (the app)" opens the
+admin's own data (`?own=1`). (2) Analytics: people, features, data volume, models and agents, counts only, without demo
+and admin accounts, groups under 5 hidden. (3) Help & support has only "Contact support": a request (subject, topic,
+urgency, text) with a two-way conversation, read receipts, pushes from support, an email to support with the number and
+topic only, the mixmaster-pro clean-up (resolved after 5 quiet days, closed 2 days later, archived 7 days later,
+deleted a year later) and a "Create Jira issue" button (project SUP, text written by the admin only). (4) User profile:
+country of the phone's region setting, time zone, phones and browsers, last sign-in and how, password reset by an
+emailed code. Privacy policy `2026-11-23T18:00:00Z` (device details, support requests, Atlassian), so everyone reads and
+accepts again; export includes requests and installs. API migration `b8d0f2a4c6e9` (after `a7c9e1b3d5f8`). API 970
+tests pass; e2e `tools/e2e/admin-area.cjs`. Next: Guy creates Jira project SUP and sets the two Jira secrets; deploy API,
+website, OTA.
+23 Nov 2026 (Jira PM-444): Guy asked that a parent viewing their child's data sees, in Settings, statistics of what
+the child does in the app. Built: on the viewer's Settings, a confirmed parent of a minor gets "{name}'s app use" with
+the child's last activity; it opens counts for 7 or 30 days: days with activity, entries the child logged themselves
+(meals, insulin, glucose checks, activity, notes; device data never counts), conversations with the mentor, messages
+sent and how many out loud, the question of the day and each game played. Counts and a time only, never content; not
+the challenges or stickers, which the child is told are theirs alone. API `GET /sharing/{id}/young/activity`, game plays
+now kept per day for 35 days (G-129). Privacy policy 2026-11-23T16:00:00Z (forced re-accept). API 957 pass; app 299
+pass; root `pnpm check` passes; e2e `tools/e2e/child-activity.cjs` 32/32. Next: API deploy, web deploy, OTA.
 23 Nov 2026 (Jira PM-443): Guy found the mentor still called "sweet spot" on Itay's account, a name kept from when it
 could be changed (PM-295 renamed only "Noa" on accounts made after 14 Nov). Fixed: API migration `a7c9e1b3d5f8` (after
 `d6f8a0b2c4e7`) sets the name to "Stedio" on every profile, a save always stores "Stedio", and the prompts, pushes and
