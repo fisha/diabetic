@@ -2223,3 +2223,20 @@ The design has no Simple mode. Built with existing parts, no new look:
   The saved-meal screen drops "View in journal". Insight details keep their own links.
 - Nothing is removed: switching it off brings everything back.
 
+
+### G-132 · A parent's alert about their child's safety concern (**asked by Guy, 23 Nov 2026, PM-453**)
+
+Guy: when a minor's conversation shows a concern (skipping insulin to lose weight, distress), the confirmed parent must
+get an email and a message that pops up in the app, with what the child wrote; the child is not told in the chat. The
+design has no such dialog. Built with existing parts only (`Dialog`, `AppText`, `Button`):
+
+- The parent's app, on its own screens (not while viewing someone, not under the app lock), opens the newest unread
+  alert as a centred dialog: "Something {name} wrote may need your attention", one line on the kind of concern, "What
+  {name} wrote" with each message and its day and time, then a note (the mentor encouraged a trusted adult and the care
+  team, the child wasn't told, Stedio is not an emergency service and can miss or over-flag, call the local emergency
+  number if {name} is in danger now). One button, "I've read it"; the next unread alert follows. The dialog can't be
+  dismissed another way.
+- It opens when the app opens or comes back, when the push arrives while the app is open (no banner then), and when the
+  push is tapped. Quiet mode doesn't hold it back.
+- States: a deleted conversation shows "This conversation was deleted."; if marking read fails, the dialog stays.
+- Not built: a history of past alerts (the email keeps them), or a call button.

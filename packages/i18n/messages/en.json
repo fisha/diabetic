@@ -3678,7 +3678,7 @@
   "shr.parent_keep": "While you're under 18, a parent needs to follow you. Invite another parent before removing this one.",
   "shr.gd_t": "{name} is under 18 and asks you to follow them as their parent",
   "shr.gd_b": "Under 18, Stedio is used only with a parent or legal guardian following. You'll see, view only:",
-  "shr.gd_confirm": "I am {name}'s parent or legal guardian, and I agree to them using Stedio as described in the Terms of Use and the Privacy Policy.",
+  "shr.gd_confirm": "I am {name}'s parent or legal guardian, and I agree to them using Stedio as described in the Terms of Use and the Privacy Policy. I understand that if what {name} writes or says to the mentor may point to a risk to their safety, I get an email and an alert in the app with those words.",
   "shr.gd_ok": "Confirm and follow",
   "shr.gd_need": "Tick the confirmation to continue.",
   "shr.gd_minor": "A parent invite can only be accepted by someone aged 18 or over.",
@@ -4567,7 +4567,14 @@
   "yg.ua_plays": "{n, plural, one {# time} other {# times}}",
   "yg.ua_no_games": "No games played in this period",
   "yg.ua_games_off": "Games are turned off on {name}'s phone",
-  "yg.ua_private": "Conversations stay private: you see only how many there were, never what was said.",
+  "yg.ua_private": "Conversations stay private: you see only how many there were. You see what was said only in an alert about their safety.",
   "yg.ua_fail": "Couldn't load this. Check your connection and try again.",
-  "yg.ua_retry": "Try again"
+  "yg.ua_retry": "Try again",
+  "yg.cn_t": "Something {name} wrote may need your attention",
+  "yg.cn_eating": "It may point to skipping insulin or food to lose weight, or strong worry about food or their body.",
+  "yg.cn_self_harm": "It may point to thoughts of hurting themselves or feeling hopeless.",
+  "yg.cn_said": "What {name} wrote",
+  "yg.cn_gone": "This conversation was deleted.",
+  "yg.cn_note": "The mentor answered warmly and encouraged {name} to talk to a trusted adult and their care team. The app didn't tell {name} about this alert. Stedio is not an emergency service, and it can miss things or flag something that isn't a concern. If you think {name} is in danger right now, call your local emergency number.",
+  "yg.cn_ok": "I've read it"
 }

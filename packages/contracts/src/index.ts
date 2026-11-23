@@ -135,6 +135,7 @@ export type VisitOut = S['VisitOut'];
 export type YoungOut = S['YoungOut'];
 export type ParentYoungOut = S['ParentYoungOut'];
 export type ChildActivityOut = S['ChildActivityOut'];
+export type ConcernOut = S['ConcernOut'];
 export type YoungControls = S['Controls'];
 export type StickerOut = S['StickerOut'];
 export type CheerOut = S['CheerOut'];
