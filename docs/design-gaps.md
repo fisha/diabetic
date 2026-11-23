@@ -2108,3 +2108,24 @@ action; an "Infusion set change" checkbox list in Notifications under "Sensor en
 for a 7-day set, 24 hours, 5 hours; the set's days come from the set type in Treatment settings); and under the viewer
 settings' "Back to my own data", "Reminders for you about {name}" with the same checkbox lists for that person's
 sensor type and set.
+
+### G-125 · Mentor moments before a usual meal; general insights off the main screen (**asked by Guy, 23 Nov 2026, PM-432**)
+
+Guy: insights repeat every day; general ones ("two hours after the meal high/low/in range") belong in the insights list,
+not on the main screen all the time, but a recurring pattern should move the person to act before the meal, like a
+mentor who prepares them for it. Plan approved 23 Nov (PM-432): behaviour-only words before the meal until the lawyer
+answers PM-433; in the app only, no push; all users; patterns below the range never make a moment; 45 minutes before.
+No Duet board shows this; built with existing pieces only (a card in the main screen's insights carousel, the "Log
+meal" chip of PM-408, the journal opened at a meal):
+
+- Main screen: `rise:*`, `timing:*`, `above:*`, `range_good:*` and `meal_time:*` insights stay on the insights page and
+  Overview and leave the main screen. Below the range and specific findings stay.
+- One mentor moment a day (`services/api steady_api/moments.py`), from the last 14 days of the person's own records,
+  for a usual meal (routine meal times): "look" when that meal is usually followed by a rise above the person's own
+  range (used only to choose the meal; the words never say so), "late" for dinners after 21:00 on at least 4 days and
+  half the dinners, "log" when that meal was not logged on at least 4 of at least 7 days. Shown from 45 minutes before
+  the usual time until 30 minutes after it or until a meal is logged; a look back from 2 to 5 hours after the logged
+  meal opens it in the journal. One moment left on two days in a row rests 14 days. Not in fewer nudges, quiet mode,
+  "only when I start", or while viewing someone. Product rules, not clinical ones.
+- Insight tracking: a change counts once seen on two runs in a row; a topic back within 14 days of going away returns
+  quietly with its earlier change time, so a read insight stays read.
