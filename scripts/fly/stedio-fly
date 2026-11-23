@@ -140,25 +140,23 @@ COMPANION_PATHS=(
 EVALS_DIR="$REPO/evals/reports/fly"
 LOGPREFIX='s/^[^ ]* app\[[^]]*\] [a-z0-9]* \[[a-z]*\] *//' # fly logs: "<time> app[<machine>] <region> [info]"
 
-# The companion's own rules (PM-436, Guy 23 Nov 2026): its prompt, tools, safety filter, judge and model settings. A
-# change here, or no full run in FULL_EVERY_S, gets the full regression set (3 repeats); any other API change gets one
-# repeat, which still checks every hard rule on every case.
-COMPANION_CORE=(steady_api/ai steady_api/routers/conversation.py steady_api/config.py steady_api/quality.py)
+# Cost (PM-436, Guy 23 Nov 2026: about 10 full runs on a busy day were most of the OpenAI bill). Before a deploy the
+# gate runs the safety cases (hard, dose_boundary, minors) once, with the judge reading the reply without the
+# companion's whole prompt; the full set (every case, 3 repeats) runs when no full run passed in FULL_EVERY_S. A companion that already passed (same content of COMPANION_PATHS, from any
+# branch or thread) is not run again.
 FULL_EVERY_S=86400
 
-evals_repeat() { # 3 when the companion's own rules changed since the last full pass or it is older than a day, else 1
-  local last at; last="$(cut -d' ' -f1 "$EVALS_DIR/last-full-pass" 2>/dev/null || true)"
-  at="$(cut -d' ' -f2 "$EVALS_DIR/last-full-pass" 2>/dev/null || true)"
-  if [ -z "$last" ] || [ -z "$at" ] || [ $(( $(date -u +%s) - at )) -ge "$FULL_EVERY_S" ] \
-    || ! git -C "$REPO/services/api" cat-file -e "$last^{commit}" 2>/dev/null \
-    || ! git -C "$REPO/services/api" diff --quiet "$last" HEAD -- "${COMPANION_CORE[@]}"; then
-    echo 3
-  else
-    echo 1
-  fi
+evals_repeat() { # 3 when no full run passed in the last FULL_EVERY_S, else 1
+  local at; at="$(cut -d' ' -f2 "$EVALS_DIR/last-full-pass" 2>/dev/null || true)"
+  if [ -z "$at" ] || [ $(( $(date -u +%s) - at )) -ge "$FULL_EVERY_S" ]; then echo 3; else echo 1; fi
 }
 
-companion_changed() { # true when the companion changed since the last passing evals run (or none is recorded)
+companion_fingerprint() { # one hash of every file in COMPANION_PATHS at the api checkout's HEAD
+  git -C "$REPO/services/api" ls-files -s -- "${COMPANION_PATHS[@]}" | git hash-object --stdin
+}
+
+companion_changed() { # true unless this exact companion (or the last passing commit's) already passed
+  grep -qxF "$(companion_fingerprint)" "$EVALS_DIR/passed-fingerprints" 2>/dev/null && return 1
   local last; last="$(cat "$EVALS_DIR/last-pass" 2>/dev/null || true)"
   [ -z "$last" ] && return 0
   git -C "$REPO/services/api" cat-file -e "$last^{commit}" 2>/dev/null || return 0
@@ -166,10 +164,11 @@ companion_changed() { # true when the companion changed since the last passing e
 }
 
 cmd_evals() {
-  local repeat=3 model=""
+  local repeat=3 model="" quick=0
   while [ $# -gt 0 ]; do
     case "$1" in
       --repeat) repeat="$2"; shift 2 ;;
+      --quick) quick=1; shift ;;
       --model) model="$2"; shift 2 ;;
       *) die "evals: unknown option $1" ;;
     esac
@@ -187,7 +186,7 @@ cmd_evals() {
   fly deploy "$REPO" -a "$API_APP" -c "$REPO/deploy/fly/evals/fly.toml" --dockerfile "$REPO/deploy/fly/evals/Dockerfile" \
     --ignorefile "$REPO/deploy/fly/evals/Dockerfile.dockerignore" --build-only --push --image-label "$tag" --remote-only
   say "running the regression set on a one-off Machine ($name); this takes a while"
-  local env=(-e "EVAL_REPEAT=$repeat" -e "EVAL_LABEL=fly-$tag")
+  local env=(-e "EVAL_REPEAT=$repeat" -e "EVAL_LABEL=fly-$tag" -e "EVAL_QUICK=$quick")
   [ -n "$model" ] && env+=(-e "EVAL_MODEL=$model" -e "EVAL_JUDGE=$model")
   # No services and no restart: nothing routes to it, and it stops when the run ends.
   # A just-pushed image can take a moment to be visible to the Machines API (manifest 404): retry a few times.
@@ -223,7 +222,8 @@ cmd_evals() {
   [ -s "$out" ] && cat "$out" || rm -f "$out"
   case "$code" in
     0) echo "$api_sha" > "$EVALS_DIR/last-pass"
-       [ "$repeat" -ge 3 ] && echo "$api_sha $(date -u +%s)" > "$EVALS_DIR/last-full-pass"
+       companion_fingerprint >> "$EVALS_DIR/passed-fingerprints"
+       [ "$repeat" -ge 3 ] && [ "$quick" = 0 ] && echo "$api_sha $(date -u +%s)" > "$EVALS_DIR/last-full-pass"
        say "regression set PASSED (verdict: ${out#"$REPO"/})" ;;
     1) say "regression set FAILED a hard rule (verdict: ${out#"$REPO"/})"; return 1 ;;
     *) say "regression set did not run (exit ${code:-unknown}); see above"; return 2 ;;
@@ -239,9 +239,14 @@ cmd_deploy_api() {
       echo "WARN   the companion changed and STEDIO_SKIP_EVALS=1: deploying without the regression set"
     else
       say "the companion changed since the last passing regression run: running it first"
-      local repeat; repeat="$(evals_repeat)"
-      say "repeats: $repeat (3 when the companion's own rules changed or the last full run is over a day old)"
-      cmd_evals --repeat "$repeat" || die "deploy stopped: the regression set did not pass (STEDIO_SKIP_EVALS=1 overrides, say why in the PR)"
+      if [ "$(evals_repeat)" = 3 ]; then
+        say "the full regression set (no full run passed in the last day)"
+        set -- --repeat 3
+      else
+        say "the deploy gate: safety cases, 1 repeat (the full set runs once a day)"
+        set -- --repeat 1 --quick
+      fi
+      cmd_evals "$@" || die "deploy stopped: the regression set did not pass (STEDIO_SKIP_EVALS=1 overrides, say why in the PR)"
     fi
   fi
   # A backup before every deploy: the release command runs migrations.

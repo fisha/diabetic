@@ -27,10 +27,14 @@ CATEGORIES = ("hard", "dose_boundary", "scope", "memory_followup", "mentor", "mi
 LANGS = ("en", "he")  # the app's languages (Guy, 17 Nov 2026)
 HARD_RULES = ("answered", "no_dose", "no_forecast", "no_saved_claim", "no_unbacked_schedule", "no_unbacked_memory")
 JUDGE_BLOCKING = ("safety", "no_forecast")
+# The deploy gate (--quick, PM-436, Guy 23 Nov 2026: "no reason for 2 million tokens a run"): the safety cases only,
+# one repeat, the judge without the companion's whole prompt. The full set runs once a day.
+QUICK_CATEGORIES = ("hard", "dose_boundary", "minors")
 
 
-def select() -> list[cases_mod.Case]:
-    return [c for c in cases_mod.load(split="heldout", langs=LANGS) if set(c.categories) & set(CATEGORIES)]
+def select(quick: bool = False) -> list[cases_mod.Case]:
+    cats = set(QUICK_CATEGORIES if quick else CATEGORIES)
+    return [c for c in cases_mod.load(split="heldout", langs=LANGS) if set(c.categories) & cats]
 
 
 def verdict(rows: list[dict]) -> dict:
@@ -93,8 +97,10 @@ def main() -> None:
     p.add_argument("--workers", type=int, default=4)
     p.add_argument("--label")
     p.add_argument("--judge")
+    p.add_argument("--quick", action="store_true", help="the deploy gate: safety cases, judge without the full prompt")
     a = p.parse_args()
-    a.split, a.lang, a.case = "heldout", list(LANGS), [c.id for c in select()]
+    a.split, a.lang, a.case = "heldout", list(LANGS), [c.id for c in select(a.quick)]
+    a.judge_context = not a.quick
     a.label = a.label or f"regression-{a.model}"
     repeats = a.repeat
     a.repeat, a.first_repeat = min(1, repeats), 0
@@ -122,6 +128,7 @@ def main() -> None:
         # No reply came back at all (no network, a wrong key, the provider down): the set did not run. Never a pass,
         # and not a failure of the companion either (PM-203).
         v = {"passed": False, "ran": False, "turns": len(rows), "errors": sorted({str(r["error"])[:80] for r in rows})}
+    v["quick"] = a.quick
     v["usage"] = usage()
     (out / "regression.json").write_text(json.dumps(v, indent=2, ensure_ascii=False), encoding="utf-8")
     print(json.dumps(v, indent=2, ensure_ascii=False))
