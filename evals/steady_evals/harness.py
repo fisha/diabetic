@@ -18,6 +18,7 @@ from .production import (
     Profile,
     Record,
     User,
+    prod_app_data,
     prod_context,
     prod_mentor,
     reads_as_dose_instruction,
@@ -123,6 +124,8 @@ def build_messages(case: Case) -> list[dict]:
             to_mgdl=g["to_mgdl"],
         )
         data += ["", prod_mentor.unlogged_line(rise, case.now.tzinfo, case.profile.get("glucose_unit", "mgdl"))]  # type: ignore[arg-type]
+    if case.app_lines:  # as routers.conversation.instructions adds app_data.describe (PM-268, PM-459)
+        data += ["", prod_app_data.HEADER, *case.app_lines]
     sp = system_prompt(profile, mems, case.now, case.memory_on, None, data=data, cgm=cgm, young=case.young, region=case.region)
     return [{"role": "system", "content": sp}, *case.history, {"role": "user", "content": case.user}]
 

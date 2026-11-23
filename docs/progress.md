@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-459): Guy asked that the mentor know everything the app knows and can do, e.g. when to change the
+sensor or the infusion set. The always-on app block now has the set (last change, day N, the day a change is
+recommended, from set_end) and the sensor's warm-up, start and "end not known"; the app_data tool gains games (coins,
+shop, daily question, weekly challenges read without awarding, milestones), support (request subjects and status) and
+app_guide (where each feature is, no prompt cost), and settings/devices/sharing gain the set reminder, set type, quiet
+schedule, Simple/Classic/Games/Challenges switches, warm-up and the follower's own reminders. A follower's mentor gets
+only the two Overview equipment rows. Eval cases with a new `app_lines` field. API tests pass; regression set not run
+(PM-436). Next: API deploy.
 23 Nov 2026 (Jira PM-451, PM-455): Guy asked to fix the website's certificate on its new domain and move to it. Cause:
 Cloudflare error 525, because Fly had no certificate for stedio.io. Fly certificates issued for stedio.io, www.stedio.io
 and api.stedio.io (DNS-01 via `_acme-challenge` CNAMEs, DNS only); Cloudflare SSL mode Full (strict); api.stedio.io is

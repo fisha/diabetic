@@ -52,6 +52,9 @@ class Case:
     # The country of the device's region setting (ISO 3166), as routers.conversation.instructions reads it: it picks the
     # verified crisis line (PM-452). None: no line, so the prompt allows no phone number.
     region: str | None = None
+    # Lines of the always-on app block (ai/app_data.describe), as production writes them: the set change, the sensor's
+    # end, reminders (PM-459). The harness puts them under app_data.HEADER.
+    app_lines: list[str] = field(default_factory=list)
     expect: dict = field(default_factory=dict)
     scope_flags: list[str] = field(default_factory=list)
     review: str | None = None
@@ -75,6 +78,7 @@ class Case:
             journal_gap=d.get("journal_gap"),
             young=d.get("young"),
             region=d.get("region"),
+            app_lines=d.get("app_lines", []),
             expect=d.get("expect", {}),
             scope_flags=d.get("scope_flags", []),
             review=d.get("review"),
