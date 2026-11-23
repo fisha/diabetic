@@ -58,6 +58,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/admin/analytics": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Analytics
+         * @description Counts for the admin's analytics page (PM-446). See steady_api/admin_analytics.py.
+         */
+        get: operations["analytics_admin_analytics_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/admin/broadcasts": {
         parameters: {
             query?: never;
@@ -295,6 +315,78 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/admin/support": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Admin Tickets */
+        get: operations["admin_tickets_admin_support_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/support/{ticket_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Admin Ticket */
+        get: operations["admin_ticket_admin_support__ticket_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Admin Status */
+        patch: operations["admin_status_admin_support__ticket_id__patch"];
+        trace?: never;
+    };
+    "/admin/support/{ticket_id}/jira": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Admin Jira
+         * @description Makes a Jira issue in the Support project from what the admin wrote. Once per request.
+         */
+        post: operations["admin_jira_admin_support__ticket_id__jira_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/support/{ticket_id}/messages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Admin Reply */
+        post: operations["admin_reply_admin_support__ticket_id__messages_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/admin/users": {
         parameters: {
             query?: never;
@@ -319,7 +411,8 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get?: never;
+        /** Profile */
+        get: operations["profile_admin_users__user_id__get"];
         put?: never;
         post?: never;
         /**
@@ -347,6 +440,27 @@ export interface paths {
          * @description Takes an account off the waitlist (Guy, 12 Nov 2026) and emails it. Approving twice changes nothing.
          */
         post: operations["approve_admin_users__user_id__approve_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/users/{user_id}/password-reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Password Reset
+         * @description Emails the person a reset code, as their own "Forgot password" does, saying support started it (PM-448). The admin
+         *     never sees or sets a password; the current one keeps working until the person sets a new one with the code.
+         */
+        post: operations["password_reset_admin_users__user_id__password_reset_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -811,6 +925,23 @@ export interface paths {
          * @description The person sends their questions for the visit to this clinic. Kept until 7 days after the visit.
          */
         put: operations["care_questions_care_team__link_id__questions_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/client/device": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Report Device */
+        put: operations["report_device_client_device_put"];
         post?: never;
         delete?: never;
         options?: never;
@@ -3613,6 +3744,58 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/support/tickets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** My Tickets */
+        get: operations["my_tickets_support_tickets_get"];
+        put?: never;
+        /** Open Ticket */
+        post: operations["open_ticket_support_tickets_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/support/tickets/{ticket_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** My Ticket */
+        get: operations["my_ticket_support_tickets__ticket_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/support/tickets/{ticket_id}/messages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** My Reply */
+        post: operations["my_reply_support_tickets__ticket_id__messages_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/visit": {
         parameters: {
             query?: never;
@@ -4126,10 +4309,243 @@ export interface components {
             window_days: number;
             workouts?: components["schemas"]["WorkoutsOut"] | null;
         };
+        /** AdminClientDeviceOut */
+        AdminClientDeviceOut: {
+            /** App Version */
+            app_version: string | null;
+            /** Build */
+            build: string | null;
+            /**
+             * First Seen At
+             * Format: date-time
+             */
+            first_seen_at: string;
+            /**
+             * Last Seen At
+             * Format: date-time
+             */
+            last_seen_at: string;
+            /** Model */
+            model: string;
+            /** Os Version */
+            os_version: string | null;
+            /** Platform */
+            platform: string;
+            /** Region */
+            region: string | null;
+            /** Time Zone */
+            time_zone: string | null;
+        };
         /** AdminDeleteIn */
         AdminDeleteIn: {
             /** Confirm Email */
             confirm_email: string;
+        };
+        /** AdminDeviceLinkOut */
+        AdminDeviceLinkOut: {
+            /** Kind */
+            kind: string;
+            /** Last Sync At */
+            last_sync_at: string | null;
+            /** Status */
+            status: string;
+        };
+        /** AdminProfileOut */
+        AdminProfileOut: {
+            /** App Language */
+            app_language: string | null;
+            /** Approved At */
+            approved_at: string | null;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Device Links */
+            device_links: components["schemas"]["AdminDeviceLinkOut"][];
+            /** Email */
+            email: string;
+            /** Has Password */
+            has_password: boolean;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Installs */
+            installs: components["schemas"]["AdminClientDeviceOut"][];
+            /** Is Admin */
+            is_admin: boolean;
+            /** Last Active At */
+            last_active_at: string | null;
+            /** Last Reading At */
+            last_reading_at: string | null;
+            /** Last Sign In At */
+            last_sign_in_at: string | null;
+            /** Last Sign In Via */
+            last_sign_in_via: string | null;
+            /** Persona */
+            persona: string | null;
+            /** Readings 14D */
+            readings_14d: number;
+            /** Region */
+            region: string | null;
+            /** Sign In Methods */
+            sign_in_methods: string[];
+            /** Tickets */
+            tickets: components["schemas"]["AdminTicketBriefOut"][];
+            /** Time Zone */
+            time_zone: string | null;
+        };
+        /** AdminSupportOut */
+        AdminSupportOut: {
+            /** Counts */
+            counts: {
+                [key: string]: number;
+            };
+            /** Jira Ready */
+            jira_ready: boolean;
+            /** Tickets */
+            tickets: components["schemas"]["AdminTicketOut"][];
+            /** Unread */
+            unread: number;
+        };
+        /** AdminTicketBriefOut */
+        AdminTicketBriefOut: {
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Number */
+            number: number;
+            /** Status */
+            status: string;
+            /** Subject */
+            subject: string;
+        };
+        /** AdminTicketDetailOut */
+        AdminTicketDetailOut: {
+            /** Agent Seen At */
+            agent_seen_at: string | null;
+            /** App Version */
+            app_version: string | null;
+            /**
+             * Category
+             * @enum {string}
+             */
+            category: "account" | "app" | "devices" | "data" | "other";
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Email */
+            email: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Jira Key */
+            jira_key: string | null;
+            /** Jira Url */
+            jira_url?: string | null;
+            /** Messages */
+            messages: components["schemas"]["SupportMessageOut"][];
+            /** Number */
+            number: number;
+            /** Platform */
+            platform: string | null;
+            /**
+             * Priority
+             * @enum {string}
+             */
+            priority: "low" | "medium" | "high" | "urgent";
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "open" | "in_progress" | "resolved" | "closed" | "archived";
+            /** Subject */
+            subject: string;
+            /**
+             * Unread
+             * @default 0
+             */
+            unread: number;
+            /**
+             * Updated At
+             * Format: date-time
+             */
+            updated_at: string;
+            /**
+             * User Id
+             * Format: uuid
+             */
+            user_id: string;
+        };
+        /** AdminTicketOut */
+        AdminTicketOut: {
+            /** Agent Seen At */
+            agent_seen_at: string | null;
+            /** App Version */
+            app_version: string | null;
+            /**
+             * Category
+             * @enum {string}
+             */
+            category: "account" | "app" | "devices" | "data" | "other";
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Email */
+            email: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Jira Key */
+            jira_key: string | null;
+            /** Number */
+            number: number;
+            /** Platform */
+            platform: string | null;
+            /**
+             * Priority
+             * @enum {string}
+             */
+            priority: "low" | "medium" | "high" | "urgent";
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "open" | "in_progress" | "resolved" | "closed" | "archived";
+            /** Subject */
+            subject: string;
+            /**
+             * Unread
+             * @default 0
+             */
+            unread: number;
+            /**
+             * Updated At
+             * Format: date-time
+             */
+            updated_at: string;
+            /**
+             * User Id
+             * Format: uuid
+             */
+            user_id: string;
         };
         /** AdminUserOut */
         AdminUserOut: {
@@ -4151,12 +4567,20 @@ export interface components {
              * Format: uuid
              */
             id: string;
+            /** Last Active At */
+            last_active_at?: string | null;
             /** Last Reading At */
             last_reading_at: string | null;
+            /** Last Sign In At */
+            last_sign_in_at?: string | null;
             /** Persona */
             persona?: string | null;
+            /** Platform */
+            platform?: string | null;
             /** Readings 14D */
             readings_14d: number;
+            /** Region */
+            region?: string | null;
             /** Via Google */
             via_google: boolean;
         };
@@ -4765,6 +5189,26 @@ export interface components {
             meal: number;
             /** Note */
             note: number;
+        };
+        /** ClientDeviceIn */
+        ClientDeviceIn: {
+            /** App Version */
+            app_version?: string | null;
+            /** Build */
+            build?: string | null;
+            /** Model */
+            model: string;
+            /** Os Version */
+            os_version?: string | null;
+            /**
+             * Platform
+             * @enum {string}
+             */
+            platform: "ios" | "android" | "web";
+            /** Region */
+            region?: string | null;
+            /** Time Zone */
+            time_zone?: string | null;
         };
         /**
          * ClientErrorIn
@@ -6430,6 +6874,23 @@ export interface components {
              */
             state: "none" | "open" | "added" | "ready";
         };
+        /** JiraIn */
+        JiraIn: {
+            /**
+             * Description
+             * @default
+             */
+            description: string;
+            /** Summary */
+            summary: string;
+        };
+        /** JiraOut */
+        JiraOut: {
+            /** Key */
+            key: string;
+            /** Url */
+            url: string;
+        };
         /** KindOut */
         KindOut: {
             /** Kind */
@@ -7020,6 +7481,11 @@ export interface components {
             /** Text */
             text: string;
         };
+        /** MessageIn */
+        MessageIn: {
+            /** Text */
+            text: string;
+        };
         /** MessageOut */
         MessageOut: {
             /** Client Id */
@@ -7336,6 +7802,11 @@ export interface components {
             to: number;
             /** Usual */
             usual?: string | null;
+        };
+        /** PasswordResetOut */
+        PasswordResetOut: {
+            /** Emailed */
+            emailed: boolean;
         };
         /** PastVisit */
         PastVisit: {
@@ -8326,6 +8797,13 @@ export interface components {
             /** Minutes */
             minutes: number;
         };
+        /** StatusIn */
+        StatusIn: {
+            /** Priority */
+            priority?: ("low" | "medium" | "high" | "urgent") | null;
+            /** Status */
+            status?: ("open" | "in_progress" | "resolved" | "closed" | "archived") | null;
+        };
         /** StickerOut */
         StickerOut: {
             /**
@@ -8342,6 +8820,37 @@ export interface components {
             kind: string;
             /** Seen */
             seen: boolean;
+        };
+        /** SupportListOut */
+        SupportListOut: {
+            /** Tickets */
+            tickets: components["schemas"]["TicketOut"][];
+            /** Unread */
+            unread: number;
+        };
+        /** SupportMessageOut */
+        SupportMessageOut: {
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Read By Agent At */
+            read_by_agent_at: string | null;
+            /** Read By User At */
+            read_by_user_at: string | null;
+            /**
+             * Sender
+             * @enum {string}
+             */
+            sender: "user" | "admin" | "system";
+            /** Text */
+            text: string;
         };
         /** SyncAllOut */
         SyncAllOut: {
@@ -8400,6 +8909,115 @@ export interface components {
             conversation_id: string | null;
             /** Messages */
             messages: components["schemas"]["MessageOut"][];
+        };
+        /** TicketDetailOut */
+        TicketDetailOut: {
+            /** Agent Seen At */
+            agent_seen_at: string | null;
+            /**
+             * Category
+             * @enum {string}
+             */
+            category: "account" | "app" | "devices" | "data" | "other";
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Messages */
+            messages: components["schemas"]["SupportMessageOut"][];
+            /** Number */
+            number: number;
+            /**
+             * Priority
+             * @enum {string}
+             */
+            priority: "low" | "medium" | "high" | "urgent";
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "open" | "in_progress" | "resolved" | "closed" | "archived";
+            /** Subject */
+            subject: string;
+            /**
+             * Unread
+             * @default 0
+             */
+            unread: number;
+            /**
+             * Updated At
+             * Format: date-time
+             */
+            updated_at: string;
+        };
+        /** TicketIn */
+        TicketIn: {
+            /**
+             * Category
+             * @default other
+             * @enum {string}
+             */
+            category: "account" | "app" | "devices" | "data" | "other";
+            /**
+             * Priority
+             * @default medium
+             * @enum {string}
+             */
+            priority: "low" | "medium" | "high" | "urgent";
+            /** Subject */
+            subject: string;
+            /** Text */
+            text: string;
+        };
+        /** TicketOut */
+        TicketOut: {
+            /** Agent Seen At */
+            agent_seen_at: string | null;
+            /**
+             * Category
+             * @enum {string}
+             */
+            category: "account" | "app" | "devices" | "data" | "other";
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Number */
+            number: number;
+            /**
+             * Priority
+             * @enum {string}
+             */
+            priority: "low" | "medium" | "high" | "urgent";
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "open" | "in_progress" | "resolved" | "closed" | "archived";
+            /** Subject */
+            subject: string;
+            /**
+             * Unread
+             * @default 0
+             */
+            unread: number;
+            /**
+             * Updated At
+             * Format: date-time
+             */
+            updated_at: string;
         };
         /**
          * TodayOut
@@ -9279,6 +9897,28 @@ export interface operations {
             };
         };
     };
+    analytics_admin_analytics_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+    };
     list_broadcasts_admin_broadcasts_get: {
         parameters: {
             query?: never;
@@ -9748,6 +10388,194 @@ export interface operations {
             };
         };
     };
+    admin_tickets_admin_support_get: {
+        parameters: {
+            query?: {
+                status?: ("open" | "in_progress" | "resolved" | "closed" | "archived") | ("active" | "all");
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminSupportOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    admin_ticket_admin_support__ticket_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                ticket_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminTicketDetailOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    admin_status_admin_support__ticket_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                ticket_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StatusIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminTicketDetailOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    admin_jira_admin_support__ticket_id__jira_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                ticket_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JiraIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["JiraOut"];
+                };
+            };
+            /** @description already_linked */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description jira_failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description jira_not_configured */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    admin_reply_admin_support__ticket_id__messages_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                ticket_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MessageIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminTicketDetailOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     users_admin_users_get: {
         parameters: {
             query?: never;
@@ -9764,6 +10592,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AdminUserOut"][];
+                };
+            };
+        };
+    };
+    profile_admin_users__user_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminProfileOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
@@ -9836,6 +10695,51 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
                 };
+            };
+        };
+    };
+    password_reset_admin_users__user_id__password_reset_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PasswordResetOut"];
+                };
+            };
+            /** @description no_password (signs in with Google or Apple only) or too_soon */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description mail_unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
@@ -10680,6 +11584,37 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["CareClinicOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    report_device_client_device_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClientDeviceIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -16374,6 +17309,132 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ParentYoungOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    my_tickets_support_tickets_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SupportListOut"];
+                };
+            };
+        };
+    };
+    open_ticket_support_tickets_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TicketIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TicketDetailOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description too_many */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    my_ticket_support_tickets__ticket_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                ticket_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TicketDetailOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    my_reply_support_tickets__ticket_id__messages_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                ticket_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MessageIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TicketDetailOut"];
                 };
             };
             /** @description Validation Error */
