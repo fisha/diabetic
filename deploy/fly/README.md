@@ -7,7 +7,7 @@ Israel as possible. Fly has no region in Israel or the Middle East; **fra (Frank
 |---|---|---|---|---|
 | `stedio-db` | PostgreSQL 16, volume `stedio_db` (1 GB) | shared-cpu-1x, 256 MB + 512 MB swap | yes | `stedio-db.internal:5432` (private network only) |
 | `stedio-api` | FastAPI + the worker as a second, niced process (`steady_api.supervise`, PM-164; `STEADY_WORKER_PROCESS=false` for the old thread), volume `stedio_media` (1 GB, meal photos and exports) | shared-cpu-1x, 512 MB + 512 MB swap | yes (syncs, alerts, pushes, retrain, voice) | https://api.stedio.io (also https://stedio-api.fly.dev) |
-| `stedio-web` | Next.js website, the app's web build at `/app`, tester install page at `/install` | shared-cpu-1x, 256 MB | no: stops when idle, starts on the next visit | https://stedio.io (also https://stedio-web.fly.dev) |
+| `stedio-web` | Next.js website, the app's web build at `/app`, tester install page at `/install` | shared-cpu-1x, 256 MB | no: stops when idle, starts on the next visit | https://stedio.io; signed-in areas (/app, dashboard, clinic) on https://app.stedio.io (also https://stedio-web.fly.dev) |
 | `stedio-research` | Internal research tool (Streamlit), see below | shared-cpu-1x, 256 MB + 512 MB swap | no: stops when idle, starts on the next visit | https://stedio-research.fly.dev |
 
 Files: `deploy/fly/{db,api,web}/fly.toml`, `deploy/fly/db/*` (image, start and backup scripts),

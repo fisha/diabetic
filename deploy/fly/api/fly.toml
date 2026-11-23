@@ -22,8 +22,8 @@ swap_size_mb = 512
   STEADY_MEDIA_DIR = '/data/media'
   STEADY_RUN_WORKER = 'true'
   # The website (and its /app web build) calls the API from the browser at these origins; the app does not need CORS.
-  # stedio.io is the public address (PM-451); stedio-web.fly.dev stays for older links.
-  STEADY_CORS_ORIGINS = '["https://stedio.io","https://www.stedio.io","https://stedio-web.fly.dev","http://localhost:8081","http://localhost:3000"]'
+  # stedio.io is the website and app.stedio.io the signed-in areas (PM-451, PM-457); stedio-web.fly.dev stays for older links.
+  STEADY_CORS_ORIGINS = '["https://stedio.io","https://www.stedio.io","https://app.stedio.io","https://stedio-web.fly.dev","http://localhost:8081","http://localhost:3000"]'
   STEADY_APNS_BUNDLE_ID = 'com.fisha.steady.dev'
   STEADY_APNS_TEAM_ID = 'S6L7799Q36'
   # Share of eligible companion replies the quality review samples (PM-198; only people with the consent to improve
