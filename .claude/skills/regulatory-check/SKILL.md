@@ -50,7 +50,8 @@ diagnose, give dosing advice or provide treatment.
 - No real-time high/low alarm that competes with the sensor's or pump's own alarms: no sound, no time-sensitive or
   critical interruption, no urgent-low level, for anything about glucose values.
 - Glucose notices are a quiet look back only (`steady_api/glucose_alerts.py`: an hour out of the person's own range,
-  passive, no value in the text, "not an alarm", rely on the device alarms).
+  passive, no value in the text, rely on the device alarms). The push no longer says "a look back, not an alarm"
+  (Guy, 23 Nov 2026, PM-435); its title says "for the past hour" and the Settings note keeps "not an alarm, not real time".
 - Relaying a device's own alarms is at risk; supply logistics (reservoir, battery, sensor ending, set change) are fine.
 - Routine prompts (meal check-ins, reminders the person set, summaries) are fine. They carry no medical claim.
 
