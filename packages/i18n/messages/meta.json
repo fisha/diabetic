@@ -28289,5 +28289,19 @@
       "translation"
     ],
     "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.coins_added": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Spoken when coins from a game are added to the coin count in the game's header."
+  },
+  "games.to_overview": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Accessibility hint on the reading at the top of a game: tapping it closes the game and opens Overview."
   }
 }

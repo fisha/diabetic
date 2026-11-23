@@ -4344,5 +4344,7 @@
   "rwd.why_coins": "Got with {count} coins from the games",
   "rwd.why_walk": "For {count} minutes of walking",
   "rwd.rule_coins": "Get it with coins from the games",
-  "rwd.rule_walk": "Walk 10 minutes in a day"
+  "rwd.rule_walk": "Walk 10 minutes in a day",
+  "games.coins_added": "{n, plural, one {# coin} other {# coins}} added",
+  "games.to_overview": "Opens Overview"
 }

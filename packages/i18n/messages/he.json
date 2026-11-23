@@ -4344,5 +4344,7 @@
   "rwd.why_coins": "התקבל ב-{count} מטבעות מהמשחקים",
   "rwd.why_walk": "על {count} דקות הליכה",
   "rwd.rule_coins": "מקבלים במטבעות מהמשחקים",
-  "rwd.rule_walk": "הולכים 10 דקות ביום"
+  "rwd.rule_walk": "הולכים 10 דקות ביום",
+  "games.coins_added": "נוספו {n, plural, one {מטבע אחד} other {# מטבעות}}",
+  "games.to_overview": "פותח את הסקירה"
 }
