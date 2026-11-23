@@ -26652,6 +26652,12 @@
       "translation"
     ]
   },
+  "ovr.r_set_rec": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ]
+  },
   "ovr.r_sensor": {
     "board": "Duet",
     "review": [

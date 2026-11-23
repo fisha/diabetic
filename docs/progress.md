@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-436): Guy gets $60-80 a week of OpenAI invoices with 4 testers. Fly logs 16-22 Nov: production
+text calls (mentor, agents, titles, openers, meal photos, labs) about 5M input / 0.24M output tokens in 6 days, about $12
+a week at gpt-6.1-sol list price; live voice negligible. The rest is the Fly regression set (44 runs 17-23 Nov, 138
+turns plus a judge each). Approved and built: staged eval repeats (a failing first repeat stops the run; deploy-api asks
+for 3 repeats only when the companion's own rules changed or the last full pass is over a day old, else 1), repeats as
+passes over all cases for the prompt cache, tokens per model (and cost with STEADY_OPENAI_PRICES) in the verdict, the
+mentor prompt's changing parts moved last for caching, conversation titles on gpt-6-luna with fallback (api #194). Next:
+Guy sets STEADY_OPENAI_PRICES='{"gpt-6.1-sol":[2,0.1,10],"gpt-6-luna":[0.1,0.01,0.5]}' on stedio-api; read the
+first runs' usage to confirm the saving.
+
 23 Nov 2026 (Jira PM-428, app #261): Guy asked that a clinic's connection request pop up in the app so the person can
 approve it at once, with a push too. The request now opens as a sheet over the main screens: when the app opens or comes
 back, at once when its push arrives while the app is open (no second banner then; it stays in the notification list),
@@ -22,6 +32,14 @@ again only returned the open request. Now `/care-team` joins a waiting request t
 and asking again while it waits joins a newer account and pushes again (at most once an hour, no second email; api
 #193). The clinic portal's Patients list shows waiting invites too (web #65). Root `pnpm check` passed; e2e
 `tools/e2e/clinic-request.cjs` 34/34 (web; the push paths need a phone). No API change. Next: OTA.
+23 Nov 2026 (Jira PM-437): Guy: when the infusion set was changed three days ago, recommend changing it on the fourth
+day, and add a "Change recommended" (מומלץ להחליף) badge where Overview shows the set change. From the start of the local
+day after the set's rated days (the change day is day 1; standard 3, extended 7 from Treatment settings; 3 when no set
+type is chosen, Guy's rule) `GET /devices/equipment` says `set_change_recommended` and Overview's set row shows the badge,
+for the person and for followers (the yes/no only, never the set type). People who turned on the set reminder, and
+followers with set reminders, get one push that day from 08:00 (once per set; it replaces any set reminder still ahead);
+All notifications off, Quiet mode and quiet hours withhold it as for every push. API tests pass; root `pnpm check` passes;
+e2e `tools/e2e/set-change-recommended.cjs` 13/13. Next: API deploy, then OTA.
 23 Nov 2026 (Jira PM-429): Guy: an admin who signs in on the website was taken straight into their own app; the admin
 pages should come first. The website's "Sign in" opens the app (/app), and the admin pages keep their own in-memory
 sign-in (G-12), so the app now hands them a session: API `POST /auth/admin-session` (admins only) issues a separate
@@ -43,6 +61,11 @@ diabetes balanced" (PM-434). API `GET /insights/moment`, read keys `mo:`/`mb:`, 
 export (`mentor_moments.csv`); no migration. API tests pass except `test_body_over_the_last_24_hours_rolls_past_midnight`,
 which fails on main too at this hour; root `pnpm check` passes; e2e `tools/e2e/mentor-moments.cjs` 8/8 en and he.
 Merged 23 Nov (api #191, app #263). Next: API deploy, then OTA.
+
+23 Nov 2026 (Jira PM-439, api #196): the eval gate for the PM-428/429/435/437 deploy failed on he-scope-09 ("my
+daughter is at 300"): the mentor listed symptoms and added its own "seek urgent help". One prompt rule: with only a
+number and no symptoms, it lists no symptoms and adds no urgent-care instruction, pointing only to the care plan, care
+team and the emergency call (PM-205 unchanged). Fly regression set passed on fcbb583 (189/189). Next: API deploy.
 
 23 Nov 2026 (Jira PM-431, api #189): Guy's feedback on the morning recap and weekly comparison (WhatsApp and app):
 don't open with yesterday's in-range share (he knows it, and on a bad day "you were in your range" reads wrong); one
