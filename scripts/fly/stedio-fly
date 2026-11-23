@@ -140,6 +140,24 @@ COMPANION_PATHS=(
 EVALS_DIR="$REPO/evals/reports/fly"
 LOGPREFIX='s/^[^ ]* app\[[^]]*\] [a-z0-9]* \[[a-z]*\] *//' # fly logs: "<time> app[<machine>] <region> [info]"
 
+# The companion's own rules (PM-436, Guy 23 Nov 2026): its prompt, tools, safety filter, judge and model settings. A
+# change here, or no full run in FULL_EVERY_S, gets the full regression set (3 repeats); any other API change gets one
+# repeat, which still checks every hard rule on every case.
+COMPANION_CORE=(steady_api/ai steady_api/routers/conversation.py steady_api/config.py steady_api/quality.py)
+FULL_EVERY_S=86400
+
+evals_repeat() { # 3 when the companion's own rules changed since the last full pass or it is older than a day, else 1
+  local last at; last="$(cut -d' ' -f1 "$EVALS_DIR/last-full-pass" 2>/dev/null || true)"
+  at="$(cut -d' ' -f2 "$EVALS_DIR/last-full-pass" 2>/dev/null || true)"
+  if [ -z "$last" ] || [ -z "$at" ] || [ $(( $(date -u +%s) - at )) -ge "$FULL_EVERY_S" ] \
+    || ! git -C "$REPO/services/api" cat-file -e "$last^{commit}" 2>/dev/null \
+    || ! git -C "$REPO/services/api" diff --quiet "$last" HEAD -- "${COMPANION_CORE[@]}"; then
+    echo 3
+  else
+    echo 1
+  fi
+}
+
 companion_changed() { # true when the companion changed since the last passing evals run (or none is recorded)
   local last; last="$(cat "$EVALS_DIR/last-pass" 2>/dev/null || true)"
   [ -z "$last" ] && return 0
@@ -204,7 +222,9 @@ cmd_evals() {
   printf '%s\n' "$log" | grep -E 'EVALS_(START|ERROR|STDERR)' | sed -e "$LOGPREFIX" || true
   [ -s "$out" ] && cat "$out" || rm -f "$out"
   case "$code" in
-    0) echo "$api_sha" > "$EVALS_DIR/last-pass"; say "regression set PASSED (verdict: ${out#"$REPO"/})" ;;
+    0) echo "$api_sha" > "$EVALS_DIR/last-pass"
+       [ "$repeat" -ge 3 ] && echo "$api_sha $(date -u +%s)" > "$EVALS_DIR/last-full-pass"
+       say "regression set PASSED (verdict: ${out#"$REPO"/})" ;;
     1) say "regression set FAILED a hard rule (verdict: ${out#"$REPO"/})"; return 1 ;;
     *) say "regression set did not run (exit ${code:-unknown}); see above"; return 2 ;;
   esac
@@ -219,7 +239,9 @@ cmd_deploy_api() {
       echo "WARN   the companion changed and STEDIO_SKIP_EVALS=1: deploying without the regression set"
     else
       say "the companion changed since the last passing regression run: running it first"
-      cmd_evals || die "deploy stopped: the regression set did not pass (STEDIO_SKIP_EVALS=1 overrides, say why in the PR)"
+      local repeat; repeat="$(evals_repeat)"
+      say "repeats: $repeat (3 when the companion's own rules changed or the last full run is over a day old)"
+      cmd_evals --repeat "$repeat" || die "deploy stopped: the regression set did not pass (STEDIO_SKIP_EVALS=1 overrides, say why in the PR)"
     fi
   fi
   # A backup before every deploy: the release command runs migrations.

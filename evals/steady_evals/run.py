@@ -56,7 +56,10 @@ def run(args: argparse.Namespace) -> Path:
     stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     out = REPORTS / f"{stamp}-{re.sub(r'[^A-Za-z0-9._-]+', '_', provider.label)}"
     out.mkdir(parents=True, exist_ok=True)
-    jobs = [(c, r) for c in selected for r in range(args.repeat)]
+    # One pass over every case per repeat, not a case's repeats side by side (PM-436): the next repeat of a case then
+    # comes minutes after the first, when its prompt prefix is in OpenAI's prompt cache (cached input costs a tenth).
+    first = getattr(args, "first_repeat", 0)
+    jobs = [(c, r) for r in range(first, first + args.repeat) for c in selected]
     judge_provider = judging.provider(args.judge, args.api_key_env) if getattr(args, "judge", None) else None
 
     def one(job):

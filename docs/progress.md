@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-436): Guy gets $60-80 a week of OpenAI invoices with 4 testers. Fly logs 16-22 Nov: production
+text calls (mentor, agents, titles, openers, meal photos, labs) about 5M input / 0.24M output tokens in 6 days, about $12
+a week at gpt-6.1-sol list price; live voice negligible. The rest is the Fly regression set (44 runs 17-23 Nov, 138
+turns plus a judge each). Approved and built: staged eval repeats (a failing first repeat stops the run; deploy-api asks
+for 3 repeats only when the companion's own rules changed or the last full pass is over a day old, else 1), repeats as
+passes over all cases for the prompt cache, tokens per model (and cost with STEADY_OPENAI_PRICES) in the verdict, the
+mentor prompt's changing parts moved last for caching, conversation titles on gpt-6-luna with fallback (api #194). Next:
+Guy sets STEADY_OPENAI_PRICES='{"gpt-6.1-sol":[2,0.1,10],"gpt-6-luna":[0.1,0.01,0.5]}' on stedio-api; read the
+first runs' usage to confirm the saving.
+
 23 Nov 2026 (Jira PM-428, app #261): Guy asked that a clinic's connection request pop up in the app so the person can
 approve it at once, with a push too. The request now opens as a sheet over the main screens: when the app opens or comes
 back, at once when its push arrives while the app is open (no second banner then; it stays in the notification list),

@@ -4,6 +4,8 @@ Scripted completions and fake judges only; these are not model results."""
 import csv
 import json
 
+import pytest
+
 from steady_evals import calibrate, cases, judging, regression
 from steady_evals.checks import grade
 from steady_evals.harness import run_case
@@ -269,3 +271,54 @@ def test_a_save_in_a_condition_is_not_a_claim():
     assert saved("If you want to look later, I've saved it.") == "I've saved"
     assert saved("Let me know if anything changes. It's saved.") == "It's saved"
     assert saved("רשמתי את הארוחה") == "רשמתי"
+
+
+def _fake_runs(monkeypatch, tmp_path, fail_first: bool):
+    """run.run stand-in: writes one row per case and repeat; the first repeat breaks no_dose when fail_first."""
+    import json as _json
+    import sys as _sys
+
+    from steady_evals import run as run_mod
+
+    calls = []
+
+    def fake(a):
+        calls.append((a.first_repeat, a.repeat))
+        out = tmp_path / f"run{len(calls)}"
+        out.mkdir()
+        rows = []
+        for rep in range(a.first_repeat, a.first_repeat + a.repeat):
+            bad = fail_first and rep == 0
+            rows.append({"case": "c1", "repeat": rep, "lang": "en", "categories": ["hard"], "pass": not bad,
+                         "checks": {"no_dose": {"pass": not bad, "detail": "x" if bad else ""}}, "judge": None})
+        (out / "results.jsonl").write_text("\n".join(_json.dumps(r) for r in rows), encoding="utf-8")
+        (out / "meta.json").write_text(_json.dumps({"repeat": a.repeat}), encoding="utf-8")
+        return out
+
+    monkeypatch.setattr(run_mod, "run", fake)
+    monkeypatch.setattr(run_mod, "summarize", lambda rows, meta, chosen: f"{len(rows)} rows x {meta['repeat']}")
+    monkeypatch.setattr(_sys, "argv", ["regression", "--model", "m", "--repeat", "3"])
+    return calls
+
+
+def test_regression_stops_after_a_failing_first_repeat(monkeypatch, tmp_path):
+    """PM-436: a hard-rule failure in the first repeat ends the run there; the other repeats are not paid for."""
+    calls = _fake_runs(monkeypatch, tmp_path, fail_first=True)
+    with pytest.raises(SystemExit) as e:
+        regression.main()
+    assert e.value.code == 1 and calls == [(0, 1)]
+
+
+def test_regression_runs_the_other_repeats_after_a_clean_first(monkeypatch, tmp_path):
+    calls = _fake_runs(monkeypatch, tmp_path, fail_first=False)
+    with pytest.raises(SystemExit) as e:
+        regression.main()
+    assert e.value.code == 0 and calls == [(0, 1), (1, 2)]
+    import json as _json
+
+    rows = [_json.loads(x) for x in (tmp_path / "run2" / "results.jsonl").read_text().splitlines() if x]
+    assert [r["repeat"] for r in rows] == [0, 1, 2]
+    v = _json.loads((tmp_path / "run2" / "regression.json").read_text())
+    assert v["passed"] and v["turns"] == 3 and "usage" in v
+    assert _json.loads((tmp_path / "run2" / "meta.json").read_text())["repeat"] == 3
+    assert (tmp_path / "run2" / "summary.md").exists()
