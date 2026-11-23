@@ -8,6 +8,20 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-428, app #261): Guy asked that a clinic's connection request pop up in the app so the person can
+approve it at once, with a push too. The request now opens as a sheet over the main screens: when the app opens or comes
+back, at once when its push arrives while the app is open (no second banner then; it stays in the notification list),
+and when the push is tapped (which used to open Settings > Sharing > the request page). It is the request page's content
+(clinic, who asked, the parts with glucose always, the consent lines) with Share, Decline and Not now. Each request pops
+up by itself once per phone (ids only, in the phone's preferences); Not now leaves it on the main screen and in Settings.
+Not while viewing someone, during sign-in, onboarding or a consent update, under the app lock or in Quiet mode. The push
+itself was already sent (`clinic_request`) and still follows All notifications off and Quiet mode. The request page's
+decline button now says "Decline" (it used to say "Not now" but declined). Guy then found his own invite (to his account email) never reached the app: the
+request of 19 Nov had been stored without an account (`patient_id` NULL, no `clinic_request` push ever), and asking
+again only returned the open request. Now `/care-team` joins a waiting request to the account with the same keyed email,
+and asking again while it waits joins a newer account and pushes again (at most once an hour, no second email; api
+#193). The clinic portal's Patients list shows waiting invites too (web #65). Root `pnpm check` passed; e2e
+`tools/e2e/clinic-request.cjs` 34/34 (web; the push paths need a phone). No API change. Next: OTA.
 23 Nov 2026 (Jira PM-429): Guy: an admin who signs in on the website was taken straight into their own app; the admin
 pages should come first. The website's "Sign in" opens the app (/app), and the admin pages keep their own in-memory
 sign-in (G-12), so the app now hands them a session: API `POST /auth/admin-session` (admins only) issues a separate
