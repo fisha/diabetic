@@ -3337,6 +3337,11 @@
             ],
             "title": "Sensor Hours Left"
           },
+          "set_change_recommended": {
+            "default": false,
+            "title": "Set Change Recommended",
+            "type": "boolean"
+          },
           "set_changed_at": {
             "anyOf": [
               {

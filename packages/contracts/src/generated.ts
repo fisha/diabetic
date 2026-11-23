@@ -5090,6 +5090,11 @@ export interface components {
             sensor_at?: string | null;
             /** Sensor Hours Left */
             sensor_hours_left?: number | null;
+            /**
+             * Set Change Recommended
+             * @default false
+             */
+            set_change_recommended: boolean;
             /** Set Changed At */
             set_changed_at?: string | null;
         };
