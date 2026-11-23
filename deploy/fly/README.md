@@ -96,8 +96,10 @@ After adding the Google settings to `.env`, run both again.
   Machine.
 - **Exit**: 0 passed (the API commit is kept in `evals/reports/fly/last-pass`), 1 a hard rule failed, 2 it did not run
   (no key, no network, provider down; never counted as a pass).
-- **Before a deploy**: `deploy-api` runs it first when `steady_api/ai` or `steady_api/config.py` changed since the last
-  passing run, and stops the deploy unless it passes. `STEDIO_SKIP_EVALS=1` deploys anyway with a warning; say why in
+- **Before a deploy**: `deploy-api` runs it first when any API code under `steady_api` changed since the last passing
+  run (apart from the few paths in `COMPANION_PATHS` that never reach the companion: fonts, demo, notices, forecast
+  training, the clinic PDF, admin, app version and metrics routers), and stops the deploy unless it passes. Until
+  PM-424 only `steady_api/ai` and `config.py` counted, which missed changes to what the companion's instructions read. `STEDIO_SKIP_EVALS=1` deploys anyway with a warning; say why in
   the PR.
 - **Cost**: one shared-cpu-1x 1 GB Machine for the run (cents) plus the OpenAI calls (about 115 replies and 115 judge
   calls per run with 3 repeats).

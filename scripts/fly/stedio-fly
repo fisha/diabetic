@@ -120,8 +120,23 @@ cmd_backup() {
   fly ssh console -a "$DB_APP" -C stedio-backup
 }
 
-# The companion (PM-198): its prompt, tools, safety filter and judge, and the settings that pick the model.
-COMPANION_PATHS=(steady_api/ai steady_api/config.py)
+# The companion (PM-198): its prompt, tools, safety filter and judge, the settings that pick the model, and everything
+# that feeds its instructions (conversation.instructions reads routine, findings, app_data, glucose_now, openers... and
+# the models they read). PM-424 showed a list of files misses changes, so any API code counts except the few paths
+# below that never reach the companion. When in doubt, leave a path in: an extra eval run costs minutes, a missed one
+# ships an untested companion.
+COMPANION_PATHS=(
+  steady_api
+  ':(exclude)steady_api/fonts'
+  ':(exclude)steady_api/demo'
+  ':(exclude)steady_api/*.NOTICE'
+  ':(exclude)steady_api/carelink_messages.json'
+  ':(exclude)steady_api/forecast_train.py'
+  ':(exclude)steady_api/clinic_report.py'
+  ':(exclude)steady_api/routers/admin.py'
+  ':(exclude)steady_api/routers/app_version.py'
+  ':(exclude)steady_api/routers/metrics.py'
+)
 EVALS_DIR="$REPO/evals/reports/fly"
 LOGPREFIX='s/^[^ ]* app\[[^]]*\] [a-z0-9]* \[[a-z]*\] *//' # fly logs: "<time> app[<machine>] <region> [info]"
 
