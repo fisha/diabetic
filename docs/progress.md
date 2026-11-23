@@ -22,6 +22,14 @@ again only returned the open request. Now `/care-team` joins a waiting request t
 and asking again while it waits joins a newer account and pushes again (at most once an hour, no second email; api
 #193). The clinic portal's Patients list shows waiting invites too (web #65). Root `pnpm check` passed; e2e
 `tools/e2e/clinic-request.cjs` 34/34 (web; the push paths need a phone). No API change. Next: OTA.
+23 Nov 2026 (Jira PM-437): Guy: when the infusion set was changed three days ago, recommend changing it on the fourth
+day, and add a "Change recommended" (מומלץ להחליף) badge where Overview shows the set change. From the start of the local
+day after the set's rated days (the change day is day 1; standard 3, extended 7 from Treatment settings; 3 when no set
+type is chosen, Guy's rule) `GET /devices/equipment` says `set_change_recommended` and Overview's set row shows the badge,
+for the person and for followers (the yes/no only, never the set type). People who turned on the set reminder, and
+followers with set reminders, get one push that day from 08:00 (once per set; it replaces any set reminder still ahead);
+All notifications off, Quiet mode and quiet hours withhold it as for every push. API tests pass; root `pnpm check` passes;
+e2e `tools/e2e/set-change-recommended.cjs` 13/13. Next: API deploy, then OTA.
 23 Nov 2026 (Jira PM-429): Guy: an admin who signs in on the website was taken straight into their own app; the admin
 pages should come first. The website's "Sign in" opens the app (/app), and the admin pages keep their own in-memory
 sign-in (G-12), so the app now hands them a session: API `POST /auth/admin-session` (admins only) issues a separate
