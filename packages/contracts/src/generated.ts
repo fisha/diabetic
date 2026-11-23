@@ -372,6 +372,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/admin-session": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Admin Session
+         * @description A second session for an admin, for the website's admin pages (PM-429). The website's "Sign in" opens the app,
+         *     whose sign-in is its own; an admin who signs in there is taken to the admin pages, which keep their session in
+         *     memory only, without signing in again. A new family, so signing out of either one leaves the other as it is.
+         */
+        post: operations["admin_session_auth_admin_session_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/apple": {
         parameters: {
             query?: never;
@@ -9423,6 +9445,33 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["AppVersionOut"];
                 };
+            };
+        };
+    };
+    admin_session_auth_admin_session_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Tokens"];
+                };
+            };
+            /** @description not_admin */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

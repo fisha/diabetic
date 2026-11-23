@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-429): Guy: an admin who signs in on the website was taken straight into their own app; the admin
+pages should come first. The website's "Sign in" opens the app (/app), and the admin pages keep their own in-memory
+sign-in (G-12), so the app now hands them a session: API `POST /auth/admin-session` (admins only) issues a separate
+token family; the app on the website (not the phone, not the demo frame) passes it through this tab's sessionStorage
+(read and removed at once by the dashboard, ignored after 2 minutes) and opens /dashboard/admin, right after an
+admin signs in and when an admin opens /app at its start. The admin pages' "My area (the app)" link now opens
+/app/companion, so it stays in the app; Profile > Admin uses the same handoff. API auth tests, root `pnpm check`
+parts (guard, typecheck, lint, app 289 and web 13 tests) pass; e2e in the container (API + Next + app web export,
+Playwright): admin lands on Accounts, "My app" opens the app, a regular user is unchanged. Next: API deploy, web
+deploy, OTA.
 23 Nov 2026 (Jira PM-432, PM-434): Guy: insights repeat every day; general ones belong in the insights list, and a
 recurring pattern should prepare the person before the meal, like a mentor. Plan approved (behaviour-only words before
 the meal, in the app only, all users, lows never, 45 minutes before; lawyer question PM-433). Built: general insights
