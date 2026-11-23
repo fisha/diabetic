@@ -2240,3 +2240,15 @@ design has no such dialog. Built with existing parts only (`Dialog`, `AppText`, 
   push is tapped. Quiet mode doesn't hold it back.
 - States: a deleted conversation shows "This conversation was deleted."; if marking read fails, the dialog stays.
 - Not built: a history of past alerts (the email keeps them), or a call button.
+
+### G-133 · Usage analytics choice (**asked by Guy, 23 Nov 2026, PM-464**)
+
+Guy approved Mixpanel product analytics, opt-in. The design has no analytics choice. Built with existing parts only:
+
+- Onboarding consent step (ONB-01): one more optional checkbox `OptionRow` under the training choice, "Share how I use
+  the app" with its sub line; not ticked is a no.
+- The re-accept screen (consent-update): the same checkbox once, when the person has not answered yet; it never blocks
+  "Agree and continue".
+- Settings > Privacy: one more `ToggleRow` in the same group, after Weather.
+- Hidden under 18, while viewing someone, and in a build without the Mixpanel token.
+

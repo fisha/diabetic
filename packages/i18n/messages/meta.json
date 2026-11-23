@@ -9031,6 +9031,20 @@
     ],
     "note": "Consent to the external AI engine (PM-149, Guy 16 Nov 2026)."
   },
+  "onb.c4": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Product analytics opt-in (Guy, 23 Nov 2026, PM-464)."
+  },
+  "onb.c4b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Product analytics opt-in (Guy, 23 Nov 2026, PM-464)."
+  },
   "onb.c_err_req": {
     "board": "Onboarding",
     "review": [
@@ -15937,6 +15951,20 @@
     "review": [
       "translation"
     ]
+  },
+  "set.pv_analytics": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Product analytics opt-in (Guy, 23 Nov 2026, PM-464)."
+  },
+  "set.pv_analytics_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Product analytics opt-in (Guy, 23 Nov 2026, PM-464)."
   },
   "set.quiet": {
     "board": "Settings",

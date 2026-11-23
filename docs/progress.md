@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-464, open items PM-467): Guy approved Mixpanel product analytics, opt-in, usage events only.
+App `src/analytics/`: a small client (no SDK, so it ships by OTA) sends to Mixpanel's US endpoint with `ip=0`, under a
+random id made on the phone, never the account; every property is a closed word from an allowlist, so no value, text
+or id can pass (`test/analytics.test.ts`). Events: App Opened, Screen Viewed (route file only), Signed In, Onboarding
+Step Completed, Consent Accepted, Entry Logged (kind and source), meal photo/description/usual, Mentor Message Sent,
+Voice Call Started/Ended (length bucket), Device Connected, Setting Changed, Game Played, follow invites, support,
+clinic report, export. Off unless the person ticks it (onboarding, re-accept screen, Settings > Privacy; G-133); never
+under 18 or while viewing. Privacy policy `2026-11-24T00:00:00Z` names Mixpanel (forced re-accept). Session replay not
+built (Guy suggested full masking; drawn glucose charts are not text, and it needs a native build). Next: Guy creates
+the Stedio Mixpanel project (US) and sets `EXPO_PUBLIC_MIXPANEL_TOKEN` in EAS; deploy API and web, then OTA; then the
+dashboards, funnels, flows and retention reports in Mixpanel.
 23 Nov 2026 (Jira PM-459): Guy asked that the mentor know everything the app knows and can do, e.g. when to change the
 sensor or the infusion set. The always-on app block now has the set (last change, day N, the day a change is
 recommended, from set_end) and the sensor's warm-up, start and "end not known"; the app_data tool gains games (coins,
