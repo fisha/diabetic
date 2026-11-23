@@ -21,8 +21,9 @@ swap_size_mb = 512
 [env]
   STEADY_MEDIA_DIR = '/data/media'
   STEADY_RUN_WORKER = 'true'
-  # The website (and its /app web build) calls the API from the browser at this origin; the app does not need CORS.
-  STEADY_CORS_ORIGINS = '["https://stedio-web.fly.dev","http://localhost:8081","http://localhost:3000"]'
+  # The website (and its /app web build) calls the API from the browser at these origins; the app does not need CORS.
+  # stedio.io is the public address (PM-451); stedio-web.fly.dev stays for older links.
+  STEADY_CORS_ORIGINS = '["https://stedio.io","https://www.stedio.io","https://stedio-web.fly.dev","http://localhost:8081","http://localhost:3000"]'
   STEADY_APNS_BUNDLE_ID = 'com.fisha.steady.dev'
   STEADY_APNS_TEAM_ID = 'S6L7799Q36'
   # Share of eligible companion replies the quality review samples (PM-198; only people with the consent to improve
@@ -30,7 +31,7 @@ swap_size_mb = 512
   STEADY_QUALITY_SAMPLE_SHARE = '0.05'
   # The newest app build number, published by `stedio-fly deploy-web` next to the install page (PM-217). Read every
   # 10 minutes; STEADY_APP_LATEST_BUILD (a secret) is only the fallback when the file can't be read.
-  STEADY_APP_LATEST_BUILD_URL = 'https://stedio-web.fly.dev/install/latest.json'
+  STEADY_APP_LATEST_BUILD_URL = 'https://stedio.io/install/latest.json'
   # Every other setting is a Fly secret, filled from services/api/.env by scripts/fly/stedio-fly secrets
   # (STEADY_DATABASE_URL points at stedio-db.internal).
 

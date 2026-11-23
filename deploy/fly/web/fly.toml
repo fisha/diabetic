@@ -8,7 +8,7 @@ primary_region = 'fra'
 [build]
   dockerfile = 'Dockerfile'
   [build.args]
-    API_PUBLIC_URL = 'https://stedio-api.fly.dev'
+    API_PUBLIC_URL = 'https://api.stedio.io'
     API_INTERNAL_URL = 'http://stedio-api.internal:8080'
     GOOGLE_WEB_CLIENT_ID = '281551574433-16agcvukeaikpa1b88n5tfa9qcmqe4uu.apps.googleusercontent.com'
     APPLE_SERVICES_ID = 'com.fisha.steady.web'
