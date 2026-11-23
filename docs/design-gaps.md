@@ -1242,7 +1242,8 @@ high/low alarms compete with the cleared CGM alarms. The card is now "Out-of-ran
 levels (steppers, from the person's range), repeat interval, daily cap. A quiet notice (no sound, quiet channel, iOS
 passive) only when every sensor reading of the past hour was on the same side of a level (at least 3 readings spanning
 45 minutes, newest within 15 minutes). No urgent-low level, no 54 mg/dL default, no Critical Alerts path. The text
-names the side only, never the value, says "a look back, not an alarm" and to rely on the device alarms.
+names the side only, never the value, and says to rely on the device alarms. Guy (23 Nov 2026, PM-435) removed the
+"a look back, not an alarm" line from the push; the Settings note still says it.
 
 ## No insulin-timing threshold (16 Nov 2026, medical-device review)
 The "insulin before eating" win (timing_good) and the timing:<meal> insight compared meals by insulin at least 10

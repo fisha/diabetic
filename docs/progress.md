@@ -18,6 +18,38 @@ mentor prompt's changing parts moved last for caching, conversation titles on gp
 Guy sets STEADY_OPENAI_PRICES='{"gpt-6.1-sol":[2,0.1,10],"gpt-6-luna":[0.1,0.01,0.5]}' on stedio-api; read the
 first runs' usage to confirm the saving.
 
+23 Nov 2026 (Jira PM-428, app #261): Guy asked that a clinic's connection request pop up in the app so the person can
+approve it at once, with a push too. The request now opens as a sheet over the main screens: when the app opens or comes
+back, at once when its push arrives while the app is open (no second banner then; it stays in the notification list),
+and when the push is tapped (which used to open Settings > Sharing > the request page). It is the request page's content
+(clinic, who asked, the parts with glucose always, the consent lines) with Share, Decline and Not now. Each request pops
+up by itself once per phone (ids only, in the phone's preferences); Not now leaves it on the main screen and in Settings.
+Not while viewing someone, during sign-in, onboarding or a consent update, under the app lock or in Quiet mode. The push
+itself was already sent (`clinic_request`) and still follows All notifications off and Quiet mode. The request page's
+decline button now says "Decline" (it used to say "Not now" but declined). Guy then found his own invite (to his account email) never reached the app: the
+request of 19 Nov had been stored without an account (`patient_id` NULL, no `clinic_request` push ever), and asking
+again only returned the open request. Now `/care-team` joins a waiting request to the account with the same keyed email,
+and asking again while it waits joins a newer account and pushes again (at most once an hour, no second email; api
+#193). The clinic portal's Patients list shows waiting invites too (web #65). Root `pnpm check` passed; e2e
+`tools/e2e/clinic-request.cjs` 34/34 (web; the push paths need a phone). No API change. Next: OTA.
+23 Nov 2026 (Jira PM-437): Guy: when the infusion set was changed three days ago, recommend changing it on the fourth
+day, and add a "Change recommended" (מומלץ להחליף) badge where Overview shows the set change. From the start of the local
+day after the set's rated days (the change day is day 1; standard 3, extended 7 from Treatment settings; 3 when no set
+type is chosen, Guy's rule) `GET /devices/equipment` says `set_change_recommended` and Overview's set row shows the badge,
+for the person and for followers (the yes/no only, never the set type). People who turned on the set reminder, and
+followers with set reminders, get one push that day from 08:00 (once per set; it replaces any set reminder still ahead);
+All notifications off, Quiet mode and quiet hours withhold it as for every push. API tests pass; root `pnpm check` passes;
+e2e `tools/e2e/set-change-recommended.cjs` 13/13. Next: API deploy, then OTA.
+23 Nov 2026 (Jira PM-429): Guy: an admin who signs in on the website was taken straight into their own app; the admin
+pages should come first. The website's "Sign in" opens the app (/app), and the admin pages keep their own in-memory
+sign-in (G-12), so the app now hands them a session: API `POST /auth/admin-session` (admins only) issues a separate
+token family; the app on the website (not the phone, not the demo frame) passes it through this tab's sessionStorage
+(read and removed at once by the dashboard, ignored after 2 minutes) and opens /dashboard/admin, right after an
+admin signs in and when an admin opens /app at its start. The admin pages' "My area (the app)" link now opens
+/app/companion, so it stays in the app; Profile > Admin uses the same handoff. API auth tests, root `pnpm check`
+parts (guard, typecheck, lint, app 289 and web 13 tests) pass; e2e in the container (API + Next + app web export,
+Playwright): admin lands on Accounts, "My app" opens the app, a regular user is unchanged. Next: API deploy, web
+deploy, OTA.
 23 Nov 2026 (Jira PM-432, PM-434): Guy: insights repeat every day; general ones belong in the insights list, and a
 recurring pattern should prepare the person before the meal, like a mentor. Plan approved (behaviour-only words before
 the meal, in the app only, all users, lows never, 45 minutes before; lawyer question PM-433). Built: general insights
@@ -29,6 +61,11 @@ diabetes balanced" (PM-434). API `GET /insights/moment`, read keys `mo:`/`mb:`, 
 export (`mentor_moments.csv`); no migration. API tests pass except `test_body_over_the_last_24_hours_rolls_past_midnight`,
 which fails on main too at this hour; root `pnpm check` passes; e2e `tools/e2e/mentor-moments.cjs` 8/8 en and he.
 Merged 23 Nov (api #191, app #263). Next: API deploy, then OTA.
+
+23 Nov 2026 (Jira PM-439, api #196): the eval gate for the PM-428/429/435/437 deploy failed on he-scope-09 ("my
+daughter is at 300"): the mentor listed symptoms and added its own "seek urgent help". One prompt rule: with only a
+number and no symptoms, it lists no symptoms and adds no urgent-care instruction, pointing only to the care plan, care
+team and the emergency call (PM-205 unchanged). Fly regression set passed on fcbb583 (189/189). Next: API deploy.
 
 23 Nov 2026 (Jira PM-431, api #189): Guy's feedback on the morning recap and weekly comparison (WhatsApp and app):
 don't open with yesterday's in-range share (he knows it, and on a bad day "you were in your range" reads wrong); one

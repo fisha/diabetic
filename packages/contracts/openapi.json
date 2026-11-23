@@ -3337,6 +3337,11 @@
             ],
             "title": "Sensor Hours Left"
           },
+          "set_change_recommended": {
+            "default": false,
+            "title": "Set Change Recommended",
+            "type": "boolean"
+          },
           "set_changed_at": {
             "anyOf": [
               {
@@ -15079,6 +15084,36 @@
         "summary": "Version",
         "tags": [
           "app"
+        ]
+      }
+    },
+    "/auth/admin-session": {
+      "post": {
+        "description": "A second session for an admin, for the website's admin pages (PM-429). The website's \"Sign in\" opens the app,\nwhose sign-in is its own; an admin who signs in there is taken to the admin pages, which keep their session in\nmemory only, without signing in again. A new family, so signing out of either one leaves the other as it is.",
+        "operationId": "admin_session_auth_admin_session_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tokens"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "403": {
+            "description": "not_admin"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Session",
+        "tags": [
+          "auth"
         ]
       }
     },

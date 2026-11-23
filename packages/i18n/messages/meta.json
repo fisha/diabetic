@@ -24769,6 +24769,20 @@
     ],
     "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
   },
+  "care.decline": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic request pop-up (PM-428, Guy 23 Nov 2026)"
+  },
+  "care.shared_toast": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic request pop-up (PM-428, Guy 23 Nov 2026)"
+  },
   "care.q_t": {
     "board": "ClinicPortal",
     "review": [
@@ -26634,6 +26648,12 @@
   },
   "ovr.r_day": {
     "board": "Duet",
+    "review": [
+      "translation"
+    ]
+  },
+  "ovr.r_set_rec": {
+    "board": "Overview",
     "review": [
       "translation"
     ]
