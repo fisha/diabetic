@@ -2199,7 +2199,7 @@ The design has no support or admin screens. Built with existing parts, no new lo
   unread count; each opens a conversation in the mentor's message bubbles (person right, support left, system notes),
   with a reply box. A reply to a resolved or closed request opens it again. Pushes from support open the request.
 - Website, admin: the admin lands on an Admin hub with cards (Users, Support, Analytics, Demo requests, Clinics, App
-  updates, My app). Analytics shows counts only, without demo or admin accounts, and groups under 5 as "<5". Support
+  updates, My app). Analytics shows counts only, without demo or admin accounts; every count is exact and the daily charts show each day's value on hover or keyboard focus (PM-468). Support
   lists requests by status, shows the conversation, sets status and priority, answers, and opens a Jira issue with text
   the admin writes. A user's email opens a profile with country (region setting), time zone, phones and browsers, last
   sign-in and a password reset that emails a one-time code.
