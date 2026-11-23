@@ -83,7 +83,7 @@ After adding the Google settings to `.env`, run both again.
 
 ## Companion regression set on Fly (PM-203, Guy 17 Nov 2026)
 
-`scripts/fly/stedio-fly evals [--repeat N] [--model M]` runs the companion's regression set (PM-198,
+`scripts/fly/stedio-fly evals [--quick] [--repeat N] [--model M]` runs the companion's regression set (PM-198,
 `evals/steady_evals/regression.py`, hard rules plus the judge, 3 repeats) on Fly, so no key is needed on a laptop.
 
 - **Image**: `deploy/fly/evals/Dockerfile` with the build-only `deploy/fly/evals/fly.toml` (context: repository root, `Dockerfile.dockerignore` lets in only
@@ -94,16 +94,14 @@ After adding the Google settings to `.env`, run both again.
   logged or written. Synthetic held-out cases only; the run never opens the database. The script waits (up to 90
   minutes), reads the verdict from the Machine's log, saves it to `evals/reports/fly/` (git-ignored) and destroys the
   Machine.
-- **Repeats before a deploy (PM-436)**: `deploy-api` runs the gate (safety cases, 1 repeat, `--quick`), and the full set (3 repeats) when no full run passed in the last day
-  (`evals/reports/fly/last-full-pass`). A companion whose `COMPANION_PATHS` content already passed is skipped
-  (`passed-fingerprints`). A failing first repeat stops the run.
+- **When (Guy, 23 Nov 2026, PM-436)**: by hand, not on every deploy. Near the end of a day with many companion changes,
+  suggest a run to Guy. `--quick` runs the safety cases (`hard`, `dose_boundary`, `minors`) once; `--repeat 3` runs the
+  full set. A failing first repeat stops the run. A passing run records the companion's content
+  (`evals/reports/fly/passed-fingerprints`).
 - **Exit**: 0 passed (the API commit is kept in `evals/reports/fly/last-pass`), 1 a hard rule failed, 2 it did not run
   (no key, no network, provider down; never counted as a pass).
-- **Before a deploy**: `deploy-api` runs it first when any API code under `steady_api` changed since the last passing
-  run (apart from the few paths in `COMPANION_PATHS` that never reach the companion: fonts, demo, notices, forecast
-  training, the clinic PDF, admin, app version and metrics routers), and stops the deploy unless it passes. Until
-  PM-424 only `steady_api/ai` and `config.py` counted, which missed changes to what the companion's instructions read. `STEDIO_SKIP_EVALS=1` deploys anyway with a warning; say why in
-  the PR.
+- **Deploys**: `deploy-api` does not run the set. It prints a note when the companion's code (`COMPANION_PATHS`) changed
+  since the last passing run, so the end-of-day suggestion knows a run is due.
 - **Cost**: one shared-cpu-1x 1 GB Machine for the run (cents) plus the OpenAI calls (about 115 replies and 115 judge
   calls per run with 3 repeats).
 

@@ -74,6 +74,11 @@ passes over all cases for the prompt cache, tokens per model (and cost with STEA
 mentor prompt's changing parts moved last for caching, conversation titles on gpt-6-luna with fallback (api #194). Next:
 Guy sets STEADY_OPENAI_PRICES='{"gpt-6.1-sol":[2,0.1,10],"gpt-6-luna":[0.1,0.01,0.5]}' on stedio-api; read the
 first runs' usage to confirm the saving.
+Evening (Guy, 23 Nov 2026): the new stedio key reached $13 in a day, nearly all regression runs. Guy decided: the daily
+and weekly summary notes on a model half the price (`openai_summary_model` = gpt-6.1-terra, main model as fallback;
+visit prep and the mentor stay on gpt-6.1-sol), prompt_cache_key per model, and NO regression run on each change or
+deploy: `stedio-fly deploy-api` only prints a note when the companion is untested, and a run (`stedio-fly evals`) is
+suggested to Guy near the end of a day with many companion changes (CLAUDE.md, replaces the 17 Nov PM-198 rule).
 
 23 Nov 2026 (Jira PM-428, app #261): Guy asked that a clinic's connection request pop up in the app so the person can
 approve it at once, with a push too. The request now opens as a sheet over the main screens: when the app opens or comes
