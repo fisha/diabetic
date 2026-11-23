@@ -691,6 +691,10 @@
             "title": "Counts",
             "type": "object"
           },
+          "jira_queue_url": {
+            "title": "Jira Queue Url",
+            "type": "string"
+          },
           "jira_ready": {
             "title": "Jira Ready",
             "type": "boolean"
@@ -701,17 +705,13 @@
             },
             "title": "Tickets",
             "type": "array"
-          },
-          "unread": {
-            "title": "Unread",
-            "type": "integer"
           }
         },
         "required": [
           "tickets",
           "counts",
-          "unread",
-          "jira_ready"
+          "jira_ready",
+          "jira_queue_url"
         ],
         "title": "AdminSupportOut",
         "type": "object"
@@ -727,6 +727,17 @@
             "format": "uuid",
             "title": "Id",
             "type": "string"
+          },
+          "jira_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Jira Url"
           },
           "number": {
             "title": "Number",
@@ -751,49 +762,12 @@
         "title": "AdminTicketBriefOut",
         "type": "object"
       },
-      "AdminTicketDetailOut": {
+      "AdminTicketOut": {
+        "description": "A row of the website's admin list (PM-466): the title and where it is in Jira. Support works in Jira.",
         "properties": {
-          "agent_seen_at": {
-            "anyOf": [
-              {
-                "format": "date-time",
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Agent Seen At"
-          },
-          "app_version": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "App Version"
-          },
-          "category": {
-            "enum": [
-              "account",
-              "app",
-              "devices",
-              "data",
-              "other"
-            ],
-            "title": "Category",
-            "type": "string"
-          },
           "created_at": {
             "format": "date-time",
             "title": "Created At",
-            "type": "string"
-          },
-          "email": {
-            "title": "Email",
             "type": "string"
           },
           "id": {
@@ -823,37 +797,9 @@
             ],
             "title": "Jira Url"
           },
-          "messages": {
-            "items": {
-              "$ref": "#/components/schemas/SupportMessageOut"
-            },
-            "title": "Messages",
-            "type": "array"
-          },
           "number": {
             "title": "Number",
             "type": "integer"
-          },
-          "platform": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Platform"
-          },
-          "priority": {
-            "enum": [
-              "low",
-              "medium",
-              "high",
-              "urgent"
-            ],
-            "title": "Priority",
-            "type": "string"
           },
           "status": {
             "enum": [
@@ -870,19 +816,9 @@
             "title": "Subject",
             "type": "string"
           },
-          "unread": {
-            "default": 0,
-            "title": "Unread",
-            "type": "integer"
-          },
           "updated_at": {
             "format": "date-time",
             "title": "Updated At",
-            "type": "string"
-          },
-          "user_id": {
-            "format": "uuid",
-            "title": "User Id",
             "type": "string"
           }
         },
@@ -890,154 +826,11 @@
           "id",
           "number",
           "subject",
-          "category",
-          "priority",
           "status",
           "created_at",
           "updated_at",
-          "agent_seen_at",
-          "email",
-          "platform",
-          "app_version",
           "jira_key",
-          "user_id",
-          "messages"
-        ],
-        "title": "AdminTicketDetailOut",
-        "type": "object"
-      },
-      "AdminTicketOut": {
-        "properties": {
-          "agent_seen_at": {
-            "anyOf": [
-              {
-                "format": "date-time",
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Agent Seen At"
-          },
-          "app_version": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "App Version"
-          },
-          "category": {
-            "enum": [
-              "account",
-              "app",
-              "devices",
-              "data",
-              "other"
-            ],
-            "title": "Category",
-            "type": "string"
-          },
-          "created_at": {
-            "format": "date-time",
-            "title": "Created At",
-            "type": "string"
-          },
-          "email": {
-            "title": "Email",
-            "type": "string"
-          },
-          "id": {
-            "format": "uuid",
-            "title": "Id",
-            "type": "string"
-          },
-          "jira_key": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Jira Key"
-          },
-          "number": {
-            "title": "Number",
-            "type": "integer"
-          },
-          "platform": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Platform"
-          },
-          "priority": {
-            "enum": [
-              "low",
-              "medium",
-              "high",
-              "urgent"
-            ],
-            "title": "Priority",
-            "type": "string"
-          },
-          "status": {
-            "enum": [
-              "open",
-              "in_progress",
-              "resolved",
-              "closed",
-              "archived"
-            ],
-            "title": "Status",
-            "type": "string"
-          },
-          "subject": {
-            "title": "Subject",
-            "type": "string"
-          },
-          "unread": {
-            "default": 0,
-            "title": "Unread",
-            "type": "integer"
-          },
-          "updated_at": {
-            "format": "date-time",
-            "title": "Updated At",
-            "type": "string"
-          },
-          "user_id": {
-            "format": "uuid",
-            "title": "User Id",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "number",
-          "subject",
-          "category",
-          "priority",
-          "status",
-          "created_at",
-          "updated_at",
-          "agent_seen_at",
-          "email",
-          "platform",
-          "app_version",
-          "jira_key",
-          "user_id"
+          "jira_url"
         ],
         "title": "AdminTicketOut",
         "type": "object"
@@ -7691,46 +7484,6 @@
         "title": "IosDeviceOut",
         "type": "object"
       },
-      "JiraIn": {
-        "additionalProperties": false,
-        "properties": {
-          "description": {
-            "default": "",
-            "maxLength": 8000,
-            "title": "Description",
-            "type": "string"
-          },
-          "summary": {
-            "maxLength": 200,
-            "minLength": 1,
-            "title": "Summary",
-            "type": "string"
-          }
-        },
-        "required": [
-          "summary"
-        ],
-        "title": "JiraIn",
-        "type": "object"
-      },
-      "JiraOut": {
-        "properties": {
-          "key": {
-            "title": "Key",
-            "type": "string"
-          },
-          "url": {
-            "title": "Url",
-            "type": "string"
-          }
-        },
-        "required": [
-          "key",
-          "url"
-        ],
-        "title": "JiraOut",
-        "type": "object"
-      },
       "KindOut": {
         "properties": {
           "kind": {
@@ -13255,48 +13008,6 @@
         "title": "SnoozeIn",
         "type": "object"
       },
-      "StatusIn": {
-        "additionalProperties": false,
-        "properties": {
-          "priority": {
-            "anyOf": [
-              {
-                "enum": [
-                  "low",
-                  "medium",
-                  "high",
-                  "urgent"
-                ],
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Priority"
-          },
-          "status": {
-            "anyOf": [
-              {
-                "enum": [
-                  "open",
-                  "in_progress",
-                  "resolved",
-                  "closed",
-                  "archived"
-                ],
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Status"
-          }
-        },
-        "title": "StatusIn",
-        "type": "object"
-      },
       "StickerOut": {
         "properties": {
           "day": {
@@ -17022,236 +16733,6 @@
           }
         ],
         "summary": "Admin Tickets",
-        "tags": [
-          "support"
-        ]
-      }
-    },
-    "/admin/support/{ticket_id}": {
-      "get": {
-        "operationId": "admin_ticket_admin_support__ticket_id__get",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "ticket_id",
-            "required": true,
-            "schema": {
-              "format": "uuid",
-              "title": "Ticket Id",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AdminTicketDetailOut"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Admin Ticket",
-        "tags": [
-          "support"
-        ]
-      },
-      "patch": {
-        "operationId": "admin_status_admin_support__ticket_id__patch",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "ticket_id",
-            "required": true,
-            "schema": {
-              "format": "uuid",
-              "title": "Ticket Id",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/StatusIn"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AdminTicketDetailOut"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Admin Status",
-        "tags": [
-          "support"
-        ]
-      }
-    },
-    "/admin/support/{ticket_id}/jira": {
-      "post": {
-        "description": "Makes a Jira issue in the Support project from what the admin wrote. Once per request.",
-        "operationId": "admin_jira_admin_support__ticket_id__jira_post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "ticket_id",
-            "required": true,
-            "schema": {
-              "format": "uuid",
-              "title": "Ticket Id",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JiraIn"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/JiraOut"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "409": {
-            "description": "already_linked"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          },
-          "502": {
-            "description": "jira_failed"
-          },
-          "503": {
-            "description": "jira_not_configured"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Admin Jira",
-        "tags": [
-          "support"
-        ]
-      }
-    },
-    "/admin/support/{ticket_id}/messages": {
-      "post": {
-        "operationId": "admin_reply_admin_support__ticket_id__messages_post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "ticket_id",
-            "required": true,
-            "schema": {
-              "format": "uuid",
-              "title": "Ticket Id",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/MessageIn"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AdminTicketDetailOut"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "summary": "Admin Reply",
         "tags": [
           "support"
         ]

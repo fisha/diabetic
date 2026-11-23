@@ -332,61 +332,6 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/admin/support/{ticket_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Admin Ticket */
-        get: operations["admin_ticket_admin_support__ticket_id__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        /** Admin Status */
-        patch: operations["admin_status_admin_support__ticket_id__patch"];
-        trace?: never;
-    };
-    "/admin/support/{ticket_id}/jira": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Admin Jira
-         * @description Makes a Jira issue in the Support project from what the admin wrote. Once per request.
-         */
-        post: operations["admin_jira_admin_support__ticket_id__jira_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/admin/support/{ticket_id}/messages": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Admin Reply */
-        post: operations["admin_reply_admin_support__ticket_id__messages_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
     "/admin/users": {
         parameters: {
             query?: never;
@@ -4441,12 +4386,12 @@ export interface components {
             counts: {
                 [key: string]: number;
             };
+            /** Jira Queue Url */
+            jira_queue_url: string;
             /** Jira Ready */
             jira_ready: boolean;
             /** Tickets */
             tickets: components["schemas"]["AdminTicketOut"][];
-            /** Unread */
-            unread: number;
         };
         /** AdminTicketBriefOut */
         AdminTicketBriefOut: {
@@ -4460,6 +4405,8 @@ export interface components {
              * Format: uuid
              */
             id: string;
+            /** Jira Url */
+            jira_url?: string | null;
             /** Number */
             number: number;
             /** Status */
@@ -4467,24 +4414,16 @@ export interface components {
             /** Subject */
             subject: string;
         };
-        /** AdminTicketDetailOut */
-        AdminTicketDetailOut: {
-            /** Agent Seen At */
-            agent_seen_at: string | null;
-            /** App Version */
-            app_version: string | null;
-            /**
-             * Category
-             * @enum {string}
-             */
-            category: "account" | "app" | "devices" | "data" | "other";
+        /**
+         * AdminTicketOut
+         * @description A row of the website's admin list (PM-466): the title and where it is in Jira. Support works in Jira.
+         */
+        AdminTicketOut: {
             /**
              * Created At
              * Format: date-time
              */
             created_at: string;
-            /** Email */
-            email: string;
             /**
              * Id
              * Format: uuid
@@ -4493,18 +4432,9 @@ export interface components {
             /** Jira Key */
             jira_key: string | null;
             /** Jira Url */
-            jira_url?: string | null;
-            /** Messages */
-            messages: components["schemas"]["SupportMessageOut"][];
+            jira_url: string | null;
             /** Number */
             number: number;
-            /** Platform */
-            platform: string | null;
-            /**
-             * Priority
-             * @enum {string}
-             */
-            priority: "low" | "medium" | "high" | "urgent";
             /**
              * Status
              * @enum {string}
@@ -4513,77 +4443,10 @@ export interface components {
             /** Subject */
             subject: string;
             /**
-             * Unread
-             * @default 0
-             */
-            unread: number;
-            /**
              * Updated At
              * Format: date-time
              */
             updated_at: string;
-            /**
-             * User Id
-             * Format: uuid
-             */
-            user_id: string;
-        };
-        /** AdminTicketOut */
-        AdminTicketOut: {
-            /** Agent Seen At */
-            agent_seen_at: string | null;
-            /** App Version */
-            app_version: string | null;
-            /**
-             * Category
-             * @enum {string}
-             */
-            category: "account" | "app" | "devices" | "data" | "other";
-            /**
-             * Created At
-             * Format: date-time
-             */
-            created_at: string;
-            /** Email */
-            email: string;
-            /**
-             * Id
-             * Format: uuid
-             */
-            id: string;
-            /** Jira Key */
-            jira_key: string | null;
-            /** Number */
-            number: number;
-            /** Platform */
-            platform: string | null;
-            /**
-             * Priority
-             * @enum {string}
-             */
-            priority: "low" | "medium" | "high" | "urgent";
-            /**
-             * Status
-             * @enum {string}
-             */
-            status: "open" | "in_progress" | "resolved" | "closed" | "archived";
-            /** Subject */
-            subject: string;
-            /**
-             * Unread
-             * @default 0
-             */
-            unread: number;
-            /**
-             * Updated At
-             * Format: date-time
-             */
-            updated_at: string;
-            /**
-             * User Id
-             * Format: uuid
-             */
-            user_id: string;
         };
         /** AdminUserOut */
         AdminUserOut: {
@@ -6945,23 +6808,6 @@ export interface components {
              */
             state: "none" | "open" | "added" | "ready";
         };
-        /** JiraIn */
-        JiraIn: {
-            /**
-             * Description
-             * @default
-             */
-            description: string;
-            /** Summary */
-            summary: string;
-        };
-        /** JiraOut */
-        JiraOut: {
-            /** Key */
-            key: string;
-            /** Url */
-            url: string;
-        };
         /** KindOut */
         KindOut: {
             /** Kind */
@@ -8868,13 +8714,6 @@ export interface components {
             /** Minutes */
             minutes: number;
         };
-        /** StatusIn */
-        StatusIn: {
-            /** Priority */
-            priority?: ("low" | "medium" | "high" | "urgent") | null;
-            /** Status */
-            status?: ("open" | "in_progress" | "resolved" | "closed" | "archived") | null;
-        };
         /** StickerOut */
         StickerOut: {
             /**
@@ -10477,163 +10316,6 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AdminSupportOut"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
-    };
-    admin_ticket_admin_support__ticket_id__get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                ticket_id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["AdminTicketDetailOut"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
-    };
-    admin_status_admin_support__ticket_id__patch: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                ticket_id: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["StatusIn"];
-            };
-        };
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["AdminTicketDetailOut"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
-    };
-    admin_jira_admin_support__ticket_id__jira_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                ticket_id: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["JiraIn"];
-            };
-        };
-        responses: {
-            /** @description Successful Response */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["JiraOut"];
-                };
-            };
-            /** @description already_linked */
-            409: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-            /** @description jira_failed */
-            502: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description jira_not_configured */
-            503: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
-    };
-    admin_reply_admin_support__ticket_id__messages_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                ticket_id: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["MessageIn"];
-            };
-        };
-        responses: {
-            /** @description Successful Response */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["AdminTicketDetailOut"];
                 };
             };
             /** @description Validation Error */

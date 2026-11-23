@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-466): Guy asked to connect support requests opened in the app to Jira Service Management (SUP)
+instead of the website's admin support, with the person synced as the customer, a customer portal with onboarding and
+how-to articles, all on the JSM Free plan. Built: each request is a JSM customer request raised for the person (email,
+display name from the email), their app replies go to Jira, support's public comments and the status come back to the
+app with a push (worker every 2 min, REST only, no Automation or webhooks); account deletion and the year clean-up
+delete the Jira request and customer entry. The website's Support list is titles linking to Jira. Privacy policy
+`2026-11-24T00:30:00Z` (Atlassian as support desk), forced re-accept; legal item for the lawyer. API migration
+`d2f4a6c8e0b1` (after `d2f4a6b8c0e1`). API 996 pass; pnpm check pass; e2e admin-area 46/46 with a JSM stand-in.
+Knowledge-base drafts in project files `pm-466/kb-articles.md`. Next: deploy API + website, OTA; Guy's OK for the
+portal settings and the knowledge-base space.
 23 Nov 2026 (Jira PM-464, open items PM-467): Guy approved Mixpanel product analytics, opt-in, usage events only.
 App `src/analytics/`: a small client (no SDK, so it ships by OTA) sends to Mixpanel's US endpoint with `ip=0`, under a
 random id made on the phone, never the account; every property is a closed word from an allowlist, so no value, text
