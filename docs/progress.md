@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-473): Guy asked to see session replay in Mixpanel. Built: Mixpanel's native recorder
+(`@mixpanel/react-native-session-replay` 2.1.0, US) in app `src/analytics/replay.ts`, recording only while analytics is
+on and the yes was given to the new wording that names masked screen recordings (`analyticsReplay`; earlier yeses are
+asked once more on the re-accept screen), same random id, stops while viewing, never under 18. Everything is masked on
+the phone: text, images, web, maps (recorder) and every drawn chart of the person's data (`MaskedSvg`). Native module:
+app version 0.8.0, needs a LOCAL native build; older builds ignore it. Privacy `2026-11-24T02:00:00Z` (forced
+re-accept). pnpm check pass (app 312), web 17, API legal 7. Not yet run on a phone. Next: merge, deploy API + web,
+OTA, local 0.8.0 build on the Mac; replay seen in Mixpanel.
 23 Nov 2026 (Jira PM-470): Guy said the website's admin sign-in keeps signing him out. Cause: the dashboard kept its
 session in page memory only since G-12, so every reload or new tab signed out (not Cloudflare or the new domains).
 Now the website's session lives in an HttpOnly, Secure, SameSite=Strict cookie (`steady_web_session`, set by the API

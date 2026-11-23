@@ -73,6 +73,12 @@ in a health app is "consumer health data" under Washington's MHMDA and needs its
 policy may say the events cannot be found by request (random id), or Stedio should offer a delete-my-analytics path.
 Open: the 2-year retention must be set in the Mixpanel project (Guy), or the text changed.
 
+**Privacy `2026-11-24T02:00:00Z` (PM-473):** masked screen recordings (Mixpanel session replay) under the same
+analytics choice, asked again for earlier yeses; all text, typing, pictures, web pages, maps and charts covered on the
+phone; never under 18 or while viewing; kept up to 30 days. For the lawyer (PM-467): whether masked recordings of a
+health app are consumer health data under MHMDA, and the consent wording. Open: confirm the 30-day replay retention in
+the Mixpanel project.
+
 **Released 23 Nov 2026 as privacy `2026-11-23T23:00:00Z` (PM-461):** Resend (United States) named as the email
 processor (verification and reset codes, approvals, support notices, and the parent alert with the child's words,
 PM-453), and added to the US transfer sentence. Lawyer review in PM-454: the Resend DPA, the transfer basis (DPF

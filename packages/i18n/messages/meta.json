@@ -8887,7 +8887,7 @@
     "review": [
       "translation"
     ],
-    "note": "Product analytics opt-in (Guy, 23 Nov 2026, PM-464). No provider name in the app; the privacy policy names Mixpanel (Guy, 23 Nov 2026)."
+    "note": "Names masked screen recordings (session replay, Guy 23 Nov 2026, PM-473). Product analytics opt-in (Guy, 23 Nov 2026, PM-464). No provider name in the app; the privacy policy names Mixpanel (Guy, 23 Nov 2026)."
   },
   "onb.c_err_req": {
     "board": "Onboarding",
@@ -15808,7 +15808,7 @@
     "review": [
       "translation"
     ],
-    "note": "Product analytics opt-in (Guy, 23 Nov 2026, PM-464). No provider name in the app; the privacy policy names Mixpanel (Guy, 23 Nov 2026)."
+    "note": "Names masked screen recordings (session replay, Guy 23 Nov 2026, PM-473). Product analytics opt-in (Guy, 23 Nov 2026, PM-464). No provider name in the app; the privacy policy names Mixpanel (Guy, 23 Nov 2026)."
   },
   "set.quiet": {
     "board": "Settings",
