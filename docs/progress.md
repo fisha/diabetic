@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-424, app #260, api #184): Guy saw "Your first days" still listing meal-time impressions he had
+already answered ("no need to show what they already answered; the model should learn from it"). Impressions answered
+before the screen opens are hidden (one answered in this visit stays until leaving, so a mis-tap can be changed); with
+all answered, the intro about impressions is dropped. The API keeps the time shown with each answer and tells the
+companion which meal times were confirmed, which were wrong (not to be assumed) and not to ask again; the answers are in
+every export (`first_days_answers.csv`). Root `pnpm check` and the API suite pass (3 numpy forecast tests fail as on
+main). Companion regression set not run here (no key); deploy-api runs it first. Next: API deploy, then OTA.
+
 23 Nov 2026 (Jira PM-423, app #257): Guy saw a face mask on the character and didn't know why (the poor-air weather
 look, European AQI above 60). The Talk greeting bubble now adds one line for each weather look the character has on
 (mask, sunglasses, hat and scarf), in the conversation language; not in Classic Stedio or while viewing someone. The
