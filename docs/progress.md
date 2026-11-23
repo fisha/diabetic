@@ -40,6 +40,12 @@ latest in the window; sleep the last night that ended in it), titles "Body/Food,
 show the same window. Day stays the calendar day. API `GET /health-data/window`; no migration. Root `pnpm check` and API
 body tests pass; e2e `tools/e2e/rolling-24h.cjs` on the web export. Next: API deploy, then OTA.
 
+23 Nov 2026 (Jira PM-426, PM-427): Guy agreed to name in the privacy policy what followers see since PM-422 (sensor
+state, last set change, the pump's sensor time left) and their own reminders; the always-shared part is now "Readings,
+time in range, sensor and set changes". Folded in Guy's rename of the AI to "mentor" in privacy and terms (en, he) and
+six consent strings, so there is one re-consent: privacy and terms versions `2026-11-23T08:00:00Z` (api #186, #187;
+web #62, #63). Root `pnpm check` and `tests/test_legal.py` pass. Next: API and web deploy, then OTA.
+
 22 Nov 2026 (Jira PM-422): Guy asked that someone viewing another person's data see the set change and sensor rows
 at the bottom of Overview, view only; that the viewer can set a reminder for themselves about that person's set or
 sensor change; and that a person can set a reminder before a set change like the sensor one. API: `GET /devices/equipment`
