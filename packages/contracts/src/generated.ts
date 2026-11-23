@@ -4127,6 +4127,44 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/young/concerns": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * My Concerns
+         * @description A parent's unseen alerts about their child's safety concern (PM-453, Guy 23 Nov 2026), newest first, with what the
+         *     child wrote: the app shows them as a pop-up until the parent marks them seen. Only for a confirmed guardian share.
+         */
+        get: operations["my_concerns_young_concerns_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/young/concerns/{alert_id}/seen": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Concern Seen */
+        post: operations["concern_seen_young_concerns__alert_id__seen_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/young/handover": {
         parameters: {
             query?: never;
@@ -5331,6 +5369,43 @@ export interface components {
              * @default
              */
             questions: string | string[];
+        };
+        /** ConcernMessageOut */
+        ConcernMessageOut: {
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /** Text */
+            text: string;
+        };
+        /** ConcernOut */
+        ConcernOut: {
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "eating" | "self_harm";
+            /** Messages */
+            messages: components["schemas"]["ConcernMessageOut"][];
+            /** Name */
+            name: string;
+            /**
+             * Share Id
+             * Format: uuid
+             */
+            share_id: string;
         };
         /** ConnectionOut */
         ConnectionOut: {
@@ -18055,6 +18130,55 @@ export interface operations {
             header?: never;
             path: {
                 cheer_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    my_concerns_young_concerns_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConcernOut"][];
+                };
+            };
+        };
+    };
+    concern_seen_young_concerns__alert_id__seen_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                alert_id: string;
             };
             cookie?: never;
         };

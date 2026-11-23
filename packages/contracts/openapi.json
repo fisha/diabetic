@@ -3215,6 +3215,73 @@
         "title": "ClinicReportIn",
         "type": "object"
       },
+      "ConcernMessageOut": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "at",
+          "text"
+        ],
+        "title": "ConcernMessageOut",
+        "type": "object"
+      },
+      "ConcernOut": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "eating",
+              "self_harm"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/ConcernMessageOut"
+            },
+            "title": "Messages",
+            "type": "array"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "share_id": {
+            "format": "uuid",
+            "title": "Share Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "share_id",
+          "name",
+          "kind",
+          "at",
+          "messages"
+        ],
+        "title": "ConcernOut",
+        "type": "object"
+      },
       "ConnectionOut": {
         "properties": {
           "kind": {
@@ -27815,6 +27882,78 @@
           }
         ],
         "summary": "Cheer Seen",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/young/concerns": {
+      "get": {
+        "description": "A parent's unseen alerts about their child's safety concern (PM-453, Guy 23 Nov 2026), newest first, with what the\nchild wrote: the app shows them as a pop-up until the parent marks them seen. Only for a confirmed guardian share.",
+        "operationId": "my_concerns_young_concerns_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ConcernOut"
+                  },
+                  "title": "Response My Concerns Young Concerns Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "My Concerns",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/young/concerns/{alert_id}/seen": {
+      "post": {
+        "operationId": "concern_seen_young_concerns__alert_id__seen_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "alert_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Alert Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Concern Seen",
         "tags": [
           "young"
         ]

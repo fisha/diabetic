@@ -123,7 +123,7 @@ def build_messages(case: Case) -> list[dict]:
             to_mgdl=g["to_mgdl"],
         )
         data += ["", prod_mentor.unlogged_line(rise, case.now.tzinfo, case.profile.get("glucose_unit", "mgdl"))]  # type: ignore[arg-type]
-    sp = system_prompt(profile, mems, case.now, case.memory_on, None, data=data, cgm=cgm, young=case.young)
+    sp = system_prompt(profile, mems, case.now, case.memory_on, None, data=data, cgm=cgm, young=case.young, region=case.region)
     return [{"role": "system", "content": sp}, *case.history, {"role": "user", "content": case.user}]
 
 

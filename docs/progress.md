@@ -17,6 +17,16 @@ Verified live: stedio.io, www, /app (calls api.stedio.io), api.stedio.io/health,
 give hello@stedio.io (privacy and terms `2026-11-23T19:00:00Z`, forced re-accept). Open: Guy sets up the hello@
 mailbox; Guy decides whether stedio.io stays behind the Cloudflare proxy (a processor) or goes DNS only; web sign-in on
 stedio.io needs the Google web client origin and the Apple Services ID return URL.
+23 Nov 2026 (Jira PM-452, PM-453, lawyer PM-454): the deploy gate blocked API 674ec7b on yg-he-02 (the mentor named
+ERAN 1201, and promised a teen it wouldn't pass what he wrote to his mom). Guy: ERAN is allowed, verified crisis lines are
+approved for everyone in distress, and a minor's safety concern must reach the parent. (1) PM-452: a closed list of
+verified crisis lines (`steady_api/ai/crisis_lines.py`: IL ERAN 1201, US 988), chosen by the device region country; a
+distress rule for every person; the young-person lines about what parents see are gone; judge rubric `2026.11.23a`;
+eval cases carry `region`, new case ad-he-distress-01. (2) PM-453: the worker reads each minor's new own messages with
+the small model (eating / self_harm); a concern emails every confirmed parent with the words and pushes a wordless
+alert; the parent's app shows it as a dialog (G-132) until marked read; once an hour per kind, kept 30 days, in the
+export. Privacy policy `2026-11-23T21:00:00Z`, parent confirmation `guardian-2026-11-23`. API migration `c1e3a5b7d9f2`
+(after `b8d0f2a4c6e9`).
 23 Nov 2026 (Jira PM-450): Guy asked for a Simple mode switch in Settings that shows only meal photo logging, the
 sensor and set days, time in range, insights, the current reading, the main screen as it is, every "+" option and the
 mentor by voice and text. Built in the app only (no API change): the switch sits on the Settings screen under Quiet mode

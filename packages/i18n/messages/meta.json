@@ -29672,5 +29672,54 @@
       "translation"
     ],
     "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.cn_t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's alert about their child's safety concern (PM-453, Guy 23 Nov 2026)."
+  },
+  "yg.cn_eating": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's alert about their child's safety concern (PM-453, Guy 23 Nov 2026)."
+  },
+  "yg.cn_self_harm": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's alert about their child's safety concern (PM-453, Guy 23 Nov 2026)."
+  },
+  "yg.cn_said": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's alert about their child's safety concern (PM-453, Guy 23 Nov 2026)."
+  },
+  "yg.cn_gone": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's alert about their child's safety concern (PM-453, Guy 23 Nov 2026)."
+  },
+  "yg.cn_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's alert about their child's safety concern (PM-453, Guy 23 Nov 2026)."
+  },
+  "yg.cn_ok": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's alert about their child's safety concern (PM-453, Guy 23 Nov 2026)."
   }
 }
