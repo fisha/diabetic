@@ -14,7 +14,7 @@ how-to articles, all on the JSM Free plan. Built: each request is a JSM customer
 display name from the email), their app replies go to Jira, support's public comments and the status come back to the
 app with a push (worker every 2 min, REST only, no Automation or webhooks); account deletion and the year clean-up
 delete the Jira request and customer entry. The website's Support list is titles linking to Jira. Privacy policy
-`2026-11-23T23:30:00Z` (Atlassian as support desk), forced re-accept; legal item for the lawyer. API migration
+`2026-11-24T00:30:00Z` (Atlassian as support desk), forced re-accept; legal item for the lawyer. API migration
 `d2f4a6c8e0b1` (after `d2f4a6b8c0e1`). API 996 pass; pnpm check pass; e2e admin-area 46/46 with a JSM stand-in.
 Knowledge-base drafts in project files `pm-466/kb-articles.md`. Next: deploy API + website, OTA; Guy's OK for the
 portal settings and the knowledge-base space.
