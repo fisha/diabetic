@@ -52,6 +52,11 @@ export (`mentor_moments.csv`); no migration. API tests pass except `test_body_ov
 which fails on main too at this hour; root `pnpm check` passes; e2e `tools/e2e/mentor-moments.cjs` 8/8 en and he.
 Merged 23 Nov (api #191, app #263). Next: API deploy, then OTA.
 
+23 Nov 2026 (Jira PM-439, api #196): the eval gate for the PM-428/429/435/437 deploy failed on he-scope-09 ("my
+daughter is at 300"): the mentor listed symptoms and added its own "seek urgent help". One prompt rule: with only a
+number and no symptoms, it lists no symptoms and adds no urgent-care instruction, pointing only to the care plan, care
+team and the emergency call (PM-205 unchanged). Fly regression set passed on fcbb583 (189/189). Next: API deploy.
+
 23 Nov 2026 (Jira PM-431, api #189): Guy's feedback on the morning recap and weekly comparison (WhatsApp and app):
 don't open with yesterday's in-range share (he knows it, and on a bad day "you were in your range" reads wrong); one
 meal logged by someone who logs three matters more than what it was; the weekly bullet had too many numbers; nudge to
