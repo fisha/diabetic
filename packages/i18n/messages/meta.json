@@ -12647,7 +12647,7 @@
     "review": [
       "translation"
     ],
-    "note": "Helper under set.classic. {name} is the companion's name."
+    "note": "Helper under set.classic. {name} is the companion's name. PM-438 (Guy, 23 Nov 2026): games have their own switch, so Classic no longer hides them."
   },
   "set.acc_aviator": {
     "board": "Settings",
@@ -27562,5 +27562,509 @@
       "translation"
     ],
     "note": "Set change reminder and the viewer's own set and sensor reminders (PM-422, Guy 22 Nov 2026)."
+  },
+  "set.games": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "set.games_b": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "set.challenges": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "set.challenges_b": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "set.switches_note": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.title": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.cat_know": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.cat_arcade": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.cat_puzzles": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.cat_move": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.g_trivia": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_trivia": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.g_runner": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_runner": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.g_carbs": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_carbs": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.g_plate": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_plate": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.g_walk": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_walk": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_walk_classic": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.g_bricks": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_bricks": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.g_catcher": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_catcher": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.g_myths": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_myths": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.g_maze": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_maze": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.g_clouds": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_clouds": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.g_hidden": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_hidden": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.g_breathe": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.d_breathe": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.streak": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.done_today": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.coins": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.points": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.today_coins": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.button": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.close": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.unsupported": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.error": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.retry": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.shop": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.shop_b": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.shop_get": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.shop_need": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.shop_today": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.shop_all": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.shop_got": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.shop_wear": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.shop_fail": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.classic_shop": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.walk_item": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.walk_coins": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.walk_ago": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.pause_t": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.pause_b": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.pause_ok": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.pause_close": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.pause_note": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.invite": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.invite_meal": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.invite_play": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.invite_later": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "games.invite_never": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "rwd.why_coins": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "rwd.why_walk": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "rwd.rule_coins": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
+  },
+  "rwd.rule_walk": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
   }
 }

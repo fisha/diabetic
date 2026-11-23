@@ -1982,6 +1982,95 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/games": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Games */
+        get: operations["get_games_games_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/games/question": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Question */
+        get: operations["get_question_games_question_get"];
+        put?: never;
+        /** Answer Question */
+        post: operations["answer_question_games_question_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/games/score": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Score
+         * @description A finished game's points. Coins follow up to the per-game and daily caps; the rest only counts as a best.
+         */
+        post: operations["score_games_score_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/games/shop": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Buy */
+        post: operations["buy_games_shop_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/games/walk": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Claim Walk */
+        post: operations["claim_walk_games_walk_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/glucose": {
         parameters: {
             query?: never;
@@ -4084,6 +4173,13 @@ export interface components {
              */
             note: string;
         };
+        /** AnswerIn */
+        AnswerIn: {
+            /** Choice */
+            choice: number;
+            /** Id */
+            id: string;
+        };
         /** AppVersionOut */
         AppVersionOut: {
             /** Android Latest Build */
@@ -4286,6 +4382,21 @@ export interface components {
             on: boolean;
             /** To */
             to: string;
+        };
+        /** BuyIn */
+        BuyIn: {
+            /** Id */
+            id: string;
+        };
+        /** BuyOut */
+        BuyOut: {
+            /** Coins */
+            coins: number;
+            /**
+             * Result
+             * @enum {string}
+             */
+            result: "ok" | "owned" | "coins" | "today";
         };
         /** CareClinicOut */
         CareClinicOut: {
@@ -5528,6 +5639,28 @@ export interface components {
              */
             locale: string;
         };
+        /** GamesOut */
+        GamesOut: {
+            /** Best */
+            best: {
+                [key: string]: number;
+            };
+            /** Coins */
+            coins: number;
+            /** Daily Cap */
+            daily_cap: number;
+            /** Earned Today */
+            earned_today: number;
+            /** Item Today */
+            item_today: boolean;
+            /** Shop */
+            shop: components["schemas"]["ShopItemOut"][];
+            /** Streak */
+            streak: number;
+            /** Trivia Done */
+            trivia_done: boolean;
+            walk: components["schemas"]["WalkOut"];
+        };
         /** GlucoseAlertsIn */
         GlucoseAlertsIn: {
             high: components["schemas"]["AlertLevel"];
@@ -6615,6 +6748,13 @@ export interface components {
             /** Start Mgdl */
             start_mgdl?: number | null;
         };
+        /** MealRef */
+        MealRef: {
+            /** At */
+            at: string;
+            /** Name */
+            name: string;
+        };
         /** MemberIn */
         MemberIn: {
             /**
@@ -7459,6 +7599,22 @@ export interface components {
             /** Id */
             id: string;
         };
+        /** QuestionOut */
+        QuestionOut: {
+            /** Answer */
+            answer?: number | null;
+            /** Correct */
+            correct?: number | null;
+            explain?: components["schemas"]["Words"] | null;
+            /** Id */
+            id: string;
+            meal?: components["schemas"]["MealRef"] | null;
+            /** Options */
+            options: components["schemas"]["Words"][];
+            question: components["schemas"]["Words"];
+            /** Streak */
+            streak: number;
+        };
         /** QuestionsIn */
         QuestionsIn: {
             /** Questions */
@@ -7697,7 +7853,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "talks" | "meals" | "streak" | "workouts" | "wins" | "sensor_days" | "days";
+            kind: "talks" | "meals" | "streak" | "workouts" | "wins" | "sensor_days" | "days" | "coins" | "walk";
             /** Target */
             target: number;
         };
@@ -7730,6 +7886,25 @@ export interface components {
             relation?: ("dad" | "mom" | "grandpa" | "grandma" | "partner" | "friend" | "family" | "other") | null;
             /** Scopes */
             scopes?: ("glucose" | "insights" | "journal" | "profile")[] | null;
+        };
+        /** ScoreIn */
+        ScoreIn: {
+            /**
+             * Game
+             * @enum {string}
+             */
+            game: "trivia" | "runner" | "carbs" | "plate" | "walk" | "bricks" | "catcher" | "myths" | "maze" | "clouds" | "hidden" | "breathe";
+            /** Points */
+            points: number;
+        };
+        /** ScoreOut */
+        ScoreOut: {
+            /** Coins */
+            coins: number;
+            /** Coins Added */
+            coins_added: number;
+            /** Earned Today */
+            earned_today: number;
         };
         /** SegmentOut */
         SegmentOut: {
@@ -7935,6 +8110,13 @@ export interface components {
             viewers: components["schemas"]["ViewerOut"][];
             /** Viewing */
             viewing: components["schemas"]["ViewingOut"][];
+        };
+        /** ShopItemOut */
+        ShopItemOut: {
+            /** Id */
+            id: string;
+            /** Price */
+            price: number;
         };
         /** SignIn */
         SignIn: {
@@ -8493,6 +8675,34 @@ export interface components {
              */
             voices: string[];
         };
+        /** WalkClaimOut */
+        WalkClaimOut: {
+            /** Coins */
+            coins: number;
+            /** Item */
+            item: string | null;
+            /** Ok */
+            ok: boolean;
+        };
+        /** WalkIn */
+        WalkIn: {
+            /**
+             * Goal
+             * @enum {integer}
+             */
+            goal: 10 | 20 | 30;
+        };
+        /** WalkOut */
+        WalkOut: {
+            /** Claimed */
+            claimed: number[];
+            /** Goals */
+            goals: number[];
+            /** Minutes */
+            minutes: number;
+            /** Steps */
+            steps: number | null;
+        };
         /**
          * WarmupOut
          * @description A new sensor warming up (G-80): no reading until `ready_at`, the maker's warm-up length after `started_at`.
@@ -8592,6 +8802,13 @@ export interface components {
             period_from?: string | null;
             /** Period To */
             period_to?: string | null;
+        };
+        /** Words */
+        Words: {
+            /** En */
+            en: string;
+            /** He */
+            he: string;
         };
         /**
          * WordsIn
@@ -12659,6 +12876,178 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["FollowUpOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_games_games_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GamesOut"];
+                };
+            };
+        };
+    };
+    get_question_games_question_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuestionOut"];
+                };
+            };
+        };
+    };
+    answer_question_games_question_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AnswerIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuestionOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    score_games_score_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ScoreIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ScoreOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    buy_games_shop_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BuyIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BuyOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    claim_walk_games_walk_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["WalkIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WalkClaimOut"];
                 };
             };
             /** @description Validation Error */
