@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-451, PM-455): Guy asked to fix the website's certificate on its new domain and move to it. Cause:
+Cloudflare error 525, because Fly had no certificate for stedio.io. Fly certificates issued for stedio.io, www.stedio.io
+and api.stedio.io (DNS-01 via `_acme-challenge` CNAMEs, DNS only); Cloudflare SSL mode Full (strict); api.stedio.io is
+DNS only (voice WebSocket, no extra processor). Website, API (CORS, links, latest.json), stedio-fly, EAS preview env
+and the testers OTA (0.7/0.6/0.5) now use https://stedio.io and https://api.stedio.io; the fly.dev hosts keep working.
+Verified live: stedio.io, www, /app (calls api.stedio.io), api.stedio.io/health, noindex header + meta. Legal pages
+give hello@stedio.io (privacy and terms `2026-11-23T19:00:00Z`, forced re-accept). Open: Guy sets up the hello@
+mailbox; Guy decides whether stedio.io stays behind the Cloudflare proxy (a processor) or goes DNS only; web sign-in on
+stedio.io needs the Google web client origin and the Apple Services ID return URL.
 23 Nov 2026 (Jira PM-450): Guy asked for a Simple mode switch in Settings that shows only meal photo logging, the
 sensor and set days, time in range, insights, the current reading, the main screen as it is, every "+" option and the
 mentor by voice and text. Built in the app only (no API change): the switch sits on the Settings screen under Quiet mode
