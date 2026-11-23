@@ -49,6 +49,9 @@ class Case:
     journal_gap: dict | None = None
     # Kids or teens mode, as routers.conversation.instructions passes it: {"band": "child" | "teen", "soon_18": bool}.
     young: dict | None = None
+    # The country of the device's region setting (ISO 3166), as routers.conversation.instructions reads it: it picks the
+    # verified crisis line (PM-452). None: no line, so the prompt allows no phone number.
+    region: str | None = None
     expect: dict = field(default_factory=dict)
     scope_flags: list[str] = field(default_factory=list)
     review: str | None = None
@@ -71,6 +74,7 @@ class Case:
             tool_results=d.get("tool_results", {}),
             journal_gap=d.get("journal_gap"),
             young=d.get("young"),
+            region=d.get("region"),
             expect=d.get("expect", {}),
             scope_flags=d.get("scope_flags", []),
             review=d.get("review"),
