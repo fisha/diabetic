@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-451, PM-455): Guy asked to fix the website's certificate on its new domain and move to it. Cause:
+Cloudflare error 525, because Fly had no certificate for stedio.io. Fly certificates issued for stedio.io, www.stedio.io
+and api.stedio.io (DNS-01 via `_acme-challenge` CNAMEs, DNS only); Cloudflare SSL mode Full (strict); api.stedio.io is
+DNS only (voice WebSocket, no extra processor). Website, API (CORS, links, latest.json), stedio-fly, EAS preview env
+and the testers OTA (0.7/0.6/0.5) now use https://stedio.io and https://api.stedio.io; the fly.dev hosts keep working.
+Verified live: stedio.io, www, /app (calls api.stedio.io), api.stedio.io/health, noindex header + meta. Legal pages
+give hello@stedio.io (privacy and terms `2026-11-23T19:00:00Z`, forced re-accept). Open: Guy sets up the hello@
+mailbox; Guy decides whether stedio.io stays behind the Cloudflare proxy (a processor) or goes DNS only; web sign-in on
+stedio.io needs the Google web client origin and the Apple Services ID return URL.
 23 Nov 2026 (Jira PM-450): Guy asked for a Simple mode switch in Settings that shows only meal photo logging, the
 sensor and set days, time in range, insights, the current reading, the main screen as it is, every "+" option and the
 mentor by voice and text. Built in the app only (no API change): the switch sits on the Settings screen under Quiet mode
@@ -74,6 +83,11 @@ passes over all cases for the prompt cache, tokens per model (and cost with STEA
 mentor prompt's changing parts moved last for caching, conversation titles on gpt-6-luna with fallback (api #194). Next:
 Guy sets STEADY_OPENAI_PRICES='{"gpt-6.1-sol":[2,0.1,10],"gpt-6-luna":[0.1,0.01,0.5]}' on stedio-api; read the
 first runs' usage to confirm the saving.
+Evening (Guy, 23 Nov 2026): the new stedio key reached $13 in a day, nearly all regression runs. Guy decided: the daily
+and weekly summary notes on a model half the price (`openai_summary_model` = gpt-6.1-terra, main model as fallback;
+visit prep and the mentor stay on gpt-6.1-sol), prompt_cache_key per model, and NO regression run on each change or
+deploy: `stedio-fly deploy-api` only prints a note when the companion is untested, and a run (`stedio-fly evals`) is
+suggested to Guy near the end of a day with many companion changes (CLAUDE.md, replaces the 17 Nov PM-198 rule).
 
 23 Nov 2026 (Jira PM-428, app #261): Guy asked that a clinic's connection request pop up in the app so the person can
 approve it at once, with a push too. The request now opens as a sheet over the main screens: when the app opens or comes
