@@ -2151,7 +2151,7 @@ or the invitation, so these are product rules, not clinical ones (`services/api 
   and its age at the top. A reading below the person's own range that is at most 20 minutes old pauses the game with
   "I took care of it, continue"; no treatment text. No range set, no pause.
 - Coins: at most 20 a game and 60 a day. Today's question gives 5 for a right answer and is chosen from the person's
-  logged meal names when one matches. Shop items are the character items not yet opened, priced 40 + 5 per place in
+  logged meal names when one matches. Shop items are the character items not yet opened, priced 60 + 30 per place in
   the list, one a day.
 - Walk: real minutes from the health store (exercise minutes, or minutes at 80 steps a minute or more). 10 minutes
   opens the next item (or gives 10 coins), 20 minutes 10 coins, 30 minutes 15 coins, once a day each.
