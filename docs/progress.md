@@ -8,6 +8,22 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-438): Guy approved the character games mockup (round 3) and asked to build, merge and deploy it.
+Built: Settings > Stedio has three switches (Classic, Games, Challenges); a game button beside quiet mode on the main
+screen and a once-a-day invitation bubble; the Games screen with 12 games in four categories, drawn tile icons in the
+app's line style (Guy asked for them instead of emoji), coins, a streak and the wardrobe shop; each game full screen in
+the existing web view with the latest reading on top and a pause below the person's own range ("I took care of it,
+continue"). API `/games` (state in `user_settings.games`, migration `d6f8a0b2c4e7` after `e8b2d4f6a1c3`), today's
+question tied to a logged meal, coins capped, walk minutes from the health store, and one push inviting people who never
+played. Product rules in design gap G-127. API tests pass; app tests and typecheck pass; every game runs in he and en
+in a browser with no errors. Next: API deploy (migration), then OTA.
+23 Nov 2026 (Jira PM-440): Guy asked that an admin can send pushes with text about updates to all users. Built: Admin >
+App updates on the website (Hebrew and English text, preview, reach, confirm with the number, sent list with counts);
+API `/admin/broadcasts` sends each person one push in their app language, only to real accounts with a phone, never on
+WhatsApp, and never to someone with the new "App updates" switch off (Settings > Notifications, on by default), All
+notifications off, in quiet mode or in quiet hours (not sent later). A changed reach, a send still going or the same
+words within the hour are refused. Lawyer question on default-on PM-441. API tests pass; root `pnpm check` passes; e2e
+`tools/e2e/admin-updates.cjs` 10/10 (push service stubbed). Next: API deploy (migration), web deploy, OTA.
 23 Nov 2026 (Jira PM-436): Guy gets $60-80 a week of OpenAI invoices with 4 testers. Fly logs 16-22 Nov: production
 text calls (mentor, agents, titles, openers, meal photos, labs) about 5M input / 0.24M output tokens in 6 days, about $12
 a week at gpt-6.1-sol list price; live voice negligible. The rest is the Fly regression set (44 runs 17-23 Nov, 138

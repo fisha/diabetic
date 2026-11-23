@@ -24530,6 +24530,223 @@
     ],
     "note": "Admin > Clinics (PM-275, Guy 19 Nov 2026)"
   },
+  "wd.adm_updates": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_he": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_en": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_count": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_one": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_preview": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_reach": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_send": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_confirm_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_confirm_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_cancel": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_go": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_sending": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_sent_ok": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_load_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_changed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_running": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_repeated": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_hist": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_none": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_when": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_text": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_sent": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_held": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_failed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "wd.upd_st_sending": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "set.n6": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
+  "set.n6_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin app update pushes (PM-440, Guy 23 Nov 2026)"
+  },
   "clc.dg_under1": {
     "board": "ClinicPortal",
     "review": [

@@ -58,6 +58,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/admin/broadcasts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Broadcasts */
+        get: operations["list_broadcasts_admin_broadcasts_get"];
+        put?: never;
+        /**
+         * Send Broadcast
+         * @description Sends the update to everyone it reaches now. The page shows the reach and asks to confirm it first.
+         */
+        post: operations["send_broadcast_admin_broadcasts_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/admin/clinic-members": {
         parameters: {
             query?: never;
@@ -4383,6 +4404,73 @@ export interface components {
             /** To */
             to: string;
         };
+        /** BroadcastAudienceOut */
+        BroadcastAudienceOut: {
+            /** All Off */
+            all_off: number;
+            /** Opted Out */
+            opted_out: number;
+            /** Quiet */
+            quiet: number;
+            /** Reach */
+            reach: number;
+            /** Reach En */
+            reach_en: number;
+            /** Reach He */
+            reach_he: number;
+            /** With Phone */
+            with_phone: number;
+        };
+        /** BroadcastIn */
+        BroadcastIn: {
+            /** Expected Reach */
+            expected_reach: number;
+            /**
+             * Text En
+             * @default
+             */
+            text_en: string;
+            /**
+             * Text He
+             * @default
+             */
+            text_he: string;
+        };
+        /** BroadcastOut */
+        BroadcastOut: {
+            /** Audience */
+            audience: number;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Failed */
+            failed: number;
+            /** Finished At */
+            finished_at: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Sent */
+            sent: number;
+            /** Status */
+            status: string;
+            /** Text En */
+            text_en: string;
+            /** Text He */
+            text_he: string;
+            /** Withheld */
+            withheld: number;
+        };
+        /** BroadcastsOut */
+        BroadcastsOut: {
+            audience: components["schemas"]["BroadcastAudienceOut"];
+            /** Sent */
+            sent: components["schemas"]["BroadcastOut"][];
+        };
         /** BuyIn */
         BuyIn: {
             /** Id */
@@ -8041,6 +8129,11 @@ export interface components {
              */
             photo_retention: "afterAnalysis" | "days90" | "untilDeleted";
             /**
+             * Product Updates
+             * @default true
+             */
+            product_updates: boolean;
+            /**
              * Sensor End Options
              * @default {}
              */
@@ -8100,6 +8193,8 @@ export interface components {
             notifications_on?: boolean | null;
             /** Photo Retention */
             photo_retention?: ("afterAnalysis" | "days90" | "untilDeleted") | null;
+            /** Product Updates */
+            product_updates?: boolean | null;
             /** Sensor End Reminder */
             sensor_end_reminder?: {
                 [key: string]: (168 | 72 | 24 | 5)[] | (168 | 72 | 24 | 5) | null;
@@ -9107,6 +9202,66 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["SimilarOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_broadcasts_admin_broadcasts_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BroadcastsOut"];
+                };
+            };
+        };
+    };
+    send_broadcast_admin_broadcasts_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BroadcastIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BroadcastOut"];
+                };
+            };
+            /** @description reach_changed, already_sending or repeated */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
