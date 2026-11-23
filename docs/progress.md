@@ -52,6 +52,11 @@ unchanged. Unsubscribe (`/email/unsubscribe`, an encrypted token so the address 
 before acting, one-click POST per RFC 8058) stops "updates" emails only, which carry List-Unsubscribe headers; none are
 sent yet. Account and safety emails always arrive and their footer says so. Opt-outs are kept as keyed hashes
 (`email_optouts`, migration `d2f4a6b8c0e1`). Logo PNG served at `/email/logo.png`. API tests pass. Next: API deploy.
+23 Nov 2026 (Jira PM-472): on a tester's account the poor-air card's opening suggested indoor activity although a
+43-minute walk was logged that morning; the walk was in the prompt, but the card's note and the weather line pushed the
+suggestion. The mentor now checks what the person already did today before suggesting anything (prompt rule, "talk
+about this" note, weather line), and an activity check-in is also answered by a health-store workout. API 1009 pass;
+eval cases he-mentor-26 and en-mentor-28; regression set not run (PM-436). Next: API deploy.
 23 Nov 2026 (Jira PM-459): Guy asked that the mentor know everything the app knows and can do, e.g. when to change the
 sensor or the infusion set. The always-on app block now has the set (last change, day N, the day a change is
 recommended, from set_end) and the sensor's warm-up, start and "end not known"; the app_data tool gains games (coins,

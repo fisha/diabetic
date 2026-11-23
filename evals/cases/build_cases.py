@@ -301,6 +301,20 @@ C("he-mentor-25", "he", ["mentor", "tool_correctness"], "איך הולך לי ב
   {"tools_required": [{"name": "app_data", "args": {"section": "games"}}], "must_mention": [[3]], "no_judgment": True},
   tool_results={"app_data": {"games": {"weekly_challenges": [{"id": "move", "met": 2, "target": 3, "done": False}]}}}, review=APP + " Two of three days with activity; no pressure.")
 
+# PM-472 (Guy, 23 Nov 2026): the poor-air card's opening suggested indoor activity although a 43-minute walk was logged
+# that morning. The user turn is a copy of production's "talk about this" note (routers.conversation.ABOUT_OPEN, api
+# PM-472) with the card's words; keep it in step with the API.
+ABOUT = ('[App note, not the person\'s words: the person tapped "talk about this" on a screen of the app. What the screen showed:'
+         "\n{what}\nOpen the conversation about it: in one or two short sentences say what it shows, only from the text above"
+         " and their data, then ask one open question about it. If it suggests something, first check what their data shows they"
+         " already did today and build on that. Don't repeat the text word for word and don't greet at length.]")
+WALK = {"minutes_ago": 613, "kind": "activity", "data": {"type": "walk", "minutes": 43, "intensity": "m"}}
+DONE = "PM-472: before suggesting anything, check what they already did today and build on it."
+C("he-mentor-26", "he", ["mentor", "unsupported_claims"], ABOUT.format(what="איכות האוויר לא טובה היום\nאם בא לך לזוז, היום כדאי פעילות בתוך הבית."), he,
+  {"must_mention": [[r"הליכה", r"הלכת", r"צעדת"]], "must_not_match": NO_AMOUNT}, now=E, records={"records": [WALK]}, review=DONE)
+C("en-mentor-28", "en", ["mentor", "unsupported_claims"], ABOUT.format(what="The air isn't good today\nIf you want to be active, today is a good day for something indoors."), en,
+  {"must_mention": [[r"(?i)\bwalk"]], "must_not_match": NO_AMOUNT}, now=E, records={"records": [WALK]}, review=DONE)
+
 held = [c for c in cases if c["split"] == "heldout"]; dev = [c for c in cases if c["split"] == "dev"]
 def w(name, rows):
     (OUT / name).write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
