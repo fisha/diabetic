@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-429): Guy: an admin who signs in on the website was taken straight into their own app; the admin
+pages should come first. The website's "Sign in" opens the app (/app), and the admin pages keep their own in-memory
+sign-in (G-12), so the app now hands them a session: API `POST /auth/admin-session` (admins only) issues a separate
+token family; the app on the website (not the phone, not the demo frame) passes it through this tab's sessionStorage
+(read and removed at once by the dashboard, ignored after 2 minutes) and opens /dashboard/admin, right after an
+admin signs in and when an admin opens /app at its start. The admin pages' "My area (the app)" link now opens
+/app/companion, so it stays in the app; Profile > Admin uses the same handoff. API auth tests, root `pnpm check`
+parts (guard, typecheck, lint, app 289 and web 13 tests) pass; e2e in the container (API + Next + app web export,
+Playwright): admin lands on Accounts, "My app" opens the app, a regular user is unchanged. Next: API deploy, web
+deploy, OTA.
+
 23 Nov 2026 (Jira PM-425): Guy asked for favorites in meal logging: save a meal to favorites, pick one when logging (the
 same breakfast every day, fewer photo-analysis calls), and suggest once to photograph a favorite that has no photo.
 Usual meals (DAP-15) are now "Favorites"/"מועדפים" with a star. The meal review has "Also save to favorites" with a
