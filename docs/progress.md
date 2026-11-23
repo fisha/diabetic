@@ -8,6 +8,19 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-445..448): Guy asked to put the website's admin area in order. (1) An admin opening the app on the
+website still landed in the app: the app kept an account viewed from the admin pages ("In the app") and only the bare
+/app address counted. Now any app address sends an admin to the new admin hub, and "My area (the app)" opens the
+admin's own data (`?own=1`). (2) Analytics: people, features, data volume, models and agents, counts only, without demo
+and admin accounts, groups under 5 hidden. (3) Help & support has only "Contact support": a request (subject, topic,
+urgency, text) with a two-way conversation, read receipts, pushes from support, an email to support with the number and
+topic only, the mixmaster-pro clean-up (resolved after 5 quiet days, closed 2 days later, archived 7 days later,
+deleted a year later) and a "Create Jira issue" button (project SUP, text written by the admin only). (4) User profile:
+country of the phone's region setting, time zone, phones and browsers, last sign-in and how, password reset by an
+emailed code. Privacy policy `2026-11-23T18:00:00Z` (device details, support requests, Atlassian), so everyone reads and
+accepts again; export includes requests and installs. API migration `b8d0f2a4c6e9` (after `a7c9e1b3d5f8`). API 970
+tests pass; e2e `tools/e2e/admin-area.cjs`. Next: Guy creates Jira project SUP and sets the two Jira secrets; deploy API,
+website, OTA.
 23 Nov 2026 (Jira PM-443): Guy found the mentor still called "sweet spot" on Itay's account, a name kept from when it
 could be changed (PM-295 renamed only "Noa" on accounts made after 14 Nov). Fixed: API migration `a7c9e1b3d5f8` (after
 `d6f8a0b2c4e7`) sets the name to "Stedio" on every profile, a save always stores "Stedio", and the prompts, pushes and

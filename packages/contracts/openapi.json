@@ -364,6 +364,96 @@
         "title": "ActivityOut",
         "type": "object"
       },
+      "AdminClientDeviceOut": {
+        "properties": {
+          "app_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "App Version"
+          },
+          "build": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Build"
+          },
+          "first_seen_at": {
+            "format": "date-time",
+            "title": "First Seen At",
+            "type": "string"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "title": "Last Seen At",
+            "type": "string"
+          },
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "os_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Os Version"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Region"
+          },
+          "time_zone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Time Zone"
+          }
+        },
+        "required": [
+          "platform",
+          "model",
+          "os_version",
+          "app_version",
+          "build",
+          "region",
+          "time_zone",
+          "first_seen_at",
+          "last_seen_at"
+        ],
+        "title": "AdminClientDeviceOut",
+        "type": "object"
+      },
       "AdminDeleteIn": {
         "properties": {
           "confirm_email": {
@@ -375,6 +465,581 @@
           "confirm_email"
         ],
         "title": "AdminDeleteIn",
+        "type": "object"
+      },
+      "AdminDeviceLinkOut": {
+        "properties": {
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "last_sync_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Sync At"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "status",
+          "last_sync_at"
+        ],
+        "title": "AdminDeviceLinkOut",
+        "type": "object"
+      },
+      "AdminProfileOut": {
+        "properties": {
+          "app_language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "App Language"
+          },
+          "approved_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approved At"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "device_links": {
+            "items": {
+              "$ref": "#/components/schemas/AdminDeviceLinkOut"
+            },
+            "title": "Device Links",
+            "type": "array"
+          },
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "has_password": {
+            "title": "Has Password",
+            "type": "boolean"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "installs": {
+            "items": {
+              "$ref": "#/components/schemas/AdminClientDeviceOut"
+            },
+            "title": "Installs",
+            "type": "array"
+          },
+          "is_admin": {
+            "title": "Is Admin",
+            "type": "boolean"
+          },
+          "last_active_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Active At"
+          },
+          "last_reading_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Reading At"
+          },
+          "last_sign_in_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Sign In At"
+          },
+          "last_sign_in_via": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Sign In Via"
+          },
+          "persona": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Persona"
+          },
+          "readings_14d": {
+            "title": "Readings 14D",
+            "type": "integer"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Region"
+          },
+          "sign_in_methods": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sign In Methods",
+            "type": "array"
+          },
+          "tickets": {
+            "items": {
+              "$ref": "#/components/schemas/AdminTicketBriefOut"
+            },
+            "title": "Tickets",
+            "type": "array"
+          },
+          "time_zone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Time Zone"
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "created_at",
+          "approved_at",
+          "persona",
+          "sign_in_methods",
+          "has_password",
+          "last_sign_in_at",
+          "last_sign_in_via",
+          "last_active_at",
+          "region",
+          "time_zone",
+          "app_language",
+          "installs",
+          "device_links",
+          "readings_14d",
+          "last_reading_at",
+          "is_admin",
+          "tickets"
+        ],
+        "title": "AdminProfileOut",
+        "type": "object"
+      },
+      "AdminSupportOut": {
+        "properties": {
+          "counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Counts",
+            "type": "object"
+          },
+          "jira_ready": {
+            "title": "Jira Ready",
+            "type": "boolean"
+          },
+          "tickets": {
+            "items": {
+              "$ref": "#/components/schemas/AdminTicketOut"
+            },
+            "title": "Tickets",
+            "type": "array"
+          },
+          "unread": {
+            "title": "Unread",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "tickets",
+          "counts",
+          "unread",
+          "jira_ready"
+        ],
+        "title": "AdminSupportOut",
+        "type": "object"
+      },
+      "AdminTicketBriefOut": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "number": {
+            "title": "Number",
+            "type": "integer"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "number",
+          "subject",
+          "status",
+          "created_at"
+        ],
+        "title": "AdminTicketBriefOut",
+        "type": "object"
+      },
+      "AdminTicketDetailOut": {
+        "properties": {
+          "agent_seen_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Seen At"
+          },
+          "app_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "App Version"
+          },
+          "category": {
+            "enum": [
+              "account",
+              "app",
+              "devices",
+              "data",
+              "other"
+            ],
+            "title": "Category",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "jira_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Jira Key"
+          },
+          "jira_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Jira Url"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/SupportMessageOut"
+            },
+            "title": "Messages",
+            "type": "array"
+          },
+          "number": {
+            "title": "Number",
+            "type": "integer"
+          },
+          "platform": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Platform"
+          },
+          "priority": {
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "urgent"
+            ],
+            "title": "Priority",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "open",
+              "in_progress",
+              "resolved",
+              "closed",
+              "archived"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string"
+          },
+          "unread": {
+            "default": 0,
+            "title": "Unread",
+            "type": "integer"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "user_id": {
+            "format": "uuid",
+            "title": "User Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "number",
+          "subject",
+          "category",
+          "priority",
+          "status",
+          "created_at",
+          "updated_at",
+          "agent_seen_at",
+          "email",
+          "platform",
+          "app_version",
+          "jira_key",
+          "user_id",
+          "messages"
+        ],
+        "title": "AdminTicketDetailOut",
+        "type": "object"
+      },
+      "AdminTicketOut": {
+        "properties": {
+          "agent_seen_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Seen At"
+          },
+          "app_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "App Version"
+          },
+          "category": {
+            "enum": [
+              "account",
+              "app",
+              "devices",
+              "data",
+              "other"
+            ],
+            "title": "Category",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "jira_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Jira Key"
+          },
+          "number": {
+            "title": "Number",
+            "type": "integer"
+          },
+          "platform": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Platform"
+          },
+          "priority": {
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "urgent"
+            ],
+            "title": "Priority",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "open",
+              "in_progress",
+              "resolved",
+              "closed",
+              "archived"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string"
+          },
+          "unread": {
+            "default": 0,
+            "title": "Unread",
+            "type": "integer"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "user_id": {
+            "format": "uuid",
+            "title": "User Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "number",
+          "subject",
+          "category",
+          "priority",
+          "status",
+          "created_at",
+          "updated_at",
+          "agent_seen_at",
+          "email",
+          "platform",
+          "app_version",
+          "jira_key",
+          "user_id"
+        ],
+        "title": "AdminTicketOut",
         "type": "object"
       },
       "AdminUserOut": {
@@ -416,6 +1081,18 @@
             "title": "Id",
             "type": "string"
           },
+          "last_active_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Active At"
+          },
           "last_reading_at": {
             "anyOf": [
               {
@@ -428,6 +1105,18 @@
             ],
             "title": "Last Reading At"
           },
+          "last_sign_in_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Sign In At"
+          },
           "persona": {
             "anyOf": [
               {
@@ -439,9 +1128,31 @@
             ],
             "title": "Persona"
           },
+          "platform": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Platform"
+          },
           "readings_14d": {
             "title": "Readings 14D",
             "type": "integer"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Region"
           },
           "via_google": {
             "title": "Via Google",
@@ -2062,6 +2773,92 @@
           "at"
         ],
         "title": "CheerOut",
+        "type": "object"
+      },
+      "ClientDeviceIn": {
+        "additionalProperties": false,
+        "properties": {
+          "app_version": {
+            "anyOf": [
+              {
+                "maxLength": 32,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "App Version"
+          },
+          "build": {
+            "anyOf": [
+              {
+                "maxLength": 16,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Build"
+          },
+          "model": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Model",
+            "type": "string"
+          },
+          "os_version": {
+            "anyOf": [
+              {
+                "maxLength": 32,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Os Version"
+          },
+          "platform": {
+            "enum": [
+              "ios",
+              "android",
+              "web"
+            ],
+            "title": "Platform",
+            "type": "string"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "maxLength": 2,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Region"
+          },
+          "time_zone": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Time Zone"
+          }
+        },
+        "required": [
+          "platform",
+          "model"
+        ],
+        "title": "ClientDeviceIn",
         "type": "object"
       },
       "ClientErrorIn": {
@@ -6718,6 +7515,46 @@
         "title": "IosDeviceOut",
         "type": "object"
       },
+      "JiraIn": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "default": "",
+            "maxLength": 8000,
+            "title": "Description",
+            "type": "string"
+          },
+          "summary": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Summary",
+            "type": "string"
+          }
+        },
+        "required": [
+          "summary"
+        ],
+        "title": "JiraIn",
+        "type": "object"
+      },
+      "JiraOut": {
+        "properties": {
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "url"
+        ],
+        "title": "JiraOut",
+        "type": "object"
+      },
       "KindOut": {
         "properties": {
           "kind": {
@@ -8368,6 +9205,22 @@
         "title": "MemoryPatch",
         "type": "object"
       },
+      "MessageIn": {
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "title": "MessageIn",
+        "type": "object"
+      },
       "MessageOut": {
         "properties": {
           "client_id": {
@@ -9347,6 +10200,19 @@
           "title"
         ],
         "title": "PartIn",
+        "type": "object"
+      },
+      "PasswordResetOut": {
+        "properties": {
+          "emailed": {
+            "title": "Emailed",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "emailed"
+        ],
+        "title": "PasswordResetOut",
         "type": "object"
       },
       "PastVisit": {
@@ -12213,6 +13079,48 @@
         "title": "SnoozeIn",
         "type": "object"
       },
+      "StatusIn": {
+        "additionalProperties": false,
+        "properties": {
+          "priority": {
+            "anyOf": [
+              {
+                "enum": [
+                  "low",
+                  "medium",
+                  "high",
+                  "urgent"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Priority"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "enum": [
+                  "open",
+                  "in_progress",
+                  "resolved",
+                  "closed",
+                  "archived"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        "title": "StatusIn",
+        "type": "object"
+      },
       "StickerOut": {
         "properties": {
           "day": {
@@ -12241,6 +13149,88 @@
           "seen"
         ],
         "title": "StickerOut",
+        "type": "object"
+      },
+      "SupportListOut": {
+        "properties": {
+          "tickets": {
+            "items": {
+              "$ref": "#/components/schemas/TicketOut"
+            },
+            "title": "Tickets",
+            "type": "array"
+          },
+          "unread": {
+            "title": "Unread",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "tickets",
+          "unread"
+        ],
+        "title": "SupportListOut",
+        "type": "object"
+      },
+      "SupportMessageOut": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "read_by_agent_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Read By Agent At"
+          },
+          "read_by_user_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Read By User At"
+          },
+          "sender": {
+            "enum": [
+              "user",
+              "admin",
+              "system"
+            ],
+            "title": "Sender",
+            "type": "string"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "sender",
+          "text",
+          "created_at",
+          "read_by_user_at",
+          "read_by_agent_at"
+        ],
+        "title": "SupportMessageOut",
         "type": "object"
       },
       "SyncAllOut": {
@@ -12463,6 +13453,238 @@
           "messages"
         ],
         "title": "ThreadOut",
+        "type": "object"
+      },
+      "TicketDetailOut": {
+        "properties": {
+          "agent_seen_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Seen At"
+          },
+          "category": {
+            "enum": [
+              "account",
+              "app",
+              "devices",
+              "data",
+              "other"
+            ],
+            "title": "Category",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/SupportMessageOut"
+            },
+            "title": "Messages",
+            "type": "array"
+          },
+          "number": {
+            "title": "Number",
+            "type": "integer"
+          },
+          "priority": {
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "urgent"
+            ],
+            "title": "Priority",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "open",
+              "in_progress",
+              "resolved",
+              "closed",
+              "archived"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string"
+          },
+          "unread": {
+            "default": 0,
+            "title": "Unread",
+            "type": "integer"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "number",
+          "subject",
+          "category",
+          "priority",
+          "status",
+          "created_at",
+          "updated_at",
+          "agent_seen_at",
+          "messages"
+        ],
+        "title": "TicketDetailOut",
+        "type": "object"
+      },
+      "TicketIn": {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "default": "other",
+            "enum": [
+              "account",
+              "app",
+              "devices",
+              "data",
+              "other"
+            ],
+            "title": "Category",
+            "type": "string"
+          },
+          "priority": {
+            "default": "medium",
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "urgent"
+            ],
+            "title": "Priority",
+            "type": "string"
+          },
+          "subject": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Subject",
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "subject",
+          "text"
+        ],
+        "title": "TicketIn",
+        "type": "object"
+      },
+      "TicketOut": {
+        "properties": {
+          "agent_seen_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Seen At"
+          },
+          "category": {
+            "enum": [
+              "account",
+              "app",
+              "devices",
+              "data",
+              "other"
+            ],
+            "title": "Category",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "number": {
+            "title": "Number",
+            "type": "integer"
+          },
+          "priority": {
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "urgent"
+            ],
+            "title": "Priority",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "open",
+              "in_progress",
+              "resolved",
+              "closed",
+              "archived"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string"
+          },
+          "unread": {
+            "default": 0,
+            "title": "Unread",
+            "type": "integer"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "number",
+          "subject",
+          "category",
+          "priority",
+          "status",
+          "created_at",
+          "updated_at",
+          "agent_seen_at"
+        ],
+        "title": "TicketOut",
         "type": "object"
       },
       "TodayOut": {
@@ -14851,6 +16073,35 @@
         ]
       }
     },
+    "/admin/analytics": {
+      "get": {
+        "description": "Counts for the admin's analytics page (PM-446). See steady_api/admin_analytics.py.",
+        "operationId": "analytics_admin_analytics_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Analytics Admin Analytics Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Analytics",
+        "tags": [
+          "admin"
+        ]
+      }
+    },
     "/admin/broadcasts": {
       "get": {
         "operationId": "list_broadcasts_admin_broadcasts_get",
@@ -15534,6 +16785,302 @@
         ]
       }
     },
+    "/admin/support": {
+      "get": {
+        "operationId": "admin_tickets_admin_support_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "open",
+                    "in_progress",
+                    "resolved",
+                    "closed",
+                    "archived"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "enum": [
+                    "active",
+                    "all"
+                  ],
+                  "type": "string"
+                }
+              ],
+              "default": "active",
+              "title": "Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminSupportOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Tickets",
+        "tags": [
+          "support"
+        ]
+      }
+    },
+    "/admin/support/{ticket_id}": {
+      "get": {
+        "operationId": "admin_ticket_admin_support__ticket_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ticket_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Ticket Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTicketDetailOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Ticket",
+        "tags": [
+          "support"
+        ]
+      },
+      "patch": {
+        "operationId": "admin_status_admin_support__ticket_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ticket_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Ticket Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTicketDetailOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Status",
+        "tags": [
+          "support"
+        ]
+      }
+    },
+    "/admin/support/{ticket_id}/jira": {
+      "post": {
+        "description": "Makes a Jira issue in the Support project from what the admin wrote. Once per request.",
+        "operationId": "admin_jira_admin_support__ticket_id__jira_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ticket_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Ticket Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JiraIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JiraOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "already_linked"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "502": {
+            "description": "jira_failed"
+          },
+          "503": {
+            "description": "jira_not_configured"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Jira",
+        "tags": [
+          "support"
+        ]
+      }
+    },
+    "/admin/support/{ticket_id}/messages": {
+      "post": {
+        "operationId": "admin_reply_admin_support__ticket_id__messages_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ticket_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Ticket Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessageIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTicketDetailOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Reply",
+        "tags": [
+          "support"
+        ]
+      }
+    },
     "/admin/users": {
       "get": {
         "operationId": "users_admin_users_get",
@@ -15617,6 +17164,52 @@
         "tags": [
           "admin"
         ]
+      },
+      "get": {
+        "operationId": "profile_admin_users__user_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "User Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminProfileOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Profile",
+        "tags": [
+          "admin"
+        ]
       }
     },
     "/admin/users/{user_id}/approve": {
@@ -15663,6 +17256,61 @@
           }
         ],
         "summary": "Approve",
+        "tags": [
+          "admin"
+        ]
+      }
+    },
+    "/admin/users/{user_id}/password-reset": {
+      "post": {
+        "description": "Emails the person a reset code, as their own \"Forgot password\" does, saying support started it (PM-448). The admin\nnever sees or sets a password; the current one keeps working until the person sets a new one with the code.",
+        "operationId": "password_reset_admin_users__user_id__password_reset_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "User Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasswordResetOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "no_password (signs in with Google or Apple only) or too_soon"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "503": {
+            "description": "mail_unavailable"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Password Reset",
         "tags": [
           "admin"
         ]
@@ -16719,6 +18367,45 @@
         "summary": "Care Questions",
         "tags": [
           "clinic"
+        ]
+      }
+    },
+    "/client/device": {
+      "put": {
+        "operationId": "report_device_client_device_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientDeviceIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Report Device",
+        "tags": [
+          "support"
         ]
       }
     },
@@ -24955,6 +26642,185 @@
         ]
       }
     },
+    "/support/tickets": {
+      "get": {
+        "operationId": "my_tickets_support_tickets_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupportListOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "My Tickets",
+        "tags": [
+          "support"
+        ]
+      },
+      "post": {
+        "operationId": "open_ticket_support_tickets_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TicketIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TicketDetailOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "429": {
+            "description": "too_many"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Open Ticket",
+        "tags": [
+          "support"
+        ]
+      }
+    },
+    "/support/tickets/{ticket_id}": {
+      "get": {
+        "operationId": "my_ticket_support_tickets__ticket_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ticket_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Ticket Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TicketDetailOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "My Ticket",
+        "tags": [
+          "support"
+        ]
+      }
+    },
+    "/support/tickets/{ticket_id}/messages": {
+      "post": {
+        "operationId": "my_reply_support_tickets__ticket_id__messages_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ticket_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Ticket Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessageIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TicketDetailOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "My Reply",
+        "tags": [
+          "support"
+        ]
+      }
+    },
     "/visit": {
       "delete": {
         "operationId": "delete_visit_visit_delete",
@@ -25376,7 +27242,7 @@
     },
     "/voice/preview": {
       "get": {
-        "description": "One fixed sample sentence in a chosen voice and language, with the companion's name. Not a speech service.",
+        "description": "One fixed sample sentence in a chosen voice and language, with the mentor's fixed name. Not a speech service.",
         "operationId": "preview_voice_preview_get",
         "parameters": [
           {

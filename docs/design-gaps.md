@@ -2168,3 +2168,20 @@ or the invitation, so these are product rules, not clinical ones (`services/api 
 The design shows the breakdown sheets with data only. Added states, using existing components: a spinner (accent
 colour) while the sheet reads, and the error banner "Couldn't load this list. Check your connection and try again."
 with Try again when the read fails and nothing is kept on the phone. A failed read never shows "No meals logged today yet".
+
+### G-129 · Support requests in the app, and the admin area (**asked by Guy, 23 Nov 2026, PM-445..448**)
+
+The design has no support or admin screens. Built with existing parts, no new look:
+
+- App, Settings > Help & support: "Report a problem" removed; "Contact support" opens a new request (subject, topic
+  chips, urgency segmented control, text with a privacy hint). "My requests" lists the person's requests with status and
+  unread count; each opens a conversation in the mentor's message bubbles (person right, support left, system notes),
+  with a reply box. A reply to a resolved or closed request opens it again. Pushes from support open the request.
+- Website, admin: the admin lands on an Admin hub with cards (Users, Support, Analytics, Demo requests, Clinics, App
+  updates, My app). Analytics shows counts only, without demo or admin accounts, and groups under 5 as "<5". Support
+  lists requests by status, shows the conversation, sets status and priority, answers, and opens a Jira issue with text
+  the admin writes. A user's email opens a profile with country (region setting), time zone, phones and browsers, last
+  sign-in and a password reset that emails a one-time code.
+- Clean-up as in mixmaster-pro: resolved after 5 days without the person's answer to support, closed 2 days later,
+  archived 7 days later, deleted a year after archiving.
+- No attachments on requests (privacy minimisation).

@@ -140,3 +140,16 @@ export type CheerOut = S['CheerOut'];
 export type ChallengeOut = S['ChallengeOut'];
 export type WeekOut = S['WeekOut'];
 export type PeriodBodyOut = S['PeriodBodyOut'];
+// Support requests and the admin area (PM-445..448).
+export type TicketIn = S['TicketIn'];
+export type TicketOut = S['TicketOut'];
+export type TicketDetailOut = S['TicketDetailOut'];
+export type SupportMessageOut = S['SupportMessageOut'];
+export type SupportListOut = S['SupportListOut'];
+export type ClientDeviceIn = S['ClientDeviceIn'];
+export type AdminTicketOut = S['AdminTicketOut'];
+export type AdminTicketDetailOut = S['AdminTicketDetailOut'];
+export type AdminSupportOut = S['AdminSupportOut'];
+export type JiraOut = S['JiraOut'];
+export type AdminProfileOut = S['AdminProfileOut'];
+export type PasswordResetOut = S['PasswordResetOut'];
