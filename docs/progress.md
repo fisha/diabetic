@@ -18,6 +18,17 @@ delete the Jira request and customer entry. The website's Support list is titles
 `d2f4a6c8e0b1` (after `d2f4a6b8c0e1`). API 996 pass; pnpm check pass; e2e admin-area 46/46 with a JSM stand-in.
 Knowledge-base drafts in project files `pm-466/kb-articles.md`. Next: deploy API + website, OTA; Guy's OK for the
 portal settings and the knowledge-base space.
+23 Nov 2026 (Jira PM-464, open items PM-467): Guy approved Mixpanel product analytics, opt-in, usage events only.
+App `src/analytics/`: a small client (no SDK, so it ships by OTA) sends to Mixpanel's US endpoint with `ip=0`, under a
+random id made on the phone, never the account; every property is a closed word from an allowlist, so no value, text
+or id can pass (`test/analytics.test.ts`). Events: App Opened, Screen Viewed (route file only), Signed In, Onboarding
+Step Completed, Consent Accepted, Entry Logged (kind and source), meal photo/description/usual, Mentor Message Sent,
+Voice Call Started/Ended (length bucket), Device Connected, Setting Changed, Game Played, follow invites, support,
+clinic report, export. Off unless the person ticks it (onboarding, re-accept screen, Settings > Privacy; G-133); never
+under 18 or while viewing. Privacy policy `2026-11-24T00:00:00Z` names Mixpanel (forced re-accept). Session replay not
+built (Guy suggested full masking; drawn glucose charts are not text, and it needs a native build). Next: Guy creates
+the Stedio Mixpanel project (US) and sets `EXPO_PUBLIC_MIXPANEL_TOKEN` in EAS; deploy API and web, then OTA; then the
+dashboards, funnels, flows and retention reports in Mixpanel.
 23 Nov 2026 (Jira PM-468): Guy asked that the admin Analytics page show the real numbers instead of "<5" and show the
 values when hovering the charts. The API returns exact counts for platforms, countries, personas and connected devices
 (the admin Users page already shows each person's platform and region); the two 30-day charts show the day and its

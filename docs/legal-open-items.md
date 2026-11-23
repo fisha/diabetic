@@ -62,6 +62,17 @@ below, which Guy and the lawyer can still change.
   `whatsapp` consent (strings `wa.body`, `wa.agree`, version `2026-11-19` in `steady_api/whatsapp/links.py`) is recorded
   before linking.
 
+**Released 24 Nov 2026 as privacy `2026-11-24T00:00:00Z` (PM-464):** Mixpanel, Inc. (United States, US data
+residency) named as the product analytics processor, opt-in only (off unless turned on in onboarding, on the re-accept
+screen or in Settings > Privacy; never under 18 or while viewing). What is collected (usage events: screen, feature,
+entry kind without values, call length in ranges, settings switched, app version, platform, language, app modes), a
+random device id not linked to the account, no IP geolocation (`ip=0`), retention "up to 2 years", the US transfer
+sentence, and the web app's browser storage of the choice. The "no third-party analytics" sentence is replaced. Lawyer
+review in PM-464 (`needs-lawyer`): the Mixpanel DPA and transfer basis (DPF or SCCs); whether opt-in usage analytics
+in a health app is "consumer health data" under Washington's MHMDA and needs its own consent wording; whether the
+policy may say the events cannot be found by request (random id), or Stedio should offer a delete-my-analytics path.
+Open: the 2-year retention must be set in the Mixpanel project (Guy), or the text changed.
+
 **Released 23 Nov 2026 as privacy `2026-11-23T23:00:00Z` (PM-461):** Resend (United States) named as the email
 processor (verification and reset codes, approvals, support notices, and the parent alert with the child's words,
 PM-453), and added to the US transfer sentence. Lawyer review in PM-454: the Resend DPA, the transfer basis (DPF
