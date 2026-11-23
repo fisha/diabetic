@@ -98,6 +98,13 @@ uv run --project ../services/api python -m steady_evals.regression --model gpt-6
 On Fly, with the production key and model and no key on the laptop (PM-203): `scripts/fly/stedio-fly evals`
 (see `deploy/fly/README.md`). Exit 2 means the set did not run (no reply came back at all), never a pass.
 
+Cost (PM-436, Guy 23 Nov 2026: the regression runs were most of the OpenAI bill). The run is staged: the first repeat
+covers every case, and the other repeats run only when it kept every hard rule. Repeats are passes over all cases, so a
+case's next repeat hits OpenAI's prompt cache. The verdict's `usage` gives tokens per model (the companion and the
+judge), with `cost_usd` when `STEADY_OPENAI_PRICES` is set. Before a deploy, `stedio-fly deploy-api` runs 3 repeats
+only when the companion's own rules changed (`steady_api/ai`, `routers/conversation.py`, `config.py`, `quality.py`)
+since the last full pass, or that pass is over a day old; any other API change gets 1 repeat.
+
 ## Running
 
 Runs use the API's Python environment, from this folder:
