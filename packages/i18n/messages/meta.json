@@ -3399,42 +3399,6 @@
       "translation"
     ]
   },
-  "wd.sp_back": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_c_account": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_c_app": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_c_data": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_c_devices": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_c_other": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
   "wd.sp_empty": {
     "board": "WebDashboard",
     "review": [
@@ -3489,133 +3453,25 @@
       "translation"
     ]
   },
+  "wd.sp_jira_queue": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.sp_no_jira": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
+  "wd.sp_not_in_jira": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ]
+  },
   "wd.sp_filter": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_from_admin": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_from_system": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_from_user": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_jira": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_jira_b": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_jira_desc": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_jira_go": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_jira_made": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_jira_open": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_jira_summary": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_jira_t": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_new": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_opened": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_p_high": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_p_low": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_p_medium": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_p_urgent": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_priority": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_read": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_reply": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_reply_b": {
     "board": "WebDashboard",
     "review": [
       "translation"
@@ -3646,18 +3502,6 @@
     ]
   },
   "wd.sp_s_resolved": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_send": {
-    "board": "WebDashboard",
-    "review": [
-      "translation"
-    ]
-  },
-  "wd.sp_send_fail": {
     "board": "WebDashboard",
     "review": [
       "translation"
