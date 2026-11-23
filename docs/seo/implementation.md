@@ -45,8 +45,16 @@ medical schema type (Stedio is not a medical device).
 - All of it is generated from the same catalog strings and legal texts the pages render, so the copies can never say
   something the site does not.
 
+## Topic pages (Guy approved 23 Nov 2026)
+
+Five English pages, text in `src/content/pages.ts`, layout `src/components/TopicView.tsx` (the legal pages' column,
+the page's questions, the waiting-list buttons, links to the other topics), linked from the footer on every page:
+`/en/how-it-works`, `/en/devices`, `/en/families`, `/en/for-clinics`, `/en/safety`. Each has a canonical link,
+WebPage + BreadcrumbList + FAQPage JSON-LD, a Markdown copy and a sitemap entry. Every sentence is a fact about the app
+as built (docs/integration-status.md, docs/device-data-inventory.md, the privacy policy). Noindex like the rest.
+
 ## Sitemap and hosts
 
-- `/sitemap.xml`: /en, /en/demo and the six legal pages (with hreflang). Not listed: app, dashboard, clinic, /get.
+- `/sitemap.xml`: /en, the five topic pages, /en/demo and the six legal pages (with hreflang). Not listed: app, dashboard, clinic, /get.
 - `robots.txt`: `Allow: /` for all + `Sitemap: https://stedio.io/sitemap.xml`.
 - `www.stedio.io` pages now 308 to `stedio.io` (one address per page).

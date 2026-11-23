@@ -2,8 +2,8 @@
 
 ## Now (site still noindex)
 
-1. **Google Search Console, Domain property `stedio.io`** (covers apex, www, app., api.). Verify with the DNS TXT
-   record Google gives (`google-site-verification=…`) in Cloudflare DNS, zone stedio.io. Console change: Guy.
+1. **Google Search Console, Domain property `sc-domain:stedio.io`**: exists and is verified under Guy's account
+   (checked 23 Nov 2026). No sitemap submitted, no indexing requested.
    (Alternative: URL-prefix property https://stedio.io/ with the HTML tag: set `GOOGLE_SITE_VERIFICATION` at build.)
 2. Add the Claude-assisted account as a user (Guy said he would), at least "Full" to read reports and submit sitemaps.
 3. **Do not submit the sitemap yet** (optional either way: Google would list the URLs as "Excluded by noindex",
