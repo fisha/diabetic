@@ -3000,6 +3000,8 @@
   "bk.meal": "Meal",
   "bk.pump": "Entered on the pump",
   "bk.no_meals": "No meals logged today yet.",
+  "bk.load_fail": "Couldn't load this list. Check your connection and try again.",
+  "bk.loading": "Loading",
   "bk.full_yes": "Fully logged",
   "bk.full_part": "Partly logged",
   "bk.full_none": "Nothing logged",

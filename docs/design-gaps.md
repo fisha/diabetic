@@ -2162,3 +2162,9 @@ or the invitation, so these are product rules, not clinical ones (`services/api 
   joining, between 17:00 and 20:00 local time, not in fewer nudges or quiet mode, not with games off, not after a low
   reading in the last 20 minutes. In-app only push, no WhatsApp.
 - Builds without the web view show "Games come with the next update".
+
+### G-128 · Breakdown sheet loading and failed read (**PM-442, Guy, 23 Nov 2026**)
+
+The design shows the breakdown sheets with data only. Added states, using existing components: a spinner (accent
+colour) while the sheet reads, and the error banner "Couldn't load this list. Check your connection and try again."
+with Try again when the read fails and nothing is kept on the phone. A failed read never shows "No meals logged today yet".

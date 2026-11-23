@@ -721,6 +721,20 @@
     ],
     "note": "Breakdown sheet behind an Overview tile (Itay via Guy, 15 Nov 2026)."
   },
+  "bk.load_fail": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile: loading and a failed read (PM-442, Guy, 23 Nov 2026)."
+  },
+  "bk.loading": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Breakdown sheet behind an Overview tile: loading and a failed read (PM-442, Guy, 23 Nov 2026)."
+  },
   "bk.open": {
     "board": "Overview",
     "review": [

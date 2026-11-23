@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-442): Guy found Food today > "Meals today" opening empty although the tile said 2. A fresh account
+lists the meals correctly and the production logs a few minutes later showed no errors. The tile shows its kept answer
+when a read fails, but the sheet had no kept answer (a failed read read as "No meals logged today yet") and was blank
+while its two reads were on their way. Fixed (app #268): the meals list needs only the meals read, today's meals and the
+7-day summary use the offline cache, a spinner while reading, and "Couldn't load this list" with Try again when the read
+fails. e2e `tools/e2e/meals-today-sheet.cjs` 18/18 (he dark, en light). Next: OTA (app only, no API change).
 23 Nov 2026 (Jira PM-438): Guy approved the character games mockup (round 3) and asked to build, merge and deploy it.
 Built: Settings > Stedio has three switches (Classic, Games, Challenges); a game button beside quiet mode on the main
 screen and a once-a-day invitation bubble; the Games screen with 12 games in four categories, drawn tile icons in the
