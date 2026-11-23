@@ -4472,6 +4472,8 @@
   "set.challenges": "Challenges",
   "set.challenges_b": "Weekly challenge and wins card",
   "set.switches_note": "Each switch works on its own. You can play in Classic mode too, just without outfits.",
+  "set.simple": "Simple mode",
+  "set.simple_b": "Only the essentials: your reading, time in range, insights, sensor and set",
   "games.title": "Games",
   "games.cat_know": "Trivia and know-how",
   "games.cat_arcade": "Arcade",

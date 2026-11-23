@@ -2203,3 +2203,20 @@ The design has no support or admin screens. Built with existing parts, no new lo
 - Clean-up as in mixmaster-pro: resolved after 5 days without the person's answer to support, closed 2 days later,
   archived 7 days later, deleted a year after archiving.
 - No attachments on requests (privacy minimisation).
+
+### G-131 · Simple mode (**asked by Guy, 23 Nov 2026, PM-450**)
+
+The design has no Simple mode. Built with existing parts, no new look:
+
+- A switch "Simple mode" / "מצב פשוט" on the Settings screen, right under Quiet mode, so it is one tap away to turn off.
+  Stored with the profile answers as `companion.simple`, like Classic Stedio. Not shown to a child (Kids mode is
+  already short) or while viewing someone else.
+- While on: the tab bar is Talk, Overview and Settings with the "+" (the Journal tab is hidden). The main screen stays as
+  it is apart from the games button and the invitation to play. Every "+" option stays, and the mentor by voice and text.
+- Overview shows only the latest reading, the period chooser with time in range, the Insights row and the infusion set
+  and sensor rows (shown for any period, since they are about now). No graph, rises, Body, Food, learning days, summary,
+  wins card, typical day, trend, pump days or labs and habits.
+- Settings keeps every row (privacy, export, deletion and device settings must stay reachable) except My milestones.
+  The saved-meal screen drops "View in journal". Insight details keep their own links.
+- Nothing is removed: switching it off brings everything back.
+

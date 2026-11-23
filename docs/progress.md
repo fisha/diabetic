@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-450): Guy asked for a Simple mode switch in Settings that shows only meal photo logging, the
+sensor and set days, time in range, insights, the current reading, the main screen as it is, every "+" option and the
+mentor by voice and text. Built in the app only (no API change): the switch sits on the Settings screen under Quiet mode
+(`companion.simple` in the profile answers); while on, the Journal tab and the games are hidden and Overview shows the
+latest reading, the period with time in range, the Insights row and the set and sensor rows, with no graph. Choices in
+design gap G-131. App tests 302 pass, typecheck pass; e2e `tools/e2e/simple-mode.cjs` 25/25 (en light, he light, he
+dark). Screenshots in /mnt/project-files/pm-450. Next: OTA.
 23 Nov 2026 (Jira PM-445..448): Guy asked to put the website's admin area in order. (1) An admin opening the app on the
 website still landed in the app: the app kept an account viewed from the admin pages ("In the app") and only the bare
 /app address counted. Now any app address sends an admin to the new admin hub, and "My area (the app)" opens the
