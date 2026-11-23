@@ -178,6 +178,7 @@ cmd_evals() {
   [ -z "$(git -C "$REPO" status --porcelain -- evals services/api/steady_api)" ] || die "evals: commit or stash local changes to evals/ and services/api first (the run must match a commit)"
   local api_sha root_sha tag stamp name id
   api_sha="$(git -C "$REPO/services/api" rev-parse HEAD)"
+  local fingerprint; fingerprint="$(companion_fingerprint)" # of the snapshot built below, not of a later checkout
   root_sha="$(git -C "$REPO" rev-parse --short HEAD)"
   tag="evals-${api_sha:0:7}-$root_sha"
   stamp="$(date -u +%Y%m%dT%H%M%SZ)"
@@ -222,7 +223,7 @@ cmd_evals() {
   [ -s "$out" ] && cat "$out" || rm -f "$out"
   case "$code" in
     0) echo "$api_sha" > "$EVALS_DIR/last-pass"
-       companion_fingerprint >> "$EVALS_DIR/passed-fingerprints"
+       echo "$fingerprint" >> "$EVALS_DIR/passed-fingerprints"
        [ "$repeat" -ge 3 ] && [ "$quick" = 0 ] && echo "$api_sha $(date -u +%s)" > "$EVALS_DIR/last-full-pass"
        say "regression set PASSED (verdict: ${out#"$REPO"/})" ;;
     1) say "regression set FAILED a hard rule (verdict: ${out#"$REPO"/})"; return 1 ;;
