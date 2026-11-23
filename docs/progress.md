@@ -16,7 +16,11 @@ and when the push is tapped (which used to open Settings > Sharing > the request
 up by itself once per phone (ids only, in the phone's preferences); Not now leaves it on the main screen and in Settings.
 Not while viewing someone, during sign-in, onboarding or a consent update, under the app lock or in Quiet mode. The push
 itself was already sent (`clinic_request`) and still follows All notifications off and Quiet mode. The request page's
-decline button now says "Decline" (it used to say "Not now" but declined). Root `pnpm check` passed; e2e
+decline button now says "Decline" (it used to say "Not now" but declined). Guy then found his own invite (to his account email) never reached the app: the
+request of 19 Nov had been stored without an account (`patient_id` NULL, no `clinic_request` push ever), and asking
+again only returned the open request. Now `/care-team` joins a waiting request to the account with the same keyed email,
+and asking again while it waits joins a newer account and pushes again (at most once an hour, no second email; api
+#193). The clinic portal's Patients list shows waiting invites too (web #65). Root `pnpm check` passed; e2e
 `tools/e2e/clinic-request.cjs` 34/34 (web; the push paths need a phone). No API change. Next: OTA.
 
 23 Nov 2026 (Jira PM-425): Guy asked for favorites in meal logging: save a meal to favorites, pick one when logging (the
