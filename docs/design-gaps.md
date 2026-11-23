@@ -2139,3 +2139,26 @@ confirm dialog look): Hebrew and English text (240 characters each), a phone-lik
 dialog with the number, and the sent list with counts. In the app, an "App updates" / "עדכונים על האפליקציה" row in
 Settings > Notifications > What to tell me, on by default; All notifications off, quiet mode and quiet hours withhold
 it too, and nothing is sent later. Default on with opt-out is open for the lawyer (PM-441).
+
+### G-127 · Character games (**asked by Guy, 23 Nov 2026, PM-438**)
+
+Guy approved the interactive games mockup (round 3) and asked to build it. The mockup has no rules for coins, prices
+or the invitation, so these are product rules, not clinical ones (`services/api steady_api/games.py`):
+
+- Settings > Stedio has three separate switches: Classic Stedio (no outfits or unlocks, games stay), Games and
+  Challenges. Unset means on.
+- 12 games in four categories (knowledge, arcade, puzzles, movement). They open full screen with the latest reading
+  and its age at the top. A reading below the person's own range that is at most 20 minutes old pauses the game with
+  "I took care of it, continue"; no treatment text. No range set, no pause.
+- Coins: at most 20 a game and 60 a day. Today's question gives 5 for a right answer and is chosen from the person's
+  logged meal names when one matches. Shop items are the character items not yet opened, priced 40 + 5 per place in
+  the list, one a day.
+- Walk: real minutes from the health store (exercise minutes, or minutes at 80 steps a minute or more). 10 minutes
+  opens the next item (or gives 10 coins), 20 minutes 10 coins, 30 minutes 15 coins, once a day each.
+- The plate's "from your saved meals" round of the mockup was left out (it showed demo meals). The maze shows real
+  steps only and does not hold new mazes back.
+- Invitation: on the main screen at most once a local day, while today's question is not answered, not while viewing
+  someone, in the demo, or below range. One push, once per person, to someone who has never played, from the day after
+  joining, between 17:00 and 20:00 local time, not in fewer nudges or quiet mode, not with games off, not after a low
+  reading in the last 20 minutes. In-app only push, no WhatsApp.
+- Builds without the web view show "Games come with the next update".

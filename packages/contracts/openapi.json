@@ -571,6 +571,28 @@
         "title": "AnalyzeIn",
         "type": "object"
       },
+      "AnswerIn": {
+        "additionalProperties": false,
+        "properties": {
+          "choice": {
+            "maximum": 5.0,
+            "minimum": 0.0,
+            "title": "Choice",
+            "type": "integer"
+          },
+          "id": {
+            "maxLength": 40,
+            "title": "Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "choice"
+        ],
+        "title": "AnswerIn",
+        "type": "object"
+      },
       "AppVersionOut": {
         "properties": {
           "android_latest_build": {
@@ -1275,6 +1297,45 @@
           "sent"
         ],
         "title": "BroadcastsOut",
+        "type": "object"
+      },
+      "BuyIn": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "maxLength": 40,
+            "title": "Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "title": "BuyIn",
+        "type": "object"
+      },
+      "BuyOut": {
+        "properties": {
+          "coins": {
+            "title": "Coins",
+            "type": "integer"
+          },
+          "result": {
+            "enum": [
+              "ok",
+              "owned",
+              "coins",
+              "today"
+            ],
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result",
+          "coins"
+        ],
+        "title": "BuyOut",
         "type": "object"
       },
       "CareClinicOut": {
@@ -4970,6 +5031,64 @@
         "title": "ForgotIn",
         "type": "object"
       },
+      "GamesOut": {
+        "properties": {
+          "best": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Best",
+            "type": "object"
+          },
+          "coins": {
+            "title": "Coins",
+            "type": "integer"
+          },
+          "daily_cap": {
+            "title": "Daily Cap",
+            "type": "integer"
+          },
+          "earned_today": {
+            "title": "Earned Today",
+            "type": "integer"
+          },
+          "item_today": {
+            "title": "Item Today",
+            "type": "boolean"
+          },
+          "shop": {
+            "items": {
+              "$ref": "#/components/schemas/ShopItemOut"
+            },
+            "title": "Shop",
+            "type": "array"
+          },
+          "streak": {
+            "title": "Streak",
+            "type": "integer"
+          },
+          "trivia_done": {
+            "title": "Trivia Done",
+            "type": "boolean"
+          },
+          "walk": {
+            "$ref": "#/components/schemas/WalkOut"
+          }
+        },
+        "required": [
+          "coins",
+          "earned_today",
+          "daily_cap",
+          "best",
+          "streak",
+          "trivia_done",
+          "walk",
+          "shop",
+          "item_today"
+        ],
+        "title": "GamesOut",
+        "type": "object"
+      },
       "GlucoseAlertsIn": {
         "additionalProperties": false,
         "properties": {
@@ -7963,6 +8082,24 @@
         "title": "MealPatternOut",
         "type": "object"
       },
+      "MealRef": {
+        "properties": {
+          "at": {
+            "title": "At",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "at",
+          "name"
+        ],
+        "title": "MealRef",
+        "type": "object"
+      },
       "MemberIn": {
         "additionalProperties": false,
         "properties": {
@@ -10392,6 +10529,78 @@
         "title": "QuestOut",
         "type": "object"
       },
+      "QuestionOut": {
+        "properties": {
+          "answer": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Answer"
+          },
+          "correct": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Correct"
+          },
+          "explain": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Words"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "meal": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MealRef"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "options": {
+            "items": {
+              "$ref": "#/components/schemas/Words"
+            },
+            "title": "Options",
+            "type": "array"
+          },
+          "question": {
+            "$ref": "#/components/schemas/Words"
+          },
+          "streak": {
+            "title": "Streak",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "question",
+          "options",
+          "streak"
+        ],
+        "title": "QuestionOut",
+        "type": "object"
+      },
       "QuestionsIn": {
         "additionalProperties": false,
         "properties": {
@@ -10990,7 +11199,9 @@
               "workouts",
               "wins",
               "sensor_days",
-              "days"
+              "days",
+              "coins",
+              "walk"
             ],
             "title": "Kind",
             "type": "string"
@@ -11127,6 +11338,64 @@
           }
         },
         "title": "ScopesIn",
+        "type": "object"
+      },
+      "ScoreIn": {
+        "additionalProperties": false,
+        "properties": {
+          "game": {
+            "enum": [
+              "trivia",
+              "runner",
+              "carbs",
+              "plate",
+              "walk",
+              "bricks",
+              "catcher",
+              "myths",
+              "maze",
+              "clouds",
+              "hidden",
+              "breathe"
+            ],
+            "title": "Game",
+            "type": "string"
+          },
+          "points": {
+            "maximum": 100000.0,
+            "minimum": 0.0,
+            "title": "Points",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "game",
+          "points"
+        ],
+        "title": "ScoreIn",
+        "type": "object"
+      },
+      "ScoreOut": {
+        "properties": {
+          "coins": {
+            "title": "Coins",
+            "type": "integer"
+          },
+          "coins_added": {
+            "title": "Coins Added",
+            "type": "integer"
+          },
+          "earned_today": {
+            "title": "Earned Today",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "coins_added",
+          "coins",
+          "earned_today"
+        ],
+        "title": "ScoreOut",
         "type": "object"
       },
       "SegmentOut": {
@@ -11803,6 +12072,24 @@
           "viewing"
         ],
         "title": "SharingOut",
+        "type": "object"
+      },
+      "ShopItemOut": {
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "price": {
+            "title": "Price",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "price"
+        ],
+        "title": "ShopItemOut",
         "type": "object"
       },
       "SignIn": {
@@ -13425,6 +13712,96 @@
         "title": "VoiceStatusOut",
         "type": "object"
       },
+      "WalkClaimOut": {
+        "properties": {
+          "coins": {
+            "title": "Coins",
+            "type": "integer"
+          },
+          "item": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Item"
+          },
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "ok",
+          "item",
+          "coins"
+        ],
+        "title": "WalkClaimOut",
+        "type": "object"
+      },
+      "WalkIn": {
+        "additionalProperties": false,
+        "properties": {
+          "goal": {
+            "enum": [
+              10,
+              20,
+              30
+            ],
+            "title": "Goal",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "goal"
+        ],
+        "title": "WalkIn",
+        "type": "object"
+      },
+      "WalkOut": {
+        "properties": {
+          "claimed": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Claimed",
+            "type": "array"
+          },
+          "goals": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Goals",
+            "type": "array"
+          },
+          "minutes": {
+            "title": "Minutes",
+            "type": "integer"
+          },
+          "steps": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steps"
+          }
+        },
+        "required": [
+          "minutes",
+          "steps",
+          "goals",
+          "claimed"
+        ],
+        "title": "WalkOut",
+        "type": "object"
+      },
       "WarmupOut": {
         "description": "A new sensor warming up (G-80): no reading until `ready_at`, the maker's warm-up length after `started_at`.\nFrom CareLink the pump itself says it is warming up; after `ready_at` it is still warming up (\"any moment\").",
         "properties": {
@@ -13677,6 +14054,24 @@
           "key"
         ],
         "title": "WhyOut",
+        "type": "object"
+      },
+      "Words": {
+        "properties": {
+          "en": {
+            "title": "En",
+            "type": "string"
+          },
+          "he": {
+            "title": "He",
+            "type": "string"
+          }
+        },
+        "required": [
+          "he",
+          "en"
+        ],
+        "title": "Words",
         "type": "object"
       },
       "WordsIn": {
@@ -19634,6 +20029,241 @@
         "summary": "Snooze",
         "tags": [
           "follow-ups"
+        ]
+      }
+    },
+    "/games": {
+      "get": {
+        "operationId": "get_games_games_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GamesOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Games",
+        "tags": [
+          "games"
+        ]
+      }
+    },
+    "/games/question": {
+      "get": {
+        "operationId": "get_question_games_question_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Question",
+        "tags": [
+          "games"
+        ]
+      },
+      "post": {
+        "operationId": "answer_question_games_question_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnswerIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Answer Question",
+        "tags": [
+          "games"
+        ]
+      }
+    },
+    "/games/score": {
+      "post": {
+        "description": "A finished game's points. Coins follow up to the per-game and daily caps; the rest only counts as a best.",
+        "operationId": "score_games_score_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScoreIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScoreOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Score",
+        "tags": [
+          "games"
+        ]
+      }
+    },
+    "/games/shop": {
+      "post": {
+        "operationId": "buy_games_shop_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BuyIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BuyOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Buy",
+        "tags": [
+          "games"
+        ]
+      }
+    },
+    "/games/walk": {
+      "post": {
+        "operationId": "claim_walk_games_walk_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalkIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalkClaimOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Claim Walk",
+        "tags": [
+          "games"
         ]
       }
     },
