@@ -61,10 +61,15 @@ below, which Guy and the lawyer can still change.
   `whatsapp` consent (strings `wa.body`, `wa.agree`, version `2026-11-19` in `steady_api/whatsapp/links.py`) is recorded
   before linking.
 
+**Released 23 Nov 2026 as privacy `2026-11-23T23:00:00Z` (PM-461):** Resend (United States) named as the email
+processor (verification and reset codes, approvals, support notices, and the parent alert with the child's words,
+PM-453), and added to the US transfer sentence. Lawyer review in PM-454: the Resend DPA, the transfer basis (DPF
+certification or SCCs), and whether a parent alert with a minor's words over a US email processor needs more.
+
 **Released 18 Nov 2026 as privacy `2026-11-18T14:00:00Z` (PM-233):** demo request data under "What we collect", demo
 retention under "How long we keep data", and the stored demo link under "Cookies and storage", in English and Hebrew.
 Lawyer review: PM-235. Still open from before: approval and verification emails go out over SMTP, and the policy names
-no email provider.
+no email provider (closed 23 Nov 2026, see the Resend entry above).
 
 
 **Released 17 Nov 2026 as privacy `2026-11-17T21:30:00Z` (PM-208, Guy: "אתה יכול להוציא גרסה משפטית חדשה").** Both
