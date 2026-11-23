@@ -4508,7 +4508,7 @@
   "games.done_today": "נענתה היום",
   "games.coins": "{n, plural, one {מטבע אחד} other {# מטבעות}}",
   "games.points": "{n, plural, one {נקודה אחת} other {# נקודות}}",
-  "games.today_coins": "מטבעות היום: {n} מתוך {cap}",
+  "games.today_coins": "מטבעות היום: {n}",
   "games.button": "משחקים",
   "games.close": "סגירת המשחק",
   "games.unsupported": "המשחקים יגיעו עם עדכון האפליקציה הבא.",
