@@ -28987,6 +28987,20 @@
     ],
     "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
   },
+  "set.simple": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Simple mode (PM-450; Guy, 23 Nov 2026): the app shows only the main screen, the + options, the mentor, the reading, time in range, insights and the sensor and set rows."
+  },
+  "set.simple_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Simple mode (PM-450; Guy, 23 Nov 2026): the app shows only the main screen, the + options, the mentor, the reading, time in range, insights and the sensor and set rows."
+  },
   "games.title": {
     "board": "Games",
     "review": [
