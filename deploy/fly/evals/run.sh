@@ -7,12 +7,14 @@ MODEL="${EVAL_MODEL:-${STEADY_OPENAI_MODEL:-gpt-6.1-sol}}"
 JUDGE="${EVAL_JUDGE:-$MODEL}"
 REPEAT="${EVAL_REPEAT:-3}"
 LABEL="${EVAL_LABEL:-fly}"
+QUICK=()
+[ "${EVAL_QUICK:-}" = "1" ] && QUICK=(--quick)
 if [ -z "${STEADY_OPENAI_API_KEY:-}" ]; then
   echo "EVALS_ERROR no OpenAI key on this app (STEADY_OPENAI_API_KEY)"; echo "EVALS_EXIT=2"; exit 2
 fi
-echo "EVALS_START model=$MODEL judge=$JUDGE repeat=$REPEAT label=$LABEL"
+echo "EVALS_START model=$MODEL judge=$JUDGE repeat=$REPEAT quick=${EVAL_QUICK:-0} label=$LABEL"
 out="$(python -m steady_evals.regression --model "$MODEL" --production --repeat "$REPEAT" --judge "$JUDGE" \
-  --label "$LABEL" --api-key-env STEADY_OPENAI_API_KEY 2>/tmp/evals.err)"
+  --label "$LABEL" --api-key-env STEADY_OPENAI_API_KEY ${QUICK[@]+"${QUICK[@]}"} 2>/tmp/evals.err)"
 code=$?
 # The verdict only (pass rates, case ids, failed rule names); replies and transcripts stay in the Machine.
 # One line: a multi-line block can lose or reorder lines in the log stream.

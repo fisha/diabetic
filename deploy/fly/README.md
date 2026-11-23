@@ -94,7 +94,7 @@ After adding the Google settings to `.env`, run both again.
   logged or written. Synthetic held-out cases only; the run never opens the database. The script waits (up to 90
   minutes), reads the verdict from the Machine's log, saves it to `evals/reports/fly/` (git-ignored) and destroys the
   Machine.
-- **Repeats before a deploy (PM-436)**: `deploy-api` asks for 1 repeat, and 3 when no full run passed in the last day
+- **Repeats before a deploy (PM-436)**: `deploy-api` runs the gate (safety cases, 1 repeat, `--quick`), and the full set (3 repeats) when no full run passed in the last day
   (`evals/reports/fly/last-full-pass`). A companion whose `COMPANION_PATHS` content already passed is skipped
   (`passed-fingerprints`). A failing first repeat stops the run.
 - **Exit**: 0 passed (the API commit is kept in `evals/reports/fly/last-pass`), 1 a hard rule failed, 2 it did not run

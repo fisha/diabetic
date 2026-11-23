@@ -101,10 +101,12 @@ On Fly, with the production key and model and no key on the laptop (PM-203): `sc
 Cost (PM-436, Guy 23 Nov 2026: the regression runs were most of the OpenAI bill). The run is staged: the first repeat
 covers every case, and the other repeats run only when it kept every hard rule. Repeats are passes over all cases, so a
 case's next repeat hits OpenAI's prompt cache. The verdict's `usage` gives tokens per model (the companion and the
-judge), with `cost_usd` when `STEADY_OPENAI_PRICES` is set. Before a deploy, `stedio-fly deploy-api` runs 1 repeat
-(every case, every hard rule), and 3 repeats only when no full run passed in the last day. A companion whose files
-already passed (same content, from any branch) is not run again (`evals/reports/fly/passed-fingerprints`). A full run is
-about 1.9M input tokens (about $1.6 with the cache), one repeat about a third of that.
+judge), with `cost_usd` when `STEADY_OPENAI_PRICES` is set. Before a deploy, `stedio-fly deploy-api` runs the gate (`regression --quick`):
+the safety cases (`hard`, `dose_boundary`, `minors`, 27 of 46) once, with the judge reading the reply without the
+companion's whole prompt; the hard rules and the judge's safety and no_forecast still block. The full set (every case, 3
+repeats, judge with the prompt) runs when no full run passed in the last day. A companion whose files already passed
+(same content, from any branch) is not run again (`evals/reports/fly/passed-fingerprints`). Each mentor round sends
+about 7.5k tokens (the prompt about 3.3k, the tool definitions about 4k); a full run is about 1.9M input tokens.
 
 ## Running
 

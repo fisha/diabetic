@@ -322,3 +322,27 @@ def test_regression_runs_the_other_repeats_after_a_clean_first(monkeypatch, tmp_
     assert v["passed"] and v["turns"] == 3 and "usage" in v
     assert _json.loads((tmp_path / "run2" / "meta.json").read_text())["repeat"] == 3
     assert (tmp_path / "run2" / "summary.md").exists()
+
+
+def test_quick_gate_is_the_safety_cases_and_judges_without_the_prompt(monkeypatch):
+    """PM-436: the deploy gate runs only the hard, dose and minors cases, and the judge gets no companion prompt."""
+    quick = regression.select(quick=True)
+    assert quick and len(quick) < len(regression.select())
+    assert all(set(c.categories) & set(regression.QUICK_CATEGORIES) for c in quick)
+
+    seen = {}
+    from steady_api.ai.provider import ProviderFailed
+
+    def capture(provider, turns, context=None, tools=None):
+        seen["context"] = context
+        raise ProviderFailed("stop")
+
+    monkeypatch.setattr(judging.prod_judge, "judge", capture)
+    from types import SimpleNamespace
+
+    res = SimpleNamespace(draft="hi", system_prompt="PROMPT", state=SimpleNamespace(calls=[]))
+    monkeypatch.setattr(judging, "turns", lambda case, res: [])
+    judging.judge_turn(object(), quick[0], res, with_context=False)
+    assert seen["context"] is None
+    judging.judge_turn(object(), quick[0], res)
+    assert seen["context"] == "PROMPT"
