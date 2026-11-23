@@ -2035,8 +2035,7 @@
             "enum": [
               "ok",
               "owned",
-              "coins",
-              "today"
+              "coins"
             ],
             "title": "Result",
             "type": "string"
@@ -5965,10 +5964,6 @@
             "title": "Earned Today",
             "type": "integer"
           },
-          "item_today": {
-            "title": "Item Today",
-            "type": "boolean"
-          },
           "shop": {
             "items": {
               "$ref": "#/components/schemas/ShopItemOut"
@@ -5995,8 +5990,7 @@
           "streak",
           "trivia_done",
           "walk",
-          "shop",
-          "item_today"
+          "shop"
         ],
         "title": "GamesOut",
         "type": "object"

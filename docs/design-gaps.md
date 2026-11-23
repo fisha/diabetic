@@ -2153,8 +2153,9 @@ or the invitation, so these are product rules, not clinical ones (`services/api 
 - Coins: every point a game scores is a coin, with no daily limit (Guy, 23 Nov 2026: "no limit, but I don't want
   anyone to open everything in one day"). The coin count at the top adds the score while the game runs. Today's
   question gives 5 for a right answer and is chosen from the person's logged meal names when one matches. Shop items
-  are the character items not yet opened, priced 150 + 75 per place in the list, one a day. Every end screen has
-  Play again and Back to games.
+  are the character items not yet opened, priced 150 + 75 per place in the list; any item in any order, as many as the
+  coins pay for (Guy, 23 Nov 2026: "you just buy what you have coins for"). Habits keep opening items on their own.
+  Every end screen has Play again and Back to games.
 - Walk: real minutes from the health store (exercise minutes, or minutes at 80 steps a minute or more). 10 minutes
   opens the next item (or gives 10 coins), 20 minutes 10 coins, 30 minutes 15 coins, once a day each.
 - The plate's "from your saved meals" round of the mockup was left out (it showed demo meals). The maze shows real
