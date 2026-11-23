@@ -3572,6 +3572,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sharing/{share_id}/young/activity": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Parent Activity
+         * @description How the child used Stedio in their last 7 or 30 days, for the confirmed parent only (PM-444).
+         */
+        get: operations["parent_activity_sharing__share_id__young_activity_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sharing/{share_id}/young/pending/{pending_id}": {
         parameters: {
             query?: never;
@@ -3759,7 +3779,7 @@ export interface paths {
         };
         /**
          * Preview
-         * @description One fixed sample sentence in a chosen voice and language, with the companion's name. Not a speech service.
+         * @description One fixed sample sentence in a chosen voice and language, with the mentor's fixed name. Not a speech service.
          */
         get: operations["preview_voice_preview_get"];
         put?: never;
@@ -4707,6 +4727,44 @@ export interface components {
             id: string;
             /** Kind */
             kind: string;
+        };
+        /**
+         * ChildActivityOut
+         * @description The child's app activity for their parent (PM-444): counts, days and a time only, never content or values.
+         */
+        ChildActivityOut: {
+            /** Active Days */
+            active_days: number;
+            /** Conversations */
+            conversations: number;
+            /** Days */
+            days: number;
+            /** Games */
+            games: components["schemas"]["GamePlaysOut"][];
+            /** Games On */
+            games_on: boolean;
+            /** Last Active At */
+            last_active_at: string | null;
+            logged: components["schemas"]["ChildLoggedOut"];
+            /** Messages */
+            messages: number;
+            /** Out Loud */
+            out_loud: number;
+            /** Trivia Days */
+            trivia_days: number;
+        };
+        /** ChildLoggedOut */
+        ChildLoggedOut: {
+            /** Activity */
+            activity: number;
+            /** Glucose */
+            glucose: number;
+            /** Insulin */
+            insulin: number;
+            /** Meal */
+            meal: number;
+            /** Note */
+            note: number;
         };
         /**
          * ClientErrorIn
@@ -5731,6 +5789,13 @@ export interface components {
              * @default en
              */
             locale: string;
+        };
+        /** GamePlaysOut */
+        GamePlaysOut: {
+            /** Id */
+            id: string;
+            /** Plays */
+            plays: number;
         };
         /** GamesOut */
         GamesOut: {
@@ -16240,6 +16305,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ParentYoungOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    parent_activity_sharing__share_id__young_activity_get: {
+        parameters: {
+            query?: {
+                days?: number;
+            };
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ChildActivityOut"];
                 };
             };
             /** @description Validation Error */
