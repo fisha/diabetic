@@ -3834,6 +3834,8 @@
   "care.consent_4": "The summary covers the last 180 days. The clinic can print it for your file.",
   "care.share": "Share with {clinic}",
   "care.not_now": "Not now",
+  "care.decline": "Decline",
+  "care.shared_toast": "Shared with {clinic}",
   "care.q_t": "Questions for the visit",
   "care.q_b": "One per line. The clinic sees them at the top of your summary.",
   "care.q_label": "Your questions",

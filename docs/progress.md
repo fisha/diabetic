@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-428, app #261): Guy asked that a clinic's connection request pop up in the app so the person can
+approve it at once, with a push too. The request now opens as a sheet over the main screens: when the app opens or comes
+back, at once when its push arrives while the app is open (no second banner then; it stays in the notification list),
+and when the push is tapped (which used to open Settings > Sharing > the request page). It is the request page's content
+(clinic, who asked, the parts with glucose always, the consent lines) with Share, Decline and Not now. Each request pops
+up by itself once per phone (ids only, in the phone's preferences); Not now leaves it on the main screen and in Settings.
+Not while viewing someone, during sign-in, onboarding or a consent update, under the app lock or in Quiet mode. The push
+itself was already sent (`clinic_request`) and still follows All notifications off and Quiet mode. The request page's
+decline button now says "Decline" (it used to say "Not now" but declined). Root `pnpm check` passed; e2e
+`tools/e2e/clinic-request.cjs` 34/34 (web; the push paths need a phone). No API change. Next: OTA.
+
 23 Nov 2026 (Jira PM-425): Guy asked for favorites in meal logging: save a meal to favorites, pick one when logging (the
 same breakfast every day, fewer photo-analysis calls), and suggest once to photograph a favorite that has no photo.
 Usual meals (DAP-15) are now "Favorites"/"מועדפים" with a star. The meal review has "Also save to favorites" with a
