@@ -20,7 +20,7 @@ predicts rankings or citations.
 
 | # | Finding | Owner | Why open |
 |---|---|---|---|
-| O1 | Cloudflare (stedio.io is proxied) can add its own "managed robots.txt" and block AI crawlers (AI Crawl Control / "Block AI bots"). If on, ChatGPT/Claude/Perplexity crawlers get blocked or a Disallow is prepended to our robots.txt | Guy (Cloudflare console) | Container cannot reach stedio.io or Cloudflare; check before launch, see search-console.md |
+| O1 | Cloudflare managed robots.txt / AI-crawler blocking. Checked 23 Nov 2026 20:38 UTC: robots.txt on stedio.io has no Cloudflare block and GPTBot gets 200. Re-check on launch day | done | — |
 | O2 | The home page H1 "Less to carry, every day." says nothing an engine can match to diabetes or AI mentor; the eyebrow above it does | Guy (copy) | Visible copy change needs approval. Suggestion: keep the H1, the title/description already carry the category |
 | O3 | Only one indexable content page (home). Engines answer "what is the best app for X" from pages that explain topics; Stedio has no "how it works with Dexcom / Libre / 780G", "for parents", "for clinics" pages | Guy (new pages need approval) | Biggest lever for AI answers after launch; propose a short page set when Guy wants it |
 | O4 | No third-party sources about Stedio (App Store / Google Play listing, press, LinkedIn/Crunchbase company page). AI engines lean on independent sources for entity facts | Guy | Add `sameAs` links to Organization when these exist |

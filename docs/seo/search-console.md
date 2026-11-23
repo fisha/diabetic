@@ -10,7 +10,7 @@
    which is expected and harmless). Submitting on launch day gives a clean first crawl.
 4. **Bing Webmaster Tools**: import the site from Search Console (one click after step 1). Bing's index feeds
    ChatGPT search and Copilot answers.
-5. **Cloudflare check** (open item O1): Security → Bots / AI Crawl Control: make sure "Block AI bots" / "managed
+5. **Cloudflare check** (O1, checked 23 Nov 2026: no managed block, GPTBot gets 200; re-check at launch): Security → Bots / AI Crawl Control: make sure "Block AI bots" / "managed
    robots.txt" is off, or set to allow search/answer crawlers (OAI-SearchBot, ChatGPT-User, PerplexityBot,
    Claude-SearchBot, Googlebot, Bingbot). Whether training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot) are
    allowed is Guy's choice; today robots.txt allows everyone.

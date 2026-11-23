@@ -13,7 +13,7 @@ Gemini…), with llms.txt, while it stays noindex, nofollow until he says otherw
 stedio.io, per-page titles/descriptions, Open Graph + share image, JSON-LD (Organization, WebSite, MobileApplication,
 FAQPage), sitemap.xml, robots Sitemap line, /llms.txt, /llms-full.txt and .md copies of the public pages, www -> apex.
 One switch `INDEXING` in apps/web/src/seo/site.ts (false). Docs in docs/seo/ (findings, claim map, Search Console and
-launch checklist). Open: Search Console domain property (DNS TXT, Guy), Cloudflare AI-crawler/managed robots check.
+launch checklist). Open: Search Console domain property (DNS TXT, Guy). Cloudflare AI-crawler check done (no block, GPTBot 200).
 23 Nov 2026 (Jira PM-459): Guy asked that the mentor know everything the app knows and can do, e.g. when to change the
 sensor or the infusion set. The always-on app block now has the set (last change, day N, the day a change is
 recommended, from set_end) and the sensor's warm-up, start and "end not known"; the app_data tool gains games (coins,
