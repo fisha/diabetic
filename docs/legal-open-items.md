@@ -9,7 +9,8 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 
 ## Filled in
 
-- 15 Nov 2026 (Guy): the company is **Ming GF Ltd, Tel Aviv, Israel**. It is the controller (privacy), the provider
+- 23 Nov 2026 (Guy, PM-456): the company is **Stedio Ltd, Tel Aviv, Israel** (was Ming GF Ltd from 15 Nov; privacy and
+  terms `2026-11-23T20:00:00Z`; lawyer to confirm the registered name and number). It is the controller (privacy), the provider
   and owner (terms), the operator (accessibility statement) and the footer line. No company number is shown (not
   needed for GDPR; add it if the lawyer wants it).
 - 18 Nov 2026 (Guy, PM-229): the privacy contact is **guy@mi-ng.com** (privacy policy "Who we are" and "Contact", en
