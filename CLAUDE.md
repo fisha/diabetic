@@ -32,10 +32,11 @@ merging any PR, in any of the four repositories, run the two skills in `.claude/
 Fill in the "Regulatory and privacy check" section of the PR template with the result. A fail blocks the merge; an
 at-risk item goes into the PR and, if not fixed, into Jira as an `open-item` task under PM-12.
 
-Companion changes (Guy, 17 Nov 2026, PM-198): a change to the companion's prompt, tools, model or safety filter also
-runs the fixed regression set (`evals/steady_evals/regression.py`, see `evals/README.md`) with a key before it is
-merged, and the PR says whether its hard rules passed. Without a key, the PR says it was not run; it is never reported
-as passed.
+Companion changes (Guy, 23 Nov 2026, PM-436, replaces the 17 Nov PM-198 rule): the fixed regression set
+(`evals/steady_evals/regression.py`, see `evals/README.md`) is NOT run for each change or deploy, because the runs were
+most of the OpenAI bill. Near the end of a day with many companion changes (prompt, tools, model or safety filter),
+suggest one run to Guy (`scripts/fly/stedio-fly evals`). A PR that changes the companion says the set was not run for
+it; it is never reported as passed.
 
 ## Repository layout
 
