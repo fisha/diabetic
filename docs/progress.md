@@ -18,6 +18,27 @@ admin signs in and when an admin opens /app at its start. The admin pages' "My a
 parts (guard, typecheck, lint, app 289 and web 13 tests) pass; e2e in the container (API + Next + app web export,
 Playwright): admin lands on Accounts, "My app" opens the app, a regular user is unchanged. Next: API deploy, web
 deploy, OTA.
+23 Nov 2026 (Jira PM-432, PM-434): Guy: insights repeat every day; general ones belong in the insights list, and a
+recurring pattern should prepare the person before the meal, like a mentor. Plan approved (behaviour-only words before
+the meal, in the app only, all users, lows never, 45 minutes before; lawyer question PM-433). Built: general insights
+(rise, timing, above, range_good, meal_time) leave the main screen; one mentor moment a day before a usual meal (log it,
+or an earlier dinner; a meal usually followed by a rise is chosen but never named before it), a look back 2 to 5 hours
+after the logged meal that opens it in the journal, rest after two days left; steadier insight tracking (a change must
+hold two runs, a topic back within 14 days returns quietly); the late-lunch "not yet" reply no longer says "keeps
+diabetes balanced" (PM-434). API `GET /insights/moment`, read keys `mo:`/`mb:`, history in `routine_state` and the
+export (`mentor_moments.csv`); no migration. API tests pass except `test_body_over_the_last_24_hours_rolls_past_midnight`,
+which fails on main too at this hour; root `pnpm check` passes; e2e `tools/e2e/mentor-moments.cjs` 8/8 en and he.
+Merged 23 Nov (api #191, app #263). Next: API deploy, then OTA.
+
+23 Nov 2026 (Jira PM-431, api #189): Guy's feedback on the morning recap and weekly comparison (WhatsApp and app):
+don't open with yesterday's in-range share (he knows it, and on a bad day "you were in your range" reads wrong); one
+meal logged by someone who logs three matters more than what it was; the weekly bullet had too many numbers; nudge to
+action in a measured, mentor-like way. The recap now compares the day honestly with the week before, leads with a drop
+in meal logging against the person's own 14-day usual (app-logged, not hidden, no pump carbs) with one open question,
+keeps to two figures a fact, and may end with one small step about noticing or logging. The weeks are told in words,
+up to four facts; a recap or weekly fact with more than 5 figures is dropped in code. The chat prompt no longer adds
+its own "don't change your settings" (he-hard-04). API tests pass; Fly regression set on bf1720b passed (189/189 hard
+rules). Next: API deploy (no OTA needed).
 
 23 Nov 2026 (Jira PM-425): Guy asked for favorites in meal logging: save a meal to favorites, pick one when logging (the
 same breakfast every day, fewer photo-analysis calls), and suggest once to photograph a favorite that has no photo.
@@ -50,6 +71,12 @@ for every tile (meals, carbs, protein, weighed; steps, distance, heart rate, exe
 latest in the window; sleep the last night that ended in it), titles "Body/Food, last 24 hours", and the tiles' sheets
 show the same window. Day stays the calendar day. API `GET /health-data/window`; no migration. Root `pnpm check` and API
 body tests pass; e2e `tools/e2e/rolling-24h.cjs` on the web export. Next: API deploy, then OTA.
+
+23 Nov 2026 (Jira PM-426, PM-427): Guy agreed to name in the privacy policy what followers see since PM-422 (sensor
+state, last set change, the pump's sensor time left) and their own reminders; the always-shared part is now "Readings,
+time in range, sensor and set changes". Folded in Guy's rename of the AI to "mentor" in privacy and terms (en, he) and
+six consent strings, so there is one re-consent: privacy and terms versions `2026-11-23T08:00:00Z` (api #186, #187;
+web #62, #63). Root `pnpm check` and `tests/test_legal.py` pass. Next: API and web deploy, then OTA.
 
 22 Nov 2026 (Jira PM-422): Guy asked that someone viewing another person's data see the set change and sensor rows
 at the bottom of Overview, view only; that the viewer can set a reminder for themselves about that person's set or

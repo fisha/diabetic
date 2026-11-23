@@ -2417,6 +2417,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/insights/moment": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Moment
+         * @description The mentor moment for the main screen now (PM-432): one card before a meal the person usually has, chosen from
+         *     their own past records, and one look back after it. Never for someone viewing the person's data.
+         */
+        get: operations["get_moment_insights_moment_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/insights/updates": {
         parameters: {
             query?: never;
@@ -6739,6 +6760,34 @@ export interface components {
             text: string | null;
             /** Via */
             via: string;
+        };
+        /** MomentOut */
+        MomentOut: {
+            /** Body */
+            body: string;
+            /** Key */
+            key: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "look" | "late" | "log";
+            /**
+             * Phase
+             * @enum {string}
+             */
+            phase: "before" | "after";
+            /** Record At */
+            record_at?: string | null;
+            /** Record Id */
+            record_id?: string | null;
+            /**
+             * Slot
+             * @enum {string}
+             */
+            slot: "breakfast" | "lunch" | "dinner";
+            /** Title */
+            title: string;
         };
         /**
          * NicknameIn
@@ -13421,6 +13470,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["LearningDaysOut"];
+                };
+            };
+        };
+    };
+    get_moment_insights_moment_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MomentOut"] | null;
                 };
             };
         };

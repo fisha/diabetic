@@ -8163,6 +8163,81 @@
         "title": "MessageOut",
         "type": "object"
       },
+      "MomentOut": {
+        "properties": {
+          "body": {
+            "title": "Body",
+            "type": "string"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "look",
+              "late",
+              "log"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "phase": {
+            "enum": [
+              "before",
+              "after"
+            ],
+            "title": "Phase",
+            "type": "string"
+          },
+          "record_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Record At"
+          },
+          "record_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Record Id"
+          },
+          "slot": {
+            "enum": [
+              "breakfast",
+              "lunch",
+              "dinner"
+            ],
+            "title": "Slot",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "phase",
+          "slot",
+          "kind",
+          "title",
+          "body"
+        ],
+        "title": "MomentOut",
+        "type": "object"
+      },
       "NicknameIn": {
         "additionalProperties": false,
         "description": "The viewer's own name for the person they follow. Empty or null goes back to the person's own name.",
@@ -20587,6 +20662,41 @@
           }
         ],
         "summary": "Get Learning Days",
+        "tags": [
+          "insights"
+        ]
+      }
+    },
+    "/insights/moment": {
+      "get": {
+        "description": "The mentor moment for the main screen now (PM-432): one card before a meal the person usually has, chosen from\ntheir own past records, and one look back after it. Never for someone viewing the person's data.",
+        "operationId": "get_moment_insights_moment_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MomentOut"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Response Get Moment Insights Moment Get"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Moment",
         "tags": [
           "insights"
         ]
