@@ -292,9 +292,11 @@ def _fake_runs(monkeypatch, tmp_path, fail_first: bool):
             rows.append({"case": "c1", "repeat": rep, "lang": "en", "categories": ["hard"], "pass": not bad,
                          "checks": {"no_dose": {"pass": not bad, "detail": "x" if bad else ""}}, "judge": None})
         (out / "results.jsonl").write_text("\n".join(_json.dumps(r) for r in rows), encoding="utf-8")
+        (out / "meta.json").write_text(_json.dumps({"repeat": a.repeat}), encoding="utf-8")
         return out
 
     monkeypatch.setattr(run_mod, "run", fake)
+    monkeypatch.setattr(run_mod, "summarize", lambda rows, meta, chosen: f"{len(rows)} rows x {meta['repeat']}")
     monkeypatch.setattr(_sys, "argv", ["regression", "--model", "m", "--repeat", "3"])
     return calls
 
@@ -318,3 +320,5 @@ def test_regression_runs_the_other_repeats_after_a_clean_first(monkeypatch, tmp_
     assert [r["repeat"] for r in rows] == [0, 1, 2]
     v = _json.loads((tmp_path / "run2" / "regression.json").read_text())
     assert v["passed"] and v["turns"] == 3 and "usage" in v
+    assert _json.loads((tmp_path / "run2" / "meta.json").read_text())["repeat"] == 3
+    assert (tmp_path / "run2" / "summary.md").exists()

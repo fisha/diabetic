@@ -110,6 +110,11 @@ def main() -> None:
         with (out / "results.jsonl").open("w", encoding="utf-8") as f:
             for r in rows:
                 f.write(json.dumps(r, ensure_ascii=False, default=str) + "\n")
+        meta = json.loads((out / "meta.json").read_text(encoding="utf-8"))
+        meta["repeat"] = repeats
+        (out / "meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
+        chosen = cases_mod.load(split="heldout", langs=LANGS, ids=set(a.case))
+        (out / "summary.md").write_text(run_mod.summarize(rows, meta, chosen), encoding="utf-8")
         v = verdict(rows)
     elif not v["passed"] and repeats > 1:
         v["stopped_after_first_repeat"] = True
