@@ -1119,6 +1119,164 @@
         "title": "BreakScheduleIO",
         "type": "object"
       },
+      "BroadcastAudienceOut": {
+        "properties": {
+          "all_off": {
+            "title": "All Off",
+            "type": "integer"
+          },
+          "opted_out": {
+            "title": "Opted Out",
+            "type": "integer"
+          },
+          "quiet": {
+            "title": "Quiet",
+            "type": "integer"
+          },
+          "reach": {
+            "title": "Reach",
+            "type": "integer"
+          },
+          "reach_en": {
+            "title": "Reach En",
+            "type": "integer"
+          },
+          "reach_he": {
+            "title": "Reach He",
+            "type": "integer"
+          },
+          "with_phone": {
+            "title": "With Phone",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "with_phone",
+          "reach",
+          "reach_he",
+          "reach_en",
+          "opted_out",
+          "all_off",
+          "quiet"
+        ],
+        "title": "BroadcastAudienceOut",
+        "type": "object"
+      },
+      "BroadcastIn": {
+        "additionalProperties": false,
+        "properties": {
+          "expected_reach": {
+            "minimum": 0.0,
+            "title": "Expected Reach",
+            "type": "integer"
+          },
+          "text_en": {
+            "default": "",
+            "maxLength": 240,
+            "title": "Text En",
+            "type": "string"
+          },
+          "text_he": {
+            "default": "",
+            "maxLength": 240,
+            "title": "Text He",
+            "type": "string"
+          }
+        },
+        "required": [
+          "expected_reach"
+        ],
+        "title": "BroadcastIn",
+        "type": "object"
+      },
+      "BroadcastOut": {
+        "properties": {
+          "audience": {
+            "title": "Audience",
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "failed": {
+            "title": "Failed",
+            "type": "integer"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "sent": {
+            "title": "Sent",
+            "type": "integer"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "text_en": {
+            "title": "Text En",
+            "type": "string"
+          },
+          "text_he": {
+            "title": "Text He",
+            "type": "string"
+          },
+          "withheld": {
+            "title": "Withheld",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "created_at",
+          "text_he",
+          "text_en",
+          "status",
+          "finished_at",
+          "audience",
+          "sent",
+          "withheld",
+          "failed"
+        ],
+        "title": "BroadcastOut",
+        "type": "object"
+      },
+      "BroadcastsOut": {
+        "properties": {
+          "audience": {
+            "$ref": "#/components/schemas/BroadcastAudienceOut"
+          },
+          "sent": {
+            "items": {
+              "$ref": "#/components/schemas/BroadcastOut"
+            },
+            "title": "Sent",
+            "type": "array"
+          }
+        },
+        "required": [
+          "audience",
+          "sent"
+        ],
+        "title": "BroadcastsOut",
+        "type": "object"
+      },
       "CareClinicOut": {
         "properties": {
           "city": {
@@ -11260,6 +11418,11 @@
             "title": "Photo Retention",
             "type": "string"
           },
+          "product_updates": {
+            "default": true,
+            "title": "Product Updates",
+            "type": "boolean"
+          },
           "sensor_end_options": {
             "additionalProperties": {
               "items": {
@@ -11524,6 +11687,17 @@
               }
             ],
             "title": "Photo Retention"
+          },
+          "product_updates": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Product Updates"
           },
           "sensor_end_reminder": {
             "anyOf": [
@@ -14279,6 +14453,80 @@
         "summary": "Similar Workouts",
         "tags": [
           "daily"
+        ]
+      }
+    },
+    "/admin/broadcasts": {
+      "get": {
+        "operationId": "list_broadcasts_admin_broadcasts_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BroadcastsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Broadcasts",
+        "tags": [
+          "admin"
+        ]
+      },
+      "post": {
+        "description": "Sends the update to everyone it reaches now. The page shows the reach and asks to confirm it first.",
+        "operationId": "send_broadcast_admin_broadcasts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BroadcastIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BroadcastOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "reach_changed, already_sending or repeated"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Send Broadcast",
+        "tags": [
+          "admin"
         ]
       }
     },
