@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-444): Guy asked that a parent viewing their child's data sees, in Settings, statistics of what
+the child does in the app. Built: on the viewer's Settings, a confirmed parent of a minor gets "{name}'s app use" with
+the child's last activity; it opens counts for 7 or 30 days: days with activity, entries the child logged themselves
+(meals, insulin, glucose checks, activity, notes; device data never counts), conversations with the mentor, messages
+sent and how many out loud, the question of the day and each game played. Counts and a time only, never content; not
+the challenges or stickers, which the child is told are theirs alone. API `GET /sharing/{id}/young/activity`, game plays
+now kept per day for 35 days (G-129). Privacy policy 2026-11-23T16:00:00Z (forced re-accept). API 957 pass; app 299
+pass; root `pnpm check` passes; e2e `tools/e2e/child-activity.cjs` 32/32. Next: API deploy, web deploy, OTA.
 23 Nov 2026 (Jira PM-443): Guy found the mentor still called "sweet spot" on Itay's account, a name kept from when it
 could be changed (PM-295 renamed only "Noa" on accounts made after 14 Nov). Fixed: API migration `a7c9e1b3d5f8` (after
 `d6f8a0b2c4e7`) sets the name to "Stedio" on every profile, a save always stores "Stedio", and the prompts, pushes and

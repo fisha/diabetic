@@ -28317,5 +28317,201 @@
       "translation"
     ],
     "note": "Accessibility hint on the reading at the top of a game: tapping it closes the game and opens Overview."
+  },
+  "yg.ua_row": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_sub": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_lead": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_period": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_7": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_30": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_last": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_active": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_of": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_logged_h": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_meal": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_insulin": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_glucose": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_activity": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_mentor_h": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_conv": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_msgs": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_loud": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_games_h": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_trivia_days": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_plays": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_no_games": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_games_off": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_private": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
+  },
+  "yg.ua_retry": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's view of their child's app use, counts only (PM-444, Guy 23 Nov 2026)."
   }
 }
