@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-425): Guy asked for favorites in meal logging: save a meal to favorites, pick one when logging (the
+same breakfast every day, fewer photo-analysis calls), and suggest once to photograph a favorite that has no photo.
+Usual meals (DAP-15) are now "Favorites"/"מועדפים" with a star. The meal review has "Also save to favorites" with a
+name (saved with the meal; hidden for a favorite, a journal edit or after a correction); the saved screen keeps "Add to
+favorites". A favorite keeps the meal's first photo, shown in its row; one without a photo gets a single suggestion on
+the saved screen (camera only, uploaded and kept with the favorite, never analysed; not offered with "delete after
+analysis", a parent's photo block or the web demo). Logging a favorite clears earlier photos and calls no model. The
+favorite photo follows the photo setting like any meal photo and goes with the favorite or the account. API migration
+`c5e7a9b1d3f6`, `PATCH /meal/usual/{id}`. Root `pnpm check` and API tests pass; e2e `tools/e2e/favorites.cjs` 43/43.
+Next: API deploy, then OTA.
+
 23 Nov 2026 (Jira PM-424, app #260, api #184): Guy saw "Your first days" still listing meal-time impressions he had
 already answered ("no need to show what they already answered; the model should learn from it"). Impressions answered
 before the screen opens are hidden (one answered in this visit stays until leaving, so a mis-tap can be changed); with

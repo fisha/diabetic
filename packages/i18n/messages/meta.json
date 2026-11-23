@@ -20385,14 +20385,14 @@
     "review": [
       "translation"
     ],
-    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
   },
   "meal.usual_save": {
     "board": "Meal",
     "review": [
       "translation"
     ],
-    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
   },
   "meal.usual_name": {
     "board": "Meal",
@@ -20413,14 +20413,14 @@
     "review": [
       "translation"
     ],
-    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
   },
   "meal.usual_full": {
     "board": "Meal",
     "review": [
       "translation"
     ],
-    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
   },
   "meal.usual_failed": {
     "board": "Meal",
@@ -20434,7 +20434,70 @@
     "review": [
       "translation"
     ],
-    "note": "Carb range and usual meals (DAP-15, Guy approved 16 Nov 2026)."
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
+  },
+  "meal.fav_toggle": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
+  },
+  "meal.fav_toggle_b": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
+  },
+  "meal.fav_photo_t": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
+  },
+  "meal.fav_photo_b": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
+  },
+  "meal.fav_photo_take": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
+  },
+  "meal.fav_photo_later": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
+  },
+  "meal.fav_photo_saved": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
+  },
+  "meal.fav_photo_failed": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
+  },
+  "meal.fav_photo_a11y": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite meals (PM-425, Guy 23 Nov 2026): usual meals shown as Favorites, with one optional photo suggested once."
   },
   "com.in_call": {
     "board": "Companion",
