@@ -32,7 +32,9 @@ DB_APP="stedio-db"
 API_APP="stedio-api"
 WEB_APP="stedio-web"
 RESEARCH_APP="stedio-research"
-WEB_URL="https://${WEB_APP}.fly.dev"
+# Public addresses on stedio.io (Cloudflare DNS, Fly certificates; PM-451). The *.fly.dev names keep working.
+WEB_URL="https://stedio.io"
+API_URL="https://api.stedio.io"
 API_ENV="$REPO/services/api/.env"
 BUILDS_INSTALL="${STEDIO_INSTALL_DIR:-/Volumes/Studio SSD/Workspace/steady-builds/install}"
 BACKUPS="${STEDIO_BACKUP_DIR:-/Volumes/Studio SSD/Workspace/steady-db-backups}"
@@ -256,7 +258,7 @@ cmd_deploy_api() {
     --ignorefile "$REPO/services/api/.dockerignore" --ha=false --remote-only ${extra[@]+"${extra[@]}"}
   # Read from the Machine config (ssh is often not ready right after a deploy).
   echo "worker setting on the running Machine: $(fly machines list -a "$API_APP" --json | python3 -c 'import json,sys; print(",".join(m["config"].get("env",{}).get("STEADY_RUN_WORKER","unset") for m in json.load(sys.stdin)))')"
-  curl -fsS -m 15 --retry 8 --retry-delay 5 --retry-all-errors "https://$API_APP.fly.dev/health" && echo
+  curl -fsS -m 15 --retry 8 --retry-delay 5 --retry-all-errors "$API_URL/health" && echo
 }
 
 # install/latest.json: the newest build number, read by the API's GET /app/version so an older install offers the new
@@ -351,7 +353,7 @@ cmd_copy_data() {
 cmd_status() {
   for app in "$DB_APP" "$API_APP" "$WEB_APP"; do echo "--- $app"; fly status -a "$app" 2>&1 | sed -n '1,20p'; done
   echo "--- volumes"; fly volumes list -a "$DB_APP"; fly volumes list -a "$API_APP"
-  echo "--- health"; curl -s -m 10 -o /dev/null -w "api %{http_code}\n" "https://$API_APP.fly.dev/health"; curl -s -m 20 -o /dev/null -w "web %{http_code}\n" "$WEB_URL/he"
+  echo "--- health"; curl -s -m 10 -o /dev/null -w "api %{http_code}\n" "$API_URL/health"; curl -s -m 20 -o /dev/null -w "web %{http_code}\n" "$WEB_URL/he"
 }
 
 cmd_research_setup() {
