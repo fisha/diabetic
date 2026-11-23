@@ -4928,7 +4928,7 @@ export interface components {
              * Result
              * @enum {string}
              */
-            result: "ok" | "owned" | "coins" | "today";
+            result: "ok" | "owned" | "coins";
         };
         /** CareClinicOut */
         CareClinicOut: {
@@ -6251,8 +6251,6 @@ export interface components {
             coins: number;
             /** Earned Today */
             earned_today: number;
-            /** Item Today */
-            item_today: boolean;
             /** Shop */
             shop: components["schemas"]["ShopItemOut"][];
             /** Streak */
