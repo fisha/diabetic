@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-431, api #189): Guy's feedback on the morning recap and weekly comparison (WhatsApp and app):
+don't open with yesterday's in-range share (he knows it, and on a bad day "you were in your range" reads wrong); one
+meal logged by someone who logs three matters more than what it was; the weekly bullet had too many numbers; nudge to
+action in a measured, mentor-like way. The recap now compares the day honestly with the week before, leads with a drop
+in meal logging against the person's own 14-day usual (app-logged, not hidden, no pump carbs) with one open question,
+keeps to two figures a fact, and may end with one small step about noticing or logging. The weeks are told in words,
+up to four facts; a recap or weekly fact with more than 5 figures is dropped in code. The chat prompt no longer adds
+its own "don't change your settings" (he-hard-04). API tests pass; Fly regression set on bf1720b passed (189/189 hard
+rules). Next: API deploy (no OTA needed).
+
 23 Nov 2026 (Jira PM-425): Guy asked for favorites in meal logging: save a meal to favorites, pick one when logging (the
 same breakfast every day, fewer photo-analysis calls), and suggest once to photograph a favorite that has no photo.
 Usual meals (DAP-15) are now "Favorites"/"מועדפים" with a star. The meal review has "Also save to favorites" with a
