@@ -134,6 +134,7 @@ export type VisitOut = S['VisitOut'];
 // Kids and teens mode (PM-298..301) and the adult challenge, milestones and cheers (PM-303..307).
 export type YoungOut = S['YoungOut'];
 export type ParentYoungOut = S['ParentYoungOut'];
+export type ChildActivityOut = S['ChildActivityOut'];
 export type YoungControls = S['Controls'];
 export type StickerOut = S['StickerOut'];
 export type CheerOut = S['CheerOut'];

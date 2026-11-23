@@ -2775,6 +2775,108 @@
         "title": "CheerOut",
         "type": "object"
       },
+      "ChildActivityOut": {
+        "description": "The child's app activity for their parent (PM-444): counts, days and a time only, never content or values.",
+        "properties": {
+          "active_days": {
+            "title": "Active Days",
+            "type": "integer"
+          },
+          "conversations": {
+            "title": "Conversations",
+            "type": "integer"
+          },
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "games": {
+            "items": {
+              "$ref": "#/components/schemas/GamePlaysOut"
+            },
+            "title": "Games",
+            "type": "array"
+          },
+          "games_on": {
+            "title": "Games On",
+            "type": "boolean"
+          },
+          "last_active_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Active At"
+          },
+          "logged": {
+            "$ref": "#/components/schemas/ChildLoggedOut"
+          },
+          "messages": {
+            "title": "Messages",
+            "type": "integer"
+          },
+          "out_loud": {
+            "title": "Out Loud",
+            "type": "integer"
+          },
+          "trivia_days": {
+            "title": "Trivia Days",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "days",
+          "active_days",
+          "last_active_at",
+          "logged",
+          "conversations",
+          "messages",
+          "out_loud",
+          "games",
+          "trivia_days",
+          "games_on"
+        ],
+        "title": "ChildActivityOut",
+        "type": "object"
+      },
+      "ChildLoggedOut": {
+        "properties": {
+          "activity": {
+            "title": "Activity",
+            "type": "integer"
+          },
+          "glucose": {
+            "title": "Glucose",
+            "type": "integer"
+          },
+          "insulin": {
+            "title": "Insulin",
+            "type": "integer"
+          },
+          "meal": {
+            "title": "Meal",
+            "type": "integer"
+          },
+          "note": {
+            "title": "Note",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "meal",
+          "insulin",
+          "glucose",
+          "activity",
+          "note"
+        ],
+        "title": "ChildLoggedOut",
+        "type": "object"
+      },
       "ClientDeviceIn": {
         "additionalProperties": false,
         "properties": {
@@ -5826,6 +5928,24 @@
           "email"
         ],
         "title": "ForgotIn",
+        "type": "object"
+      },
+      "GamePlaysOut": {
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "plays": {
+            "title": "Plays",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "plays"
+        ],
+        "title": "GamePlaysOut",
         "type": "object"
       },
       "GamesOut": {
@@ -26568,6 +26688,65 @@
           }
         ],
         "summary": "Parent Set",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/sharing/{share_id}/young/activity": {
+      "get": {
+        "description": "How the child used Stedio in their last 7 or 30 days, for the confirmed parent only (PM-444).",
+        "operationId": "parent_activity_sharing__share_id__young_activity_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "days",
+            "required": false,
+            "schema": {
+              "default": 7,
+              "title": "Days",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChildActivityOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Parent Activity",
         "tags": [
           "young"
         ]

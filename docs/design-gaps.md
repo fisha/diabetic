@@ -2169,7 +2169,25 @@ The design shows the breakdown sheets with data only. Added states, using existi
 colour) while the sheet reads, and the error banner "Couldn't load this list. Check your connection and try again."
 with Try again when the read fails and nothing is kept on the phone. A failed read never shows "No meals logged today yet".
 
-### G-129 · Support requests in the app, and the admin area (**asked by Guy, 23 Nov 2026, PM-445..448**)
+### G-129 · A parent's view of their child's app use (**asked by Guy, 23 Nov 2026, PM-444**)
+
+Guy: when a parent views their child's data, Settings should also show statistics of what the child does in the app
+(how many times they entered data, which games they played, anything that shows whether the child uses the app). The
+design has no such screen. Built with existing parts only (`NavRow`, `Group`, `Segmented`, `NoteBox`, `PushedScreen`):
+
+- Viewer Settings, under "Kids and Teen mode for {name}": the row "{name}'s app use" with "Last activity: today, 15:08"
+  under it. Only a confirmed parent of a minor (guardian share) sees it; any other follower has no row (the API answers
+  404).
+- The screen: 7 days / 30 days; last activity and days with activity; entries the child logged themselves (meals,
+  insulin, glucose checks, activity, notes; device and health-store data never counts); conversations with the mentor,
+  messages sent and how many out loud; question of the day (days answered) and each game played with how many times.
+  A note that conversations stay private.
+- Product rules: counts, days and one time only, never a value, a meal's contents or a word of a conversation. Not the
+  weekly challenges, the week ring or the sticker book, because the child is told challenges are theirs alone ("Only you
+  see them"). Games played before 23 Nov 2026 have no day, so they are not counted in a period.
+- States: a spinner while it reads; "Couldn't load this. Check your connection and try again." with Try again.
+
+### G-130 · Support requests in the app, and the admin area (**asked by Guy, 23 Nov 2026, PM-445..448**)
 
 The design has no support or admin screens. Built with existing parts, no new look:
 
