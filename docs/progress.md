@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-443): Guy found the mentor still called "sweet spot" on Itay's account, a name kept from when it
+could be changed (PM-295 renamed only "Noa" on accounts made after 14 Nov). Fixed: API migration `a7c9e1b3d5f8` (after
+`d6f8a0b2c4e7`) sets the name to "Stedio" on every profile, a save always stores "Stedio", and the prompts, pushes and
+voice preview use the fixed name, never the stored one (api #200); the app replaces any saved or cached name with
+"Stedio" when it loads the answers (app #269). API suite 956 pass on Postgres; app tests 299 pass and typecheck pass.
+Regression set not run here (no key; prompt text unchanged for anyone already called Stedio). Next: API deploy
+(migration, eval gate), then OTA.
 23 Nov 2026 (Jira PM-442): Guy found Food today > "Meals today" opening empty although the tile said 2. A fresh account
 lists the meals correctly and the production logs a few minutes later showed no errors. The tile shows its kept answer
 when a read fails, but the sheet had no kept answer (a failed read read as "No meals logged today yet") and was blank
