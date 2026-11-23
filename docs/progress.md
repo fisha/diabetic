@@ -13,6 +13,15 @@ values when hovering the charts. The API returns exact counts for platforms, cou
 (the admin Users page already shows each person's platform and region); the two 30-day charts show the day and its
 count on hover, and on keyboard focus with the arrow keys; the "<5" sentence left the subtitle (en + he). API tests,
 web typecheck, lint and tests pass; checked in a browser against the local test server. Next: API and web deploy.
+23 Nov 2026 (Jira PM-463): Guy asked for one email template in the spirit of the website (white, logo in the header,
+footer with unsubscribe, company name and address) and approved the design preview. Every API email (verification and
+reset codes, approvals, clinic, demo, iPhone, support, parent safety alerts) now goes out as HTML in that layout plus the
+same plain text, `steady_api/mail_layout.py` and `mailer.py`: codes in a tinted box, a minor's words in a grey box,
+Hebrew emails right to left, footer "Stedio Ltd · 6908716 Tel Aviv, Israel" (Hebrew in Hebrew emails). Email copy is
+unchanged. Unsubscribe (`/email/unsubscribe`, an encrypted token so the address never shows in the link; the page asks
+before acting, one-click POST per RFC 8058) stops "updates" emails only, which carry List-Unsubscribe headers; none are
+sent yet. Account and safety emails always arrive and their footer says so. Opt-outs are kept as keyed hashes
+(`email_optouts`, migration `d2f4a6b8c0e1`). Logo PNG served at `/email/logo.png`. API tests pass. Next: API deploy.
 23 Nov 2026 (Jira PM-459): Guy asked that the mentor know everything the app knows and can do, e.g. when to change the
 sensor or the infusion set. The always-on app block now has the set (last change, day N, the day a change is
 recommended, from set_end) and the sensor's warm-up, start and "end not known"; the app_data tool gains games (coins,
