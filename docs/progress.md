@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-470): Guy said the website's admin sign-in keeps signing him out. Cause: the dashboard kept its
+session in page memory only since G-12, so every reload or new tab signed out (not Cloudflare or the new domains).
+Now the website's session lives in an HttpOnly, Secure, SameSite=Strict cookie (`steady_web_session`, set by the API
+when the website sends `X-Steady-Session: cookie`, host-only on the website through `/api/steady`, path
+`/api/steady/auth`, 30 days); the access token stays in memory, refreshes are one at a time across tabs (Web Locks),
+sign-out ends all tabs; the admin handoff from the app moves into the cookie at once. Privacy policy
+`2026-11-24T01:00:00Z` names the cookie (forced re-accept). API auth tests 15 pass; web tests, typecheck, lint pass;
+Playwright on a production build: reload, new tab, two tabs reloading at once, access token expiry, sign-out in all
+tabs. Next: deploy API, then website.
 23 Nov 2026 (Jira PM-466): Guy asked to connect support requests opened in the app to Jira Service Management (SUP)
 instead of the website's admin support, with the person synced as the customer, a customer portal with onboarding and
 how-to articles, all on the JSM Free plan. Built: each request is a JSM customer request raised for the person (email,

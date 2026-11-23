@@ -192,9 +192,10 @@ ONB-17 and SET-06 show "Voice A, B, C". The brief says not to invent voices or l
 - Reuse the mobile AUTH-02..05 layouts in a centred 440 px card on the web. These are the same fields and copy.
 
 **Implemented**
-- A centred sign-in card with the mobile fields and copy. The session is kept in memory only, so a reload or a new
-  tab signs out. Nothing about the session is stored in the browser. Recovery keeps its G-04 state (no email
-  provider). To revisit: a secure HTTP-only cookie once the API is hosted.
+- A centred sign-in card with the mobile fields and copy. Recovery keeps its G-04 state (no email provider).
+- 23 Nov 2026 (PM-470): the session no longer lives in memory only. The refresh token is in an HttpOnly, Secure,
+  SameSite=Strict cookie that page scripts cannot read, so a reload or a new tab stays signed in; the short access
+  token stays in memory and nothing about the session is in browser storage. The card's note says so.
 
 ### G-13 · Theme setting: "System" option missing (proposed)
 

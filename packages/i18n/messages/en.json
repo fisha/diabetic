@@ -2735,7 +2735,7 @@
   "wd.si_failed": "Something went wrong on our side. Try again in a moment.",
   "wd.si_go": "Sign in",
   "wd.si_invalid": "That email and password don’t match an account.",
-  "wd.si_memory": "For your privacy the browser keeps nothing: reloading the page signs you out.",
+  "wd.si_memory": "Your sign-in is kept in a secure cookie that the page itself cannot read, so a reload or a new tab keeps you signed in. Signing out removes it.",
   "wd.si_offline": "Couldn’t reach Stedio. Check your connection and try again.",
   "wd.si_pw": "Password",
   "wd.si_t": "Sign in to your dashboard",
