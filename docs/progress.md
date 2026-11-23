@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+23 Nov 2026 (Jira PM-432, PM-434): Guy: insights repeat every day; general ones belong in the insights list, and a
+recurring pattern should prepare the person before the meal, like a mentor. Plan approved (behaviour-only words before
+the meal, in the app only, all users, lows never, 45 minutes before; lawyer question PM-433). Built: general insights
+(rise, timing, above, range_good, meal_time) leave the main screen; one mentor moment a day before a usual meal (log it,
+or an earlier dinner; a meal usually followed by a rise is chosen but never named before it), a look back 2 to 5 hours
+after the logged meal that opens it in the journal, rest after two days left; steadier insight tracking (a change must
+hold two runs, a topic back within 14 days returns quietly); the late-lunch "not yet" reply no longer says "keeps
+diabetes balanced" (PM-434). API `GET /insights/moment`, read keys `mo:`/`mb:`, history in `routine_state` and the
+export (`mentor_moments.csv`); no migration. API tests pass except `test_body_over_the_last_24_hours_rolls_past_midnight`,
+which fails on main too at this hour; root `pnpm check` passes; e2e `tools/e2e/mentor-moments.cjs` 8/8 en and he.
+Next: API deploy, then OTA.
+
 23 Nov 2026 (Jira PM-425): Guy asked for favorites in meal logging: save a meal to favorites, pick one when logging (the
 same breakfast every day, fewer photo-analysis calls), and suggest once to photograph a favorite that has no photo.
 Usual meals (DAP-15) are now "Favorites"/"מועדפים" with a star. The meal review has "Also save to favorites" with a
