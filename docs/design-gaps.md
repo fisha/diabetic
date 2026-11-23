@@ -2130,3 +2130,12 @@ meal" chip of PM-408, the journal opened at a meal):
   "only when I start", or while viewing someone. Product rules, not clinical ones.
 - Insight tracking: a change counts once seen on two runs in a row; a topic back within 14 days of going away returns
   quietly with its earlier change time, so a read insight stays read.
+
+### G-126 · Admin app update pushes; "App updates" switch in Notifications (**asked by Guy, 23 Nov 2026, PM-440**)
+
+Guy: an admin should be able to send pushes with text about updates to all users. No Duet board or admin design shows
+this. Built with existing pieces only: Admin > App updates on the website (the admin pages' card, field, table and
+confirm dialog look): Hebrew and English text (240 characters each), a phone-like preview, the reach now, a confirm
+dialog with the number, and the sent list with counts. In the app, an "App updates" / "עדכונים על האפליקציה" row in
+Settings > Notifications > What to tell me, on by default; All notifications off, quiet mode and quiet hours withhold
+it too, and nothing is sent later. Default on with opt-out is open for the lawyer (PM-441).
