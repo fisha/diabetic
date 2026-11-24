@@ -61,9 +61,9 @@ const server = http.createServer((req, res) => { let p = path.join(root, decodeU
       check(`${lang}: time in range tile on top`, (await tirTiles.count()) === 1, String(await tirTiles.count()));
       const tile = await tirTiles.first().boundingBox().catch(() => null);
       check(`${lang}: tile within the first 200 points`, !!tile && tile.y < 200, JSON.stringify(tile));
-      // The line of cards above the two tiles (Guy, 24 Nov 2026).
+      // The line of cards under the two tiles (Guy, 24 Nov 2026, 11:10).
       const feed = await page.getByRole('button', { name: L.ins }).first().boundingBox().catch(() => null);
-      check(`${lang}: the insights line sits above the tiles`, !!feed && !!tile && feed.y + feed.height <= tile.y, JSON.stringify({ feed, tile }));
+      check(`${lang}: the insights line sits under the tiles`, !!feed && !!tile && feed.y >= tile.y + tile.height, JSON.stringify({ feed, tile }));
       await page.screenshot({ path: path.join(out, `${lang}-1-overview.png`) });
       // A tap moves the tile to the next period, and the period below with it (Day -> Week).
       await tirTiles.first().click(); await page.waitForTimeout(2500);
@@ -130,6 +130,9 @@ const server = http.createServer((req, res) => { let p = path.join(root, decodeU
       check(`kid ${lang}: My days has no page title`, !heads.includes(K.days), JSON.stringify(heads));
       const tir = page.getByRole('button', { name: new RegExp('^' + (lang === 'he' ? 'זמן בטווח' : 'Time in range')) });
       check(`kid ${lang}: time in range tile on top`, (await tir.count()) === 1, String(await tir.count()));
+      const kt = await tir.first().boundingBox().catch(() => null);
+      const kf = await page.getByRole('button', { name: lang === 'he' ? /^(תובנות|כל התובנות)/ : /^(Insights|All insights)/ }).first().boundingBox().catch(() => null);
+      check(`kid ${lang}: tiles on top, the insights line right under them`, !!kt && kt.y < 120 && !!kf && kf.y >= kt.y + kt.height, JSON.stringify({ kt, kf }));
       await page.screenshot({ path: path.join(out, `kid-${lang}-1-days.png`) });
       await page.getByText(K.tabs[1], { exact: true }).last().click(); await page.waitForTimeout(3500);
       check(`kid ${lang}: Talk has no time in range`, (await tir.count()) === 0);
