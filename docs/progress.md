@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+24 Nov 2026 (Jira PM-501, PM-502, PM-503): Guy asked for (1) the earlier heights and weights on the edit screen with a
+growth chart from two measurements, (2) a last-period list for people whose profile sex is female, (3) medicines one per
+row instead of one text, all known to the mentor and the models. Built: table `body_entries` (migration `c3e5a7b9d1f4`,
+backfilled from the profile change history), each profile save that changes height or weight adds an entry (a same-day
+correction replaces it), `GET /profile/body`, `POST /profile/body/periods` (female only), `DELETE /profile/body/{id}`
+(not the current value, not a health-app weight); Apple Health / Health Connect weights listed read-only; never for
+followers (not in the viewer paths); in the export. `meds.items` with `meds.more` kept as the joined text (an older app
+changing the text re-splits the rows). Mentor: own-conversation lines, `app_data` section `body_history`, insight and
+agent `profile` tool; never a prediction about periods. App: lists and charts under Height and weight, "Last period" row
+and screen, medicine rows. Privacy `2026-11-24T21:00:00Z` (also fixes "edit any record", PM-373). Design gap G-136. API
+1039 pass, app 315, i18n 20, web 17; e2e `tools/e2e/body-history.cjs` 22/22 en+he light+dark. Next: API + web deploy,
+then OTA.
 24 Nov 2026 (Jira PM-500): Guy, following his son, saw "Couldn't load the averages" on Overview > Averages. Cause:
 `GET /metrics/averages` was never in the viewer allowlist (`deps.py`), so followers got 403 `view_only`. It now goes with
 the always-shared glucose scope, GET only (api #232, merged). Sharing tests 6/6 (fail without the fix), metrics,

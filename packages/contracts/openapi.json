@@ -1433,6 +1433,93 @@
         "title": "BodyDetailsOut",
         "type": "object"
       },
+      "BodyEntryOut": {
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "on": {
+            "title": "On",
+            "type": "string"
+          },
+          "removable": {
+            "title": "Removable",
+            "type": "boolean"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "id",
+          "on",
+          "source",
+          "removable"
+        ],
+        "title": "BodyEntryOut",
+        "type": "object"
+      },
+      "BodyHistoryOut": {
+        "properties": {
+          "height": {
+            "items": {
+              "$ref": "#/components/schemas/BodyEntryOut"
+            },
+            "title": "Height",
+            "type": "array"
+          },
+          "period": {
+            "items": {
+              "$ref": "#/components/schemas/BodyEntryOut"
+            },
+            "title": "Period",
+            "type": "array"
+          },
+          "period_available": {
+            "title": "Period Available",
+            "type": "boolean"
+          },
+          "weight": {
+            "items": {
+              "$ref": "#/components/schemas/BodyEntryOut"
+            },
+            "title": "Weight",
+            "type": "array"
+          }
+        },
+        "required": [
+          "height",
+          "weight",
+          "period",
+          "period_available"
+        ],
+        "title": "BodyHistoryOut",
+        "type": "object"
+      },
       "BodyHourOut": {
         "properties": {
           "high": {
@@ -10679,6 +10766,21 @@
           "days"
         ],
         "title": "PeriodBodyOut",
+        "type": "object"
+      },
+      "PeriodIn": {
+        "additionalProperties": false,
+        "properties": {
+          "on": {
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "title": "On",
+            "type": "string"
+          }
+        },
+        "required": [
+          "on"
+        ],
+        "title": "PeriodIn",
         "type": "object"
       },
       "PersonaIn": {
@@ -25072,6 +25174,130 @@
           }
         ],
         "summary": "Put Profile",
+        "tags": [
+          "profile"
+        ]
+      }
+    },
+    "/profile/body": {
+      "get": {
+        "description": "Newest first, at most 200 of each.",
+        "operationId": "get_history_profile_body_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyHistoryOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get History",
+        "tags": [
+          "profile"
+        ]
+      }
+    },
+    "/profile/body/periods": {
+      "post": {
+        "description": "The first day of a period. The same day twice is kept once.",
+        "operationId": "add_period_profile_body_periods_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PeriodIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyHistoryOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "not_female"
+          },
+          "422": {
+            "description": "bad_day"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Add Period",
+        "tags": [
+          "profile"
+        ]
+      }
+    },
+    "/profile/body/{entry_id}": {
+      "delete": {
+        "description": "Removes one typed entry. A weight from a health app is read-only (PM-362); the current height or weight is edited.",
+        "operationId": "remove_profile_body__entry_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "entry_id",
+            "required": true,
+            "schema": {
+              "title": "Entry Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyHistoryOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_found"
+          },
+          "409": {
+            "description": "current_value or read_only"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Remove",
         "tags": [
           "profile"
         ]

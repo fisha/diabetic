@@ -3225,6 +3225,66 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/profile/body": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get History
+         * @description Newest first, at most 200 of each.
+         */
+        get: operations["get_history_profile_body_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/profile/body/periods": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add Period
+         * @description The first day of a period. The same day twice is kept once.
+         */
+        post: operations["add_period_profile_body_periods_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/profile/body/{entry_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Remove
+         * @description Removes one typed entry. A weight from a health app is read-only (PM-362); the current height or weight is edited.
+         */
+        delete: operations["remove_profile_body__entry_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/profile/device": {
         parameters: {
             query?: never;
@@ -4878,6 +4938,32 @@ export interface components {
             steps_days: components["schemas"]["DayValueOut"][];
             /** Steps Hours */
             steps_hours: components["schemas"]["BodyHourOut"][];
+        };
+        /** BodyEntryOut */
+        BodyEntryOut: {
+            /** Id */
+            id: string;
+            /** On */
+            on: string;
+            /** Removable */
+            removable: boolean;
+            /** Source */
+            source: string;
+            /** Unit */
+            unit?: string | null;
+            /** Value */
+            value?: number | null;
+        };
+        /** BodyHistoryOut */
+        BodyHistoryOut: {
+            /** Height */
+            height: components["schemas"]["BodyEntryOut"][];
+            /** Period */
+            period: components["schemas"]["BodyEntryOut"][];
+            /** Period Available */
+            period_available: boolean;
+            /** Weight */
+            weight: components["schemas"]["BodyEntryOut"][];
         };
         /** BodyHourOut */
         BodyHourOut: {
@@ -8127,6 +8213,11 @@ export interface components {
              * @default 0
              */
             steps_days: number;
+        };
+        /** PeriodIn */
+        PeriodIn: {
+            /** On */
+            on: string;
         };
         /** PersonaIn */
         PersonaIn: {
@@ -16408,6 +16499,109 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    get_history_profile_body_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BodyHistoryOut"];
+                };
+            };
+        };
+    };
+    add_period_profile_body_periods_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PeriodIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BodyHistoryOut"];
+                };
+            };
+            /** @description not_female */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description bad_day */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    remove_profile_body__entry_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                entry_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BodyHistoryOut"];
+                };
+            };
+            /** @description not_found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description current_value or read_only */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
             };
         };
     };

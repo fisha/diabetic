@@ -2285,3 +2285,20 @@ there. The design has none of these states. Built with existing parts only:
   this" (the person) with each question, its answer and a text field with a secondary send button.
 - Pop-ups: the existing `Dialog` for the person's new question ("Answer" opens the row, "Later") and for the asker's
   new answer ("OK"). A cheer on screen goes first.
+
+### G-136 · Height, weight and period history, medicines as rows (**asked by Guy, 24 Nov 2026, PM-501..503**)
+
+The design has no history list, chart, period screen or medicine rows. Built with existing parts only:
+
+- Height and weight (edit from Settings > Diabetes profile): under the fields, for each of height and weight a chart
+  card (headline, the range at the end, a line with dots, first and last date under it; the newest dot filled, like the
+  Overview line) once there are two days with a value, then a group heading and a Group of rows (value, "Current" or the
+  source, the date with the year at the end edge). Swipe removes an earlier typed value; the current one and a weight
+  from a health app are not removable. A note under them.
+- Last period: a row after Sex in Diabetes profile, only when sex is female, the latest date as its value. Its pushed
+  screen: lead, a date field with an Add button beside it, "Your periods" Group of dates (swipe to remove), a note that
+  nothing is predicted.
+- Medicines: the "Other medicines" text field became one field per medicine under the same label, with an empty "Add a
+  medicine" field last; a comma starts a new row; swipe or clearing removes a row.
+- Product rules: a same-day correction replaces that day's value; weights from a health app, one a day (the last).
+
