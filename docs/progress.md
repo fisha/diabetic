@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+24 Nov 2026 (Jira PM-476): Guy approved the mockup and asked for it pixel for pixel. Built (app #284): the Overview is the
+first tab and the screen the app opens on (tabs Overview, Talk, Journal, Settings); Overview has no title, the glucose
+tile beside the time-in-range tile on top (a tap steps 24 h / Day / Week and moves the period below), no period TIR
+card; Talk's card line (alerts, reminders, mentor moments, insights) sits on Overview in the Insights row's place (Guy's
+decision card); Talk shows only the reading's line; Journal and Settings have no title and the reading's line on top.
+Kids keep "My days" and Talk as before. typecheck and app tests 313 pass, lint no new errors, e2e
+`tools/e2e/overview-first.cjs` 28/28 (en, he). Next: OTA via the Mac thread; check on a phone.
 23 Nov 2026 (Jira PM-473): Guy asked to see session replay in Mixpanel. Built: Mixpanel's native recorder
 (`@mixpanel/react-native-session-replay` 2.1.0, US) in app `src/analytics/replay.ts`, recording only while analytics is
 on and the yes was given to the new wording that names masked screen recordings (`analyticsReplay`; earlier yeses are
