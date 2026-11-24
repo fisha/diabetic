@@ -112,9 +112,10 @@ const server = http.createServer((req, res) => { let p = path.join(root, decodeU
     const kid = kidS.access_token; const mom = momS.access_token;
     await consent(kid); await consent(mom);
     await api('/auth/birth', { method: 'PUT', token: kid, body: { birth } });
-    const inv = (await api('/sharing/invites', { method: 'POST', token: kid, body: { scopes: ['glucose'], consent: true, relation: 'mom', guardian: true } })).json;
+    const inv = (await api('/sharing/invites', { method: 'POST', token: kid, body: { scopes: ['glucose', 'insights'], consent: true, relation: 'mom', guardian: true } })).json;
     await api('/sharing/accept', { method: 'POST', token: mom, body: { code: inv.code, guardian_confirm: true } });
     await api('/profile', { method: 'PUT', token: kid, body: { locale: 'en', answers: { ...ANSWERS, birth } } });
+    await api('/profile', { method: 'PUT', token: mom, body: { locale: 'en', answers: { ...ANSWERS, ageGate: 'adult', birth: { day: '', month: '', year: '' }, companion: { ...ANSWERS.companion, callMe: 'Dana' } } } });
     const now = Date.now();
     for (const [m, v] of [[240, 140], [180, 165], [120, 190], [60, 120], [10, 131]]) {
       await api('/glucose', { method: 'POST', token: kid, body: { idempotency_key: `of-${run}-${m}`, measured_at: new Date(now - m * 60000).toISOString(), entered_at: new Date(now - m * 60000).toISOString(), source: 'manual', method: 'meter', value: v, unit: 'mg/dL' } });
@@ -147,6 +148,34 @@ const server = http.createServer((req, res) => { let p = path.join(root, decodeU
       check(`kid ${lang}: Talk still greets the child`, (await page.getByText(new RegExp(K.hi)).count()) > 0);
       await page.screenshot({ path: path.join(out, `kid-${lang}-2-talk.png`) });
       check(`kid ${lang}: no page errors`, errors.length === 0, errors.join(' | '));
+      await ctx.close();
+    }
+    // Viewing someone one follows (Guy, 24 Nov 2026): their Overview with the insights line under the two tiles, and Talk
+    // with only their reading's line above the character.
+    for (const lang of ['en', 'he']) {
+      const V = lang === 'he' ? { sw: 'החלפה', talk: 'שיחה', tir: 'זמן בטווח', ins: /^(תובנות|כל התובנות)/ } : { sw: 'Switch', talk: 'Talk', tir: 'Time in range', ins: /^(Insights|All insights)/ };
+      const si = (await api('/auth/sign-in', { method: 'POST', body: { email: `of-mom-${run}@example.com`, password: PW } })).json;
+      const stored = { refreshToken: si.refresh_token, email: `of-mom-${run}@example.com`, hasProfile: true, access: { token: si.access_token, until: Date.now() + 10 * 60000 } };
+      const ctx = await browser.newContext({ viewport: { width: 393, height: 852 } });
+      await ctx.addInitScript(([st, lang]) => { if (sessionStorage.getItem('seeded')) return; sessionStorage.setItem('seeded', '1'); localStorage.setItem('steady.session', JSON.stringify(st)); localStorage.setItem('steady.preferences', JSON.stringify({ locale: lang, takeBreak: false })); }, [stored, lang]);
+      const page = await ctx.newPage();
+      const errors = []; page.on('pageerror', (e) => errors.push(e.message));
+      await page.goto(base + '/'); await page.waitForTimeout(7000);
+      await page.getByText(V.sw, { exact: true }).first().click(); await page.waitForTimeout(1000);
+      await page.getByText('Noam', { exact: true }).last().click(); await page.waitForTimeout(4500);
+      check(`viewer ${lang}: switching opens their Overview`, page.url().endsWith('/overview'), page.url());
+      const tir = page.getByRole('button', { name: new RegExp('^' + V.tir) });
+      const vt = await tir.first().boundingBox().catch(() => null);
+      const vf = await page.getByRole('button', { name: V.ins }).first().boundingBox().catch(() => null);
+      check(`viewer ${lang}: Overview has the insights line right under the tiles`, !!vt && !!vf && vf.y >= vt.y + vt.height, JSON.stringify({ vt, vf }));
+      await page.screenshot({ path: path.join(out, `viewer-${lang}-1-overview.png`) });
+      await page.getByText(V.talk, { exact: true }).last().click(); await page.waitForTimeout(3500);
+      check(`viewer ${lang}: Talk has no time in range`, (await tir.count()) === 0, String(await tir.count()));
+      check(`viewer ${lang}: Talk has no insights line`, (await page.getByRole('button', { name: V.ins }).count()) === 0);
+      const pill = await pillBox(page);
+      check(`viewer ${lang}: Talk shows the reading's line on top`, !!pill && pill.y < 140, JSON.stringify(pill));
+      await page.screenshot({ path: path.join(out, `viewer-${lang}-2-talk.png`) });
+      check(`viewer ${lang}: no page errors`, errors.length === 0, errors.join(' | '));
       await ctx.close();
     }
   } catch (e) { console.error(e); check('no exception', false, e.message); }
