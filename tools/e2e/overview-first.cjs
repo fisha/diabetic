@@ -13,6 +13,21 @@ fs.mkdirSync(out, { recursive: true });
 const API = 'http://localhost:8000';
 const types = { '.js': 'text/javascript', '.html': 'text/html', '.png': 'image/png', '.ttf': 'font/ttf', '.json': 'application/json', '.css': 'text/css' };
 const api = async (p, { method = 'GET', body, token } = {}) => { const r = await fetch(API + p, { method, headers: { 'content-type': 'application/json', ...(token ? { authorization: `Bearer ${token}` } : {}) }, body: body && JSON.stringify(body) }); return { status: r.status, json: await r.json().catch(() => null) }; };
+// The reading's line as it shows on screen: the topmost "mg/dL" text that is really on top at its place (screens kept
+// behind the shown tab have the same text).
+const pillBox = async (page) => {
+  const boxes = [];
+  for (const el of await page.getByText(/mg\/dL/).all()) {
+    const b = await el.evaluate((e) => {
+      const r = e.getBoundingClientRect(); if (!r.height || r.y < 0 || r.y > window.innerHeight) return null;
+      const at = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+      return at && (at === e || e.contains(at) || at.contains(e)) ? { x: r.x, y: r.y, height: r.height } : null;
+    }).catch(() => null);
+    if (b) boxes.push(b);
+  }
+  boxes.sort((a, b) => a.y - b.y);
+  return boxes[0] ?? null;
+};
 const results = []; const check = (name, ok, detail = '') => { results.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${ok || !detail ? '' : ' — ' + detail}`); };
 const server = http.createServer((req, res) => { let p = path.join(root, decodeURIComponent(req.url.split('?')[0])); if (!fs.existsSync(p) || fs.statSync(p).isDirectory()) p = path.join(root, 'index.html'); res.writeHead(200, { 'content-type': types[path.extname(p)] || 'application/octet-stream' }); fs.createReadStream(p).pipe(res); }).listen(8095, async () => {
   const base = 'http://localhost:8095';
@@ -22,10 +37,11 @@ const server = http.createServer((req, res) => { let p = path.join(root, decodeU
     await api('/auth/sign-up', { method: 'POST', body: A });
     const atk = (await api('/auth/sign-in', { method: 'POST', body: A })).json.access_token;
     const key = (await api('/admin/demo/team-link', { method: 'POST', token: atk })).json.link.split('#k=')[1];
+    let adultTalk = null;
     for (const lang of ['en', 'he']) {
       const L = lang === 'he'
-        ? { tabs: ['סקירה', 'שיחה', 'יומן', 'הגדרות'], ov: 'סקירה', jr: 'יומן', st: 'הגדרות', tir: 'זמן בטווח', week: 'שבוע', talk: 'הקישו כדי לדבר' }
-        : { tabs: ['Overview', 'Talk', 'Journal', 'Settings'], ov: 'Overview', jr: 'Journal', st: 'Settings', tir: 'Time in range', week: 'Week', talk: 'Tap to talk' };
+        ? { tabs: ['סקירה', 'שיחה', 'יומן', 'הגדרות'], ov: 'סקירה', jr: 'יומן', st: 'הגדרות', tir: 'זמן בטווח', week: 'שבוע', talk: 'הקישו כדי לדבר', ins: /^(תובנות|כל התובנות)/ }
+        : { tabs: ['Overview', 'Talk', 'Journal', 'Settings'], ov: 'Overview', jr: 'Journal', st: 'Settings', tir: 'Time in range', week: 'Week', talk: 'Tap to talk', ins: /^(Insights|All insights)/ };
       const s = (await api('/demo/session', { method: 'POST', body: { link: key, scenario: 't1-780g', locale: lang } })).json;
       const stored = { refreshToken: s.refresh_token, email: s.email, hasProfile: s.has_profile, access: { token: s.access_token, until: Date.now() + 10 * 60000 } };
       const ctx = await browser.newContext({ viewport: { width: 393, height: 852 } });
@@ -45,6 +61,9 @@ const server = http.createServer((req, res) => { let p = path.join(root, decodeU
       check(`${lang}: time in range tile on top`, (await tirTiles.count()) === 1, String(await tirTiles.count()));
       const tile = await tirTiles.first().boundingBox().catch(() => null);
       check(`${lang}: tile within the first 200 points`, !!tile && tile.y < 200, JSON.stringify(tile));
+      // The line of cards above the two tiles (Guy, 24 Nov 2026).
+      const feed = await page.getByRole('button', { name: L.ins }).first().boundingBox().catch(() => null);
+      check(`${lang}: the insights line sits above the tiles`, !!feed && !!tile && feed.y + feed.height <= tile.y, JSON.stringify({ feed, tile }));
       await page.screenshot({ path: path.join(out, `${lang}-1-overview.png`) });
       // A tap moves the tile to the next period, and the period below with it (Day -> Week).
       await tirTiles.first().click(); await page.waitForTimeout(2500);
@@ -56,15 +75,69 @@ const server = http.createServer((req, res) => { let p = path.join(root, decodeU
       check(`${lang}: Talk shows the character`, (await page.getByText(L.talk, { exact: true }).count()) > 0);
       check(`${lang}: Talk has no time in range`, (await page.getByRole('button', { name: new RegExp('^' + L.tir) }).count()) === 0);
       check(`${lang}: Talk shows the reading's line`, (await page.getByText(/mg\/dL/).count()) > 0);
+      const talkPill = await pillBox(page);
+      adultTalk = talkPill;
       await page.screenshot({ path: path.join(out, `${lang}-3-talk.png`) });
       for (const [i, label] of [[2, L.jr], [3, L.st]]) {
         await page.getByText(L.tabs[i], { exact: true }).last().click(); await page.waitForTimeout(3500);
         check(`${lang}: ${label} has no page title`, !(await titles()).includes(label), JSON.stringify(await titles()));
-        const pill = await page.getByText(/mg\/dL/).first().boundingBox().catch(() => null);
+        const pill = await pillBox(page);
         check(`${lang}: ${label} shows the reading's line on top`, !!pill && pill.y < 80, JSON.stringify(pill));
+        // At the same height as on Talk (Guy, 24 Nov 2026).
+        check(`${lang}: ${label}'s reading line at Talk's height`, !!pill && !!talkPill && Math.abs(pill.y - talkPill.y) <= 1, JSON.stringify({ pill: pill?.y, talk: talkPill?.y }));
         await page.screenshot({ path: path.join(out, `${lang}-${i + 2}-${label}.png`) });
       }
       check(`${lang}: no page errors`, errors.length === 0, errors.join(' | '));
+      await ctx.close();
+    }
+    // Kids mode follows the same design (Guy, 24 Nov 2026): My days first, its top the child's reading tile beside time in
+    // range with the cards above them and no page title; Talk shows only the reading's line, at the same height, then the
+    // child's name and the character.
+    const ANSWERS = { version: 1, consent: { service: true, training: false, at: new Date().toISOString() }, ageGate: 'under18', diabetesType: 'type1', units: 'mgdl', body: { height: '', heightUnit: 'cm', weight: '', weightUnit: 'kg', measured: 'today' }, rapid: [], basal: [], insulinOther: false, insulinUnknown: false, pumpOther: '', sensorOther: '', ratios: { unknown: true, periods: [], correction: '', target: '70-180' }, history: { notes: '' }, routine: { checkInTimes: [] }, companion: { avatar: 'sage', name: 'Stedio', style: 'warm', callMe: 'Noam' }, checkIns: { frequency: 'moreAtFirst' } };
+    const PW = 'correct horse battery'; const run = Date.now().toString(36);
+    const d = new Date(); const birth = { day: String(d.getDate()), month: String(d.getMonth() + 1), year: String(d.getFullYear() - 11) };
+    const signUp = async (email) => { await api('/auth/sign-up', { method: 'POST', body: { email, password: PW } }); return (await api('/auth/sign-in', { method: 'POST', body: { email, password: PW } })).json; };
+    const consent = async (tk) => {
+      const docs = (await api('/consent', { token: tk })).json;
+      await api('/consent/accept', { method: 'POST', token: tk, body: { versions: Object.fromEntries(docs.documents.map((x) => [x.kind, x.version])), at: new Date().toISOString() } });
+      await api('/consent/ai', { method: 'POST', token: tk, body: { at: new Date().toISOString() } });
+    };
+    const kidS = await signUp(`of-kid-${run}@example.com`); const momS = await signUp(`of-mom-${run}@example.com`);
+    const kid = kidS.access_token; const mom = momS.access_token;
+    await consent(kid); await consent(mom);
+    await api('/auth/birth', { method: 'PUT', token: kid, body: { birth } });
+    const inv = (await api('/sharing/invites', { method: 'POST', token: kid, body: { scopes: ['glucose'], consent: true, relation: 'mom', guardian: true } })).json;
+    await api('/sharing/accept', { method: 'POST', token: mom, body: { code: inv.code, guardian_confirm: true } });
+    await api('/profile', { method: 'PUT', token: kid, body: { locale: 'en', answers: { ...ANSWERS, birth } } });
+    const now = Date.now();
+    for (const [m, v] of [[240, 140], [180, 165], [120, 190], [60, 120], [10, 131]]) {
+      await api('/glucose', { method: 'POST', token: kid, body: { idempotency_key: `of-${run}-${m}`, measured_at: new Date(now - m * 60000).toISOString(), entered_at: new Date(now - m * 60000).toISOString(), source: 'manual', method: 'meter', value: v, unit: 'mg/dL' } });
+    }
+    for (const lang of ['en', 'he']) {
+      const K = lang === 'he' ? { tabs: ['הימים שלי', 'שיחה', 'מדבקות'], days: 'הימים שלי', hi: 'Noam' } : { tabs: ['My days', 'Talk', 'Stickers'], days: 'My days', hi: 'Noam' };
+      const si = (await api('/auth/sign-in', { method: 'POST', body: { email: `of-kid-${run}@example.com`, password: PW } })).json;
+      const stored = { refreshToken: si.refresh_token, email: `of-kid-${run}@example.com`, hasProfile: true, access: { token: si.access_token, until: Date.now() + 10 * 60000 } };
+      const ctx = await browser.newContext({ viewport: { width: 393, height: 852 } });
+      await ctx.addInitScript(([st, lang]) => { if (sessionStorage.getItem('seeded')) return; sessionStorage.setItem('seeded', '1'); localStorage.setItem('steady.session', JSON.stringify(st)); localStorage.setItem('steady.preferences', JSON.stringify({ locale: lang, takeBreak: false })); }, [stored, lang]);
+      const page = await ctx.newPage();
+      const errors = []; page.on('pageerror', (e) => errors.push(e.message));
+      await page.goto(base + '/'); await page.waitForTimeout(7000);
+      check(`kid ${lang}: opens on My days`, page.url().endsWith('/overview'), page.url());
+      const xs = [];
+      for (const label of K.tabs) { const b = await page.getByText(label, { exact: true }).last().boundingBox().catch(() => null); xs.push(b ? b.x : null); }
+      check(`kid ${lang}: tab bar reads ${K.tabs.join(', ')}`, xs.every((x) => x != null) && xs.every((x, i) => i === 0 || (lang === 'he' ? x < xs[i - 1] : x > xs[i - 1])), JSON.stringify(xs));
+      const heads = await page.evaluate(() => [...document.querySelectorAll('[role="heading"]')].filter((e) => e.getBoundingClientRect().height > 0).map((e) => e.textContent));
+      check(`kid ${lang}: My days has no page title`, !heads.includes(K.days), JSON.stringify(heads));
+      const tir = page.getByRole('button', { name: new RegExp('^' + (lang === 'he' ? 'זמן בטווח' : 'Time in range')) });
+      check(`kid ${lang}: time in range tile on top`, (await tir.count()) === 1, String(await tir.count()));
+      await page.screenshot({ path: path.join(out, `kid-${lang}-1-days.png`) });
+      await page.getByText(K.tabs[1], { exact: true }).last().click(); await page.waitForTimeout(3500);
+      check(`kid ${lang}: Talk has no time in range`, (await tir.count()) === 0);
+      const pill = await pillBox(page);
+      check(`kid ${lang}: Talk's reading line at the adult Talk's height`, !!pill && !!adultTalk && Math.abs(pill.y - adultTalk.y) <= 1, JSON.stringify({ pill: pill?.y, adult: adultTalk?.y }));
+      check(`kid ${lang}: Talk still greets the child`, (await page.getByText(new RegExp(K.hi)).count()) > 0);
+      await page.screenshot({ path: path.join(out, `kid-${lang}-2-talk.png`) });
+      check(`kid ${lang}: no page errors`, errors.length === 0, errors.join(' | '));
       await ctx.close();
     }
   } catch (e) { console.error(e); check('no exception', false, e.message); }
