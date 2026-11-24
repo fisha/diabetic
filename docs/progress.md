@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+24 Nov 2026 (Jira PM-505): Guy said the Last period screen looked broken (the Add button out of line with the date
+field, loose info rows). It now uses Duet groups: the first day and an "Add period" row in one group, the periods or the
+empty line in the next, the note as a footnote. Medicines are one grouped list with an "Add a medicine" row. Height and
+weight history was checked and needed no change. e2e body-history 22/22 (en/he, light/dark); app 315 tests; app #297.
+
 24 Nov 2026 (Jira PM-501, PM-502, PM-503): Guy asked for (1) the earlier heights and weights on the edit screen with a
 growth chart from two measurements, (2) a last-period list for people whose profile sex is female, (3) medicines one per
 row instead of one text, all known to the mentor and the models. Built: table `body_entries` (migration `c3e5a7b9d1f4`,
