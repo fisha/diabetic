@@ -384,6 +384,7 @@
   "hab.done": "בוצע",
   "hab.glucose_check": "בדיקת סוכר",
   "hab.meds_taken": "נטילת תרופות",
+  "hab.meds_which": "אילו תרופות (לא חובה)",
   "hab.name": "שם ההרגל",
   "hab.no_sweet_drinks": "בלי משקאות ממותקים",
   "hab.not_done": "לא בוצע",

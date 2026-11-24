@@ -18,6 +18,11 @@ tiles, chooser sheet, breakdown, Nutrition targets screen. Privacy `2026-11-24T2
 pass (1048), app 319, i18n 20, web 17; e2e `tools/e2e/nutrition-targets.cjs` 32/32 en+he light+dark. Companion
 regression set not run (context change). Next: API + web deploy, then OTA.
 
+24 Nov 2026 (Jira PM-508): Guy asked that a "Medicines taken" habit offer the person's own medicines. The habit sheet
+shows the profile's medicines (PM-503) as optional chips; the picks are the habit's name (API limit 60 -> 200), the
+journal shows them, and the mentor's record line now includes a habit's name. API #235, app #300; e2e body-history
+adds the habit step (en/he, light/dark). Deploy the API before the OTA.
+
 24 Nov 2026 (Jira PM-505): Guy said the Last period screen looked broken (the Add button out of line with the date
 field, loose info rows). It now uses Duet groups: the first day and an "Add period" row in one group, the periods or the
 empty line in the next, the note as a footnote. Medicines are one grouped list with an "Add a medicine" row. Height and

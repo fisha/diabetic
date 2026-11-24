@@ -6769,7 +6769,7 @@
           },
           "name": {
             "default": "",
-            "maxLength": 60,
+            "maxLength": 200,
             "title": "Name",
             "type": "string"
           },
@@ -7955,7 +7955,7 @@
         "properties": {
           "name": {
             "default": "",
-            "maxLength": 60,
+            "maxLength": 200,
             "title": "Name",
             "type": "string"
           },
