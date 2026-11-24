@@ -1,7 +1,7 @@
 // Simple mode (PM-450, Guy 23 Nov 2026): a switch on the Settings screen. While on, the tab bar has Talk, Overview and
 // Settings (no Journal), the main screen keeps everything but the games button, the "+" keeps every option, and the
-// Overview shows the latest reading, the period with time in range, the Insights row and the set and sensor rows, with
-// no graph. Switching it off brings everything back.
+// Overview shows the latest reading, the period with time in range, the period's graph (Guy, 24 Nov 2026, PM-476), the
+// insights and the set and sensor rows, without the Over time / Averages views. Switching it off brings everything back.
 // Usage: node tools/e2e/simple-mode.cjs <web export built with EXPO_PUBLIC_API_URL=http://localhost:8000 and EXPO_PUBLIC_WEBSITE_URL=http://localhost:8090> <screenshot dir>
 // Against the test server (services/api: uvicorn tests.e2e_server:app) with STEADY_CORS_ORIGINS=["http://localhost:8090"],
 // STEADY_ALLOW_EMAIL_SIGN_UP=true, STEADY_REQUIRE_EMAIL_VERIFICATION=false, STEADY_REQUIRE_APPROVAL=false.
@@ -50,8 +50,8 @@ const server = http.createServer((req, res) => {
       await api('/profile', { method: 'PUT', token: tk, body: { locale: lang, answers: ANSWERS } });
       const L = he ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון' } : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account' };
       const T = he
-        ? { talk: 'שיחה', overview: 'סקירה', journal: 'יומן', settings: 'הגדרות', simple: 'מצב פשוט', overTime: 'לאורך הזמן', tir: 'זמן בטווח', set: 'סט עירוי', games: 'משחקים', plus: 'תיעוד מהיר' }
-        : { talk: 'Talk', overview: 'Overview', journal: 'Journal', settings: 'Settings', simple: 'Simple mode', overTime: 'Over time', tir: 'Time in range', set: 'Infusion set', games: 'Games', plus: 'Quick log' };
+        ? { talk: 'שיחה', overview: 'סקירה', journal: 'יומן', settings: 'הגדרות', simple: 'מצב פשוט', overTime: 'לאורך הזמן', graph: 'גלוקוז, mg/dL', tir: 'זמן בטווח', set: 'סט עירוי', games: 'משחקים', plus: 'תיעוד מהיר' }
+        : { talk: 'Talk', overview: 'Overview', journal: 'Journal', settings: 'Settings', simple: 'Simple mode', overTime: 'Over time', graph: 'Glucose, mg/dL', tir: 'Time in range', set: 'Infusion set', games: 'Games', plus: 'Quick log' };
       const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: scheme, locale: he ? 'he-IL' : 'en-US', deviceScaleFactor: 2, timezoneId: 'UTC' });
       const p = await ctx.newPage(); lastPage = p; p.on('pageerror', (e) => errors.push(e.message)); p.setDefaultTimeout(6000);
       const has = async (s) => (await p.getByText(s, { exact: true }).count()) > 0;
@@ -86,7 +86,9 @@ const server = http.createServer((req, res) => {
       await tab(T.overview); await p.waitForTimeout(3000);
       await shot('04-overview');
       ok(`${lang} ${scheme}: Overview has time in range`, await has(T.tir));
-      ok(`${lang} ${scheme}: Overview has no graph`, !(await has(T.overTime)));
+      // The period's graph stays in simple mode (Guy, 24 Nov 2026, PM-476), without the Over time / Averages views.
+      ok(`${lang} ${scheme}: Overview has the period's graph`, await has(T.graph));
+      ok(`${lang} ${scheme}: Overview has no Over time / Averages views`, !(await has(T.overTime)));
       ok(`${lang} ${scheme}: Overview has the set row`, await has(T.set));
       // Off again: everything comes back.
       await tab(T.settings); await p.waitForTimeout(1200);
