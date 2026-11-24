@@ -16,6 +16,15 @@ finds them), the mentor row "My Stedio", My milestones beside My Stedio and What
 written to Stedio in the last day" note removed. Accessibility: "Increase contrast" removed. App #293 merged.
 typecheck, app tests 315, i18n 20 pass; e2e `tools/e2e/settings-polish.cjs` 40/40 and `simple-mode.cjs` all pass
 (en, he, light, dark). Not yet seen on a phone. Next: OTA via the Mac thread.
+24 Nov 2026 (Jira PM-489): Guy asked that the website meet accessibility level AA. Audited every website route (public, legal
+en+he, dashboard, admin, clinic portal) with axe-core (WCAG 2.2 A+AA) light/dark at 1280 and 320 px plus a keyboard,
+headings, titles and reflow pass, against the local test API. Fixed (web #85, merged): darker day secondary grey, night
+teal fills under white, focusable table frames, skip links and landmarks, page titles from the heading, the home
+companion's motion stops within 5 s, the dashboard day chart is one slider, segments wrap at 320 px; accessibility
+statement updated (en, he). App web build (app #295): aria-checked on web radios, tab list holds only tabs,
+reading-tile contrast, night teal fills via `accentFill` (decision card to Guy). axe 0 violations after. Next: web
+deploy; app #295 after Guy's answer, then OTA. Remaining: outside expert / screen-reader user test, the Atlassian
+help widget (third party, did not open on stedio.io), full manual pass of every app screen, chart text alternatives, PDFs.
 24 Nov 2026 (Jira PM-484): Guy said a meal-review question ("What was the bread slice size?") vanished after one tap,
 so the answer could not be changed. Now the question stays with every option and the answer shown as a selected chip;
 another tap re-estimates the food, and a late estimate for a replaced answer is dropped (app #289). typecheck, lint,
