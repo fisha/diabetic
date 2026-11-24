@@ -384,6 +384,7 @@
   "hab.done": "Done",
   "hab.glucose_check": "Glucose check",
   "hab.meds_taken": "Medicines taken",
+  "hab.meds_which": "Which medicines (optional)",
   "hab.name": "Name of the habit",
   "hab.no_sweet_drinks": "No sweet drinks",
   "hab.not_done": "Not done",

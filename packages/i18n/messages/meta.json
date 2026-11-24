@@ -3993,6 +3993,13 @@
       "translation"
     ]
   },
+  "hab.meds_which": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Medicines habit: pick from the person's own medicines (Guy, 24 Nov 2026, PM-508)."
+  },
   "hab.name": {
     "board": "Companion",
     "review": [

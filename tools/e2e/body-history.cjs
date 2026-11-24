@@ -93,6 +93,17 @@ const server = http.createServer((req, res) => {
       const vals = await page.evaluate(() => [...document.querySelectorAll('input')].map((i) => i.value));
       ok(`${lang}-${scheme} one row per medicine`, ['Eltroxin 50', 'vitamin D', 'iron', ''].every((v) => vals.includes(v)), JSON.stringify(vals));
       await shot('04-meds', true);
+      // PM-508: the medicines habit offers the person's own medicines.
+      await page.goBack(); await page.waitForTimeout(1200); await page.goBack(); await page.waitForTimeout(1500);
+      await page.getByLabel(he ? 'תיעוד מהיר' : 'Quick log', { exact: true }).first().click();
+      await page.waitForTimeout(1500);
+      await page.getByText(he ? 'עוד' : 'More', { exact: true }).last().click(); await page.waitForTimeout(800);
+      await page.getByText(he ? 'הרגל' : 'Habit', { exact: true }).first().click(); await page.waitForTimeout(2000);
+      await page.getByText(he ? 'נטילת תרופות' : 'Medicines taken', { exact: true }).first().click(); await page.waitForTimeout(800);
+      txt = await page.evaluate(() => document.body.innerText);
+      ok(`${lang}-${scheme} medicines habit offers own medicines`, txt.includes(he ? 'אילו תרופות' : 'Which medicines') && txt.includes('Eltroxin 50') && txt.includes('iron'));
+      await page.getByText('vitamin D', { exact: true }).first().click(); await page.waitForTimeout(400);
+      await shot('05-habit-meds', true);
       await ctx.close();
     }
   } catch (e) {
