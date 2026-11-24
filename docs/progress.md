@@ -22,8 +22,8 @@ headings, titles and reflow pass, against the local test API. Fixed (web #85, me
 teal fills under white, focusable table frames, skip links and landmarks, page titles from the heading, the home
 companion's motion stops within 5 s, the dashboard day chart is one slider, segments wrap at 320 px; accessibility
 statement updated (en, he). App web build (app #295): aria-checked on web radios, tab list holds only tabs,
-reading-tile contrast, night teal fills via `accentFill` (decision card to Guy). axe 0 violations after. Next: web
-deploy; app #295 after Guy's answer, then OTA. Remaining: outside expert / screen-reader user test, the Atlassian
+reading-tile contrast, night teal fills via `accentFill` (Guy chose the darker teal, merged). axe 0 violations after. Web deployed (v105);
+app #295 merged, OTA requested. Remaining: outside expert / screen-reader user test, the Atlassian
 help widget (third party, did not open on stedio.io), full manual pass of every app screen, chart text alternatives, PDFs.
 24 Nov 2026 (Jira PM-484): Guy said a meal-review question ("What was the bread slice size?") vanished after one tap,
 so the answer could not be changed. Now the question stays with every option and the answer shown as a selected chip;
