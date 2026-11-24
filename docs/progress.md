@@ -8,6 +8,10 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+24 Nov 2026 (Jira PM-484): Guy said a meal-review question ("What was the bread slice size?") vanished after one tap,
+so the answer could not be changed. Now the question stays with every option and the answer shown as a selected chip;
+another tap re-estimates the food, and a late estimate for a replaced answer is dropped (app #289). typecheck, lint,
+app tests 313 pass. Not yet seen on a phone. Next: OTA via the Mac thread.
 24 Nov 2026 (Jira PM-476): Guy approved the mockup and asked for it pixel for pixel. Built (app #284): the Overview is the
 first tab and the screen the app opens on (tabs Overview, Talk, Journal, Settings); Overview has no title, the glucose
 tile beside the time-in-range tile on top (a tap steps 24 h / Day / Week and moves the period below), no period TIR
