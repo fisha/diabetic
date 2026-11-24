@@ -3307,6 +3307,83 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/questions/mine": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * To Me
+         * @description Questions about this person's own rows from the last SHOWN_DAYS days, answered or not, oldest first.
+         */
+        get: operations["to_me_questions_mine_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/questions/new": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** New Questions */
+        get: operations["new_questions_questions_new_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/questions/{question_id}/answer": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Answer
+         * @description The person's answer, once; the asker gets a quiet push and a pop-up.
+         */
+        post: operations["answer_questions__question_id__answer_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/questions/{question_id}/seen": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Seen
+         * @description The person saw the pop-up (answered or not), so it does not come back.
+         */
+        post: operations["seen_questions__question_id__seen_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/records": {
         parameters: {
             query?: never;
@@ -3582,6 +3659,43 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sharing/questions/answers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * New Answers
+         * @description Answers to this person's questions not shown yet (the asker's pop-up).
+         */
+        get: operations["new_answers_sharing_questions_answers_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sharing/questions/{question_id}/answer-seen": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Answer Seen */
+        post: operations["answer_seen_sharing_questions__question_id__answer_seen_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sharing/{share_id}": {
         parameters: {
             query?: never;
@@ -3627,6 +3741,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sharing/{share_id}/likes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * My Likes
+         * @description The meals of this share's owner that this viewer liked in the last 30 days, so the journal shows them liked.
+         */
+        get: operations["my_likes_sharing__share_id__likes_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sharing/{share_id}/nickname": {
         parameters: {
             query?: never;
@@ -3641,6 +3775,30 @@ export interface paths {
          */
         put: operations["set_nickname_sharing__share_id__nickname_put"];
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sharing/{share_id}/questions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Asked
+         * @description What this viewer asked the person in the last SHOWN_DAYS days, with the answers, oldest first.
+         */
+        get: operations["asked_sharing__share_id__questions_get"];
+        put?: never;
+        /**
+         * Ask
+         * @description Asks the person about one row of their journal; only through a share that includes the journal.
+         */
+        post: operations["ask_sharing__share_id__questions_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -4580,13 +4738,6 @@ export interface components {
              */
             note: string;
         };
-        /** AnswerIn */
-        AnswerIn: {
-            /** Choice */
-            choice: number;
-            /** Id */
-            id: string;
-        };
         /** AppVersionOut */
         AppVersionOut: {
             /** Android Latest Build */
@@ -4610,6 +4761,12 @@ export interface components {
             approved_at: string;
             /** Emailed */
             emailed: boolean;
+        };
+        /** AskIn */
+        AskIn: {
+            row: components["schemas"]["RowRef"];
+            /** Text */
+            text: string;
         };
         /** AuthOptions */
         AuthOptions: {
@@ -5075,7 +5232,9 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "high_five" | "heart" | "star" | "trophy" | "rocket";
+            kind: "high_five" | "heart" | "star" | "trophy" | "rocket" | "like";
+            /** Record Id */
+            record_id?: string | null;
         };
         /** CheerOut */
         CheerOut: {
@@ -5093,6 +5252,10 @@ export interface components {
             id: string;
             /** Kind */
             kind: string;
+            /** Meal At */
+            meal_at?: string | null;
+            /** Record Id */
+            record_id?: string | null;
         };
         /** CheerPromptOut */
         CheerPromptOut: {
@@ -8476,6 +8639,55 @@ export interface components {
                 [key: string]: string;
             };
         };
+        /** RowQuestionOut */
+        RowQuestionOut: {
+            /** Answer */
+            answer?: string | null;
+            /** Answered At */
+            answered_at?: string | null;
+            /**
+             * Asked At
+             * Format: date-time
+             */
+            asked_at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+            /** Question */
+            question: string;
+            /**
+             * Row At
+             * Format: date-time
+             */
+            row_at: string;
+            /**
+             * Row Id
+             * Format: uuid
+             */
+            row_id: string;
+            /**
+             * Row Kind
+             * @enum {string}
+             */
+            row_kind: "meal" | "insulin" | "activity" | "note" | "glucose" | "other";
+        };
+        /** RowRef */
+        RowRef: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "record" | "glucose";
+        };
         /** RuleOut */
         RuleOut: {
             /**
@@ -9739,6 +9951,13 @@ export interface components {
                 [key: string]: string;
             };
         };
+        /** AnswerIn */
+        steady_api__routers__games__AnswerIn: {
+            /** Choice */
+            choice: number;
+            /** Id */
+            id: string;
+        };
         /** StateIn */
         steady_api__routers__insights__StateIn: {
             /**
@@ -9797,6 +10016,11 @@ export interface components {
              * @enum {string}
              */
             via: "app" | "web";
+        };
+        /** AnswerIn */
+        steady_api__routers__row_questions__AnswerIn: {
+            /** Text */
+            text: string;
         };
         /** AcceptIn */
         steady_api__routers__sharing__AcceptIn: {
@@ -13954,7 +14178,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["AnswerIn"];
+                "application/json": components["schemas"]["steady_api__routers__games__AnswerIn"];
             };
         };
         responses: {
@@ -16302,6 +16526,110 @@ export interface operations {
             };
         };
     };
+    to_me_questions_mine_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RowQuestionOut"][];
+                };
+            };
+        };
+    };
+    new_questions_questions_new_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RowQuestionOut"][];
+                };
+            };
+        };
+    };
+    answer_questions__question_id__answer_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                question_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["steady_api__routers__row_questions__AnswerIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RowQuestionOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    seen_questions__question_id__seen_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                question_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     list_records_records_get: {
         parameters: {
             query: {
@@ -16899,6 +17227,55 @@ export interface operations {
             };
         };
     };
+    new_answers_sharing_questions_answers_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RowQuestionOut"][];
+                };
+            };
+        };
+    };
+    answer_seen_sharing_questions__question_id__answer_seen_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                question_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     end_sharing__share_id__delete: {
         parameters: {
             query?: never;
@@ -16998,6 +17375,37 @@ export interface operations {
             };
         };
     };
+    my_likes_sharing__share_id__likes_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": string[];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     set_nickname_sharing__share_id__nickname_put: {
         parameters: {
             query?: never;
@@ -17020,6 +17428,72 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ViewingOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    asked_sharing__share_id__questions_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RowQuestionOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    ask_sharing__share_id__questions_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                share_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AskIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RowQuestionOut"];
                 };
             };
             /** @description Validation Error */

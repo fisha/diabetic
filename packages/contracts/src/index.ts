@@ -142,6 +142,7 @@ export type CheerOut = S['CheerOut'];
 export type ChallengeOut = S['ChallengeOut'];
 export type CheerPromptOut = S['CheerPromptOut'];
 export type DraftOut = S['DraftOut'];
+export type RowQuestionOut = S['RowQuestionOut'];
 export type WeekOut = S['WeekOut'];
 export type PeriodBodyOut = S['PeriodBodyOut'];
 // Support requests and the admin area (PM-445..448).
