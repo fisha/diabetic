@@ -20,6 +20,16 @@ typecheck, app tests 315, i18n 20 pass; e2e `tools/e2e/settings-polish.cjs` 40/4
 so the answer could not be changed. Now the question stays with every option and the answer shown as a selected chip;
 another tap re-estimates the food, and a late estimate for a replaced answer is dropped (app #289). typecheck, lint,
 app tests 313 pass. Not yet seen on a phone. Next: OTA via the Mac thread.
+24 Nov 2026 (Jira PM-486, PM-490): Guy asked that a parent can like a meal the child ate, and ask about one journal row
+("What did you eat here?" on an insulin entry) with the child answering on that row, the question popping up for the
+child with a tap to the row; everything in the demos too. Built: likes as a cheer kind "like" on one meal
+(`cheers.record_id`, migration `f1a3c5e7b9d2`; once per meal, 10 a day apart from cheers; only through a share with the
+journal), a button in the meal's Journal detail and a chip on the cheer card, the child's cheer overlay names the meal's
+time; questions on rows (`row_questions`, migration `a2c4e6f8b0d3`, `routers/row_questions.py`), the person's and the
+asker's pop-ups (`QuestionWatcher`), a card on the row (`RowQuestions`); never to the mentor, pushes without the words;
+in both exports; the family demo has a like, an answered and an open question. Privacy `2026-11-24T17:00:00Z`. Design
+gap G-135. API tests pass; app 315, web 17; e2e `tools/e2e/row-questions.cjs` en+he on the test server. Next: API and
+web deploy, then OTA.
 24 Nov 2026 (Jira PM-485): Guy asked that a parent's cheer also reach the child on WhatsApp, "only if he has not seen it
 in the app". Built (api #230, web #83): worker step `cheer_whatsapp` sends a cheer still unopened in the app after 30
 minutes once as WhatsApp text, only inside the child's free 24-hour window (never a template), with the usual stop,

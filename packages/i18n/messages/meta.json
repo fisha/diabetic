@@ -6014,6 +6014,20 @@
       "translation"
     ]
   },
+  "jrn.like": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's like on a child's meal (PM-486, Guy 24 Nov 2026)."
+  },
+  "jrn.liked": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's like on a child's meal (PM-486, Guy 24 Nov 2026)."
+  },
   "jrn.dup_meal": {
     "board": "Journal",
     "review": [
@@ -26356,6 +26370,20 @@
     ],
     "note": "Kids and teens mode (PM-298..307, Guy 19 Nov 2026)."
   },
+  "yg.cheer_like": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's like on a child's meal (PM-486, Guy 24 Nov 2026)."
+  },
+  "yg.cheer_meal_at": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's like on a child's meal (PM-486, Guy 24 Nov 2026)."
+  },
   "yg.thanks": {
     "board": "Companion",
     "review": [
@@ -29695,12 +29723,152 @@
     ],
     "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
   },
+  "now.cheer_like": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "A parent's like on a child's meal (PM-486, Guy 24 Nov 2026)."
+  },
   "now.cheer_later": {
     "board": "Companion",
     "review": [
       "translation"
     ],
     "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "qa.k_note": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.k_other": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.pop_t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.pop_b": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.pop_go": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.pop_later": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.ans_t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.ans_ok": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.row_t": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.row_t_viewer": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.you_asked": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.asked_by": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.answered_by": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.you_answered": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.waiting": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.ask_label": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.ask_send": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.answer_label": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
+  },
+  "qa.answer_send": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Questions on a journal row between a follower and the person (PM-490, Guy 24 Nov 2026)."
   },
   "set.profiles": {
     "board": "Settings",
