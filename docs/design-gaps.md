@@ -2272,3 +2272,16 @@ meal photos on WhatsApp). The design has none of these states. Built with existi
   a card "Meal logged by {person}" with "Send a high-five" and "Not now" chips. Only that a meal was logged; no
   contents, no glucose.
 - WhatsApp meal photos (PM-481) and the teen mentor lines (PM-482) have no app UI.
+
+### G-135 · A like on a child's meal and questions on journal rows (**asked by Guy, 24 Nov 2026, PM-486, PM-490**)
+
+Guy asked that a parent can like a meal the child logged, ask about one journal row, and get the child's answer
+there. The design has none of these states. Built with existing parts only:
+
+- Like: while viewing someone who shares the journal, a secondary "Like this meal 👍" button under the meal's header card
+  in the Journal detail (tertiary "Liked 👍" after); the cheer card on Overview gets a "Like the meal 👍" chip. The
+  child sees it in the existing cheer overlay, with "Your meal at {time}" under the words.
+- Questions: on any record or glucose row's Journal detail, a card "Ask {name} about this" (viewer) or "Questions about
+  this" (the person) with each question, its answer and a text field with a secondary send button.
+- Pop-ups: the existing `Dialog` for the person's new question ("Answer" opens the row, "Later") and for the asker's
+  new answer ("OK"). A cheer on screen goes first.

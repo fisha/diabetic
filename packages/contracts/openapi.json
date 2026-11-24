@@ -1075,28 +1075,6 @@
         "title": "AnalyzeIn",
         "type": "object"
       },
-      "AnswerIn": {
-        "additionalProperties": false,
-        "properties": {
-          "choice": {
-            "maximum": 5.0,
-            "minimum": 0.0,
-            "title": "Choice",
-            "type": "integer"
-          },
-          "id": {
-            "maxLength": 40,
-            "title": "Id",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "choice"
-        ],
-        "title": "AnswerIn",
-        "type": "object"
-      },
       "AppVersionOut": {
         "properties": {
           "android_latest_build": {
@@ -1173,6 +1151,26 @@
           "emailed"
         ],
         "title": "ApprovedOut",
+        "type": "object"
+      },
+      "AskIn": {
+        "additionalProperties": false,
+        "properties": {
+          "row": {
+            "$ref": "#/components/schemas/RowRef"
+          },
+          "text": {
+            "maxLength": 300,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "row",
+          "text"
+        ],
+        "title": "AskIn",
         "type": "object"
       },
       "AuthOptions": {
@@ -2527,10 +2525,23 @@
               "heart",
               "star",
               "trophy",
-              "rocket"
+              "rocket",
+              "like"
             ],
             "title": "Kind",
             "type": "string"
+          },
+          "record_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Record Id"
           }
         },
         "required": [
@@ -2558,6 +2569,30 @@
           "kind": {
             "title": "Kind",
             "type": "string"
+          },
+          "meal_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Meal At"
+          },
+          "record_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Record Id"
           }
         },
         "required": [
@@ -12052,6 +12087,108 @@
         "title": "RoutineOut",
         "type": "object"
       },
+      "RowQuestionOut": {
+        "properties": {
+          "answer": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Answer"
+          },
+          "answered_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Answered At"
+          },
+          "asked_at": {
+            "format": "date-time",
+            "title": "Asked At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "question": {
+            "title": "Question",
+            "type": "string"
+          },
+          "row_at": {
+            "format": "date-time",
+            "title": "Row At",
+            "type": "string"
+          },
+          "row_id": {
+            "format": "uuid",
+            "title": "Row Id",
+            "type": "string"
+          },
+          "row_kind": {
+            "enum": [
+              "meal",
+              "insulin",
+              "activity",
+              "note",
+              "glucose",
+              "other"
+            ],
+            "title": "Row Kind",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "row_id",
+          "row_kind",
+          "row_at",
+          "name",
+          "question",
+          "asked_at"
+        ],
+        "title": "RowQuestionOut",
+        "type": "object"
+      },
+      "RowRef": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "record",
+              "glucose"
+            ],
+            "title": "Kind",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "id"
+        ],
+        "title": "RowRef",
+        "type": "object"
+      },
       "RuleOut": {
         "properties": {
           "kind": {
@@ -15752,6 +15889,28 @@
         "title": "AcceptIn",
         "type": "object"
       },
+      "steady_api__routers__games__AnswerIn": {
+        "additionalProperties": false,
+        "properties": {
+          "choice": {
+            "maximum": 5.0,
+            "minimum": 0.0,
+            "title": "Choice",
+            "type": "integer"
+          },
+          "id": {
+            "maxLength": 40,
+            "title": "Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "choice"
+        ],
+        "title": "AnswerIn",
+        "type": "object"
+      },
       "steady_api__routers__insights__StateIn": {
         "additionalProperties": false,
         "properties": {
@@ -15885,6 +16044,22 @@
           "via"
         ],
         "title": "StateIn",
+        "type": "object"
+      },
+      "steady_api__routers__row_questions__AnswerIn": {
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "title": "AnswerIn",
         "type": "object"
       },
       "steady_api__routers__sharing__AcceptIn": {
@@ -21544,7 +21719,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AnswerIn"
+                "$ref": "#/components/schemas/steady_api__routers__games__AnswerIn"
               }
             }
           },
@@ -25090,6 +25265,168 @@
         ]
       }
     },
+    "/questions/mine": {
+      "get": {
+        "description": "Questions about this person's own rows from the last SHOWN_DAYS days, answered or not, oldest first.",
+        "operationId": "to_me_questions_mine_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RowQuestionOut"
+                  },
+                  "title": "Response To Me Questions Mine Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "To Me",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
+    "/questions/new": {
+      "get": {
+        "operationId": "new_questions_questions_new_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RowQuestionOut"
+                  },
+                  "title": "Response New Questions Questions New Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "New Questions",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
+    "/questions/{question_id}/answer": {
+      "post": {
+        "description": "The person's answer, once; the asker gets a quiet push and a pop-up.",
+        "operationId": "answer_questions__question_id__answer_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "question_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Question Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/steady_api__routers__row_questions__AnswerIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RowQuestionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Answer",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
+    "/questions/{question_id}/seen": {
+      "post": {
+        "description": "The person saw the pop-up (answered or not), so it does not come back.",
+        "operationId": "seen_questions__question_id__seen_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "question_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Question Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Seen",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
     "/records": {
       "get": {
         "description": "`kinds=2`: the client knows lab results and habits (13 Nov 2026); older app code gets only the kinds it knows.",
@@ -25989,6 +26326,78 @@
         ]
       }
     },
+    "/sharing/questions/answers": {
+      "get": {
+        "description": "Answers to this person's questions not shown yet (the asker's pop-up).",
+        "operationId": "new_answers_sharing_questions_answers_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RowQuestionOut"
+                  },
+                  "title": "Response New Answers Sharing Questions Answers Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "New Answers",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
+    "/sharing/questions/{question_id}/answer-seen": {
+      "post": {
+        "operationId": "answer_seen_sharing_questions__question_id__answer_seen_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "question_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Question Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Answer Seen",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
     "/sharing/{share_id}": {
       "delete": {
         "description": "The owner removes a viewer or cancels an invite; the viewer stops viewing. Takes effect on the next request. The\nviewer's conversations about the owner's data go too (DAP-19): consent withdrawn means nothing from it is kept.",
@@ -26147,6 +26556,60 @@
         ]
       }
     },
+    "/sharing/{share_id}/likes": {
+      "get": {
+        "description": "The meals of this share's owner that this viewer liked in the last 30 days, so the journal shows them liked.",
+        "operationId": "my_likes_sharing__share_id__likes_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "format": "uuid",
+                    "type": "string"
+                  },
+                  "title": "Response My Likes Sharing  Share Id  Likes Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "My Likes",
+        "tags": [
+          "young"
+        ]
+      }
+    },
     "/sharing/{share_id}/nickname": {
       "put": {
         "description": "The viewer names the person they follow (PM-385). Only the viewer sees it; nothing of the owner's changes.",
@@ -26201,6 +26664,116 @@
           }
         ],
         "summary": "Set Nickname",
+        "tags": [
+          "sharing"
+        ]
+      }
+    },
+    "/sharing/{share_id}/questions": {
+      "get": {
+        "description": "What this viewer asked the person in the last SHOWN_DAYS days, with the answers, oldest first.",
+        "operationId": "asked_sharing__share_id__questions_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RowQuestionOut"
+                  },
+                  "title": "Response Asked Sharing  Share Id  Questions Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Asked",
+        "tags": [
+          "sharing"
+        ]
+      },
+      "post": {
+        "description": "Asks the person about one row of their journal; only through a share that includes the journal.",
+        "operationId": "ask_sharing__share_id__questions_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "share_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Share Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AskIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RowQuestionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Ask",
         "tags": [
           "sharing"
         ]
