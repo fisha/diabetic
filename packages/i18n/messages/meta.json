@@ -29911,5 +29911,159 @@
       "translation"
     ],
     "note": "Settings Profiles block (PM-498; Guy, 24 Nov 2026): Quiet profile, then Simple or Advanced profile in one row; they replace the Quiet mode and Simple mode rows. 'My {name}' is the mentor row, {name} is Stedio. Not in the design boards."
+  },
+  "bh.h_height": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "bh.h_weight": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "bh.c_height": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "bh.c_weight": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "bh.c_a11y": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "bh.now": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "bh.fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "bh.note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "bh.src_apple_health": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "bh.src_health_connect": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "pr.row": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "pr.t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "pr.lead": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "pr.day": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "pr.add": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "pr.earlier": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "pr.none": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "pr.fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "pr.load_fail": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "pr.note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "md.add": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "md.add_h": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
   }
 }
