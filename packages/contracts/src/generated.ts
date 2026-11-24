@@ -6380,8 +6380,22 @@ export interface components {
             fat_g: number | null;
             /** Fat Partial */
             fat_partial: boolean;
+            /** Fiber G */
+            fiber_g?: number | null;
+            /**
+             * Fiber Partial
+             * @default false
+             */
+            fiber_partial: boolean;
             /** Items */
             items: number;
+            /** Kcal */
+            kcal?: number | null;
+            /**
+             * Kcal Partial
+             * @default false
+             */
+            kcal_partial: boolean;
             /** Meals */
             meals: number;
             /** Measured Items */
@@ -6390,6 +6404,27 @@ export interface components {
             protein_g: number | null;
             /** Protein Partial */
             protein_partial: boolean;
+            /** Sat Fat G */
+            sat_fat_g?: number | null;
+            /**
+             * Sat Fat Partial
+             * @default false
+             */
+            sat_fat_partial: boolean;
+            /** Sodium Mg */
+            sodium_mg?: number | null;
+            /**
+             * Sodium Partial
+             * @default false
+             */
+            sodium_partial: boolean;
+            /** Sugar G */
+            sugar_g?: number | null;
+            /**
+             * Sugar Partial
+             * @default false
+             */
+            sugar_partial: boolean;
         };
         /** FoodItem */
         FoodItem: {
@@ -6405,6 +6440,8 @@ export interface components {
             fiber_per_100g?: number | null;
             /** Grams Per Unit */
             grams_per_unit?: number | null;
+            /** Kcal Per 100G */
+            kcal_per_100g?: number | null;
             /** Name */
             name: string;
             /** Protein Per 100G */
@@ -6412,10 +6449,16 @@ export interface components {
             /** Qty */
             qty: number;
             question?: components["schemas"]["FoodQuestion"] | null;
+            /** Sat Fat Per 100G */
+            sat_fat_per_100g?: number | null;
             /** Served High G */
             served_high_g?: number | null;
             /** Served Low G */
             served_low_g?: number | null;
+            /** Sodium Mg Per 100G */
+            sodium_mg_per_100g?: number | null;
+            /** Sugar Per 100G */
+            sugar_per_100g?: number | null;
             /**
              * Unit
              * @enum {string}
@@ -6430,12 +6473,18 @@ export interface components {
             fat_per_100g?: number | null;
             /** Fiber Per 100G */
             fiber_per_100g?: number | null;
+            /** Kcal Per 100G */
+            kcal_per_100g?: number | null;
             /** Name */
             name: string;
             /** Portions */
             portions?: components["schemas"]["Portion"][];
             /** Protein Per 100G */
             protein_per_100g?: number | null;
+            /** Sat Fat Per 100G */
+            sat_fat_per_100g?: number | null;
+            /** Sodium Mg Per 100G */
+            sodium_mg_per_100g?: number | null;
             /**
              * Source
              * @default usda-fdc
@@ -6443,6 +6492,8 @@ export interface components {
             source: string;
             /** Source Id */
             source_id: string;
+            /** Sugar Per 100G */
+            sugar_per_100g?: number | null;
         };
         /**
          * FoodNoteIn
@@ -6474,11 +6525,28 @@ export interface components {
             complete_days: number;
             /** Days */
             days: components["schemas"]["FoodDayOut"][];
+            /** Fat Avg G */
+            fat_avg_g?: number | null;
+            /** Fiber Avg G */
+            fiber_avg_g?: number | null;
             /** Goals */
             goals: string[];
+            /** Kcal Avg */
+            kcal_avg?: number | null;
             /** Protein Avg G */
             protein_avg_g: number | null;
+            /** Sat Fat Avg G */
+            sat_fat_avg_g?: number | null;
+            /** Sodium Avg Mg */
+            sodium_avg_mg?: number | null;
+            /** Sugar Avg G */
+            sugar_avg_g?: number | null;
             target: components["schemas"]["ProteinTargetOut"] | null;
+            /**
+             * Targets
+             * @default []
+             */
+            targets: components["schemas"]["TargetOut"][];
         };
         /** ForgotIn */
         ForgotIn: {
@@ -7502,6 +7570,11 @@ export interface components {
             /** Items */
             items: components["schemas"]["MealItemData"][];
             /**
+             * Kcal Total
+             * @default null
+             */
+            kcal_total: number | null;
+            /**
              * Note
              * @default null
              */
@@ -7521,6 +7594,21 @@ export interface components {
              * @default null
              */
             protein_total_g: number | null;
+            /**
+             * Sat Fat Total G
+             * @default null
+             */
+            sat_fat_total_g: number | null;
+            /**
+             * Sodium Total Mg
+             * @default null
+             */
+            sodium_total_mg: number | null;
+            /**
+             * Sugar Total G
+             * @default null
+             */
+            sugar_total_g: number | null;
         };
         /** MealItemData */
         MealItemData: {
@@ -7559,6 +7647,11 @@ export interface components {
              * @default null
              */
             fiber_g: number | null;
+            /**
+             * Kcal
+             * @default null
+             */
+            kcal: number | null;
             /** Name */
             name: string;
             /**
@@ -7573,6 +7666,21 @@ export interface components {
             prov: "est" | "user" | "wt" | "q" | "man";
             /** Qty */
             qty: number;
+            /**
+             * Sat Fat G
+             * @default null
+             */
+            sat_fat_g: number | null;
+            /**
+             * Sodium Mg
+             * @default null
+             */
+            sodium_mg: number | null;
+            /**
+             * Sugar G
+             * @default null
+             */
+            sugar_g: number | null;
             /** Unit */
             unit: string;
             /**
@@ -8939,6 +9047,23 @@ export interface components {
              * @default []
              */
             device_alert_push: ("low" | "high" | "falling" | "rising" | "reservoir" | "battery" | "sensor" | "delivery")[];
+            /**
+             * Food Tiles
+             * @default [
+             *       "meals",
+             *       "carbs",
+             *       "protein",
+             *       "fat",
+             *       "fiber",
+             *       "kcal",
+             *       "sugar",
+             *       "sat_fat",
+             *       "sodium",
+             *       "full",
+             *       "weighed"
+             *     ]
+             */
+            food_tiles: ("meals" | "carbs" | "protein" | "fat" | "fiber" | "kcal" | "sugar" | "sat_fat" | "sodium" | "full" | "weighed")[];
             glucose_alerts?: components["schemas"]["GlucoseAlertsOut"] | null;
             /**
              * Insight Interval Days
@@ -9019,6 +9144,8 @@ export interface components {
             celebrate?: boolean | null;
             /** Device Alert Push */
             device_alert_push?: ("low" | "high" | "falling" | "rising" | "reservoir" | "battery" | "sensor" | "delivery")[] | null;
+            /** Food Tiles */
+            food_tiles?: ("meals" | "carbs" | "protein" | "fat" | "fiber" | "kcal" | "sugar" | "sat_fat" | "sodium" | "full" | "weighed")[] | null;
             glucose_alerts?: components["schemas"]["GlucoseAlertsIn"] | null;
             /** Insight Interval Days */
             insight_interval_days?: number | null;
@@ -9198,6 +9325,30 @@ export interface components {
             grams_per_unit?: number | null;
             /** Target Mgdl */
             target_mgdl?: number | null;
+        };
+        /** TargetOut */
+        TargetOut: {
+            /** Amount */
+            amount: number;
+            /**
+             * Nutrient
+             * @enum {string}
+             */
+            nutrient: "carbs" | "protein" | "fat" | "sat_fat" | "fiber" | "kcal" | "sugar" | "sodium";
+            /**
+             * Per
+             * @enum {string}
+             */
+            per: "day" | "meal" | "kg_day";
+            /** Set On */
+            set_on: string | null;
+            /** Source */
+            source: string | null;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "g" | "kcal" | "mg";
         };
         /** ThreadOut */
         ThreadOut: {

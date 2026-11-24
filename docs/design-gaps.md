@@ -2302,3 +2302,17 @@ The design has no history list, chart, period screen or medicine rows. Built wit
   medicine" field last; a comma starts a new row; swipe or clearing removes a row.
 - Product rules: a same-day correction replaces that day's value; weights from a health app, one a day (the last).
 
+
+### G-137 · More nutrients on Overview, choosing the tiles, nutrition targets (**asked by Guy, 24 Nov 2026, PM-506, PM-507**)
+
+The design shows carbs and protein tiles only and has no tile chooser or targets screen. Built with existing parts only:
+
+- Overview > Food today, a day and a period: the same grid3 stat tiles for fat, fiber, calories, sugars, saturated fat
+  and sodium (icons drop, sparkle, flame, star, drop, burst), each with the "so far" note, the full-day average and, only
+  when the person typed one, a short "Target: …" line. No colour, bar or grade against a target.
+- A pencil beside the "Food today" heading opens a sheet of switches (one per tile), saved at once, like Body today.
+- Breakdown: each nutrient has its own breakdown; the hero line adds the full target with who set it and since when.
+- Settings > Diabetes profile > Nutrition targets: a pushed screen of Groups. Carbs, protein and calories each with an
+  amount row and a segmented "a day / a meal" (protein: "a day / per kg"); a "More targets" group (fat, saturated fat,
+  fiber, sugars, sodium, a day); a "Who set it" segmented control; footnotes that Stedio never suggests a target.
+- Minors: a child sees carbs only; a teen sees no calories, sugars, saturated fat or sodium (tiles and targets).
