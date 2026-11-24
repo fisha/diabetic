@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+24 Nov 2026 (Jira PM-500): Guy, following his son, saw "Couldn't load the averages" on Overview > Averages. Cause:
+`GET /metrics/averages` was never in the viewer allowlist (`deps.py`), so followers got 403 `view_only`. It now goes with
+the always-shared glucose scope, GET only (api #232, merged). Sharing tests 6/6 (fail without the fix), metrics,
+learning, minors, demo 55 pass, ruff clean. Other Overview reads for viewers checked: none missing. Next: API deploy
+via the Mac thread; no OTA.
 24 Nov 2026 (Jira PM-487, PM-497, PM-498, PM-499): Guy asked for Settings polish. Routine tab: the Activity & fitness
 block titles (Steps, Active energy, Exercise minutes, Stand hours, Workouts) are headings, 20 pt bold, larger than the
 rows. Settings: a "Profiles" block before Diabetes profile (Quiet profile row to the Quiet page; one Simple / Advanced
