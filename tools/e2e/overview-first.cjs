@@ -85,6 +85,12 @@ const server = http.createServer((req, res) => { let p = path.join(root, decodeU
         check(`${lang}: ${label} shows the reading's line on top`, !!pill && pill.y < 80, JSON.stringify(pill));
         // At the same height as on Talk (Guy, 24 Nov 2026).
         check(`${lang}: ${label}'s reading line at Talk's height`, !!pill && !!talkPill && Math.abs(pill.y - talkPill.y) <= 1, JSON.stringify({ pill: pill?.y, talk: talkPill?.y }));
+        if (i === 3) {
+          // The person's name and photo before the search box (Guy, 24 Nov 2026).
+          const search = await page.getByLabel(lang === 'he' ? 'חיפוש בהגדרות' : 'Search settings').first().boundingBox().catch(() => null);
+          const acct = await page.getByText(/@demo\.stedio|@example\.com/).first().boundingBox().catch(() => null);
+          check(`${lang}: Settings shows the account before the search box`, !!search && !!acct && acct.y < search.y, JSON.stringify({ acct, search }));
+        }
         await page.screenshot({ path: path.join(out, `${lang}-${i + 2}-${label}.png`) });
       }
       check(`${lang}: no page errors`, errors.length === 0, errors.join(' | '));
