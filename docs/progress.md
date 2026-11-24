@@ -25,6 +25,8 @@ sign-out ends all tabs; the admin handoff from the app moves into the cookie at 
 `2026-11-24T01:00:00Z` names the cookie (forced re-accept). API auth tests 15 pass; web tests, typecheck, lint pass;
 Playwright on a production build: reload, new tab, two tabs reloading at once, access token expiry, sign-out in all
 tabs. Next: deploy API, then website.
+24 Nov 2026 (PM-466/474/475): support in Jira Service Management is live end to end (SUP-1 from the app, Jira reply back in the app). Fixes api#222, #225, #226, #227. Portal "Stedio Support" branded with logo and #0B7A75 and the HELP articles linked (PM-474). Guy chose an open portal with Atlassian's help widget on the website (PM-475, web#81, privacy `2026-11-24T09:00:00Z`, api#228); live chat with an agent is not on the Free plan. Next: deploy API then web, check the widget on stedio.io, make the knowledge base visible to customers.
+
 23 Nov 2026 (Jira PM-466): Guy asked to connect support requests opened in the app to Jira Service Management (SUP)
 instead of the website's admin support, with the person synced as the customer, a customer portal with onboarding and
 how-to articles, all on the JSM Free plan. Built: each request is a JSM customer request raised for the person (email,
