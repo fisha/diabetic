@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+24 Nov 2026 (Jira PM-487, PM-497, PM-498, PM-499): Guy asked for Settings polish. Routine tab: the Activity & fitness
+block titles (Steps, Active energy, Exercise minutes, Stand hours, Workouts) are headings, 20 pt bold, larger than the
+rows. Settings: a "Profiles" block before Diabetes profile (Quiet profile row to the Quiet page; one Simple / Advanced
+profile switch; they replace the Quiet mode and Simple mode rows), no description line under any row (search still
+finds them), the mentor row "My Stedio", My milestones beside My Stedio and WhatsApp. WhatsApp: the "If you haven't
+written to Stedio in the last day" note removed. Accessibility: "Increase contrast" removed. App #293 merged.
+typecheck, app tests 315, i18n 20 pass; e2e `tools/e2e/settings-polish.cjs` 40/40 and `simple-mode.cjs` all pass
+(en, he, light, dark). Not yet seen on a phone. Next: OTA via the Mac thread.
 24 Nov 2026 (Jira PM-484): Guy said a meal-review question ("What was the bread slice size?") vanished after one tap,
 so the answer could not be changed. Now the question stays with every option and the answer shown as a selected chip;
 another tap re-estimates the food, and a late estimate for a replaced answer is dropped (app #289). typecheck, lint,
