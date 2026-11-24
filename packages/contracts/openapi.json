@@ -2414,7 +2414,8 @@
                   "log_lunch",
                   "log_breakfast",
                   "move",
-                  "talk"
+                  "talk",
+                  "insights"
                 ],
                 "type": "string"
               },
@@ -2468,7 +2469,8 @@
                 "log_lunch",
                 "log_breakfast",
                 "move",
-                "talk"
+                "talk",
+                "insights"
               ],
               "type": "string"
             },
@@ -2565,6 +2567,32 @@
           "at"
         ],
         "title": "CheerOut",
+        "type": "object"
+      },
+      "CheerPromptOut": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "const": "meal",
+            "title": "Kind",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "at"
+        ],
+        "title": "CheerPromptOut",
         "type": "object"
       },
       "ChildActivityOut": {
@@ -4206,6 +4234,26 @@
         "title": "DocumentOut",
         "type": "object"
       },
+      "DraftOut": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "photo_id": {
+            "format": "uuid",
+            "title": "Photo Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "photo_id",
+          "at"
+        ],
+        "title": "DraftOut",
+        "type": "object"
+      },
       "EnvironmentOut": {
         "properties": {
           "air": {
@@ -5822,6 +5870,16 @@
           },
           "earned_today": {
             "title": "Earned Today",
+            "type": "integer"
+          },
+          "habit_on": {
+            "default": false,
+            "title": "Habit On",
+            "type": "boolean"
+          },
+          "habit_today": {
+            "default": 0,
+            "title": "Habit Today",
             "type": "integer"
           },
           "shop": {
@@ -9988,6 +10046,16 @@
               }
             ],
             "title": "Band"
+          },
+          "cheer_prompt": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CheerPromptOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "controls": {
             "$ref": "#/components/schemas/Controls"
@@ -15518,6 +15586,29 @@
             "title": "Cheers",
             "type": "array"
           },
+          "coins_new": {
+            "default": 0,
+            "title": "Coins New",
+            "type": "integer"
+          },
+          "coins_today": {
+            "default": 0,
+            "title": "Coins Today",
+            "type": "integer"
+          },
+          "coins_why": {
+            "default": [],
+            "items": {
+              "enum": [
+                "meal",
+                "insight",
+                "challenge"
+              ],
+              "type": "string"
+            },
+            "title": "Coins Why",
+            "type": "array"
+          },
           "controls": {
             "anyOf": [
               {
@@ -15553,6 +15644,11 @@
                 "type": "null"
               }
             ]
+          },
+          "insight_today": {
+            "default": false,
+            "title": "Insight Today",
+            "type": "boolean"
           },
           "quest": {
             "anyOf": [
@@ -17037,7 +17133,7 @@
     },
     "/auth/admin-session": {
       "post": {
-        "description": "A second session for an admin, for the website's admin pages (PM-429). The website's \"Sign in\" opens the app,\nwhose sign-in is its own; an admin who signs in there is taken to the admin pages, which keep their session in\nmemory only, without signing in again. A new family, so signing out of either one leaves the other as it is.",
+        "description": "A second session for an admin, for the website's admin pages (PM-429). The website's \"Sign in\" opens the app,\nwhose sign-in is its own; an admin who signs in there is taken to the admin pages, which take it over into their\nown cookie session (PM-473) without signing in again. A new family, so signing out of either one leaves the other as it is.",
         "operationId": "admin_session_auth_admin_session_post",
         "responses": {
           "200": {
@@ -17477,16 +17573,24 @@
     },
     "/auth/refresh": {
       "post": {
+        "description": "Rotates the refresh token. The website (cookie mode) sends none and its cookie is used; it may also send one in\nthe body (the admin pages' handoff from the app, PM-429), which then moves into the cookie.",
         "operationId": "refresh_auth_refresh_post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshIn"
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/RefreshIn"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -17570,11 +17674,18 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshIn"
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/RefreshIn"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "204": {
@@ -23436,6 +23547,36 @@
         ]
       }
     },
+    "/meal/drafts": {
+      "get": {
+        "operationId": "list_drafts_meal_drafts_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DraftOut"
+                  },
+                  "title": "Response List Drafts Meal Drafts Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Drafts",
+        "tags": [
+          "meal"
+        ]
+      }
+    },
     "/meal/foods": {
       "get": {
         "description": "A Hebrew query searches the Israeli food list (Ministry of Health, Tzameret; DAP-16) with typical portions. A Latin\nquery searches USDA FoodData Central as before, followed by up to five foods of the Israeli list by their English\nnames. The Israeli list is part of the server, so it answers when USDA is not configured or does not answer.",
@@ -23753,6 +23894,51 @@
           }
         ],
         "summary": "Analyze",
+        "tags": [
+          "meal"
+        ]
+      }
+    },
+    "/meal/photos/{photo_id}/draft": {
+      "post": {
+        "description": "Snap now, finish later (PM-480, Guy 24 Nov 2026): the photo waits as a draft; nothing is saved as a meal.",
+        "operationId": "keep_draft_meal_photos__photo_id__draft_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "photo_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Photo Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Keep Draft",
         "tags": [
           "meal"
         ]

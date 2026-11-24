@@ -2253,3 +2253,22 @@ Guy approved Mixpanel product analytics, opt-in. The design has no analytics cho
 - Settings > Privacy: one more `ToggleRow` in the same group, after Weather.
 - Hidden under 18, while viewing someone, and in a build without the Mixpanel token.
 
+
+### G-134 · Teen engagement (**asked by Guy, 24 Nov 2026, PM-477..483**)
+
+Guy approved all eight ideas of the PM-477 proposal ("את כולן", no coins for adults; a meal photo may stay as a draft;
+meal photos on WhatsApp). The design has none of these states. Built with existing parts only:
+
+- Habit coins (PM-478): a toast (existing `toast`, icon sparkle) when a minor earns coins for a logged meal, an
+  answered insight or a met challenge. No new screen; the coins go to the existing wardrobe. Never for adults, never
+  in Classic or with Games off, never for device-sourced data or for glucose values.
+- Teen insight answers (PM-479): on the Overview card line a teen sees at most one insight card a day, with a question
+  line and the existing chip row: "That's me", "Not really", "Why?" (opens Talk). New weekly challenge "Answer
+  insights on 3 days" in the existing challenge list (💡).
+- Meal photo draft (PM-480): the photo preview has a tertiary "Finish later" button (one photo, not in demo or with
+  AI off). A draft shows on the Overview card line as a card with "Finish now" and "Discard" chips; it is removed
+  with every unlinked photo after a day.
+- Parent's cheer prompt (PM-483): when the child logged a meal in the last 6 hours, the parent viewing the child sees
+  a card "Meal logged by {person}" with "Send a high-five" and "Not now" chips. Only that a meal was logged; no
+  contents, no glucose.
+- WhatsApp meal photos (PM-481) and the teen mentor lines (PM-482) have no app UI.

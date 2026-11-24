@@ -464,8 +464,8 @@ export interface paths {
         /**
          * Admin Session
          * @description A second session for an admin, for the website's admin pages (PM-429). The website's "Sign in" opens the app,
-         *     whose sign-in is its own; an admin who signs in there is taken to the admin pages, which keep their session in
-         *     memory only, without signing in again. A new family, so signing out of either one leaves the other as it is.
+         *     whose sign-in is its own; an admin who signs in there is taken to the admin pages, which take it over into their
+         *     own cookie session (PM-473) without signing in again. A new family, so signing out of either one leaves the other as it is.
          */
         post: operations["admin_session_auth_admin_session_post"];
         delete?: never;
@@ -689,7 +689,11 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Refresh */
+        /**
+         * Refresh
+         * @description Rotates the refresh token. The website (cookie mode) sends none and its cookie is used; it may also send one in
+         *     the body (the admin pages' handoff from the app, PM-429), which then moves into the cookie.
+         */
         post: operations["refresh_auth_refresh_post"];
         delete?: never;
         options?: never;
@@ -2822,6 +2826,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/meal/drafts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Drafts */
+        get: operations["list_drafts_meal_drafts_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/meal/foods": {
         parameters: {
             query?: never;
@@ -2912,6 +2933,26 @@ export interface paths {
         put?: never;
         /** Analyze */
         post: operations["analyze_meal_photos__photo_id__analyze_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/meal/photos/{photo_id}/draft": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Keep Draft
+         * @description Snap now, finish later (PM-480, Guy 24 Nov 2026): the photo waits as a draft; nothing is saved as a meal.
+         */
+        post: operations["keep_draft_meal_photos__photo_id__draft_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -4995,7 +5036,7 @@ export interface components {
         /** ChallengeIn */
         ChallengeIn: {
             /** Id */
-            id: ("log_lunch" | "log_breakfast" | "move" | "talk") | null;
+            id: ("log_lunch" | "log_breakfast" | "move" | "talk" | "insights") | null;
         };
         /** ChallengeOut */
         ChallengeOut: {
@@ -5011,7 +5052,7 @@ export interface components {
         /** ChallengesIn */
         ChallengesIn: {
             /** Ids */
-            ids: ("log_lunch" | "log_breakfast" | "move" | "talk")[];
+            ids: ("log_lunch" | "log_breakfast" | "move" | "talk" | "insights")[];
         };
         /** ChangeMetaOut */
         ChangeMetaOut: {
@@ -5052,6 +5093,24 @@ export interface components {
             id: string;
             /** Kind */
             kind: string;
+        };
+        /** CheerPromptOut */
+        CheerPromptOut: {
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Kind
+             * @constant
+             */
+            kind: "meal";
         };
         /**
          * ChildActivityOut
@@ -5705,6 +5764,19 @@ export interface components {
             /** Version */
             version: string;
         };
+        /** DraftOut */
+        DraftOut: {
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /**
+             * Photo Id
+             * Format: uuid
+             */
+            photo_id: string;
+        };
         /** EnvironmentOut */
         EnvironmentOut: {
             /** Air */
@@ -6189,6 +6261,16 @@ export interface components {
             coins: number;
             /** Earned Today */
             earned_today: number;
+            /**
+             * Habit On
+             * @default false
+             */
+            habit_on: boolean;
+            /**
+             * Habit Today
+             * @default 0
+             */
+            habit_today: number;
             /** Shop */
             shop: components["schemas"]["ShopItemOut"][];
             /** Streak */
@@ -7682,6 +7764,7 @@ export interface components {
         ParentYoungOut: {
             /** Band */
             band: ("child" | "teen") | null;
+            cheer_prompt?: components["schemas"]["CheerPromptOut"] | null;
             controls: components["schemas"]["Controls"];
             /**
              * Pending
@@ -9600,10 +9683,30 @@ export interface components {
              * @default []
              */
             cheers: components["schemas"]["CheerOut"][];
+            /**
+             * Coins New
+             * @default 0
+             */
+            coins_new: number;
+            /**
+             * Coins Today
+             * @default 0
+             */
+            coins_today: number;
+            /**
+             * Coins Why
+             * @default []
+             */
+            coins_why: ("meal" | "insight" | "challenge")[];
             controls?: components["schemas"]["Controls"] | null;
             /** Growth */
             growth?: ("baby" | "kid" | "explorer") | null;
             handover?: components["schemas"]["HandoverOut"] | null;
+            /**
+             * Insight Today
+             * @default false
+             */
+            insight_today: boolean;
             quest?: components["schemas"]["QuestOut"] | null;
             /**
              * Quiet Self
@@ -10937,9 +11040,9 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        requestBody: {
+        requestBody?: {
             content: {
-                "application/json": components["schemas"]["RefreshIn"];
+                "application/json": components["schemas"]["RefreshIn"] | null;
             };
         };
         responses: {
@@ -11017,9 +11120,9 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        requestBody: {
+        requestBody?: {
             content: {
-                "application/json": components["schemas"]["RefreshIn"];
+                "application/json": components["schemas"]["RefreshIn"] | null;
             };
         };
         responses: {
@@ -15196,6 +15299,26 @@ export interface operations {
             };
         };
     };
+    list_drafts_meal_drafts_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DraftOut"][];
+                };
+            };
+        };
+    };
     search_meal_foods_get: {
         parameters: {
             query: {
@@ -15448,6 +15571,42 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    keep_draft_meal_photos__photo_id__draft_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                photo_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description not_found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
             };
         };
     };

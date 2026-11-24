@@ -29593,5 +29593,138 @@
       "translation"
     ],
     "note": "A parent's alert about their child's safety concern (PM-453, Guy 23 Nov 2026)."
+  },
+  "yg.ch_insights": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "coins.got_meal": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "coins.got_insight": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "coins.got_challenge": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "now.teen_q": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "now.teen_yes": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "now.teen_no": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "now.teen_why": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "meal.later": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "meal.later_failed": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "meal.later_done": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "now.draft_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "now.draft_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "now.draft_go": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "now.draft_drop": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "now.cheer_t": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "now.cheer_b": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "now.cheer_send": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "now.cheer_later": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
   }
 }

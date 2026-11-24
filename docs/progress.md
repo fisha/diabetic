@@ -8,6 +8,26 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+24 Nov 2026 (Jira PM-484): Guy said a meal-review question ("What was the bread slice size?") vanished after one tap,
+so the answer could not be changed. Now the question stays with every option and the answer shown as a selected chip;
+another tap re-estimates the food, and a late estimate for a replaced answer is dropped (app #289). typecheck, lint,
+app tests 313 pass. Not yet seen on a phone. Next: OTA via the Mac thread.
+24 Nov 2026 (Jira PM-485): Guy asked that a parent's cheer also reach the child on WhatsApp, "only if he has not seen it
+in the app". Built (api #230, web #83): worker step `cheer_whatsapp` sends a cheer still unopened in the app after 30
+minutes once as WhatsApp text, only inside the child's free 24-hour window (never a template), with the usual stop,
+consent, quiet mode and quiet hours checks; dropped after a day. `cheers.whatsapp_at`, migration `d4f6a8c0e2b4`. Privacy
+`2026-11-24T16:00:00Z`. API tests for it pass, web 17. Next: API and web deploy (no OTA needed).
+24 Nov 2026 (Jira PM-477..483): Guy asked how to get a teen to answer insights and log meals, then approved all eight
+proposal ideas ("את כולן", no coins for adults; a meal photo may stay a draft; meal photos on WhatsApp). Built: habit
+coins for minors (meal logged up to 4 a day, insight answered up to 3, challenge met once a week; own entries only,
+not in Classic or with Games off; `games.habit_coins`, worker step `habit_coins`, toast `CoinsWatcher`); teen insight
+answers on Overview (one insight card a day, "That's me / Not really / Why?") and the "insights" weekly challenge;
+meal photo drafts ("Finish later", `POST /meal/photos/{id}/draft`, `GET /meal/drafts`, migration `b7d9f1a3c5e8`, a
+draft card on Overview, deleted after a day like every unlinked photo); meal photos on WhatsApp (read, estimate shown,
+Save / Not now buttons, Not now keeps a draft; parent's photo switch respected); teen mentor lines (ask once what would
+make the app worth opening, remember it, link habits to their own goals, never pressure); the parent's cheer card after
+the child logs a meal. Privacy `2026-11-24T15:00:00Z` (WhatsApp photos to Meta, drafts, cheer). Design gap G-134.
+Merged api #229, app #290, web #82. Regression evals not run for the mentor lines (PM-436). Next: API deploy, then OTA; check with Yonatan.
 24 Nov 2026 (Jira PM-476): Guy approved the mockup and asked for it pixel for pixel. Built (app #284): the Overview is the
 first tab and the screen the app opens on (tabs Overview, Talk, Journal, Settings); Overview has no title, the glucose
 tile beside the time-in-range tile on top (a tap steps 24 h / Day / Week and moves the period below), no period TIR
