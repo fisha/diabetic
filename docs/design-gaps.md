@@ -284,7 +284,7 @@ and fails on any new failure.
   fields and validation; the inline editors can follow once a profile API exists.
 - Check-in frequency uses the three onboarding answers (only when I start, a few times a day, more at first) instead
   of the board's Fewer / Balanced / More while learning, so onboarding and settings agree. Needs a decision.
-- Increase contrast is shown disabled: the design has no high-contrast palette.
+- Increase contrast was shown as "Coming soon" (no high-contrast palette in the design); removed at Guy's request, 24 Nov 2026 (PM-499).
 - Membership has a runtime state the board does not have: "Membership isn't set up yet" (no trial, no billing).
 - The snooze, change-time and pause sheets, the paused banner and the clear-all memories dialog are not built yet,
   because nothing can be snoozed or paused without the check-in service. They will be built with Stage 3.

@@ -15267,18 +15267,6 @@
     ],
     "note": "Health store 'Before you connect' (G-39): what else is read and why."
   },
-  "set.hc": {
-    "board": "Settings",
-    "review": [
-      "translation"
-    ]
-  },
-  "set.hc_b": {
-    "board": "Settings",
-    "review": [
-      "translation"
-    ]
-  },
   "set.hd_allow": {
     "board": "SET-05",
     "review": [
@@ -23700,13 +23688,6 @@
     ],
     "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
   },
-  "wa.kinds_note": {
-    "board": "Settings",
-    "review": [
-      "translation"
-    ],
-    "note": "WhatsApp companion channel (PM-269, Guy 19 Nov 2026): Profile > Companion card. Not in the design boards (docs/design-gaps.md)."
-  },
   "wa.ai_off": {
     "board": "Settings",
     "review": [
@@ -27667,12 +27648,6 @@
       "translation"
     ]
   },
-  "set.soon": {
-    "board": "Duet",
-    "review": [
-      "translation"
-    ]
-  },
   "set.faq_t": {
     "board": "Duet",
     "review": [
@@ -29726,5 +29701,47 @@
       "translation"
     ],
     "note": "Teen engagement (PM-477..483, Guy 24 Nov 2026)."
+  },
+  "set.profiles": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Settings Profiles block (PM-498; Guy, 24 Nov 2026): Quiet profile, then Simple or Advanced profile in one row; they replace the Quiet mode and Simple mode rows. 'My {name}' is the mentor row, {name} is Stedio. Not in the design boards."
+  },
+  "set.quiet_profile": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Settings Profiles block (PM-498; Guy, 24 Nov 2026): Quiet profile, then Simple or Advanced profile in one row; they replace the Quiet mode and Simple mode rows. 'My {name}' is the mentor row, {name} is Stedio. Not in the design boards."
+  },
+  "set.prof_simple": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Settings Profiles block (PM-498; Guy, 24 Nov 2026): Quiet profile, then Simple or Advanced profile in one row; they replace the Quiet mode and Simple mode rows. 'My {name}' is the mentor row, {name} is Stedio. Not in the design boards."
+  },
+  "set.prof_adv": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Settings Profiles block (PM-498; Guy, 24 Nov 2026): Quiet profile, then Simple or Advanced profile in one row; they replace the Quiet mode and Simple mode rows. 'My {name}' is the mentor row, {name} is Stedio. Not in the design boards."
+  },
+  "set.prof_choice": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Settings Profiles block (PM-498; Guy, 24 Nov 2026): Quiet profile, then Simple or Advanced profile in one row; they replace the Quiet mode and Simple mode rows. 'My {name}' is the mentor row, {name} is Stedio. Not in the design boards."
+  },
+  "set.my_companion": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Settings Profiles block (PM-498; Guy, 24 Nov 2026): Quiet profile, then Simple or Advanced profile in one row; they replace the Quiet mode and Simple mode rows. 'My {name}' is the mentor row, {name} is Stedio. Not in the design boards."
   }
 }

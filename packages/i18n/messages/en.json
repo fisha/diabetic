@@ -2142,8 +2142,6 @@
   "set.hb2": "After that, new readings are added each time you open the app.",
   "set.hb3": "Readings you entered yourself are never changed.",
   "set.hb4": "If you allow them, heart rate, steps, workouts, sleep, weight, carbohydrates and insulin are read too, to find what helps your glucose. Each one can be allowed or not.",
-  "set.hc": "Increase contrast",
-  "set.hc_b": "Not available yet: the high-contrast colours aren’t designed.",
   "set.hd_allow": "Continue",
   "set.hd_connected": "Blood glucose readings from {name} are added when you open the app. They can arrive late if the app that recorded them syncs late.",
   "set.hd_connecting": "Answer the request from {name} on your phone.",
@@ -3710,7 +3708,6 @@
   "wa.k_meal": "Meal not logged yet",
   "wa.k_sensor": "Sensor ending",
   "wa.k_link": "Connection stopped",
-  "wa.kinds_note": "If you haven't written to Stedio in the last day, these first arrive as a short message with a button. Nothing is sent between 22:00 and 07:00. Glucose alerts stay in the app.",
   "wa.ai_off": "The mentor is off. Turn it on in Settings > Privacy to chat on WhatsApp.",
   "wa.failed": "That didn't work. Try again in a moment.",
   "meal.total_est_said": "Estimate, not a measurement · for the amounts you described",
@@ -4273,7 +4270,6 @@
   "rep.d14s": "14 days",
   "rep.d30s": "30 days",
   "rep.d90s": "90 days",
-  "set.soon": "Coming soon",
   "set.faq_t": "Questions",
   "set.help_t": "Help",
   "rep.name_ph": "First and last name",
@@ -4573,5 +4569,11 @@
   "now.cheer_t": "{person} logged a meal",
   "now.cheer_b": "Send a cheer?",
   "now.cheer_send": "Send a high-five",
-  "now.cheer_later": "Not now"
+  "now.cheer_later": "Not now",
+  "set.profiles": "Profiles",
+  "set.quiet_profile": "Quiet profile",
+  "set.prof_simple": "Simple profile",
+  "set.prof_adv": "Advanced profile",
+  "set.prof_choice": "Simple or advanced profile",
+  "set.my_companion": "My {name}"
 }

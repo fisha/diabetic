@@ -50,8 +50,8 @@ const server = http.createServer((req, res) => {
       await api('/profile', { method: 'PUT', token: tk, body: { locale: lang, answers: ANSWERS } });
       const L = he ? { email: 'אימייל', pw: 'סיסמה', go: 'כניסה', have: 'כבר יש לי חשבון' } : { email: 'Email', pw: 'Password', go: 'Sign in', have: 'I already have an account' };
       const T = he
-        ? { talk: 'שיחה', overview: 'סקירה', journal: 'יומן', settings: 'הגדרות', simple: 'מצב פשוט', overTime: 'לאורך הזמן', graph: 'גלוקוז, mg/dL', tir: 'זמן בטווח', set: 'סט עירוי', games: 'משחקים', plus: 'תיעוד מהיר' }
-        : { talk: 'Talk', overview: 'Overview', journal: 'Journal', settings: 'Settings', simple: 'Simple mode', overTime: 'Over time', graph: 'Glucose, mg/dL', tir: 'Time in range', set: 'Infusion set', games: 'Games', plus: 'Quick log' };
+        ? { talk: 'שיחה', overview: 'סקירה', journal: 'יומן', settings: 'הגדרות', simple: 'פרופיל פשוט', adv: 'פרופיל מתקדם', overTime: 'לאורך הזמן', graph: 'גלוקוז, mg/dL', tir: 'זמן בטווח', set: 'סט עירוי', games: 'משחקים', plus: 'תיעוד מהיר' }
+        : { talk: 'Talk', overview: 'Overview', journal: 'Journal', settings: 'Settings', simple: 'Simple profile', adv: 'Advanced profile', overTime: 'Over time', graph: 'Glucose, mg/dL', tir: 'Time in range', set: 'Infusion set', games: 'Games', plus: 'Quick log' };
       const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: scheme, locale: he ? 'he-IL' : 'en-US', deviceScaleFactor: 2, timezoneId: 'UTC' });
       const p = await ctx.newPage(); lastPage = p; p.on('pageerror', (e) => errors.push(e.message)); p.setDefaultTimeout(6000);
       const has = async (s) => (await p.getByText(s, { exact: true }).count()) > 0;
@@ -68,9 +68,9 @@ const server = http.createServer((req, res) => {
         await tab(T.overview); await p.waitForTimeout(2500);
         ok('off: Overview has the graph views', await has(T.overTime));
       }
-      // The switch on the Settings screen.
+      // Simple / Advanced profile in the Settings Profiles block (PM-498; was a Simple mode switch).
       await tab(T.settings); await p.waitForTimeout(1500);
-      const sw = p.getByRole('switch', { name: T.simple });
+      const sw = p.getByRole('radio', { name: T.simple });
       await sw.scrollIntoViewIfNeeded(); await p.waitForTimeout(300);
       await sw.click(); await p.waitForTimeout(1500);
       await shot('01-settings-on');
@@ -92,7 +92,7 @@ const server = http.createServer((req, res) => {
       ok(`${lang} ${scheme}: Overview has the set row`, await has(T.set));
       // Off again: everything comes back.
       await tab(T.settings); await p.waitForTimeout(1200);
-      await p.getByRole('switch', { name: T.simple }).click(); await p.waitForTimeout(1500);
+      await p.getByRole('radio', { name: T.adv }).click(); await p.waitForTimeout(1500);
       ok(`${lang} ${scheme}: off again, Journal back`, await has(T.journal));
       await ctx.close();
     }
