@@ -12,6 +12,11 @@ verified only against test stand-ins or not at all. See `docs/integration-status
 so the answer could not be changed. Now the question stays with every option and the answer shown as a selected chip;
 another tap re-estimates the food, and a late estimate for a replaced answer is dropped (app #289). typecheck, lint,
 app tests 313 pass. Not yet seen on a phone. Next: OTA via the Mac thread.
+24 Nov 2026 (Jira PM-485): Guy asked that a parent's cheer also reach the child on WhatsApp, "only if he has not seen it
+in the app". Built (api #230, web #83): worker step `cheer_whatsapp` sends a cheer still unopened in the app after 30
+minutes once as WhatsApp text, only inside the child's free 24-hour window (never a template), with the usual stop,
+consent, quiet mode and quiet hours checks; dropped after a day. `cheers.whatsapp_at`, migration `d4f6a8c0e2b4`. Privacy
+`2026-11-24T16:00:00Z`. API tests for it pass, web 17. Next: API and web deploy (no OTA needed).
 24 Nov 2026 (Jira PM-477..483): Guy asked how to get a teen to answer insights and log meals, then approved all eight
 proposal ideas ("את כולן", no coins for adults; a meal photo may stay a draft; meal photos on WhatsApp). Built: habit
 coins for minors (meal logged up to 4 a day, insight answered up to 3, challenge met once a week; own entries only,
