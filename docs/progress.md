@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+24 Nov 2026 (Jira PM-506, PM-507): Guy asked for more nutrients on Overview > Nutrition (only what meal analysis
+gives), a tile chooser like Apple Health, and targets the person types from their care team, shown beside the total and
+the average (Stedio never suggests one). At Guy's choice the analysis now also gives calories, sugars, saturated fat and
+sodium (AI model, USDA, Open Food Facts; the Israeli list has none, so they stay empty). Built: meal item and total
+fields, `nutrition_targets.py` (`food.targets` checked on profile save, minors limited), summary averages and
+`targets`, `food_tiles` in settings, mentor context and `app_data`, export columns and a "nutrition_targets" file; app
+tiles, chooser sheet, breakdown, Nutrition targets screen. Privacy `2026-11-24T22:00:00Z`. Design gap G-137. API tests
+pass (1048), app 319, i18n 20, web 17; e2e `tools/e2e/nutrition-targets.cjs` 32/32 en+he light+dark. Companion
+regression set not run (context change). Next: API + web deploy, then OTA.
+
 24 Nov 2026 (Jira PM-505): Guy said the Last period screen looked broken (the Add button out of line with the date
 field, loose info rows). It now uses Duet groups: the first day and an "Add period" row in one group, the periods or the
 empty line in the next, the note as a footnote. Medicines are one grouped list with an "Add a medicine" row. Height and

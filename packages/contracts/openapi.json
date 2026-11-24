@@ -5525,9 +5525,41 @@
             "title": "Fat Partial",
             "type": "boolean"
           },
+          "fiber_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fiber G"
+          },
+          "fiber_partial": {
+            "default": false,
+            "title": "Fiber Partial",
+            "type": "boolean"
+          },
           "items": {
             "title": "Items",
             "type": "integer"
+          },
+          "kcal": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kcal"
+          },
+          "kcal_partial": {
+            "default": false,
+            "title": "Kcal Partial",
+            "type": "boolean"
           },
           "meals": {
             "title": "Meals",
@@ -5550,6 +5582,54 @@
           },
           "protein_partial": {
             "title": "Protein Partial",
+            "type": "boolean"
+          },
+          "sat_fat_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sat Fat G"
+          },
+          "sat_fat_partial": {
+            "default": false,
+            "title": "Sat Fat Partial",
+            "type": "boolean"
+          },
+          "sodium_mg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sodium Mg"
+          },
+          "sodium_partial": {
+            "default": false,
+            "title": "Sodium Partial",
+            "type": "boolean"
+          },
+          "sugar_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sugar G"
+          },
+          "sugar_partial": {
+            "default": false,
+            "title": "Sugar Partial",
             "type": "boolean"
           }
         },
@@ -5650,6 +5730,19 @@
             ],
             "title": "Grams Per Unit"
           },
+          "kcal_per_100g": {
+            "anyOf": [
+              {
+                "maximum": 900.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kcal Per 100G"
+          },
           "name": {
             "maxLength": 120,
             "minLength": 1,
@@ -5685,6 +5778,19 @@
               }
             ]
           },
+          "sat_fat_per_100g": {
+            "anyOf": [
+              {
+                "maximum": 100.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sat Fat Per 100G"
+          },
           "served_high_g": {
             "anyOf": [
               {
@@ -5710,6 +5816,32 @@
               }
             ],
             "title": "Served Low G"
+          },
+          "sodium_mg_per_100g": {
+            "anyOf": [
+              {
+                "maximum": 40000.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sodium Mg Per 100G"
+          },
+          "sugar_per_100g": {
+            "anyOf": [
+              {
+                "maximum": 100.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sugar Per 100G"
           },
           "unit": {
             "enum": [
@@ -5768,6 +5900,17 @@
             ],
             "title": "Fiber Per 100G"
           },
+          "kcal_per_100g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kcal Per 100G"
+          },
           "name": {
             "title": "Name",
             "type": "string"
@@ -5790,6 +5933,28 @@
             ],
             "title": "Protein Per 100G"
           },
+          "sat_fat_per_100g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sat Fat Per 100G"
+          },
+          "sodium_mg_per_100g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sodium Mg Per 100G"
+          },
           "source": {
             "default": "usda-fdc",
             "title": "Source",
@@ -5798,6 +5963,17 @@
           "source_id": {
             "title": "Source Id",
             "type": "string"
+          },
+          "sugar_per_100g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sugar Per 100G"
           }
         },
         "required": [
@@ -5898,12 +6074,45 @@
             "title": "Days",
             "type": "array"
           },
+          "fat_avg_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fat Avg G"
+          },
+          "fiber_avg_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fiber Avg G"
+          },
           "goals": {
             "items": {
               "type": "string"
             },
             "title": "Goals",
             "type": "array"
+          },
+          "kcal_avg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kcal Avg"
           },
           "protein_avg_g": {
             "anyOf": [
@@ -5916,6 +6125,39 @@
             ],
             "title": "Protein Avg G"
           },
+          "sat_fat_avg_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sat Fat Avg G"
+          },
+          "sodium_avg_mg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sodium Avg Mg"
+          },
+          "sugar_avg_g": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sugar Avg G"
+          },
           "target": {
             "anyOf": [
               {
@@ -5925,6 +6167,14 @@
                 "type": "null"
               }
             ]
+          },
+          "targets": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/TargetOut"
+            },
+            "title": "Targets",
+            "type": "array"
           }
         },
         "required": [
@@ -8700,6 +8950,20 @@
             "title": "Items",
             "type": "array"
           },
+          "kcal_total": {
+            "anyOf": [
+              {
+                "maximum": 40000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Kcal Total"
+          },
           "note": {
             "anyOf": [
               {
@@ -8756,6 +9020,48 @@
             ],
             "default": null,
             "title": "Protein Total G"
+          },
+          "sat_fat_total_g": {
+            "anyOf": [
+              {
+                "maximum": 2000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Sat Fat Total G"
+          },
+          "sodium_total_mg": {
+            "anyOf": [
+              {
+                "maximum": 200000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Sodium Total Mg"
+          },
+          "sugar_total_g": {
+            "anyOf": [
+              {
+                "maximum": 2000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Sugar Total G"
           }
         },
         "required": [
@@ -8871,6 +9177,20 @@
             "default": null,
             "title": "Fiber G"
           },
+          "kcal": {
+            "anyOf": [
+              {
+                "maximum": 20000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Kcal"
+          },
           "name": {
             "maxLength": 120,
             "title": "Name",
@@ -8906,6 +9226,48 @@
             "minimum": 0,
             "title": "Qty",
             "type": "number"
+          },
+          "sat_fat_g": {
+            "anyOf": [
+              {
+                "maximum": 1000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Sat Fat G"
+          },
+          "sodium_mg": {
+            "anyOf": [
+              {
+                "maximum": 100000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Sodium Mg"
+          },
+          "sugar_g": {
+            "anyOf": [
+              {
+                "maximum": 1000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Sugar G"
           },
           "unit": {
             "maxLength": 16,
@@ -12746,6 +13108,39 @@
             "title": "Device Alert Push",
             "type": "array"
           },
+          "food_tiles": {
+            "default": [
+              "meals",
+              "carbs",
+              "protein",
+              "fat",
+              "fiber",
+              "kcal",
+              "sugar",
+              "sat_fat",
+              "sodium",
+              "full",
+              "weighed"
+            ],
+            "items": {
+              "enum": [
+                "meals",
+                "carbs",
+                "protein",
+                "fat",
+                "fiber",
+                "kcal",
+                "sugar",
+                "sat_fat",
+                "sodium",
+                "full",
+                "weighed"
+              ],
+              "type": "string"
+            },
+            "title": "Food Tiles",
+            "type": "array"
+          },
           "glucose_alerts": {
             "anyOf": [
               {
@@ -12973,6 +13368,34 @@
               }
             ],
             "title": "Device Alert Push"
+          },
+          "food_tiles": {
+            "anyOf": [
+              {
+                "items": {
+                  "enum": [
+                    "meals",
+                    "carbs",
+                    "protein",
+                    "fat",
+                    "fiber",
+                    "kcal",
+                    "sugar",
+                    "sat_fat",
+                    "sodium",
+                    "full",
+                    "weighed"
+                  ],
+                  "type": "string"
+                },
+                "maxItems": 11,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Food Tiles"
           },
           "glucose_alerts": {
             "anyOf": [
@@ -13618,6 +14041,78 @@
           "from"
         ],
         "title": "TandemSegmentOut",
+        "type": "object"
+      },
+      "TargetOut": {
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "number"
+          },
+          "nutrient": {
+            "enum": [
+              "carbs",
+              "protein",
+              "fat",
+              "sat_fat",
+              "fiber",
+              "kcal",
+              "sugar",
+              "sodium"
+            ],
+            "title": "Nutrient",
+            "type": "string"
+          },
+          "per": {
+            "enum": [
+              "day",
+              "meal",
+              "kg_day"
+            ],
+            "title": "Per",
+            "type": "string"
+          },
+          "set_on": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Set On"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "unit": {
+            "enum": [
+              "g",
+              "kcal",
+              "mg"
+            ],
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "nutrient",
+          "amount",
+          "per",
+          "unit",
+          "source",
+          "set_on"
+        ],
+        "title": "TargetOut",
         "type": "object"
       },
       "ThreadOut": {

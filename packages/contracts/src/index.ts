@@ -158,3 +158,4 @@ export type AdminTicketOut = S['AdminTicketOut'];
 export type AdminSupportOut = S['AdminSupportOut'];
 export type AdminProfileOut = S['AdminProfileOut'];
 export type PasswordResetOut = S['PasswordResetOut'];
+export type TargetOut = S['TargetOut'];

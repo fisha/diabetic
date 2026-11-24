@@ -30065,5 +30065,376 @@
       "translation"
     ],
     "note": "Height, weight and period history, medicines as rows (Guy, 24 Nov 2026, PM-501..503)."
+  },
+  "nut.kcal": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.mg": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.tg_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.tg_day_plain": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.tg_meal": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.tg_meal_plain": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.pick": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.pick_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.pick_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.pick_note": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.pick_empty": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_fat_today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_fat_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_fat_on": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_fiber_today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_fiber_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_fiber_on": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_kcal_today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_kcal_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_kcal_on": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_sugar_today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_sugar_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_sugar_on": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_sat_fat_today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_sat_fat_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_sat_fat_on": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_sodium_today": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_sodium_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.l_sodium_on": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.t": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.lead": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.carbs": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.protein": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.kcal": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.fat": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.satFat": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.fiber": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.sugar": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.sodium": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.u_g": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.u_kcal": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.u_mg": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.a_day": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.a_meal": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.per_kg": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.per": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.more": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.a_day_note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nt.count": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.tg_s_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.tg_s_meal": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "nut.tg_s_kg": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
   }
 }
