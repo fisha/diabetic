@@ -4485,6 +4485,8 @@
   "games.d_hidden": "Tap fast on what has carbs",
   "games.g_breathe": "Breathe with Stedio",
   "games.d_breathe": "A minute of slow breathing, no score",
+  "games.g_chase": "Glucose chase",
+  "games.d_chase": "Chase friends and help each one by the meter above their head",
   "games.streak": "{n, plural, one {# day in a row} other {# days in a row}}",
   "games.done_today": "Answered today",
   "games.coins": "{n, plural, one {# coin} other {# coins}}",
