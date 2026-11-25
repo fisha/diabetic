@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+25 Nov 2026 (Jira PM-523, follow-up): after playing, Guy said the runner's levels were too short and too easy and asked
+the screen to shake when the character is low. The whole scene shakes while the game meter is low (a pulsing frame with
+Reduce motion), and the start card says so. Levels are 45 s with a goal of 18 coins +4 a level (at most 80), a steeper
+climb in speed, obstacles and meter drift, double rocks from level 3 and swooping bees from level 5. App #312, app tests
+338 pass. Next: OTA.
+
 25 Nov 2026 (Jira PM-523, PM-525): Guy asked for levels that get harder in the runner, the brick wall and the clouds, a
 countdown in the maze, and favourite games with an All / Favorites filter. Run with Stedio, Brick bounce and Cloud
 climb have levels (design gap G-140): a level pill, a level-up card with 5 bonus coins, a start-level picker, and
