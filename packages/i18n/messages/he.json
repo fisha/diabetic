@@ -4675,5 +4675,10 @@
   "nt.count": "{n, plural, one {יעד אחד} =2 {שני יעדים} other {# יעדים}}",
   "nut.tg_s_day": "יעד: {v} ביום",
   "nut.tg_s_meal": "יעד: {v} בארוחה",
-  "nut.tg_s_kg": "יעד: {v} לק״ג ביום"
+  "nut.tg_s_kg": "יעד: {v} לק״ג ביום",
+  "meal.past_search": "חיפוש בארוחות קודמות",
+  "meal.past_found": "ארוחות קודמות",
+  "meal.past_none": "אין ארוחה קודמת עם „{query}”.",
+  "meal.past_down": "החיפוש לא זמין כרגע. נסו שוב בעוד דקה.",
+  "meal.past_clear": "ניקוי החיפוש"
 }

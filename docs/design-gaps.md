@@ -2316,3 +2316,11 @@ The design shows carbs and protein tiles only and has no tile chooser or targets
   amount row and a segmented "a day / a meal" (protein: "a day / per kg"); a "More targets" group (fat, saturated fat,
   fiber, sugars, sodium, a day); a "Who set it" segmented control; footnotes that Stedio never suggests a target.
 - Minors: a child sees carbs only; a teen sees no calories, sugars, saturated fat or sodium (tiles and targets).
+
+
+### G-138 · Search past meals on Log a meal (**asked by Itay via Guy, 25 Nov 2026, PM-517**)
+
+The Meal board shows "Recent meals" only, with no search of earlier meals. Built with existing parts only: Duet x54's
+search field (search icon, group fill, accent edge while focused, a clear "×" once something is typed) between the ways
+to log and "Recent meals"; while searching, a "Past meals" heading and the same .r rows as Recent (meal, day and time,
+carbs), or one secondary line for no match or no server answer. Nothing else on the screen changes.

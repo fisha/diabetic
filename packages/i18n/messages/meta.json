@@ -30443,5 +30443,40 @@
       "translation"
     ],
     "note": "Nutrition tiles and care-team targets (Guy, 24 Nov 2026, PM-506, PM-507)."
+  },
+  "meal.past_search": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Search past meals (PM-517, Itay via Guy 25 Nov 2026): search the person's own meals over their whole history on Log a meal."
+  },
+  "meal.past_found": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Search past meals (PM-517, Itay via Guy 25 Nov 2026): search the person's own meals over their whole history on Log a meal."
+  },
+  "meal.past_none": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Search past meals (PM-517, Itay via Guy 25 Nov 2026): search the person's own meals over their whole history on Log a meal."
+  },
+  "meal.past_down": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Search past meals (PM-517, Itay via Guy 25 Nov 2026): search the person's own meals over their whole history on Log a meal."
+  },
+  "meal.past_clear": {
+    "board": "Meal",
+    "review": [
+      "translation"
+    ],
+    "note": "Search past meals (PM-517, Itay via Guy 25 Nov 2026): search the person's own meals over their whole history on Log a meal."
   }
 }
