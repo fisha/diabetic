@@ -4809,6 +4809,55 @@
         "title": "FamiliarizationOut",
         "type": "object"
       },
+      "FavoriteIn": {
+        "additionalProperties": false,
+        "properties": {
+          "game": {
+            "enum": [
+              "trivia",
+              "runner",
+              "carbs",
+              "plate",
+              "walk",
+              "bricks",
+              "catcher",
+              "myths",
+              "maze",
+              "clouds",
+              "hidden",
+              "breathe"
+            ],
+            "title": "Game",
+            "type": "string"
+          },
+          "on": {
+            "title": "On",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "game",
+          "on"
+        ],
+        "title": "FavoriteIn",
+        "type": "object"
+      },
+      "FavoritesOut": {
+        "properties": {
+          "favorites": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Favorites",
+            "type": "array"
+          }
+        },
+        "required": [
+          "favorites"
+        ],
+        "title": "FavoritesOut",
+        "type": "object"
+      },
       "FeedbackIn": {
         "additionalProperties": false,
         "properties": {
@@ -6259,6 +6308,14 @@
             "title": "Earned Today",
             "type": "integer"
           },
+          "favorites": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Favorites",
+            "type": "array"
+          },
           "habit_on": {
             "default": false,
             "title": "Habit On",
@@ -6268,6 +6325,14 @@
             "default": 0,
             "title": "Habit Today",
             "type": "integer"
+          },
+          "levels": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "default": {},
+            "title": "Levels",
+            "type": "object"
           },
           "shop": {
             "items": {
@@ -8544,6 +8609,48 @@
           "since"
         ],
         "title": "LearningOut",
+        "type": "object"
+      },
+      "LevelIn": {
+        "additionalProperties": false,
+        "properties": {
+          "game": {
+            "enum": [
+              "runner",
+              "bricks",
+              "clouds"
+            ],
+            "title": "Game",
+            "type": "string"
+          },
+          "level": {
+            "maximum": 99.0,
+            "minimum": 1.0,
+            "title": "Level",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "game",
+          "level"
+        ],
+        "title": "LevelIn",
+        "type": "object"
+      },
+      "LevelsOut": {
+        "properties": {
+          "levels": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Levels",
+            "type": "object"
+          }
+        },
+        "required": [
+          "levels"
+        ],
+        "title": "LevelsOut",
         "type": "object"
       },
       "Line": {
@@ -22330,6 +22437,100 @@
         ]
       }
     },
+    "/games/favorite": {
+      "post": {
+        "description": "Star or unstar a game on the Games screen (PM-525).",
+        "operationId": "favorite_games_favorite_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FavoriteIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FavoritesOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Favorite",
+        "tags": [
+          "games"
+        ]
+      }
+    },
+    "/games/level": {
+      "post": {
+        "description": "A level reached during play (PM-523). Only the highest one is kept, so the person carries on from it.",
+        "operationId": "reach_level_games_level_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LevelIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LevelsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Reach Level",
+        "tags": [
+          "games"
+        ]
+      }
+    },
     "/games/question": {
       "get": {
         "operationId": "get_question_games_question_get",
@@ -24449,6 +24650,60 @@
           }
         ],
         "summary": "Search",
+        "tags": [
+          "meal"
+        ]
+      }
+    },
+    "/meal/history/search": {
+      "get": {
+        "description": "The person's own past meals whose foods or note match `q` (PM-517), over their whole history, newest first, each\nmeal once by its foods, at most 20. Never someone else's: not open to a viewer.",
+        "operationId": "search_history_meal_history_search_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "required": true,
+            "schema": {
+              "maxLength": 80,
+              "minLength": 2,
+              "title": "Q",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RecordOut"
+                  },
+                  "title": "Response Search History Meal History Search Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Search History",
         "tags": [
           "meal"
         ]

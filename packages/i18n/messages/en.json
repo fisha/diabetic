@@ -4689,5 +4689,12 @@
   "jrn.range_note": "Up to {n} days at a time.",
   "jrn.range_on": "{from} to {to}",
   "jrn.empty_range": "Nothing in the journal on these dates.",
-  "jrn.empty_f_range": "Nothing of this type on these dates."
+  "jrn.empty_f_range": "Nothing of this type on these dates.",
+  "games.filter": "Show games",
+  "games.filter_all": "All",
+  "games.filter_fav": "Favorites",
+  "games.fav_add": "Add {game} to favorites",
+  "games.fav_remove": "Remove {game} from favorites",
+  "games.fav_empty": "No favorites yet. Tap the star on a game to add it here.",
+  "games.fav_title": "Favorites"
 }

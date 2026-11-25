@@ -2330,3 +2330,29 @@ carbs), or one secondary line for no match or no server answer. Nothing else on 
 The Journal detail board has Edit only. A primary .btn with the plus icon and the existing "Log it again" string
 (meal.again_log) sits above Edit on a meal with foods; it opens the usual Check the foods review with the time now.
 
+
+
+### G-140 · Game levels, favourite games and the maze countdown (**asked by Guy, 25 Nov 2026, PM-523, PM-525**)
+
+The approved games mockup (round 3) has no levels, no favourites and no timer in the Steps maze. Built in the
+mockup's own pieces:
+
+- Levels in Run with Stedio, Brick bounce and Cloud climb: a level pill (`.lvl`, the soft accent chip) next to the game's
+  title, a start-level picker (− Level n +) on the start and end cards once a level above 1 was reached, and a level-up
+  card over the canvas (the character, "Level n!", a line from a rotating pool, what is new, "+5 coins for the level"),
+  gone after two seconds. Runner: each level is 30 s to collect a coin goal (10, +2 a level, at most 36), shown as a
+  gold bar under the game meter; reaching it opens the next level at once and clears the obstacles on the way. Faster,
+  more rocks and bees, shorter gaps (never under 0.85 s, a jump takes 0.75 s), faster meter drift. The game meter's
+  middle zone never changes. Bricks: clearing the wall opens the next one: one more row (up to 8), five patterns in
+  turn, two-hit bricks with a thick frame from level 3, a faster ball, a narrower paddle, a life back. Clouds: every
+  150 m opens the next level: clouds further apart (gap at most 142 px, a bounce lifts 160 px) and narrower, drifting
+  clouds from level 2, grey clouds that break after one bounce from level 4.
+- The highest level per game is kept on the server (`games.levels`), so a game starts at it on any device.
+- Favourites: a star in the top start corner of each tile's picture (gold when on), and an All / Favorites segmented
+  control under the coins line. Favorites keeps the categories and hides empty ones; with none, a line says to tap the
+  star. Kept on the server (`games.favorites`).
+- Steps maze: a 90-second countdown next to the footprints (⏱️ m:ss, the low colour in the last 10 s). It stops while
+  the game is paused for a low reading. Reaching the exit adds a coin for every 10 s left; at zero the round ends with
+  "Time's up!" and the footprints collected still count.
+- Brick bounce and Cloud climb's "What we learned" now lists only the tips this round's bulbs showed (Guy, 25 Nov 2026:
+  the clouds showed an earlier round's tips), or says no bulb was lit.

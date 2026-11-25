@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+25 Nov 2026 (Jira PM-523, PM-525): Guy asked for levels that get harder in the runner, the brick wall and the clouds, a
+countdown in the maze, and favourite games with an All / Favorites filter. Run with Stedio, Brick bounce and Cloud
+climb have levels (design gap G-140): a level pill, a level-up card with 5 bonus coins, a start-level picker, and
+harder settings each level (runner: coin goal in 30 s, faster, more obstacles; bricks: more rows, patterns, two-hit
+bricks, faster ball; clouds: every 150 m, wider gaps, moving then breaking clouds). The highest level and the starred
+games are kept in `user_settings.games` (`POST /games/level`, `POST /games/favorite`, both in `GET /games` and the
+export). The maze counts down 90 s. Fixed: the clouds and bricks end card showed tips from an earlier round. API #247,
+`tests/test_games.py` 15 pass; app #309, `test/games.test.ts`, app tests 328 pass, typecheck pass; e2e
+`tools/e2e/games-levels.cjs` 15/15 (en light, he dark) on the web export against the test server. Not yet played on a
+phone. Next: API deploy, then OTA.
+
 25 Nov 2026 (Jira PM-520): Guy asked the Journal to show up to a week and to pick dates on the "All" filter. The
 Journal now loads today and the six days before it. The All filter's options start with Dates: "Last 7 days" or
 "Choose dates" (first the week before; From and To in the device region's order, at most 92 days, never later than

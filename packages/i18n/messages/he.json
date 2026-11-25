@@ -4689,5 +4689,12 @@
   "jrn.range_note": "עד {n} ימים בכל פעם.",
   "jrn.range_on": "{from} עד {to}",
   "jrn.empty_range": "אין רשומות ביומן בתאריכים האלה.",
-  "jrn.empty_f_range": "אין רשומות מהסוג הזה בתאריכים האלה."
+  "jrn.empty_f_range": "אין רשומות מהסוג הזה בתאריכים האלה.",
+  "games.filter": "הצגת משחקים",
+  "games.filter_all": "הכול",
+  "games.filter_fav": "מועדפים",
+  "games.fav_add": "הוספת {game} למועדפים",
+  "games.fav_remove": "הסרת {game} מהמועדפים",
+  "games.fav_empty": "עוד אין מועדפים. הקישו על הכוכב במשחק כדי להוסיף אותו לכאן.",
+  "games.fav_title": "מועדפים"
 }
