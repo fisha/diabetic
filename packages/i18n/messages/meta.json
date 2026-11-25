@@ -1539,6 +1539,13 @@
       "translation"
     ]
   },
+  "com.history_short": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Short label of Conversations under Tap to talk when the full labels do not fit one row (Guy, 25 Nov 2026, PM-522)."
+  },
   "com.hr": {
     "board": "Companion",
     "review": [
@@ -27127,6 +27134,13 @@
     "review": [
       "translation"
     ]
+  },
+  "com.type_short": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Short label of Type instead under Tap to talk when the full labels do not fit one row (Guy, 25 Nov 2026, PM-522)."
   },
   "onb.wa_t": {
     "board": "Duet",
