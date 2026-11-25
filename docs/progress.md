@@ -30,6 +30,14 @@ longer says voice works only in the app. Privacy `2026-11-25T12:00:00Z` (WhatsAp
 en+he). API `tests/test_whatsapp_voice.py`. Companion regression set not run (no companion change). Next: API + web
 deploy.
 
+25 Nov 2026 (Jira PM-515): Guy asked to fix the Known issues of the install page for iOS 0.8.0 (31) / Android 0.8.0
+(9). "Accessibility > Contrast says Coming soon" was already fixed in that build (row removed, PM-499); the note was
+left over. "The clinic portal's tests table shows number results only": the clinic summary now lists a lab result
+printed in words (PM-347) with its words as entered, and the portal shows it under Tests and follow-up (also among the
+earlier results); the chart button and the labs chart use number results only. API #239, web #89. API
+`tests/test_labs.py`; local portal check en light and he dark. Both items removed from the install page's
+`release.json`. Next: API deploy, web deploy.
+
 25 Nov 2026 (Jira PM-510): Guy asked for the depth sensor too ("אני רוצה גם את החיישן עומק"). On an iPhone with a
 LiDAR camera the meal camera now takes the photo with the local native module `apps/mobile/modules/stedio-depth`
 (AVFoundation LiDAR camera, depth delivered with the photo but never embedded in it). It measures the median distance in
