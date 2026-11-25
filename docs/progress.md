@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+25 Nov 2026 (Jira PM-517): Itay forgot to photograph his food and could not find last week's meal under "Recent"; he
+asked to search meals. Meals are kept for as long as the account exists; the Journal shows today and yesterday, and
+"Recent" reads only the last 60 days, each meal once, at most 8. Log a meal now has a "Search past meals" field under
+the ways to log (shown once there are recent meals): from two letters, `GET /meal/history/search?q=` searches the
+person's own meals over the whole history on food names and the meal's note (case, accents, niqqud and Hebrew final
+letters ignored, every word must match), newest first, each meal once, at most 20; hidden and deleted meals and other
+people's are left out, viewers are refused. The results replace Recent ("Past meals", with the year for meals about a
+year old or more); a tap opens the review with the time now, saved only from the review. Clearing the field brings
+Recent back. The field scrolls to the top when focused so the matches show above the keyboard. The uvicorn access log
+now replaces any `q=` value with `-` (food search too). API `tests/test_meal_search.py`, e2e `tools/e2e/meal-search.cjs`
+25/25. Companion regression set not run (no companion change). Next: API deploy, then OTA.
+
 25 Nov 2026 (Jira PM-514): Guy sent Stedio a voice message on WhatsApp and got the "not supported" line ("צריך
 לתמוך"). A WhatsApp `audio` message (voice note or audio file) is now downloaded from the Cloud API media endpoint,
 transcribed with the app's own OpenAI speech to text (`ai/voice.py`, the person's conversation language) and handled

@@ -4675,5 +4675,10 @@
   "nt.count": "{n, plural, one {One target} other {# targets}}",
   "nut.tg_s_day": "Target: {v} a day",
   "nut.tg_s_meal": "Target: {v} a meal",
-  "nut.tg_s_kg": "Target: {v} per kg a day"
+  "nut.tg_s_kg": "Target: {v} per kg a day",
+  "meal.past_search": "Search past meals",
+  "meal.past_found": "Past meals",
+  "meal.past_none": "No past meal with “{query}”.",
+  "meal.past_down": "Search isn’t available right now. Try again in a minute.",
+  "meal.past_clear": "Clear search"
 }
