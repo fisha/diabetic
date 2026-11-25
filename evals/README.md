@@ -34,6 +34,7 @@ the build work as proposals; production changes are made there and reviewed ther
 | `sources/sources.toml` | Curated authoritative sources with dates, population tags, rights status and attribution. |
 | `reports/runs/` | One folder per real run: `results.jsonl` (full transcripts), `summary.md`, `meta.json`. |
 | `steady_evals/food.py`, `food/` | Meal-photo carbohydrate error against weighed reference meals (brief section 7). Meals and photos stay out of git. |
+| `steady_evals/food_regression.py` | Meal-analyzer regression (PM-509): drinks (plain tea, black coffee, water, a splash of milk), answers to a clarifying question, low-carb look-alikes (shirataki vs glass noodles), cooked weight and portion size. Text cases with bands from USDA reference values; `stedio-fly evals --food` runs it on Fly with the production key and model. |
 | `FINDINGS.md` | What the track has found so far, and what was verified how. |
 
 ## Case categories
