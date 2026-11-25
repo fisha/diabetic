@@ -19,6 +19,17 @@ export). The maze counts down 90 s. Fixed: the clouds and bricks end card showed
 `tools/e2e/games-levels.cjs` 15/15 (en light, he dark) on the web export against the test server. Not yet played on a
 phone. Next: API deploy, then OTA.
 
+25 Nov 2026 (Jira PM-524): Guy asked for "a Candy Crush style game". Built as "Garden match" / "התאמות בגינה"
+(Puzzles), an original match-3 in the games web view: foods drawn in the app's style (strawberry, broccoli, blueberries,
+lemon, grapes, carrot), Stedio as the special tile, own name, jokes and levels, nothing taken from Candy Crush. Swap
+neighbours to line up 3+, cascades, line tile (4), burst (L/T), Stedio (5) who collects every food of one kind, special
+combos, hint after 5 s, shuffle when stuck. Endless levels on the shared store (PM-523): collect 1 to 3 foods in 24 down
+to 15 moves, 5 then 6 kinds; tuned with a simulated player (level 1 about 98%, level 20+ about a third). Coins =
+score/100 + 2 per move left on a win. API accepts `garden` for score and level (API #249, app #311). App tests 329
+pass (new `test/garden.test.ts` runs the engine), typecheck pass, API `test_games.py` 16/16, e2e
+`tools/e2e/garden-match.cjs` 11/11 (en light, he dark). Regulatory and privacy: pass. Companion regression set not run
+(no companion change). Next: API deploy, then OTA.
+
 25 Nov 2026 (Jira PM-526): Guy asked for a first-person game where you chase friendly cartoon people with a glucose
 meter above the head: above the range they get an insulin shot, below it a sweet drink, in range a high-five or a hug.
 Built as "Glucose chase" (arcade) in the games web view: drawn street and people, cartoon syringe and juice box, no

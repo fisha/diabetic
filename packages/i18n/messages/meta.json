@@ -29121,6 +29121,20 @@
     ],
     "note": "Glucose chase game (PM-526; Guy, 25 Nov 2026), part of the character games (PM-438)."
   },
+  "games.g_garden": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Garden match, an original match-3 puzzle with levels (PM-524; Guy, 25 Nov 2026: \"a Candy Crush style game\")."
+  },
+  "games.d_garden": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Garden match, an original match-3 puzzle with levels (PM-524; Guy, 25 Nov 2026: \"a Candy Crush style game\")."
+  },
   "games.streak": {
     "board": "Games",
     "review": [

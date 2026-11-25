@@ -2176,6 +2176,11 @@ or the invitation, so these are product rules, not clinical ones (`services/api 
   friends walk and sway faster, wait less, numbers sit nearer the range edges, and from level 3 the meters lose their
   colours. A right pick is 2 coins (1 after a wrong try, +1 on a streak of 3), a level 5, a wrong pick costs 2 seconds.
   Guy kept the syringe and drink after a softer option was offered. Legal review: PM-527 (needs-lawyer).
+- Garden match (**Guy, 25 Nov 2026, PM-524**, "a Candy Crush style game", no mockup). An original match-3: a 7x8 board
+  of foods drawn in the app's style, Stedio as the special tile, our own name, jokes, sounds (none) and levels. A swap
+  that makes no line slides back and costs no move. 4 in a line make a line tile, an L or T a 3x3 burst, 5 bring Stedio.
+  Levels on the shared store (PM-523): goals and move counts are game rules, not clinical numbers. The end card gives
+  one general food fact (plate method, whole fruit, fruit counts as carbs, lemon), never an amount.
 
 ### G-128 · Breakdown sheet loading and failed read (**PM-442, Guy, 23 Nov 2026**)
 

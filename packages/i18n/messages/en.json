@@ -4487,6 +4487,8 @@
   "games.d_breathe": "A minute of slow breathing, no score",
   "games.g_chase": "Glucose chase",
   "games.d_chase": "Chase friends and help each one by the meter above their head",
+  "games.g_garden": "Garden match",
+  "games.d_garden": "Swap foods to line up three, level after level",
   "games.streak": "{n, plural, one {# day in a row} other {# days in a row}}",
   "games.done_today": "Answered today",
   "games.coins": "{n, plural, one {# coin} other {# coins}}",

@@ -4826,7 +4826,8 @@
               "clouds",
               "hidden",
               "breathe",
-              "chase"
+              "chase",
+              "garden"
             ],
             "title": "Game",
             "type": "string"
@@ -8620,7 +8621,8 @@
               "runner",
               "bricks",
               "clouds",
-              "chase"
+              "chase",
+              "garden"
             ],
             "title": "Game",
             "type": "string"
@@ -12975,7 +12977,8 @@
               "clouds",
               "hidden",
               "breathe",
-              "chase"
+              "chase",
+              "garden"
             ],
             "title": "Game",
             "type": "string"

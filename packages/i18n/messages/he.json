@@ -4487,6 +4487,8 @@
   "games.d_breathe": "דקה של נשימה איטית, בלי ניקוד",
   "games.g_chase": "מרדף הסוכר",
   "games.d_chase": "רצים אחרי חברים ועוזרים לכל אחד לפי המד שמעל הראש",
+  "games.g_garden": "התאמות בגינה",
+  "games.d_garden": "מחליפים מאכלים ומסדרים שלושה בשורה, שלב אחרי שלב",
   "games.streak": "{n, plural, one {יום אחד ברצף} other {# ימים ברצף}}",
   "games.done_today": "נענתה היום",
   "games.coins": "{n, plural, one {מטבע אחד} other {# מטבעות}}",
