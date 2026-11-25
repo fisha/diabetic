@@ -33,7 +33,8 @@ for r in json.load(sys.stdin)["rows"]:
     if not r["passed"]:
         print(json.dumps(r, ensure_ascii=False))' 2>/dev/null
   echo "EVALS_FAILURES_END"
-  [ "$code" -gt 1 ] && tail -n 20 /tmp/evals.err | sed 's/^/EVALS_STDERR /'
+  # Any failure shows its stderr: a crash before the verdict exits 1 too, like a failed case (PM-509, first Fly run).
+  [ "$code" -ne 0 ] && tail -n 20 /tmp/evals.err | sed 's/^/EVALS_STDERR /'
   echo "EVALS_EXIT=$code"
   exit "$code"
 fi

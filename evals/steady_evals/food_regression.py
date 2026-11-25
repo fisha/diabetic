@@ -140,9 +140,13 @@ def grade(case: FoodCase, items: list) -> dict:
 
 
 def analyzer(api_key_env: str, model: str | None):
-    from steady_api.ai.food import OpenAIFoodAnalyzer
+    # `production` puts services/api on the path, so it must be imported first; importlib keeps an import sorter from
+    # moving the API import above it (that broke the first Fly run, PM-509).
+    import importlib
 
-    from .production import API  # noqa: F401  (puts services/api on the path)
+    from . import production  # noqa: F401
+
+    OpenAIFoodAnalyzer = importlib.import_module("steady_api.ai.food").OpenAIFoodAnalyzer
 
     key = os.environ.get(api_key_env)
     if not key:

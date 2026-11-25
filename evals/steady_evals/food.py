@@ -81,11 +81,14 @@ def item_grams(unit: str, qty: float, grams_per_unit: float | None) -> float | N
 
 def analyzer(name: str):
     if name == "openai-vision":
+        # `production` puts services/api on the path, so it must be imported first; importlib keeps an import sorter from
+        # moving the API import above it (that broke the first Fly run, PM-509).
+        import importlib
         import os
 
-        from steady_api.ai.food import OpenAIFoodAnalyzer
+        from . import production  # noqa: F401
 
-        from .production import API  # noqa: F401  (puts services/api on the path)
+        OpenAIFoodAnalyzer = importlib.import_module("steady_api.ai.food").OpenAIFoodAnalyzer
 
         key = os.environ.get("OPENAI_API_KEY")
         if not key:
