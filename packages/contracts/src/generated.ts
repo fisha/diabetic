@@ -4797,6 +4797,8 @@ export interface components {
              * @default
              */
             note: string;
+            /** Scales */
+            scales?: (components["schemas"]["PhotoScale"] | null)[];
         };
         /** AppVersionOut */
         AppVersionOut: {
@@ -8352,6 +8354,20 @@ export interface components {
              * Format: uuid
              */
             photo_id: string;
+        };
+        /**
+         * PhotoScale
+         * @description The real size of a meal photo, measured on the phone with its depth sensor (PM-510, Guy 25 Nov 2026: "אני רוצה גם את
+         *     החיישן עומק"): the distance from the camera to the food at the centre of the frame, and the width of the long and
+         *     short sides of the whole photo at that distance. Only these numbers leave the phone, never the depth map.
+         */
+        PhotoScale: {
+            /** Distance Cm */
+            distance_cm: number;
+            /** Frame Long Cm */
+            frame_long_cm: number;
+            /** Frame Short Cm */
+            frame_short_cm: number;
         };
         /** PlaceIn */
         PlaceIn: {

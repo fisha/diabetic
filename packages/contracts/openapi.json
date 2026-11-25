@@ -1070,6 +1070,21 @@
             "maxLength": 300,
             "title": "Note",
             "type": "string"
+          },
+          "scales": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/PhotoScale"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "maxItems": 2,
+            "title": "Scales",
+            "type": "array"
           }
         },
         "title": "AnalyzeIn",
@@ -11200,6 +11215,36 @@
           "photo_id"
         ],
         "title": "PhotoOut",
+        "type": "object"
+      },
+      "PhotoScale": {
+        "description": "The real size of a meal photo, measured on the phone with its depth sensor (PM-510, Guy 25 Nov 2026: \"\u05d0\u05e0\u05d9 \u05e8\u05d5\u05e6\u05d4 \u05d2\u05dd \u05d0\u05ea\n\u05d4\u05d7\u05d9\u05d9\u05e9\u05df \u05e2\u05d5\u05de\u05e7\"): the distance from the camera to the food at the centre of the frame, and the width of the long and\nshort sides of the whole photo at that distance. Only these numbers leave the phone, never the depth map.",
+        "properties": {
+          "distance_cm": {
+            "maximum": 300.0,
+            "minimum": 5.0,
+            "title": "Distance Cm",
+            "type": "number"
+          },
+          "frame_long_cm": {
+            "exclusiveMinimum": 0.0,
+            "maximum": 1000.0,
+            "title": "Frame Long Cm",
+            "type": "number"
+          },
+          "frame_short_cm": {
+            "exclusiveMinimum": 0.0,
+            "maximum": 1000.0,
+            "title": "Frame Short Cm",
+            "type": "number"
+          }
+        },
+        "required": [
+          "distance_cm",
+          "frame_long_cm",
+          "frame_short_cm"
+        ],
+        "title": "PhotoScale",
         "type": "object"
       },
       "PlaceIn": {

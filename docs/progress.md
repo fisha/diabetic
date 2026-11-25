@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+25 Nov 2026 (Jira PM-510): Guy asked for the depth sensor too ("אני רוצה גם את החיישן עומק"). On an iPhone with a
+LiDAR camera the meal camera now takes the photo with the local native module `apps/mobile/modules/stedio-depth`
+(AVFoundation LiDAR camera, depth delivered with the photo but never embedded in it). It measures the median distance in
+the middle of the frame and the size the whole photo covers there (camera calibration, else field of view); only those
+three numbers go with `POST /meal/photos/{id}/analyze` as `scales` and are added to the analyzer's instructions. Nothing
+new is stored. No visible change; other phones, Android and older builds keep the usual camera, and a LiDAR failure
+falls back to it. API `tests/test_meal_depth.py`, app `test/meal-depth.test.ts`. The Swift module is not compiled in the
+container: it needs the next local native build (iOS + Android APK) and a check on Guy's iPhone 16 Pro Max. Deploy the
+API before that build.
+
 25 Nov 2026 (Jira PM-509): Guy reported wrong meal-photo carbs: a mug of plain tea became "milk in tea", 1¼ cup of
 milk, 15 g, and the answer to the clarifying question changed nothing; clear noodles (≈ 63 g, Guy counted 8 g) and a few
 pieces of loaf cake (≈ 74 g, Guy counted 12 g). Model-only fix in the analyzer instructions (`ai/food.py`): a drink is
