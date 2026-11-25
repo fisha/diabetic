@@ -3066,3 +3066,9 @@ App tests 213/213, typecheck clean, e2e `tools/e2e/swipe-delete.cjs` passes in e
 44 px out, back to 0, no hint after a swipe). Next: OTA, then Guy checks it on his iPhone.
 
 - 20 Nov (PM-340): Duet one to one pass done on onboarding, auth, log forms, Overview, journal, routine, insights, Settings and the viewer home. Deliberate deviations listed for Guy (insight list z06, opener z05, quick-log More, insights filter, kids three tabs, treatment list, time row). WhatsApp open to every account with Meta in the privacy policy (PM-270). Not deployed: waiting for Guy on the simulator.
+
+25 Nov 2026 (Jira PM-511, thread "Fix loud camera shutter vs quiet voice on Android"): an Android tester found the meal
+camera's shutter deafening while the companion's voice was hard to hear. Meal photos skip the shutter sound on Android
+(`takePictureAsync({ shutterSound })`; expo-camera plays it on the system stream), and on the direct WebRTC call the
+companion's remote track gets gain 2 (about +6 dB) on Android, where call mode plays it on the softer call stream. iOS
+and the relay path unchanged. App #302 (typecheck, lint, 30 tests pass). Next: OTA, then the tester tries it.
