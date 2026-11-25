@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
   const errors = [];
   const has = async (page, text) => (await page.evaluate(() => document.body.innerText)).replace(/[⁦-⁩‎‏]/g, '').includes(text);
   try {
-    for (const [lang, scheme] of [['en', 'light'], ['he', 'light'], ['he', 'dark']]) {
+    for (const [lang, scheme, onlyOld] of [['en', 'light'], ['he', 'light'], ['he', 'dark'], ['en', 'light', true]]) {
       const T = TEXT[lang];
       const stamp = Date.now(); const email = `ms-${lang}-${scheme}-${stamp}@example.com`;
       await api('/auth/sign-up', { method: 'POST', body: { email, password: 'correct horse battery' } });
@@ -38,7 +38,7 @@ const server = http.createServer((req, res) => {
       await api('/profile', { method: 'PUT', token: tk, body: { locale: lang, answers: ANSWERS } });
       const old = new Date(Date.now() - 120 * 86400000);
       await api('/records', { method: 'POST', token: tk, body: { idempotency_key: `ms-o-${lang}-${scheme}-${stamp}`, kind: 'meal', occurred_at: old.toISOString(), entered_at: old.toISOString(), source: 'manual', data: { items: OLD, ate: 'all', carbs_total_g: 44, any_unknown: false } } });
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < (onlyOld ? 0 : 3); i++) {
         const at = new Date(Date.now() - (3 + i) * 86400000);
         await api('/records', { method: 'POST', token: tk, body: { idempotency_key: `ms-r${i}-${lang}-${scheme}-${stamp}`, kind: 'meal', occurred_at: at.toISOString(), entered_at: at.toISOString(), source: 'manual', data: { items: RECENT(i), ate: 'all', carbs_total_g: 20 + i, any_unknown: false } } });
       }
@@ -56,9 +56,19 @@ const server = http.createServer((req, res) => {
       await page.getByText(T.go, { exact: true }).last().click(); await page.waitForURL((u) => !/sign-in|welcome/.test(u.pathname), { timeout: 20000 }).catch(() => {}); await page.waitForTimeout(3000);
 
       await page.goto(`${base}/meal`);
-      await page.getByText(T.recent, { exact: true }).first().waitFor({ timeout: 30000 }).catch(() => {}); await page.waitForTimeout(2500);
-      ok(`${lang} ${scheme}: Recent shows the last days, not the meal from 120 days ago`, (await has(page, 'Recent food 0')) && !(await has(page, 'שקשוקה')));
+      if (!onlyOld) await page.getByText(T.recent, { exact: true }).first().waitFor({ timeout: 30000 }).catch(() => {});
+      await page.waitForTimeout(2500);
       const field = page.getByLabel(T.field, { exact: true }).first();
+      if (onlyOld) {
+        // Codex review on app#304: with no meal in the last 60 days, the field still shows and finds the old one.
+        await field.waitFor({ timeout: 10000 }).catch(() => {});
+        ok('only old meals: search field shows without Recent', (await field.isVisible()) && !(await has(page, T.recent)));
+        await field.fill('toast'); await page.waitForTimeout(1800);
+        ok('only old meals: finds the meal from 120 days ago', await has(page, 'שקשוקה, Sourdough toast'));
+        await ctx.close();
+        continue;
+      }
+      ok(`${lang} ${scheme}: Recent shows the last days, not the meal from 120 days ago`, (await has(page, 'Recent food 0')) && !(await has(page, 'שקשוקה')));
       ok(`${lang} ${scheme}: search field shows`, await field.isVisible());
       await field.scrollIntoViewIfNeeded(); await shot('01-start', true);
       await field.fill('שָׁקְשׁוּקָה');
@@ -89,5 +99,7 @@ const server = http.createServer((req, res) => {
   }
   ok('no page errors', errors.length === 0, errors.slice(0, 3).join(' | '));
   console.log(results.join('\n'));
+  // A failed check fails the run (Codex review on #443).
+  process.exitCode = results.some((r) => r.startsWith('FAIL')) ? 1 : 0;
   await browser.close(); server.close();
 });
