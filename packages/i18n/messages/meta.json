@@ -30547,5 +30547,54 @@
     "review": [
       "translation"
     ]
+  },
+  "games.filter": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite games and the All / Favorites filter (Guy, 25 Nov 2026, PM-525)."
+  },
+  "games.filter_all": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite games and the All / Favorites filter (Guy, 25 Nov 2026, PM-525)."
+  },
+  "games.filter_fav": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite games and the All / Favorites filter (Guy, 25 Nov 2026, PM-525)."
+  },
+  "games.fav_add": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite games and the All / Favorites filter (Guy, 25 Nov 2026, PM-525)."
+  },
+  "games.fav_remove": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite games and the All / Favorites filter (Guy, 25 Nov 2026, PM-525)."
+  },
+  "games.fav_empty": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite games and the All / Favorites filter (Guy, 25 Nov 2026, PM-525)."
+  },
+  "games.fav_title": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Favorite games and the All / Favorites filter (Guy, 25 Nov 2026, PM-525)."
   }
 }

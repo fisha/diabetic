@@ -2100,6 +2100,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/games/favorite": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Favorite
+         * @description Star or unstar a game on the Games screen (PM-525).
+         */
+        post: operations["favorite_games_favorite_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/games/level": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reach Level
+         * @description A level reached during play (PM-523). Only the highest one is kept, so the person carries on from it.
+         */
+        post: operations["reach_level_games_level_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/games/question": {
         parameters: {
             query?: never;
@@ -2857,6 +2897,27 @@ export interface paths {
          *     names. The Israeli list is part of the server, so it answers when USDA is not configured or does not answer.
          */
         get: operations["search_meal_foods_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/meal/history/search": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Search History
+         * @description The person's own past meals whose foods or note match `q` (PM-517), over their whole history, newest first, each
+         *     meal once by its foods, at most 20. Never someone else's: not open to a viewer.
+         */
+        get: operations["search_history_meal_history_search_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -6160,6 +6221,21 @@ export interface components {
             /** Unknown */
             unknown: string[];
         };
+        /** FavoriteIn */
+        FavoriteIn: {
+            /**
+             * Game
+             * @enum {string}
+             */
+            game: "trivia" | "runner" | "carbs" | "plate" | "walk" | "bricks" | "catcher" | "myths" | "maze" | "clouds" | "hidden" | "breathe";
+            /** On */
+            on: boolean;
+        };
+        /** FavoritesOut */
+        FavoritesOut: {
+            /** Favorites */
+            favorites: string[];
+        };
         /** FeedbackIn */
         FeedbackIn: {
             /**
@@ -6581,6 +6657,11 @@ export interface components {
             /** Earned Today */
             earned_today: number;
             /**
+             * Favorites
+             * @default []
+             */
+            favorites: string[];
+            /**
              * Habit On
              * @default false
              */
@@ -6590,6 +6671,13 @@ export interface components {
              * @default 0
              */
             habit_today: number;
+            /**
+             * Levels
+             * @default {}
+             */
+            levels: {
+                [key: string]: number;
+            };
             /** Shop */
             shop: components["schemas"]["ShopItemOut"][];
             /** Streak */
@@ -7392,6 +7480,23 @@ export interface components {
             since: string | null;
             /** Stage */
             stage: string;
+        };
+        /** LevelIn */
+        LevelIn: {
+            /**
+             * Game
+             * @enum {string}
+             */
+            game: "runner" | "bricks" | "clouds";
+            /** Level */
+            level: number;
+        };
+        /** LevelsOut */
+        LevelsOut: {
+            /** Levels */
+            levels: {
+                [key: string]: number;
+            };
         };
         /** Line */
         Line: {
@@ -14407,6 +14512,72 @@ export interface operations {
             };
         };
     };
+    favorite_games_favorite_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FavoriteIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FavoritesOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    reach_level_games_level_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LevelIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LevelsOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     get_question_games_question_get: {
         parameters: {
             query?: never;
@@ -15843,6 +16014,37 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    search_history_meal_history_search_get: {
+        parameters: {
+            query: {
+                q: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecordOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
             };
         };
     };
