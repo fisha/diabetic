@@ -6227,7 +6227,7 @@ export interface components {
              * Game
              * @enum {string}
              */
-            game: "trivia" | "runner" | "carbs" | "plate" | "walk" | "bricks" | "catcher" | "myths" | "maze" | "clouds" | "hidden" | "breathe";
+            game: "trivia" | "runner" | "carbs" | "plate" | "walk" | "bricks" | "catcher" | "myths" | "maze" | "clouds" | "hidden" | "breathe" | "chase";
             /** On */
             on: boolean;
         };
@@ -7487,7 +7487,7 @@ export interface components {
              * Game
              * @enum {string}
              */
-            game: "runner" | "bricks" | "clouds";
+            game: "runner" | "bricks" | "clouds" | "chase";
             /** Level */
             level: number;
         };
@@ -9054,7 +9054,7 @@ export interface components {
              * Game
              * @enum {string}
              */
-            game: "trivia" | "runner" | "carbs" | "plate" | "walk" | "bricks" | "catcher" | "myths" | "maze" | "clouds" | "hidden" | "breathe";
+            game: "trivia" | "runner" | "carbs" | "plate" | "walk" | "bricks" | "catcher" | "myths" | "maze" | "clouds" | "hidden" | "breathe" | "chase";
             /** Points */
             points: number;
         };

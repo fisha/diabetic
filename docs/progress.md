@@ -19,6 +19,16 @@ export). The maze counts down 90 s. Fixed: the clouds and bricks end card showed
 `tools/e2e/games-levels.cjs` 15/15 (en light, he dark) on the web export against the test server. Not yet played on a
 phone. Next: API deploy, then OTA.
 
+25 Nov 2026 (Jira PM-526): Guy asked for a first-person game where you chase friendly cartoon people with a glucose
+meter above the head: above the range they get an insulin shot, below it a sweet drink, in range a high-five or a hug.
+Built as "Glucose chase" (arcade) in the games web view: drawn street and people, cartoon syringe and juice box, no
+amounts or units anywhere, the person's own range and unit (70-180 mg/dL when no range is set), levels on the shared
+store (PM-523), coins, Hebrew and English, day and night. API accepts `chase` for score and level. App tests 329 pass
+(new: page script parses, chase strings in both languages, no "units"), typecheck pass, API `test_games.py` 15/15.
+Played end to end in Chromium (he light, en dark mmol): reaching friends, right picks, level-up and end screen, no page
+errors. Regulatory check: two items at risk (glucose-to-treatment pairing, 70-180 fallback), Guy kept the mechanic,
+legal review PM-527 (needs-lawyer). Next: deploy API, then OTA.
+
 25 Nov 2026 (Jira PM-522): Guy's screenshot showed the games button alone on a second line under "Tap to talk" in
 English (iPhone Pro Max, default text). The row (Conversations, Type instead, Quiet mode, Games) never wraps now: a
 hidden copy measures it with its labels, and when that is wider than the screen the two labelled pills show their icon

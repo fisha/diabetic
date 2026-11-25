@@ -4825,7 +4825,8 @@
               "maze",
               "clouds",
               "hidden",
-              "breathe"
+              "breathe",
+              "chase"
             ],
             "title": "Game",
             "type": "string"
@@ -8618,7 +8619,8 @@
             "enum": [
               "runner",
               "bricks",
-              "clouds"
+              "clouds",
+              "chase"
             ],
             "title": "Game",
             "type": "string"
@@ -12972,7 +12974,8 @@
               "maze",
               "clouds",
               "hidden",
-              "breathe"
+              "breathe",
+              "chase"
             ],
             "title": "Game",
             "type": "string"

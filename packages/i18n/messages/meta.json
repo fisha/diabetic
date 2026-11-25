@@ -29107,6 +29107,20 @@
     ],
     "note": "Character games (PM-438; Guy, 23 Nov 2026). Approved interactive mockup round 3 (https://claude.ai/artifact/JSt8DayEZ6U7igBPjFgn8Z)."
   },
+  "games.g_chase": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose chase game (PM-526; Guy, 25 Nov 2026), part of the character games (PM-438)."
+  },
+  "games.d_chase": {
+    "board": "Games",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose chase game (PM-526; Guy, 25 Nov 2026), part of the character games (PM-438)."
+  },
   "games.streak": {
     "board": "Games",
     "review": [
