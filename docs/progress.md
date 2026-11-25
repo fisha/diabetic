@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+25 Nov 2026 (Jira PM-522): Guy's screenshot showed the games button alone on a second line under "Tap to talk" in
+English (iPhone Pro Max, default text). The row (Conversations, Type instead, Quiet mode, Games) never wraps now: a
+hidden copy measures it with its labels, and when that is wider than the screen the two labelled pills show their icon
+only, as round buttons. Names stay as accessibility labels. English shows icons only on phones; Hebrew keeps its labels
+at 390 px and up. App #307, e2e `tools/e2e/talk-row.cjs` (440/390/320 px, en and he, light and dark) all pass, app tests
+325 pass, typecheck pass. Next: OTA.
+
 25 Nov 2026 (Jira PM-520): Guy asked the Journal to show up to a week and to pick dates on the "All" filter. The
 Journal now loads today and the six days before it. The All filter's options start with Dates: "Last 7 days" or
 "Choose dates" (first the week before; From and To in the device region's order, at most 92 days, never later than
