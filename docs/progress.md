@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+25 Nov 2026 (Jira PM-514): Guy sent Stedio a voice message on WhatsApp and got the "not supported" line ("צריך
+לתמוך"). A WhatsApp `audio` message (voice note or audio file) is now downloaded from the Cloud API media endpoint,
+transcribed with the app's own OpenAI speech to text (`ai/voice.py`, the person's conversation language) and handled
+as a typed message: the request matchers (stop/restart updates) and the companion turn, reply in text. STOP said out
+loud never unlinks. Same gates (linked number, AI switch). The audio stays in memory only (max 3 MB); only the words
+are kept, as the person's message. Fixed lines `voice_failed`, `voice_long`, `voice_empty` (en+he); the "media" line no
+longer says voice works only in the app. Privacy `2026-11-25T12:00:00Z` (WhatsApp paragraph and Meta processor line,
+en+he). API `tests/test_whatsapp_voice.py`. Companion regression set not run (no companion change). Next: API + web
+deploy.
+
 25 Nov 2026 (Jira PM-510): Guy asked for the depth sensor too ("אני רוצה גם את החיישן עומק"). On an iPhone with a
 LiDAR camera the meal camera now takes the photo with the local native module `apps/mobile/modules/stedio-depth`
 (AVFoundation LiDAR camera, depth delivered with the photo but never embedded in it). It measures the median distance in
