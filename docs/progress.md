@@ -11,9 +11,11 @@ verified only against test stand-ins or not at all. See `docs/integration-status
 25 Nov 2026 (Jira PM-522): Guy's screenshot showed the games button alone on a second line under "Tap to talk" in
 English (iPhone Pro Max, default text). The row (Conversations, Type instead, Quiet mode, Games) never wraps now: a
 hidden copy measures it with its labels, and when that is wider than the screen the two labelled pills show their icon
-only, as round buttons. Names stay as accessibility labels. English shows icons only on phones; Hebrew keeps its labels
-at 390 px and up. App #307, e2e `tools/e2e/talk-row.cjs` (440/390/320 px, en and he, light and dark) all pass, app tests
-325 pass, typecheck pass. Next: OTA.
+only, as round buttons. Names stay as accessibility labels. App #307, e2e `tools/e2e/talk-row.cjs` (440/390/320 px, en and he, light and dark) all pass, app tests
+325 pass, typecheck pass. OTA live (app a1b6191). Guy then asked for short labels rather than icons only: the row shows
+the full labels when they fit, else "History" and "Type" (`com.history_short`, `com.type_short`; Hebrew keeps its
+labels), and icons only only when neither fits. Full English labels need about 407 px, so a Pro Max shows History and
+Type. e2e `talk-row.cjs` all pass (440/390/345/320, en and he). Next: OTA.
 
 25 Nov 2026 (Jira PM-520): Guy asked the Journal to show up to a week and to pick dates on the "All" filter. The
 Journal now loads today and the six days before it. The All filter's options start with Dates: "Last 7 days" or

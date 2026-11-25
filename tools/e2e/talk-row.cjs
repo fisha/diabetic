@@ -1,5 +1,6 @@
 // Talk row (PM-522, Guy 25 Nov 2026): the four buttons under "Tap to talk" stay on one line in English and Hebrew,
-// from a narrow phone to a Pro Max; when the labels do not fit, the labelled pills show their icon only.
+// from a narrow phone to a Pro Max; when the labels do not fit, short labels (History, Type), and when those do not fit
+// either, the icons only.
 // Was: Simple mode (PM-450, Guy 23 Nov 2026): a switch on the Settings screen. While on, the tab bar has Talk, Overview and
 // Settings (no Journal), the main screen keeps everything but the games button, the "+" keeps every option, and the
 // Overview shows the latest reading, the period with time in range, the period's graph (Guy, 24 Nov 2026, PM-476), the
@@ -46,7 +47,7 @@ const server = http.createServer((req, res) => {
       await api('/glucose', { method: 'POST', token: tk, body: { idempotency_key: `tr-${run}-${i}`, measured_at: new Date(now - (i * 20 + 5) * 60000).toISOString(), entered_at: new Date().toISOString(), source: 'manual', method: 'meter', value: 110 + ((i * 37) % 90), unit: 'mg/dL' } });
     }
 
-    const looks = [['en', 'light', 440], ['en', 'dark', 390], ['en', 'light', 320], ['he', 'light', 440], ['he', 'dark', 390], ['he', 'light', 320]];
+    const looks = [['en', 'light', 440], ['en', 'dark', 390], ['en', 'light', 345], ['en', 'dark', 320], ['he', 'light', 440], ['he', 'dark', 390], ['he', 'light', 320]];
     for (const [lang, scheme, width] of looks) {
       const he = lang === 'he';
       await api('/profile', { method: 'PUT', token: tk, body: { locale: lang, answers: ANSWERS } });
@@ -75,8 +76,17 @@ const server = http.createServer((req, res) => {
       const ys = boxes.filter(Boolean).map((b) => Math.round(b.y));
       ok(`${tag}: one row`, ys.length === 4 && Math.max(...ys) - Math.min(...ys) <= 2, ys.join(','));
       ok(`${tag}: inside the screen`, boxes.every((b) => b && b.x >= 0 && b.x + b.width <= width), boxes.map((b) => b && `${Math.round(b.x)}+${Math.round(b.width)}`).join(' '));
-      const labelled = !!boxes[0] && boxes[0].width > 50;
-      results.push(`INFO ${tag}: labels ${labelled ? 'shown' : 'icon only'}`);
+      // The visible row only: the hidden measuring copies sit under aria-hidden.
+      const first = await p.evaluate((names) => {
+        const el = [...document.querySelectorAll('[role=button]')].find((b) => !b.closest('[aria-hidden=true]') && names.includes(b.getAttribute('aria-label')));
+        if (!el) return 'missing';
+        return el.innerText.trim() || 'icon only';
+      }, [B[0]]);
+      results.push(`INFO ${tag}: first button ${first}`);
+      // Full English labels need about 407 px: short labels on a Pro Max (Guy's screenshot), icons only at 320.
+      if (lang === 'en' && width >= 345) ok(`${tag}: short labels`, first === 'History');
+      if (lang === 'en' && width === 320) ok(`${tag}: icons only`, first === 'icon only');
+      if (lang === 'he' && width >= 390) ok(`${tag}: full labels`, first === B[0]);
       await p.screenshot({ path: path.join(out, `${lang}-${scheme}-${width}.png`) });
       await ctx.close();
     }
