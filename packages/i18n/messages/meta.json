@@ -30478,5 +30478,60 @@
       "translation"
     ],
     "note": "Search past meals (PM-517, Itay via Guy 25 Nov 2026): search the person's own meals over their whole history on Log a meal."
+  },
+  "jrn.range_dates": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Journal date range on the All filter (Guy, 25 Nov 2026, PM-520)."
+  },
+  "jrn.range_week": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.range_pick": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.range_from": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.range_to": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.range_note": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.range_on": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.empty_range": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
+  },
+  "jrn.empty_f_range": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ]
   }
 }
