@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+25 Nov 2026 (Jira PM-520): Guy asked the Journal to show up to a week and to pick dates on the "All" filter. The
+Journal now loads today and the six days before it. The All filter's options start with Dates: "Last 7 days" or
+"Choose dates" (first the week before; From and To in the device region's order, at most 92 days, never later than
+today). Picked dates hold on every tab, show on the Filtered line with Clear, and count on the All tab. The list draws
+days as they scroll (FlatList), so a week of 5-minute readings opens in under a second on the web build; while picked
+dates load, rows carried from the earlier window show the loader, not "nothing on these dates". No API change (the
+lists allow 92 days). App #305, unit tests in `test/journal.test.ts`, e2e `tools/e2e/journal-range.cjs` 20/20 (en, he),
+`journal-filters.cjs` 36/36. Companion regression set not run (no companion change). Next: OTA.
+
 25 Nov 2026 (Jira PM-518): on WhatsApp Guy said the date cookies (12 g) were his breakfast meal, already logged at
 11:19 in the app with a pump copy. The mentor saved them as a new meal "now", and his correction then moved that meal
 to 11:20 at an estimated 26 g, which left two breakfasts. `propose_meal` now takes `logged_meal_at` (the time as listed

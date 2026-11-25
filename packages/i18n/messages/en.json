@@ -700,7 +700,7 @@
   "jrn.edit_t": "Edit {kind}",
   "jrn.empty": "Your journal is empty. Anything you log by voice, text, photo or the + button appears here in time order, with where it came from.",
   "jrn.empty@v": "{person}'s journal is empty.",
-  "jrn.empty_f": "Nothing of this type in the last two days.",
+  "jrn.empty_f": "Nothing of this type in the last 7 days.",
   "jrn.export_web": "Export and longer history on the web",
   "jrn.f_act": "Activity",
   "jrn.f_alert": "Alerts",
@@ -4680,5 +4680,14 @@
   "meal.past_found": "Past meals",
   "meal.past_none": "No past meal with “{query}”.",
   "meal.past_down": "Search isn’t available right now. Try again in a minute.",
-  "meal.past_clear": "Clear search"
+  "meal.past_clear": "Clear search",
+  "jrn.range_dates": "Dates",
+  "jrn.range_week": "Last 7 days",
+  "jrn.range_pick": "Choose dates",
+  "jrn.range_from": "From",
+  "jrn.range_to": "To",
+  "jrn.range_note": "Up to {n} days at a time.",
+  "jrn.range_on": "{from} to {to}",
+  "jrn.empty_range": "Nothing in the journal on these dates.",
+  "jrn.empty_f_range": "Nothing of this type on these dates."
 }

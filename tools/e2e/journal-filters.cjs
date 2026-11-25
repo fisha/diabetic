@@ -82,7 +82,8 @@ const server = http.createServer((req, res) => {
       };
       const choose = async (label) => { await page.getByRole('radio', { name: label, exact: true }).click(); await page.waitForTimeout(400); };
       const closeSheet = async () => { await page.getByRole('button', { name: L.done, exact: true }).click(); await page.waitForTimeout(900); };
-      const count = (re) => page.getByText(re).count();
+      // Only what is on screen: other tabs stay mounted behind the journal with readings of their own.
+      const count = (re) => page.getByText(re).filter({ visible: true }).count();
       const seen = async (text) => (await page.getByText(text, { exact: false }).count()) > 0;
       await shot('01-journal');
       // The rows say the kind of entry only, never the source's name (Guy, 21 Nov 2026, PM-376).
@@ -90,7 +91,7 @@ const server = http.createServer((req, res) => {
 
       // Glucose: every two hours keeps one reading per block; Clear brings them all back.
       await tab(L.glu).click(); await page.waitForTimeout(800);
-      // The count includes the main screen's latest reading, which stays mounted behind the journal: 4 blocks + 1.
+      // The count includes the latest reading's line on top of the journal: 4 blocks + 1.
       const allReadings = await count(/mg\/dL/);
       await longPress(L.glu);
       await shot('02-glucose-sheet');
@@ -124,7 +125,8 @@ const server = http.createServer((req, res) => {
 
       // All: every kind's options, and the choices made on the tabs held there.
       await longPress(L.all);
-      ok(`${lang}-${scheme} All offers every kind`, (await page.getByRole('radiogroup').count()) === 4);
+      // Four kinds, and the dates (PM-520).
+      ok(`${lang}-${scheme} All offers every kind`, (await page.getByRole('radiogroup').count()) === 5);
       await shot('07-all-sheet');
       ok(`${lang}-${scheme} All with Bolus shows no auto correction`, !(await seen(L.autoT)));
       await closeSheet();
