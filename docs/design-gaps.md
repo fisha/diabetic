@@ -2324,3 +2324,9 @@ The Meal board shows "Recent meals" only, with no search of earlier meals. Built
 search field (search icon, group fill, accent edge while focused, a clear "×" once something is typed) between the ways
 to log and "Recent meals"; while searching, a "Past meals" heading and the same .r rows as Recent (meal, day and time,
 carbs), or one secondary line for no match or no server answer. Nothing else on the screen changes.
+
+### G-139 · "Log it again" on a meal's journal detail (**Guy approved, 25 Nov 2026, PM-521**)
+
+The Journal detail board has Edit only. A primary .btn with the plus icon and the existing "Log it again" string
+(meal.again_log) sits above Edit on a meal with foods; it opens the usual Check the foods review with the time now.
+
