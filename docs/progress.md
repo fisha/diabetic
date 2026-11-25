@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+25 Nov 2026 (Jira PM-518): on WhatsApp Guy said the date cookies (12 g) were his breakfast meal, already logged at
+11:19 in the app with a pump copy. The mentor saved them as a new meal "now", and his correction then moved that meal
+to 11:20 at an estimated 26 g, which left two breakfasts. `propose_meal` now takes `logged_meal_at` (the time as listed
+in the records). The card changes that meal and keeps its time. A pump entry is never edited: a pump-only meal gets the
+person's entry linked to it. A meal an earlier card in the conversation saved for it is soft-deleted on save. A new meal
+within 30 min of a logged one is asked about first (`separate_meal`), and `carbs_g` keeps the carbs the person said. A
+correction with no time keeps the meal's time, and the prompt says past times are never now. On WhatsApp, the save
+question now gives the meal's time and carbs. API #243, `tests/test_conversation_entries.py` (4 new). Companion
+regression set not run (PM-436). Next: API deploy (no OTA needed).
+
 25 Nov 2026 (Jira PM-517): Itay forgot to photograph his food and could not find last week's meal under "Recent"; he
 asked to search meals. Meals are kept for as long as the account exists; the Journal shows today and yesterday, and
 "Recent" reads only the last 60 days, each meal once, at most 8. Log a meal now has a "Search past meals" field under
