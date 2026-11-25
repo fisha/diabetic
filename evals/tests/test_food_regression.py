@@ -63,3 +63,18 @@ def test_every_case_has_a_sensible_band():
     assert len({c.id for c in CASES}) == len(CASES)
     for c in CASES:
         assert 0 <= c.low_g <= c.high_g, c.id
+
+
+def test_the_analyzer_loads_as_in_the_evals_image(tmp_path):
+    # The first Fly run (25 Nov 2026) crashed: steady_api was imported before services/api was on the path. Run the
+    # import in a fresh interpreter from evals/, with nothing else on the path, as the evals image does.
+    import os
+    import subprocess
+    import sys
+    from pathlib import Path
+
+    code = "import os; os.environ['K'] = 'x'; from steady_evals.food_regression import analyzer; print(type(analyzer('K', 'm')[0]).__name__)"
+    env = {k: v for k, v in os.environ.items() if k != "PYTHONPATH"}
+    out = subprocess.run([sys.executable, "-c", code], cwd=Path(__file__).resolve().parents[1], env=env, capture_output=True, text=True)
+    assert out.returncode == 0, out.stderr
+    assert out.stdout.strip() == "OpenAIFoodAnalyzer"
