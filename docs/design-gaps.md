@@ -2167,13 +2167,15 @@ or the invitation, so these are product rules, not clinical ones (`services/api 
   reading in the last 20 minutes. In-app only push, no WhatsApp.
 - Builds without the web view show "Games come with the next update".
 - Glucose chase (**Guy, 25 Nov 2026, PM-526**, no mockup: Guy's own description). First person on a street: cartoon
-  friends walk ahead with a cartoon meter above the head. Drag to run after one; on reaching them pick Insulin (a
-  small cartoon syringe, no needle close-up), Sweet drink or High five. Above the range wants insulin, below it a sweet
+  friends walk ahead with a cartoon meter above the head. Pick a tool first (Insulin, a small cartoon syringe with
+  no needle close-up; Sweet drink; High five), then tap the friend to give it to; dragging elsewhere runs left and
+  right, and only friends within reach (shown with a gold ring) can be given to. Friends keep walking (Guy, 25 Nov
+  2026: choose the tool first, then tap the person, "a bit harder"). Above the range wants insulin, below it a sweet
   drink, in range a high-five or hug. Never an amount, dose or unit. The range is the person's own target range, or
   70-180 mg/dL when none is set; numbers show in the person's unit, and a value's kind follows the number as shown.
   The numbers are made up and never the person's; the start and end screens say real life follows the person's own
   plan with their care team. Levels on the shared store (PM-523): each needs 4 + level helps before time runs out,
-  friends walk and sway faster, wait less, numbers sit nearer the range edges, and from level 3 the meters lose their
+  friends walk and sway faster, the reach gets shorter, numbers sit nearer the range edges, and from level 3 the meters lose their
   colours. A right pick is 2 coins (1 after a wrong try, +1 on a streak of 3), a level 5, a wrong pick costs 2 seconds.
   Guy kept the syringe and drink after a softer option was offered. Legal review: PM-527 (needs-lawyer).
 - Garden match (**Guy, 25 Nov 2026, PM-524**, "a Candy Crush style game", no mockup). An original match-3: a 7x8 board
