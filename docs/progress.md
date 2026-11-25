@@ -44,7 +44,7 @@ store (PM-523), coins, Hebrew and English, day and night. API accepts `chase` fo
 (new: page script parses, chase strings in both languages, no "units"), typecheck pass, API `test_games.py` 15/15.
 Played end to end in Chromium (he light, en dark mmol): reaching friends, right picks, level-up and end screen, no page
 errors. Regulatory check: two items at risk (glucose-to-treatment pairing, 70-180 fallback), Guy kept the mechanic,
-legal review PM-527 (needs-lawyer). Then Guy asked to choose the tool first and then tap the friend: friends no longer stop, a gold ring marks those in reach, a tap elsewhere steers, Space gives to the nearest in reach. App tests 329 pass, typecheck pass, played in Chromium (he light, en dark mmol/L) through a level-up, no page errors. Next: OTA.
+legal review PM-527 (needs-lawyer). Then Guy asked to choose the tool first and then tap the friend: friends no longer stop, a gold ring marks those in reach, a tap elsewhere steers, Space gives to the nearest in reach. App tests 329 pass, typecheck pass, played in Chromium (he light, en dark mmol/L) through a level-up, no page errors. Then (Guy) the shared level-up card holds the game (runner, bricks, clouds, chase) until a tap or 2.4 s; checked in Chromium (timer stands still under the card, runs after a tap). Next: OTA.
 
 25 Nov 2026 (Jira PM-522): Guy's screenshot showed the games button alone on a second line under "Tap to talk" in
 English (iPhone Pro Max, default text). The row (Conversations, Type instead, Quiet mode, Games) never wraps now: a
