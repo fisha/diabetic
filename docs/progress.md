@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+25 Nov 2026 (Jira PM-509): Guy reported wrong meal-photo carbs: a mug of plain tea became "milk in tea", 1¼ cup of
+milk, 15 g, and the answer to the clarifying question changed nothing; clear noodles (≈ 63 g, Guy counted 8 g) and a few
+pieces of loaf cake (≈ 74 g, Guy counted 12 g). Model-only fix in the analyzer instructions (`ai/food.py`): a drink is
+one item for the whole drink (plain tea, black coffee, water ≈ 0 g; milk in tea is a splash; unseen additions are asked
+with a plain option), the person's answer decides over the first reading, low-carb look-alikes are asked about
+(shirataki vs glass noodles, cauliflower rice, zero-sugar drinks), values are as served, and portions are judged from
+objects in the photo without rounding up. The app's re-estimate states the answer as the person's own (`refineText`).
+Tests: API `tests/test_food_rules.py`, app `test/meal.test.ts`; new `evals/steady_evals/food_regression.py` (21 text
+cases, `stedio-fly evals --food`), not yet run against the model (no key in the container). Guy's choice open on a
+camera-screen scale tip or LiDAR. Next: API deploy, then OTA, then one food regression run.
+
 24 Nov 2026 (Jira PM-506, PM-507): Guy asked for more nutrients on Overview > Nutrition (only what meal analysis
 gives), a tile chooser like Apple Health, and targets the person types from their care team, shown beside the total and
 the average (Stedio never suggests one). At Guy's choice the analysis now also gives calories, sugars, saturated fat and

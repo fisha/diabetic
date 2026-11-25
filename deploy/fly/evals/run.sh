@@ -12,6 +12,31 @@ QUICK=()
 if [ -z "${STEADY_OPENAI_API_KEY:-}" ]; then
   echo "EVALS_ERROR no OpenAI key on this app (STEADY_OPENAI_API_KEY)"; echo "EVALS_EXIT=2"; exit 2
 fi
+# The meal analyzer's food regression (PM-509): text cases through the production adapter and its model. One line of
+# verdict (case ids, checks and the analyzer's items for these synthetic cases), no transcripts.
+if [ "${EVAL_SUITE:-}" = "food" ]; then
+  echo "EVALS_START suite=food label=$LABEL"
+  out="$(python -m steady_evals.food_regression --api-key-env STEADY_OPENAI_API_KEY ${EVAL_MODEL:+--model "$EVAL_MODEL"} 2>/tmp/evals.err)"
+  code=$?
+  # A short verdict on one line (a long line can be cut in the log stream); each failing case with its items below.
+  verdict="$(printf '%s\n' "$out" | python -c '
+import json, sys
+d = json.load(sys.stdin)
+rows = [{"case": r["case"], "est": r.get("est_carbs_g"), "band": r.get("band_g"), "failed": [k for k, v in (r.get("checks") or {}).items() if not v] or r.get("error")} for r in d["rows"]]
+print(json.dumps({"suite": d["suite"], "model": d.get("model"), "passed": d["passed"], "failed": d["failed"], "rows": rows}, ensure_ascii=False))' 2>/dev/null)"
+  [ -n "$verdict" ] || verdict='{"passed": false, "ran": false, "errors": ["no verdict"]}'
+  echo "EVALS_VERDICT $verdict"
+  echo "EVALS_FAILURES_BEGIN"
+  printf '%s\n' "$out" | python -c '
+import json, sys
+for r in json.load(sys.stdin)["rows"]:
+    if not r["passed"]:
+        print(json.dumps(r, ensure_ascii=False))' 2>/dev/null
+  echo "EVALS_FAILURES_END"
+  [ "$code" -gt 1 ] && tail -n 20 /tmp/evals.err | sed 's/^/EVALS_STDERR /'
+  echo "EVALS_EXIT=$code"
+  exit "$code"
+fi
 echo "EVALS_START model=$MODEL judge=$JUDGE repeat=$REPEAT quick=${EVAL_QUICK:-0} label=$LABEL"
 out="$(python -m steady_evals.regression --model "$MODEL" --production --repeat "$REPEAT" --judge "$JUDGE" \
   --label "$LABEL" --api-key-env STEADY_OPENAI_API_KEY ${QUICK[@]+"${QUICK[@]}"} 2>/tmp/evals.err)"

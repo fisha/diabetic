@@ -15,6 +15,8 @@
 #   stedio-fly research-setup   Create stedio-research, its read-only database login (new password each run) and its
 #                           secrets; then run deploy-research
 #   stedio-fly deploy-research  Deploy the research tool (Streamlit; stops when idle) and check it is closed and noindex
+#   stedio-fly evals --food [--model M]                   Run the meal analyzer's food regression (PM-509) on Fly instead:
+#                                                          drinks, look-alike foods and portions; a few cents, no gate.
 #   stedio-fly evals [--quick] [--repeat N] [--model M]   Run the companion's regression set (PM-198) on Fly: a one-off Machine
 #                           in stedio-api with the app's own OpenAI key, synthetic cases only; prints and saves the
 #                           verdict, then removes the Machine (PM-203). Run by hand, suggested at the end of a day with
@@ -160,9 +162,10 @@ companion_changed() { # true unless this exact companion (or the last passing co
 }
 
 cmd_evals() {
-  local repeat=3 model="" quick=0
+  local repeat=3 model="" quick=0 suite=""
   while [ $# -gt 0 ]; do
     case "$1" in
+      --food) suite=food; shift ;;
       --repeat) repeat="$2"; shift 2 ;;
       --quick) quick=1; shift ;;
       --model) model="$2"; shift 2 ;;
@@ -185,6 +188,7 @@ cmd_evals() {
   say "running the regression set on a one-off Machine ($name); this takes a while"
   local env=(-e "EVAL_REPEAT=$repeat" -e "EVAL_LABEL=fly-$tag" -e "EVAL_QUICK=$quick")
   [ -n "$model" ] && env+=(-e "EVAL_MODEL=$model" -e "EVAL_JUDGE=$model")
+  [ -n "$suite" ] && env+=(-e "EVAL_SUITE=$suite")
   # No services and no restart: nothing routes to it, and it stops when the run ends.
   # A just-pushed image can take a moment to be visible to the Machines API (manifest 404): retry a few times.
   local try=1
@@ -217,6 +221,15 @@ cmd_evals() {
   local code; code="$(printf '%s\n' "$log" | grep -o 'EVALS_EXIT=[0-9]*' | tail -1 | cut -d= -f2)"
   printf '%s\n' "$log" | grep -E 'EVALS_(START|ERROR|STDERR)' | sed -e "$LOGPREFIX" || true
   [ -s "$out" ] && cat "$out" || rm -f "$out"
+  if [ -n "$suite" ]; then
+    # The food regression is not the companion's set: it never counts as a companion pass.
+    case "$code" in
+      0) say "food regression PASSED (verdict: ${out#"$REPO"/})" ;;
+      1) say "food regression FAILED (verdict: ${out#"$REPO"/})"; return 1 ;;
+      *) say "food regression did not run (exit ${code:-unknown}); see above"; return 2 ;;
+    esac
+    return 0
+  fi
   case "$code" in
     0) echo "$api_sha" > "$EVALS_DIR/last-pass"
        echo "$fingerprint" >> "$EVALS_DIR/passed-fingerprints"
