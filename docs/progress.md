@@ -27,6 +27,12 @@ correction with no time keeps the meal's time, and the prompt says past times ar
 question now gives the meal's time and carbs. API #243, `tests/test_conversation_entries.py` (4 new). Companion
 regression set not run (PM-436). Next: API deploy (no OTA needed).
 
+25 Nov 2026 (Jira PM-521, Guy approved): after finding an old meal Guy asked how to add it now. A meal's Journal
+detail (alone or merged with a pump's carb entry) has a "Log it again" button when the meal has foods: it opens
+`/meal?repeat=<id>`, which loads the record and opens Check the foods with its foods and the time now, saved only from
+the review, like Recent and search. Not while viewing someone else. App only. e2e `tools/e2e/log-again.cjs` 10/10.
+Next: OTA.
+
 25 Nov 2026 (Jira PM-517): Itay forgot to photograph his food and could not find last week's meal under "Recent"; he
 asked to search meals. Meals are kept for as long as the account exists; the Journal shows today and yesterday, and
 "Recent" reads only the last 60 days, each meal once, at most 8. Log a meal now has a "Search past meals" field under
