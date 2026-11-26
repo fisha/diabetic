@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-553, thread "Add Hebrew language switch to website"): Guy asked for a Hebrew/English switch on the
+website, English by default (replaces the 16 Nov English-only rule, PM-128). `SITE_LOCALES = ['en', 'he']`, no
+browser-language detection, the last language opened kept in the `NEXT_LOCALE` cookie the privacy policy already names;
+`LangSwitch` (one link to the other language in the top bar, both in the footer and dashboard, same page); `/get` stays
+English (install pages rule). Hebrew texts were already complete; fixed the spelling "סכרת" to "סוכרת" in three strings.
+The four "How it works" app screens are still English on the Hebrew page (design-gaps). Web build, typecheck, lint, tests,
+curl and Playwright in both languages. Regulatory and privacy: pass. Next: web deploy.
+
 26 Nov 2026 (Jira PM-545, PM-552, nothing visible): in `similar_meals`, how the carbs the person entered on their pump
 compare with the app's estimate for the same meal (`brain/carb_estimates.py`: pump entries only, a number they said is
 left out, shrunk ratio with a 90% interval, 5+ pairs; words about estimating food only, never which number was right or
