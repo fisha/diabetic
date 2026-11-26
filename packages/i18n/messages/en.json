@@ -96,6 +96,8 @@
   "cmp.graph.empty": "Nothing to show for this day yet. Readings you log appear here as individual points.",
   "cmp.graph.noData": "No data",
   "cmp.graph.summary": "Glucose graph with {count, plural, one {# reading} other {# readings}} from {start} to {end}",
+  "cmp.graph.values": "Lowest {low} at {lowAt}, highest {high} at {highAt}, latest {last} at {lastAt}.",
+  "cmp.graph.in_band": "{pct}% of these readings are within your range.",
   "cmp.graph.title": "Glucose, {unit}",
   "cmp.loading": "Loading",
   "cmp.reading.ago": "{minutes, plural, one {# minute} other {# minutes}} ago",

@@ -8,6 +8,19 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-568..575, thread "Fix website issues from Guy's list"): Guy's nine website fixes. Live (web
+v116, API v203): page loader with the companion between pages (`PageLoader.tsx`, capture-phase click listener), no side
+menu on the personal-area sign-in (`DashSide.tsx`), Admin > Support can delete a request that never reached Jira
+(`DELETE /admin/support/{id}`, 409 when in Jira; requests #2 and #1 removed by the Mac thread), support portal link in
+the home Support section, seaside photo full width from the start, transparent help widget frame, theme kept when
+switching language (`ThemeSync`), help widget on Hebrew pages. Clinic sign-in, clinic idle sign-out and the clinic logo
+are in the clinic thread. Accessibility (PM-572): every app screen on the web checked with axe-core (AXE=1/2 in
+`tools/e2e/duet-shots.cjs`), fixed contrast on teal, nested buttons, stepper role, names that did not start with the
+visible words; glucose graph text alternative with values; PDFs with language, title and bookmarks (app #324, API #275);
+statement without "What is not yet accessible", dated 26 Nov (web #102, no re-accept). Website pages re-checked clean.
+Next: OTA + API + web deploy; meal-photo chapter (PM-575) once the generated photo exists
+(`/mnt/project-files/site-photos/make_meal_photo.py` runs where the OpenAI key is).
+
 26 Nov 2026 (Jira PM-577, lawyer PM-578, thread "Set up Google Analytics for site and apps"): Guy asked for Google
 Analytics on the website's marketing pages and in the apps, screens and actions only, no user or health data; the
 personal areas and the clinic portal only count sign-ins. One GA4 property "Stedio" with two web streams (console steps
