@@ -44,8 +44,10 @@ are in the clinic thread. Accessibility (PM-572): every app screen on the web ch
 `tools/e2e/duet-shots.cjs`), fixed contrast on teal, nested buttons, stepper role, names that did not start with the
 visible words; glucose graph text alternative with values; PDFs with language, title and bookmarks (app #324, API #275);
 statement without "What is not yet accessible", dated 26 Nov (web #102, no re-accept). Website pages re-checked clean.
-Next: OTA + API + web deploy; meal-photo chapter (PM-575) once the generated photo exists
-(`/mnt/project-files/site-photos/make_meal_photo.py` runs where the OpenAI key is).
+Deployed (API v210, web v118, OTA 1dd3fee). Meal-photo chapter (PM-575, web #108): "Snap your plate" after the logging
+chapter, generated photo (gpt-image-2, `/mnt/project-files/site-photos/make_meal_photo.py`) with the camera view
+composited on her phone, and the app's food review screen in en and he (`MEALSCAN=<jpg>` and `AFTER=<ms>` in
+`tools/e2e/duet-shots.cjs`, mocked analysis in the screenshot tool only). Next: web deploy.
 
 26 Nov 2026 (Jira PM-577, lawyer PM-578, thread "Set up Google Analytics for site and apps"): Guy asked for Google
 Analytics on the website's marketing pages and in the apps, screens and actions only, no user or health data; the

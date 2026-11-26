@@ -18992,6 +18992,34 @@
     ],
     "note": "Scroll-motion home page (Guy, 18 Nov 2026, PM-236)"
   },
+  "web.m_photo_t": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website How it works chapter: meal photo (PM-575)"
+  },
+  "web.m_photo_b": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website How it works chapter body: meal photo (PM-575)"
+  },
+  "web.m_scr_photo": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Alt text of the app screen in the meal photo chapter (PM-575)"
+  },
+  "web.m_ph_meal": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Alt text of the photo in the meal photo chapter (PM-575)"
+  },
   "web.m_band": {
     "board": "Website",
     "review": [
