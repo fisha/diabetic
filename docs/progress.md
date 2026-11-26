@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-553, thread "Add Hebrew language switch to website"): Guy asked for a Hebrew/English switch on the
+website, English by default (replaces the 16 Nov English-only rule, PM-128). `SITE_LOCALES = ['en', 'he']`, no
+browser-language detection, the last language opened kept in the `NEXT_LOCALE` cookie the privacy policy already names;
+`LangSwitch` (one link to the other language in the top bar, both in the footer and dashboard, same page); `/get` stays
+English (install pages rule). Hebrew texts were already complete; fixed the spelling "סכרת" to "סוכרת" in three strings.
+The four "How it works" app screens are still English on the Hebrew page (design-gaps). Web build, typecheck, lint, tests,
+curl and Playwright in both languages. Regulatory and privacy: pass. Next: web deploy.
+
 26 Nov 2026 (Jira PM-551, Guy approved 19:35Z): the privacy policy (English and Hebrew) now describes what the
 mentor learns with memory on, the pre-send check, the background glucose estimates (never shown, only accuracy kept),
 the reach-out timing test in shadow and the daily summary for improving models (400 days). Privacy version

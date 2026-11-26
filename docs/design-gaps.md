@@ -2373,3 +2373,9 @@ mockup's own pieces:
   "Time's up!" and the footprints collected still count.
 - Brick bounce and Cloud climb's "What we learned" now lists only the tips this round's bulbs showed (Guy, 25 Nov 2026:
   the clouds showed an earlier round's tips), or says no bulb was lit.
+
+## Website in Hebrew: app screens (PM-553, 26 Nov 2026)
+
+- The Hebrew home page (`/he`) shows the same four English app screens in "How it works" (`public/home/screen-*.webp`)
+  and the English phones in the photos. Hebrew screens would need new captures from the app in Hebrew with synthetic
+  data. Waiting on Guy's decision.
