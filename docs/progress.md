@@ -53,7 +53,10 @@ statement without "What is not yet accessible", dated 26 Nov (web #102, no re-ac
 Deployed (API v210, web v118, OTA 1dd3fee). Meal-photo chapter (PM-575, web #108): "Snap your plate" after the logging
 chapter, generated photo (gpt-image-2, `/mnt/project-files/site-photos/make_meal_photo.py`) with the camera view
 composited on her phone, and the app's food review screen in en and he (`MEALSCAN=<jpg>` and `AFTER=<ms>` in
-`tools/e2e/duet-shots.cjs`, mocked analysis in the screenshot tool only). Next: web deploy.
+`tools/e2e/duet-shots.cjs`, mocked analysis in the screenshot tool only). Hebrew site photos (PM-585, web #109): Guy asked
+for Israeli people on /he; nine versions made from the English photos with the image edit endpoint
+(`/mnt/project-files/site-photos/he/make_he_photos.py`, Hebrew screens put on by `comp_he.py`), served from
+`/home/he/`. Next: web deploy; Guy decides whether the kitchen photo keeps a woman in a hijab (`use-3-hijab`).
 
 26 Nov 2026 (Jira PM-577, lawyer PM-578, thread "Set up Google Analytics for site and apps"): Guy asked for Google
 Analytics on the website's marketing pages and in the apps, screens and actions only, no user or health data; the
