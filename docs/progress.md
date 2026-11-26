@@ -17,6 +17,33 @@ heaped spoons; amount question in cups, Hebrew rice in heaped spoons; api #276);
 a fork or card beside the plate. Open: ARCore notice in the privacy policy (27 Nov version), clinical review of the
 measures (PM-550), native build iOS + APK.
 
+26 Nov 2026 (Jira PM-568..575, thread "Fix website issues from Guy's list"): Guy's nine website fixes. Live (web
+v116, API v203): page loader with the companion between pages (`PageLoader.tsx`, capture-phase click listener), no side
+menu on the personal-area sign-in (`DashSide.tsx`), Admin > Support can delete a request that never reached Jira
+(`DELETE /admin/support/{id}`, 409 when in Jira; requests #2 and #1 removed by the Mac thread), support portal link in
+the home Support section, seaside photo full width from the start, transparent help widget frame, theme kept when
+switching language (`ThemeSync`), help widget on Hebrew pages. Clinic sign-in, clinic idle sign-out and the clinic logo
+are in the clinic thread. Accessibility (PM-572): every app screen on the web checked with axe-core (AXE=1/2 in
+`tools/e2e/duet-shots.cjs`), fixed contrast on teal, nested buttons, stepper role, names that did not start with the
+visible words; glucose graph text alternative with values; PDFs with language, title and bookmarks (app #324, API #275);
+statement without "What is not yet accessible", dated 26 Nov (web #102, no re-accept). Website pages re-checked clean.
+Next: OTA + API + web deploy; meal-photo chapter (PM-575) once the generated photo exists
+(`/mnt/project-files/site-photos/make_meal_photo.py` runs where the OpenAI key is).
+
+26 Nov 2026 (Jira PM-577, lawyer PM-578, thread "Set up Google Analytics for site and apps"): Guy asked for Google
+Analytics on the website's marketing pages and in the apps, screens and actions only, no user or health data; the
+personal areas and the clinic portal only count sign-ins. One GA4 property "Stedio" with two web streams (console steps
+for the Mac thread in `/mnt/project-files/google-analytics/console-steps.md`). Apps: no Firebase, no native build; the
+opt-in Mixpanel events (same allowlist, never under 18 or while viewing) also go to API `POST /usage/app`, which checks
+them again and forwards them by Measurement Protocol without IP, account or Mixpanel id (separate SHA-256 id, country
+only) for people who accepted privacy `2026-11-27T12:00:00Z` (API #272, app #322). Website: gtag only on stedio.io
+public pages, cookieless (Consent Mode, storage denied; Guy removed the cookie notice 20:41Z until a consent service is
+added), GPC not measured, signals and ads personalization off, URLs without query strings, on once `GA_WEB_ID` is set and that privacy version is current (web
+#99). Sign-in counts: `POST /usage/sign-in` personal | clinic, random id per event (clinic call to add in `clinicApi.ts`
+after the clinic thread's PR). Privacy lines handed to the clinic thread for `2026-11-27T12:00:00Z`. Tests pass in all
+three; notice checked with Playwright on a dev server. Next: measurement ids from the Mac thread into `GA_WEB_ID` and API
+config, Guy sets `STEADY_GA_WEB_SECRET` / `STEADY_GA_APP_SECRET`, deploys after the privacy version, check GA Realtime.
+
 26 Nov 2026 (Jira PM-564..566, PM-576, thread "Improve meal photo carb accuracy", nothing visible): Guy's plate (a thin
 layer of rice, two breaded stars, a salad, water) came back as 67 g where he counted 25 g (pump 23 g); the gap is the rice
 read as a full cup and the breading at fried-food density. Built: food classes with USDA bands of carbs per 100 g, a value

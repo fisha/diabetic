@@ -96,6 +96,8 @@
   "cmp.graph.empty": "אין עדיין מה להציג ביום הזה. קריאות שמתעדים יופיעו כאן כנקודות בודדות.",
   "cmp.graph.noData": "אין נתונים",
   "cmp.graph.summary": "גרף גלוקוז עם {count, plural, one {קריאה אחת} other {# קריאות}} מ־{start} עד {end}",
+  "cmp.graph.values": "הנמוכה {low} ב-{lowAt}, הגבוהה {high} ב-{highAt}, האחרונה {last} ב-{lastAt}.",
+  "cmp.graph.in_band": "{pct}% מהמדידות האלה בטווח שלך.",
   "cmp.graph.title": "גלוקוז, {unit}",
   "cmp.loading": "בטעינה",
   "cmp.reading.ago": "לפני {minutes, plural, one {דקה} two {2 דקות} other {# דקות}}",
