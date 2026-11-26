@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026, later (Jira PM-579..581, same thread): Guy asked for ARCore depth on Android, a reference object for scale
+and a photo tip, and to ask amounts in the measures people count carbs in. Built: Android part of `modules/stedio-depth`
+(ARCore depth, same `{uri, scale}` as iOS LiDAR, AR Optional, usual camera when ARCore or depth is missing or the flash
+is on; app #325, Kotlin not compiled in the container, needs a local Android build); analyzer reference objects (card,
+coins, can, fork, spoon) and household measures `ai/carb_measures.py` (ADA exchange amounts, USDA cup weights, Israeli
+heaped spoons; amount question in cups, Hebrew rice in heaped spoons; api #276); camera line `meal.frame` now recommends
+a fork or card beside the plate. Open: ARCore notice in the privacy policy (27 Nov version), clinical review of the
+measures (PM-550), native build iOS + APK.
+
 26 Nov 2026 (Jira PM-564..566, PM-576, thread "Improve meal photo carb accuracy", nothing visible): Guy's plate (a thin
 layer of rice, two breaded stars, a salad, water) came back as 67 g where he counted 25 g (pump 23 g); the gap is the rice
 read as a full cup and the breading at fried-food density. Built: food classes with USDA bands of carbs per 100 g, a value
