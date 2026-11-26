@@ -52,6 +52,13 @@ diagnose, give dosing advice or provide treatment.
 - Glucose notices are a quiet look back only (`steady_api/glucose_alerts.py`: an hour out of the person's own range,
   passive, no value in the text, rely on the device alarms). The push no longer says "a look back, not an alarm"
   (Guy, 23 Nov 2026, PM-435); its title says "for the past hour" and the Settings note keeps "not an alarm, not real time".
+- Exception approved by Guy (26 Nov 2026, PM-542 phase C, lawyer review PM-567): the glucose check suggestion
+  (`steady_api/check_suggest.py`, app `src/features/checkSuggest`). Adults only, off by default, turned on by the person,
+  and live only while `STEADY_CHECK_SUGGEST` is on. When the background estimate expects the person's own low bound in
+  30-45 minutes and the phone sees driving or exercise, it suggests a glucose check (or a pause to check while driving).
+  Check that it stays this narrow: no sound, not time-sensitive or critical, never says a low or drop is expected, no
+  value, dose or treatment, at most one every 3 hours, motion stays on the phone, never for minors, demo or viewers.
+  Any widening of it fails.
 - Relaying a device's own alarms is at risk; supply logistics (reservoir, battery, sensor ending, set change) are fine.
 - Routine prompts (meal check-ins, reminders the person set, summaries) are fine. They carry no medical claim.
 

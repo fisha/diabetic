@@ -8,6 +8,32 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-556..562, PM-569/570 clinic part, lawyer PM-563, thread "Improve clinic area for care teams"):
+Guy's seven clinic portal fixes. Every chart shows its values on hover and with the arrow keys; the range bars show
+each share. Visit summaries by any team member (sealed, by date, searchable, author-only edits). Each person's page has
+tabs: Summary, Visit summaries, Meals (dietitian journal by day and time with photos, foods, nutrients, day totals,
+averages against targets), Measurements (clinic-entered height, weight, pulse and blood pressure with the app's height
+and weight and the watch's resting heart rate, charts), Targets (nutrition and activity targets set by the team; nutrient
+targets reach the app's `/nutrition/summary` while sharing). Per-clinic permissions (`clinic_perms.py`): recommended
+templates for doctor, nurse, dietitian, social worker, custom profiles, a manager flag set by an admin, Team access page.
+Summary period: since the last visit, 14 or 30 days, 3 or 6 months, 1 year, compared with as many days before; shares
+accepted under the first consent stay at 180 days (the app now sends the consent version it showed). The pump's basal
+program as set on the pump (Tandem segments, CareLink pattern and rate now), display only. Sideways scroll: a visually
+hidden table label widened the page; scroll frames are now positioned. No side menu before sign-in, sign-out after an
+hour idle, logo to home. Clinic privacy lines handed to the GA thread for its `2026-11-26T22:00:00Z` version; new clinic
+consent text in the app. Tests: API clinic 36 pass, web 17, i18n 20, app 344; checked in Playwright en/he, light/dark,
+390 to 1440 px (screenshots `/mnt/project-files/clinic-pm556/`). Next: deploy API (migration `e7b9d1f3a5c6`), then web
+and OTA; activity targets are not shown in the app yet (G-141).
+
+26 Nov 2026, later (Jira PM-579..581, same thread): Guy asked for ARCore depth on Android, a reference object for scale
+and a photo tip, and to ask amounts in the measures people count carbs in. Built: Android part of `modules/stedio-depth`
+(ARCore depth, same `{uri, scale}` as iOS LiDAR, AR Optional, usual camera when ARCore or depth is missing or the flash
+is on; app #325, Kotlin not compiled in the container, needs a local Android build); analyzer reference objects (card,
+coins, can, fork, spoon) and household measures `ai/carb_measures.py` (ADA exchange amounts, USDA cup weights, Israeli
+heaped spoons; amount question in cups, Hebrew rice in heaped spoons; api #276); camera line `meal.frame` now recommends
+a fork or card beside the plate. Open: ARCore notice in the privacy policy (27 Nov version), clinical review of the
+measures (PM-550), native build iOS + APK.
+
 26 Nov 2026 (Jira PM-568..575, thread "Fix website issues from Guy's list"): Guy's nine website fixes. Live (web
 v116, API v203): page loader with the companion between pages (`PageLoader.tsx`, capture-phase click listener), no side
 menu on the personal-area sign-in (`DashSide.tsx`), Admin > Support can delete a request that never reached Jira
@@ -29,13 +55,16 @@ personal areas and the clinic portal only count sign-ins. One GA4 property "Sted
 for the Mac thread in `/mnt/project-files/google-analytics/console-steps.md`). Apps: no Firebase, no native build; the
 opt-in Mixpanel events (same allowlist, never under 18 or while viewing) also go to API `POST /usage/app`, which checks
 them again and forwards them by Measurement Protocol without IP, account or Mixpanel id (separate SHA-256 id, country
-only) for people who accepted privacy `2026-11-27T12:00:00Z` (API #272, app #322). Website: gtag only on stedio.io
+only) for people who accepted privacy `2026-11-26T22:00:00Z` (API #272, app #322). Website: gtag only on stedio.io
 public pages, cookieless (Consent Mode, storage denied; Guy removed the cookie notice 20:41Z until a consent service is
 added), GPC not measured, signals and ads personalization off, URLs without query strings, on once `GA_WEB_ID` is set and that privacy version is current (web
 #99). Sign-in counts: `POST /usage/sign-in` personal | clinic, random id per event (clinic call to add in `clinicApi.ts`
-after the clinic thread's PR). Privacy lines handed to the clinic thread for `2026-11-27T12:00:00Z`. Tests pass in all
-three; notice checked with Playwright on a dev server. Next: measurement ids from the Mac thread into `GA_WEB_ID` and API
-config, Guy sets `STEADY_GA_WEB_SECRET` / `STEADY_GA_APP_SECRET`, deploys after the privacy version, check GA Realtime.
+after the clinic thread's PR). Privacy lines handed to the clinic thread for `2026-11-26T22:00:00Z`. Tests pass in all
+three; notice checked with Playwright on a dev server. Measurement ids are in (website G-D789HSTQ55, app G-7QGJ5JZ6X8) and Guy set both secrets. Privacy
+`2026-11-26T22:00:00Z` (GA, meal-correction learning, ARCore, clinic lines) merged in API #279 and web #104. Deployed (API v210, web v118, OTA).
+Website fix (API #280, web #104 follow-up #105): GA4 keeps cookieless consent-mode pings out of its reports, so the site
+now posts each public page to API `POST /usage/page`, which sends one page view by Measurement Protocol (random id per
+page view, referrer host only, no Google script or cookie). Next: deploy API and web, check GA Realtime.
 
 26 Nov 2026 (Jira PM-564..566, PM-576, thread "Improve meal photo carb accuracy", nothing visible): Guy's plate (a thin
 layer of rice, two breaded stars, a salad, water) came back as 67 g where he counted 25 g (pump 23 g); the gap is the rice
@@ -44,7 +73,7 @@ outside held to the edge (`ai/food_classes.py`); analyzer rule to size starchy s
 coating only (`_STARCH`); a learned portion factor per person and food class from weighed, changed and kept items and pump
 entries for the same meal, against the raw reading, shrunk towards a group prior of consenting adults (ml_priors
 `food_portion`, 5+) and bounded 0.5-1.5 (`brain/food_corrections.py`), photo analyses only, in the app and on WhatsApp.
-The personal part waits for privacy version 2026-11-27T12:00:00Z (line sent to the clinic thread). Food regression: 5 new
+The personal part waits for privacy version 2026-11-26T22:00:00Z (line sent to the clinic thread). Food regression: 5 new
 text cases and photo cases from `evals/food/regression/` (out of git, in the Fly evals image when present). Regulatory:
 at risk near dosing (pump entries as a signal), lawyer PM-576. Evals not run (food set to be run on Fly). Next: API
 deploy, `stedio-fly evals --food`. First food run (26 Nov 20:18Z): 25/27; Guy's photo 67 -> 58 g (band 18-45), clear

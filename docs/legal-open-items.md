@@ -63,7 +63,7 @@ below, which Guy and the lawyer can still change.
   `whatsapp` consent (strings `wa.body`, `wa.agree`, version `2026-11-19` in `steady_api/whatsapp/links.py`) is recorded
   before linking.
 
-**Pending in privacy `2026-11-27T12:00:00Z` (PM-577, Guy 26 Nov 2026):** Google LLC (United States) named as the
+**In privacy `2026-11-26T22:00:00Z` (merged 26 Nov, API #279, web #104) (PM-577, Guy 26 Nov 2026):** Google LLC (United States) named as the
 Google Analytics processor: the app's opt-in usage events (same choice and allowlist as Mixpanel) sent on by our API
 without IP, account or Mixpanel id, under a separate random id, country only; website page views on stedio.io's public
 pages without cookies (Consent Mode, analytics storage denied; no cookie notice by Guy's decision 26 Nov until a consent
@@ -72,7 +72,7 @@ portal with no id. Google signals, ads personalization, granular location/device
 14 months. Texts in `/mnt/project-files/google-analytics/privacy-lines.md`, folded into the clinic thread's version.
 Lawyer review in PM-578 (`needs-lawyer`): accepting Google's data processing terms as the DPA and the transfer basis;
 whether cookieless page measurement without a notice is acceptable under GDPR/ePrivacy, Amendment 13, CCPA/CPRA and MHMDA until the consent service; whether
-sign-in counts need consent; the 14-month retention.
+sign-in counts need consent; the 14-month retention. Since 26 Nov (API #280) the website's page views go to Google from our server (no browser tag): page address, title and the referring site's host, under a random id per page view; the referring host is not spelled out in the policy yet (next version, PM-578).
 
 **Released 24 Nov 2026 as privacy `2026-11-24T00:00:00Z` (PM-464):** Mixpanel, Inc. (United States, US data
 residency) named as the product analytics processor, opt-in only (off unless turned on in onboarding, on the re-accept
