@@ -23,6 +23,19 @@ English (install pages rule). Hebrew texts were already complete; fixed the spel
 The four "How it works" app screens are still English on the Hebrew page (design-gaps). Web build, typecheck, lint, tests,
 curl and Playwright in both languages. Regulatory and privacy: pass. Next: web deploy.
 
+26 Nov 2026 (Jira PM-546, PM-547, PM-552, Guy approved 19:37Z): the WHO-5 Well-Being Index in conversation, nothing
+visible (`brain/wellbeing.py`, tool `note_wellbeing`, table `wellbeing_checks`, migration `e5a7c9b1d3f4`): adults only,
+accounts 14+ days old, offered at most every 28 days in a calm conversation; a lower total only makes the mentor gentler
+and quieter, never a score or a condition; skip, stop and delete (delete keeps the opt-out); export sheet V. WHO
+permission for commercial use requested in parallel (draft in PM-546 for Guy to submit); Hebrew wording is the
+mentor's translation until the validated one. Doctor trends in the clinic report (PM-547, `brain/trajectory.py`): 16
+weeks of TIR, TBR, GRI and meals logged with a Bayesian change point, labelled "AI-generated summary of past data, not a
+treatment recommendation", English and Hebrew. Privacy version 2026-11-26T21:00:00Z (motion stays on the phone, WHO-5,
+check suggestion; web #94, #95), a second re-accept today. Forecast training (PM-552, API #266): commits before
+training (idle-in-transaction timeout on Fly), shadow trainings only 00-06 UTC on at most 20,000 rows, an
+out-of-memory retry halves the rows it used. API #264, #265, #266. Regulatory: at risk PM-547 (trends to doctors) and
+PM-546 (licence). Evals not run (PM-436). Next: combined web + API deploy, then Phase C (PM-542).
+
 26 Nov 2026 (Jira PM-551, Guy approved 19:35Z): the privacy policy (English and Hebrew) now describes what the
 mentor learns with memory on, the pre-send check, the background glucose estimates (never shown, only accuracy kept),
 the reach-out timing test in shadow and the daily summary for improving models (400 days). Privacy version
