@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-551, Guy approved 19:35Z): the privacy policy (English and Hebrew) now describes what the
+mentor learns with memory on, the pre-send check, the background glucose estimates (never shown, only accuracy kept),
+the reach-out timing test in shadow and the daily summary for improving models (400 days). Privacy version
+2026-11-26T20:00:00Z in the API and the website together, so everyone reads and accepts again. Web #92, API #263.
+
 26 Nov 2026 (Jira PM-545, PM-552, nothing visible): in `similar_meals`, how the carbs the person entered on their pump
 compare with the app's estimate for the same meal (`brain/carb_estimates.py`: pump entries only, a number they said is
 left out, shrunk ratio with a 90% interval, 5+ pairs; words about estimating food only, never which number was right or
