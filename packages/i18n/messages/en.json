@@ -2763,6 +2763,11 @@
   "wd.sp_jira_queue": "Open the support queue in Jira",
   "wd.sp_no_jira": "Jira is not connected, so requests stay in Stedio and support is emailed the number only.",
   "wd.sp_not_in_jira": "Not in Jira yet",
+  "wd.sp_del": "Delete",
+  "wd.sp_del_q": "Delete request #{n} for good?",
+  "wd.sp_del_yes": "Delete for good",
+  "wd.sp_del_no": "Keep",
+  "wd.sp_del_fail": "This request could not be deleted. Try again.",
   "wd.sp_filter": "Show",
   "wd.sp_s_archived": "Archived",
   "wd.sp_s_closed": "Closed",
@@ -4713,5 +4718,6 @@
   "cs.denied": "Motion wasn't allowed. You can allow it in the phone's settings.",
   "cs.failed": "Couldn't change it right now. Try again in a moment.",
   "cs.drive": "When it's safe to stop, it's a good moment to check your glucose.",
-  "cs.exercise": "A good moment for a short pause to check your glucose."
+  "cs.exercise": "A good moment for a short pause to check your glucose.",
+  "web.portal": "Open the support portal"
 }
