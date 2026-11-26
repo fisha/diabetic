@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-540..542, mentor roadmap continued, nothing visible): a nightly de-identified learning snapshot
+(`brain/snapshot.py`, table `ml_snapshot_rows`, migration `c3e5a7b9d1f2`: training consent only, pseudonym, aggregates
+incl. GRI, 400 days, removed with the consent or the account under a shared per-subject lock); weekly cohort outcomes
+(`brain/outcomes.py`, groups of 5+); a pre-send check (`brain/critic.py`, small model) that drops failing lines from
+openers and daily/weekly/WhatsApp notes after the code checks (STEADY_MENTOR_CRITIC); and the glucose forecast in shadow
+for every non-demo account with a recent sensor (PM-542 phase B, `forecast.shadow_users`, STEADY_FORECAST_SHADOW): one
+training at a time, owner first, never shown, scored curves dropped, `drop_check` aggregates for phase C's gate. API
+#257, #258. Regulatory and privacy: pass; at risk PM-551 (policy line, waits for Guy). Evals not run (PM-436). Phase C
+(motion permission, Settings and policy disclosure) is visible and waits for Guy. Next: API deploy (migration).
+
 26 Nov 2026 (Jira PM-535 epic, PM-536..539): Guy asked for a world-class roadmap that makes the mentor breakthrough
 behind the scenes, the same in the app, voice and WhatsApp, with no change to what the person sees (roadmap:
 `/mnt/project-files/mentor-intelligence/roadmap.md`; "implement in order without changing any design; ask before a
