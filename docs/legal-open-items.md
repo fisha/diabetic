@@ -159,3 +159,7 @@ approved lines here.
   stored in the profile answers (exported and deleted with the profile), in the profile change history; the companion's
   context gets only "sex female" or "sex male" (`ai/context.py` `about`), under the existing AI consent. Purpose:
   things that differ by sex, such as the menstrual cycle. Lawyer to confirm the wording with the rest (G-05).
+
+**Privacy `2026-11-26T12:00:00Z` (PM-531):** opt-in usage analytics now let Mixpanel derive approximate country,
+region and city from the request IP (IP not kept by Mixpanel, no precise location sent) and carry the operating system
+and its version. For the lawyer (PM-467): city-level location in a health app's analytics under MHMDA, consent wording.
