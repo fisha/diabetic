@@ -18,7 +18,10 @@ entries for the same meal, against the raw reading, shrunk towards a group prior
 The personal part waits for privacy version 2026-11-27T12:00:00Z (line sent to the clinic thread). Food regression: 5 new
 text cases and photo cases from `evals/food/regression/` (out of git, in the Fly evals image when present). Regulatory:
 at risk near dosing (pump entries as a signal), lawyer PM-576. Evals not run (food set to be run on Fly). Next: API
-deploy, `stedio-fly evals --food`.
+deploy, `stedio-fly evals --food`. First food run (26 Nov 20:18Z): 25/27; Guy's photo 67 -> 58 g (band 18-45), clear
+noodles lost whole to a long reply (fixed, api #270). Guy chose "ask one short amount question": a starchy side the
+analyzer isn't sure of gets one amount question when the photo has no depth measurement (api #271); the photo case passes
+when its lowest option brings the meal into the band.
 
 26 Nov 2026 (Jira PM-555, same thread): Guy asked to retake the four "How it works" app screens in Hebrew for the
 Hebrew page and in English (the app design changed since PM-236). Captured from the current app with demo scenario
