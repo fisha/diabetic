@@ -127,3 +127,19 @@ def test_photo_cases_are_read_from_the_folder_kept_out_of_git(tmp_path, monkeypa
     an = Seen()
     out = run(an)
     assert an.photos == 1 and next(r for r in out["rows"] if r["case"] == "p1")["passed"]
+
+
+def test_a_photo_out_of_band_passes_only_when_an_amount_answer_fixes_it():
+    from steady_evals.food_regression import _fixable_by_answer
+
+    c = FoodCase("photo", "", 18, 45)
+    rice = Item("Cooked white rice", "g", 160, None, 28, question=Q(["About 80 g", "About 160 g", "About 240 g"]))
+    stars = Item("Breaded chicken", "piece", 2, 30, 15)
+    row = grade(c, [rice, stars])
+    assert not row["passed"] and row["est_carbs_g"] == 53.8
+    _fixable_by_answer(c, [rice, stars], row)
+    assert row["passed"] and row["est_after_amount_answer_g"] == 31.4 and row["in_band_as_read"] is False
+    unasked = Item("Cooked white rice", "g", 160, None, 28)
+    row = grade(c, [unasked, stars])
+    _fixable_by_answer(c, [unasked, stars], row)
+    assert not row["passed"]
