@@ -40,6 +40,18 @@ English (install pages rule). Hebrew texts were already complete; fixed the spel
 The four "How it works" app screens are still English on the Hebrew page (design-gaps). Web build, typecheck, lint, tests,
 curl and Playwright in both languages. Regulatory and privacy: pass. Next: web deploy.
 
+26 Nov 2026 (Jira PM-542 phase C, Guy approved 19:35Z; lawyer PM-567): glucose check suggestion, built and OFF. API
+#267 (`check_suggest.py`, `GET/PUT /check-suggest`, `user_settings.check_suggest_at` / `check_suggest_sent_at`,
+migration `f6b8d0e2a4c6`): for an opted-in adult, a background estimate under their own low bound 30-45 minutes after
+now sends one silent push (no value or text), at most every 3 hours, claimed atomically. App #320: new native module
+`modules/stedio-motion` (Core Motion; Activity Recognition transitions), `expo-task-manager` background task that shows
+a quiet local suggestion only while driving or exercising ("When it's safe to stop, it's a good moment to check your
+glucose."), the Settings > Privacy switch with the disclosure, shown only while the server offers it; strings `cs.*`.
+Nothing changes for anyone until `STEADY_CHECK_SUGGEST` is on (after `forecast.drop_check`; Guy decides) and a native
+build with the module is installed. Swift/Kotlin not compiled yet (Linux container). Regulatory: at risk (forecast-driven
+prompt, approved exception; the regulatory-check skill text still says no glucose interruption, Guy to decide whether to
+record the exception there). Next: native build iOS + APK on the Mac, then turn the switch on for testers.
+
 26 Nov 2026 (Jira PM-546, PM-547, PM-552, Guy approved 19:37Z): the WHO-5 Well-Being Index in conversation, nothing
 visible (`brain/wellbeing.py`, tool `note_wellbeing`, table `wellbeing_checks`, migration `e5a7c9b1d3f4`): adults only,
 accounts 14+ days old, offered at most every 28 days in a calm conversation; a lower total only makes the mentor gentler
