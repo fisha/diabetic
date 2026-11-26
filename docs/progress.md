@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-554, thread "Add Hebrew language switch to website"): Guy asked for a day/night switch on the
+website. `ThemeSwitch` (sun/moon button, `aria-pressed`, string `web.night`) in the top bar, demo, legal, 404 and the
+dashboard sets `data-theme` on <html>; the site follows the device until the visitor picks the other look, kept in
+localStorage `stedio_theme` and applied in <head> before the first paint. Privacy policy (en, he) names it inside the
+pending 2026-11-26T21:00:00Z version. Web #96. Web build, typecheck, lint, tests, Playwright in both modes and
+languages. Regulatory and privacy: pass. Next: web deploy with PM-553 and the 21:00Z policy.
+
 26 Nov 2026 (Jira PM-553, thread "Add Hebrew language switch to website"): Guy asked for a Hebrew/English switch on the
 website, English by default (replaces the 16 Nov English-only rule, PM-128). `SITE_LOCALES = ['en', 'he']`, no
 browser-language detection, the last language opened kept in the `NEXT_LOCALE` cookie the privacy policy already names;

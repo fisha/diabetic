@@ -19354,6 +19354,13 @@
       "translation"
     ]
   },
+  "web.night": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Website day/night switch, a toggle button (Guy, 26 Nov 2026, PM-554)."
+  },
   "web.lg_toc": {
     "board": "Website",
     "review": [
