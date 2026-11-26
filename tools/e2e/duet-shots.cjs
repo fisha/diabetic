@@ -115,6 +115,15 @@ const server = http.createServer((req, res) => {
         if (process.env.TREE) console.log(await page.evaluate((q) => { const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) if (n.textContent.trim() === q) break; const out = []; let e = n && n.parentElement; while (e && out.length < 14) { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); out.push(`${Math.round(r.y)} h${Math.round(r.height)} pt${cs.paddingTop} mt${cs.marginTop} gap${cs.rowGap} kids[${[...e.children].map((c) => { const b = c.getBoundingClientRect(); return Math.round(b.y) + ':' + Math.round(b.height); }).join(' ')}]`); e = e.parentElement; } return out.join('\n'); }, process.env.TREE));
         // SCROLL=<px>: scroll the screen's list down that far before the shot (lower parts of a long screen).
         if (process.env.SCROLL) { await page.mouse.move(196, 400); await page.mouse.wheel(0, Number(process.env.SCROLL)); await page.waitForTimeout(900); }
+        // AXE=1: run axe-core (WCAG 2.0-2.2 A and AA rules) on the screen and print each violation (PM-572).
+        if (process.env.AXE) {
+          await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') });
+          const res = await page.evaluate(() => window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'] } }));
+          for (const v of res.violations) console.log('axe', r, lang, scheme, v.id, v.impact, v.nodes.length, v.nodes.slice(0, 3).map((n) => n.target.join(' ') + ' :: ' + (n.failureSummary || '').split('\n')[1]).join(' | '));
+          if (!res.violations.length) console.log('axe', r, lang, scheme, 'clean');
+          // AXE=2: each failing element's accessible name and visible text, to find the component.
+          if (process.env.AXE === '2') for (const v of res.violations) for (const n of v.nodes) console.log('axenode', r, v.id, JSON.stringify(await page.evaluate((sel) => { const e = document.querySelector(sel); return e && { label: e.getAttribute('aria-label'), text: e.innerText.replace(/\s+/g, ' ').slice(0, 120), testid: e.getAttribute('data-testid'), fg: n => 0 }; }, n.target[0])), (n.any.concat(n.all, n.none)[0] || {}).message || '');
+        }
         if (process.env.EVAL) console.log('eval', JSON.stringify(await page.evaluate(process.env.EVAL)));
         await page.screenshot({ path: path.join(out, name) });
         console.log('shot', name);

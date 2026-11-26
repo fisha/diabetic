@@ -1047,6 +1047,20 @@
       "translation"
     ]
   },
+  "cmp.graph.values": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Screen reader text for the glucose graph: values of the readings shown (PM-572, Guy 26 Nov 2026)."
+  },
+  "cmp.graph.in_band": {
+    "board": "Components",
+    "review": [
+      "translation"
+    ],
+    "note": "Screen reader text for the glucose graph: values of the readings shown (PM-572, Guy 26 Nov 2026)."
+  },
   "cmp.graph.title": {
     "board": "Components",
     "review": [
@@ -7767,7 +7781,8 @@
     "board": "Meal",
     "review": [
       "translation"
-    ]
+    ],
+    "note": "An object of known size next to the plate helps the analyzer size the portion (Guy, 26 Nov 2026, PM-580)."
   },
   "meal.frame_more": {
     "board": "Meal",
