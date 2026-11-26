@@ -4707,5 +4707,11 @@
   "games.fav_add": "Add {game} to favorites",
   "games.fav_remove": "Remove {game} from favorites",
   "games.fav_empty": "No favorites yet. Tap the star on a game to add it here.",
-  "games.fav_title": "Favorites"
+  "games.fav_title": "Favorites",
+  "cs.set": "Glucose check suggestions",
+  "cs.set_b": "While you drive or exercise, Stedio may sometimes suggest a good moment to check your glucose. It uses an experimental estimate from your sensor readings: it is not an alarm, it can miss lows, and your sensor's alerts come first. Uses motion on this phone only; motion is never sent or kept.",
+  "cs.denied": "Motion wasn't allowed. You can allow it in the phone's settings.",
+  "cs.failed": "Couldn't change it right now. Try again in a moment.",
+  "cs.drive": "When it's safe to stop, it's a good moment to check your glucose.",
+  "cs.exercise": "A good moment for a short pause to check your glucose."
 }
