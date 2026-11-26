@@ -18,6 +18,12 @@ cookie policy page `/cookies`; API `POST /consent/cookies` (no IP, no account, 2
 policy `2026-11-26T23:00:00Z` points to the cookie policy (app users accept once more). Open: Guy's OK on the banner
 design and the re-accept, then merge and deploy (API before web).
 
+26 Nov 2026, night (Jira PM-584, thread "Fix missing sensor expiry alerts"): Guy's 24-hour sensor-ending reminder did
+not come. Production (read only): no reminder sent yet; its time fell at 22:24 Israel time, so the night rule holds it
+for 08:00. Bug found and fixed (api #282): a CareLink poll dropped `end_reminded_hours`, so after a sensor's first
+reminder every later time counted as sent; the 5-hour one would never have come. Tests 62 pass. Next: API deploy before
+27 Nov 15:24Z.
+
 26 Nov 2026 (Jira PM-556..562, PM-569/570 clinic part, lawyer PM-563, thread "Improve clinic area for care teams"):
 Guy's seven clinic portal fixes. Every chart shows its values on hover and with the arrow keys; the range bars show
 each share. Visit summaries by any team member (sealed, by date, searchable, author-only edits). Each person's page has
@@ -54,8 +60,13 @@ are in the clinic thread. Accessibility (PM-572): every app screen on the web ch
 `tools/e2e/duet-shots.cjs`), fixed contrast on teal, nested buttons, stepper role, names that did not start with the
 visible words; glucose graph text alternative with values; PDFs with language, title and bookmarks (app #324, API #275);
 statement without "What is not yet accessible", dated 26 Nov (web #102, no re-accept). Website pages re-checked clean.
-Next: OTA + API + web deploy; meal-photo chapter (PM-575) once the generated photo exists
-(`/mnt/project-files/site-photos/make_meal_photo.py` runs where the OpenAI key is).
+Deployed (API v210, web v118, OTA 1dd3fee). Meal-photo chapter (PM-575, web #108): "Snap your plate" after the logging
+chapter, generated photo (gpt-image-2, `/mnt/project-files/site-photos/make_meal_photo.py`) with the camera view
+composited on her phone, and the app's food review screen in en and he (`MEALSCAN=<jpg>` and `AFTER=<ms>` in
+`tools/e2e/duet-shots.cjs`, mocked analysis in the screenshot tool only). Hebrew site photos (PM-585, web #109): Guy asked
+for Israeli people on /he; nine versions made from the English photos with the image edit endpoint
+(`/mnt/project-files/site-photos/he/make_he_photos.py`, Hebrew screens put on by `comp_he.py`), served from
+`/home/he/`. Next: web deploy; Guy decides whether the kitchen photo keeps a woman in a hijab (`use-3-hijab`).
 
 26 Nov 2026 (Jira PM-577, lawyer PM-578, thread "Set up Google Analytics for site and apps"): Guy asked for Google
 Analytics on the website's marketing pages and in the apps, screens and actions only, no user or health data; the
