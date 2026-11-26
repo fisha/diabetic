@@ -4040,8 +4040,8 @@
   "care.sc_questions": "My questions for the visit",
   "care.consent_1": "View only. The clinic never sees your conversations with Stedio.",
   "care.consent_2": "You can stop anytime in Settings › Sharing, and see who looked last.",
-  "care.consent_3": "Everyone on this clinic's team can open it: doctors, nurses, dietitians and social workers.",
-  "care.consent_4": "The summary covers the last 180 days. The clinic can print it for your file.",
+  "care.consent_3": "The clinic's manager decides what each team member can open, for example doctors, nurses, dietitians and social workers, never more than the parts you choose.",
+  "care.consent_4": "The summary covers up to 12 months, compared with the 12 before. The clinic can print it for your file.",
   "care.share": "Share with {clinic}",
   "care.not_now": "Not now",
   "care.decline": "Decline",
@@ -4874,5 +4874,6 @@
   "clc.pm_visits": "Visit summaries",
   "clc.pm_visits_write": "Write visit summaries",
   "clc.pm_questions": "The person’s questions",
-  "clc.pm_request": "Ask new people to share"
+  "clc.pm_request": "Ask new people to share",
+  "care.consent_5": "The team can write visit notes, add measurements taken at the clinic and set nutrition and activity targets you see in the app. They are deleted when you stop."
 }

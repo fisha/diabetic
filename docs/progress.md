@@ -8,6 +8,23 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-556..562, PM-569/570 clinic part, lawyer PM-563, thread "Improve clinic area for care teams"):
+Guy's seven clinic portal fixes. Every chart shows its values on hover and with the arrow keys; the range bars show
+each share. Visit summaries by any team member (sealed, by date, searchable, author-only edits). Each person's page has
+tabs: Summary, Visit summaries, Meals (dietitian journal by day and time with photos, foods, nutrients, day totals,
+averages against targets), Measurements (clinic-entered height, weight, pulse and blood pressure with the app's height
+and weight and the watch's resting heart rate, charts), Targets (nutrition and activity targets set by the team; nutrient
+targets reach the app's `/nutrition/summary` while sharing). Per-clinic permissions (`clinic_perms.py`): recommended
+templates for doctor, nurse, dietitian, social worker, custom profiles, a manager flag set by an admin, Team access page.
+Summary period: since the last visit, 14 or 30 days, 3 or 6 months, 1 year, compared with as many days before; shares
+accepted under the first consent stay at 180 days (the app now sends the consent version it showed). The pump's basal
+program as set on the pump (Tandem segments, CareLink pattern and rate now), display only. Sideways scroll: a visually
+hidden table label widened the page; scroll frames are now positioned. No side menu before sign-in, sign-out after an
+hour idle, logo to home. Privacy `2026-11-27T12:00:00Z` (clinic lines, PM-566 carb line, PM-577 GA lines), new clinic
+consent text in the app. Tests: API clinic 36 pass, web 17, i18n 20, app 344; checked in Playwright en/he, light/dark,
+390 to 1440 px (screenshots `/mnt/project-files/clinic-pm556/`). Next: deploy API (migration `e7b9d1f3a5c6`), then web
+and OTA; activity targets are not shown in the app yet (G-141).
+
 26 Nov 2026 (Jira PM-577, lawyer PM-578, thread "Set up Google Analytics for site and apps"): Guy asked for Google
 Analytics on the website's marketing pages and in the apps, screens and actions only, no user or health data; the
 personal areas and the clinic portal only count sign-ins. One GA4 property "Stedio" with two web streams (console steps

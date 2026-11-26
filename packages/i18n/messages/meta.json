@@ -26051,7 +26051,7 @@
       "translation",
       "legal"
     ],
-    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+    "note": "Clinic consent text, version clinic-2026-11-27 (PM-560, Guy 26 Nov 2026)"
   },
   "care.consent_4": {
     "board": "ClinicPortal",
@@ -26059,7 +26059,7 @@
       "translation",
       "legal"
     ],
-    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+    "note": "Clinic consent text, version clinic-2026-11-27 (PM-560, Guy 26 Nov 2026)"
   },
   "care.share": {
     "board": "ClinicPortal",
@@ -31828,5 +31828,13 @@
       "translation"
     ],
     "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "care.consent_5": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinic consent text, version clinic-2026-11-27 (PM-560, Guy 26 Nov 2026)"
   }
 }
