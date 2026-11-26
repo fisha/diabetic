@@ -1,7 +1,8 @@
 # The companion's regression set (PM-198) as a one-off Fly Machine in stedio-api (PM-203, Guy 17 Nov 2026).
 # Build context: the main repository root (the evals import services/api read-only, as on a laptop).
-# Built and run only by `scripts/fly/stedio-fly evals`. It runs synthetic held-out cases only and never opens the
-# database. The OpenAI key is the app's own secret (STEADY_OPENAI_API_KEY), read from the environment inside the
+# Built and run only by `scripts/fly/stedio-fly evals`. It runs synthetic held-out cases, plus the food regression's photo
+# cases when the Mac's checkout has them (evals/food/regression/, kept out of git: meal photos Guy gave for testing,
+# PM-564), and never opens the database. The OpenAI key is the app's own secret (STEADY_OPENAI_API_KEY), read from the environment inside the
 # Machine; it is never written to a file, a log or the results.
 ARG PY_IMAGE=python:3.12-slim
 FROM ${PY_IMAGE}
@@ -22,6 +23,8 @@ COPY services/api/steady_api ./steady_api
 WORKDIR /repo/evals
 COPY evals/steady_evals ./steady_evals
 COPY evals/cases ./cases
+# Always present (README.md); the photo cases only when the checkout has them.
+COPY evals/food ./food
 COPY deploy/fly/evals/run.sh /repo/run-evals.sh
 
 ENV PATH=/repo/services/api/.venv/bin:$PATH
