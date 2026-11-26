@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-543..544, mentor roadmap continued, nothing visible): the personal meal response in hindsight
+(`brain/meal_response.py`: their own meals of 180 days, 2-hour change per trait shrunk towards no difference with a 90%
+interval, 5+ meals each side; in `similar_meals` as `for_you` only), and when/where to reach out learned in shadow
+(`brain/bandit.py`, table `bandit_decisions`, migration `d4f6b8c0e2a3`: Thompson sampling over part of day x channel with
+a pooled prior, each decision only from what was known at send time, propensity kept, reward = answered within 2 hours,
+export sheet W; nothing it picks is sent; going live waits for Guy and ~300 decisions per group). API #259, #260.
+Regulatory and privacy: pass; at risk PM-551 (policy line). Evals not run (PM-436). Next: API deploy (migration), PM-545.
+
 26 Nov 2026 (Jira PM-540..542, mentor roadmap continued, nothing visible): a nightly de-identified learning snapshot
 (`brain/snapshot.py`, table `ml_snapshot_rows`, migration `c3e5a7b9d1f2`: training consent only, pseudonym, aggregates
 incl. GRI, 400 days, removed with the consent or the account under a shared per-subject lock); weekly cohort outcomes
