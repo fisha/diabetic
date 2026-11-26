@@ -2,7 +2,7 @@
 // captures a list of screens in English and Hebrew, day and night, for comparison with the round 4 mockups.
 // Needs the test server (services/api: uvicorn tests.e2e_server:app, STEADY_ADMIN_EMAILS=admin@example.com) and a web
 // export built with EXPO_PUBLIC_API_URL=http://localhost:8000.
-// Usage: node tools/e2e/duet-shots.cjs <web export> <out dir> [scenario] [routes comma-separated] [variants e.g. en:light,he:dark]
+// DPR=2: pixel density of the shots (the website uses 2). Usage: node tools/e2e/duet-shots.cjs <web export> <out dir> [scenario] [routes comma-separated] [variants e.g. en:light,he:dark]
 const http = require('http'); const fs = require('fs'); const path = require('path');
 const { chromium } = require('playwright');
 const [root, out, scenario = 't1-780g', routesArg = '/companion', variantsArg = 'en:light,he:light,en:dark'] = process.argv.slice(2);
@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
       const [lang, scheme] = v.split(':');
       const s = (await api('/demo/session', { method: 'POST', body: { link: key, scenario, locale: lang } })).json;
       if (!s || !s.access_token) throw new Error('no demo session: ' + JSON.stringify(s));
-      const ctx = await browser.newContext({ viewport: process.env.VIEW ? { width: +process.env.VIEW.split('x')[0], height: +process.env.VIEW.split('x')[1] } : { width: 393, height: 852 }, colorScheme: scheme === 'dark' ? 'dark' : 'light', deviceScaleFactor: 1 });
+      const ctx = await browser.newContext({ viewport: process.env.VIEW ? { width: +process.env.VIEW.split('x')[0], height: +process.env.VIEW.split('x')[1] } : { width: 393, height: 852 }, colorScheme: scheme === 'dark' ? 'dark' : 'light', deviceScaleFactor: Number(process.env.DPR || 1) });
       const stored = { refreshToken: s.refresh_token, email: s.email, hasProfile: s.has_profile, access: { token: s.access_token, until: Date.now() + 10 * 60000 } };
       const viewing = s.viewing ? { viewing: { ownerId: s.viewing.owner_id, name: s.viewing.name, scopes: s.viewing.scopes }, ownDraft: null } : null;
       await ctx.addInitScript(([st, lang, vw, ts]) => {

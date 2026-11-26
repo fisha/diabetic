@@ -8,6 +8,40 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-577, lawyer PM-578, thread "Set up Google Analytics for site and apps"): Guy asked for Google
+Analytics on the website's marketing pages and in the apps, screens and actions only, no user or health data; the
+personal areas and the clinic portal only count sign-ins. One GA4 property "Stedio" with two web streams (console steps
+for the Mac thread in `/mnt/project-files/google-analytics/console-steps.md`). Apps: no Firebase, no native build; the
+opt-in Mixpanel events (same allowlist, never under 18 or while viewing) also go to API `POST /usage/app`, which checks
+them again and forwards them by Measurement Protocol without IP, account or Mixpanel id (separate SHA-256 id, country
+only) for people who accepted privacy `2026-11-27T12:00:00Z` (API #272, app #322). Website: gtag only on stedio.io
+public pages, cookieless (Consent Mode, storage denied; Guy removed the cookie notice 20:41Z until a consent service is
+added), GPC not measured, signals and ads personalization off, URLs without query strings, on once `GA_WEB_ID` is set and that privacy version is current (web
+#99). Sign-in counts: `POST /usage/sign-in` personal | clinic, random id per event (clinic call to add in `clinicApi.ts`
+after the clinic thread's PR). Privacy lines handed to the clinic thread for `2026-11-27T12:00:00Z`. Tests pass in all
+three; notice checked with Playwright on a dev server. Next: measurement ids from the Mac thread into `GA_WEB_ID` and API
+config, Guy sets `STEADY_GA_WEB_SECRET` / `STEADY_GA_APP_SECRET`, deploys after the privacy version, check GA Realtime.
+
+26 Nov 2026 (Jira PM-564..566, PM-576, thread "Improve meal photo carb accuracy", nothing visible): Guy's plate (a thin
+layer of rice, two breaded stars, a salad, water) came back as 67 g where he counted 25 g (pump 23 g); the gap is the rice
+read as a full cup and the breading at fried-food density. Built: food classes with USDA bands of carbs per 100 g, a value
+outside held to the edge (`ai/food_classes.py`); analyzer rule to size starchy sides by area x height and breading as
+coating only (`_STARCH`); a learned portion factor per person and food class from weighed, changed and kept items and pump
+entries for the same meal, against the raw reading, shrunk towards a group prior of consenting adults (ml_priors
+`food_portion`, 5+) and bounded 0.5-1.5 (`brain/food_corrections.py`), photo analyses only, in the app and on WhatsApp.
+The personal part waits for privacy version 2026-11-27T12:00:00Z (line sent to the clinic thread). Food regression: 5 new
+text cases and photo cases from `evals/food/regression/` (out of git, in the Fly evals image when present). Regulatory:
+at risk near dosing (pump entries as a signal), lawyer PM-576. Evals not run (food set to be run on Fly). Next: API
+deploy, `stedio-fly evals --food`. First food run (26 Nov 20:18Z): 25/27; Guy's photo 67 -> 58 g (band 18-45), clear
+noodles lost whole to a long reply (fixed, api #270). Guy chose "ask one short amount question": a starchy side the
+analyzer isn't sure of gets one amount question when the photo has no depth measurement (api #271); the photo case passes
+when its lowest option brings the meal into the band.
+
+26 Nov 2026 (Jira PM-555, same thread): Guy asked to retake the four "How it works" app screens in Hebrew for the
+Hebrew page and in English (the app design changed since PM-236). Captured from the current app with demo scenario
+t1-780g (generated data) at 390x844 @2x (`DPR=2` added to `tools/e2e/duet-shots.cjs`), in `apps/web/public/home/{en,he}`,
+chosen by page language; alt texts updated. The mosaic photos still carry the older English screens. Web #97.
+
 26 Nov 2026 (Jira PM-554, thread "Add Hebrew language switch to website"): Guy asked for a day/night switch on the
 website. `ThemeSwitch` (sun/moon button, `aria-pressed`, string `web.night`) in the top bar, demo, legal, 404 and the
 dashboard sets `data-theme` on <html>; the site follows the device until the visitor picks the other look, kept in
@@ -22,6 +56,38 @@ browser-language detection, the last language opened kept in the `NEXT_LOCALE` c
 English (install pages rule). Hebrew texts were already complete; fixed the spelling "סכרת" to "סוכרת" in three strings.
 The four "How it works" app screens are still English on the Hebrew page (design-gaps). Web build, typecheck, lint, tests,
 curl and Playwright in both languages. Regulatory and privacy: pass. Next: web deploy.
+
+26 Nov 2026 (API pool, nothing visible): at 19:28Z the API's pool (5 + 10) ran out for 15 s (14 errors, app reads got
+500). A mentor turn and a transcription held their connection idle in transaction through the model wait. API #273:
+`db.release()` gives it back before each model call when nothing was written yet; API statement_timeout 60 s and
+lock_timeout 10 s; pool 10 + 10 with a 10 s wait; an exhausted pool answers 503 and logs which routes held it (route
+templates and seconds only). App #321: expo-task-manager loaded only where the build has it, so OTAs to 0.8.0 start.
+Next: API deploy.
+
+26 Nov 2026 (Jira PM-542 phase C, Guy approved 19:35Z; lawyer PM-567): glucose check suggestion, built and OFF. API
+#267 (`check_suggest.py`, `GET/PUT /check-suggest`, `user_settings.check_suggest_at` / `check_suggest_sent_at`,
+migration `f6b8d0e2a4c6`): for an opted-in adult, a background estimate under their own low bound 30-45 minutes after
+now sends one silent push (no value or text), at most every 3 hours, claimed atomically. App #320: new native module
+`modules/stedio-motion` (Core Motion; Activity Recognition transitions), `expo-task-manager` background task that shows
+a quiet local suggestion only while driving or exercising ("When it's safe to stop, it's a good moment to check your
+glucose."), the Settings > Privacy switch with the disclosure, shown only while the server offers it; strings `cs.*`.
+Nothing changes for anyone until `STEADY_CHECK_SUGGEST` is on (after `forecast.drop_check`; Guy decides) and a native
+build with the module is installed. Swift/Kotlin not compiled yet (Linux container). Regulatory: at risk (forecast-driven
+prompt, approved exception; the regulatory-check skill text still says no glucose interruption, Guy to decide whether to
+record the exception there). Next: native build iOS + APK on the Mac, then turn the switch on for testers.
+
+26 Nov 2026 (Jira PM-546, PM-547, PM-552, Guy approved 19:37Z): the WHO-5 Well-Being Index in conversation, nothing
+visible (`brain/wellbeing.py`, tool `note_wellbeing`, table `wellbeing_checks`, migration `e5a7c9b1d3f4`): adults only,
+accounts 14+ days old, offered at most every 28 days in a calm conversation; a lower total only makes the mentor gentler
+and quieter, never a score or a condition; skip, stop and delete (delete keeps the opt-out); export sheet V. WHO
+permission for commercial use requested in parallel (draft in PM-546 for Guy to submit); Hebrew wording is the
+mentor's translation until the validated one. Doctor trends in the clinic report (PM-547, `brain/trajectory.py`): 16
+weeks of TIR, TBR, GRI and meals logged with a Bayesian change point, labelled "AI-generated summary of past data, not a
+treatment recommendation", English and Hebrew. Privacy version 2026-11-26T21:00:00Z (motion stays on the phone, WHO-5,
+check suggestion; web #94, #95), a second re-accept today. Forecast training (PM-552, API #266): commits before
+training (idle-in-transaction timeout on Fly), shadow trainings only 00-06 UTC on at most 20,000 rows, an
+out-of-memory retry halves the rows it used. API #264, #265, #266. Regulatory: at risk PM-547 (trends to doctors) and
+PM-546 (licence). Evals not run (PM-436). Next: combined web + API deploy, then Phase C (PM-542).
 
 26 Nov 2026 (Jira PM-551, Guy approved 19:35Z): the privacy policy (English and Hebrew) now describes what the
 mentor learns with memory on, the pre-send check, the background glucose estimates (never shown, only accuracy kept),

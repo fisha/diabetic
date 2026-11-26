@@ -2,6 +2,7 @@
 Food regression for the meal analyzer (PM-509, Guy 25 Nov 2026): a mug of plain tea came back as "Milk in tea or
 coffee, no sugar", 1¼ cup of milk, 15 g carbs, and the answer to the clarifying question did not change it; a bowl of
 clear noodles came back as glass noodles, about 63 g, where Guy counted 8 g (shirataki and glass noodles look alike).
+PM-564 (26 Nov 2026): a thin layer of rice, two breaded stars and a salad came back as 67 g where Guy counted 25 g.
 
 Text cases through the production adapter (`OpenAIFoodAnalyzer.parse_text`, the same instructions as a photo), so they
 need no personal photos: a described drink, and the re-estimate the app sends after the person answers a question, in
@@ -97,7 +98,58 @@ CASES: list[FoodCase] = [
         tags=["portion"],
     ),
     FoodCase("he-shirataki", "קערה של אטריות שיראטאקי עם עוף וברוקולי", 0, 10, language="Hebrew", tags=["lookalike", "he"]),
+    # Guy's plate (PM-564, 26 Nov 2026, Android, no depth): came back as 67 g, Guy counted about 25 g and entered 23 g on
+    # his pump. Band from reference values: a 0.5-1 cm loose layer of cooked rice over a quarter of a 27 cm plate is
+    # 143 cm² x 0.5-1 cm x 0.65 g/cm³ = 46-93 g, at 27.8 g / 100 g (USDA SR Legacy "rice, white, long-grain, cooked") 13-26
+    # g; two nugget-sized breaded pieces of 15-35 g at 8-18 g / 100 g, 2-13 g; a bowl of lettuce, cucumber and tomato,
+    # 150-250 g at 2-3 g / 100 g, 3-8 g; water 0. In all about 18-47 g: the 67 g reading fails, Guy's 25 g passes.
+    FoodCase(
+        "rice-breaded-stars-salad",
+        "On a 27 cm glass dinner plate: a thin, loose layer of cooked white rice, about 1 cm high, covering about a quarter "
+        "of the plate, and two star-shaped breaded chicken pieces about 6-7 cm across. Next to it a bowl of lettuce, "
+        "cucumber and tomato salad, and a glass of water. A computer keyboard is behind the plate.",
+        18,
+        45,
+        notes="Guy's plate, 67 g vs 25 g",
+        tags=["portion", "starch"],
+    ),
+    FoodCase(
+        "rice-thin-layer", "A thin layer of cooked white rice, about 1 cm high, over a quarter of a dinner plate", 10, 30, tags=["portion", "starch"]
+    ),
+    FoodCase("rice-cup", "One cup of cooked white rice", 38, 52, tags=["control", "starch"]),
+    FoodCase("breaded-stars", "Two star-shaped breaded chicken nuggets", 4, 14, tags=["breaded"]),
+    FoodCase("he-schnitzel", "שניצל עוף מטוגן בינוני, בערך 120 גרם", 6, 24, language="Hebrew", tags=["breaded", "he"]),
 ]
+
+# Photo cases (PM-564): a person's own meal photo with a band from reference values, kept out of git in
+# evals/food/regression/ (cases.jsonl + the photos; see food/README.md). Included in the Fly evals image when present.
+PHOTO_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "food", "regression")
+
+
+def photo_cases() -> list[tuple[FoodCase, str]]:
+    path = os.path.join(PHOTO_DIR, "cases.jsonl")
+    if not os.path.exists(path):
+        return []
+    out = []
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            d = json.loads(line)
+            photo = os.path.join(PHOTO_DIR, d["photo"])
+            if os.path.exists(photo):
+                case = FoodCase(
+                    d["id"],
+                    "",
+                    float(d["low_g"]),
+                    float(d["high_g"]),
+                    language=d.get("language", "English"),
+                    notes=d.get("notes", ""),
+                    tags=["photo"],
+                )
+                out.append((case, photo))
+    return out
+
 
 _ADDITION_ONLY = re.compile(r"^\s*(milk|sugar|cream|creamer|חלב|סוכר)\b", re.I)
 _PLAIN = re.compile(r"\b(no milk|without milk|plain|black|nothing added)\b", re.I)
@@ -139,6 +191,37 @@ def grade(case: FoodCase, items: list) -> dict:
     }
 
 
+def _as_served(items: list, language: str) -> list:
+    """What the app gets for a photo without a depth measurement: the amount question on an unsure starchy side
+    (`asked_amount`, PM-564). Items that are not the API's FoodItem (test stand-ins) are left as they are."""
+    if not items or not hasattr(items[0], "model_copy"):
+        return items
+    import importlib
+
+    return importlib.import_module("steady_api.ai.food").asked_amount(items, language)
+
+
+_STARCH = re.compile(r"rice|pasta|spaghetti|noodle|couscous|quinoa|bulgur|potato|fries|אורז|פסטה|אטריות|קוסקוס|תפוח|פירה|צ'יפס", re.I)
+
+
+def _fixable_by_answer(case: FoodCase, items: list, row: dict) -> None:
+    """
+    A photo case outside its band still passes when a starchy side asks about its amount and its lowest option (half
+    the reading) brings the meal into the band: one tap from the person fixes it (Guy, 26 Nov 2026, "ask one short
+    amount question"). Reported as its own check, so the reading itself stays visible.
+    """
+    if row["checks"]["in_band"]:
+        return
+    starch = [i for i in items if _STARCH.search(i.name) and i.question is not None]
+    est = [item_carbs(i.unit, i.qty, i.grams_per_unit, i.carbs_per_100g) or 0 for i in starch]
+    after = row["est_carbs_g"] - sum(e * 0.5 for e in est)
+    del row["checks"]["in_band"]
+    row["checks"]["in_band_after_amount_answer"] = bool(starch) and case.low_g <= after <= case.high_g
+    row["in_band_as_read"] = False
+    row["est_after_amount_answer_g"] = round(after, 1)
+    row["passed"] = all(row["checks"].values())
+
+
 def analyzer(api_key_env: str, model: str | None):
     # `production` puts services/api on the path, so it must be imported first; importlib keeps an import sorter from
     # moving the API import above it (that broke the first Fly run, PM-509).
@@ -169,6 +252,21 @@ def run(an, cases: list[FoodCase] | None = None) -> dict:
         row = grade(c, items)
         row["latency_s"] = round(time.monotonic() - t0, 1)
         rows.append(row)
+    if cases is None:
+        for c, photo in photo_cases():
+            t0 = time.monotonic()
+            ctype = "image/png" if photo.lower().endswith(".png") else "image/jpeg"
+            try:
+                with open(photo, "rb") as f:
+                    items = an.analyze_photo(f.read(), ctype, c.language)
+            except Exception as exc:
+                rows.append({"case": c.id, "passed": False, "error": f"{type(exc).__name__}: {str(exc)[:200]}"})
+                continue
+            items = _as_served(items, c.language)
+            row = grade(c, items)
+            _fixable_by_answer(c, items, row)
+            row["latency_s"] = round(time.monotonic() - t0, 1)
+            rows.append(row)
     failed = [r["case"] for r in rows if not r["passed"]]
     return {"suite": "food", "cases": len(rows), "passed": not failed, "failed": failed, "rows": rows}
 

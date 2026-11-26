@@ -3478,6 +3478,41 @@
       "translation"
     ]
   },
+  "wd.sp_del": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin > Support: removing a request that never reached Jira, with an inline confirm (Guy, 26 Nov 2026, PM-571)."
+  },
+  "wd.sp_del_q": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin > Support: removing a request that never reached Jira, with an inline confirm (Guy, 26 Nov 2026, PM-571)."
+  },
+  "wd.sp_del_yes": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin > Support: removing a request that never reached Jira, with an inline confirm (Guy, 26 Nov 2026, PM-571)."
+  },
+  "wd.sp_del_no": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin > Support: removing a request that never reached Jira, with an inline confirm (Guy, 26 Nov 2026, PM-571)."
+  },
+  "wd.sp_del_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin > Support: removing a request that never reached Jira, with an inline confirm (Guy, 26 Nov 2026, PM-571)."
+  },
   "wd.sp_filter": {
     "board": "WebDashboard",
     "review": [
@@ -30631,6 +30666,55 @@
       "translation"
     ],
     "note": "Favorite games and the All / Favorites filter (Guy, 25 Nov 2026, PM-525)."
+  },
+  "cs.set": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose check suggestion (PM-542 phase C, Guy 26 Nov 2026)."
+  },
+  "cs.set_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose check suggestion (PM-542 phase C, Guy 26 Nov 2026)."
+  },
+  "cs.denied": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose check suggestion (PM-542 phase C, Guy 26 Nov 2026)."
+  },
+  "cs.failed": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose check suggestion (PM-542 phase C, Guy 26 Nov 2026)."
+  },
+  "cs.drive": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose check suggestion (PM-542 phase C, Guy 26 Nov 2026)."
+  },
+  "cs.exercise": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Glucose check suggestion (PM-542 phase C, Guy 26 Nov 2026)."
+  },
+  "web.portal": {
+    "board": "Website",
+    "review": [
+      "translation"
+    ],
+    "note": "Link to the Jira Service Management customer portal in the home page's Support section (Guy, 26 Nov 2026, PM-574)."
   },
   "clc.last_visit": {
     "board": "ClinicPortal",
