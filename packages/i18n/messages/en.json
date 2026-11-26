@@ -2763,6 +2763,11 @@
   "wd.sp_jira_queue": "Open the support queue in Jira",
   "wd.sp_no_jira": "Jira is not connected, so requests stay in Stedio and support is emailed the number only.",
   "wd.sp_not_in_jira": "Not in Jira yet",
+  "wd.sp_del": "Delete",
+  "wd.sp_del_q": "Delete request #{n} for good?",
+  "wd.sp_del_yes": "Delete for good",
+  "wd.sp_del_no": "Keep",
+  "wd.sp_del_fail": "This request could not be deleted. Try again.",
   "wd.sp_filter": "Show",
   "wd.sp_s_archived": "Archived",
   "wd.sp_s_closed": "Closed",
@@ -4707,5 +4712,12 @@
   "games.fav_add": "Add {game} to favorites",
   "games.fav_remove": "Remove {game} from favorites",
   "games.fav_empty": "No favorites yet. Tap the star on a game to add it here.",
-  "games.fav_title": "Favorites"
+  "games.fav_title": "Favorites",
+  "cs.set": "Glucose check suggestions",
+  "cs.set_b": "While you drive or exercise, Stedio may sometimes suggest a good moment to check your glucose. It uses an experimental estimate from your sensor readings: it is not an alarm, it can miss lows, and your sensor's alerts come first. Uses motion on this phone only; motion is never sent or kept.",
+  "cs.denied": "Motion wasn't allowed. You can allow it in the phone's settings.",
+  "cs.failed": "Couldn't change it right now. Try again in a moment.",
+  "cs.drive": "When it's safe to stop, it's a good moment to check your glucose.",
+  "cs.exercise": "A good moment for a short pause to check your glucose.",
+  "web.portal": "Open the support portal"
 }
