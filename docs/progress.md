@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026, night (Jira PM-582, lawyer PM-583, thread "Build cookie consent manager for website"): Guy asked for a
+CookieYes-like cookie manager, identical to MixMaster Pro's, in one new shared repository. Built `fisha/consent-kit`
+(submodule `packages/consent-kit`), made generic from MixMaster's own manager: rules, browser store, Google Consent Mode
+v2, React banner and preferences dialog, consent-log contract, 28 tests; it reads MixMaster's `mmp_consent` cookies
+unchanged (MixMaster itself not touched). Website: banner and dialog (en/he, day/night), US notice with opt-out and GPC,
+opt-in elsewhere; GA cookies and the help widget only with consent; "Cookie settings" in the footer and on the new
+cookie policy page `/cookies`; API `POST /consent/cookies` (no IP, no account, 2-year cleanup in the worker); privacy
+policy `2026-11-26T23:00:00Z` points to the cookie policy (app users accept once more). Open: Guy's OK on the banner
+design and the re-accept, then merge and deploy (API before web).
+
 26 Nov 2026, later (Jira PM-579..581, same thread): Guy asked for ARCore depth on Android, a reference object for scale
 and a photo tip, and to ask amounts in the measures people count carbs in. Built: Android part of `modules/stedio-depth`
 (ARCore depth, same `{uri, scale}` as iOS LiDAR, AR Optional, usual camera when ARCore or depth is missing or the flash
