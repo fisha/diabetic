@@ -76,6 +76,21 @@ const server = http.createServer((req, res) => {
           rows: [{ test: 'creatinine', name: 'Creatinine', value: 0.94, unit: 'mg/dL', range_text: '0.6-1.2' }, { test: 'other', name: 'Urine glucose', value: null, result_text: 'Negative', unit: '', range_text: 'Negative' }, { test: 'tsh', name: 'TSH', value: 2.1, unit: 'mIU/L', range_text: '0.4-4.0' }] };
         await page.route('**/labs/scan', (r) => r.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify(scan) }));
       }
+      // MEALSCAN=<jpg>: the photo picker gets that picture and the meal reading answers with a plate of salmon, brown
+      // rice and an avocado salad, for the website's meal-photo chapter (PM-575). Screenshot tooling only.
+      if (process.env.MEALSCAN) {
+        const jpg = fs.readFileSync(process.env.MEALSCAN);
+        page.on('filechooser', (fc) => fc.setFiles({ name: 'meal.jpg', mimeType: 'image/jpeg', buffer: jpg }));
+        const h = { 'access-control-allow-origin': '*', 'access-control-allow-headers': '*' };
+        const he = lang === 'he';
+        const items = [
+          { name: he ? 'סלמון צלוי' : 'Grilled salmon', unit: 'g', qty: 140, carbs_per_100g: 0, protein_per_100g: 25, fat_per_100g: 12, kcal_per_100g: 208, confidence: 'high' },
+          { name: he ? 'אורז מלא' : 'Brown rice', unit: 'g', qty: 120, carbs_per_100g: 23, fiber_per_100g: 1.8, protein_per_100g: 2.6, fat_per_100g: 0.9, kcal_per_100g: 112, confidence: 'medium' },
+          { name: he ? 'סלט ירוק עם אבוקדו ועגבניות שרי' : 'Green salad with avocado and cherry tomatoes', unit: 'g', qty: 150, carbs_per_100g: 5, fiber_per_100g: 3.5, protein_per_100g: 1.5, fat_per_100g: 8, kcal_per_100g: 95, confidence: 'medium' },
+        ];
+        await page.route('**/meal/photos', (r) => (r.request().method() === 'OPTIONS' ? r.fulfill({ status: 204, headers: h }) : r.fulfill({ contentType: 'application/json', headers: h, body: JSON.stringify({ photo_id: '6f1c2b8e-3a5d-4c7e-9b1a-2d4e6f8a0c11' }) })));
+        await page.route('**/meal/photos/*/analyze', (r) => (r.request().method() === 'OPTIONS' ? r.fulfill({ status: 204, headers: h }) : r.fulfill({ contentType: 'application/json', headers: h, body: JSON.stringify({ provider: 'shots', items }) })));
+      }
       // ROWS=1: a set change three days ago and a lab result, for the Overview status rows (z21). Screenshot tooling only.
       if (process.env.ROWS) {
         const h = { 'access-control-allow-origin': '*' };
@@ -108,6 +123,8 @@ const server = http.createServer((req, res) => {
         // OPEN=<text>: tap the first element with that text (for example the insights line) before the shot; several
         // taps in turn are separated by ">>" (OPEN='^Sabich$>>^Save meal').
         for (const step of (process.env.OPEN ?? '').split('>>').filter(Boolean)) { await page.getByText(new RegExp(step)).filter({ visible: true }).last().click(); await page.waitForTimeout(1500); }
+        // AFTER=<ms>: wait that long after the OPEN taps (for example until a swipe hint has played).
+        if (process.env.AFTER) await page.waitForTimeout(Number(process.env.AFTER));
         const name = `${process.env.TEXTSIZE ? process.env.TEXTSIZE + "-" : ""}${process.env.NOOPENERS ? 'p01-' : ''}${process.env.GREETING ? 'greet-' : ''}${process.env.OPEN ? 'open-' : ''}${process.env.VIEW ? process.env.VIEW + '-' : ''}${scenario}-${r.replace(/[^a-z0-9]+/gi, '_').replace(/^_|_$/g, '') || 'root'}-${lang}-${scheme}.png`;
         // PROBE=a|b|c: print where each text sits (for pixel comparison with the mockups).
         if (process.env.PROBE) for (const q of process.env.PROBE.split('|')) { const b = await page.getByText(q, { exact: true }).first().boundingBox().catch(() => null); console.log('probe', q, b && [Math.round(b.x), Math.round(b.y), Math.round(b.width), Math.round(b.height)]); }
