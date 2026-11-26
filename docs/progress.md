@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-545, PM-552, nothing visible): in `similar_meals`, how the carbs the person entered on their pump
+compare with the app's estimate for the same meal (`brain/carb_estimates.py`: pump entries only, a number they said is
+left out, shrunk ratio with a 90% interval, 5+ pairs; words about estimating food only, never which number was right or
+any amount; PM-545 labelled needs-lawyer), and the later change (2 to 4 h) after more fat or protein in
+`meal_response`. Fixed the hidden forecast training seen failing on Fly (PM-552): an input empty in one horizon band
+crashed the trees; after a memory-cap failure the next try uses half the rows, and failures back off up to 72 h.
+API #261, #262. Regulatory: at risk near dosing (PM-545). Evals not run (PM-436). Next: API deploy, PM-546.
+
 26 Nov 2026 (Jira PM-543..544, mentor roadmap continued, nothing visible): the personal meal response in hindsight
 (`brain/meal_response.py`: their own meals of 180 days, 2-hour change per trait shrunk towards no difference with a 90%
 interval, 5+ meals each side; in `similar_meals` as `for_you` only), and when/where to reach out learned in shadow
