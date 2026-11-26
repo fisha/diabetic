@@ -15,8 +15,8 @@ for the Mac thread in `/mnt/project-files/google-analytics/console-steps.md`). A
 opt-in Mixpanel events (same allowlist, never under 18 or while viewing) also go to API `POST /usage/app`, which checks
 them again and forwards them by Measurement Protocol without IP, account or Mixpanel id (separate SHA-256 id, country
 only) for people who accepted privacy `2026-11-27T12:00:00Z` (API #272, app #322). Website: gtag only on stedio.io
-public pages after Allow on a cookie notice (opt-in everywhere, GPC = No, signals and ads personalization off, URLs
-without query strings, footer "Cookie settings"), on once `GA_WEB_ID` is set and that privacy version is current (web
+public pages, cookieless (Consent Mode, storage denied; Guy removed the cookie notice 20:41Z until a consent service is
+added), GPC not measured, signals and ads personalization off, URLs without query strings, on once `GA_WEB_ID` is set and that privacy version is current (web
 #99). Sign-in counts: `POST /usage/sign-in` personal | clinic, random id per event (clinic call to add in `clinicApi.ts`
 after the clinic thread's PR). Privacy lines handed to the clinic thread for `2026-11-27T12:00:00Z`. Tests pass in all
 three; notice checked with Playwright on a dev server. Next: measurement ids from the Mac thread into `GA_WEB_ID` and API

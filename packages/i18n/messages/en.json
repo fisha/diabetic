@@ -4719,11 +4719,5 @@
   "cs.failed": "Couldn't change it right now. Try again in a moment.",
   "cs.drive": "When it's safe to stop, it's a good moment to check your glucose.",
   "cs.exercise": "A good moment for a short pause to check your glucose.",
-  "web.portal": "Open the support portal",
-  "web.ga_label": "Cookies",
-  "web.ga_ask": "May we count visits with Google Analytics? It shows us which pages are read, using cookies, without your name and with nothing about your health.",
-  "web.ga_more": "Privacy policy",
-  "web.ga_yes": "Allow",
-  "web.ga_no": "No thanks",
-  "web.ga_settings": "Cookie settings"
+  "web.portal": "Open the support portal"
 }

@@ -30743,47 +30743,5 @@
       "translation"
     ],
     "note": "Link to the Jira Service Management customer portal in the home page's Support section (Guy, 26 Nov 2026, PM-574)."
-  },
-  "web.ga_label": {
-    "board": "Website",
-    "review": [
-      "translation"
-    ],
-    "note": "Website cookie notice for Google Analytics (Guy, 26 Nov 2026, PM-577)."
-  },
-  "web.ga_ask": {
-    "board": "Website",
-    "review": [
-      "translation"
-    ],
-    "note": "Website cookie notice for Google Analytics (Guy, 26 Nov 2026, PM-577)."
-  },
-  "web.ga_more": {
-    "board": "Website",
-    "review": [
-      "translation"
-    ],
-    "note": "Website cookie notice for Google Analytics (Guy, 26 Nov 2026, PM-577)."
-  },
-  "web.ga_yes": {
-    "board": "Website",
-    "review": [
-      "translation"
-    ],
-    "note": "Website cookie notice for Google Analytics (Guy, 26 Nov 2026, PM-577)."
-  },
-  "web.ga_no": {
-    "board": "Website",
-    "review": [
-      "translation"
-    ],
-    "note": "Website cookie notice for Google Analytics (Guy, 26 Nov 2026, PM-577)."
-  },
-  "web.ga_settings": {
-    "board": "Website",
-    "review": [
-      "translation"
-    ],
-    "note": "Website cookie notice for Google Analytics (Guy, 26 Nov 2026, PM-577)."
   }
 }
