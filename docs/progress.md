@@ -59,8 +59,10 @@ added), GPC not measured, signals and ads personalization off, URLs without quer
 #99). Sign-in counts: `POST /usage/sign-in` personal | clinic, random id per event (clinic call to add in `clinicApi.ts`
 after the clinic thread's PR). Privacy lines handed to the clinic thread for `2026-11-26T22:00:00Z`. Tests pass in all
 three; notice checked with Playwright on a dev server. Measurement ids are in (website G-D789HSTQ55, app G-7QGJ5JZ6X8) and Guy set both secrets. Privacy
-`2026-11-26T22:00:00Z` (GA, meal-correction learning, ARCore, clinic lines) merged in API #279 and web #104. Next:
-deploy API and web together, OTA, check GA Realtime.
+`2026-11-26T22:00:00Z` (GA, meal-correction learning, ARCore, clinic lines) merged in API #279 and web #104. Deployed (API v210, web v118, OTA).
+Website fix (API #280, web #104 follow-up #105): GA4 keeps cookieless consent-mode pings out of its reports, so the site
+now posts each public page to API `POST /usage/page`, which sends one page view by Measurement Protocol (random id per
+page view, referrer host only, no Google script or cookie). Next: deploy API and web, check GA Realtime.
 
 26 Nov 2026 (Jira PM-564..566, PM-576, thread "Improve meal photo carb accuracy", nothing visible): Guy's plate (a thin
 layer of rice, two breaded stars, a salad, water) came back as 67 g where he counted 25 g (pump 23 g); the gap is the rice
