@@ -43,6 +43,13 @@ English (install pages rule). Hebrew texts were already complete; fixed the spel
 The four "How it works" app screens are still English on the Hebrew page (design-gaps). Web build, typecheck, lint, tests,
 curl and Playwright in both languages. Regulatory and privacy: pass. Next: web deploy.
 
+26 Nov 2026 (API pool, nothing visible): at 19:28Z the API's pool (5 + 10) ran out for 15 s (14 errors, app reads got
+500). A mentor turn and a transcription held their connection idle in transaction through the model wait. API #273:
+`db.release()` gives it back before each model call when nothing was written yet; API statement_timeout 60 s and
+lock_timeout 10 s; pool 10 + 10 with a 10 s wait; an exhausted pool answers 503 and logs which routes held it (route
+templates and seconds only). App #321: expo-task-manager loaded only where the build has it, so OTAs to 0.8.0 start.
+Next: API deploy.
+
 26 Nov 2026 (Jira PM-542 phase C, Guy approved 19:35Z; lawyer PM-567): glucose check suggestion, built and OFF. API
 #267 (`check_suggest.py`, `GET/PUT /check-suggest`, `user_settings.check_suggest_at` / `check_suggest_sent_at`,
 migration `f6b8d0e2a4c6`): for an opted-in adult, a background estimate under their own low bound 30-45 minutes after
