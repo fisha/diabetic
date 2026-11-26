@@ -8,6 +8,14 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-528): Guy reported that after saving a meal, "Back to main screen" or the Journal opened inside a
+sheet, with the meal screen still under it when swiped down. The saved screen popped one meal screen and then pushed a
+second set of tabs over the still-open full-screen flow. Now "Back to main screen" and "View in journal" use
+`router.dismissTo` to the existing tab, and the flow's own close goes back from the `meal` route, so the whole modal
+closes. App #316, typecheck pass, app tests 338 pass; e2e `tools/e2e/meal-closes-after-save.cjs` 15/15 (en light, he
+dark) and its checks fail on the old code. Regulatory and privacy: pass (navigation only). Not yet tried on a phone.
+Next: OTA.
+
 25 Nov 2026 (Jira PM-523, follow-up): after playing, Guy said the runner's levels were too short and too easy and asked
 the screen to shake when the character is low. The whole scene shakes while the game meter is low (a pulsing frame with
 Reduce motion), and the start card says so. Levels are 45 s with a goal of 18 coins +4 a level (at most 80), a steeper
