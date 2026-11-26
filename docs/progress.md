@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026, night (Jira PM-584, thread "Fix missing sensor expiry alerts"): Guy's 24-hour sensor-ending reminder did
+not come. Production (read only): no reminder sent yet; its time fell at 22:24 Israel time, so the night rule holds it
+for 08:00. Bug found and fixed (api #282): a CareLink poll dropped `end_reminded_hours`, so after a sensor's first
+reminder every later time counted as sent; the 5-hour one would never have come. Tests 62 pass. Next: API deploy before
+27 Nov 15:24Z.
+
 26 Nov 2026 (Jira PM-556..562, PM-569/570 clinic part, lawyer PM-563, thread "Improve clinic area for care teams"):
 Guy's seven clinic portal fixes. Every chart shows its values on hover and with the arrow keys; the range bars show
 each share. Visit summaries by any team member (sealed, by date, searchable, author-only edits). Each person's page has
