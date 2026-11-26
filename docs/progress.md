@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-535 epic, PM-536..539): Guy asked for a world-class roadmap that makes the mentor breakthrough
+behind the scenes, the same in the app, voice and WhatsApp, with no change to what the person sees (roadmap:
+`/mnt/project-files/mentor-intelligence/roadmap.md`; "implement in order without changing any design; ask before a
+visible change"). Built: a person model learned from the person's own use (`brain/person.py`, worker step
+`person_models`, only with AI consent and memory on), today's cross-channel outreach for the mentor and openers
+(`brain/outreach.py`), a plans ledger with look-backs on the person's own range (`brain/plans.py`, tools `note_plan` /
+`update_plan`, memory-gated), sourced general guidance cards and per-type playbooks (`ai/knowledge.py`, tool
+`diabetes_guidance`, not yet clinician-reviewed), and mentoring methods in the prompt (MI, if-then plans, teach-back).
+New tables `person_models`, `mentor_plans`, in export and deletion. API #256. Regulatory and privacy: pass; at risk
+PM-551 (privacy policy line, waits for Guy because it forces re-accept). Evals not run (PM-436). Next: API deploy
+(migrations), then PM-540 (nightly de-identified snapshot), PM-541, PM-542 (forecast shadow; visible parts ask Guy).
+
 26 Nov 2026 (Jira PM-533): Guy asked to see the user's name in Mixpanel and chose "name and email with a separate
 consent". A new opt-in "Show my name and email with my usage" (onboarding, the consent-update screen, Settings >
 Privacy) is offered only while usage analytics is on, off unless ticked, never under 18. With it, the app's Mixpanel
