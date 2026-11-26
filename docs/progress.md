@@ -11,12 +11,29 @@ verified only against test stand-ins or not at all. See `docs/integration-status
 26 Nov 2026, night (Jira PM-582, lawyer PM-583, thread "Build cookie consent manager for website"): Guy asked for a
 CookieYes-like cookie manager, identical to MixMaster Pro's, in one new shared repository. Built `fisha/consent-kit`
 (submodule `packages/consent-kit`), made generic from MixMaster's own manager: rules, browser store, Google Consent Mode
-v2, React banner and preferences dialog, consent-log contract, 28 tests; it reads MixMaster's `mmp_consent` cookies
+v2, React banner and preferences dialog, consent-log contract, 30 tests; it reads MixMaster's `mmp_consent` cookies
 unchanged (MixMaster itself not touched). Website: banner and dialog (en/he, day/night), US notice with opt-out and GPC,
 opt-in elsewhere; GA cookies and the help widget only with consent; "Cookie settings" in the footer and on the new
 cookie policy page `/cookies`; API `POST /consent/cookies` (no IP, no account, 2-year cleanup in the worker); privacy
 policy `2026-11-26T23:00:00Z` points to the cookie policy (app users accept once more). Open: Guy's OK on the banner
 design and the re-accept, then merge and deploy (API before web).
+
+26 Nov 2026 (Jira PM-556..562, PM-569/570 clinic part, lawyer PM-563, thread "Improve clinic area for care teams"):
+Guy's seven clinic portal fixes. Every chart shows its values on hover and with the arrow keys; the range bars show
+each share. Visit summaries by any team member (sealed, by date, searchable, author-only edits). Each person's page has
+tabs: Summary, Visit summaries, Meals (dietitian journal by day and time with photos, foods, nutrients, day totals,
+averages against targets), Measurements (clinic-entered height, weight, pulse and blood pressure with the app's height
+and weight and the watch's resting heart rate, charts), Targets (nutrition and activity targets set by the team; nutrient
+targets reach the app's `/nutrition/summary` while sharing). Per-clinic permissions (`clinic_perms.py`): recommended
+templates for doctor, nurse, dietitian, social worker, custom profiles, a manager flag set by an admin, Team access page.
+Summary period: since the last visit, 14 or 30 days, 3 or 6 months, 1 year, compared with as many days before; shares
+accepted under the first consent stay at 180 days (the app now sends the consent version it showed). The pump's basal
+program as set on the pump (Tandem segments, CareLink pattern and rate now), display only. Sideways scroll: a visually
+hidden table label widened the page; scroll frames are now positioned. No side menu before sign-in, sign-out after an
+hour idle, logo to home. Clinic privacy lines handed to the GA thread for its `2026-11-26T22:00:00Z` version; new clinic
+consent text in the app. Tests: API clinic 36 pass, web 17, i18n 20, app 344; checked in Playwright en/he, light/dark,
+390 to 1440 px (screenshots `/mnt/project-files/clinic-pm556/`). Next: deploy API (migration `e7b9d1f3a5c6`), then web
+and OTA; activity targets are not shown in the app yet (G-141).
 
 26 Nov 2026, later (Jira PM-579..581, same thread): Guy asked for ARCore depth on Android, a reference object for scale
 and a photo tip, and to ask amounts in the measures people count carbs in. Built: Android part of `modules/stedio-depth`
@@ -52,8 +69,10 @@ added), GPC not measured, signals and ads personalization off, URLs without quer
 #99). Sign-in counts: `POST /usage/sign-in` personal | clinic, random id per event (clinic call to add in `clinicApi.ts`
 after the clinic thread's PR). Privacy lines handed to the clinic thread for `2026-11-26T22:00:00Z`. Tests pass in all
 three; notice checked with Playwright on a dev server. Measurement ids are in (website G-D789HSTQ55, app G-7QGJ5JZ6X8) and Guy set both secrets. Privacy
-`2026-11-26T22:00:00Z` (GA, meal-correction learning, ARCore, clinic lines) merged in API #279 and web #104. Next:
-deploy API and web together, OTA, check GA Realtime.
+`2026-11-26T22:00:00Z` (GA, meal-correction learning, ARCore, clinic lines) merged in API #279 and web #104. Deployed (API v210, web v118, OTA).
+Website fix (API #280, web #104 follow-up #105): GA4 keeps cookieless consent-mode pings out of its reports, so the site
+now posts each public page to API `POST /usage/page`, which sends one page view by Measurement Protocol (random id per
+page view, referrer host only, no Google script or cookie). Next: deploy API and web, check GA Realtime.
 
 26 Nov 2026 (Jira PM-564..566, PM-576, thread "Improve meal photo carb accuracy", nothing visible): Guy's plate (a thin
 layer of rice, two breaded stars, a salad, water) came back as 67 g where he counted 25 g (pump 23 g); the gap is the rice
