@@ -951,7 +951,7 @@
   "meal.flash_off": "Flash off",
   "meal.flash_on": "Flash on",
   "meal.found": "I found {count, plural, one {# item} other {# items}}. Tap a name, an amount or the carbs to correct them.",
-  "meal.frame": "Fit the whole plate in the frame",
+  "meal.frame": "Fit the plate in, ideally with a fork or card beside it",
   "meal.g_carbs": "g carbs",
   "meal.how": "How would you like to log it?",
   "meal.howMuch": "How much did you eat?",

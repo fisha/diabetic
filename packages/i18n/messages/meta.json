@@ -7781,7 +7781,8 @@
     "board": "Meal",
     "review": [
       "translation"
-    ]
+    ],
+    "note": "An object of known size next to the plate helps the analyzer size the portion (Guy, 26 Nov 2026, PM-580)."
   },
   "meal.frame_more": {
     "board": "Meal",
