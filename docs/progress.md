@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-555, same thread): Guy asked to retake the four "How it works" app screens in Hebrew for the
+Hebrew page and in English (the app design changed since PM-236). Captured from the current app with demo scenario
+t1-780g (generated data) at 390x844 @2x (`DPR=2` added to `tools/e2e/duet-shots.cjs`), in `apps/web/public/home/{en,he}`,
+chosen by page language; alt texts updated. The mosaic photos still carry the older English screens. Web #97.
+
 26 Nov 2026 (Jira PM-554, thread "Add Hebrew language switch to website"): Guy asked for a day/night switch on the
 website. `ThemeSwitch` (sun/moon button, `aria-pressed`, string `web.night`) in the top bar, demo, legal, 404 and the
 dashboard sets `data-theme` on <html>; the site follows the device until the visitor picks the other look, kept in
