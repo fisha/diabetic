@@ -2376,6 +2376,5 @@ mockup's own pieces:
 
 ## Website in Hebrew: app screens (PM-553, 26 Nov 2026)
 
-- The Hebrew home page (`/he`) shows the same four English app screens in "How it works" (`public/home/screen-*.webp`)
-  and the English phones in the photos. Hebrew screens would need new captures from the app in Hebrew with synthetic
-  data. Waiting on Guy's decision.
+- Done for "How it works" (PM-555, 26 Nov 2026): the four app screens are retaken in English and Hebrew and chosen by
+  page language. Still open: the phones in the mosaic photos show the older English screens in both languages.
