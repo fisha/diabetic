@@ -8917,6 +8917,20 @@
     ],
     "note": "Names masked screen recordings (session replay, Guy 23 Nov 2026, PM-473). Product analytics opt-in (Guy, 23 Nov 2026, PM-464). No provider name in the app; the privacy policy names Mixpanel (Guy, 23 Nov 2026)."
   },
+  "onb.c5": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Separate opt-in to show the person's name (what the mentor calls them, else none) and email on their Mixpanel profile (Guy, 26 Nov 2026, PM-533). No provider name in the app; the privacy policy names Mixpanel."
+  },
+  "onb.c5b": {
+    "board": "Onboarding",
+    "review": [
+      "translation"
+    ],
+    "note": "Separate opt-in to show the person's name (what the mentor calls them, else none) and email on their Mixpanel profile (Guy, 26 Nov 2026, PM-533). No provider name in the app; the privacy policy names Mixpanel."
+  },
   "onb.c_err_req": {
     "board": "Onboarding",
     "review": [
@@ -15825,6 +15839,20 @@
       "translation"
     ],
     "note": "Names masked screen recordings (session replay, Guy 23 Nov 2026, PM-473). Product analytics opt-in (Guy, 23 Nov 2026, PM-464). No provider name in the app; the privacy policy names Mixpanel (Guy, 23 Nov 2026)."
+  },
+  "set.pv_identify": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Separate opt-in to show the person's name (what the mentor calls them, else none) and email on their Mixpanel profile (Guy, 26 Nov 2026, PM-533). No provider name in the app; the privacy policy names Mixpanel."
+  },
+  "set.pv_identify_b": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Separate opt-in to show the person's name (what the mentor calls them, else none) and email on their Mixpanel profile (Guy, 26 Nov 2026, PM-533). No provider name in the app; the privacy policy names Mixpanel."
   },
   "set.quiet": {
     "board": "Settings",
