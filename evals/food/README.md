@@ -29,3 +29,14 @@ uv run --project ../services/api python -m steady_evals.food
 
 For the after-portion-correction figure, write a mapping from the provider's items to the reference items after
 looking at `food_results.jsonl`, then run again with `--mapping`.
+
+## Photo cases for the food regression (PM-564)
+
+`regression/` (kept out of git) holds meal photos a person gave for testing, with a carb band worked out from reference
+values, never from a model. `steady_evals.food_regression` runs them after the text cases when the folder exists, and
+`stedio-fly evals --food` includes the folder in the evals image when the Mac's checkout has it. One line per photo in
+`regression/cases.jsonl`:
+
+```json
+{"id": "rice-breaded-stars-photo", "photo": "rice-breaded-stars.png", "low_g": 18, "high_g": 45, "notes": "Guy, 26 Nov 2026: 67 g read, about 25 g counted"}
+```

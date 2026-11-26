@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-564..566, PM-576, thread "Improve meal photo carb accuracy", nothing visible): Guy's plate (a thin
+layer of rice, two breaded stars, a salad, water) came back as 67 g where he counted 25 g (pump 23 g); the gap is the rice
+read as a full cup and the breading at fried-food density. Built: food classes with USDA bands of carbs per 100 g, a value
+outside held to the edge (`ai/food_classes.py`); analyzer rule to size starchy sides by area x height and breading as
+coating only (`_STARCH`); a learned portion factor per person and food class from weighed, changed and kept items and pump
+entries for the same meal, against the raw reading, shrunk towards a group prior of consenting adults (ml_priors
+`food_portion`, 5+) and bounded 0.5-1.5 (`brain/food_corrections.py`), photo analyses only, in the app and on WhatsApp.
+The personal part waits for privacy version 2026-11-27T12:00:00Z (line sent to the clinic thread). Food regression: 5 new
+text cases and photo cases from `evals/food/regression/` (out of git, in the Fly evals image when present). Regulatory:
+at risk near dosing (pump entries as a signal), lawyer PM-576. Evals not run (food set to be run on Fly). Next: API
+deploy, `stedio-fly evals --food`.
+
 26 Nov 2026 (Jira PM-555, same thread): Guy asked to retake the four "How it works" app screens in Hebrew for the
 Hebrew page and in English (the app design changed since PM-236). Captured from the current app with demo scenario
 t1-780g (generated data) at 390x844 @2x (`DPR=2` added to `tools/e2e/duet-shots.cjs`), in `apps/web/public/home/{en,he}`,

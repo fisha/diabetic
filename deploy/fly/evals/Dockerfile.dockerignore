@@ -5,6 +5,8 @@
 !services/api/steady_api/**
 !evals/steady_evals/**
 !evals/cases/**
+!evals/food/README.md
+!evals/food/regression/**
 !deploy/fly/evals/run.sh
 **/__pycache__
 **/.env

@@ -78,3 +78,52 @@ def test_the_analyzer_loads_as_in_the_evals_image(tmp_path):
     out = subprocess.run([sys.executable, "-c", code], cwd=Path(__file__).resolve().parents[1], env=env, capture_output=True, text=True)
     assert out.returncode == 0, out.stderr
     assert out.stdout.strip() == "OpenAIFoodAnalyzer"
+
+
+def test_guys_rice_plate_fails_at_67_and_passes_at_his_count():
+    """PM-564: the 67 g reading (a full cup of rice, breading at fried-food density) fails; Guy's 25 g passes."""
+    c = case("rice-breaded-stars-salad")
+    read = [
+        Item("Cooked white rice", "cup", 1, 160, 28),
+        Item("Breaded chicken cutlets", "piece", 2, 40, 20),
+        Item("Lettuce, cucumber and tomato salad", "bowl", 1, 200, 3),
+        Item("Water", "cup", 1, 250, 0),
+    ]
+    bad = grade(c, read)
+    assert not bad["passed"] and bad["est_carbs_g"] == 66.8
+    counted = [
+        Item("Cooked white rice", "g", 60, None, 28),
+        Item("Breaded chicken cutlets", "piece", 2, 25, 12),
+        Item("Lettuce, cucumber and tomato salad", "bowl", 1, 150, 2),
+        Item("Water", "cup", 1, 250, 0),
+    ]
+    assert grade(c, counted)["passed"]
+
+
+def test_photo_cases_are_read_from_the_folder_kept_out_of_git(tmp_path, monkeypatch):
+    import json
+
+    from steady_evals import food_regression as fr
+
+    monkeypatch.setattr(fr, "PHOTO_DIR", str(tmp_path))
+    assert fr.photo_cases() == []
+    (tmp_path / "plate.jpg").write_bytes(b"\xff\xd8\xff")
+    lines = [{"id": "p1", "photo": "plate.jpg", "low_g": 18, "high_g": 45}, {"id": "p2", "photo": "missing.jpg", "low_g": 1, "high_g": 2}]
+    (tmp_path / "cases.jsonl").write_text("\n".join(json.dumps(x) for x in lines), encoding="utf-8")
+    [(c, path)] = fr.photo_cases()
+    assert c.id == "p1" and c.low_g == 18 and path.endswith("plate.jpg")
+
+    class Seen:
+        def __init__(self):
+            self.photos = 0
+
+        def parse_text(self, text, language):
+            return [Item("Water", "cup", 1, 250, 0)]
+
+        def analyze_photo(self, image, content_type, language):
+            self.photos += 1
+            return [Item("Cooked white rice", "g", 80, None, 28)]
+
+    an = Seen()
+    out = run(an)
+    assert an.photos == 1 and next(r for r in out["rows"] if r["case"] == "p1")["passed"]
