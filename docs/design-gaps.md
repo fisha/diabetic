@@ -2378,3 +2378,15 @@ mockup's own pieces:
 
 - Done for "How it works" (PM-555, 26 Nov 2026): the four app screens are retaken in English and Hebrew and chosen by
   page language. Still open: the phones in the mosaic photos show the older English screens in both languages.
+
+### G-141 · Clinic portal role views, visit summaries, team access and summary periods (**asked by Guy, 26 Nov 2026, PM-556..562**)
+
+The clinic portal mockups (PM-275) have one summary page. Guy asked for visit summaries, role views (meals journal,
+measurements, targets), per-clinic permissions and a period choice. Built in the portal's own pieces: tabs under the
+person's header (Summary, Visit summaries, Meals, Measurements, Targets), shown by the member's permissions and what the
+person shared; the period as the existing segmented control above the summary; a Team access page in the side menu with
+the members, their access and a permission grid of the templates and profiles; dialogs as the existing portal dialogs.
+Not in any design and left for Guy: activity targets are kept and sent in `/nutrition/summary` `activity_targets` but the
+app does not show them yet; the app's own targets screen shows a care-team target as the target in use but has no
+"set by your clinic" label of its own beyond the existing source.
+

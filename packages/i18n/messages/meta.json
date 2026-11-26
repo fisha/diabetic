@@ -24351,13 +24351,6 @@
     ],
     "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
   },
-  "clc.period": {
-    "board": "ClinicPortal",
-    "review": [
-      "translation"
-    ],
-    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
-  },
   "clc.print": {
     "board": "ClinicPortal",
     "review": [
@@ -24497,20 +24490,6 @@
     "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
   },
   "clc.ranges": {
-    "board": "ClinicPortal",
-    "review": [
-      "translation"
-    ],
-    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
-  },
-  "clc.last90": {
-    "board": "ClinicPortal",
-    "review": [
-      "translation"
-    ],
-    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
-  },
-  "clc.prior90": {
     "board": "ClinicPortal",
     "review": [
       "translation"
@@ -25230,13 +25209,6 @@
     "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
   },
   "clc.ch_agp_note": {
-    "board": "ClinicPortal",
-    "review": [
-      "translation"
-    ],
-    "note": "Clinic portal (PM-275, Guy 19 Nov 2026)"
-  },
-  "clc.ch_weekly_note": {
     "board": "ClinicPortal",
     "review": [
       "translation"
@@ -26094,7 +26066,7 @@
       "translation",
       "legal"
     ],
-    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+    "note": "Clinic consent text, version clinic-2026-11-27 (PM-560, Guy 26 Nov 2026)"
   },
   "care.consent_4": {
     "board": "ClinicPortal",
@@ -26102,7 +26074,7 @@
       "translation",
       "legal"
     ],
-    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+    "note": "Clinic consent text, version clinic-2026-11-27 (PM-560, Guy 26 Nov 2026)"
   },
   "care.share": {
     "board": "ClinicPortal",
@@ -30758,5 +30730,1126 @@
       "translation"
     ],
     "note": "Link to the Jira Service Management customer portal in the home page's Support section (Guy, 26 Nov 2026, PM-574)."
+  },
+  "clc.last_visit": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tabs": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tab_summary": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tab_visits": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tab_meals": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tab_body": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tab_targets": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.no_views": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.nav_team": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.save": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.edit": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.delete": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.save_failed": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.si_idle": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.per_label": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.per_last_visit": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.per_14": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.per_30": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.per_90": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.per_180": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.per_365": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.per_since": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.per_showing": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.per_compared": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.per_limited": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.rng_now": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.rng_before": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.i_basal": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.i_basal_now": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.i_basal_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.i_sg_on": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.i_sg_off": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.ch_week_of": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.ch_daily_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.ch_weekly_note2": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.ch_lowest": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.ch_peak": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.ch_h": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.ch_steps": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.ch_meals_n": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.ch_hover": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.ch_median": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.v_title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.v_search": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.v_new": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.v_edit": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.v_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.v_no_match": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.v_edited": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.v_date": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.v_text": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.v_hint": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.v_bad_date": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.v_delete_sure": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_height": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_weight": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_bp": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_pulse": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_systolic": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_diastolic": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_clinic": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_app": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_resting": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_from_app": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_from_watch": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_add": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_kind": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_value": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_date": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_by": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_entered": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_out_of_range": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tg_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tg_food": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tg_activity": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tg_activity_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tg_target": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tg_clinic": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tg_own": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tg_set": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tg_clear": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tg_per": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tp_day": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tp_meal": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tp_kg_day": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tp_week": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tu_steps": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tu_min": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tu_sessions": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.n_carbs": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.n_protein": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.n_fat": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.n_sat_fat": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.n_fiber": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.n_kcal": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.n_sugar": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.n_sodium": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.n_steps": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.n_active_min": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.n_sessions": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_prev": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_next": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_today": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_length": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_days": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_limited": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_avg": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_avg_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_target": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_by_team": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_per_day": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_nutrient": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_meal": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_no_amounts": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_estimate": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_photo": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_ate_all": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_ate_most": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_ate_half": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_ate_little": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_note_manager": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_members": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_name": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_access": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_access_of": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_manager": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_suspended": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_template": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_profiles": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_profiles_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_perm": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_n_members": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_new": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_edit": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_profile_name": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_start_from": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_sees": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_changes": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_limit_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_name_taken": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.tm_delete_sure": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.adm_manager_of": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_summary": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_insulin": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_lifestyle": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_labs": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_meals": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_body": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_body_write": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_targets": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_targets_write": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_visits": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_visits_write": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_questions": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.pm_request": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "care.consent_5": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "legal"
+    ],
+    "note": "Clinic consent text, version clinic-2026-11-27 (PM-560, Guy 26 Nov 2026)"
   }
 }
