@@ -3718,7 +3718,7 @@
   "wa.open": "Open WhatsApp",
   "wa.waiting": "Send the message WhatsApp prepared for you. This card updates when it arrives.",
   "wa.linked": "Linked to the number ending {last3}",
-  "wa.kinds": "Send these to WhatsApp instead of a notification",
+  "wa.kinds": "Also send these to WhatsApp",
   "wa.k_checkin": "Check-ins",
   "wa.k_reminder": "Reminders you asked for",
   "wa.k_daily": "Yesterday, looking back",
