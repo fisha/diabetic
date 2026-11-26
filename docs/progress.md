@@ -14,13 +14,14 @@ personal areas and the clinic portal only count sign-ins. One GA4 property "Sted
 for the Mac thread in `/mnt/project-files/google-analytics/console-steps.md`). Apps: no Firebase, no native build; the
 opt-in Mixpanel events (same allowlist, never under 18 or while viewing) also go to API `POST /usage/app`, which checks
 them again and forwards them by Measurement Protocol without IP, account or Mixpanel id (separate SHA-256 id, country
-only) for people who accepted privacy `2026-11-27T12:00:00Z` (API #272, app #322). Website: gtag only on stedio.io
+only) for people who accepted privacy `2026-11-26T22:00:00Z` (API #272, app #322). Website: gtag only on stedio.io
 public pages, cookieless (Consent Mode, storage denied; Guy removed the cookie notice 20:41Z until a consent service is
 added), GPC not measured, signals and ads personalization off, URLs without query strings, on once `GA_WEB_ID` is set and that privacy version is current (web
 #99). Sign-in counts: `POST /usage/sign-in` personal | clinic, random id per event (clinic call to add in `clinicApi.ts`
-after the clinic thread's PR). Privacy lines handed to the clinic thread for `2026-11-27T12:00:00Z`. Tests pass in all
-three; notice checked with Playwright on a dev server. Next: measurement ids from the Mac thread into `GA_WEB_ID` and API
-config, Guy sets `STEADY_GA_WEB_SECRET` / `STEADY_GA_APP_SECRET`, deploys after the privacy version, check GA Realtime.
+after the clinic thread's PR). Privacy lines handed to the clinic thread for `2026-11-26T22:00:00Z`. Tests pass in all
+three; notice checked with Playwright on a dev server. Measurement ids are in (website G-D789HSTQ55, app G-7QGJ5JZ6X8) and Guy set both secrets. Privacy
+`2026-11-26T22:00:00Z` (GA, meal-correction learning, ARCore, clinic lines) merged in API #279 and web #104. Next:
+deploy API and web together, OTA, check GA Realtime.
 
 26 Nov 2026 (Jira PM-564..566, PM-576, thread "Improve meal photo carb accuracy", nothing visible): Guy's plate (a thin
 layer of rice, two breaded stars, a salad, water) came back as 67 g where he counted 25 g (pump 23 g); the gap is the rice
@@ -29,7 +30,7 @@ outside held to the edge (`ai/food_classes.py`); analyzer rule to size starchy s
 coating only (`_STARCH`); a learned portion factor per person and food class from weighed, changed and kept items and pump
 entries for the same meal, against the raw reading, shrunk towards a group prior of consenting adults (ml_priors
 `food_portion`, 5+) and bounded 0.5-1.5 (`brain/food_corrections.py`), photo analyses only, in the app and on WhatsApp.
-The personal part waits for privacy version 2026-11-27T12:00:00Z (line sent to the clinic thread). Food regression: 5 new
+The personal part waits for privacy version 2026-11-26T22:00:00Z (line sent to the clinic thread). Food regression: 5 new
 text cases and photo cases from `evals/food/regression/` (out of git, in the Fly evals image when present). Regulatory:
 at risk near dosing (pump entries as a signal), lawyer PM-576. Evals not run (food set to be run on Fly). Next: API
 deploy, `stedio-fly evals --food`. First food run (26 Nov 20:18Z): 25/27; Guy's photo 67 -> 58 g (band 18-45), clear

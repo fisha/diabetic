@@ -63,7 +63,7 @@ below, which Guy and the lawyer can still change.
   `whatsapp` consent (strings `wa.body`, `wa.agree`, version `2026-11-19` in `steady_api/whatsapp/links.py`) is recorded
   before linking.
 
-**Pending in privacy `2026-11-27T12:00:00Z` (PM-577, Guy 26 Nov 2026):** Google LLC (United States) named as the
+**In privacy `2026-11-26T22:00:00Z` (merged 26 Nov, API #279, web #104) (PM-577, Guy 26 Nov 2026):** Google LLC (United States) named as the
 Google Analytics processor: the app's opt-in usage events (same choice and allowlist as Mixpanel) sent on by our API
 without IP, account or Mixpanel id, under a separate random id, country only; website page views on stedio.io's public
 pages without cookies (Consent Mode, analytics storage denied; no cookie notice by Guy's decision 26 Nov until a consent
