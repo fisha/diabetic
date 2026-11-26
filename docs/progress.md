@@ -20,7 +20,7 @@ Summary period: since the last visit, 14 or 30 days, 3 or 6 months, 1 year, comp
 accepted under the first consent stay at 180 days (the app now sends the consent version it showed). The pump's basal
 program as set on the pump (Tandem segments, CareLink pattern and rate now), display only. Sideways scroll: a visually
 hidden table label widened the page; scroll frames are now positioned. No side menu before sign-in, sign-out after an
-hour idle, logo to home. Privacy `2026-11-27T12:00:00Z` (clinic lines, PM-566 carb line, PM-577 GA lines), new clinic
+hour idle, logo to home. Clinic privacy lines handed to the GA thread for its `2026-11-26T22:00:00Z` version; new clinic
 consent text in the app. Tests: API clinic 36 pass, web 17, i18n 20, app 344; checked in Playwright en/he, light/dark,
 390 to 1440 px (screenshots `/mnt/project-files/clinic-pm556/`). Next: deploy API (migration `e7b9d1f3a5c6`), then web
 and OTA; activity targets are not shown in the app yet (G-141).
