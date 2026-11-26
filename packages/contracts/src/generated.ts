@@ -24,6 +24,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/account/analytics-identity": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Analytics Identity
+         * @description "Show my name and email with my usage" (PM-533): the app says which Mixpanel profile has them, so they can be taken
+         *     off when the choice is turned off and the profile deleted with the account. Never kept for someone under 18 or for
+         *     a demo account.
+         */
+        put: operations["analytics_identity_account_analytics_identity_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/activity/{record_id}/details": {
         parameters: {
             query?: never;
@@ -327,6 +349,27 @@ export interface paths {
         put?: never;
         post?: never;
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/support/{ticket_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Admin Delete Ticket
+         * @description Removes a request that never reached Jira (Guy, 26 Nov 2026, PM-571: a test request from before the Jira
+         *     integration). One that is in Jira is handled and deleted there (and leaves with the account), so it is refused here.
+         */
+        delete: operations["admin_delete_ticket_admin_support__ticket_id__delete"];
         options?: never;
         head?: never;
         patch?: never;
@@ -874,6 +917,24 @@ export interface paths {
          * @description The person sends their questions for the visit to this clinic. Kept until 7 days after the visit.
          */
         put: operations["care_questions_care_team__link_id__questions_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/check-suggest": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Check Suggest */
+        get: operations["get_check_suggest_check_suggest_get"];
+        /** Put Check Suggest */
+        put: operations["put_check_suggest_check_suggest_put"];
         post?: never;
         delete?: never;
         options?: never;
@@ -4845,6 +4906,11 @@ export interface components {
              */
             sound: boolean;
         };
+        /** AnalyticsIdentityIn */
+        AnalyticsIdentityIn: {
+            /** Distinct Id */
+            distinct_id: string | null;
+        };
         /**
          * AnalyzeIn
          * @description `also`: a second photo of the same meal, analysed together with this one. `note`: what the person wrote about the
@@ -5374,6 +5440,18 @@ export interface components {
         CheckIn: {
             /** Text */
             text: string;
+        };
+        /** CheckSuggestIn */
+        CheckSuggestIn: {
+            /** On */
+            on: boolean;
+        };
+        /** CheckSuggestOut */
+        CheckSuggestOut: {
+            /** Available */
+            available: boolean;
+            /** On */
+            on: boolean;
         };
         /** CheerIn */
         CheerIn: {
@@ -10435,6 +10513,37 @@ export interface operations {
             };
         };
     };
+    analytics_identity_account_analytics_identity_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AnalyticsIdentityIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     activity_details_activity__record_id__details_get: {
         parameters: {
             query?: never;
@@ -11007,6 +11116,42 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["AdminSupportOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    admin_delete_ticket_admin_support__ticket_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                ticket_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description in_jira */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -12026,6 +12171,59 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CareClinicOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_check_suggest_check_suggest_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CheckSuggestOut"];
+                };
+            };
+        };
+    };
+    put_check_suggest_check_suggest_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CheckSuggestIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CheckSuggestOut"];
                 };
             };
             /** @description Validation Error */

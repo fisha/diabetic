@@ -1052,6 +1052,28 @@
         "title": "AlertLevelOut",
         "type": "object"
       },
+      "AnalyticsIdentityIn": {
+        "additionalProperties": false,
+        "properties": {
+          "distinct_id": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-fA-F-]{32,36}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distinct Id"
+          }
+        },
+        "required": [
+          "distinct_id"
+        ],
+        "title": "AnalyticsIdentityIn",
+        "type": "object"
+      },
       "AnalyzeIn": {
         "additionalProperties": false,
         "description": "`also`: a second photo of the same meal, analysed together with this one. `note`: what the person wrote about the\nphoto before analysis, optional (Guy, 15 Nov 2026).",
@@ -2616,6 +2638,38 @@
           "text"
         ],
         "title": "CheckIn",
+        "type": "object"
+      },
+      "CheckSuggestIn": {
+        "additionalProperties": false,
+        "properties": {
+          "on": {
+            "title": "On",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "on"
+        ],
+        "title": "CheckSuggestIn",
+        "type": "object"
+      },
+      "CheckSuggestOut": {
+        "properties": {
+          "available": {
+            "title": "Available",
+            "type": "boolean"
+          },
+          "on": {
+            "title": "On",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "available",
+          "on"
+        ],
+        "title": "CheckSuggestOut",
         "type": "object"
       },
       "CheerIn": {
@@ -16892,6 +16946,46 @@
         ]
       }
     },
+    "/account/analytics-identity": {
+      "put": {
+        "description": "\"Show my name and email with my usage\" (PM-533): the app says which Mixpanel profile has them, so they can be taken\noff when the choice is turned off and the profile deleted with the account. Never kept for someone under 18 or for\na demo account.",
+        "operationId": "analytics_identity_account_analytics_identity_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalyticsIdentityIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Analytics Identity",
+        "tags": [
+          "account"
+        ]
+      }
+    },
     "/activity/{record_id}/details": {
       "get": {
         "operationId": "activity_details_activity__record_id__details_get",
@@ -17759,6 +17853,51 @@
           }
         ],
         "summary": "Admin Tickets",
+        "tags": [
+          "support"
+        ]
+      }
+    },
+    "/admin/support/{ticket_id}": {
+      "delete": {
+        "description": "Removes a request that never reached Jira (Guy, 26 Nov 2026, PM-571: a test request from before the Jira\nintegration). One that is in Jira is handled and deleted there (and leaves with the account), so it is refused here.",
+        "operationId": "admin_delete_ticket_admin_support__ticket_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ticket_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Ticket Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "409": {
+            "description": "in_jira"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Admin Delete Ticket",
         "tags": [
           "support"
         ]
@@ -19065,6 +19204,76 @@
         "summary": "Care Questions",
         "tags": [
           "clinic"
+        ]
+      }
+    },
+    "/check-suggest": {
+      "get": {
+        "operationId": "get_check_suggest_check_suggest_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckSuggestOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Check Suggest",
+        "tags": [
+          "check-suggest"
+        ]
+      },
+      "put": {
+        "operationId": "put_check_suggest_check_suggest_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckSuggestIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckSuggestOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Put Check Suggest",
+        "tags": [
+          "check-suggest"
         ]
       }
     },
