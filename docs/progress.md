@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-532): Guy liked the WhatsApp "had lunch yet?" question and asked that it refer back to
+yesterday's same meal when it was hard after it. A meal check-in going to WhatsApp now adds one fixed line when
+yesterday's first logged meal of that part of the day was followed by 90+ of 180 minutes above the person's own range
+(`whatsapp/proactive.meal_look_back`): the meal time, about how long, and an invitation to log today's meal and compare
+together. WhatsApp only; the app push stays without glucose data (and, by design, a kind on WhatsApp sends no app push).
+API #254, WhatsApp tests 53 pass. Regulatory and privacy: pass. Next: API deploy.
+
 26 Nov 2026 (Jira PM-529): Guy said the WhatsApp conversation is anemic, too general and sometimes old news, and should
 think ahead and interpret like a concierge (screenshot of the 07:00 morning message). The morning note now reads the
 day's longest stretches out of the person's own range with what was logged in the 3 h before and how many of the 7 days
