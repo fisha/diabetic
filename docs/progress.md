@@ -8,6 +8,20 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-577, lawyer PM-578, thread "Set up Google Analytics for site and apps"): Guy asked for Google
+Analytics on the website's marketing pages and in the apps, screens and actions only, no user or health data; the
+personal areas and the clinic portal only count sign-ins. One GA4 property "Stedio" with two web streams (console steps
+for the Mac thread in `/mnt/project-files/google-analytics/console-steps.md`). Apps: no Firebase, no native build; the
+opt-in Mixpanel events (same allowlist, never under 18 or while viewing) also go to API `POST /usage/app`, which checks
+them again and forwards them by Measurement Protocol without IP, account or Mixpanel id (separate SHA-256 id, country
+only) for people who accepted privacy `2026-11-27T12:00:00Z` (API #272, app #322). Website: gtag only on stedio.io
+public pages, cookieless (Consent Mode, storage denied; Guy removed the cookie notice 20:41Z until a consent service is
+added), GPC not measured, signals and ads personalization off, URLs without query strings, on once `GA_WEB_ID` is set and that privacy version is current (web
+#99). Sign-in counts: `POST /usage/sign-in` personal | clinic, random id per event (clinic call to add in `clinicApi.ts`
+after the clinic thread's PR). Privacy lines handed to the clinic thread for `2026-11-27T12:00:00Z`. Tests pass in all
+three; notice checked with Playwright on a dev server. Next: measurement ids from the Mac thread into `GA_WEB_ID` and API
+config, Guy sets `STEADY_GA_WEB_SECRET` / `STEADY_GA_APP_SECRET`, deploys after the privacy version, check GA Realtime.
+
 26 Nov 2026 (Jira PM-564..566, PM-576, thread "Improve meal photo carb accuracy", nothing visible): Guy's plate (a thin
 layer of rice, two breaded stars, a salad, water) came back as 67 g where he counted 25 g (pump 23 g); the gap is the rice
 read as a full cup and the breading at fried-food density. Built: food classes with USDA bands of carbs per 100 g, a value
