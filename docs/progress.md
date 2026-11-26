@@ -32,7 +32,10 @@ entries for the same meal, against the raw reading, shrunk towards a group prior
 The personal part waits for privacy version 2026-11-27T12:00:00Z (line sent to the clinic thread). Food regression: 5 new
 text cases and photo cases from `evals/food/regression/` (out of git, in the Fly evals image when present). Regulatory:
 at risk near dosing (pump entries as a signal), lawyer PM-576. Evals not run (food set to be run on Fly). Next: API
-deploy, `stedio-fly evals --food`.
+deploy, `stedio-fly evals --food`. First food run (26 Nov 20:18Z): 25/27; Guy's photo 67 -> 58 g (band 18-45), clear
+noodles lost whole to a long reply (fixed, api #270). Guy chose "ask one short amount question": a starchy side the
+analyzer isn't sure of gets one amount question when the photo has no depth measurement (api #271); the photo case passes
+when its lowest option brings the meal into the band.
 
 26 Nov 2026 (Jira PM-555, same thread): Guy asked to retake the four "How it works" app screens in Hebrew for the
 Hebrew page and in English (the app design changed since PM-236). Captured from the current app with demo scenario
@@ -53,6 +56,13 @@ browser-language detection, the last language opened kept in the `NEXT_LOCALE` c
 English (install pages rule). Hebrew texts were already complete; fixed the spelling "סכרת" to "סוכרת" in three strings.
 The four "How it works" app screens are still English on the Hebrew page (design-gaps). Web build, typecheck, lint, tests,
 curl and Playwright in both languages. Regulatory and privacy: pass. Next: web deploy.
+
+26 Nov 2026 (API pool, nothing visible): at 19:28Z the API's pool (5 + 10) ran out for 15 s (14 errors, app reads got
+500). A mentor turn and a transcription held their connection idle in transaction through the model wait. API #273:
+`db.release()` gives it back before each model call when nothing was written yet; API statement_timeout 60 s and
+lock_timeout 10 s; pool 10 + 10 with a 10 s wait; an exhausted pool answers 503 and logs which routes held it (route
+templates and seconds only). App #321: expo-task-manager loaded only where the build has it, so OTAs to 0.8.0 start.
+Next: API deploy.
 
 26 Nov 2026 (Jira PM-542 phase C, Guy approved 19:35Z; lawyer PM-567): glucose check suggestion, built and OFF. API
 #267 (`check_suggest.py`, `GET/PUT /check-suggest`, `user_settings.check_suggest_at` / `check_suggest_sent_at`,

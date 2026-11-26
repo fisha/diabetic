@@ -191,6 +191,37 @@ def grade(case: FoodCase, items: list) -> dict:
     }
 
 
+def _as_served(items: list, language: str) -> list:
+    """What the app gets for a photo without a depth measurement: the amount question on an unsure starchy side
+    (`asked_amount`, PM-564). Items that are not the API's FoodItem (test stand-ins) are left as they are."""
+    if not items or not hasattr(items[0], "model_copy"):
+        return items
+    import importlib
+
+    return importlib.import_module("steady_api.ai.food").asked_amount(items, language)
+
+
+_STARCH = re.compile(r"rice|pasta|spaghetti|noodle|couscous|quinoa|bulgur|potato|fries|אורז|פסטה|אטריות|קוסקוס|תפוח|פירה|צ'יפס", re.I)
+
+
+def _fixable_by_answer(case: FoodCase, items: list, row: dict) -> None:
+    """
+    A photo case outside its band still passes when a starchy side asks about its amount and its lowest option (half
+    the reading) brings the meal into the band: one tap from the person fixes it (Guy, 26 Nov 2026, "ask one short
+    amount question"). Reported as its own check, so the reading itself stays visible.
+    """
+    if row["checks"]["in_band"]:
+        return
+    starch = [i for i in items if _STARCH.search(i.name) and i.question is not None]
+    est = [item_carbs(i.unit, i.qty, i.grams_per_unit, i.carbs_per_100g) or 0 for i in starch]
+    after = row["est_carbs_g"] - sum(e * 0.5 for e in est)
+    del row["checks"]["in_band"]
+    row["checks"]["in_band_after_amount_answer"] = bool(starch) and case.low_g <= after <= case.high_g
+    row["in_band_as_read"] = False
+    row["est_after_amount_answer_g"] = round(after, 1)
+    row["passed"] = all(row["checks"].values())
+
+
 def analyzer(api_key_env: str, model: str | None):
     # `production` puts services/api on the path, so it must be imported first; importlib keeps an import sorter from
     # moving the API import above it (that broke the first Fly run, PM-509).
@@ -231,7 +262,9 @@ def run(an, cases: list[FoodCase] | None = None) -> dict:
             except Exception as exc:
                 rows.append({"case": c.id, "passed": False, "error": f"{type(exc).__name__}: {str(exc)[:200]}"})
                 continue
+            items = _as_served(items, c.language)
             row = grade(c, items)
+            _fixable_by_answer(c, items, row)
             row["latency_s"] = round(time.monotonic() - t0, 1)
             rows.append(row)
     failed = [r["case"] for r in rows if not r["passed"]]
