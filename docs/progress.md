@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-529): Guy said the WhatsApp conversation is anemic, too general and sometimes old news, and should
+think ahead and interpret like a concierge (screenshot of the 07:00 morning message). The morning note now reads the
+day's longest stretches out of the person's own range with what was logged in the 3 h before and how many of the 7 days
+before had the same part of the day out of range (`day_detail`), and what the app holds for today (`today_ahead`:
+sensor end, set change, a visit, the person's reminders). The logging-drop fact needs a whole meal under the usual,
+sleep is only last night, the last two mornings are passed in so they are not repeated, and WhatsApp gets an opening
+line, a "Today" part and one specific question (`data.wa`, same checks plus no treatment words; the app card is
+unchanged). A waiting morning text expires at local midnight. API #250, 133 tests pass. Regulatory and privacy: pass.
+Evals not run (PM-436). Next: API deploy, then read the next 07:00 message.
+
 26 Nov 2026 (Jira PM-528): Guy reported that after saving a meal, "Back to main screen" or the Journal opened inside a
 sheet, with the meal screen still under it when swiped down. The saved screen popped one meal screen and then pushed a
 second set of tabs over the still-open full-screen flow. Now "Back to main screen" and "View in journal" use
