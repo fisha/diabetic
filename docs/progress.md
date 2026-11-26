@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026, night (Jira PM-589, open item PM-590, thread "Add live dev mode to local stedio script"): `stedio up dev`
+and `stedio restart dev` run the Mac's website as `next dev` and the API as `uvicorn --reload`; db and the tunnels
+stay; `stedio up` goes back to the built site. Web next.config lets the ngrok host use dev files and live reload
+(`STEDIO_DEV_ORIGINS`, web #113). Tested in the container with stand-ins for lsof, zsh and caffeinate; not yet on the Mac.
+/app stays the last export in dev mode.
+
 26 Nov 2026, night (Jira PM-584, thread "Fix missing sensor expiry alerts"): Guy's 24-hour sensor-ending reminder did
 not come. Production (read only): no reminder sent yet; its time fell at 22:24 Israel time, so the night rule holds it
 for 08:00. Bug found and fixed (api #282): a CareLink poll dropped `end_reminded_hours`, so after a sensor's first

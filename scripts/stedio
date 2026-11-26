@@ -3,8 +3,10 @@
 #
 #   stedio                 Status of every service (same as: stedio status)
 #   stedio up [svc...]     Start services (default: all) in the background, detached from the terminal
+#   stedio up dev [svc...] The same in live-reload mode: web runs `next dev`, api runs uvicorn --reload, so a saved
+#                          file shows at once (the site's page updates by itself; the API restarts in a second or two)
 #   stedio stop [svc...]   Stop services (default: all except the database and the ngrok tunnels)
-#   stedio restart [svc..] Restart services (default: api web)
+#   stedio restart [svc..] Restart services (default: api web); `stedio restart dev` restarts them in live-reload mode
 #   stedio status          What is running, with addresses
 #   stedio logs [svc...]   Follow logs (default: api web). Ctrl-C stops following, not the services
 #   stedio log <svc> [n]   Print the last n lines (default 80) of one service's log
@@ -14,6 +16,9 @@
 #
 # Services: db (Postgres in Docker), api (FastAPI :8010), web (Next.js :3000),
 #           tunnel-api (ngrok -> https://stedio.ngrok.app), tunnel-web (ngrok -> https://stedio.ngrok.dev)
+# Modes: `up`/`restart` without `dev` run the built site (`next start`) and a plain API, as before. Each switches a
+#        running api or web to its own mode; db and the tunnels are the same in both. In live-reload mode /app is still
+#        the app's last export (stedio deploy-web): app code changes reach it only after the next export.
 # Logs and pid files live in /Volumes/Studio SSD/Workspace/steady-run.
 # The mixmaster-pro tunnel and servers are never touched.
 
@@ -65,9 +70,11 @@ PY
 
 port_pid() { lsof -ti "tcp:$1" -sTCP:LISTEN 2>/dev/null | head -1; }
 tunnel_pid() { pgrep -f "ngrok http $1 --url $2" | head -1; }
+pgid_of() { ps -o pgid= -p "$1" 2>/dev/null | tr -d ' '; }
 pid_of() {
   case "$1" in
-    api) port_pid 8010 ;;
+    # uvicorn --reload whose app failed on its first start waits for a fix without holding the port.
+    api) local p; p="$(port_pid 8010)"; [ -n "$p" ] || p="$(pgrep -f 'uvicorn steady_api.main:app --host 127.0.0.1 --port 8010' | head -1)"; echo "$p" ;;
     web) port_pid 3000 ;;
     tunnel-api) tunnel_pid 8010 "$API_URL" ;;
     tunnel-web) tunnel_pid 3000 "$WEB_URL" ;;
@@ -75,6 +82,15 @@ pid_of() {
 }
 db_running() { [ "$(docker inspect -f '{{.State.Running}}' steady-db-1 2>/dev/null)" = "true" ]; }
 is_up() { if [ "$1" = db ]; then db_running; else [ -n "$(pid_of "$1")" ]; fi; }
+# "dev" when the running api or web is the live-reload kind, else "build". The listening process is `next-server` in
+# both web modes, so this looks at the whole process group (every service is started in its own, see daemon).
+mode_of() {
+  local p g
+  p="$(pid_of "$1")"; [ -n "$p" ] || { echo none; return; }
+  g="$(pgid_of "$p")"
+  if [ -n "$g" ] && pgrep -g "$g" -f 'next dev|uvicorn .*--reload' >/dev/null 2>&1; then echo dev; else echo build; fi
+}
+MODE=build
 
 check_url() { curl -s -o /dev/null -m 8 -w '%{http_code}' "$1" 2>/dev/null; }
 
@@ -93,9 +109,22 @@ expand() { # services from args, or the default given as $1
   echo "$out"
 }
 
+mode_label() { # <mode> [service]
+  if [ "$1" = dev ]; then printf 'live reload'; elif [ "${2:-}" = web ]; then printf 'built'; else printf 'normal'; fi
+}
+
 start_one() {
-  local s="$1"
-  if is_up "$s"; then say "  $s: already running"; return; fi
+  local s="$1" cur
+  if is_up "$s"; then
+    case "$s" in
+      api|web)
+        cur="$(mode_of "$s")"
+        if [ "$cur" = "$MODE" ]; then say "  $s: already running ($(mode_label "$cur" "$s"))"; return; fi
+        say "  $s: running $(mode_label "$cur" "$s"); switching to $(mode_label "$MODE" "$s")"
+        stop_one "$s" ;;
+      *) say "  $s: already running"; return ;;
+    esac
+  fi
   case "$s" in
     db)
       if ! docker info >/dev/null 2>&1; then
@@ -106,19 +135,34 @@ start_one() {
       for _ in $(seq 1 30); do docker exec steady-db-1 pg_isready -U steady >/dev/null 2>&1 && break; sleep 1; done
       ;;
     api)
-      daemon api "$API_DIR" "STEADY_CORS_ORIGINS='$CORS' exec /usr/bin/caffeinate -i uv run uvicorn steady_api.main:app --host 127.0.0.1 --port 8010 --proxy-headers --forwarded-allow-ips=127.0.0.1 --log-level info"
+      # Live reload watches only the API's own code, so the logs, .venv and caches don't restart it. Every restart
+      # ends open voice calls and restarts the in-process worker (one at a time: the old process stops first).
+      local reload=""
+      [ "$MODE" = dev ] && reload=" --reload --reload-dir steady_api --reload-dir steady_ml"
+      daemon api "$API_DIR" "STEADY_CORS_ORIGINS='$CORS' exec /usr/bin/caffeinate -i uv run uvicorn steady_api.main:app --host 127.0.0.1 --port 8010 --proxy-headers --forwarded-allow-ips=127.0.0.1 --log-level info$reload"
       for _ in $(seq 1 40); do [ "$(check_url http://127.0.0.1:8010/health)" = 200 ] && break; sleep 0.5; done
       ;;
     web)
-      [ -f "$WEB_DIR/.next/BUILD_ID" ] || { err "  web: no build yet; run: stedio deploy-web"; return; }
-      daemon web "$WEB_DIR" "export PATH=$NODE_BIN:\$PATH; STEADY_API_URL=http://localhost:8010 exec /usr/bin/caffeinate -i pnpm exec next start -p 3000"
+      if [ "$MODE" = dev ]; then
+        # `next dev` keeps its files in .next/dev, so the build that `next start` serves stays as it is. Next.js blocks
+        # its dev files and the reload socket for other origins than localhost; STEDIO_DEV_ORIGINS lets the ngrok
+        # address in (apps/web next.config.ts).
+        daemon web "$WEB_DIR" "export PATH=$NODE_BIN:\$PATH; STEDIO_DEV_ORIGINS=${WEB_URL#https://} STEADY_API_URL=http://localhost:8010 exec /usr/bin/caffeinate -i pnpm exec next dev -p 3000"
+      else
+        [ -f "$WEB_DIR/.next/BUILD_ID" ] || { err "  web: no build yet; run: stedio deploy-web (or: stedio up dev web)"; return; }
+        daemon web "$WEB_DIR" "export PATH=$NODE_BIN:\$PATH; STEADY_API_URL=http://localhost:8010 exec /usr/bin/caffeinate -i pnpm exec next start -p 3000"
+      fi
       for _ in $(seq 1 40); do [ -n "$(port_pid 3000)" ] && break; sleep 0.5; done
       ;;
     tunnel-api) daemon tunnel-api "$REPO" "exec ngrok http 8010 --url $API_URL --log=stdout" ;;
     tunnel-web) daemon tunnel-web "$REPO" "exec ngrok http 3000 --url $WEB_URL --log=stdout" ;;
   esac
   sleep 1
-  if is_up "$s"; then say "  ${G}$s: started${X}"; else err "  $s: did not start; see: stedio log $s"; fi
+  if ! is_up "$s"; then err "  $s: did not start; see: stedio log $s"; return; fi
+  case "$s" in
+    api|web) say "  ${G}$s: started ($(mode_label "$MODE" "$s"))${X}" ;;
+    *) say "  ${G}$s: started${X}" ;;
+  esac
 }
 
 stop_one() {
@@ -128,11 +172,19 @@ stop_one() {
   esac
   p="$(pid_of "$s")"
   if [ -z "$p" ]; then say "  $s: not running"; return; fi
-  kill "$p" 2>/dev/null
+  kill_tree "$p"
   # uv/pnpm wrappers leave a child on the port; wait, then make sure the port is free.
   for _ in $(seq 1 20); do [ -z "$(pid_of "$s")" ] && break; sleep 0.5; done
-  p="$(pid_of "$s")"; [ -n "$p" ] && kill "$p" 2>/dev/null
+  p="$(pid_of "$s")"; [ -n "$p" ] && kill_tree "$p"
   say "  $s: stopped"
+}
+
+# Stop a service's whole process group (next dev's watcher and server, uvicorn's reloader and worker, the wrappers),
+# never the group this script runs in.
+kill_tree() {
+  local g; g="$(pgid_of "$1")"
+  if [ -n "$g" ] && [ "$g" != "$(pgid_of $$)" ]; then kill -TERM -- "-$g" 2>/dev/null || kill "$1" 2>/dev/null
+  else kill "$1" 2>/dev/null; fi
 }
 
 cmd_status() {
@@ -142,8 +194,8 @@ cmd_status() {
     if is_up "$s"; then state="${G}running${X}"; else state="${R}stopped${X}"; fi
     case "$s" in
       db) detail="docker steady-db-1 :5432" ;;
-      api) detail="127.0.0.1:8010  pid $(pid_of api)" ;;
-      web) detail="127.0.0.1:3000  pid $(pid_of web)" ;;
+      api) detail="127.0.0.1:8010  pid $(pid_of api)"; is_up api && detail="$detail  $(mode_label "$(mode_of api)" api)" ;;
+      web) detail="127.0.0.1:3000  pid $(pid_of web)"; is_up web && detail="$detail  $(mode_label "$(mode_of web)" web)" ;;
       tunnel-api) detail="$API_URL -> :8010" ;;
       tunnel-web) detail="$WEB_URL -> :3000" ;;
     esac
@@ -188,18 +240,36 @@ cmd_deploy_web() {
   (cd "$MOBILE_DIR" && EXPO_PUBLIC_API_URL="$API_URL" EXPO_PUBLIC_APPLE_SERVICES_ID=com.fisha.steady.web EAS_PROJECT_ID=cf1df890-5cdd-44b7-8661-29475dd7ce60 APP_BUNDLE_ID=com.fisha.steady.dev pnpm export:website) | tail -1
   say "Building the website..."
   (cd "$WEB_DIR" && STEADY_API_URL=http://localhost:8010 pnpm exec next build) | grep -E "Compiled|rror" | head -5
-  stop_one web; start_one web
+  if [ "$(mode_of web)" = dev ]; then
+    say "  web: stays in live-reload mode and serves the new /app export now (stedio up web: the new build)"
+  else
+    stop_one web; start_one web
+  fi
+}
+
+usage() { awk 'NR > 1 && /^#/ { sub(/^# ?/, ""); print; next } NR > 1 { exit }' "$(readlink -f "${BASH_SOURCE[0]}")"; }
+
+# `dev` (or --dev) anywhere after up/start/restart picks live-reload mode; the other words are services.
+take_mode() {
+  ARGS=()
+  local a
+  for a in "$@"; do case "$a" in dev|--dev) MODE=dev ;; *) ARGS+=("$a") ;; esac; done
 }
 
 case "${1:-status}" in
-  up|start) shift; say "Starting..."; for s in $(expand "$ALL" "$@"); do start_one "$s"; done; echo; cmd_status ;;
+  up|start)
+    shift; take_mode "$@"
+    if [ "$MODE" = dev ]; then say "Starting in live-reload mode..."; else say "Starting..."; fi
+    for s in $(expand "$ALL" ${ARGS[@]+"${ARGS[@]}"}); do start_one "$s"; done; echo; cmd_status ;;
   stop|down) shift; for s in $(expand "api web" "$@"); do stop_one "$s"; done ;;
-  restart) shift; for s in $(expand "api web" "$@"); do stop_one "$s"; start_one "$s"; done ;;
+  restart)
+    shift; take_mode "$@"
+    for s in $(expand "api web" ${ARGS[@]+"${ARGS[@]}"}); do stop_one "$s"; start_one "$s"; done ;;
   status|ps) cmd_status ;;
   logs|tail|follow) shift; cmd_logs "$@" ;;
   log) shift; cmd_log "$@" ;;
   urls|url) cmd_urls ;;
   deploy-web) cmd_deploy_web ;;
-  help|-h|--help) sed -n '2,17p' "$(readlink -f "${BASH_SOURCE[0]}")" | sed 's/^# \{0,1\}//' ;;
-  *) err "Unknown command: $1"; sed -n '2,17p' "$(readlink -f "${BASH_SOURCE[0]}")" | sed 's/^# \{0,1\}//'; exit 1 ;;
+  help|-h|--help) usage ;;
+  *) err "Unknown command: $1"; usage; exit 1 ;;
 esac
