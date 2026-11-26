@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+26 Nov 2026 (Jira PM-533): Guy asked to see the user's name in Mixpanel and chose "name and email with a separate
+consent". A new opt-in "Show my name and email with my usage" (onboarding, the consent-update screen, Settings >
+Privacy) is offered only while usage analytics is on, off unless ticked, never under 18. With it, the app's Mixpanel
+profile `$set` adds `$email` and `$name` (the name the mentor calls the person by, when given; the app holds no other
+name), never in events. The app tells the API the random id (`PUT /account/analytics-identity`, `users.mixpanel_id`);
+turning it off, turning analytics off or becoming a minor queues an `$unset` of name and email, account deletion (own
+or admin) a profile `$delete` (`mixpanel_cleanup`, worker `mixpanel.cleanup`, needs fly secret STEADY_MIXPANEL_TOKEN,
+the same public project token). Privacy `2026-11-26T14:00:00Z` (forced re-accept). App #319, web #91, API #255.
+Regulatory and privacy: pass with at-risk items for the lawyer (PM-533, needs-lawyer). Next: API deploy (migration),
+web, then OTA; Guy sets STEADY_MIXPANEL_TOKEN.
+
 26 Nov 2026 (Jira PM-532): Guy liked the WhatsApp "had lunch yet?" question and asked that it refer back to
 yesterday's same meal when it was hard after it. A meal check-in going to WhatsApp now adds one fixed line when
 yesterday's first logged meal of that part of the day was followed by 90+ of 180 minutes above the person's own range

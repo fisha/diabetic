@@ -163,3 +163,9 @@ approved lines here.
 **Privacy `2026-11-26T12:00:00Z` (PM-531):** opt-in usage analytics now let Mixpanel derive approximate country,
 region and city from the request IP (IP not kept by Mixpanel, no precise location sent) and carry the operating system
 and its version. For the lawyer (PM-467): city-level location in a health app's analytics under MHMDA, consent wording.
+
+**Privacy `2026-11-26T14:00:00Z` (PM-533, needs-lawyer):** a separate opt-in adds the person's email and the name the
+mentor calls them by to their Mixpanel usage profile, so usage and masked recordings are linked to an identified person
+of a diabetes app (consumer health data under MHMDA; GDPR art. 9; Israeli PPL). Opt-out removes name and email; account
+deletion deletes the profile, while earlier events stay under the random id. Lawyer to confirm the consent wording, that
+the separate checkbox is a valid MHMDA consent, and that the remaining pseudonymous events may stay for 2 years.
