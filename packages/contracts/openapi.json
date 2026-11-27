@@ -656,6 +656,16 @@
               }
             ],
             "title": "Time Zone"
+          },
+          "whatsapp": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AdminWhatsAppOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
@@ -1004,6 +1014,43 @@
         "title": "AdminUserOut",
         "type": "object"
       },
+      "AdminWhatsAppNumberOut": {
+        "properties": {
+          "number": {
+            "title": "Number",
+            "type": "string"
+          }
+        },
+        "required": [
+          "number"
+        ],
+        "title": "AdminWhatsAppNumberOut",
+        "type": "object"
+      },
+      "AdminWhatsAppOut": {
+        "properties": {
+          "last3": {
+            "title": "Last3",
+            "type": "string"
+          },
+          "linked_at": {
+            "format": "date-time",
+            "title": "Linked At",
+            "type": "string"
+          },
+          "proactive_off": {
+            "title": "Proactive Off",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "last3",
+          "linked_at",
+          "proactive_off"
+        ],
+        "title": "AdminWhatsAppOut",
+        "type": "object"
+      },
       "AiConsentIn": {
         "additionalProperties": false,
         "properties": {
@@ -1331,6 +1378,24 @@
           "google"
         ],
         "title": "AuthOptions",
+        "type": "object"
+      },
+      "Author": {
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "role"
+        ],
+        "title": "Author",
         "type": "object"
       },
       "AuthorizeIn": {
@@ -3458,87 +3523,6 @@
           "lang"
         ],
         "title": "ClinicReportIn",
-        "type": "object"
-      },
-      "ClinicVisitIn": {
-        "additionalProperties": false,
-        "properties": {
-          "text": {
-            "maxLength": 8000,
-            "minLength": 1,
-            "title": "Text",
-            "type": "string"
-          },
-          "visit_on": {
-            "format": "date",
-            "title": "Visit On",
-            "type": "string"
-          }
-        },
-        "required": [
-          "visit_on",
-          "text"
-        ],
-        "title": "ClinicVisitIn",
-        "type": "object"
-      },
-      "ClinicVisitOut": {
-        "properties": {
-          "author_name": {
-            "title": "Author Name",
-            "type": "string"
-          },
-          "author_role": {
-            "title": "Author Role",
-            "type": "string"
-          },
-          "created_at": {
-            "format": "date-time",
-            "title": "Created At",
-            "type": "string"
-          },
-          "id": {
-            "format": "uuid",
-            "title": "Id",
-            "type": "string"
-          },
-          "mine": {
-            "title": "Mine",
-            "type": "boolean"
-          },
-          "text": {
-            "title": "Text",
-            "type": "string"
-          },
-          "updated_at": {
-            "anyOf": [
-              {
-                "format": "date-time",
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Updated At"
-          },
-          "visit_on": {
-            "format": "date",
-            "title": "Visit On",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "visit_on",
-          "text",
-          "author_name",
-          "author_role",
-          "created_at",
-          "updated_at",
-          "mine"
-        ],
-        "title": "ClinicVisitOut",
         "type": "object"
       },
       "ConcernMessageOut": {
@@ -6811,6 +6795,38 @@
         "title": "GamesOut",
         "type": "object"
       },
+      "GlucometerIn": {
+        "additionalProperties": false,
+        "properties": {
+          "time": {
+            "anyOf": [
+              {
+                "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Time"
+          },
+          "value": {
+            "title": "Value",
+            "type": "number"
+          },
+          "visit_id": {
+            "format": "uuid",
+            "title": "Visit Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "visit_id"
+        ],
+        "title": "GlucometerIn",
+        "type": "object"
+      },
       "GlucoseAlertsIn": {
         "additionalProperties": false,
         "properties": {
@@ -10013,11 +10029,6 @@
             "title": "Kind",
             "type": "string"
           },
-          "measured_on": {
-            "format": "date",
-            "title": "Measured On",
-            "type": "string"
-          },
           "value": {
             "title": "Value",
             "type": "number"
@@ -10032,12 +10043,17 @@
               }
             ],
             "title": "Value2"
+          },
+          "visit_id": {
+            "format": "uuid",
+            "title": "Visit Id",
+            "type": "string"
           }
         },
         "required": [
           "kind",
           "value",
-          "measured_on"
+          "visit_id"
         ],
         "title": "MeasureIn",
         "type": "object"
@@ -10080,6 +10096,18 @@
               }
             ],
             "title": "Value2"
+          },
+          "visit_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Visit Id"
           }
         },
         "required": [
@@ -10088,6 +10116,7 @@
           "value",
           "value2",
           "measured_on",
+          "visit_id",
           "author_name",
           "mine"
         ],
@@ -10728,6 +10757,50 @@
           }
         },
         "title": "NoteData",
+        "type": "object"
+      },
+      "NoteIn": {
+        "additionalProperties": false,
+        "properties": {
+          "recs": {
+            "items": {
+              "$ref": "#/components/schemas/RecIn"
+            },
+            "maxItems": 20,
+            "title": "Recs",
+            "type": "array"
+          },
+          "text": {
+            "maxLength": 8000,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          },
+          "title": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          },
+          "todos": {
+            "items": {
+              "$ref": "#/components/schemas/TodoIn"
+            },
+            "maxItems": 20,
+            "title": "Todos",
+            "type": "array"
+          },
+          "with_data": {
+            "default": false,
+            "title": "With Data",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title",
+          "text"
+        ],
+        "title": "NoteIn",
         "type": "object"
       },
       "NoteOut": {
@@ -13251,6 +13324,35 @@
         "title": "RankingOut",
         "type": "object"
       },
+      "RecIn": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "nutrition",
+              "activity",
+              "insulin",
+              "glucose",
+              "tests",
+              "other"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 300,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "text"
+        ],
+        "title": "RecIn",
+        "type": "object"
+      },
       "RecordIn": {
         "additionalProperties": false,
         "properties": {
@@ -15285,11 +15387,17 @@
             ],
             "title": "Per",
             "type": "string"
+          },
+          "visit_id": {
+            "format": "uuid",
+            "title": "Visit Id",
+            "type": "string"
           }
         },
         "required": [
           "amount",
-          "per"
+          "per",
+          "visit_id"
         ],
         "title": "TargetIn",
         "type": "object"
@@ -16059,6 +16167,75 @@
           "awake_usual"
         ],
         "title": "TodayOut",
+        "type": "object"
+      },
+      "TodoDone": {
+        "additionalProperties": false,
+        "properties": {
+          "done": {
+            "title": "Done",
+            "type": "boolean"
+          },
+          "visit_id": {
+            "format": "uuid",
+            "title": "Visit Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "done",
+          "visit_id"
+        ],
+        "title": "TodoDone",
+        "type": "object"
+      },
+      "TodoIn": {
+        "additionalProperties": false,
+        "properties": {
+          "due": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due"
+          },
+          "id": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id"
+          },
+          "text": {
+            "maxLength": 300,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          },
+          "who": {
+            "enum": [
+              "patient",
+              "clinic"
+            ],
+            "title": "Who",
+            "type": "string"
+          }
+        },
+        "required": [
+          "who",
+          "text"
+        ],
+        "title": "TodoIn",
         "type": "object"
       },
       "Tokens": {
@@ -17054,6 +17231,33 @@
         "title": "VisitIn",
         "type": "object"
       },
+      "VisitOpen": {
+        "additionalProperties": false,
+        "properties": {
+          "visit_on": {
+            "format": "date",
+            "title": "Visit On",
+            "type": "string"
+          },
+          "visit_time": {
+            "anyOf": [
+              {
+                "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Visit Time"
+          }
+        },
+        "required": [
+          "visit_on"
+        ],
+        "title": "VisitOpen",
+        "type": "object"
+      },
       "VisitOut": {
         "properties": {
           "date": {
@@ -17094,6 +17298,63 @@
           "prepares_from"
         ],
         "title": "VisitOut",
+        "type": "object"
+      },
+      "VisitRow": {
+        "properties": {
+          "counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Counts",
+            "type": "object"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "opened_by": {
+            "$ref": "#/components/schemas/Author"
+          },
+          "recorded_by": {
+            "items": {
+              "$ref": "#/components/schemas/Author"
+            },
+            "title": "Recorded By",
+            "type": "array"
+          },
+          "today": {
+            "title": "Today",
+            "type": "boolean"
+          },
+          "visit_on": {
+            "format": "date",
+            "title": "Visit On",
+            "type": "string"
+          },
+          "visit_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Visit Time"
+          }
+        },
+        "required": [
+          "id",
+          "visit_on",
+          "visit_time",
+          "opened_by",
+          "recorded_by",
+          "counts",
+          "today"
+        ],
+        "title": "VisitRow",
         "type": "object"
       },
       "VoiceStatusOut": {
@@ -19748,6 +20009,58 @@
         ]
       }
     },
+    "/admin/users/{user_id}/whatsapp-number": {
+      "post": {
+        "description": "The full WhatsApp number of a linked account, for WhatsApp support (Guy, 27 Nov 2026, PM-632). Admins only, one\naccount at a time and only on request (a POST, so nothing caches it); the log says that a number was shown, never\nthe number or whose it is.",
+        "operationId": "whatsapp_number_admin_users__user_id__whatsapp_number_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "User Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminWhatsAppNumberOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "description": "not_found or not_linked"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Whatsapp Number",
+        "tags": [
+          "admin"
+        ]
+      }
+    },
     "/app/client-error": {
       "post": {
         "description": "Logs a caught app error for debugging: where, the message and the top frame, without the account or any values.",
@@ -19985,7 +20298,7 @@
     },
     "/auth/handoff-session": {
       "post": {
-        "description": "A second session for the same account, to open another area of the website signed in (PM-593, Guy 26 Nov 2026:\neveryone signs in on the website's sign-in page, which then opens the app, the clinic dashboard or the admin\ndashboard). The website hands it to that area in the same tab and the area keeps it its own way: the app as it keeps\nany sign-in, the clinic dashboard in memory only. A new family, so signing out of one area leaves the others as they\nare. Never for a demo account, whose session is tied to its demo link.",
+        "description": "A second session for the same account, to open another area of the website signed in (PM-593, Guy 26 Nov 2026:\neveryone signs in on the website's sign-in page, which then opens the app, the clinic dashboard or the admin\ndashboard). The website hands it to that area in the same tab and the area keeps it its own way: the app as it keeps\nany sign-in, the clinic dashboard in its own cookie (PM-607). A new family, so signing out of one area leaves the others as they\nare. Never for a demo account, whose session is tied to its demo link.",
         "operationId": "handoff_session_auth_handoff_session_post",
         "responses": {
           "200": {
@@ -21262,6 +21575,236 @@
         ]
       }
     },
+    "/clinic/patients/{link_id}/checks": {
+      "get": {
+        "description": "Where the Data tab's numbers come from and how the sources agree (Itay's point 8): sources, agreement between\nthem, and the clinic's own measurements beside Stedio's numbers for the same time.",
+        "operationId": "data_checks_clinic_patients__link_id__checks_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "period",
+            "required": false,
+            "schema": {
+              "default": "90",
+              "pattern": "^(14|30|90|180|365|last_visit|\\d{4}-\\d{2}-\\d{2}\\.\\.\\d{4}-\\d{2}-\\d{2})$",
+              "title": "Period",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Data Checks Clinic Patients  Link Id  Checks Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Data Checks",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/clinic/patients/{link_id}/checks/readings.csv": {
+      "get": {
+        "description": "The period's raw readings with time, value and source, logged as an open of the person like the summary.",
+        "operationId": "data_checks_csv_clinic_patients__link_id__checks_readings_csv_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "period",
+            "required": false,
+            "schema": {
+              "default": "90",
+              "pattern": "^(14|30|90|180|365|last_visit|\\d{4}-\\d{2}-\\d{2}\\.\\.\\d{4}-\\d{2}-\\d{2})$",
+              "title": "Period",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {}
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Data Checks Csv",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/clinic/patients/{link_id}/glucometer": {
+      "post": {
+        "description": "A clinic glucometer reading (mg/dL), to set beside the sensor at the same time. A new clinic record, never a\nreading of the person's own.",
+        "operationId": "glucometer_new_clinic_patients__link_id__glucometer_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GlucometerIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Glucometer New Clinic Patients  Link Id  Glucometer Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Glucometer New",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/clinic/patients/{link_id}/glucometer/{measure_id}": {
+      "delete": {
+        "operationId": "glucometer_delete_clinic_patients__link_id__glucometer__measure_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "measure_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Measure Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Glucometer Delete",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
     "/clinic/patients/{link_id}/meals": {
       "get": {
         "description": "The person's meals from `first` to `last` (their local days, at most 62), each day with its meals by time,\nphotos, foods and nutrients, the day's totals, and the averages over the days with meals. A copy of a meal from\nanother source (same_as) is left out, as everywhere. A minor's nutrients follow their age (no energy, sugar,\nsaturated fat or sodium under 18; a child sees carbs only).",
@@ -21328,6 +21871,205 @@
           }
         ],
         "summary": "Meals",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/clinic/patients/{link_id}/notes/{note_id}": {
+      "delete": {
+        "operationId": "note_delete_clinic_patients__link_id__notes__note_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "note_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Note Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Note Delete",
+        "tags": [
+          "clinic"
+        ]
+      },
+      "put": {
+        "operationId": "note_edit_clinic_patients__link_id__notes__note_id__put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "note_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Note Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NoteIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Note Edit Clinic Patients  Link Id  Notes  Note Id  Put",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Note Edit",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/clinic/patients/{link_id}/notes/{note_id}/todos/{todo_id}": {
+      "put": {
+        "description": "Ticks a to-do (PM-619). Any team member who may write visit summaries can, not only the author; the summary's\nwords stay the author's.",
+        "operationId": "todo_done_clinic_patients__link_id__notes__note_id__todos__todo_id__put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "note_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Note Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "todo_id",
+            "required": true,
+            "schema": {
+              "title": "Todo Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TodoDone"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Todo Done Clinic Patients  Link Id  Notes  Note Id  Todos  Todo Id  Put",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Todo Done",
         "tags": [
           "clinic"
         ]
@@ -21417,14 +22159,7 @@
             "required": false,
             "schema": {
               "default": "90",
-              "enum": [
-                "14",
-                "30",
-                "90",
-                "180",
-                "365",
-                "last_visit"
-              ],
+              "pattern": "^(14|30|90|180|365|last_visit|\\d{4}-\\d{2}-\\d{2}\\.\\.\\d{4}-\\d{2}-\\d{2})$",
               "title": "Period",
               "type": "string"
             }
@@ -21496,14 +22231,7 @@
             "required": false,
             "schema": {
               "default": "90",
-              "enum": [
-                "14",
-                "30",
-                "90",
-                "180",
-                "365",
-                "last_visit"
-              ],
+              "pattern": "^(14|30|90|180|365|last_visit|\\d{4}-\\d{2}-\\d{2}\\.\\.\\d{4}-\\d{2}-\\d{2})$",
               "title": "Period",
               "type": "string"
             }
@@ -21617,6 +22345,16 @@
               "title": "Key",
               "type": "string"
             }
+          },
+          {
+            "in": "query",
+            "name": "visit_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Visit Id",
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -21723,7 +22461,7 @@
     },
     "/clinic/patients/{link_id}/visits": {
       "get": {
-        "description": "Newest visit first. `q` finds a visit by words in its text, its author or its date (as typed: 2026-11-26).",
+        "description": "The person's visits at this clinic, newest first, each with who recorded what the reader may see. `q` finds a\nvisit by words in its summaries (title or text), a team member's name, or its date (as typed: 2026-11-26).",
         "operationId": "visits_clinic_patients__link_id__visits_get",
         "parameters": [
           {
@@ -21754,7 +22492,7 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "$ref": "#/components/schemas/ClinicVisitOut"
+                    "$ref": "#/components/schemas/VisitRow"
                   },
                   "title": "Response Visits Clinic Patients  Link Id  Visits Get",
                   "type": "array"
@@ -21785,7 +22523,8 @@
         ]
       },
       "post": {
-        "operationId": "visit_new_clinic_patients__link_id__visits_post",
+        "description": "Opens the person's visit for a day, or returns the one already open that day (the first team member who sees\nthe person opens it; the others join it).",
+        "operationId": "visit_open_clinic_patients__link_id__visits_post",
         "parameters": [
           {
             "in": "path",
@@ -21802,7 +22541,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClinicVisitIn"
+                "$ref": "#/components/schemas/VisitOpen"
               }
             }
           },
@@ -21813,7 +22552,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClinicVisitOut"
+                  "$ref": "#/components/schemas/VisitRow"
                 }
               }
             },
@@ -21835,15 +22574,16 @@
             "HTTPBearer": []
           }
         ],
-        "summary": "Visit New",
+        "summary": "Visit Open",
         "tags": [
           "clinic"
         ]
       }
     },
-    "/clinic/patients/{link_id}/visits/{note_id}": {
-      "delete": {
-        "operationId": "visit_delete_clinic_patients__link_id__visits__note_id__delete",
+    "/clinic/patients/{link_id}/visits/{visit_id}": {
+      "get": {
+        "description": "The visit and its log: what each team member recorded, by time, as far as the reader may see it.",
+        "operationId": "visit_get_clinic_patients__link_id__visits__visit_id__get",
         "parameters": [
           {
             "in": "path",
@@ -21857,17 +22597,26 @@
           },
           {
             "in": "path",
-            "name": "note_id",
+            "name": "visit_id",
             "required": true,
             "schema": {
               "format": "uuid",
-              "title": "Note Id",
+              "title": "Visit Id",
               "type": "string"
             }
           }
         ],
         "responses": {
-          "204": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Visit Get Clinic Patients  Link Id  Visits  Visit Id  Get",
+                  "type": "object"
+                }
+              }
+            },
             "description": "Successful Response"
           },
           "422": {
@@ -21886,13 +22635,16 @@
             "HTTPBearer": []
           }
         ],
-        "summary": "Visit Delete",
+        "summary": "Visit Get",
         "tags": [
           "clinic"
         ]
-      },
-      "put": {
-        "operationId": "visit_edit_clinic_patients__link_id__visits__note_id__put",
+      }
+    },
+    "/clinic/patients/{link_id}/visits/{visit_id}/data": {
+      "get": {
+        "description": "The numbers a new visit summary would keep (PM-619), shown in the form before it is saved.",
+        "operationId": "visit_data_clinic_patients__link_id__visits__visit_id__data_get",
         "parameters": [
           {
             "in": "path",
@@ -21906,11 +22658,71 @@
           },
           {
             "in": "path",
-            "name": "note_id",
+            "name": "visit_id",
             "required": true,
             "schema": {
               "format": "uuid",
-              "title": "Note Id",
+              "title": "Visit Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Visit Data Clinic Patients  Link Id  Visits  Visit Id  Data Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Visit Data",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
+    "/clinic/patients/{link_id}/visits/{visit_id}/notes": {
+      "post": {
+        "operationId": "note_new_clinic_patients__link_id__visits__visit_id__notes_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "visit_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Visit Id",
               "type": "string"
             }
           }
@@ -21919,18 +22731,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClinicVisitIn"
+                "$ref": "#/components/schemas/NoteIn"
               }
             }
           },
           "required": true
         },
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClinicVisitOut"
+                  "additionalProperties": true,
+                  "title": "Response Note New Clinic Patients  Link Id  Visits  Visit Id  Notes Post",
+                  "type": "object"
                 }
               }
             },
@@ -21952,7 +22766,7 @@
             "HTTPBearer": []
           }
         ],
-        "summary": "Visit Edit",
+        "summary": "Note New",
         "tags": [
           "clinic"
         ]

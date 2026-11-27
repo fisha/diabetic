@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+27 Nov 2026 (Jira PM-632, thread "Show WhatsApp phone number in admin user card"): Guy asked for the phone number on
+the admin user card. Admin > Users > a person's profile now has a WhatsApp row: the last 3 digits and the linked date,
+and "Show number", which asks `POST /admin/users/{id}/whatsapp-number` for the full number (admins only, one account at
+a time, kept in the page only; the API logs only that a number was shown). Privacy 2026-11-27T22:00:00Z says
+administrators can open the number and also carries PM-608 (the website sign-in cookies). Lawyer review PM-639.
+Screenshots in project files `admin-pm632/`.
+
 27 Nov 2026 (Jira PM-631, thread "Fix sensor warm-up countdown start time"): Guy saw the new-sensor countdown start
 when he looked at the app, not when the sensor was started on the pump. The CareLink start was the first poll that saw
 WARM_UP; it now comes from the pump's own sensor history (`sgs` WARM_UP entries, `carelink.warmup_start`, kept as
