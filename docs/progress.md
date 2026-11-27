@@ -20,8 +20,9 @@ from CareLink also come from the other sources when they expose it. Parity matri
 Tandem fingersticks typed on the pump (event 16) as meter readings (PM-634); Tandem Control-IQ off windows (event 230,
 mode `loop_off`, journal row and badges, PM-635); the Libre app's target range (LibreLinkUp `connection.targetLow/High`)
 as the read-only device range, source `libre` (PM-636). No new vendor call. Deploy order: OTA and website first (new
-strings), then the API. Open for Guy: a Libre/Tandem sensor-time-left row on Overview (start + rated days, an estimate)
-and Dexcom's official API for sensor sessions and alerts (delayed 1 h US).
+strings), then the API. Live the same night (OTA, web v147, API v240). Guy then approved the
+Overview sensor-time-left row for Libre and Tandem from start + rated days (PM-640, api #313, `sensor_from_start` on
+`/devices/equipment`, no app change) and chose no change for Dexcom (Share only).
 
 27 Nov 2026 (Jira PM-631, thread "Fix sensor warm-up countdown start time"): Guy saw the new-sensor countdown start
 when he looked at the app, not when the sensor was started on the pump. The CareLink start was the first poll that saw

@@ -4909,6 +4909,11 @@
             ],
             "title": "Sensor At"
           },
+          "sensor_from_start": {
+            "default": false,
+            "title": "Sensor From Start",
+            "type": "boolean"
+          },
           "sensor_hours_left": {
             "anyOf": [
               {
