@@ -4044,7 +4044,7 @@
   "care.sc_sensor": "Glucose and sensor",
   "care.sc_sensor_s": "Always part of the summary",
   "care.sc_insulin": "Insulin as recorded",
-  "care.sc_lifestyle": "Meals, activity, sleep",
+  "care.sc_lifestyle": "Meals, activity, sleep and heart",
   "care.sc_labs": "Test results",
   "care.sc_questions": "My questions for the visit",
   "care.consent_1": "View only. The clinic never sees your conversations with Stedio.",

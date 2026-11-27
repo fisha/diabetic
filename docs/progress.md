@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+27 Nov 2026 (Jira PM-606 and PM-605): Guy reported that Itay's personal data vanished from the iPhone app after Itay
+was made a clinic doctor. His data is intact (read-only counts from the server). He has not worn a sensor since 23 Nov,
+so the Overview, with no glucose in the last 24 hours, showed the first-day "Connect a device" screen. That screen hid
+his kept glucose, meals and Apple Health data. Clinic membership changes no data or app screen; the timing matches a
+new sign-in after his session ended. Guy's rule: stored data and all health data always show. Fixed in app #330: the
+session keeps `has_data` from /auth/me, and the empty state shows only for an account with nothing kept (OTA). PM-605
+(Guy approved): the clinic share part is now "Meals, activity, sleep and heart" / "ארוחות, פעילות, שינה ולב". It
+needs no new privacy version, because the policy text did not change.
+
 27 Nov 2026 (Jira PM-602, thread "Add demo patients to Guy's clinic account"): Guy asked for patients on his own
 clinic account (doctor) with 1, 3 and 12 months of data, and for Itay as a doctor at the Tel Aviv clinic. Built (API
 #290, merged): `python -m steady_api.demo.clinic_patients add --clinician-email <email>` makes Dana Demo (type 2,
