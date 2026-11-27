@@ -9,7 +9,7 @@ or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Hea
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
 27 Nov 2026 (Jira PM-630, thread "Rewrite website footer as marketing copy"): Guy asked for a footer blurb that says
-what Stedio is. `web.disclaimer` is now marketing copy (en, he); "Stedio is not a medical device." moved to the copyright
+what Stedio is. `web.disclaimer` is now marketing copy (en, he), ending "helps you better understand what’s going on with your diabetes" (Guy); "Stedio is not a medical device." moved to the copyright
 line (`web.foot_notice`), since regulatory-check rule 4 keeps that notice in the website footer (web #131).
 
 27 Nov 2026 (Jira PM-626, idea DAP-103, thread "Shape mentor personality like Instinct's agent"): research on
