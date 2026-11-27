@@ -255,6 +255,35 @@ cmd_deploy_api() {
   # Read from the Machine config (ssh is often not ready right after a deploy).
   echo "worker setting on the running Machine: $(fly machines list -a "$API_APP" --json | python3 -c 'import json,sys; print(",".join(m["config"].get("env",{}).get("STEADY_RUN_WORKER","unset") for m in json.load(sys.stdin)))')"
   curl -fsS -m 15 --retry 8 --retry-delay 5 --retry-all-errors "$API_URL/health" && echo
+  ensure_trainer
+}
+
+# The forecast trainer (PM-601, Guy 27 Nov 2026): one Machine in stedio-api, separate from the one that serves users,
+# started by Fly every hour; each run trains the estimates that are due (everyone else's only 00:00-06:00 UTC) and
+# exits, so it costs only while it trains (about $1.5-2 a month at 1 GB). No port (no HTTP service, no traffic), no
+# volume, no worker (deploy/train.sh): it never syncs a device or sends a push. `fly deploy` leaves Machines it did not
+# create alone, so every deploy gives it the API's new image here (without starting it).
+TRAINER_NAME="forecast-trainer"
+ensure_trainer() {
+  local image id
+  image="$(fly machines list -a "$API_APP" --json | python3 -c '
+import json, sys
+ms = [m for m in json.load(sys.stdin) if (m.get("config", {}).get("metadata") or {}).get("fly_process_group")]
+print(ms[0]["config"]["image"] if ms else "")')"
+  [ -n "$image" ] || die "trainer: could not read the API Machine image"
+  id="$(fly machines list -a "$API_APP" --json | python3 -c '
+import json, sys
+print(next((m["id"] for m in json.load(sys.stdin) if m.get("name") == sys.argv[1]), ""))' "$TRAINER_NAME")"
+  if [ -z "$id" ]; then
+    say "creating the forecast trainer Machine (hourly, 1 GB, no port)"
+    fly machine run "$image" /app/deploy/train.sh -a "$API_APP" --name "$TRAINER_NAME" --region "$REGION" \
+      --vm-size shared-cpu-1x --vm-memory 1024 --schedule hourly --restart no --metadata role=forecast-trainer \
+      -e STEADY_RUN_WORKER=false -e STEADY_FORECAST_TRAIN_MAX_MB=700 -e STEADY_FORECAST_SHADOW_MAX_ROWS=60000 \
+      -e STEADY_MEDIA_DIR=/tmp/media --detach
+  else
+    say "forecast trainer $id: new image"
+    fly machine update "$id" -a "$API_APP" --image "$image" --skip-start --yes
+  fi
 }
 
 # install/latest.json: the newest build number, read by the API's GET /app/version so an older install offers the new
