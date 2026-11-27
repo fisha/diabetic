@@ -19343,10 +19343,17 @@
   "web.disclaimer": {
     "board": "Website",
     "review": [
+      "translation"
+    ],
+    "note": "Footer blurb: marketing copy, what Stedio is (Guy, 27 Nov 2026)."
+  },
+  "web.foot_notice": {
+    "board": "Website",
+    "review": [
       "translation",
       "clinical"
     ],
-    "note": "Regulatory wording is open."
+    "note": "Not-a-medical-device notice that stays in the website footer (regulatory-check rule 4)."
   },
   "web.eye": {
     "board": "Website",
