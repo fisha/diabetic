@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+27 Nov 2026 (Jira PM-631, thread "Fix sensor warm-up countdown start time"): Guy saw the new-sensor countdown start
+when he looked at the app, not when the sensor was started on the pump. The CareLink start was the first poll that saw
+WARM_UP; it now comes from the pump's own sensor history (`sgs` WARM_UP entries, `carelink.warmup_start`, kept as
+`status.warmup_pump`), with the old start as the fallback (api #306). No new field, no app change. API deploy requested.
+
 27 Nov 2026 (Jira PM-630, thread "Rewrite website footer as marketing copy"): Guy asked for a footer blurb that says
 what Stedio is. `web.disclaimer` is now marketing copy (en, he), ending "helps you better understand what’s going on with your diabetes" (Guy); "Stedio is not a medical device." moved to the copyright
 line (`web.foot_notice`), since regulatory-check rule 4 keeps that notice in the website footer (web #131).
