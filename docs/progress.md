@@ -23,6 +23,12 @@ the seats. Privacy `2026-11-27T01:00:00Z` adds organization managers. Verified i
 lint, tests, Playwright en/he, day/night, 1440/390, axe); the handoff into the exported /app is covered by unit tests,
 not yet run against an /app export. Next: Guy's OK on the screenshots, merge, deploy API (migration) then web, then OTA.
 
+27 Nov 2026 (Jira PM-591, thread "Add live dev mode to local stedio script"): `stedio sync` pulls main from GitHub
+(fast-forward only; skips on local commits, another branch, conflicting local changes or a running build; submodules
+follow only when they sat on the recorded commit; pnpm install, uv sync and local migrations only when needed). `up`
+pulls once first; live-reload mode pulls every minute (`stedio sync off` stops it). Tested on local copies of the
+repositories; not yet on the Mac.
+
 26 Nov 2026, night (Jira PM-589, open item PM-590, thread "Add live dev mode to local stedio script"): `stedio up dev`
 and `stedio restart dev` run the Mac's website as `next dev` and the API as `uvicorn --reload`; db and the tunnels
 stay; `stedio up` goes back to the built site. Web next.config lets the ngrok host use dev files and live reload
