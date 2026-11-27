@@ -31564,6 +31564,97 @@
     ],
     "note": "Measurement history list under each chart (PM-596, Guy 27 Nov 2026)"
   },
+  "clc.bh_title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
+  "clc.bh_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
+  "clc.bh_source": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
+  "clc.bh_heart_rate": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
+  "clc.bh_hrv": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
+  "clc.bh_spo2": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
+  "clc.bh_sleep": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
+  "clc.bh_steps": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
+  "clc.bh_distance": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
+  "clc.bh_active_energy": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
+  "clc.bh_exercise": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
+  "clc.bh_stand": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
+  "clc.bh_u_steps": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Health-app measures in the clinic measurements (PM-604, Guy 27 Nov 2026)"
+  },
   "clc.b_list_of": {
     "board": "ClinicPortal",
     "review": [
