@@ -7,6 +7,7 @@ Israel as possible. Fly has no region in Israel or the Middle East; **fra (Frank
 |---|---|---|---|---|
 | `stedio-db` | PostgreSQL 16, volume `stedio_db` (1 GB) | shared-cpu-1x, 256 MB + 512 MB swap | yes | `stedio-db.internal:5432` (private network only) |
 | `stedio-api` | FastAPI + the worker as a second, niced process (`steady_api.supervise`, PM-164; `STEADY_WORKER_PROCESS=false` for the old thread), volume `stedio_media` (1 GB, meal photos and exports) | shared-cpu-1x, 512 MB + 512 MB swap | yes (syncs, alerts, pushes, retrain, voice) | https://api.stedio.io (also https://stedio-api.fly.dev) |
+| `stedio-api` Machine `forecast-trainer` | Glucose forecast training only (PM-601): `deploy/train.sh` runs `steady_api.forecast_batch`; no port, volume or worker. Created and given each new image by `stedio-fly deploy-api` | shared-cpu-1x, 1 GB | no: Fly starts it every hour, it trains what is due and stops | none |
 | `stedio-web` | Next.js website, the app's web build at `/app`, tester install page at `/install` | shared-cpu-1x, 256 MB | no: stops when idle, starts on the next visit | https://stedio.io; signed-in areas (/app, dashboard, clinic) on https://app.stedio.io (also https://stedio-web.fly.dev) |
 | `stedio-research` | Internal research tool (Streamlit), see below | shared-cpu-1x, 256 MB + 512 MB swap | no: stops when idle, starts on the next visit | https://stedio-research.fly.dev |
 
@@ -108,7 +109,7 @@ After adding the Google settings to `.env`, run both again.
 ## Cost (Fly list prices, Nov 2026, before any regional markup)
 
 About $3.19 (API 512 MB) + $1.94 (database 256 MB) + volumes 2 x $0.15 + website and research tool only while running (cents) +
-snapshots (first 10 GB free) ≈ **$5.5–6 a month**. Shared IPv4 and the fly.dev addresses are free.
+snapshots (first 10 GB free) ≈ **$5.5–6 a month**. The forecast trainer Machine adds about $1.5–2 (it runs only while training). Shared IPv4 and the fly.dev addresses are free.
 
 ## WhatsApp companion channel (PM-269)
 
