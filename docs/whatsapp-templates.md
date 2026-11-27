@@ -17,8 +17,11 @@ deploy once Meta approves.
 
 ## Status (27 Nov 2026)
 
-Submitted as Utility, all In review. Meta's pre-check had stedio_daily_v2 and stedio_insight_v2 reworded (the
-text below is what was submitted). stedio_meal_v2 Hebrew is still being retried; its final text will be added here.
+Approved as Utility (7): stedio_daily_v2 en/he, stedio_insight_v2 en/he, stedio_checkin_v2 en/he, stedio_meal_v2 en.
+Meta's pre-check had stedio_daily_v2 and stedio_insight_v2 reworded; the text below is what was approved.
+
+stedio_meal_v2 he: **not submitted** (Meta classifies it as Marketing on every wording tried, 4 tries). The API skips
+it (`proactive.CONTENT_NOT_IN`) and sends the plain `stedio_meal` template, with the text waiting behind its button.
 
 ## Submitting (Meta Business Manager > WhatsApp Manager > Message templates)
 
