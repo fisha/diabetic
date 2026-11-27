@@ -34007,5 +34007,1576 @@
       "translation"
     ],
     "note": "Motion permission row in Settings > Privacy (PM-609, Guy 27 Nov 2026). Title is the system's own name for the permission."
+  },
+  "clc.r_title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_when": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_from_to": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_rise": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_time": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_logged": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_curve": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_show": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_hide": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_hm": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_m": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_meal": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_meal_carbs": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_meal_plain": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_insulin": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_workout": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_nothing": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_not_shared": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.mc_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_rise_sr": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_none_long": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_at": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_peak": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_after": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_back": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_back_range": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_back_v": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_stayed": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_no_rise": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_not_back": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_not_back_meal": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_not_back_act": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_not_back_end": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_range": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_start_mark": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_peak_mark": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_axis_meal": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_axis_h": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_insulin": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_dose": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_source": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.mc_a11y": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic meal curve (PM-616, Guy 27 Nov 2026)"
+  },
+  "clc.a_title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_active": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_min": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_min_unit": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_active_health": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_active_workouts": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_target": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_target_line": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_walk": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_walk_sub": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_workouts": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_workouts_sub": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_split": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_split_sub": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_steps_sub": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_by_week": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_aerobic": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_strength": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_other": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_by_type": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_type": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_n": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_minutes": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_avg": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_hours": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_low_during": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_low_after": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_k_walk": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_k_run": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_k_cycle": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_k_swim": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_k_gym_cardio": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_k_gym_strength": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_k_other": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_c_aerobic": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_c_strength": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.a_foot": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic activity (PM-617, Guy 27 Nov 2026)"
+  },
+  "clc.rng_choose": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal chosen dates (PM-614, Guy 27 Nov 2026)"
+  },
+  "clc.rng_title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal chosen dates (PM-614, Guy 27 Nov 2026)"
+  },
+  "clc.rng_from": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal chosen dates (PM-614, Guy 27 Nov 2026)"
+  },
+  "clc.rng_to": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal chosen dates (PM-614, Guy 27 Nov 2026)"
+  },
+  "clc.rng_hint": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal chosen dates (PM-614, Guy 27 Nov 2026)"
+  },
+  "clc.rng_show": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal chosen dates (PM-614, Guy 27 Nov 2026)"
+  },
+  "clc.rng_all": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal chosen dates (PM-614, Guy 27 Nov 2026)"
+  },
+  "clc.rng_meals_cut": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal chosen dates (PM-614, Guy 27 Nov 2026)"
+  },
+  "clc.rng_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic portal chosen dates (PM-614, Guy 27 Nov 2026)"
+  },
+  "clc.g_title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_tir": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_tbr": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_tbr2": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_tar": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_tar2": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_cv": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_wear": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_gmi": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_target": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_no_target": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_was": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_meet": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_warn": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_miss": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.g_note_alone": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic at a glance colours (PM-618, Guy 27 Nov 2026)"
+  },
+  "clc.vs_data": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_data_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_data_kept": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_data_remove": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_data_add": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_wear": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_recs": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_todos": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_rec_add": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_todo_add": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_rec_kind": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_rec_text": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_rec_remove": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_todo_who": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_todo_text": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_todo_due": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_todo_remove": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_k_nutrition": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_k_activity": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_k_insulin": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_k_glucose": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_k_tests": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_k_other": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_who_patient": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_who_clinic": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_due": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_done_on": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_carried": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_recs_n": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_todos_n": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.vs_foot": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visit summary recommendations and to-dos (PM-619, Guy 27 Nov 2026)"
+  },
+  "clc.b_glucose": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_intro": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_h1": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_h2": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_h3": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_source": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_kind": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_readings": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_days": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_last": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_used": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_compared": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_pairs": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_mean": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_mard": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_within": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_measure": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_date": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_value": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_stedio": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_c_diff": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_src_carelink": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_src_dexcom": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_src_libre": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_src_tandem": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_src_apple_health": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_src_health_connect": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_src_manual": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_src_voice": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_src_pump": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_k_sensor": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_k_sensor_min": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_k_meter": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_days_of": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_used_yes": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_used_part": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_used_no_other": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_used_no_checks": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_a_meter": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_a_sensors": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_m_a1c": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_m_glucometer": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_gmi_90": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_gmi_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_sensor_at": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_at": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_no_sensor": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_no_pairs": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_no_clinic": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_remove": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_csv": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_enter": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_foot": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_g_value": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_g_time": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_g_range": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_g_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_tir_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_tir": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_gmi_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_gmi": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_cv_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_cv": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_wear_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_wear": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_sources_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_sources": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_pairs_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_pairs": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_mard_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_mard": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_within_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_within": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation",
+      "clinical"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_a1c_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_a1c": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_glucometer_t": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "clc.ck_how_glucometer": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
   }
 }

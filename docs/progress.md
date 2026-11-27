@@ -31,7 +31,15 @@ back in range with the curve, by the app's and the visit report's rule (`meal_re
 permission (API #300 `after`, web #126). PM-617 (Guy approved the mockup): Data tab "Activity" section replaces the
 Exercise row: active minutes, walking and workouts a week, aerobic/strength split (by recorded workout type; app-logged
 gym = strength), steps, weekly stacked bars with the care team's active-minutes target if set, a row per type (API #301
-`lifestyle.activity`, web #127). Next: API deploy, then web.
+`lifestyle.activity`, web #127). PM-618 (point 5): "At a glance" tiles first on the Data tab, coloured against the
+published consensus targets (green / yellow = met but worse than before / red / grey). PM-619 (point 6): visit summaries
+with clinician-written recommendations and to-dos (patient or clinic, due date, ticked by anyone who writes summaries,
+open ones carried to the next visit), plus the Data tab's numbers computed on save (sealed in the note). PM-621
+(point 8): Data tab "Data sources and checks": sources and their use in the metrics, sensor vs finger-stick and sensor
+vs sensor agreement, lab HbA1c vs GMI, clinic glucometer readings (new `clinic_measurements.measured_at`, migration
+d9e1f3a5b7c2) vs the sensor, raw readings CSV (API #304, web #130). Policy lines and review: PM-628. Point 9 (PM-622):
+Hebrew website copy approved, handed to the website thread. Fixed the i18n meta parity test (clc.* ids missing from
+meta.json since PM-614..617). Next: API deploy (with migration), then web.
 
 27 Nov 2026 (Jira PM-607, thread "Fix clinic login signing out repeatedly"): Guy said the clinic login kept
 signing out. The clinic dashboard kept its session in page memory only, so a reload, a new tab, the English/Hebrew
