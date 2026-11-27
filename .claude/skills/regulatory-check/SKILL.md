@@ -59,6 +59,11 @@ diagnose, give dosing advice or provide treatment.
   Check that it stays this narrow: no sound, not time-sensitive or critical, never says a low or drop is expected, no
   value, dose or treatment, at most one every 3 hours, motion stays on the phone, never for minors, demo or viewers.
   Any widening of it fails.
+- Exception approved by Guy (27 Nov 2026, PM-611, lawyer review PM-612): the after-the-fact check-in
+  (`steady_api/glucose_reflect.py`) after a stretch under 60 or over 300 mg/dL, fixed numbers Guy chose. It asks only
+  how the person feels and whether they want to talk about what happened. Check that it stays this narrow: a low only
+  once it is over, a high once over or after 2 hours, no value, dose, advice or cause in the text, no sound, not
+  time-sensitive, quiet hours hold it, at most 2 a day per side, none in a break. Any other use of these numbers fails.
 - Relaying a device's own alarms is at risk; supply logistics (reservoir, battery, sensor ending, set change) are fine.
 - Routine prompts (meal check-ins, reminders the person set, summaries) are fine. They carry no medical claim.
 
