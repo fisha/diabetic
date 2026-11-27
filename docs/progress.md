@@ -310,6 +310,12 @@ the same public project token). Privacy `2026-11-26T14:00:00Z` (forced re-accept
 Regulatory and privacy: pass with at-risk items for the lawyer (PM-533, needs-lawyer). Next: API deploy (migration),
 web, then OTA; Guy sets STEADY_MIXPANEL_TOKEN.
 
+27 Nov 2026 (Jira PM-625, PM-624): Guy: never both channels; with WhatsApp connected send only there, except the kinds
+the person keeps in the app (turned off on the app's WhatsApp card), and anything WhatsApp can't take now goes as the
+push; an undelivered template sends the push after all. App copy wa.kinds changed (needs OTA). Content templates
+stedio_{daily,insight,checkin,meal}_v2 carry the message itself; until Meta approves them the plain template goes. Texts
+to submit: docs/whatsapp-templates.md (Mac thread). API #297.
+
 27 Nov 2026 (Jira PM-611): Guy: after glucose under 60 or over 300, at least once ask how they feel, whether they want
 to talk and what happened, WhatsApp first. `glucose_reflect` (worker step) makes one app check-in per stretch: a low
 once it is over, a high once over or after 2 h; no value or advice in the text, times and unit in the reason; 2 a day
