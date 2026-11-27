@@ -503,6 +503,27 @@
     ],
     "note": "Minutes, short."
   },
+  "bd.tg_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Activity targets from the care team under the body tiles (PM-596, Guy 27 Nov 2026)"
+  },
+  "bd.tg_week": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Activity targets from the care team under the body tiles (PM-596, Guy 27 Nov 2026)"
+  },
+  "bd.tg_sessions": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "Activity targets from the care team under the body tiles (PM-596, Guy 27 Nov 2026)"
+  },
   "bd.l_energy": {
     "board": "Overview",
     "review": [
@@ -31137,6 +31158,286 @@
     ],
     "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
   },
+  "clc.v_name": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit summary title, time and list table (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.v_time": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit summary title, time and list table (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.v_col_visit": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit summary title, time and list table (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.v_col_by": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit summary title, time and list table (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.v_untitled": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit summary title, time and list table (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.v_open": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Visit summary title, time and list table (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_search": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_open_today": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_continue": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_no_match": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_col_when": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_col_opened": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_col_recorded": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_col_entries": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_c_note": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_c_measure": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_c_target": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_c_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_today": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_open_aria": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_back": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_heading": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_opened": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_new_title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_new_hint": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vs_open_btn": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vtab_log": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vtab_data": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vl_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vl_add": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vl_target": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vl_cleared": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.vl_note_open": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic visits and visit log (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.cal_choose": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic date picker and time field (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.cal_prev": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic date picker and time field (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.cal_next": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic date picker and time field (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.cal_hour": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic date picker and time field (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.cal_minute": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic date picker and time field (PM-596, Guy 27 Nov 2026)"
+  },
   "clc.b_height": {
     "board": "ClinicPortal",
     "review": [
@@ -31248,6 +31549,34 @@
       "translation"
     ],
     "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.b_show_list": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Measurement history list under each chart (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.b_hide_list": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Measurement history list under each chart (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.b_list_of": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Measurement history list under each chart (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.b_source": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Measurement history list under each chart (PM-596, Guy 27 Nov 2026)"
   },
   "clc.b_entered": {
     "board": "ClinicPortal",
@@ -31612,6 +31941,34 @@
       "translation"
     ],
     "note": "Clinic portal roles, visits, periods (PM-556..562, Guy 26 Nov 2026)"
+  },
+  "clc.j_cal": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Meals calendar and side panel (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.j_no_meals": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Meals calendar and side panel (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.j_foods": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Meals calendar and side panel (PM-596, Guy 27 Nov 2026)"
+  },
+  "clc.j_totals": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Meals calendar and side panel (PM-596, Guy 27 Nov 2026)"
   },
   "clc.tm_title": {
     "board": "ClinicPortal",

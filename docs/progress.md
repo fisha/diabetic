@@ -29,6 +29,16 @@ follow only when they sat on the recorded commit; pnpm install, uv sync and loca
 pulls once first; live-reload mode pulls every minute (`stedio sync off` stops it). Tested on local copies of the
 repositories; not yet on the Mac.
 
+27 Nov 2026, night (Jira PM-596, thread "Improve clinic area for care teams"): Guy's clinic follow-ups and the visit
+redesign ("הראשון שהוא מבקר יוצר לו ביקור חדש… כל אלה צריכים להתווסף לביקור של אותו יום כיומן תיעודים"). The patient
+file opens on visits; the first team member that day opens the visit (date and time pickers) and the others record into
+it; a visit's log shows summaries (title + text), measurements and target changes with author, role and time, by
+permission; tabs Data (period filter), Meals (calendar + side panel), Measurements (chart + list), Targets. Styled,
+keyboard-accessible dropdowns and calendar in all clinic forms. Existing summaries and measurements migrate into visits
+(`b8d4f6a0c2e7`, on top of the organizations migration). App Overview shows care-team nutrition, step and activity
+targets even before there is data. Privacy line added to 2026-11-27T01:00:00Z. Merged: api #286, web #115, app #328.
+Next: deploy API, web, then OTA; Guy to review the screenshots in the thread.
+
 26 Nov 2026, night (Jira PM-589, open item PM-590, thread "Add live dev mode to local stedio script"): `stedio up dev`
 and `stedio restart dev` run the Mac's website as `next dev` and the API as `uvicorn --reload`; db and the tunnels
 stay; `stedio up` goes back to the built site. Web next.config lets the ngrok host use dev files and live reload
