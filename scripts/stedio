@@ -24,7 +24,9 @@
 # Pulling: `up` and `up dev` pull once first (`--no-pull` skips it); live-reload mode keeps pulling every minute, so
 #        merged work shows by itself. A pull is only ever a fast-forward of main: local changes, another branch, a
 #        submodule on its own commit, or a build running (eas, expo export, next build, pnpm install) and it skips
-#        and says why (stedio log sync). pnpm install / uv sync run only when a lockfile changed, and a new database
+#        and says why (stedio log sync). New submodules are checked out. pnpm install runs when the lockfile or a
+#        package.json changed or a workspace package is not linked (also checked before web starts); uv sync when
+#        the API's uv.lock changed; and a new database
 #        migration runs (alembic upgrade head) only against a local database. `stedio stop sync` stops the auto pull.
 # Logs and pid files live in /Volumes/Studio SSD/Workspace/steady-run.
 # The mixmaster-pro tunnel and servers are never touched.
@@ -153,6 +155,7 @@ start_one() {
       for _ in $(seq 1 40); do [ "$(check_url http://127.0.0.1:8010/health)" = 200 ] && break; sleep 0.5; done
       ;;
     web)
+      ensure_deps
       if [ "$MODE" = dev ]; then
         # `next dev` keeps its files in .next/dev, so the build that `next start` serves stays as it is. Next.js blocks
         # its dev files and the reload socket for other origins than localhost; STEDIO_DEV_ORIGINS lets the ngrok
@@ -277,6 +280,50 @@ busy_build() {
     | grep -vE '^ *[0-9]+ ([^ ]*/)?(ba|z|da)?sh (-[a-z]*c|-c) ' | grep -v grep | awk '{print $1}' | grep -vx "$$" | head -1
 }
 
+# Workspace links that pnpm has not made yet: a `workspace:` dependency with no node_modules entry, or one whose package
+# folder is an empty (not yet checked out) submodule. Prints one name per line.
+deps_missing() {
+  python3 - "$REPO" <<'PY'
+import glob, json, os, sys
+repo = sys.argv[1]
+pkgs, deps = {}, []
+for pj in glob.glob(os.path.join(repo, "apps", "*", "package.json")) + glob.glob(os.path.join(repo, "packages", "*", "package.json")):
+    try:
+        data = json.load(open(pj))
+    except Exception:
+        continue
+    d = os.path.dirname(pj)
+    pkgs[data.get("name")] = d
+    for field in ("dependencies", "devDependencies"):
+        for name, ver in (data.get(field) or {}).items():
+            if str(ver).startswith("workspace:"):
+                deps.append((d, name))
+for d, name in deps:
+    linked = any(os.path.exists(os.path.join(base, "node_modules", name)) for base in (d, repo))
+    if not linked or name not in pkgs:
+        print(name)
+PY
+}
+# New submodules that were never checked out (`git submodule status` marks them with "-"). Checking them out touches
+# nothing that exists yet.
+init_new_submodules() {
+  local sub
+  for sub in $(git -C "$REPO" submodule status 2>/dev/null | awk '/^-/ {print $2}'); do
+    if git -C "$REPO" submodule update --init -- "$sub" >>"$RUN/sync.log" 2>&1; then sync_log "checked out new submodule $sub"
+    else sync_log "could not check out new submodule $sub (see stedio log sync)"; fi
+  done
+}
+# Before the website starts: new submodules checked out and workspace packages linked, so `next dev` / `next start`
+# do not stop at "Module not found" for a package that arrived with a pull.
+ensure_deps() {
+  init_new_submodules
+  local missing; missing="$(deps_missing | tr '\n' ' ')"
+  [ -n "${missing// /}" ] || return 0
+  say "  deps: not linked yet: $missing-> pnpm install"
+  if (cd "$REPO" && PATH="$NODE_BIN:$PATH" pnpm install --frozen-lockfile >>"$RUN/sync.log" 2>&1); then pending_done pnpm
+  else err "  deps: pnpm install failed; see: stedio log sync"; fi
+}
+
 pending_add() { grep -qx "$1" "$RUN/sync.pending" 2>/dev/null || echo "$1" >> "$RUN/sync.pending"; }
 pending_done() { [ -f "$RUN/sync.pending" ] && { grep -vx "$1" "$RUN/sync.pending" > "$RUN/sync.pending.tmp"; mv "$RUN/sync.pending.tmp" "$RUN/sync.pending"; }; return 0; }
 run_pending() { # sets PENDING_FAILED to what is still to do
@@ -285,7 +332,7 @@ run_pending() { # sets PENDING_FAILED to what is still to do
   for t in $(cat "$RUN/sync.pending" 2>/dev/null); do
     case "$t" in
       pnpm)
-        sync_log "pnpm-lock.yaml changed: pnpm install"
+        sync_log "dependencies changed (lockfile, package.json or a new workspace package): pnpm install"
         if (cd "$REPO" && PATH="$NODE_BIN:$PATH" pnpm install --frozen-lockfile >>"$RUN/sync.log" 2>&1); then pending_done pnpm
         else PENDING_FAILED="$PENDING_FAILED pnpm-install"; fi ;;
       uv)
@@ -341,8 +388,9 @@ cmd_sync() {
       sync_done "skipped: local changes are in the way of the pull (see stedio log sync)"; return 0
     fi
   fi
-  local updated="" failed="" api_before keep=""
+  local updated="" failed="" api_before keep="" subs_before=""
   api_before="$(git -C "$API_DIR" rev-parse HEAD 2>/dev/null)"
+  for sub in $SUBS; do [ -e "$REPO/$sub/.git" ] && subs_before="$subs_before$sub $(git -C "$REPO/$sub" rev-parse HEAD)"$'\n'; done
   for sub in $pinned; do
     ptr="$("${g[@]}" ls-tree HEAD "$sub" | awk '{print $3}')"; head="$(git -C "$REPO/$sub" rev-parse HEAD)"
     [ "$head" = "$ptr" ] && continue
@@ -355,12 +403,19 @@ cmd_sync() {
   done
   printf '%s' "$keep" > "$RUN/sync.retry"
   # New submodules (a fresh entry in .gitmodules) are checked out too.
-  for sub in $("${g[@]}" config -f .gitmodules --get-regexp 'submodule\..*\.path' | awk '{print $2}'); do
-    [ -e "$REPO/$sub/.git" ] || { "${g[@]}" submodule update --init -- "$sub" >>"$RUN/sync.log" 2>&1 && updated="$updated $sub"; }
-  done
+  local before_new; before_new="$(git -C "$REPO" submodule status 2>/dev/null | awk '/^-/ {print $2}' | tr '\n' ' ')"
+  init_new_submodules
+  for sub in $before_new; do updated="$updated $sub"; done
   # Setup steps go into sync.pending and stay there until they succeed, so a failed install or a migration that waits
   # for the database is done by a later sync.
-  if [ "$old" != "$new" ] && ! "${g[@]}" diff --quiet "$old" "$new" -- pnpm-lock.yaml; then pending_add pnpm; fi
+  # pnpm install when the lockfile or a package.json changed (root, or inside a submodule that moved), or a workspace
+  # package is not linked yet (a new submodule like packages/consent-kit).
+  if [ "$old" != "$new" ] && ! "${g[@]}" diff --quiet "$old" "$new" -- pnpm-lock.yaml '*package.json'; then pending_add pnpm; fi
+  for sub in $updated; do
+    b="$(echo "$subs_before" | awk -v s="$sub" '$1 == s {print $2}')"
+    [ -n "$b" ] && ! git -C "$REPO/$sub" diff --quiet "$b" HEAD -- package.json 2>/dev/null && pending_add pnpm
+  done
+  [ -n "$(deps_missing)" ] && pending_add pnpm
   local api_now; api_now="$(git -C "$API_DIR" rev-parse HEAD 2>/dev/null)"
   if [ -n "$api_before" ] && [ "$api_before" != "$api_now" ]; then
     git -C "$API_DIR" diff --quiet "$api_before" "$api_now" -- uv.lock 2>/dev/null || pending_add uv
