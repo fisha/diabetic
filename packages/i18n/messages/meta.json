@@ -31879,5 +31879,1664 @@
       "legal"
     ],
     "note": "Clinic consent text, version clinic-2026-11-27 (PM-560, Guy 26 Nov 2026)"
+  },
+  "ad.area": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.menu": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.menu_close": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav_overview": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav_g_people": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav_users": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav_orgs": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav_clinics": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav_g_ops": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav_support": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav_demo": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav_updates": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav_g_insights": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav_analytics": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.nav_g_areas": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.my_app": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.clinic_area": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.waiting_sr": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.role_admin": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.sign_out": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.lang": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.back_admin": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.loading": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.actions": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.more": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.more_x": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cancel": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.confirm": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.save": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.saved": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.add": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.remove": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.rename": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.back": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.optional": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.created": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.patients": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.sort": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.new_tab": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.pages": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.prev": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.next": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.range": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.type_to_confirm": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.seats_of": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.st_waiting": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.st_approved": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_load": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_offline": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_failed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_no_account": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_member_elsewhere": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_no_seats": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_seats_below_team": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_seats_over_organization": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_seats_below_allocated": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_org_has_clinics": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_clinic_has_members": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_clinic_has_patients": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.err_self": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.f_name": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.f_clinic_name": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.f_city": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.f_seats": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.f_email": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.f_email_hint": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.f_person_name": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cf_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cf_go": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cf_done": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cf_no_room": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cf_seats_hint": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cf_manager": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cf_manager_hint": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cf_manager_now": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.sf_next": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.sf_confirm": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.sf_sure": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.sf_hint": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.sf_hint_min": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_some_failed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_people": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_people_new": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_waiting": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_support": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_support_prog": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_demo": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_orgs": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_clinics_n": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_seats": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_seats_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_attention": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_all_clear": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_more_waiting": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_tickets": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_tickets_n": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_demo_p": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_full": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_recent": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.ov_all_users": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_search": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_filter": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_f_all": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_f_waiting": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_f_approved": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_f_clinic": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_f_admin": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_s_new": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_s_old": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_s_active": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_s_email": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_none": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_account": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_readings": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_seen": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_approve_x": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_more": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.us_profile": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_new": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_create": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_search": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_none": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_gone": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_seats_used": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_allocated": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_clinics": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_managers": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_managers_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_licence": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_licence_hint": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_detail_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_change_seats": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_delete": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_delete_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_delete_clinics": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_left": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_in_use": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_in_use_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_patients": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_no_clinics": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_add_manager": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_manager_note": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_remove_manager": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_remove_manager_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.or_remove_manager_x": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_search": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_org_filter": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_all_orgs": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_need_org": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_none": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_gone": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_org": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_no_org": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_pick_org": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_managers": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_no_manager": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_open": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_delete": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_deleted": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_delete_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_delete_busy": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_delete_busy_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_full": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_left": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_patients_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_team": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_add_member": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_add_manager": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_add_note": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_make_manager": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_unmake_manager": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_make_manager_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_unmake_manager_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_change_role": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_role_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_move": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_move_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_move_to": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_move_go": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_pick_clinic": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_moved": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_suspend_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_restore_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_remove_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.cl_removed": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.sp_search": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.dm_invite": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.dm_search": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.dm_filter": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.dm_f_all": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.dm_f_pending": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.dm_f_approved": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.dm_f_declined": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.dm_f_revoked": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.dm_revoke_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.dm_decline_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.dm_delete_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.up_write": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.up_reach": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.up_reach_now": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.up_preview_empty": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.an_agents_none": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.org_nav": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.org_manager_of": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.org_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.org_not_manager": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.org_licence_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.org_change_manager": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.org_manager_note": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.org_managers_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.org_delete_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.org_delete_patients": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.tm_seats": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.tm_full": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.tm_add_note": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_t": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_b": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_idle": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_or": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_email": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_pw": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_go": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_forgot": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_new": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_create": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_opening": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_open_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "ad.si_retry": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
   }
 }

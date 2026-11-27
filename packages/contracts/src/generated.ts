@@ -193,7 +193,9 @@ export interface paths {
         post?: never;
         /**
          * Admin Delete Clinic
-         * @description Only an empty clinic: its members must be moved or removed first. Its ended links go with it.
+         * @description An empty clinic goes at once. One with a team or with people sharing with it only when the admin typed its name
+         *     (PM-595: for now only an admin deletes a clinic people share with): its team members are no longer clinic members
+         *     (their accounts stay), and every share with it ends, with what the team wrote about those people.
          */
         delete: operations["admin_delete_clinic_admin_clinics__clinic_id__delete"];
         options?: never;
@@ -332,6 +334,82 @@ export interface paths {
          */
         post: operations["team_link_admin_demo_team_link_post"];
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/organizations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Admin Orgs */
+        get: operations["admin_orgs_admin_organizations_get"];
+        put?: never;
+        /** Admin Org New */
+        post: operations["admin_org_new_admin_organizations_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/organizations/{org_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Admin Org Delete
+         * @description Only an organization without clinics; its managers stop being managers (their accounts stay).
+         */
+        delete: operations["admin_org_delete_admin_organizations__org_id__delete"];
+        options?: never;
+        head?: never;
+        /** Admin Org Edit */
+        patch: operations["admin_org_edit_admin_organizations__org_id__patch"];
+        trace?: never;
+    };
+    "/admin/organizations/{org_id}/managers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Admin Org Manager
+         * @description Names an existing account a manager of this organization (one organization per manager).
+         */
+        put: operations["admin_org_manager_admin_organizations__org_id__managers_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/organizations/{org_id}/managers/{user_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Admin Org Manager Remove */
+        delete: operations["admin_org_manager_remove_admin_organizations__org_id__managers__user_id__delete"];
         options?: never;
         head?: never;
         patch?: never;
@@ -573,6 +651,30 @@ export interface paths {
          *     account made with email and password is linked then), else made new without a password.
          */
         post: operations["google_auth_google_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/handoff-session": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Handoff Session
+         * @description A second session for the same account, to open another area of the website signed in (PM-593, Guy 26 Nov 2026:
+         *     everyone signs in on the website's sign-in page, which then opens the app, the clinic dashboard or the admin
+         *     dashboard). The website hands it to that area in the same tab and the area keeps it its own way: the app as it keeps
+         *     any sign-in, the clinic dashboard in memory only. A new family, so signing out of one area leaves the others as they
+         *     are. Never for a demo account, whose session is tied to its demo link.
+         */
+        post: operations["handoff_session_auth_handoff_session_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1013,6 +1115,111 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/clinic/patients/{link_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Clinic Patient
+         * @description One person's row, for the header and tabs of their page (PM-558).
+         */
+        get: operations["clinic_patient_clinic_patients__link_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/clinic/patients/{link_id}/body": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Measurements
+         * @description The clinic's measurements, and the person's own height and weight history and resting heart rate (their
+         *     "Meals, activity, sleep" part), oldest first for the charts. Period entries are never included.
+         */
+        get: operations["measurements_clinic_patients__link_id__body_get"];
+        put?: never;
+        /** Measure New */
+        post: operations["measure_new_clinic_patients__link_id__body_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/clinic/patients/{link_id}/body/{measure_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Measure Delete
+         * @description A measurement typed by mistake, by its author only.
+         */
+        delete: operations["measure_delete_clinic_patients__link_id__body__measure_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/clinic/patients/{link_id}/meals": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Meals
+         * @description The person's meals from `first` to `last` (their local days, at most 62), each day with its meals by time,
+         *     photos, foods and nutrients, the day's totals, and the averages over the days with meals. A copy of a meal from
+         *     another source (same_as) is left out, as everywhere. A minor's nutrients follow their age (no energy, sugar,
+         *     saturated fat or sodium under 18; a child sees carbs only).
+         */
+        get: operations["meals_clinic_patients__link_id__meals_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/clinic/patients/{link_id}/photos/{photo_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Meal Photo
+         * @description A photo of one of the person's saved meals (not deleted or hidden), for the meals journal.
+         */
+        get: operations["meal_photo_clinic_patients__link_id__photos__photo_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/clinic/patients/{link_id}/series/{name}": {
         parameters: {
             query?: never;
@@ -1047,6 +1254,122 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/clinic/patients/{link_id}/targets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Targets
+         * @description The targets this clinic set, the person's own (typed in the app, from any care team), and what can be set: the
+         *     keys allowed at the person's age, each with its unit and its "per" choices.
+         */
+        get: operations["targets_clinic_patients__link_id__targets_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/clinic/patients/{link_id}/targets/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Target Set */
+        put: operations["target_set_clinic_patients__link_id__targets__key__put"];
+        post?: never;
+        /** Target Clear */
+        delete: operations["target_clear_clinic_patients__link_id__targets__key__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/clinic/patients/{link_id}/visits": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Visits
+         * @description Newest visit first. `q` finds a visit by words in its text, its author or its date (as typed: 2026-11-26).
+         */
+        get: operations["visits_clinic_patients__link_id__visits_get"];
+        put?: never;
+        /** Visit New */
+        post: operations["visit_new_clinic_patients__link_id__visits_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/clinic/patients/{link_id}/visits/{note_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Visit Edit */
+        put: operations["visit_edit_clinic_patients__link_id__visits__note_id__put"];
+        post?: never;
+        /** Visit Delete */
+        delete: operations["visit_delete_clinic_patients__link_id__visits__note_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/clinic/profiles": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Clinic Profile New */
+        post: operations["clinic_profile_new_clinic_profiles_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/clinic/profiles/{profile_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Clinic Profile Edit */
+        put: operations["clinic_profile_edit_clinic_profiles__profile_id__put"];
+        post?: never;
+        /**
+         * Clinic Profile Delete
+         * @description Its members go back to their role's recommended template.
+         */
+        delete: operations["clinic_profile_delete_clinic_profiles__profile_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/clinic/requests": {
         parameters: {
             query?: never;
@@ -1058,6 +1381,88 @@ export interface paths {
         put?: never;
         /** Clinic Request */
         post: operations["clinic_request_clinic_requests_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/clinic/team": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Clinic Team
+         * @description The team with each member's permissions. Everyone on the team may look; only the manager changes it.
+         */
+        get: operations["clinic_team_clinic_team_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/clinic/team/members": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Clinic Member New
+         * @description PM-595: the clinic manager adds the team, up to the clinic's seats. The account must exist and not be on another
+         *     clinic's team.
+         */
+        post: operations["clinic_member_new_clinic_team_members_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/clinic/team/members/{user_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Clinic Member Remove
+         * @description The account stays; it is no longer on the team and its seat is free.
+         */
+        delete: operations["clinic_member_remove_clinic_team_members__user_id__delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Clinic Member Status
+         * @description Suspends a member (they see nothing until restored; the seat stays theirs) or restores them.
+         */
+        patch: operations["clinic_member_status_clinic_team_members__user_id__patch"];
+        trace?: never;
+    };
+    "/clinic/team/{user_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Clinic Assign */
+        put: operations["clinic_assign_clinic_team__user_id__put"];
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -1142,6 +1547,23 @@ export interface paths {
          *     What the AI engine already wrote (conversations, insight readings) stays until the person deletes it.
          */
         post: operations["turn_ai_off_consent_ai_off_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/consent/cookies": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Record Cookie Consent */
+        post: operations["record_cookie_consent_consent_cookies_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -3329,6 +3751,82 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/org/clinics": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Org Clinic New */
+        post: operations["org_clinic_new_org_clinics_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/org/clinics/{clinic_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Org Clinic Delete
+         * @description Only while no person shares with it (Guy: for now only an admin deletes one that has). Its team members are no
+         *     longer clinic members (their accounts stay) and its open requests end.
+         */
+        delete: operations["org_clinic_delete_org_clinics__clinic_id__delete"];
+        options?: never;
+        head?: never;
+        /** Org Clinic Edit */
+        patch: operations["org_clinic_edit_org_clinics__clinic_id__patch"];
+        trace?: never;
+    };
+    "/org/clinics/{clinic_id}/manager": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Org Clinic Manager
+         * @description Names a clinic manager: a member of its team becomes one, or an account joins the team as one (a seat).
+         */
+        put: operations["org_clinic_manager_org_clinics__clinic_id__manager_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/org/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Org Me */
+        get: operations["org_me_org_me_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/profile": {
         parameters: {
             query?: never;
@@ -4122,6 +4620,68 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/usage/app": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * App Usage
+         * @description The app's opt-in usage events (PM-464), passed on to Google Analytics without the account, the IP address or
+         *     anything outside the allowlist. Always 202: the app does not need to know whether they went.
+         */
+        post: operations["app_usage_usage_app_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/usage/page": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Page
+         * @description A page shown on the website's public pages, counted in Google Analytics from here (no account, no cookie, no IP,
+         *     a random id for each page view). Only from the website's own origin. Always 202.
+         */
+        post: operations["page_usage_page_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/usage/sign-in": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Sign In
+         * @description A sign-in to the website's personal area or the clinic portal, counted in Google Analytics with no id at all.
+         */
+        post: operations["sign_in_usage_sign_in_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/visit": {
         parameters: {
             query?: never;
@@ -4833,6 +5393,12 @@ export interface components {
         AdminUserOut: {
             /** Approved At */
             approved_at: string | null;
+            /** Clinic Name */
+            clinic_name?: string | null;
+            /** Clinic Role */
+            clinic_role?: string | null;
+            /** Clinic Status */
+            clinic_status?: string | null;
             /**
              * Created At
              * Format: date-time
@@ -4849,6 +5415,11 @@ export interface components {
              * Format: uuid
              */
             id: string;
+            /**
+             * Is Admin
+             * @default false
+             */
+            is_admin: boolean;
             /** Last Active At */
             last_active_at?: string | null;
             /** Last Reading At */
@@ -4927,6 +5498,21 @@ export interface components {
             /** Scales */
             scales?: (components["schemas"]["PhotoScale"] | null)[];
         };
+        /** AppUsageIn */
+        AppUsageIn: {
+            /** Client Id */
+            client_id: string;
+            /** Events */
+            events?: {
+                [key: string]: unknown;
+            }[];
+            /** Session Id */
+            session_id?: number | null;
+            /** Supers */
+            supers?: {
+                [key: string]: unknown;
+            };
+        };
         /** AppVersionOut */
         AppVersionOut: {
             /** Android Latest Build */
@@ -4956,6 +5542,11 @@ export interface components {
             row: components["schemas"]["RowRef"];
             /** Text */
             text: string;
+        };
+        /** AssignIn */
+        AssignIn: {
+            /** Profile Id */
+            profile_id: string | null;
         };
         /** AuthOptions */
         AuthOptions: {
@@ -5361,7 +5952,7 @@ export interface components {
             clinics: components["schemas"]["CareClinicOut"][];
             /**
              * Consent Version
-             * @default clinic-2026-11-19
+             * @default clinic-2026-11-27
              */
             consent_version: string;
             /** Requests */
@@ -5580,12 +6171,28 @@ export interface components {
             /** Where */
             where: string;
         };
+        /** ClinicDelete */
+        ClinicDelete: {
+            /**
+             * Confirm Name
+             * @default
+             */
+            confirm_name: string;
+        };
         /** ClinicIn */
         ClinicIn: {
             /** City */
             city?: string | null;
+            manager?: components["schemas"]["TeamIn"] | null;
             /** Name */
             name: string;
+            /**
+             * Organization Id
+             * Format: uuid
+             */
+            organization_id: string;
+            /** Seats */
+            seats: number;
         };
         /** ClinicMeOut */
         ClinicMeOut: {
@@ -5603,10 +6210,22 @@ export interface components {
              * @default false
              */
             demo: boolean;
+            /**
+             * Is Manager
+             * @default false
+             */
+            is_manager: boolean;
             /** Licence No */
             licence_no: string | null;
             /** Name */
             name: string;
+            /**
+             * Perms
+             * @default []
+             */
+            perms: string[];
+            /** Profile */
+            profile?: string | null;
             /** Role */
             role: string;
             /** Team */
@@ -5637,8 +6256,26 @@ export interface components {
             members: components["schemas"]["MemberOut"][];
             /** Name */
             name: string;
+            /** Organization */
+            organization?: string | null;
+            /** Organization Id */
+            organization_id?: string | null;
             /** Patients */
             patients: number;
+            /**
+             * Seats
+             * @default 0
+             */
+            seats: number;
+        };
+        /** ClinicPatch */
+        ClinicPatch: {
+            /** City */
+            city?: string | null;
+            /** Name */
+            name?: string | null;
+            /** Seats */
+            seats?: number | null;
         };
         /**
          * ClinicReportIn
@@ -5681,6 +6318,44 @@ export interface components {
              * @default
              */
             questions: string | string[];
+        };
+        /** ClinicVisitIn */
+        ClinicVisitIn: {
+            /** Text */
+            text: string;
+            /**
+             * Visit On
+             * Format: date
+             */
+            visit_on: string;
+        };
+        /** ClinicVisitOut */
+        ClinicVisitOut: {
+            /** Author Name */
+            author_name: string;
+            /** Author Role */
+            author_role: string;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Mine */
+            mine: boolean;
+            /** Text */
+            text: string;
+            /** Updated At */
+            updated_at: string | null;
+            /**
+             * Visit On
+             * Format: date
+             */
+            visit_on: string;
         };
         /** ConcernMessageOut */
         ConcernMessageOut: {
@@ -5863,6 +6538,34 @@ export interface components {
             started_at: string;
             /** Title */
             title: string;
+        };
+        /** CookieConsentIn */
+        CookieConsentIn: {
+            /** Categories */
+            categories: {
+                [key: string]: boolean;
+            };
+            /** Consent Id */
+            consent_id: string;
+            /** Country */
+            country?: string | null;
+            /**
+             * Gpc
+             * @default false
+             */
+            gpc: boolean;
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "opt_in" | "opt_out";
+            /** Policy Version */
+            policy_version: string;
+            /**
+             * Source
+             * @enum {string}
+             */
+            source: "accept_all" | "reject_all" | "custom" | "us_notice" | "gpc" | "migrated_cookieyes";
         };
         /** DayIn */
         DayIn: {
@@ -6675,6 +7378,13 @@ export interface components {
         };
         /** FoodSummaryOut */
         FoodSummaryOut: {
+            /**
+             * Activity Targets
+             * @default []
+             */
+            activity_targets: {
+                [key: string]: unknown;
+            }[];
             /** Carbs Avg G */
             carbs_avg_g: number | null;
             /** Complete Days */
@@ -7677,6 +8387,8 @@ export interface components {
             approved: boolean;
             /** Avatar Url */
             avatar_url?: string | null;
+            /** Clinic */
+            clinic?: ("doctor" | "nurse" | "dietitian" | "social_worker") | null;
             /** Demo */
             demo?: string | null;
             /** Email */
@@ -7713,6 +8425,11 @@ export interface components {
              * @default false
              */
             minor: boolean;
+            /**
+             * Org Manager
+             * @default false
+             */
+            org_manager: boolean;
             /** Persona */
             persona?: ("self" | "prediabetes" | "child" | "family") | null;
         };
@@ -7915,6 +8632,46 @@ export interface components {
             /** Name */
             name: string;
         };
+        /** MeasureIn */
+        MeasureIn: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "height" | "weight" | "pulse" | "bp";
+            /**
+             * Measured On
+             * Format: date
+             */
+            measured_on: string;
+            /** Value */
+            value: number;
+            /** Value2 */
+            value2?: number | null;
+        };
+        /** MeasureOut */
+        MeasureOut: {
+            /** Author Name */
+            author_name: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Kind */
+            kind: string;
+            /**
+             * Measured On
+             * Format: date
+             */
+            measured_on: string;
+            /** Mine */
+            mine: boolean;
+            /** Value */
+            value: number;
+            /** Value2 */
+            value2: number | null;
+        };
         /** MemberIn */
         MemberIn: {
             /**
@@ -7927,6 +8684,11 @@ export interface components {
              * Format: email
              */
             email: string;
+            /**
+             * Is Manager
+             * @default false
+             */
+            is_manager: boolean;
             /** Licence No */
             licence_no?: string | null;
             /** Name */
@@ -7941,6 +8703,11 @@ export interface components {
         MemberOut: {
             /** Email */
             email: string;
+            /**
+             * Is Manager
+             * @default false
+             */
+            is_manager: boolean;
             /** Licence No */
             licence_no: string | null;
             /** Name */
@@ -7959,6 +8726,8 @@ export interface components {
         MemberPatch: {
             /** Clinic Id */
             clinic_id?: string | null;
+            /** Is Manager */
+            is_manager?: boolean | null;
             /** Licence No */
             licence_no?: string | null;
             /** Name */
@@ -8302,6 +9071,133 @@ export interface components {
             /** Refreshing */
             refreshing: boolean;
         };
+        /** OrgClinicIn */
+        OrgClinicIn: {
+            /** City */
+            city?: string | null;
+            manager: components["schemas"]["TeamIn"];
+            /** Name */
+            name: string;
+            /** Seats */
+            seats: number;
+        };
+        /** OrgClinicOut */
+        OrgClinicOut: {
+            /** City */
+            city: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Managers */
+            managers: string[];
+            /** Name */
+            name: string;
+            /** Patients */
+            patients: number;
+            /** Seats */
+            seats: number;
+            /** Used */
+            used: number;
+        };
+        /** OrgIn */
+        OrgIn: {
+            /** Name */
+            name: string;
+            /** Seats */
+            seats: number;
+        };
+        /** OrgManagerIn */
+        OrgManagerIn: {
+            /**
+             * Email
+             * Format: email
+             */
+            email: string;
+            /** Name */
+            name: string;
+        };
+        /** OrgManagerOut */
+        OrgManagerOut: {
+            /** Email */
+            email: string;
+            /** Name */
+            name: string;
+            /**
+             * User Id
+             * Format: uuid
+             */
+            user_id: string;
+        };
+        /** OrgMeOut */
+        OrgMeOut: {
+            /** Allocated */
+            allocated: number;
+            /** Clinics */
+            clinics: components["schemas"]["OrgClinicOut"][];
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Managers */
+            managers: components["schemas"]["OrgManagerOut"][];
+            /** Me */
+            me: string;
+            /** Name */
+            name: string;
+            /** Seats */
+            seats: number;
+            /** Used */
+            used: number;
+        };
+        /** OrgOut */
+        OrgOut: {
+            /** Allocated */
+            allocated: number;
+            /** Clinics */
+            clinics: components["schemas"]["OrgClinicOut"][];
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Managers */
+            managers: components["schemas"]["OrgManagerOut"][];
+            /** Name */
+            name: string;
+            /** Seats */
+            seats: number;
+            /** Used */
+            used: number;
+        };
+        /** OrgPatch */
+        OrgPatch: {
+            /** Name */
+            name?: string | null;
+            /** Seats */
+            seats?: number | null;
+        };
+        /** PageIn */
+        PageIn: {
+            /** Path */
+            path: string;
+            /** Referrer */
+            referrer?: string | null;
+            /** Title */
+            title?: string | null;
+        };
         /** ParentYoungOut */
         ParentYoungOut: {
             /** Band */
@@ -8381,10 +9277,19 @@ export interface components {
             devices: string[];
             /** Diabetes Type */
             diabetes_type?: string | null;
+            /** Diagnosed */
+            diagnosed?: string | null;
             /** Email Hint */
             email_hint: string;
             /** Last Viewed At */
             last_viewed_at?: string | null;
+            /** Last Visit */
+            last_visit?: string | null;
+            /**
+             * Limited
+             * @default false
+             */
+            limited: boolean;
             /**
              * Link Id
              * Format: uuid
@@ -8511,6 +9416,27 @@ export interface components {
         PeriodIn: {
             /** On */
             on: string;
+        };
+        /** PermProfileIn */
+        PermProfileIn: {
+            /** Name */
+            name: string;
+            /** Perms */
+            perms: ("summary" | "insulin" | "lifestyle" | "labs" | "meals" | "body" | "body_write" | "targets" | "targets_write" | "visits" | "visits_write" | "questions" | "request")[];
+        };
+        /** PermProfileOut */
+        PermProfileOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Members */
+            members: number;
+            /** Name */
+            name: string;
+            /** Perms */
+            perms: string[];
         };
         /** PersonaIn */
         PersonaIn: {
@@ -9393,6 +10319,14 @@ export interface components {
             /** Password */
             password: string;
         };
+        /** SignInIn */
+        SignInIn: {
+            /**
+             * Area
+             * @enum {string}
+             */
+            area: "personal" | "clinic";
+        };
         /** SignUp */
         SignUp: {
             /**
@@ -9425,6 +10359,14 @@ export interface components {
         SnoozeIn: {
             /** Minutes */
             minutes: number;
+        };
+        /** StatusIn */
+        StatusIn: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "active" | "suspended";
         };
         /** StickerOut */
         StickerOut: {
@@ -9525,6 +10467,16 @@ export interface components {
             /** Target Mgdl */
             target_mgdl?: number | null;
         };
+        /** TargetIn */
+        TargetIn: {
+            /** Amount */
+            amount: number;
+            /**
+             * Per
+             * @enum {string}
+             */
+            per: "day" | "meal" | "kg_day" | "week";
+        };
         /** TargetOut */
         TargetOut: {
             /** Amount */
@@ -9548,6 +10500,169 @@ export interface components {
              * @enum {string}
              */
             unit: "g" | "kcal" | "mg";
+        };
+        /**
+         * TeamIn
+         * @description A team member to add: an existing account's email, the name and role the clinic shows.
+         */
+        TeamIn: {
+            /**
+             * Email
+             * Format: email
+             */
+            email: string;
+            /** Licence No */
+            licence_no?: string | null;
+            /** Name */
+            name: string;
+            /**
+             * Role
+             * @enum {string}
+             */
+            role: "doctor" | "nurse" | "dietitian" | "social_worker";
+        };
+        /** TeamMemberOut */
+        TeamMemberOut: {
+            /** Is Manager */
+            is_manager: boolean;
+            /** Name */
+            name: string;
+            /** Perms */
+            perms: string[];
+            /** Profile Id */
+            profile_id: string | null;
+            /** Role */
+            role: string;
+            /** Status */
+            status: string;
+            /**
+             * User Id
+             * Format: uuid
+             */
+            user_id: string;
+        };
+        /** TeamOut */
+        TeamOut: {
+            /** Is Manager */
+            is_manager: boolean;
+            /** Members */
+            members: components["schemas"]["TeamMemberOut"][];
+            /**
+             * Needs
+             * @default {
+             *       "body_write": "body",
+             *       "targets_write": "targets",
+             *       "visits_write": "visits"
+             *     }
+             */
+            needs: {
+                [key: string]: string;
+            };
+            /**
+             * Parts
+             * @default {
+             *       "body": "lifestyle",
+             *       "body_write": "lifestyle",
+             *       "insulin": "insulin",
+             *       "labs": "labs",
+             *       "lifestyle": "lifestyle",
+             *       "meals": "lifestyle",
+             *       "questions": "questions",
+             *       "targets": "lifestyle",
+             *       "targets_write": "lifestyle"
+             *     }
+             */
+            parts: {
+                [key: string]: string;
+            };
+            /**
+             * Perms
+             * @default [
+             *       "summary",
+             *       "insulin",
+             *       "lifestyle",
+             *       "labs",
+             *       "meals",
+             *       "body",
+             *       "body_write",
+             *       "targets",
+             *       "targets_write",
+             *       "visits",
+             *       "visits_write",
+             *       "questions",
+             *       "request"
+             *     ]
+             */
+            perms: string[];
+            /** Profiles */
+            profiles: components["schemas"]["PermProfileOut"][];
+            /**
+             * Seats
+             * @default 0
+             */
+            seats: number;
+            /**
+             * Templates
+             * @default {
+             *       "dietitian": [
+             *         "summary",
+             *         "lifestyle",
+             *         "labs",
+             *         "meals",
+             *         "body",
+             *         "targets",
+             *         "targets_write",
+             *         "visits",
+             *         "visits_write",
+             *         "questions",
+             *         "request"
+             *       ],
+             *       "doctor": [
+             *         "summary",
+             *         "insulin",
+             *         "lifestyle",
+             *         "labs",
+             *         "meals",
+             *         "body",
+             *         "body_write",
+             *         "targets",
+             *         "targets_write",
+             *         "visits",
+             *         "visits_write",
+             *         "questions",
+             *         "request"
+             *       ],
+             *       "nurse": [
+             *         "summary",
+             *         "insulin",
+             *         "lifestyle",
+             *         "labs",
+             *         "body",
+             *         "body_write",
+             *         "targets",
+             *         "visits",
+             *         "visits_write",
+             *         "questions",
+             *         "request"
+             *       ],
+             *       "social_worker": [
+             *         "summary",
+             *         "lifestyle",
+             *         "visits",
+             *         "visits_write",
+             *         "questions",
+             *         "request"
+             *       ]
+             *     }
+             */
+            templates: {
+                [key: string]: string[];
+            };
+            /**
+             * Used
+             * @default 0
+             */
+            used: number;
         };
         /** ThreadOut */
         ThreadOut: {
@@ -10377,6 +11492,8 @@ export interface components {
         steady_api__routers__clinic__AcceptIn: {
             /** Consent */
             consent: boolean;
+            /** Consent Version */
+            consent_version?: string | null;
             /** Scopes */
             scopes: ("sensor" | "insulin" | "lifestyle" | "labs" | "questions")[];
         };
@@ -10847,7 +11964,11 @@ export interface operations {
             };
             cookie?: never;
         };
-        requestBody?: never;
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ClinicDelete"] | null;
+            };
+        };
         responses: {
             /** @description Successful Response */
             204: {
@@ -10878,7 +11999,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["ClinicIn"];
+                "application/json": components["schemas"]["ClinicPatch"];
             };
         };
         responses: {
@@ -11093,6 +12214,190 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["DemoLinkOut"];
+                };
+            };
+        };
+    };
+    admin_orgs_admin_organizations_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgOut"][];
+                };
+            };
+        };
+    };
+    admin_org_new_admin_organizations_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OrgIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    admin_org_delete_admin_organizations__org_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    admin_org_edit_admin_organizations__org_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OrgPatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    admin_org_manager_admin_organizations__org_id__managers_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OrgManagerIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    admin_org_manager_remove_admin_organizations__org_id__managers__user_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_id: string;
+                user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
@@ -11529,6 +12834,33 @@ export interface operations {
             };
             /** @description google_unavailable */
             503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    handoff_session_auth_handoff_session_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Tokens"];
+                };
+            };
+            /** @description demo */
+            403: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -12337,9 +13669,208 @@ export interface operations {
             };
         };
     };
-    clinic_series_clinic_patients__link_id__series__name__get: {
+    clinic_patient_clinic_patients__link_id__get: {
         parameters: {
             query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PatientRow"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    measurements_clinic_patients__link_id__body_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    measure_new_clinic_patients__link_id__body_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MeasureIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MeasureOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    measure_delete_clinic_patients__link_id__body__measure_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+                measure_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    meals_clinic_patients__link_id__meals_get: {
+        parameters: {
+            query: {
+                first: string;
+                last: string;
+            };
+            header?: never;
+            path: {
+                link_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    meal_photo_clinic_patients__link_id__photos__photo_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+                photo_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/jpeg": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    clinic_series_clinic_patients__link_id__series__name__get: {
+        parameters: {
+            query?: {
+                period?: "14" | "30" | "90" | "180" | "365" | "last_visit";
+            };
             header?: never;
             path: {
                 link_id: string;
@@ -12375,6 +13906,7 @@ export interface operations {
         parameters: {
             query?: {
                 locale?: string;
+                period?: "14" | "30" | "90" | "180" | "365" | "last_visit";
             };
             header?: never;
             path: {
@@ -12393,6 +13925,344 @@ export interface operations {
                     "application/json": {
                         [key: string]: unknown;
                     };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    targets_clinic_patients__link_id__targets_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    target_set_clinic_patients__link_id__targets__key__put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TargetIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    target_clear_clinic_patients__link_id__targets__key__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    visits_clinic_patients__link_id__visits_get: {
+        parameters: {
+            query?: {
+                q?: string;
+            };
+            header?: never;
+            path: {
+                link_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ClinicVisitOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    visit_new_clinic_patients__link_id__visits_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClinicVisitIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ClinicVisitOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    visit_edit_clinic_patients__link_id__visits__note_id__put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+                note_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClinicVisitIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ClinicVisitOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    visit_delete_clinic_patients__link_id__visits__note_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+                note_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    clinic_profile_new_clinic_profiles_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PermProfileIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TeamOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    clinic_profile_edit_clinic_profiles__profile_id__put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                profile_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PermProfileIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TeamOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    clinic_profile_delete_clinic_profiles__profile_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                profile_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TeamOut"];
                 };
             };
             /** @description Validation Error */
@@ -12443,6 +14313,160 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    clinic_team_clinic_team_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TeamOut"];
+                };
+            };
+        };
+    };
+    clinic_member_new_clinic_team_members_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TeamIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TeamOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    clinic_member_remove_clinic_team_members__user_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TeamOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    clinic_member_status_clinic_team_members__user_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StatusIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TeamOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    clinic_assign_clinic_team__user_id__put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AssignIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TeamOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
             };
         };
     };
@@ -12569,6 +14593,48 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
                 };
+            };
+        };
+    };
+    record_cookie_consent_consent_cookies_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CookieConsentIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+            /** @description busy */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
@@ -17011,6 +19077,160 @@ export interface operations {
             };
         };
     };
+    org_clinic_new_org_clinics_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OrgClinicIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgMeOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    org_clinic_delete_org_clinics__clinic_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                clinic_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgMeOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    org_clinic_edit_org_clinics__clinic_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                clinic_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClinicPatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgMeOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    org_clinic_manager_org_clinics__clinic_id__manager_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                clinic_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TeamIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgMeOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    org_me_org_me_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgMeOut"];
+                };
+            };
+        };
+    };
     get_profile_profile_get: {
         parameters: {
             query?: never;
@@ -18582,6 +20802,105 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["TicketDetailOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    app_usage_usage_app_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AppUsageIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    page_usage_page_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PageIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    sign_in_usage_sign_in_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SignInIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
                 };
             };
             /** @description Validation Error */
