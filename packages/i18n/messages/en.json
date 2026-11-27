@@ -5182,5 +5182,8 @@
   "ad.si_create": "Create an account",
   "ad.si_opening": "Opening…",
   "ad.si_open_fail": "This could not be opened. Try again.",
-  "ad.si_retry": "Try again"
+  "ad.si_retry": "Try again",
+  "mo.title_ios": "Motion & Fitness",
+  "mo.title_android": "Physical activity",
+  "mo.note": "Used only to choose the moment for glucose check suggestions. Motion stays on this phone and is never sent or kept."
 }

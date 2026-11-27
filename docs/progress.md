@@ -221,6 +221,11 @@ lock_timeout 10 s; pool 10 + 10 with a 10 s wait; an exhausted pool answers 503 
 templates and seconds only). App #321: expo-task-manager loaded only where the build has it, so OTAs to 0.8.0 start.
 Next: API deploy.
 
+27 Nov 2026 (Jira PM-609, Guy): Settings > Privacy shows the motion permission like Notifications: "Motion & Fitness"
+(iOS) / "Physical activity" (Android) with On / Not asked yet / Off in system settings; tap asks or opens the phone's
+settings; note says it only times glucose check suggestions and stays on the phone. Only in builds with
+`modules/stedio-motion`, not for minors. JS only (OTA). Strings `mo.*`.
+
 26 Nov 2026 (Jira PM-542 phase C, Guy approved 19:35Z; lawyer PM-567): glucose check suggestion, built and OFF. API
 #267 (`check_suggest.py`, `GET/PUT /check-suggest`, `user_settings.check_suggest_at` / `check_suggest_sent_at`,
 migration `f6b8d0e2a4c6`): for an opted-in adult, a background estimate under their own low bound 30-45 minutes after
