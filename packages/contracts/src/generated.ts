@@ -5805,7 +5805,7 @@ export interface components {
              * @default profile
              * @enum {string}
              */
-            source: "profile" | "pump" | "carelink" | "tandem";
+            source: "profile" | "pump" | "carelink" | "tandem" | "libre";
         };
         /** BestOut */
         BestOut: {
@@ -7014,7 +7014,7 @@ export interface components {
              * Source
              * @enum {string}
              */
-            source: "pump" | "carelink" | "tandem";
+            source: "pump" | "carelink" | "tandem" | "libre";
         };
         /** DocumentOut */
         DocumentOut: {
@@ -11589,7 +11589,7 @@ export interface components {
          */
         WhyOut: {
             /** Band Source */
-            band_source?: ("profile" | "pump" | "carelink" | "tandem") | null;
+            band_source?: ("profile" | "pump" | "carelink" | "tandem" | "libre") | null;
             /**
              * Basis
              * @default 0

@@ -129,3 +129,6 @@ order proposed:
 6. Apple Health additions (menstrual flow, protein, fat, exercise minutes, VO2 max, respiratory rate, wrist
    temperature, alcohol): new phone permissions, so a native build.
 Dexcom Share gives readings and trend only: nothing more to read.
+
+27 Nov 2026 (PM-633): the cross-source parity matrix is `docs/device-parity.md`. Built then: Tandem BG meter readings
+(event 16), Tandem Control-IQ off (event 230, mode `loop_off`), LibreLinkUp target range (`connection.targetLow/High`).

@@ -1476,7 +1476,8 @@
               "profile",
               "pump",
               "carelink",
-              "tandem"
+              "tandem",
+              "libre"
             ],
             "title": "Source",
             "type": "string"
@@ -4741,7 +4742,8 @@
             "enum": [
               "pump",
               "carelink",
-              "tandem"
+              "tandem",
+              "libre"
             ],
             "title": "Source",
             "type": "string"
@@ -17625,7 +17627,8 @@
                   "profile",
                   "pump",
                   "carelink",
-                  "tandem"
+                  "tandem",
+                  "libre"
                 ],
                 "type": "string"
               },
