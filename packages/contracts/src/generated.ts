@@ -7063,6 +7063,11 @@ export interface components {
         EquipmentOut: {
             /** Sensor At */
             sensor_at?: string | null;
+            /**
+             * Sensor From Start
+             * @default false
+             */
+            sensor_from_start: boolean;
             /** Sensor Hours Left */
             sensor_hours_left?: number | null;
             /**

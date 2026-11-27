@@ -17,7 +17,7 @@ it, Stedio does not use it yet; reason given), **no** (the source does not send 
 | "Sensor reads again" push | yes | yes | no | yes | no |
 | Sensor updating (message 801) | yes | no | no | no | no |
 | Sensor end time / reminder | yes (pump's own time left) | yes (start + rated days) | no | yes (start + rated days) | no |
-| Sensor time left row on Overview | yes (pump's own) | available, not built: only start + rated days, an estimate; the row is "only what a device said" (question to Guy) | no | same as Libre | no |
+| Sensor time left row on Overview | yes (pump's own) | **built 27 Nov** (start + rated days, Guy approved; PM-640) | no | **built 27 Nov** (same; PM-640) | no |
 | Sensor ends early insight | yes | yes | no | yes | no |
 | Set change / set reminder | yes (PM-327, PM-422) | n/a (sensor only) | n/a | yes (cannula fill) | no |
 | Cartridge / reservoir change | live reservoir rise | n/a | n/a | yes (cartridge fill) | no |
@@ -42,7 +42,7 @@ Dexcom Share (the Follow service) gives readings and trend only. Sensor sessions
 Dexcom's official API (developer.dexcom.com v3: `/devices`, `/events`, `/alerts`), which is delayed (1 hour in the US,
 3 hours elsewhere) and needs a partner sign-up. Guy kept Share on 13 Nov 2026 because of that delay; with most users now
 in the US (23 Nov), the official API could add sensor start (warm-up, sensor end, reminders) and alert history for Dexcom
-users. That is Guy's decision (asked 27 Nov).
+users. Guy, 27 Nov 2026: no change, Dexcom stays on Share only.
 
 ## Order of deploys
 
