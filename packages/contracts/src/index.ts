@@ -159,5 +159,7 @@ export type ClientDeviceIn = S['ClientDeviceIn'];
 export type AdminTicketOut = S['AdminTicketOut'];
 export type AdminSupportOut = S['AdminSupportOut'];
 export type AdminProfileOut = S['AdminProfileOut'];
+export type AdminWhatsAppOut = S['AdminWhatsAppOut'];
+export type AdminWhatsAppNumberOut = S['AdminWhatsAppNumberOut'];
 export type PasswordResetOut = S['PasswordResetOut'];
 export type TargetOut = S['TargetOut'];

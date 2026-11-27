@@ -3429,6 +3429,55 @@
       "translation"
     ]
   },
+  "wd.pr_wa": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin user profile, WhatsApp number (Guy, 27 Nov 2026, PM-632)."
+  },
+  "wd.pr_wa_fail": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin user profile, WhatsApp number (Guy, 27 Nov 2026, PM-632)."
+  },
+  "wd.pr_wa_hide": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin user profile, WhatsApp number (Guy, 27 Nov 2026, PM-632)."
+  },
+  "wd.pr_wa_masked": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin user profile, WhatsApp number (Guy, 27 Nov 2026, PM-632)."
+  },
+  "wd.pr_wa_none": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin user profile, WhatsApp number (Guy, 27 Nov 2026, PM-632)."
+  },
+  "wd.pr_wa_off": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin user profile, WhatsApp number (Guy, 27 Nov 2026, PM-632)."
+  },
+  "wd.pr_wa_show": {
+    "board": "WebDashboard",
+    "review": [
+      "translation"
+    ],
+    "note": "Admin user profile, WhatsApp number (Guy, 27 Nov 2026, PM-632)."
+  },
   "wd.pr_waiting": {
     "board": "WebDashboard",
     "review": [
