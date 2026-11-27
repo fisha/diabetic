@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+27 Nov 2026 (Jira PM-626, idea DAP-103, thread "Shape mentor personality like Instinct's agent"): research on
+Instinct's texting agent (Claude Doc "Stedio mentor: learning from Instinct's agent") and Guy approved all seven
+proposals. Built in the API: the mentor's "How you sound" rules (prompt, critic `vague`); one send policy for what the
+mentor starts on its own (`brain/policy.py`: 2 a local day across push and WhatsApp, 1 after 2 unanswered, none after
+4 until they write or log, 1 with Fewer nudges, 3 h apart; never reminders they set, check-ins they asked for,
+equipment or device notices); new triggers (`brain/reach.py`): a plan's look-back day, the day after a saved visit,
+new lab results not talked about, a time-zone move with reminders, one line after a quiet week (adults); sensor and set
+reminders end with one question; the lost-connection push says the sensor's own alerts are not affected; WhatsApp
+reacts to a saved entry instead of "Saved."; app_data `keeping_track`. The regression set was not run for it.
+
 27 Nov 2026 (Jira epic PM-613, thread "Review Itay's clinic area feedback"): Itay's nine clinic-area points are
 PM-614..622; Guy goes through them one by one before anything is built. PM-620 fixed (web #122, merged): clinic dates
 took day/month order from the page language, so Itay (Israel, English portal) saw visit dates month first. They now
