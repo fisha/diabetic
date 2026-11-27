@@ -2390,3 +2390,10 @@ Not in any design and left for Guy: activity targets are kept and sent in `/nutr
 app does not show them yet; the app's own targets screen shows a care-team target as the target in use but has no
 "set by your clinic" label of its own beyond the existing source.
 
+### G-142 · Website sign-in, admin dashboard and clinic organizations (**asked by Guy, 26 Nov 2026, PM-592..595**)
+
+No mockup covers the website's own sign-in page, the admin dashboard or organizations. Built in the clinic portal's
+pieces (side menu, cards, tables, dialogs, segmented filters) with tiles, status pills, row menus and seat bars added in
+`apps/web/src/styles/admin.css`. Screenshots shown to Guy before merge. Not designed and left as is: a separate page per
+organization manager, seat history, and billing for seats (no prices while on the waiting list).
+

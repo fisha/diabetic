@@ -8,6 +8,21 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+27 Nov 2026, night (Jira PM-592 epic, PM-593/594/595, thread "Rebuild admin area as management dashboard"): Guy
+asked for one website sign-in for everyone, a real admin dashboard and clinic organizations with seats. Built: `/signin`
+is the only sign-in; after it an admin lands on `/dashboard/admin`, a clinic team member or organization manager on the
+clinic dashboard, everyone else in the app (`POST /auth/handoff-session` gives the area its own session through
+sessionStorage; only admins keep the website session; the app's own sign-in screens send to `/signin` on the web). Admin
+dashboard rebuilt on the clinic portal's design system: grouped side menu with counts, Overview, Users (search, filters,
+sort, pages, row menu, typed-email delete), Profile, Organizations (new), Clinics (detail page, every access change
+confirmed, typed-name delete), Support, Demo requests, App updates, Analytics; no page scrolls sideways at 390 px.
+Organizations (migration `b8d4f6a0c2e3`): licence seats, clinics take part of them, every team member takes a seat;
+existing clinics moved to "Default organization". Clinic dashboard: Organization page for its managers (create a clinic
+with its manager, seats, delete without people sharing) and the clinic manager adds, suspends and removes members within
+the seats. Privacy `2026-11-27T01:00:00Z` adds organization managers. Verified in the container (API tests, web types,
+lint, tests, Playwright en/he, day/night, 1440/390, axe); the handoff into the exported /app is covered by unit tests,
+not yet run against an /app export. Next: Guy's OK on the screenshots, merge, deploy API (migration) then web, then OTA.
+
 27 Nov 2026 (Jira PM-591, thread "Add live dev mode to local stedio script"): `stedio sync` pulls main from GitHub
 (fast-forward only; skips on local commits, another branch, conflicting local changes or a running build; submodules
 follow only when they sat on the recorded commit; pnpm install, uv sync and local migrations only when needed). `up`
