@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+27 Nov 2026 (Jira epic PM-613, thread "Review Itay's clinic area feedback"): Itay's nine clinic-area points are
+PM-614..622; Guy goes through them one by one before anything is built. PM-620 fixed (web #122, merged): clinic dates
+took day/month order from the page language, so Itay (Israel, English portal) saw visit dates month first. They now
+follow the browser region; month first only for a US region in an American time zone. Next: web deploy.
+
 27 Nov 2026 (Jira PM-607, thread "Fix clinic login signing out repeatedly"): Guy said the clinic login kept
 signing out. The clinic dashboard kept its session in page memory only, so a reload, a new tab, the English/Hebrew
 switch (a full page load, since `[locale]/layout.tsx` is the root layout), coming back from "My app" and every deploy
