@@ -277,6 +277,35 @@ busy_build() {
     | grep -vE '^ *[0-9]+ ([^ ]*/)?(ba|z|da)?sh (-[a-z]*c|-c) ' | grep -v grep | awk '{print $1}' | grep -vx "$$" | head -1
 }
 
+pending_add() { grep -qx "$1" "$RUN/sync.pending" 2>/dev/null || echo "$1" >> "$RUN/sync.pending"; }
+pending_done() { [ -f "$RUN/sync.pending" ] && { grep -vx "$1" "$RUN/sync.pending" > "$RUN/sync.pending.tmp"; mv "$RUN/sync.pending.tmp" "$RUN/sync.pending"; }; return 0; }
+run_pending() { # sets PENDING_FAILED to what is still to do
+  PENDING_FAILED=""
+  local t
+  for t in $(cat "$RUN/sync.pending" 2>/dev/null); do
+    case "$t" in
+      pnpm)
+        sync_log "pnpm-lock.yaml changed: pnpm install"
+        if (cd "$REPO" && PATH="$NODE_BIN:$PATH" pnpm install --frozen-lockfile >>"$RUN/sync.log" 2>&1); then pending_done pnpm
+        else PENDING_FAILED="$PENDING_FAILED pnpm-install"; fi ;;
+      uv)
+        sync_log "services/api uv.lock changed: uv sync"
+        if (cd "$API_DIR" && uv sync -q >>"$RUN/sync.log" 2>&1); then pending_done uv; else PENDING_FAILED="$PENDING_FAILED uv-sync"; fi ;;
+      alembic)
+        # docs/release-readiness.md: run the migrations after every pull that adds one. Only against the local database,
+        # and only once it is up (a cold `stedio up` pulls before it starts the database; it runs this again after).
+        if ! grep -Eq '^STEADY_DATABASE_URL=.*@(localhost|127\.0\.0\.1)[:/]' "$API_DIR/.env" 2>/dev/null; then
+          pending_done alembic; PENDING_FAILED="$PENDING_FAILED alembic(not-local-db:run-it-yourself)"
+        elif ! db_running; then PENDING_FAILED="$PENDING_FAILED alembic(waiting-for-db)"
+        else
+          sync_log "new database migration: alembic upgrade head (local database)"
+          if (cd "$API_DIR" && uv run alembic upgrade head >>"$RUN/sync.log" 2>&1); then pending_done alembic
+          else PENDING_FAILED="$PENDING_FAILED alembic"; fi
+        fi ;;
+    esac
+  done
+}
+
 cmd_sync() {
   local g=(git -C "$REPO") old new sub ptr head pinned="" moved="" b
   export GIT_TERMINAL_PROMPT=0 GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-ssh -o BatchMode=yes -o ConnectTimeout=15}"
@@ -294,13 +323,17 @@ cmd_sync() {
   if ! "${g[@]}" fetch -q origin main 2>>"$RUN/sync.log"; then sync_done "failed: could not reach GitHub (see stedio log sync)"; return 1; fi
   old="$("${g[@]}" rev-parse HEAD)"; new="$("${g[@]}" rev-parse FETCH_HEAD)"
   # Only submodules that sit on the commit the root records now, detached or on main, follow the pull. One on another
-  # branch or commit (work in progress, a build of a branch) is left exactly as it is.
-  local sb
+  # branch or commit (work in progress, a build of a branch) is left exactly as it is. A submodule whose update failed
+  # last time (sync.retry: still on the commit it was on then) is tried again.
+  local sb retry=""
   for sub in $SUBS; do
     [ -e "$REPO/$sub/.git" ] || continue
     ptr="$("${g[@]}" ls-tree HEAD "$sub" | awk '{print $3}')"; head="$(git -C "$REPO/$sub" rev-parse HEAD 2>/dev/null)"
     sb="$(git -C "$REPO/$sub" symbolic-ref --short -q HEAD)"
-    if [ -n "$ptr" ] && [ "$ptr" = "$head" ] && { [ -z "$sb" ] || [ "$sb" = main ]; }; then pinned="$pinned $sub"; else moved="$moved $sub"; fi
+    if [ -n "$sb" ] && [ "$sb" != main ]; then moved="$moved $sub"
+    elif [ -n "$ptr" ] && [ "$ptr" = "$head" ]; then pinned="$pinned $sub"
+    elif grep -qx "$sub $head" "$RUN/sync.retry" 2>/dev/null; then pinned="$pinned $sub"; retry="$retry $sub"
+    else moved="$moved $sub"; fi
   done
   if [ "$old" != "$new" ]; then
     if ! "${g[@]}" merge-base --is-ancestor "$old" "$new"; then sync_done "skipped: main has local commits that are not on GitHub"; return 0; fi
@@ -308,45 +341,37 @@ cmd_sync() {
       sync_done "skipped: local changes are in the way of the pull (see stedio log sync)"; return 0
     fi
   fi
-  local updated="" failed=""
+  local updated="" failed="" api_before keep=""
+  api_before="$(git -C "$API_DIR" rev-parse HEAD 2>/dev/null)"
   for sub in $pinned; do
-    ptr="$("${g[@]}" ls-tree HEAD "$sub" | awk '{print $3}')"
-    [ "$(git -C "$REPO/$sub" rev-parse HEAD)" = "$ptr" ] && continue
+    ptr="$("${g[@]}" ls-tree HEAD "$sub" | awk '{print $3}')"; head="$(git -C "$REPO/$sub" rev-parse HEAD)"
+    [ "$head" = "$ptr" ] && continue
     if [ -n "$(git -C "$REPO/$sub" symbolic-ref --short -q HEAD)" ]; then
       # On main: move main forward (fast-forward only), so the submodule stays on its branch.
       if git -C "$REPO/$sub" fetch -q origin main 2>>"$RUN/sync.log" && git -C "$REPO/$sub" merge --ff-only -q "$ptr" >>"$RUN/sync.log" 2>&1
-      then updated="$updated $sub"; else failed="$failed $sub"; fi
-    elif "${g[@]}" submodule update --init -- "$sub" >>"$RUN/sync.log" 2>&1; then updated="$updated $sub"; else failed="$failed $sub"; fi
+      then updated="$updated $sub"; else failed="$failed $sub"; keep="$keep$sub $head"$'\n'; fi
+    elif "${g[@]}" submodule update --init -- "$sub" >>"$RUN/sync.log" 2>&1; then updated="$updated $sub"
+    else failed="$failed $sub"; keep="$keep$sub $head"$'\n'; fi
   done
+  printf '%s' "$keep" > "$RUN/sync.retry"
   # New submodules (a fresh entry in .gitmodules) are checked out too.
   for sub in $("${g[@]}" config -f .gitmodules --get-regexp 'submodule\..*\.path' | awk '{print $2}'); do
     [ -e "$REPO/$sub/.git" ] || { "${g[@]}" submodule update --init -- "$sub" >>"$RUN/sync.log" 2>&1 && updated="$updated $sub"; }
   done
-  # Install only when a lockfile changed between what was there and what is there now.
-  if [ "$old" != "$new" ] && ! "${g[@]}" diff --quiet "$old" "$new" -- pnpm-lock.yaml; then
-    sync_log "pnpm-lock.yaml changed: pnpm install"
-    (cd "$REPO" && PATH="$NODE_BIN:$PATH" pnpm install --frozen-lockfile >>"$RUN/sync.log" 2>&1) || failed="$failed pnpm-install"
+  # Setup steps go into sync.pending and stay there until they succeed, so a failed install or a migration that waits
+  # for the database is done by a later sync.
+  if [ "$old" != "$new" ] && ! "${g[@]}" diff --quiet "$old" "$new" -- pnpm-lock.yaml; then pending_add pnpm; fi
+  local api_now; api_now="$(git -C "$API_DIR" rev-parse HEAD 2>/dev/null)"
+  if [ -n "$api_before" ] && [ "$api_before" != "$api_now" ]; then
+    git -C "$API_DIR" diff --quiet "$api_before" "$api_now" -- uv.lock 2>/dev/null || pending_add uv
+    git -C "$API_DIR" diff --quiet "$api_before" "$api_now" -- alembic/versions 2>/dev/null || pending_add alembic
   fi
-  case " $updated " in *" services/api "*)
-    local aold anew
-    aold="$("${g[@]}" ls-tree "$old" services/api | awk '{print $3}')"; anew="$("${g[@]}" ls-tree HEAD services/api | awk '{print $3}')"
-    if ! git -C "$API_DIR" diff --quiet "$aold" "$anew" -- uv.lock 2>/dev/null; then
-      sync_log "services/api uv.lock changed: uv sync"
-      (cd "$API_DIR" && uv sync -q >>"$RUN/sync.log" 2>&1) || failed="$failed uv-sync"
-    fi
-    # docs/release-readiness.md: run the migrations after every pull that adds one. Only against the local database.
-    if ! git -C "$API_DIR" diff --quiet "$aold" "$anew" -- alembic/versions 2>/dev/null; then
-      if grep -Eq '^STEADY_DATABASE_URL=.*@(localhost|127\.0\.0\.1)[:/]' "$API_DIR/.env" 2>/dev/null; then
-        sync_log "new database migration: alembic upgrade head (local database)"
-        (cd "$API_DIR" && uv run alembic upgrade head >>"$RUN/sync.log" 2>&1) || failed="$failed alembic"
-      else
-        failed="$failed alembic(not-local-db:run-it-yourself)"
-      fi
-    fi ;;
-  esac
+  run_pending
+  failed="$failed$PENDING_FAILED"
   local msg
-  if [ "$old" = "$new" ] && [ -z "$updated" ]; then msg="up to date (main ${new:0:7})"
-  else msg="pulled main ${old:0:7} -> ${new:0:7}${updated:+; updated:$updated}"; fi
+  if [ "$old" != "$new" ]; then msg="pulled main ${old:0:7} -> ${new:0:7}${updated:+; updated:$updated}"
+  elif [ -n "$updated" ]; then msg="main up to date (${new:0:7}); updated:$updated"
+  else msg="up to date (main ${new:0:7})"; fi
   [ -n "$moved" ] && msg="$msg; left on their own commit:$moved"
   [ -n "$failed" ] && msg="$msg; FAILED:$failed (see stedio log sync)"
   sync_done "$msg"
@@ -380,6 +405,8 @@ case "${1:-status}" in
     if [ "$MODE" = dev ]; then say "Starting in live-reload mode..."; else say "Starting..."; fi
     [ -n "$NO_PULL" ] || cmd_sync
     for s in $(expand "$ALL" ${ARGS[@]+"${ARGS[@]}"}); do start_one "$s"; done
+    # Setup left from the pull (a migration waits for the database, which has just started).
+    if [ -s "$RUN/sync.pending" ]; then run_pending; [ -n "$PENDING_FAILED" ] && err "  sync: still to do:$PENDING_FAILED (stedio log sync)"; fi
     sync_follow
     echo; cmd_status ;;
   stop|down)
