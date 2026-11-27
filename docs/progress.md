@@ -8,6 +8,18 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+27 Nov 2026 (Jira PM-607, thread "Fix clinic login signing out repeatedly"): Guy said the clinic login kept
+signing out. The clinic dashboard kept its session in page memory only, so a reload, a new tab, the English/Hebrew
+switch (a full page load, since `[locale]/layout.tsx` is the root layout), coming back from "My app" and every deploy
+sent the clinician back to sign-in. The production logs agree: each handoff came 6-10 s after a refused refresh. Fixed
+(API #293, web #121, merged): `X-Steady-Session: clinic` keeps the refresh token in its own HttpOnly cookie
+`steady_clinic_session`, separate from the website's. Each clinic token lasts 65 min from its refresh, and the
+dashboard refreshes every 5 min while in use, so the 1-hour idle sign-out also holds on the server. Refreshes are
+serialised across tabs, sign-out reaches every tab, and the cookie policy lists the cookie. Sign-out and reuse
+detection stamp only open rows (revocation counts were inflated), and refused refreshes log a reason. Verified
+locally end to end. Next: deploy API, then web. Open item PM-608: the privacy policy's stale "sign-in kept only in
+the open page" line goes into the next batched privacy version.
+
 27 Nov 2026 (Jira PM-606 and PM-605): Guy reported that Itay's personal data vanished from the iPhone app after Itay
 was made a clinic doctor. His data is intact (read-only counts from the server). He has not worn a sensor since 23 Nov,
 so the Overview, with no glucose in the last 24 hours, showed the first-day "Connect a device" screen. That screen hid
