@@ -15,7 +15,9 @@ WARM_UP; it now comes from the pump's own sensor history (`sgs` WARM_UP entries,
 NO_DATA_FROM_PUMP from 22:18 and WARM_UP only from 22:33, so those "no data" entries (up to 30 min before the first
 WARM_UP, no reading between) now count as the start (api #307). Guy's pump said ready at 00:22: the start now comes
 first from the pump's own warm-up minutes left (`systemStatusTimeRemaining` at `lastConduitDateTime`, api #309), then
-the sensor life left (`sensorDurationMinutes` of 10200, api #308), then the history. No new field, no app change.
+the sensor life left (`sensorDurationMinutes` of 10200, api #308), then the history. No new field, no app change. Live (API v237),
+the app showed ready 00:22 like the pump. Found on the way (PM-637): CareLink reports each pump message twice, seconds
+apart, and both were kept; a same-code message under 60 s from another is now one (api #310). Old twins stay (PM-362).
 
 27 Nov 2026 (Jira PM-630, thread "Rewrite website footer as marketing copy"): Guy asked for a footer blurb that says
 what Stedio is. `web.disclaimer` is now marketing copy (en, he), ending "helps you better understand what’s going on with your diabetes" (Guy); "Stedio is not a medical device." moved to the copyright
