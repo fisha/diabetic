@@ -18,7 +18,11 @@ deploy once Meta approves.
 ## Submitting (Meta Business Manager > WhatsApp Manager > Message templates)
 
 For every template:
-- Category: Utility.
+- Category: Utility. Meta moved the plain stedio_meal, stedio_insight and stedio_daily to Marketing (27 Nov 2026): a
+  greeting or an open invitation reads as marketing to its classifier, and Marketing templates are billed higher and
+  limited per person. So these bodies frame the variable as the person's own account update (their summary, their
+  records, their check-in, their meal log) with a plain reply instruction, no greeting and no "anytime". If Meta still
+  files one as Marketing, appeal it as a reply to the person's own account activity rather than accepting it.
 - Languages: English (`en`) and Hebrew (`he`), the same codes the plain templates use.
 - One quick-reply button.
 - The body starts and ends with fixed text: Meta refuses a variable at the start or end of the body.
@@ -28,7 +32,7 @@ For every template:
 
 | | English (en) | Hebrew (he) |
 |---|---|---|
-| Body | Good morning from Stedio.<br><br>{{1}}<br><br>You can answer here anytime. | בוקר טוב מסטדיו.<br><br>{{1}}<br><br>אפשר לענות כאן בכל זמן. |
+| Body | Your Stedio summary of yesterday, from your own records:<br><br>{{1}}<br><br>Reply here to go over it. | הסיכום של אתמול בסטדיו, מתוך הרשומות שלך:<br><br>{{1}}<br><br>אפשר לענות כאן כדי לעבור עליו. |
 | Button | Let's talk | נדבר |
 | Sample {{1}} | Yesterday you logged all three meals · The evening was a little higher than your range · Want to look at tonight's dinner together? | אתמול רשמת את שלוש הארוחות · הערב היה מעט מעל הטווח שלך · רוצה שנסתכל יחד על ארוחת הערב היום? |
 
@@ -36,7 +40,7 @@ For every template:
 
 | | English (en) | Hebrew (he) |
 |---|---|---|
-| Body | Stedio noticed something in your recent data:<br><br>{{1}}<br><br>Reply if you'd like to talk about it. | סטדיו שם לב למשהו בנתונים האחרונים שלך:<br><br>{{1}}<br><br>אפשר לענות כאן אם בא לך לדבר על זה. |
+| Body | An update about your Stedio records:<br><br>{{1}}<br><br>Reply here with any question about it. | עדכון על הרשומות שלך בסטדיו:<br><br>{{1}}<br><br>אפשר לענות כאן עם כל שאלה על זה. |
 | Button | Tell me more | עוד פרטים |
 | Sample {{1}} | Your mornings were steadier this week than last week. | הבקרים שלך היו יציבים יותר השבוע מאשר בשבוע שעבר. |
 
@@ -44,7 +48,7 @@ For every template:
 
 | | English (en) | Hebrew (he) |
 |---|---|---|
-| Body | A quick check-in from Stedio:<br><br>{{1}}<br><br>Reply here whenever it suits you. | בדיקה קצרה מסטדיו:<br><br>{{1}}<br><br>אפשר לענות כאן מתי שנוח לך. |
+| Body | Your Stedio check-in:<br><br>{{1}}<br><br>Reply here to answer it. | הבדיקה שלך בסטדיו:<br><br>{{1}}<br><br>אפשר לענות כאן. |
 | Button | Reply | לענות |
 | Sample {{1}} | How was your walk this afternoon? | איך הייתה ההליכה אחר הצהריים? |
 
@@ -52,7 +56,7 @@ For every template:
 
 | | English (en) | Hebrew (he) |
 |---|---|---|
-| Body | A meal question from Stedio:<br><br>{{1}}<br><br>A photo, a voice note or a few words is enough. | שאלה על ארוחה מסטדיו:<br><br>{{1}}<br><br>מספיקה תמונה, הודעה קולית או כמה מילים. |
+| Body | Your Stedio meal log:<br><br>{{1}}<br><br>Reply with a photo, a voice note or a few words to log it. | יומן הארוחות שלך בסטדיו:<br><br>{{1}}<br><br>אפשר לענות בתמונה, בהודעה קולית או בכמה מילים כדי לתעד. |
 | Button | Log it | לתעד |
 | Sample {{1}} | Had lunch yet? Send me a photo or a quick voice note, and I'll log the carbs. | אכלת כבר צהריים? אפשר לשלוח לי תמונה או הודעה קולית קצרה, ואני ארשום את הפחמימות. |
 
