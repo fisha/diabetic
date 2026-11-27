@@ -83,11 +83,19 @@ const server = http.createServer((req, res) => {
         page.on('filechooser', (fc) => fc.setFiles({ name: 'meal.jpg', mimeType: 'image/jpeg', buffer: jpg }));
         const h = { 'access-control-allow-origin': '*', 'access-control-allow-headers': '*' };
         const he = lang === 'he';
-        const items = [
+        const salmon = [
           { name: he ? 'סלמון צלוי' : 'Grilled salmon', unit: 'g', qty: 140, carbs_per_100g: 0, protein_per_100g: 25, fat_per_100g: 12, kcal_per_100g: 208, confidence: 'high' },
           { name: he ? 'אורז מלא' : 'Brown rice', unit: 'g', qty: 120, carbs_per_100g: 23, fiber_per_100g: 1.8, protein_per_100g: 2.6, fat_per_100g: 0.9, kcal_per_100g: 112, confidence: 'medium' },
           { name: he ? 'סלט ירוק עם אבוקדו ועגבניות שרי' : 'Green salad with avocado and cherry tomatoes', unit: 'g', qty: 150, carbs_per_100g: 5, fiber_per_100g: 3.5, protein_per_100g: 1.5, fat_per_100g: 8, kcal_per_100g: 95, confidence: 'medium' },
         ];
+        // MEALDISH=chicken-bowl: the Hebrew site's meal photo instead (grilled chicken, broccoli, bulgur, sweet potato).
+        const chickenBowl = [
+          { name: he ? 'חזה עוף צלוי' : 'Grilled chicken breast', unit: 'g', qty: 130, carbs_per_100g: 0, protein_per_100g: 31, fat_per_100g: 3.6, kcal_per_100g: 165, confidence: 'high' },
+          { name: he ? 'ברוקולי צלוי' : 'Roasted broccoli', unit: 'g', qty: 90, carbs_per_100g: 7, fiber_per_100g: 2.6, protein_per_100g: 2.8, fat_per_100g: 0.4, kcal_per_100g: 35, confidence: 'high' },
+          { name: he ? 'בורגול' : 'Bulgur', unit: 'g', qty: 100, carbs_per_100g: 18.6, fiber_per_100g: 4.5, protein_per_100g: 3.1, fat_per_100g: 0.2, kcal_per_100g: 83, confidence: 'medium' },
+          { name: he ? 'בטטה צלויה' : 'Roasted sweet potato', unit: 'g', qty: 70, carbs_per_100g: 20.7, fiber_per_100g: 3.3, protein_per_100g: 2, fat_per_100g: 0.2, kcal_per_100g: 90, confidence: 'medium' },
+        ];
+        const items = process.env.MEALDISH === 'chicken-bowl' ? chickenBowl : salmon;
         await page.route('**/meal/photos', (r) => (r.request().method() === 'OPTIONS' ? r.fulfill({ status: 204, headers: h }) : r.fulfill({ contentType: 'application/json', headers: h, body: JSON.stringify({ photo_id: '6f1c2b8e-3a5d-4c7e-9b1a-2d4e6f8a0c11' }) })));
         await page.route('**/meal/photos/*/analyze', (r) => (r.request().method() === 'OPTIONS' ? r.fulfill({ status: 204, headers: h }) : r.fulfill({ contentType: 'application/json', headers: h, body: JSON.stringify({ provider: 'shots', items }) })));
       }
