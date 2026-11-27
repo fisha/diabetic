@@ -11,7 +11,9 @@ verified only against test stand-ins or not at all. See `docs/integration-status
 27 Nov 2026 (Jira epic PM-613, thread "Review Itay's clinic area feedback"): Itay's nine clinic-area points are
 PM-614..622; Guy goes through them one by one before anything is built. PM-620 fixed (web #122, merged): clinic dates
 took day/month order from the page language, so Itay (Israel, English portal) saw visit dates month first. They now
-follow the browser region; month first only for a US region in an American time zone. Next: web deploy.
+follow the browser region; month first only for a US region in an American time zone. Live (web v134). PM-614 (Guy approved the mockup): "Choose dates" beside the quick periods on Data, Meals and
+Measurements, up to a year back, held across the three tabs (API #298 `period=first..last`, web #124). Meals keep
+the 62-day journal limit. Next: API deploy, then web.
 
 27 Nov 2026 (Jira PM-607, thread "Fix clinic login signing out repeatedly"): Guy said the clinic login kept
 signing out. The clinic dashboard kept its session in page memory only, so a reload, a new tab, the English/Hebrew
