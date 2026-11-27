@@ -33986,5 +33986,26 @@
       "translation"
     ],
     "note": "Admin dashboard, website sign-in and organizations (PM-592..595, Guy 26 Nov 2026)."
+  },
+  "mo.title_ios": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Motion permission row in Settings > Privacy (PM-609, Guy 27 Nov 2026). Title is the system's own name for the permission."
+  },
+  "mo.title_android": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Motion permission row in Settings > Privacy (PM-609, Guy 27 Nov 2026). Title is the system's own name for the permission."
+  },
+  "mo.note": {
+    "board": "Settings",
+    "review": [
+      "translation"
+    ],
+    "note": "Motion permission row in Settings > Privacy (PM-609, Guy 27 Nov 2026). Title is the system's own name for the permission."
   }
 }
