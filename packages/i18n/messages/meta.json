@@ -16142,6 +16142,12 @@
       "translation"
     ]
   },
+  "set.tg_src_libre": {
+    "board": "SET-02",
+    "review": [
+      "translation"
+    ]
+  },
   "set.tr_set": {
     "board": "Insights",
     "review": [
@@ -21890,6 +21896,13 @@
     ],
     "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
   },
+  "mode.loop_off": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
   "mode.other": {
     "board": "Journal",
     "review": [
@@ -21933,6 +21946,13 @@
     "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
   },
   "mode.b_sleep": {
+    "board": "Journal",
+    "review": [
+      "translation"
+    ],
+    "note": "Pump mode as the pump names it (Temp Target, SmartGuard, Control-IQ activity); no advice."
+  },
+  "mode.b_loop_off": {
     "board": "Journal",
     "review": [
       "translation"
