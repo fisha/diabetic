@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+27 Nov 2026 (Jira PM-602, thread "Add demo patients to Guy's clinic account"): Guy asked for patients on his own
+clinic account (doctor) with 1, 3 and 12 months of data, and for Itay as a doctor at the Tel Aviv clinic. Built (API
+#290, merged): `python -m steady_api.demo.clinic_patients add --clinician-email <email>` makes Dana Demo (type 2,
+Libre, 30 days), Ron Demo (type 1, pens + Dexcom, 90 days) and Lior Demo (type 1, 780G, 365 days) with the demo
+generator, quarterly HbA1c and yearly LDL, past visits opened by the clinician (weight, BP, pulse, a "demo" summary),
+and accepted links with every part shared. `is_demo` keeps them out of training, priors, forecast, analytics and the
+nightly snapshot; the daily demo reset leaves them alone and the worker tops them up to now. `remove` deletes only
+them; `member --clinician-email <email> --clinic "<name>" --name "<shown name>"` is Admin > Clinics > Add member.
+Tests 59 pass locally. Next: API deploy, then the Mac runs `add` (Guy) and `member` (Itay) on production.
+
 27 Nov 2026 (Jira PM-599, thread "Fix CareLink disconnect on Guy's account"): Guy's CareLink link went to
 needs_verification at 02:05:59Z after ONE 403 from the CareLink token endpoint; he signed in again on CareLink's page
 at 09:49Z. Cause: `sync_link` treated every refresh error (400/401/403 and even 5xx) as the end of the sign-in and
