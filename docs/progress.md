@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+27 Nov 2026 (Jira PM-601, thread "Move forecast training off the API server", Guy chose 10:18Z): the hidden glucose
+forecast training no longer runs on the machine that serves users. The night of 26-27 Nov it was postponed 13 times for
+low free memory on stedio-api (1 GB, uvicorn + worker), so one person got a model. Now a separate 1 GB Machine
+`forecast-trainer` in the stedio-api app (no new app, no port, no volume, no worker) is started by Fly every hour,
+runs `steady_api.forecast_batch` (who is due: the owner any hour, everyone else 00:00-06:00 UTC; one capped child
+process at a time; 40-minute budget) and stops. The API's worker keeps the estimate every 30 minutes and scoring, and
+with `STEADY_FORECAST_TRAIN_REMOTE=true` (deploy/fly/api/fly.toml) never trains. `stedio-fly deploy-api` creates the
+Machine on first run and gives it each new image without starting it. About $1.5-2 a month. Rollback: set
+`STEADY_FORECAST_TRAIN_REMOTE='false'` and destroy the Machine. Tests `test_forecast_batch` 3, forecast suites pass.
+Next: API deploy from the Mac, then read the trainer's log line "forecast batch:" after 00:00 UTC.
+
 27 Nov 2026, night (Jira PM-592 epic, PM-593/594/595, thread "Rebuild admin area as management dashboard"): Guy
 asked for one website sign-in for everyone, a real admin dashboard and clinic organizations with seats. Built: `/signin`
 is the only sign-in; after it an admin lands on `/dashboard/admin`, a clinic team member or organization manager on the
