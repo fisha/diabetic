@@ -15,6 +15,11 @@ deploy once Meta approves.
   behind the button.
 - When the whole message fits in the template, the button opens the conversation with one line ("I'm here...").
 
+## Status (27 Nov 2026)
+
+Submitted as Utility, all In review. Meta's pre-check had stedio_daily_v2 and stedio_insight_v2 reworded (the
+text below is what was submitted). stedio_meal_v2 Hebrew is still being retried; its final text will be added here.
+
 ## Submitting (Meta Business Manager > WhatsApp Manager > Message templates)
 
 For every template:
@@ -32,17 +37,17 @@ For every template:
 
 | | English (en) | Hebrew (he) |
 |---|---|---|
-| Body | Your Stedio summary of yesterday, from your own records:<br><br>{{1}}<br><br>Reply here to go over it. | הסיכום של אתמול בסטדיו, מתוך הרשומות שלך:<br><br>{{1}}<br><br>אפשר לענות כאן כדי לעבור עליו. |
+| Body | Your account summary for yesterday, from the records in your Stedio account:<br><br>{{1}}<br><br>Reply here with any question about this summary. | סיכום החשבון שלך לאתמול, מתוך הרשומות בחשבון סטדיו שלך:<br><br>{{1}}<br><br>אפשר לענות כאן עם כל שאלה על הסיכום הזה. |
 | Button | Let's talk | נדבר |
-| Sample {{1}} | Yesterday you logged all three meals · The evening was a little higher than your range · Want to look at tonight's dinner together? | אתמול רשמת את שלוש הארוחות · הערב היה מעט מעל הטווח שלך · רוצה שנסתכל יחד על ארוחת הערב היום? |
+| Sample {{1}} | 3 meals logged · 2 glucose readings above your set range | 3 ארוחות נרשמו · 2 מדידות סוכר מעל הטווח שהגדרת |
 
 ### stedio_insight_v2 (patterns and insights)
 
 | | English (en) | Hebrew (he) |
 |---|---|---|
-| Body | An update about your Stedio records:<br><br>{{1}}<br><br>Reply here with any question about it. | עדכון על הרשומות שלך בסטדיו:<br><br>{{1}}<br><br>אפשר לענות כאן עם כל שאלה על זה. |
+| Body | A summary of your recent Stedio records:<br><br>{{1}}<br><br>Reply here with any question about this summary. | סיכום של הרשומות האחרונות שלך בסטדיו:<br><br>{{1}}<br><br>אפשר לענות כאן עם כל שאלה על הסיכום הזה. |
 | Button | Tell me more | עוד פרטים |
-| Sample {{1}} | Your mornings were steadier this week than last week. | הבקרים שלך היו יציבים יותר השבוע מאשר בשבוע שעבר. |
+| Sample {{1}} | Mornings this week: 6 of 7 within your set range | בקרים השבוע: 6 מתוך 7 בתוך הטווח שהגדרת |
 
 ### stedio_checkin_v2 (check-ins, including the after-a-low-or-high check-in)
 
