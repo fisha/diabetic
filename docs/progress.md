@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+27 Nov 2026 (Jira PM-599, thread "Fix CareLink disconnect on Guy's account"): Guy's CareLink link went to
+needs_verification at 02:05:59Z after ONE 403 from the CareLink token endpoint; he signed in again on CareLink's page
+at 09:49Z. Cause: `sync_link` treated every refresh error (400/401/403 and even 5xx) as the end of the sign-in and
+dropped the tokens; a page sign-in has no password to fall back on. Fixed (API #287): only an OAuth refusal
+(`invalid_grant` and kin) ends it; anything else keeps the tokens, goes on with the access token while it lasts, else
+retries in 30 min; a rotated refresh token is sealed and committed right after the refresh; the OAuth error code is
+logged. The app's CareLink screen now offers only "Sign in on CareLink's page" (app #329; the web app, which can't open
+the page, keeps the password form). Next: API deploy and OTA; if it happens again, read the "carelink token refresh
+answered" log line for the error code.
+
 27 Nov 2026 (Jira PM-601, thread "Move forecast training off the API server", Guy chose 10:18Z): the hidden glucose
 forecast training no longer runs on the machine that serves users. The night of 26-27 Nov it was postponed 13 times for
 low free memory on stedio-api (1 GB, uvicorn + worker), so one person got a model. Now a separate 1 GB Machine
