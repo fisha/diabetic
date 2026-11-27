@@ -12,6 +12,8 @@
 #   stedio log <svc> [n]   Print the last n lines (default 80) of one service's log
 #   stedio urls            Public and local addresses
 #   stedio deploy-web      Re-export the app for the website, rebuild it and restart it
+#   stedio sync            Pull main from GitHub now: root fast-forward, then the submodules that were in step
+#   stedio sync on|off     Turn the once-a-minute auto pull of live-reload mode on or off (stays as set)
 #   stedio help
 #
 # Services: db (Postgres in Docker), api (FastAPI :8010), web (Next.js :3000),
@@ -19,6 +21,11 @@
 # Modes: `up`/`restart` without `dev` run the built site (`next start`) and a plain API, as before. Each switches a
 #        running api or web to its own mode; db and the tunnels are the same in both. In live-reload mode /app is still
 #        the app's last export (stedio deploy-web): app code changes reach it only after the next export.
+# Pulling: `up` and `up dev` pull once first (`--no-pull` skips it); live-reload mode keeps pulling every minute, so
+#        merged work shows by itself. A pull is only ever a fast-forward of main: local changes, another branch, a
+#        submodule on its own commit, or a build running (eas, expo export, next build, pnpm install) and it skips
+#        and says why (stedio log sync). pnpm install / uv sync run only when a lockfile changed, and a new database
+#        migration runs (alembic upgrade head) only against a local database. `stedio stop sync` stops the auto pull.
 # Logs and pid files live in /Volumes/Studio SSD/Workspace/steady-run.
 # The mixmaster-pro tunnel and servers are never touched.
 
@@ -34,6 +41,7 @@ API_URL="https://stedio.ngrok.app"
 WEB_URL="https://stedio.ngrok.dev"
 CORS='["http://localhost:8081","http://localhost:3000","https://stedio.ngrok.dev"]'
 ALL="db api web tunnel-api tunnel-web"
+SUBS="apps/mobile apps/web services/api packages/consent-kit"
 mkdir -p "$RUN/pids"
 
 if [ -t 1 ] && [ -z "${NO_COLOR:-}" ]; then
@@ -91,6 +99,8 @@ mode_of() {
   if [ -n "$g" ] && pgrep -g "$g" -f 'next dev|uvicorn .*--reload' >/dev/null 2>&1; then echo dev; else echo build; fi
 }
 MODE=build
+[ "${STEDIO_SYNC_MODE:-}" = dev ] && MODE=dev
+NO_PULL=""
 
 check_url() { curl -s -o /dev/null -m 8 -w '%{http_code}' "$1" 2>/dev/null; }
 
@@ -201,6 +211,8 @@ cmd_status() {
     esac
     printf '  %-11s %-18s %s\n' "$s" "$state" "$detail"
   done
+  if [ -n "$(autosync_pid)" ]; then state="${G}every minute${X}"; elif autosync_on; then state="${D}off until up dev${X}"; else state="${Y}turned off${X}"; fi
+  printf '  %-11s %-18s %s\n' "sync" "$state" "last: $(cat "$RUN/sync.last" 2>/dev/null || echo 'never')"
   say ""
   say "  ${D}public checks:${X} api/health $(check_url "$API_URL/health")   site /he $(check_url "$WEB_URL/he")   site /app $(check_url "$WEB_URL/app")"
   say "  ${D}versions:${X} main $(git -C "$REPO" rev-parse --short HEAD 2>/dev/null)  api $(git -C "$API_DIR" rev-parse --short HEAD 2>/dev/null)  app $(git -C "$MOBILE_DIR" rev-parse --short HEAD 2>/dev/null)  web $(git -C "$WEB_DIR" rev-parse --short HEAD 2>/dev/null)"
@@ -247,29 +259,151 @@ cmd_deploy_web() {
   fi
 }
 
+# ---- pulling from GitHub -------------------------------------------------------------------------------------------
+# Never resets, stashes, rebases or forces: the Mac also builds and deploys from this checkout.
+sync_log() { printf '%s %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$*" >> "$RUN/sync.log"; [ -n "${SYNC_QUIET:-}" ] || say "  sync: $*"; }
+sync_done() { printf '%s %s\n' "$(date '+%H:%M')" "$*" > "$RUN/sync.last"; sync_log "$*"; }
+autosync_on() { [ ! -f "$RUN/sync.off" ]; }
+autosync_pid() { # from its pid file, and only while that process is still the loop
+  local p; p="$(cat "$RUN/pids/autosync.pid" 2>/dev/null)"
+  [ -n "$p" ] && ps -o command= -p "$p" 2>/dev/null | grep -q 'stedio-autosync-loop' && echo "$p"
+  return 0
+}
+# A build, export or install running from this checkout. Shell `-c` lines are left out: they are only wrappers (the
+# real tool is its own process) and a Claude session's shell command can mention these words without running them.
+busy_build() {
+  ps -axo pid=,command= 2>/dev/null \
+    | grep -E 'eas(-cli)? (build|update|submit)|expo export|next build|pnpm (install|i )|gradlew|xcodebuild|git (rebase|merge|cherry-pick)' \
+    | grep -vE '^ *[0-9]+ ([^ ]*/)?(ba|z|da)?sh (-[a-z]*c|-c) ' | grep -v grep | awk '{print $1}' | grep -vx "$$" | head -1
+}
+
+cmd_sync() {
+  local g=(git -C "$REPO") old new sub ptr head pinned="" moved="" b
+  export GIT_TERMINAL_PROMPT=0 GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-ssh -o BatchMode=yes -o ConnectTimeout=15}"
+  if ! mkdir "$RUN/sync.lock" 2>/dev/null; then
+    # A lock whose owner is gone is left over from a pull that was killed.
+    local owner; owner="$(cat "$RUN/sync.lock/pid" 2>/dev/null)"
+    if [ -n "$owner" ] && kill -0 "$owner" 2>/dev/null; then sync_log "skipped: another pull is running"; return 0; fi
+    rm -f "$RUN/sync.lock/pid"; rmdir "$RUN/sync.lock" 2>/dev/null; mkdir "$RUN/sync.lock" 2>/dev/null || return 0
+  fi
+  echo $$ > "$RUN/sync.lock/pid"
+  trap 'rm -f "$RUN/sync.lock/pid"; rmdir "$RUN/sync.lock" 2>/dev/null; trap - RETURN' RETURN
+  if [ -n "$(busy_build)" ]; then sync_done "skipped: a build or install is running (pid $(busy_build))"; return 0; fi
+  b="$("${g[@]}" symbolic-ref --short -q HEAD)"
+  if [ "$b" != main ]; then sync_done "skipped: main repo is on '${b:-a detached commit}', not main"; return 0; fi
+  if ! "${g[@]}" fetch -q origin main 2>>"$RUN/sync.log"; then sync_done "failed: could not reach GitHub (see stedio log sync)"; return 1; fi
+  old="$("${g[@]}" rev-parse HEAD)"; new="$("${g[@]}" rev-parse FETCH_HEAD)"
+  # Only submodules that sit on the commit the root records now, detached or on main, follow the pull. One on another
+  # branch or commit (work in progress, a build of a branch) is left exactly as it is.
+  local sb
+  for sub in $SUBS; do
+    [ -e "$REPO/$sub/.git" ] || continue
+    ptr="$("${g[@]}" ls-tree HEAD "$sub" | awk '{print $3}')"; head="$(git -C "$REPO/$sub" rev-parse HEAD 2>/dev/null)"
+    sb="$(git -C "$REPO/$sub" symbolic-ref --short -q HEAD)"
+    if [ -n "$ptr" ] && [ "$ptr" = "$head" ] && { [ -z "$sb" ] || [ "$sb" = main ]; }; then pinned="$pinned $sub"; else moved="$moved $sub"; fi
+  done
+  if [ "$old" != "$new" ]; then
+    if ! "${g[@]}" merge-base --is-ancestor "$old" "$new"; then sync_done "skipped: main has local commits that are not on GitHub"; return 0; fi
+    if ! "${g[@]}" merge --ff-only -q FETCH_HEAD >>"$RUN/sync.log" 2>&1; then
+      sync_done "skipped: local changes are in the way of the pull (see stedio log sync)"; return 0
+    fi
+  fi
+  local updated="" failed=""
+  for sub in $pinned; do
+    ptr="$("${g[@]}" ls-tree HEAD "$sub" | awk '{print $3}')"
+    [ "$(git -C "$REPO/$sub" rev-parse HEAD)" = "$ptr" ] && continue
+    if [ -n "$(git -C "$REPO/$sub" symbolic-ref --short -q HEAD)" ]; then
+      # On main: move main forward (fast-forward only), so the submodule stays on its branch.
+      if git -C "$REPO/$sub" fetch -q origin main 2>>"$RUN/sync.log" && git -C "$REPO/$sub" merge --ff-only -q "$ptr" >>"$RUN/sync.log" 2>&1
+      then updated="$updated $sub"; else failed="$failed $sub"; fi
+    elif "${g[@]}" submodule update --init -- "$sub" >>"$RUN/sync.log" 2>&1; then updated="$updated $sub"; else failed="$failed $sub"; fi
+  done
+  # New submodules (a fresh entry in .gitmodules) are checked out too.
+  for sub in $("${g[@]}" config -f .gitmodules --get-regexp 'submodule\..*\.path' | awk '{print $2}'); do
+    [ -e "$REPO/$sub/.git" ] || { "${g[@]}" submodule update --init -- "$sub" >>"$RUN/sync.log" 2>&1 && updated="$updated $sub"; }
+  done
+  # Install only when a lockfile changed between what was there and what is there now.
+  if [ "$old" != "$new" ] && ! "${g[@]}" diff --quiet "$old" "$new" -- pnpm-lock.yaml; then
+    sync_log "pnpm-lock.yaml changed: pnpm install"
+    (cd "$REPO" && PATH="$NODE_BIN:$PATH" pnpm install --frozen-lockfile >>"$RUN/sync.log" 2>&1) || failed="$failed pnpm-install"
+  fi
+  case " $updated " in *" services/api "*)
+    local aold anew
+    aold="$("${g[@]}" ls-tree "$old" services/api | awk '{print $3}')"; anew="$("${g[@]}" ls-tree HEAD services/api | awk '{print $3}')"
+    if ! git -C "$API_DIR" diff --quiet "$aold" "$anew" -- uv.lock 2>/dev/null; then
+      sync_log "services/api uv.lock changed: uv sync"
+      (cd "$API_DIR" && uv sync -q >>"$RUN/sync.log" 2>&1) || failed="$failed uv-sync"
+    fi
+    # docs/release-readiness.md: run the migrations after every pull that adds one. Only against the local database.
+    if ! git -C "$API_DIR" diff --quiet "$aold" "$anew" -- alembic/versions 2>/dev/null; then
+      if grep -Eq '^STEADY_DATABASE_URL=.*@(localhost|127\.0\.0\.1)[:/]' "$API_DIR/.env" 2>/dev/null; then
+        sync_log "new database migration: alembic upgrade head (local database)"
+        (cd "$API_DIR" && uv run alembic upgrade head >>"$RUN/sync.log" 2>&1) || failed="$failed alembic"
+      else
+        failed="$failed alembic(not-local-db:run-it-yourself)"
+      fi
+    fi ;;
+  esac
+  local msg
+  if [ "$old" = "$new" ] && [ -z "$updated" ]; then msg="up to date (main ${new:0:7})"
+  else msg="pulled main ${old:0:7} -> ${new:0:7}${updated:+; updated:$updated}"; fi
+  [ -n "$moved" ] && msg="$msg; left on their own commit:$moved"
+  [ -n "$failed" ] && msg="$msg; FAILED:$failed (see stedio log sync)"
+  sync_done "$msg"
+  [ "$MODE" = dev ] || [ "$old" = "$new" ] || [ -n "${SYNC_QUIET:-}" ] || say "  sync: the built site keeps its build; run stedio deploy-web to rebuild it"
+}
+
+start_autosync() {
+  autosync_on || { say "  sync: auto pull is off (stedio sync on)"; return; }
+  [ -n "$(autosync_pid)" ] && return
+  # The loop runs this script's `sync` each minute; its pid file and the `stedio-autosync-loop` tag find it again.
+  daemon autosync "$REPO" "exec /bin/bash -c 'while :; do SYNC_QUIET=1 STEDIO_SYNC_MODE=dev /bin/bash \"\$0\" sync >/dev/null 2>&1; sleep 60; done' '$(readlink -f "${BASH_SOURCE[0]}")' stedio-autosync-loop"
+  sleep 0.5
+  [ -n "$(autosync_pid)" ] && say "  ${G}sync: auto pull every minute${X}"
+}
+# Auto pull runs exactly while api or web is in live-reload mode.
+sync_follow() { if [ "$(mode_of web)" = dev ] || [ "$(mode_of api)" = dev ]; then start_autosync; else stop_autosync; fi; }
+stop_autosync() { local p; p="$(autosync_pid)"; [ -n "$p" ] && kill_tree "$p" && say "  sync: auto pull stopped"; return 0; }
+
 usage() { awk 'NR > 1 && /^#/ { sub(/^# ?/, ""); print; next } NR > 1 { exit }' "$(readlink -f "${BASH_SOURCE[0]}")"; }
 
 # `dev` (or --dev) anywhere after up/start/restart picks live-reload mode; the other words are services.
 take_mode() {
   ARGS=()
   local a
-  for a in "$@"; do case "$a" in dev|--dev) MODE=dev ;; *) ARGS+=("$a") ;; esac; done
+  for a in "$@"; do case "$a" in dev|--dev) MODE=dev ;; --no-pull) NO_PULL=1 ;; *) ARGS+=("$a") ;; esac; done
 }
 
 case "${1:-status}" in
   up|start)
     shift; take_mode "$@"
     if [ "$MODE" = dev ]; then say "Starting in live-reload mode..."; else say "Starting..."; fi
-    for s in $(expand "$ALL" ${ARGS[@]+"${ARGS[@]}"}); do start_one "$s"; done; echo; cmd_status ;;
-  stop|down) shift; for s in $(expand "api web" "$@"); do stop_one "$s"; done ;;
+    [ -n "$NO_PULL" ] || cmd_sync
+    for s in $(expand "$ALL" ${ARGS[@]+"${ARGS[@]}"}); do start_one "$s"; done
+    sync_follow
+    echo; cmd_status ;;
+  stop|down)
+    shift; rest=()
+    for a in "$@"; do if [ "$a" = sync ]; then stop_autosync; else rest+=("$a"); fi; done
+    [ $# -gt 0 ] && [ ${#rest[@]} -eq 0 ] && exit 0
+    for s in $(expand "api web" ${rest[@]+"${rest[@]}"}); do stop_one "$s"; done
+    sync_follow ;;
   restart)
     shift; take_mode "$@"
-    for s in $(expand "api web" ${ARGS[@]+"${ARGS[@]}"}); do stop_one "$s"; start_one "$s"; done ;;
+    for s in $(expand "api web" ${ARGS[@]+"${ARGS[@]}"}); do stop_one "$s"; start_one "$s"; done
+    sync_follow ;;
   status|ps) cmd_status ;;
   logs|tail|follow) shift; cmd_logs "$@" ;;
   log) shift; cmd_log "$@" ;;
   urls|url) cmd_urls ;;
   deploy-web) cmd_deploy_web ;;
+  sync)
+    case "${2:-}" in
+      off) touch "$RUN/sync.off"; stop_autosync; say "  sync: auto pull turned off (stedio sync on turns it back on)" ;;
+      on) rm -f "$RUN/sync.off"; say "  sync: auto pull is on; it runs while live-reload mode is up"; sync_follow ;;
+      "") cmd_sync ;;
+      *) err "Use: stedio sync [on|off]"; exit 1 ;;
+    esac ;;
   help|-h|--help) usage ;;
   *) err "Unknown command: $1"; usage; exit 1 ;;
 esac

@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+27 Nov 2026 (Jira PM-591, thread "Add live dev mode to local stedio script"): `stedio sync` pulls main from GitHub
+(fast-forward only; skips on local commits, another branch, conflicting local changes or a running build; submodules
+follow only when they sat on the recorded commit; pnpm install, uv sync and local migrations only when needed). `up`
+pulls once first; live-reload mode pulls every minute (`stedio sync off` stops it). Tested on local copies of the
+repositories; not yet on the Mac.
+
 26 Nov 2026, night (Jira PM-589, open item PM-590, thread "Add live dev mode to local stedio script"): `stedio up dev`
 and `stedio restart dev` run the Mac's website as `next dev` and the API as `uvicorn --reload`; db and the tunnels
 stay; `stedio up` goes back to the built site. Web next.config lets the ngrok host use dev files and live reload
