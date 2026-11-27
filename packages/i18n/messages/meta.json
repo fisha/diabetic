@@ -26077,7 +26077,7 @@
     "review": [
       "translation"
     ],
-    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026)"
+    "note": "Clinic sharing in the app (PM-275, Guy 19 Nov 2026); names the heart measures too (PM-605, Guy 27 Nov 2026)"
   },
   "care.sc_labs": {
     "board": "ClinicPortal",
