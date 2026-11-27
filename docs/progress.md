@@ -13,7 +13,9 @@ PM-614..622; Guy goes through them one by one before anything is built. PM-620 f
 took day/month order from the page language, so Itay (Israel, English portal) saw visit dates month first. They now
 follow the browser region; month first only for a US region in an American time zone. Live (web v134). PM-614 (Guy approved the mockup): "Choose dates" beside the quick periods on Data, Meals and
 Measurements, up to a year back, held across the three tabs (API #298 `period=first..last`, web #124). Meals keep
-the 62-day journal limit. Next: API deploy, then web.
+the 62-day journal limit. Live (API v227, web v136). PM-615 (Guy approved the mockup): Data tab section "Largest
+glucose rises": the 5 largest rises (lowest to highest within 3 h, overlaps once) with what was logged from 1 h before
+(shared parts only) and the curve on tap (API #299 `patterns.rises`, web #125). Next: API deploy, then web.
 
 27 Nov 2026 (Jira PM-607, thread "Fix clinic login signing out repeatedly"): Guy said the clinic login kept
 signing out. The clinic dashboard kept its session in page memory only, so a reload, a new tab, the English/Hebrew
