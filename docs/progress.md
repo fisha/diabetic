@@ -13,7 +13,9 @@ when he looked at the app, not when the sensor was started on the pump. The Care
 WARM_UP; it now comes from the pump's own sensor history (`sgs` WARM_UP entries, `carelink.warmup_start`, kept as
 `status.warmup_pump`), with the old start as the fallback (api #306, live v235). Guy's sensor that evening showed the pump writing
 NO_DATA_FROM_PUMP from 22:18 and WARM_UP only from 22:33, so those "no data" entries (up to 30 min before the first
-WARM_UP, no reading between) now count as the start (api #307). No new field, no app change.
+WARM_UP, no reading between) now count as the start (api #307). Guy's pump said ready at 00:22: the start now comes
+first from the pump's own warm-up minutes left (`systemStatusTimeRemaining` at `lastConduitDateTime`, api #309), then
+the sensor life left (`sensorDurationMinutes` of 10200, api #308), then the history. No new field, no app change.
 
 27 Nov 2026 (Jira PM-630, thread "Rewrite website footer as marketing copy"): Guy asked for a footer blurb that says
 what Stedio is. `web.disclaimer` is now marketing copy (en, he), ending "helps you better understand what’s going on with your diabetes" (Guy); "Stedio is not a medical device." moved to the copyright
