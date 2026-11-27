@@ -8,6 +8,10 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+27 Nov 2026 (Jira PM-630, thread "Rewrite website footer as marketing copy"): Guy asked for a footer blurb that says
+what Stedio is. `web.disclaimer` is now marketing copy (en, he); "Stedio is not a medical device." moved to the copyright
+line (`web.foot_notice`), since regulatory-check rule 4 keeps that notice in the website footer (web #131).
+
 27 Nov 2026 (Jira PM-626, idea DAP-103, thread "Shape mentor personality like Instinct's agent"): research on
 Instinct's texting agent (Claude Doc "Stedio mentor: learning from Instinct's agent") and Guy approved all seven
 proposals. Built in the API: the mentor's "How you sound" rules (prompt, critic `vague`); one send policy for what the
