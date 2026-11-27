@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-641, thread "Fix missing glucose readings in Journal"): Guy saw no reading rows after his CareLink
+sensor warm-up. Nothing was missing: each reading carried the pump's automatic correction and was merged into one row
+(12 Nov rule), which showed the insulin icon. Guy chose to keep one card but show the reading icon when the only
+merged part is an automatic correction (app #336, model only, OTA).
+
 27 Nov 2026 (Jira PM-632, thread "Show WhatsApp phone number in admin user card"): Guy asked for the phone number on
 the admin user card. Admin > Users > a person's profile now has a WhatsApp row: the last 3 digits and the linked date,
 and "Show number", which asks `POST /admin/users/{id}/whatsapp-number` for the full number (admins only, one account at
