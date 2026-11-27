@@ -60,6 +60,11 @@ follow only when they sat on the recorded commit; pnpm install, uv sync and loca
 pulls once first; live-reload mode pulls every minute (`stedio sync off` stops it). Tested on local copies of the
 repositories; not yet on the Mac.
 
+27 Nov 2026, afternoon (Jira PM-604, open item PM-605): Guy: "במדדים שהרופא רואה לא מגיעים כל מדדי ה health". The
+clinic Measurements tab now shows, a value a day from Apple Health or Health Connect, steps, distance, active energy,
+exercise minutes, stand hours, sleep and day averages of heart rate, HRV and blood oxygen, each with a chart and a
+list; gated like resting heart rate. Privacy 2026-11-27T13:00:00Z (users accept again). Merged: api #292, web #120.
+
 27 Nov 2026, night (Jira PM-596, thread "Improve clinic area for care teams"): Guy's clinic follow-ups and the visit
 redesign ("הראשון שהוא מבקר יוצר לו ביקור חדש… כל אלה צריכים להתווסף לביקור של אותו יום כיומן תיעודים"). The patient
 file opens on visits; the first team member that day opens the visit (date and time pickers) and the others record into
