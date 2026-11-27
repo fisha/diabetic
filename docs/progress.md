@@ -305,6 +305,13 @@ the same public project token). Privacy `2026-11-26T14:00:00Z` (forced re-accept
 Regulatory and privacy: pass with at-risk items for the lawyer (PM-533, needs-lawyer). Next: API deploy (migration),
 web, then OTA; Guy sets STEADY_MIXPANEL_TOKEN.
 
+27 Nov 2026 (Jira PM-610): Guy asked whether the mentor asked a 13-year-old tester about lunch on WhatsApp and
+suggested a photo or a voice note; it had not, because a meal check-in needs a usual time (3 of 14 days) and he rarely
+logs. "True not only for the teen": a person with a diabetes profile who signed in within 7 days, or whose device cloud
+sent a reading within 24 h, and has no usual lunch or dinner time, is asked at 13:30 (the late-lunch check-in) and
+19:30 when nothing is logged. Same caps, fewer nudges, break, quiet hours. Words name a photo or a quick voice note;
+lighter words under 18. API #294. Regulatory and privacy: pass. Next: API deploy.
+
 27 Nov 2026 (Jira PM-600): Guy on the 06:03 morning message: after a repeating evening high, offer to go over that
 meal's carbs together before it today and to talk about it; and at 06:00, before his day starts, Today should say Stedio
 is following along and here for anything, not suggest comparisons. The prompt now makes the question that offer (never
