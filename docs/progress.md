@@ -18,7 +18,10 @@ glucose rises": the 5 largest rises (lowest to highest within 3 h, overlaps once
 (shared parts only) and the curve on tap (API #299 `patterns.rises`, web #125). PM-616 (Guy approved the mockup):
 the Meals tab shows the glucose rise beside each meal (3 largest tinted) and the meal panel shows at the meal / highest /
 back in range with the curve, by the app's and the visit report's rule (`meal_response`), only with the glucose
-permission (API #300 `after`, web #126). Next: API deploy, then web.
+permission (API #300 `after`, web #126). PM-617 (Guy approved the mockup): Data tab "Activity" section replaces the
+Exercise row: active minutes, walking and workouts a week, aerobic/strength split (by recorded workout type; app-logged
+gym = strength), steps, weekly stacked bars with the care team's active-minutes target if set, a row per type (API #301
+`lifestyle.activity`, web #127). Next: API deploy, then web.
 
 27 Nov 2026 (Jira PM-607, thread "Fix clinic login signing out repeatedly"): Guy said the clinic login kept
 signing out. The clinic dashboard kept its session in page memory only, so a reload, a new tab, the English/Hebrew
