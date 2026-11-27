@@ -243,6 +243,13 @@ the same public project token). Privacy `2026-11-26T14:00:00Z` (forced re-accept
 Regulatory and privacy: pass with at-risk items for the lawyer (PM-533, needs-lawyer). Next: API deploy (migration),
 web, then OTA; Guy sets STEADY_MIXPANEL_TOKEN.
 
+27 Nov 2026 (Jira PM-600): Guy on the 06:03 morning message: after a repeating evening high, offer to go over that
+meal's carbs together before it today and to talk about it; and at 06:00, before his day starts, Today should say Stedio
+is following along and here for anything, not suggest comparisons. The prompt now makes the question that offer (never
+amounts to eat or insulin); `whatsapp/proactive.day_started` (own quiet hours, else a wake-up recorded this morning,
+else 08:00) keeps only heads-ups in Today before the day starts and adds the fixed line. API #288, 102 tests pass.
+Regulatory and privacy: pass. Evals not run. Next: API deploy, then the next morning message.
+
 26 Nov 2026 (Jira PM-532): Guy liked the WhatsApp "had lunch yet?" question and asked that it refer back to
 yesterday's same meal when it was hard after it. A meal check-in going to WhatsApp now adds one fixed line when
 yesterday's first logged meal of that part of the day was followed by 90+ of 180 minutes above the person's own range
