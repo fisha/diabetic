@@ -305,6 +305,13 @@ the same public project token). Privacy `2026-11-26T14:00:00Z` (forced re-accept
 Regulatory and privacy: pass with at-risk items for the lawyer (PM-533, needs-lawyer). Next: API deploy (migration),
 web, then OTA; Guy sets STEADY_MIXPANEL_TOKEN.
 
+27 Nov 2026 (Jira PM-610, part 2): Guy: the times must follow when the person eats. With no usual time, lunch and
+dinner come from meals logged in 60 days and boluses the person gave in 30 days (2+ days), fixed 13:30/19:30 only with
+no sign. Yonatan's case: pump carbs counted as "logged", so nothing asked what he ate; now a pump meal entry with no
+meal of the person's own gets "I saw a meal on your pump at HH:MM, what did you eat? photo or voice note", and a
+WhatsApp photo answer is saved at the pump time, linked to it. His two WhatsApp templates today were sent but not
+opened (24 h window); Guy approved content-carrying templates (next). API #295.
+
 27 Nov 2026 (Jira PM-610): Guy asked whether the mentor asked a 13-year-old tester about lunch on WhatsApp and
 suggested a photo or a voice note; it had not, because a meal check-in needs a usual time (3 of 14 days) and he rarely
 logs. "True not only for the teen": a person with a diabetes profile who signed in within 7 days, or whose device cloud
