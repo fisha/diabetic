@@ -113,6 +113,18 @@ CASES: list[FoodCase] = [
         notes="Guy's plate, 67 g vs 25 g",
         tags=["portion", "starch"],
     ),
+    # Naama's plate (PM-644, 28 Nov 2026, Android): came back as 36 g, 15 g on her pump. Band: six roasted wedges of 15-25 g
+    # at 19-23 g / 100 g (USDA SR Legacy baked potato with skin 19.1 net) 17-35 g, but a plate this size holds the lower
+    # end; lettuce and pepper 100-200 g at 2-4 g / 100 g, 2-8 g; chicken 0. The 36 g reading fails, the pump's 15 g passes.
+    FoodCase(
+        "chicken-wedges-salad",
+        "On a round glass plate: about a dozen pan-cooked chicken breast pieces, a heap of chopped lettuce with a few "
+        "strips of red pepper, and six home-cut potato wedges roasted with the skin, each about 8 cm long and 2 cm thick.",
+        10,
+        30,
+        notes="Naama's plate (PM-644), 36 g read, 15 g on the pump",
+        tags=["portion", "starch"],
+    ),
     FoodCase(
         "rice-thin-layer", "A thin layer of cooked white rice, about 1 cm high, over a quarter of a dinner plate", 10, 30, tags=["portion", "starch"]
     ),
