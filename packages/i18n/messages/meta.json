@@ -35654,5 +35654,411 @@
       "translation"
     ],
     "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "eq.sensor_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.set_t": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.left": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.left_h": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.ends_at": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.ends_est": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.no_end": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.started": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.ends": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.ends_pump": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.ends_rated": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.warmup": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.warmup_v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.updating": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.since": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.state": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.state_ok": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.tx": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.sensor_range": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.pump_range": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.in_range": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.out_range": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.type": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.type_rep": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.last_reading": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.last_check": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.lost": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.lost_b": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.connected": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.source": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.status_at": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.earlier_sensors": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.earlier_sets": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.no_sensor": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.no_start": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.note": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.changed": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.changed_day": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.last_change": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.time_unknown": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.src_carelink": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.src_tandem": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.src_manual": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.src_device": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.worn": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.worn_v": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.set_type": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.set_none": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.rated_end": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.rated_end_s": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.rec": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.rec_default": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.reservoir": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.units": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.reservoir_at": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.cartridge": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
+  },
+  "eq.no_set": {
+    "board": "Overview",
+    "review": [
+      "translation"
+    ],
+    "note": "PM-647 sensor and set sheets"
   }
 }
