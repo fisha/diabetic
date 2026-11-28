@@ -5547,5 +5547,7 @@
   "yg.own_missed": "הפעם זה לא יסתדר. כל יום שעשית נחשב",
   "yg.own_remove": "הסרה",
   "yg.own_remove_t": "להסיר את האתגר?",
-  "yg.own_keep": "להשאיר"
+  "yg.own_keep": "להשאיר",
+  "wdg.mode_until": "עד {t}",
+  "wdg.mode_since": "מאז {t}"
 }
