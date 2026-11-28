@@ -66,6 +66,11 @@ not with Classic Stedio or challenges off. New challenges: dinner on 5 days, a m
 Export gains `weekly_challenges`. api #318, app #342. Deploy order: API first (new fields), then OTA. Not yet tried on
 a phone.
 
+28 Nov 2026 (Jira PM-647 follow-up): Guy's sensor sheet said "Started 20/11" for a sensor started on 27/11. The CareLink
+start came from "sensor connected" messages, which also come on a reconnect. The CareLink start is now only the pump's own
+warm-up start, CareLink has no earlier-sensor list, and a start that does not fit the pump's own end is not shown
+(api #323, API only).
+
 28 Nov 2026 (Jira PM-647, thread "Show sensor and set details from Overview"): Guy asked that tapping the sensor row on
 Overview open a sheet with everything known about the sensor (battery, replacement time and so on), and the same for the
 infusion set (the exact time of the last change). Both rows now open a sheet (app `EquipmentSheet.tsx`, API
