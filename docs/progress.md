@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-647, thread "Show sensor and set details from Overview"): Guy asked that tapping the sensor row on
+Overview open a sheet with everything known about the sensor (battery, replacement time and so on), and the same for the
+infusion set (the exact time of the last change). Both rows now open a sheet (app `EquipmentSheet.tsx`, API
+`GET /devices/equipment/details`, owner only). Sensor: per connected service, only what it reports: CareLink's own time
+left, sensor status (calibration asked, searching and so on), transmitter battery, sensor and pump in range; LibreLinkUp
+and Tandem the start and an end marked "estimate" (start + rated days); Dexcom Share the connection and last reading only;
+warm-up and updating; earlier sensor starts. Set: last change with its exact time (a CareLink history day says "time not
+reported"), time worn, set type, end of rated wear, the recommended day (PM-437), CareLink reservoir, Tandem cartridge fill,
+earlier changes. Followers keep the two view-only rows. e2e `tools/e2e/equipment-sheets.cjs` passes in English and Hebrew,
+light and dark; screenshots in project files `equipment-pm647/`. Design gap G-143. Deploy order: API first, then OTA.
+
 28 Nov 2026 (Jira PM-646, thread "Restore camera shutter sound on Android"): the Android tester (Galaxy S22) heard no
 shutter click in the meal camera. PM-511 had turned the expo-camera click off on Android, and the ARCore depth camera
 (PM-579) takes its photo from a frame, which makes no sound. The click is back on Android except while a companion call
