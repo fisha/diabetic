@@ -26,6 +26,14 @@ hindsight. Each weekly challenge keeps the moment it was chosen (`users.young.ch
 moment, and a tracked own challenge counts from when it was made. `services/api/scripts/restart_challenge.py` repairs
 one person's challenge that was met in hindsight (start now, its sticker, habit coins and the mentor's met mark).
 
+28 Nov 2026 (Jira PM-650, thread "Drill into glucose rises in clinic view"): Guy asked that each row of the clinic
+"Largest glucose rises" table opens to show stats. A click anywhere on a row (or Enter on its date) opens a side
+panel: the curve from an hour before to 3 hours after the highest over the consensus 70–180 band with meals, insulin and
+workouts marked, the lowest, highest and lowest-after tiles, average and fastest climb, time above 180, time back to 180
+and to the starting reading, readings in the rise, and everything logged in those hours with its time (only the parts
+shared and permitted; automatic pump corrections as one total). Read-only, same permission and period as the summary.
+api #322, web #137. Deploy order: API first, then web. Screenshots in project files `clinic-pm650/`.
+
 28 Nov 2026 (Jira PM-649, same thread): Guy asked that a person can make up a challenge of their own, what and within
 how many days, with the mentor in a chat, on WhatsApp, or in the app. Built as "do <their words> on N days within D
 days from today" (1 to 30 days, every day by default, at most 3 running). In the app: "Make up my own" in the challenge
