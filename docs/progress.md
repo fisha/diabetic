@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-652, thread "Fix squashed meal text in clinic Meals tab"): in the clinic visit Meals calendar the
+meal name shared a row with the time, camera and rise chip and wrapped one or two letters per line in narrow day
+columns. The name now has its own full-width line under them, wraps at words and stops after three lines (the meal panel
+shows it whole). Checked with the real stylesheets, English and Hebrew, 1440 and 390 px, day and night; web #134 merged.
+Visual: verified in a harness, not yet on the live site. Functional: unchanged.
+
 28 Nov 2026 (Jira PM-649, same thread): Guy asked that a person can make up a challenge of their own, what and within
 how many days, with the mentor in a chat, on WhatsApp, or in the app. Built as "do <their words> on N days within D
 days from today" (1 to 30 days, every day by default, at most 3 running). In the app: "Make up my own" in the challenge
