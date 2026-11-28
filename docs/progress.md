@@ -8,6 +8,11 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-658, web #138, thread "Bring clinic sign-in above the fold"): on a 13" MacBook the "Clinic
+sign-in" and "Ask for a demo" buttons sat below the fold after clicking For clinics. They now sit centered under the
+section intro, above the four cards; the "not a medical device" note stays under the cards. No copy change. Checked:
+Playwright at 1440x780 and 1280x700, EN/HE, light/dark (buttons end at 378-408 px), phone 390 wide. Deploy: web.
+
 28 Nov 2026 (Jira PM-656, thread "Show temp target in Live Activity, watch, CarPlay"): Guy asked that the Live
 Activity, the watch and CarPlay, and then the reading cards in the app, say when the person is on a temporary target.
 The pump's own state, read only: the 780G's Temp Target (live CareLink banner, with the pump's own end, "Temp target
