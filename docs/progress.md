@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-656, thread "Show temp target in Live Activity, watch, CarPlay"): Guy asked that the Live
+Activity, the watch and CarPlay, and then the reading cards in the app, say when the person is on a temporary target.
+The pump's own state, read only: the 780G's Temp Target (live CareLink banner, with the pump's own end, "Temp target
+until 16:39") and Tandem's Exercise activity (pump log, start only, "Exercise since 14:20"). Omnipod 5 Activity has no
+source yet; Dexcom and Libre are sensors only. `GET /devices/modes/now` is owner only (not shared with followers), so
+nothing shows while viewing someone. Live Activity pushes carry it and are sent again when it starts or ends. In the app:
+the Home/Overview reading tile and the reading line on Talk, Journal and Settings (OTA). Lock screen, Dynamic Island
+(compact icon too), the small family (CarPlay, Smart Stack), watch app and complication: Swift, next combined local
+build. Checked: API tests, app unit test, browser e2e en light + he dark. Visual on the phone surfaces: not yet.
+
 28 Nov 2026 (Jira PM-654, thread "Learn missed carbs from post-meal glucose"): Guy asked whether, from how a meal
 raised glucose, we can tell how much insulin was missing and so how many carbs were left out of the count. Built behind
 the scenes only: for a photographed meal, the carbs that explain its 4-hour glucose change given the insulin that acted

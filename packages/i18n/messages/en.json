@@ -5547,5 +5547,7 @@
   "yg.own_missed": "Out of reach this time. Every day you did it counts",
   "yg.own_remove": "Remove",
   "yg.own_remove_t": "Remove this challenge?",
-  "yg.own_keep": "Keep"
+  "yg.own_keep": "Keep",
+  "wdg.mode_until": "until {t}",
+  "wdg.mode_since": "since {t}"
 }

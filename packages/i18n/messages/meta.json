@@ -36550,5 +36550,19 @@
       "translation"
     ],
     "note": "The person's own challenge (PM-649, Guy 28 Nov 2026)."
+  },
+  "wdg.mode_until": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Temp target end time on the reading cards, lock-screen card, CarPlay and watch: {t} is the pump's own end time (PM-656)."
+  },
+  "wdg.mode_since": {
+    "board": "WIDGET",
+    "review": [
+      "translation"
+    ],
+    "note": "Temp target start time when the pump gives no end (Tandem Exercise), same places: {t} is a clock time (PM-656)."
   }
 }

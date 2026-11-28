@@ -1360,6 +1360,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/clinic/patients/{link_id}/rise": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Clinic Rise
+         * @description One of the largest rises opened from the table (PM-650): same permission and period as the summary page.
+         */
+        get: operations["clinic_rise_clinic_patients__link_id__rise_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/clinic/patients/{link_id}/series/{name}": {
         parameters: {
             query?: never;
@@ -2283,6 +2303,27 @@ export interface paths {
          *     mode and badge the readings and insulin inside it.
          */
         get: operations["device_modes_devices_modes_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/devices/modes/now": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Device Modes Now
+         * @description The temporary target the pump is on now (PM-656, Guy 28 Nov 2026), for the reading cards, the Live Activity and the
+         *     watch. One's own only: it is not among the paths a follower reads (deps.SCOPE_PATHS).
+         */
+        get: operations["device_modes_now_devices_modes_now_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -9182,6 +9223,10 @@ export interface components {
             /** Via */
             via: string;
         };
+        /** ModesNowOut */
+        ModesNowOut: {
+            target?: components["schemas"]["TargetNowOut"] | null;
+        };
         /** MomentOut */
         MomentOut: {
             /** Body */
@@ -10946,6 +10991,20 @@ export interface components {
              */
             visit_id: string;
         };
+        /** TargetNowOut */
+        TargetNowOut: {
+            /** Expected End */
+            expected_end: string | null;
+            /** Mode */
+            mode: string;
+            /** Source */
+            source: string;
+            /**
+             * Started At
+             * Format: date-time
+             */
+            started_at: string;
+        };
         /** TargetOut */
         TargetOut: {
             /** Amount */
@@ -11896,8 +11955,16 @@ export interface components {
             in: string;
             /** Lc */
             lc?: ("en" | "he") | null;
+            /** Mf */
+            mf?: string | null;
+            /** Mu */
+            mu?: string | null;
             /** Old */
             old: string;
+            /** Te */
+            te?: string | null;
+            /** Tt */
+            tt?: string | null;
             /** Ul */
             ul?: string | null;
             /** Un */
@@ -14680,6 +14747,43 @@ export interface operations {
             };
         };
     };
+    clinic_rise_clinic_patients__link_id__rise_get: {
+        parameters: {
+            query: {
+                start: string;
+                peak: string;
+                period?: string;
+            };
+            header?: never;
+            path: {
+                link_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     clinic_series_clinic_patients__link_id__series__name__get: {
         parameters: {
             query?: {
@@ -16573,6 +16677,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    device_modes_now_devices_modes_now_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ModesNowOut"];
                 };
             };
         };

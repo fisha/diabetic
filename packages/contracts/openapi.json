@@ -10725,6 +10725,22 @@
         "title": "MessageOut",
         "type": "object"
       },
+      "ModesNowOut": {
+        "properties": {
+          "target": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TargetNowOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "title": "ModesNowOut",
+        "type": "object"
+      },
       "MomentOut": {
         "properties": {
           "body": {
@@ -15944,6 +15960,43 @@
         "title": "TargetIn",
         "type": "object"
       },
+      "TargetNowOut": {
+        "properties": {
+          "expected_end": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected End"
+          },
+          "mode": {
+            "title": "Mode",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "started_at": {
+            "format": "date-time",
+            "title": "Started At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "mode",
+          "started_at",
+          "expected_end"
+        ],
+        "title": "TargetNowOut",
+        "type": "object"
+      },
       "TargetOut": {
         "properties": {
           "amount": {
@@ -18332,10 +18385,58 @@
             ],
             "title": "Lc"
           },
+          "mf": {
+            "anyOf": [
+              {
+                "maxLength": 60,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mf"
+          },
+          "mu": {
+            "anyOf": [
+              {
+                "maxLength": 60,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mu"
+          },
           "old": {
             "maxLength": 80,
             "title": "Old",
             "type": "string"
+          },
+          "te": {
+            "anyOf": [
+              {
+                "maxLength": 60,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Te"
+          },
+          "tt": {
+            "anyOf": [
+              {
+                "maxLength": 60,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tt"
           },
           "ul": {
             "anyOf": [
@@ -22692,6 +22793,88 @@
         ]
       }
     },
+    "/clinic/patients/{link_id}/rise": {
+      "get": {
+        "description": "One of the largest rises opened from the table (PM-650): same permission and period as the summary page.",
+        "operationId": "clinic_rise_clinic_patients__link_id__rise_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "link_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Link Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "start",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Start",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "peak",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "title": "Peak",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "period",
+            "required": false,
+            "schema": {
+              "default": "90",
+              "pattern": "^(14|30|90|180|365|last_visit|\\d{4}-\\d{2}-\\d{2}\\.\\.\\d{4}-\\d{2}-\\d{2})$",
+              "title": "Period",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Clinic Rise Clinic Patients  Link Id  Rise Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Clinic Rise",
+        "tags": [
+          "clinic"
+        ]
+      }
+    },
     "/clinic/patients/{link_id}/series/{name}": {
       "get": {
         "operationId": "clinic_series_clinic_patients__link_id__series__name__get",
@@ -25388,6 +25571,33 @@
           }
         ],
         "summary": "Device Modes",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/modes/now": {
+      "get": {
+        "description": "The temporary target the pump is on now (PM-656, Guy 28 Nov 2026), for the reading cards, the Live Activity and the\nwatch. One's own only: it is not among the paths a follower reads (deps.SCOPE_PATHS).",
+        "operationId": "device_modes_now_devices_modes_now_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModesNowOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Device Modes Now",
         "tags": [
           "devices"
         ]
