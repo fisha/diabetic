@@ -3616,3 +3616,9 @@ camera's shutter deafening while the companion's voice was hard to hear. Meal ph
 (`takePictureAsync({ shutterSound })`; expo-camera plays it on the system stream), and on the direct WebRTC call the
 companion's remote track gets gain 2 (about +6 dB) on Android, where call mode plays it on the softer call stream. iOS
 and the relay path unchanged. App #302 (typecheck, lint, 30 tests pass). Next: OTA, then the tester tries it.
+
+28 Nov 2026 (Jira PM-643, thread "Raise mentor voice volume on Android"): the Android tester confirmed the shutter is
+gone but the mentor's voice on calls is still soft at gain 2. WebRTC calls play on the call stream (call mode from the
+in-call manager), so the remote track gain on Android goes to 4 (+12 dB over default; libwebrtc saturates, so only the
+loudest peaks can clip). iOS unchanged. App #337 (typecheck, lint, rtcTalk tests pass). Next: OTA, then the tester's
+next call. If still soft: native change to play WebRTC on the media stream, after an echo check on a real Android phone.
