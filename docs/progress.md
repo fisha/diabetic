@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-646, thread "Restore camera shutter sound on Android"): the Android tester (Galaxy S22) heard no
+shutter click in the meal camera. PM-511 had turned the expo-camera click off on Android, and the ARCore depth camera
+(PM-579) takes its photo from a frame, which makes no sound. The click is back on Android except while a companion call
+is open (the PM-511 reason); the ARCore view plays the system `MediaActionSound` shutter click behind a new
+`shutterSound` prop (app #340). The expo-camera part ships by OTA; the depth-camera part needs the next combined local
+build (Kotlin not compiled in the container). Not yet tried on a phone.
+
 28 Nov 2026 (Jira PM-645, thread "Add more CGM sensors to diabetes profile"): Guy asked for more sensors in the
 diabetes profile, for example Medtronic Simplera, without touching connections. The sensor list (onboarding, Settings
 profile, website profile editor, mentor profile proposals) adds Simplera Sync, Simplera, Guardian Sensor 3, Dexcom G7
