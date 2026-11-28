@@ -5477,5 +5477,14 @@
   "eq.units": "{units} יח׳",
   "eq.reservoir_at": "כפי ש־CareLink דיווח ב־{time}",
   "eq.cartridge": "המחסנית מולאה",
-  "eq.no_set": "לא ידועה החלפת סט ב־30 הימים האחרונים."
+  "eq.no_set": "לא ידועה החלפת סט ב־30 הימים האחרונים.",
+  "yg.ch_log_dinner": "לרשום ארוחת ערב ב-5 ימים",
+  "yg.ch_meal_photo": "לצלם ארוחה ב-3 ימים",
+  "yg.ch_move_more": "לזוז ב-5 ימים",
+  "yg.ch_late": "באיחור",
+  "yg.ch_late_left": "{need, plural, one {חסר עוד יום אחד} other {חסרים עוד # ימים}}, {left, plural, one {נשאר יום אחד} other {נשארו # ימים}}",
+  "yg.ch_late_week": "לא יסתדר השבוע. שבוע חדש מתחיל ביום ראשון",
+  "yg.ch_all_done": "הכול הושלם השבוע! 🎉",
+  "yg.ch_next": "האתגר הבא: {name}",
+  "yg.ch_add": "הוספה"
 }
