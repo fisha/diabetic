@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-651, thread "Remove photo near bottom of English site"): Guy asked to remove the photo of the
+woman in a hijab from the English site. The English "Fits into your day" mosaic drops `photo-use-3` (file deleted) and
+shows three tiles (tall, wide, tall, the wide one centred across both rows); the Hebrew site keeps its own four photos,
+whose kitchen slot is a different photo (office lunch). Checked on a local dev server, /en 1440/900/390 day and night,
+/he 1440; web #135 merged. Visual: verified locally, live after the next web deploy. Functional: unchanged.
+
 28 Nov 2026 (Jira PM-652, thread "Fix squashed meal text in clinic Meals tab"): in the clinic visit Meals calendar the
 meal name shared a row with the time, camera and rise chip and wrapped one or two letters per line in narrow day
 columns. The name now has its own full-width line under them, wraps at words and stops after three lines (the meal panel
