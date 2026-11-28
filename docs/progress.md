@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-654, thread "Learn missed carbs from post-meal glucose"): Guy asked whether, from how a meal
+raised glucose, we can tell how much insulin was missing and so how many carbs were left out of the count. Built behind
+the scenes only: for a photographed meal, the carbs that explain its 4-hour glucose change given the insulin that acted
+(on board, meal bolus, corrections, pump auto corrections; exponential curve), with the person's own carb ratio and
+correction factor (Tandem, else typed), against the pump's carbs for the meal. Clean windows only (no other meal, no
+activity, no low, enough readings, a bolus at the meal). It feeds the photo portion correction as a weak signal per food
+class, only from 3+ such meals, after privacy 2026-11-28T15:00:00Z is accepted (new paragraph, en + he). Never shown,
+never an insulin amount; Guy approved the regulatory exception on a decision card (registered in regulatory-check);
+lawyer PM-655. api #321, web #136. Deploy API and web together. No user-visible line: one would need a mockup first.
+
 28 Nov 2026 (Jira PM-651, thread "Remove photo near bottom of English site"): Guy asked to remove the photo of the
 woman in a hijab from the English site. The English "Fits into your day" mosaic drops `photo-use-3` (file deleted) and
 shows three tiles (tall, wide, tall, the wide one centred across both rows); the Hebrew site keeps its own four photos,
