@@ -20,6 +20,12 @@ columns. The name now has its own full-width line under them, wraps at words and
 shows it whole). Checked with the real stylesheets, English and Hebrew, 1440 and 390 px, day and night; web #134 merged.
 Visual: verified in a harness, not yet on the live site. Functional: unchanged.
 
+28 Nov 2026 (Jira PM-653, same thread): Guy added the suggested dinner challenge and it showed as met at once,
+because weekly challenges counted from Sunday. Rule: a challenge counts only from the moment it starts, never in
+hindsight. Each weekly challenge keeps the moment it was chosen (`users.young.challenges.since`), a kept one keeps its
+moment, and a tracked own challenge counts from when it was made. `services/api/scripts/restart_challenge.py` repairs
+one person's challenge that was met in hindsight (start now, its sticker, habit coins and the mentor's met mark).
+
 28 Nov 2026 (Jira PM-649, same thread): Guy asked that a person can make up a challenge of their own, what and within
 how many days, with the mentor in a chat, on WhatsApp, or in the app. Built as "do <their words> on N days within D
 days from today" (1 to 30 days, every day by default, at most 3 running). In the app: "Make up my own" in the challenge
