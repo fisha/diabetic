@@ -118,6 +118,14 @@ logged. The app's CareLink screen now offers only "Sign in on CareLink's page" (
 the page, keeps the password form). Next: API deploy and OTA; if it happens again, read the "carelink token refresh
 answered" log line for the error code.
 
+28 Nov 2026 (Jira PM-601 follow-up): Fly never fired the forecast trainer's hourly start (one run at creation 27 Nov
+10:37Z, none in 17 h, so nobody was trained that night). It was created with `--restart no`; a Fly community report shows
+the same config never starting, and scheduled Machines that do start are on-failure. `stedio-fly` now creates and
+updates it with `--schedule hourly --restart on-failure`, and `stedio-fly trainer [--start]` fixes it without a deploy
+and can run it once now. API #314: the worker logs "forecast: no new model from the trainer Machine in over 26 h" once
+an hour when the owner's model is that old. Next: `stedio-fly trainer --start` on the Mac, then check that the hourly
+starts appear in the trainer log.
+
 27 Nov 2026 (Jira PM-601, thread "Move forecast training off the API server", Guy chose 10:18Z): the hidden glucose
 forecast training no longer runs on the machine that serves users. The night of 26-27 Nov it was postponed 13 times for
 low free memory on stedio-api (1 GB, uvicorn + worker), so one person got a model. Now a separate 1 GB Machine

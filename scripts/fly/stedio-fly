@@ -15,6 +15,7 @@
 #   stedio-fly research-setup   Create stedio-research, its read-only database login (new password each run) and its
 #                           secrets; then run deploy-research
 #   stedio-fly deploy-research  Deploy the research tool (Streamlit; stops when idle) and check it is closed and noindex
+#   stedio-fly trainer [--start]  Fix or create the forecast trainer Machine (PM-601) without a deploy; --start runs it now
 #   stedio-fly evals --food [--model M]                   Run the meal analyzer's food regression (PM-509) on Fly instead:
 #                                                          drinks, look-alike foods and portions; a few cents, no gate.
 #   stedio-fly evals [--quick] [--repeat N] [--model M]   Run the companion's regression set (PM-198) on Fly: a one-off Machine
@@ -277,13 +278,33 @@ print(next((m["id"] for m in json.load(sys.stdin) if m.get("name") == sys.argv[1
   if [ -z "$id" ]; then
     say "creating the forecast trainer Machine (hourly, 1 GB, no port)"
     fly machine run "$image" /app/deploy/train.sh -a "$API_APP" --name "$TRAINER_NAME" --region "$REGION" \
-      --vm-size shared-cpu-1x --vm-memory 1024 --schedule hourly --restart no --metadata role=forecast-trainer \
+      --vm-size shared-cpu-1x --vm-memory 1024 --schedule hourly --restart on-failure --metadata role=forecast-trainer \
       -e STEADY_RUN_WORKER=false -e STEADY_FORECAST_TRAIN_MAX_MB=700 -e STEADY_FORECAST_SHADOW_MAX_ROWS=60000 \
       -e STEADY_MEDIA_DIR=/tmp/media --detach
   else
     say "forecast trainer $id: new image"
-    fly machine update "$id" -a "$API_APP" --image "$image" --skip-start --yes
+    # The schedule and restart policy are restated on every update: with --restart no (27 Nov) Fly never fired the
+    # hourly start (one run at creation, none in 17 h); scheduled Machines that start are on-failure.
+    fly machine update "$id" -a "$API_APP" --image "$image" --schedule hourly --restart on-failure --skip-start --yes
   fi
+}
+
+# `stedio-fly trainer [--start]`: fix or create the trainer without an API deploy; --start runs it once now as well.
+cmd_trainer() {
+  ensure_trainer
+  if [ "${1:-}" = "--start" ]; then
+    local id
+    id="$(fly machines list -a "$API_APP" --json | python3 -c '
+import json, sys
+print(next((m["id"] for m in json.load(sys.stdin) if m.get("name") == sys.argv[1]), ""))' "$TRAINER_NAME")"
+    say "starting the forecast trainer $id once"
+    fly machine start "$id" -a "$API_APP"
+  fi
+  fly machines list -a "$API_APP" --json | python3 -c '
+import json, sys
+for m in json.load(sys.stdin):
+    c = m.get("config", {})
+    print(m.get("name"), m.get("state"), "schedule=" + str(c.get("schedule")), "restart=" + str((c.get("restart") or {}).get("policy")))'
 }
 
 # install/latest.json: the newest build number, read by the API's GET /app/version so an older install offers the new
@@ -429,6 +450,7 @@ case "${1:-help}" in
   secrets) cmd_secrets ;;
   deploy-db) cmd_deploy_db ;;
   deploy-api) shift; cmd_deploy_api "$@" ;;
+  trainer) shift; cmd_trainer "$@" ;;
   deploy-web) cmd_deploy_web ;;
   copy-data) cmd_copy_data ;;
   backup) cmd_backup ;;
@@ -436,5 +458,5 @@ case "${1:-help}" in
   research-setup) cmd_research_setup ;;
   deploy-research) cmd_deploy_research ;;
   evals) shift; cmd_evals "$@" ;;
-  *) sed -n '2,23p' "$0" ;;
+  *) sed -n '2,24p' "$0" ;;
 esac
