@@ -2703,7 +2703,10 @@
                   "log_breakfast",
                   "move",
                   "talk",
-                  "insights"
+                  "insights",
+                  "log_dinner",
+                  "meal_photo",
+                  "move_more"
                 ],
                 "type": "string"
               },
@@ -2729,6 +2732,16 @@
           "id": {
             "title": "Id",
             "type": "string"
+          },
+          "late": {
+            "default": false,
+            "title": "Late",
+            "type": "boolean"
+          },
+          "left": {
+            "default": 0,
+            "title": "Left",
+            "type": "integer"
           },
           "met": {
             "title": "Met",
@@ -2758,7 +2771,10 @@
                 "log_breakfast",
                 "move",
                 "talk",
-                "insights"
+                "insights",
+                "log_dinner",
+                "meal_photo",
+                "move_more"
               ],
               "type": "string"
             },
@@ -18156,6 +18172,17 @@
             "default": false,
             "title": "Insight Today",
             "type": "boolean"
+          },
+          "next": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next"
           },
           "quest": {
             "anyOf": [

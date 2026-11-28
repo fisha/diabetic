@@ -6208,7 +6208,7 @@ export interface components {
         /** ChallengeIn */
         ChallengeIn: {
             /** Id */
-            id: ("log_lunch" | "log_breakfast" | "move" | "talk" | "insights") | null;
+            id: ("log_lunch" | "log_breakfast" | "move" | "talk" | "insights" | "log_dinner" | "meal_photo" | "move_more") | null;
         };
         /** ChallengeOut */
         ChallengeOut: {
@@ -6216,6 +6216,16 @@ export interface components {
             done: boolean;
             /** Id */
             id: string;
+            /**
+             * Late
+             * @default false
+             */
+            late: boolean;
+            /**
+             * Left
+             * @default 0
+             */
+            left: number;
             /** Met */
             met: number;
             /** Target */
@@ -6224,7 +6234,7 @@ export interface components {
         /** ChallengesIn */
         ChallengesIn: {
             /** Ids */
-            ids: ("log_lunch" | "log_breakfast" | "move" | "talk" | "insights")[];
+            ids: ("log_lunch" | "log_breakfast" | "move" | "talk" | "insights" | "log_dinner" | "meal_photo" | "move_more")[];
         };
         /** ChangeMetaOut */
         ChangeMetaOut: {
@@ -11754,6 +11764,8 @@ export interface components {
              * @default false
              */
             insight_today: boolean;
+            /** Next */
+            next?: string | null;
             quest?: components["schemas"]["QuestOut"] | null;
             /**
              * Quiet Self

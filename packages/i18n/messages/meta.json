@@ -35654,5 +35654,68 @@
       "translation"
     ],
     "note": "Clinic data sources and checks (PM-621, Guy 27 Nov 2026)"
+  },
+  "yg.ch_log_dinner": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly challenges met, late and next (PM-648, Guy 28 Nov 2026)."
+  },
+  "yg.ch_meal_photo": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly challenges met, late and next (PM-648, Guy 28 Nov 2026)."
+  },
+  "yg.ch_move_more": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly challenges met, late and next (PM-648, Guy 28 Nov 2026)."
+  },
+  "yg.ch_late": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly challenges met, late and next (PM-648, Guy 28 Nov 2026)."
+  },
+  "yg.ch_late_left": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly challenges met, late and next (PM-648, Guy 28 Nov 2026)."
+  },
+  "yg.ch_late_week": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly challenges met, late and next (PM-648, Guy 28 Nov 2026)."
+  },
+  "yg.ch_all_done": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly challenges met, late and next (PM-648, Guy 28 Nov 2026)."
+  },
+  "yg.ch_next": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly challenges met, late and next (PM-648, Guy 28 Nov 2026)."
+  },
+  "yg.ch_add": {
+    "board": "Companion",
+    "review": [
+      "translation"
+    ],
+    "note": "Weekly challenges met, late and next (PM-648, Guy 28 Nov 2026)."
   }
 }

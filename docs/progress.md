@@ -8,6 +8,17 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-648, thread "Celebrate completed and nudge late challenges"): Guy asked that a met weekly
+challenge is celebrated by the mentor and on its Overview card, that a late one is encouraged and its card says it is
+late, that a met one offers a new challenge, and for more challenges. "Late" means today is needed to still meet it this
+week (the days after today are fewer than the days still needed); the card shows a quiet "Running late" pill with the
+days to go and left, or that a new week starts on Sunday when it can no longer be met. A met card turns to the soft
+accent with a filled trophy, and "Try next" adds the offered challenge with one tap (a step up from the met one, else
+the habit done sometimes but below its target). The mentor sends `challenge_met` (with the next one on WhatsApp) and
+`challenge_late` (only while it can still be met) once per challenge a week, through the send policy and quiet rules;
+not with Classic Stedio or challenges off. New challenges: dinner on 5 days, a meal photo on 3 days, moving on 5 days.
+Export gains `weekly_challenges`. Deploy order: API first (new fields), then OTA. Not yet tried on a phone.
+
 28 Nov 2026 (Jira PM-646, thread "Restore camera shutter sound on Android"): the Android tester (Galaxy S22) heard no
 shutter click in the meal camera. PM-511 had turned the expo-camera click off on Android, and the ARCore depth camera
 (PM-579) takes its photo from a frame, which makes no sound. The click is back on Android except while a companion call
