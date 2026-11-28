@@ -34147,20 +34147,6 @@
     ],
     "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
   },
-  "clc.r_show": {
-    "board": "ClinicPortal",
-    "review": [
-      "translation"
-    ],
-    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
-  },
-  "clc.r_hide": {
-    "board": "ClinicPortal",
-    "review": [
-      "translation"
-    ],
-    "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
-  },
   "clc.r_hm": {
     "board": "ClinicPortal",
     "review": [
@@ -34223,6 +34209,286 @@
       "translation"
     ],
     "note": "Clinic largest rises (PM-615, Guy 27 Nov 2026)"
+  },
+  "clc.r_open": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.r_details": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_title": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_loading": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_error": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_gone": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_retry": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_lowest": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_at": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_rate": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_rate_v": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_fast": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_fast_v": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_above": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_above_v": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_back180": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_back_start": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_after_peak": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_not_above": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_not_3h": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_low_after": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_low_v": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_readings": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_none": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_range": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_meal_mark": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_dose_mark": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_workout_mark": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_logged": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_nothing": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_meal": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_carbs": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_dose": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_basal": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_auto": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_workout": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_no_food": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_no_insulin": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_source": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
+  },
+  "clc.rd_a11y": {
+    "board": "ClinicPortal",
+    "review": [
+      "translation"
+    ],
+    "note": "Clinic rise drill-down (PM-650, Guy 28 Nov 2026)"
   },
   "clc.mc_note": {
     "board": "ClinicPortal",
