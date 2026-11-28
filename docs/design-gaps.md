@@ -221,6 +221,9 @@ ONB-17 and SET-06 show "Voice A, B, C". The brief says not to invent voices or l
 **Conflict**
 - ONB-11 and ONB-12 list MiniMed 780G, Omnipod 5, t:slim X2, mylife YpsoPump, Guardian 4, Dexcom G7 and
   FreeStyle Libre 3 with model numbers.
+- 28 Nov 2026 (PM-645): Guy asked for more real sensors in the list (Simplera Sync, Simplera, Guardian Sensor 3,
+  Dexcom G7 15 Day, G6, ONE+, Stelo, FreeStyle Libre 3 / 3 Plus and 2 / 2 Plus, Eversense 365 and E3). Same row
+  layout; the stored `libre3` keeps its name "FreeStyle Libre". No connection, reminder or rated-days change.
 - The brief (§7) says selecting equipment never implies a connection. The design follows that.
 
 **Proposal**
