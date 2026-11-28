@@ -2400,3 +2400,11 @@ pieces (side menu, cards, tables, dialogs, segmented filters) with tiles, status
 `apps/web/src/styles/admin.css`. Screenshots shown to Guy before merge. Not designed and left as is: a separate page per
 organization manager, seat history, and billing for seats (no prices while on the waiting list).
 
+### G-143 · Sensor and infusion set details sheets from Overview (**asked by Guy, 28 Nov 2026, PM-647**)
+
+The Duet z21 equipment rows on Overview had no screen behind them. Guy asked for a sheet with everything known about
+the sensor and the set. Built from the breakdown sheet's pieces (the hero card, grouped rows, section titles, the
+loading spinner and retry banner): a hero with the time left (sensor) or the set's day, then rows only for values a
+device service reported. Not designed and left as is: no icon per row, no per-source artwork, no link from the sheet to
+the device connection screen.
+

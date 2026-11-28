@@ -2778,7 +2778,7 @@
               ],
               "type": "string"
             },
-            "maxItems": 4,
+            "maxItems": 8,
             "title": "Ids",
             "type": "array"
           }
@@ -4908,6 +4908,26 @@
           }
         },
         "title": "EnvironmentOut",
+        "type": "object"
+      },
+      "EquipmentDetailsOut": {
+        "properties": {
+          "sensors": {
+            "items": {
+              "$ref": "#/components/schemas/SensorDetailsOut"
+            },
+            "title": "Sensors",
+            "type": "array"
+          },
+          "set": {
+            "$ref": "#/components/schemas/SetDetailsOut"
+          }
+        },
+        "required": [
+          "sensors",
+          "set"
+        ],
+        "title": "EquipmentDetailsOut",
         "type": "object"
       },
       "EquipmentOut": {
@@ -14277,6 +14297,200 @@
         "title": "SendOut",
         "type": "object"
       },
+      "SensorDetailsOut": {
+        "description": "One connected service's sensor, for Overview's sensor sheet (PM-647): only what that service reported.",
+        "properties": {
+          "earlier_starts": {
+            "default": [],
+            "items": {
+              "format": "date-time",
+              "type": "string"
+            },
+            "title": "Earlier Starts",
+            "type": "array"
+          },
+          "ends_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ends At"
+          },
+          "ends_estimate": {
+            "default": false,
+            "title": "Ends Estimate",
+            "type": "boolean"
+          },
+          "last_reading_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Reading At"
+          },
+          "last_sync_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Sync At"
+          },
+          "lost": {
+            "title": "Lost",
+            "type": "boolean"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "pump_in_range": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pump In Range"
+          },
+          "rated_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rated Days"
+          },
+          "reported_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reported Type"
+          },
+          "sensor_in_range": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor In Range"
+          },
+          "sensor_state": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor State"
+          },
+          "source": {
+            "enum": [
+              "carelink",
+              "dexcom",
+              "libre",
+              "tandem"
+            ],
+            "title": "Source",
+            "type": "string"
+          },
+          "started_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Started At"
+          },
+          "status_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status At"
+          },
+          "transmitter_battery_percent": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transmitter Battery Percent"
+          },
+          "updating_since": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updating Since"
+          },
+          "warmup_ready_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Warmup Ready At"
+          }
+        },
+        "required": [
+          "source",
+          "name",
+          "lost"
+        ],
+        "title": "SensorDetailsOut",
+        "type": "object"
+      },
       "SessionIn": {
         "properties": {
           "opener": {
@@ -14369,6 +14583,152 @@
           }
         },
         "title": "SetChangeIn",
+        "type": "object"
+      },
+      "SetChangeOut": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "exact": {
+            "title": "Exact",
+            "type": "boolean"
+          },
+          "source": {
+            "enum": [
+              "carelink",
+              "tandem",
+              "manual",
+              "device"
+            ],
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "at",
+          "exact",
+          "source"
+        ],
+        "title": "SetChangeOut",
+        "type": "object"
+      },
+      "SetDetailsOut": {
+        "properties": {
+          "cartridge_changed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cartridge Changed At"
+          },
+          "earlier": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/SetChangeOut"
+            },
+            "title": "Earlier",
+            "type": "array"
+          },
+          "ends_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ends At"
+          },
+          "last": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SetChangeOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "rated_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rated Days"
+          },
+          "recommended_from": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recommended From"
+          },
+          "reservoir_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reservoir At"
+          },
+          "reservoir_percent": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reservoir Percent"
+          },
+          "reservoir_units": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reservoir Units"
+          },
+          "set_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Set Type"
+          }
+        },
+        "title": "SetDetailsOut",
         "type": "object"
       },
       "SettingsOut": {
@@ -24562,6 +24922,33 @@
           }
         ],
         "summary": "Equipment",
+        "tags": [
+          "devices"
+        ]
+      }
+    },
+    "/devices/equipment/details": {
+      "get": {
+        "description": "Everything known about the sensor and the infusion set, for the sheets behind Overview's equipment rows (Guy,\n28 Nov 2026, PM-647). Read only; each value is what a device service reported or the person said, and a worked-out\nend says it is an estimate. The person's own: a follower reads only /devices/equipment (deps.VIEW_PATHS).",
+        "operationId": "equipment_details_devices_equipment_details_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EquipmentDetailsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Equipment Details",
         "tags": [
           "devices"
         ]

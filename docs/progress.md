@@ -17,7 +17,19 @@ accent with a filled trophy, and "Try next" adds the offered challenge with one 
 the habit done sometimes but below its target). The mentor sends `challenge_met` (with the next one on WhatsApp) and
 `challenge_late` (only while it can still be met) once per challenge a week, through the send policy and quiet rules;
 not with Classic Stedio or challenges off. New challenges: dinner on 5 days, a meal photo on 3 days, moving on 5 days.
-Export gains `weekly_challenges`. Deploy order: API first (new fields), then OTA. Not yet tried on a phone.
+Export gains `weekly_challenges`. api #318, app #342. Deploy order: API first (new fields), then OTA. Not yet tried on
+a phone.
+
+28 Nov 2026 (Jira PM-647, thread "Show sensor and set details from Overview"): Guy asked that tapping the sensor row on
+Overview open a sheet with everything known about the sensor (battery, replacement time and so on), and the same for the
+infusion set (the exact time of the last change). Both rows now open a sheet (app `EquipmentSheet.tsx`, API
+`GET /devices/equipment/details`, owner only). Sensor: per connected service, only what it reports: CareLink's own time
+left, sensor status (calibration asked, searching and so on), transmitter battery, sensor and pump in range; LibreLinkUp
+and Tandem the start and an end marked "estimate" (start + rated days); Dexcom Share the connection and last reading only;
+warm-up and updating; earlier sensor starts. Set: last change with its exact time (a CareLink history day says "time not
+reported"), time worn, set type, end of rated wear, the recommended day (PM-437), CareLink reservoir, Tandem cartridge fill,
+earlier changes. Followers keep the two view-only rows. e2e `tools/e2e/equipment-sheets.cjs` passes in English and Hebrew,
+light and dark; screenshots in project files `equipment-pm647/`. Design gap G-143. Deploy order: API first, then OTA.
 
 28 Nov 2026 (Jira PM-646, thread "Restore camera shutter sound on Android"): the Android tester (Galaxy S22) heard no
 shutter click in the meal camera. PM-511 had turned the expo-camera click off on Android, and the ARCore depth camera

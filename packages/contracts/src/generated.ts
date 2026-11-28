@@ -2186,6 +2186,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/devices/equipment/details": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Equipment Details
+         * @description Everything known about the sensor and the infusion set, for the sheets behind Overview's equipment rows (Guy,
+         *     28 Nov 2026, PM-647). Read only; each value is what a device service reported or the person said, and a worked-out
+         *     end says it is an estimate. The person's own: a follower reads only /devices/equipment (deps.VIEW_PATHS).
+         */
+        get: operations["equipment_details_devices_equipment_details_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/devices/events": {
         parameters: {
             query?: never;
@@ -7066,6 +7088,12 @@ export interface components {
             /** Temp C */
             temp_c?: number | null;
         };
+        /** EquipmentDetailsOut */
+        EquipmentDetailsOut: {
+            /** Sensors */
+            sensors: components["schemas"]["SensorDetailsOut"][];
+            set: components["schemas"]["SetDetailsOut"];
+        };
         /**
          * EquipmentOut
          * @description The equipment rows at the bottom of Overview (Duet z21): only what a device or the person already said.
@@ -10338,6 +10366,57 @@ export interface components {
             message: components["schemas"]["MessageOut"];
             reply: components["schemas"]["MessageOut"];
         };
+        /**
+         * SensorDetailsOut
+         * @description One connected service's sensor, for Overview's sensor sheet (PM-647): only what that service reported.
+         */
+        SensorDetailsOut: {
+            /**
+             * Earlier Starts
+             * @default []
+             */
+            earlier_starts: string[];
+            /** Ends At */
+            ends_at?: string | null;
+            /**
+             * Ends Estimate
+             * @default false
+             */
+            ends_estimate: boolean;
+            /** Last Reading At */
+            last_reading_at?: string | null;
+            /** Last Sync At */
+            last_sync_at?: string | null;
+            /** Lost */
+            lost: boolean;
+            /** Name */
+            name: string;
+            /** Pump In Range */
+            pump_in_range?: boolean | null;
+            /** Rated Days */
+            rated_days?: number | null;
+            /** Reported Type */
+            reported_type?: string | null;
+            /** Sensor In Range */
+            sensor_in_range?: boolean | null;
+            /** Sensor State */
+            sensor_state?: string | null;
+            /**
+             * Source
+             * @enum {string}
+             */
+            source: "carelink" | "dexcom" | "libre" | "tandem";
+            /** Started At */
+            started_at?: string | null;
+            /** Status At */
+            status_at?: string | null;
+            /** Transmitter Battery Percent */
+            transmitter_battery_percent?: number | null;
+            /** Updating Since */
+            updating_since?: string | null;
+            /** Warmup Ready At */
+            warmup_ready_at?: string | null;
+        };
         /** SessionIn */
         SessionIn: {
             /** Opener */
@@ -10373,6 +10452,46 @@ export interface components {
         SetChangeIn: {
             /** At */
             at?: string | null;
+        };
+        /** SetChangeOut */
+        SetChangeOut: {
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /** Exact */
+            exact: boolean;
+            /**
+             * Source
+             * @enum {string}
+             */
+            source: "carelink" | "tandem" | "manual" | "device";
+        };
+        /** SetDetailsOut */
+        SetDetailsOut: {
+            /** Cartridge Changed At */
+            cartridge_changed_at?: string | null;
+            /**
+             * Earlier
+             * @default []
+             */
+            earlier: components["schemas"]["SetChangeOut"][];
+            /** Ends At */
+            ends_at?: string | null;
+            last?: components["schemas"]["SetChangeOut"] | null;
+            /** Rated Days */
+            rated_days?: number | null;
+            /** Recommended From */
+            recommended_from?: string | null;
+            /** Reservoir At */
+            reservoir_at?: string | null;
+            /** Reservoir Percent */
+            reservoir_percent?: number | null;
+            /** Reservoir Units */
+            reservoir_units?: number | null;
+            /** Set Type */
+            set_type?: string | null;
         };
         /** SettingsOut */
         SettingsOut: {
@@ -16123,6 +16242,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["EquipmentOut"];
+                };
+            };
+        };
+    };
+    equipment_details_devices_equipment_details_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EquipmentDetailsOut"];
                 };
             };
         };
