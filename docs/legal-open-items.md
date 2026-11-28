@@ -9,6 +9,10 @@ have a privacy lawyer review the whole text. None of this is legal advice.
 
 ## Filled in
 
+- 28 Nov 2026 (Guy, PM-654): privacy `2026-11-28T15:00:00Z` adds that Stedio may look back at the glucose after a
+  photographed meal, with logged insulin and the carb ratio and correction factor, as a weak signal for portion sizes
+  (never shown, never an insulin amount). Lawyer review PM-655 (`needs-lawyer`).
+
 - 23 Nov 2026 (Guy, PM-456): the company is **Stedio Ltd, Tel Aviv, Israel** (was Ming GF Ltd from 15 Nov; privacy and
   terms `2026-11-23T20:00:00Z`; lawyer to confirm the registered name and number). It is the controller (privacy), the provider
   and owner (terms), the operator (accessibility statement) and the footer line. No company number is shown (not

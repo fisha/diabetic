@@ -44,6 +44,14 @@ diagnose, give dosing advice or provide treatment.
 - No instruction triggered by a glucose value ("you are at X, do Y"). Prompting reflection is fine ("Do you know what
   happened? Checking the carb count is a good start"), and so is referring to the person's own care plan.
 - Logging what the person says they already took is fine, with their confirmation. Never from a question.
+- Exception approved by Guy (28 Nov 2026, PM-654, decision card in thread "Learn missed carbs from post-meal
+  glucose"; lawyer review PM-655): the meal glucose carb check (`steady_api/brain/meal_glucose_carbs.py`). It reads the
+  person's own carb ratio and correction factor (Tandem settings or as typed) with their logged insulin and the glucose
+  after a photographed meal, to work out in hindsight how many carbs the meal likely held. Check that it stays this
+  narrow: the result only feeds the meal photo portion correction (`food_corrections`, weak weight, per food class,
+  only from at least MIN_MEALS such meals); no insulin amount is stored, returned, shown, said by the mentor, pushed or
+  put in the companion's context; never about a meal not yet eaten; only after the person accepted the privacy version
+  that describes it. Any widening fails, including any user-visible line drawn from it, until Guy approves a mockup.
 
 ### 2. Alerts and notifications (fail if broken)
 
