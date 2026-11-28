@@ -8,6 +8,15 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-659, api #328, web #139, thread "Fix app update link to use stedio.io"): the app's "new
+version to install" link opened https://stedio-web.fly.dev/install/index.html. Cause: `GET /app/version` read the
+`STEADY_APP_INSTALL_URL` fly secret, staged before the stedio.io move (PM-451) and never updated (`stedio-fly secrets`
+only fills missing ones). The install page itself (index.html, manifest.plist itms-services link, latest.json) already
+used stedio.io. Fix: the value lives in deploy/fly/api/fly.toml; `stedio-fly deploy-api` removes the old secret (a
+secret wins over fly.toml); the API never hands out a *.fly.dev install address; stedio-web.fly.dev/install redirects
+to stedio.io/install/index.html for older builds (files stay served). No other user-facing link points at *.fly.dev.
+Checked: API tests, web host tests. Deploy: API + web. Live check after deploy: `GET https://api.stedio.io/app/version`.
+
 28 Nov 2026 (Jira PM-658, web #138, thread "Bring clinic sign-in above the fold"): on a 13" MacBook the "Clinic
 sign-in" and "Ask for a demo" buttons sat below the fold after clicking For clinics. They now sit centered under the
 section intro, above the four cards; the "not a medical device" note stays under the cards. No copy change. Checked:

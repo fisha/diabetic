@@ -106,13 +106,9 @@ cmd_secrets() {
       echo "WARN   no APNs key file: Live Activity pushes stay off"
     fi
   fi
-  # The tester install page moves with the website.
-  if ! has_secret "$API_APP" STEADY_APP_INSTALL_URL; then
-    lines+="STEADY_APP_INSTALL_URL=$WEB_URL/install/index.html"$'\n'; staged=$((staged + 1)); echo "STAGE  STEADY_APP_INSTALL_URL"
-  fi
   if [ "$staged" -gt 0 ]; then printf '%s' "$lines" | fly secrets import -a "$API_APP" --stage >/dev/null; fi
   unset lines value
-  echo "Skipped on purpose: STEADY_DATABASE_URL (setup), STEADY_CORS_ORIGINS and STEADY_APNS_TEAM_ID (deploy/fly/api/fly.toml), STEADY_APNS_KEY_PATH (start.sh)."
+  echo "Skipped on purpose: STEADY_DATABASE_URL (setup), STEADY_CORS_ORIGINS, STEADY_APNS_TEAM_ID and STEADY_APP_INSTALL_URL (deploy/fly/api/fly.toml), STEADY_APNS_KEY_PATH (start.sh)."
   say "$staged secret(s) staged; they apply on the next deploy-api"
 }
 
@@ -248,6 +244,11 @@ cmd_deploy_api() {
   # Guy near the end of a day with many companion changes. The deploy only says when the companion is untested.
   if companion_changed; then
     echo "NOTE   the companion changed since the last passing regression run; suggest \`stedio-fly evals\` at the end of the day"
+  fi
+  # The install page address lives in fly.toml (PM-659). The secret staged before the stedio.io move named
+  # stedio-web.fly.dev and would win over fly.toml, so it goes (staged: it applies with this deploy).
+  if has_secret "$API_APP" STEADY_APP_INSTALL_URL; then
+    fly secrets unset -a "$API_APP" --stage STEADY_APP_INSTALL_URL >/dev/null && echo "UNSET  STEADY_APP_INSTALL_URL secret (fly.toml has it)"
   fi
   # A backup before every deploy: the release command runs migrations.
   if fly status -a "$DB_APP" 2>/dev/null | grep started >/dev/null; then say "database backup first"; cmd_backup; fi

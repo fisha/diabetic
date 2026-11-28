@@ -32,6 +32,9 @@ swap_size_mb = 512
   # The newest app build number, published by `stedio-fly deploy-web` next to the install page (PM-217). Read every
   # 10 minutes; STEADY_APP_LATEST_BUILD (a secret) is only the fallback when the file can't be read.
   STEADY_APP_LATEST_BUILD_URL = 'https://stedio.io/install/latest.json'
+  # The tester install page the app's "new version" link opens (PM-659). Not a secret: `stedio-fly deploy-api` removes
+  # the old STEADY_APP_INSTALL_URL secret (it named stedio-web.fly.dev), because a secret would win over this value.
+  STEADY_APP_INSTALL_URL = 'https://stedio.io/install/index.html'
   # Forecast training runs only on the separate trainer Machine (PM-601, Guy 27 Nov 2026: training must never slow the
   # server for users). The worker here keeps the light steps (estimate every 30 min, scoring). Rollback: 'false'.
   STEADY_FORECAST_TRAIN_REMOTE = 'true'
