@@ -8,6 +8,12 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-642, thread "Fix Journal back navigation from meal"): the Android tester (Galaxy S22) opened a meal
+from the Journal's Meals tab and Back took her to the top of All. The entry detail replaced the list, so the list lost
+its tab, options and scroll place; Android's back button left the tab. The list now stays mounted under the open entry
+and Android back closes the correction, then the entry (app #338, OTA). e2e `tools/e2e/journal-back.cjs` fails on the
+old build and passes on the new one (English and Hebrew); not yet tried on a phone.
+
 28 Nov 2026 (Jira PM-641, thread "Fix missing glucose readings in Journal"): Guy saw no reading rows after his CareLink
 sensor warm-up. Nothing was missing: each reading carried the pump's automatic correction and was merged into one row
 (12 Nov rule), which showed the insulin icon. Guy chose to keep one card but show the reading icon when the only
