@@ -5202,6 +5202,63 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/young/challenges/custom": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add Custom
+         * @description A challenge of the person's own (PM-649). Habits only: treatment or glucose words are refused (422 not_a_habit).
+         */
+        post: operations["add_custom_young_challenges_custom_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/young/challenges/custom/{cid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Remove Custom */
+        delete: operations["remove_custom_young_challenges_custom__cid__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/young/challenges/custom/{cid}/today": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Mark Custom
+         * @description I did it today (or undo), PM-649.
+         */
+        put: operations["mark_custom_young_challenges_custom__cid__today_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/young/cheers/{cheer_id}/seen": {
         parameters: {
             query?: never;
@@ -6769,6 +6826,68 @@ export interface components {
              * @enum {string}
              */
             source: "accept_all" | "reject_all" | "custom" | "us_notice" | "gpc" | "migrated_cookieyes";
+        };
+        /** CustomCreated */
+        CustomCreated: {
+            /**
+             * Ends On
+             * Format: date
+             */
+            ends_on: string;
+            /** Id */
+            id: string;
+        };
+        /** CustomIn */
+        CustomIn: {
+            /** Days */
+            days: number;
+            /** Text */
+            text: string;
+            /** Times */
+            times: number;
+            /** Track */
+            track?: ("move" | "log_breakfast" | "log_lunch" | "log_dinner" | "meal_photo" | "talk" | "insights") | null;
+        };
+        /** CustomMarkIn */
+        CustomMarkIn: {
+            /** Done */
+            done: boolean;
+        };
+        /**
+         * CustomOut
+         * @description A challenge of the person's own (PM-649): their words, how many times within how many days from its start.
+         */
+        CustomOut: {
+            /** Days */
+            days: number;
+            /** Done */
+            done: boolean;
+            /**
+             * Ended
+             * @default false
+             */
+            ended: boolean;
+            /**
+             * Ends On
+             * Format: date
+             */
+            ends_on: string;
+            /** Id */
+            id: string;
+            /** Late */
+            late: boolean;
+            /** Left */
+            left: number;
+            /** Met */
+            met: number;
+            /** Target */
+            target: number;
+            /** Text */
+            text: string;
+            /** Today */
+            today: boolean;
+            /** Tracked */
+            tracked?: string | null;
         };
         /** DayIn */
         DayIn: {
@@ -11875,6 +11994,11 @@ export interface components {
              */
             coins_why: ("meal" | "insight" | "challenge")[];
             controls?: components["schemas"]["Controls"] | null;
+            /**
+             * Custom
+             * @default []
+             */
+            custom: components["schemas"]["CustomOut"][];
             /** Growth */
             growth?: ("baby" | "kid" | "explorer") | null;
             handover?: components["schemas"]["HandoverOut"] | null;
@@ -22250,6 +22374,101 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["ChallengesIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    add_custom_young_challenges_custom_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CustomIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CustomCreated"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    remove_custom_young_challenges_custom__cid__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                cid: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    mark_custom_young_challenges_custom__cid__today_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                cid: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CustomMarkIn"];
             };
         };
         responses: {
