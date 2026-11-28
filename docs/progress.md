@@ -8,6 +8,13 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-645, thread "Add more CGM sensors to diabetes profile"): Guy asked for more sensors in the
+diabetes profile, for example Medtronic Simplera, without touching connections. The sensor list (onboarding, Settings
+profile, website profile editor, mentor profile proposals) adds Simplera Sync, Simplera, Guardian Sensor 3, Dexcom G7
+15 Day, G6, ONE+, Stelo, FreeStyle Libre 3 / 3 Plus, FreeStyle Libre 2 / 2 Plus, Eversense 365 and Eversense E3.
+Stored values are unchanged (`libre3` stays "FreeStyle Libre"). Connection suggestions, sensor-end reminder types and
+rated days are unchanged, so the new sensors get none of those. Product names are the same in both languages.
+
 28 Nov 2026 (Jira PM-642, thread "Fix Journal back navigation from meal"): the Android tester (Galaxy S22) opened a meal
 from the Journal's Meals tab and Back took her to the top of All. The entry detail replaced the list, so the list lost
 its tab, options and scroll place; Android's back button left the tab. The list now stays mounted under the open entry
