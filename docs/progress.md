@@ -8,6 +8,16 @@ without stopping and to ask for everything needed at the end ("תפתח את כ�
 or on a phone yet, and the outside providers (OpenAI, USDA, Expo push, Apple Health, Health Connect, billing) are
 verified only against test stand-ins or not at all. See `docs/integration-status.md`.
 
+28 Nov 2026 (Jira PM-649, same thread): Guy asked that a person can make up a challenge of their own, what and within
+how many days, with the mentor in a chat, on WhatsApp, or in the app. Built as "do <their words> on N days within D
+days from today" (1 to 30 days, every day by default, at most 3 running). In the app: "Make up my own" in the challenge
+picker opens a sheet (text, "Within", "On how many of them"); each one is a card on Overview under the week's challenges
+with a tick for today, celebrated when met, "Running late" when today is needed (never on its first day), removed by a
+swipe. The mentor's `own_challenge` tool creates, marks and removes them in chat and on WhatsApp (asks for the days
+first, one per turn). Habits only: treatment words (brain.plans.treatment) and glucose numbers or results
+(`young.not_a_habit`) are refused, and the mentor offers a habit version. The proactive engine celebrates a met one and
+nudges a late one once each, with the same budget and quiet rules. Kept in `users.young.custom`, in the export.
+
 28 Nov 2026 (Jira PM-648, thread "Celebrate completed and nudge late challenges"): Guy asked that a met weekly
 challenge is celebrated by the mentor and on its Overview card, that a late one is encouraged and its card says it is
 late, that a met one offers a new challenge, and for more challenges. "Late" means today is needed to still meet it this

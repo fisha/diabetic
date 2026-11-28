@@ -4066,6 +4066,165 @@
         "title": "CookieConsentIn",
         "type": "object"
       },
+      "CustomCreated": {
+        "properties": {
+          "ends_on": {
+            "format": "date",
+            "title": "Ends On",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "ends_on"
+        ],
+        "title": "CustomCreated",
+        "type": "object"
+      },
+      "CustomIn": {
+        "additionalProperties": false,
+        "properties": {
+          "days": {
+            "maximum": 30.0,
+            "minimum": 1.0,
+            "title": "Days",
+            "type": "integer"
+          },
+          "text": {
+            "maxLength": 80,
+            "minLength": 2,
+            "title": "Text",
+            "type": "string"
+          },
+          "times": {
+            "maximum": 30.0,
+            "minimum": 1.0,
+            "title": "Times",
+            "type": "integer"
+          },
+          "track": {
+            "anyOf": [
+              {
+                "enum": [
+                  "move",
+                  "log_breakfast",
+                  "log_lunch",
+                  "log_dinner",
+                  "meal_photo",
+                  "talk",
+                  "insights"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Track"
+          }
+        },
+        "required": [
+          "text",
+          "times",
+          "days"
+        ],
+        "title": "CustomIn",
+        "type": "object"
+      },
+      "CustomMarkIn": {
+        "additionalProperties": false,
+        "properties": {
+          "done": {
+            "title": "Done",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "done"
+        ],
+        "title": "CustomMarkIn",
+        "type": "object"
+      },
+      "CustomOut": {
+        "description": "A challenge of the person's own (PM-649): their words, how many times within how many days from its start.",
+        "properties": {
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "done": {
+            "title": "Done",
+            "type": "boolean"
+          },
+          "ended": {
+            "default": false,
+            "title": "Ended",
+            "type": "boolean"
+          },
+          "ends_on": {
+            "format": "date",
+            "title": "Ends On",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "late": {
+            "title": "Late",
+            "type": "boolean"
+          },
+          "left": {
+            "title": "Left",
+            "type": "integer"
+          },
+          "met": {
+            "title": "Met",
+            "type": "integer"
+          },
+          "target": {
+            "title": "Target",
+            "type": "integer"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          },
+          "today": {
+            "title": "Today",
+            "type": "boolean"
+          },
+          "tracked": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tracked"
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "met",
+          "target",
+          "days",
+          "ends_on",
+          "done",
+          "late",
+          "left",
+          "today"
+        ],
+        "title": "CustomOut",
+        "type": "object"
+      },
       "DayIn": {
         "additionalProperties": false,
         "properties": {
@@ -18501,6 +18660,14 @@
                 "type": "null"
               }
             ]
+          },
+          "custom": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/CustomOut"
+            },
+            "title": "Custom",
+            "type": "array"
           },
           "growth": {
             "anyOf": [
@@ -33778,6 +33945,144 @@
           }
         ],
         "summary": "Set Challenges",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/young/challenges/custom": {
+      "post": {
+        "description": "A challenge of the person's own (PM-649). Habits only: treatment or glucose words are refused (422 not_a_habit).",
+        "operationId": "add_custom_young_challenges_custom_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomCreated"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Add Custom",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/young/challenges/custom/{cid}": {
+      "delete": {
+        "operationId": "remove_custom_young_challenges_custom__cid__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cid",
+            "required": true,
+            "schema": {
+              "title": "Cid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Remove Custom",
+        "tags": [
+          "young"
+        ]
+      }
+    },
+    "/young/challenges/custom/{cid}/today": {
+      "put": {
+        "description": "I did it today (or undo), PM-649.",
+        "operationId": "mark_custom_young_challenges_custom__cid__today_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cid",
+            "required": true,
+            "schema": {
+              "title": "Cid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomMarkIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Mark Custom",
         "tags": [
           "young"
         ]

@@ -148,6 +148,7 @@ export type YoungControls = S['Controls'];
 export type StickerOut = S['StickerOut'];
 export type CheerOut = S['CheerOut'];
 export type ChallengeOut = S['ChallengeOut'];
+export type CustomOut = S['CustomOut'];
 export type CheerPromptOut = S['CheerPromptOut'];
 export type DraftOut = S['DraftOut'];
 export type RowQuestionOut = S['RowQuestionOut'];
